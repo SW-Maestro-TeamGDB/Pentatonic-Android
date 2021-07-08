@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_lounge"
+        android:icon="@drawable/ic_lounge"
+        android:title="@string/title_lounge" />
+
+    <item
+        android:id="@+id/navigation_practice_room"
+        android:icon="@drawable/ic_practice_room"
+        android:title="@string/title_practice_room" />
+
+    <item
+        android:id="@+id/navigation_artist"
+        android:icon="@drawable/ic_artist"
+        android:title="@string/title_artist" />
+
+    <item
+        android:id="@+id/navigation_my_page"
+        android:icon="@drawable/ic_my_page"
+        android:title="@string/title_my_page" />
+
+</menu>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pentatonic</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_lounge">라운지</string>
+    <string name="title_practice_room">연습실</string>
+    <string name="title_artist">아티스트</string>
+    <string name="title_my_page">마이페이지</string>
 </resources>
