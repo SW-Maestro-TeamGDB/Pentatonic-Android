@@ -1,10 +1,10 @@
-package com.team_gdb.pentatonic.ui.home
+package com.team_gdb.pentatonic.ui.lounge
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel : ViewModel() {
+class LoungeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is home Fragment"

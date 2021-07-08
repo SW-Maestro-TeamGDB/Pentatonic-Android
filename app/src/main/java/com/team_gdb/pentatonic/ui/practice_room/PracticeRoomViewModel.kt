@@ -1,10 +1,10 @@
-package com.team_gdb.pentatonic.ui.dashboard
+package com.team_gdb.pentatonic.ui.practice_room
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class PracticeRoomViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"

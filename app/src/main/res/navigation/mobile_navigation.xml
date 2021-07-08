@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/navigation_lounge">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.team_gdb.pentatonic.ui.home.HomeFragment"
+        android:id="@+id/navigation_lounge"
+        android:name="com.team_gdb.pentatonic.ui.lounge.LoungeFragment"
         android:label="@string/title_lounge"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_lounge" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.team_gdb.pentatonic.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_practice_room"
+        android:name="com.team_gdb.pentatonic.ui.practice_room.PracticeRoomFragment"
         android:label="@string/title_practice_room"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_practice_room" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.team_gdb.pentatonic.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_artist"
+        android:name="com.team_gdb.pentatonic.ui.artist.ArtistFragment"
         android:label="@string/title_artist"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_artist" />
+
+
+    <fragment
+        android:id="@+id/navigation_my_page"
+        android:name="com.team_gdb.pentatonic.ui.my_page.MyPageFragment"
+        android:label="@string/title_my_page"
+        tools:layout="@layout/fragment_my_page" />
 </navigation>

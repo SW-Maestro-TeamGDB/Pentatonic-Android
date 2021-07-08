@@ -1,10 +1,10 @@
-package com.team_gdb.pentatonic.ui.notifications
+package com.team_gdb.pentatonic.ui.artist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class ArtistViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
