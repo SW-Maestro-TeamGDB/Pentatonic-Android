@@ -1,14 +1,14 @@
-package com.team_gdb.pentatonic.ui.my_page
+package com.team_gdb.pentatonic.ui.studio
 
 import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
+import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
+class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.fragment_my_page
-    override val viewModel: MyPageViewModel by viewModel()
+        get() = R.layout.fragment_studio
+    override val viewModel: StudioViewModel by viewModel()
 
     override fun initStartView() {
         TODO("Not yet implemented")

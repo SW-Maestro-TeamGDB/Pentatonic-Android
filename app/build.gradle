@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.apollographql.apollo'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -32,7 +33,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+        dataBinding = true
     }
     apollo {
         generateKotlinModels = true
@@ -58,4 +59,36 @@ dependencies {
     // GraphQL
     implementation "com.apollographql.apollo:apollo-runtime:2.5.2"
     implementation "com.apollographql.apollo:apollo-android-support:2.5.2"
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // RxJava
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+    implementation "io.reactivex.rxjava3:rxjava:3.0.6"
+    implementation "io.reactivex.rxjava3:rxkotlin:3.0.0"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+    // RxBinding (안드로이드 뷰 컴포넌트와 연결 목적) 필요
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-core:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-appcompat:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-drawerlayout:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-leanback:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-recyclerview:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-slidingpanelayout:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-viewpager:4.0.0'
+    implementation 'com.jakewharton.rxbinding4:rxbinding-viewpager2:4.0.0'
+
+    // Koin (DI)
+    def koin_version = "2.2.2"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    // glide
+    def glide_version = "4.11.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 }

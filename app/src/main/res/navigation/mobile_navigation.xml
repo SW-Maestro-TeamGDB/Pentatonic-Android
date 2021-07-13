@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_practice_room"
-        android:name="com.team_gdb.pentatonic.ui.practice_room.PracticeRoomFragment"
+        android:name="com.team_gdb.pentatonic.ui.studio.StudioFragment"
         android:label="@string/title_practice_room"
-        tools:layout="@layout/fragment_practice_room" />
+        tools:layout="@layout/fragment_studio" />
 
     <fragment
         android:id="@+id/navigation_artist"
