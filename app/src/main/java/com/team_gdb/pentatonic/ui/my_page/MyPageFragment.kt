@@ -11,14 +11,11 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     override val viewModel: MyPageViewModel by viewModel()
 
     override fun initStartView() {
-        TODO("Not yet implemented")
     }
 
     override fun initDataBinding() {
-        TODO("Not yet implemented")
     }
 
     override fun initAfterBinding() {
-        TODO("Not yet implemented")
     }
 }

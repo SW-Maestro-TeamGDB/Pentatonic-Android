@@ -5,4 +5,7 @@
     <string name="title_practice_room">연습실</string>
     <string name="title_artist">아티스트</string>
     <string name="title_my_page">마이페이지</string>
+    <string name="lounge_title_text">Pentatonic</string>
+    <string name="rising_band_cover_title_text">떠오르는 밴드 커버</string>
+    <string name="rising_solo_cover_title_text">떠오르는 솔로 커버</string>
 </resources>

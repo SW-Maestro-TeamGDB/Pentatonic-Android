@@ -38,6 +38,6 @@
 
         <variable
             name="home"
-            type="com.team_gdb.pentatonic.HomeActivity" />
+            type="com.team_gdb.pentatonic.ui.home.HomeActivity" />
     </data>
 </layout>

@@ -3,42 +3,123 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
         tools:context=".ui.lounge.LoungeFragment">
 
-
+        <!--   서비스 타이틀 텍스트   -->
         <TextView
-            android:id="@+id/text_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
+            android:layout_marginHorizontal="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
             android:fontFamily="@font/nanum_extrabold"
-            android:text="Pentatonic"
+            android:text="@string/lounge_title_text"
             android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textSize="28sp" />
 
+        <!--   위클리 챌린지 배너   -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    app:tint="#80000000"
+                    android:tintMode="src_atop"
+                    android:id="@+id/weeklyChallengeSongImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beautiful_album_jacket" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_alignParentTop="true"
+                    android:text="Weekly Challenge"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/weeklyChallengeSongName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="예뻤어"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_above="@+id/weeklyChallengeSongName"
+                    android:id="@+id/weeklyChallengeSongArtist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="DAY6"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--   떠오르는 밴드 커버   -->
+        <TextView
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="@string/rising_band_cover_title_text"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:itemCount="2"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/list_item_cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!--   떠오르는 솔로 커버   -->
+        <TextView
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="@string/rising_solo_cover_title_text"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            tools:itemCount="2"
+            android:layout_marginTop="8dp"
+            tools:listitem="@layout/list_item_cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
     <data>
 
         <variable

@@ -1,7 +1,8 @@
-package com.team_gdb.pentatonic
+package com.team_gdb.pentatonic.base
 
 import android.app.Application
 import android.content.Context
+import com.team_gdb.pentatonic.BuildConfig
 import com.team_gdb.pentatonic.di.moduleList
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties

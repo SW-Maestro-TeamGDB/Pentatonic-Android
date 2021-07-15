@@ -1,21 +1,18 @@
-package com.team_gdb.pentatonic
+package com.team_gdb.pentatonic.ui.home
 
-import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.newidea.mcpestore.libs.base.BaseActivity
+import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ActivityHomeBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityHomeBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
+    override val layoutResourceId: Int = R.layout.activity_home
+    override val viewModel: HomeViewModel by viewModel()
+    override fun initStartView() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
@@ -32,5 +29,13 @@ class HomeActivity : AppCompatActivity() {
             )
         )
         navView.setupWithNavController(navController)
+    }
+
+    override fun initDataBinding() {
+
+    }
+
+    override fun initAfterBinding() {
+
     }
 }
