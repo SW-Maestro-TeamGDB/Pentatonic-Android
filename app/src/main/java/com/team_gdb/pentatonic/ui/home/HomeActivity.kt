@@ -23,7 +23,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_lounge,
-                R.id.navigation_practice_room,
+                R.id.navigation_studio,
                 R.id.navigation_artist,
                 R.id.navigation_my_page
             )

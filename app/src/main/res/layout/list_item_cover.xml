@@ -41,7 +41,7 @@
                 android:fontFamily="@font/nanum_light"
                 android:text="DAY6 - You make me"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_marginTop="8dp"
@@ -50,7 +50,7 @@
                 android:fontFamily="@font/nanum_light"
                 android:text="보컬, 드럼, 일렉기타 참여 중"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 

@@ -7,9 +7,9 @@
         android:title="@string/title_lounge" />
 
     <item
-        android:id="@+id/navigation_practice_room"
+        android:id="@+id/navigation_studio"
         android:icon="@drawable/ic_practice_room"
-        android:title="@string/title_practice_room" />
+        android:title="@string/title_studio" />
 
     <item
         android:id="@+id/navigation_artist"

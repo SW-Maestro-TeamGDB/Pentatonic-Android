@@ -12,9 +12,9 @@
         tools:layout="@layout/fragment_lounge" />
 
     <fragment
-        android:id="@+id/navigation_practice_room"
+        android:id="@+id/navigation_studio"
         android:name="com.team_gdb.pentatonic.ui.studio.StudioFragment"
-        android:label="@string/title_practice_room"
+        android:label="@string/title_studio"
         tools:layout="@layout/fragment_studio" />
 
     <fragment

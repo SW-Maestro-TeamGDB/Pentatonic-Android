@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/parentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.login.LoginActivity">
+
+        <ImageView
+            android:tintMode="src_over"
+            app:tint="#80000000"
+            android:src="@drawable/login_background"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/app_logo"
+            android:layout_width="300dp"
+            android:layout_height="100dp"/>
+
+        <EditText
+            android:hint="아이디를 입력해주세요."
+            android:textSize="14sp"
+            android:drawablePadding="8dp"
+            android:id="@+id/userIDEditText"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="100dp"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:paddingHorizontal="16dp"
+            android:layout_below="@+id/logo"
+            android:background="@drawable/custom_radius_background_white"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <EditText
+            android:hint="비밀번호를 입력해주세요."
+            android:textSize="14sp"
+            android:drawablePadding="8dp"
+            android:id="@+id/userPasswordEditText"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:paddingHorizontal="16dp"
+            android:layout_below="@+id/userIDEditText"
+            android:background="@drawable/custom_radius_background_white"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="LOGIN"
+            android:fontFamily="@font/nanum_extrabold"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="16dp"
+            android:layout_below="@+id/userPasswordEditText"
+            android:background="@drawable/custom_radius_background_light"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:text="REGISTER"
+            android:fontFamily="@font/nanum_extrabold"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="16dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/custom_radius_background_dark"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+    </RelativeLayout>
+
+    <data>
+        <variable
+            name="login"
+            type="com.team_gdb.pentatonic.ui.login.LoginActivity" />
+    </data>
+</layout>

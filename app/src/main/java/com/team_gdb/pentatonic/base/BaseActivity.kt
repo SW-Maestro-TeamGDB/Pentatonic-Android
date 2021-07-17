@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.team_gdb.pentatonic.util.SystemUtil
 import com.team_gdb.pentatonic.util.ViewUtil
+import com.team_gdb.pentatonic.util.makeStatusBarTransparent
 
 
 abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatActivity() {
@@ -49,11 +50,10 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutResourceId)
 
+        makeStatusBarTransparent()
         initStartView()
         initDataBinding()
         initAfterBinding()
-
-        initStatusBar()
     }
 
     fun setProgressVisible(visible: Boolean) {
@@ -61,48 +61,4 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         progressView?.let { it.visibility = if (visible) View.VISIBLE else View.INVISIBLE }
     }
 
-    private fun initStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.statusBarColor = Color.TRANSPARENT
-            val decorView = window.decorView
-            val wic = decorView.windowInsetsController
-            wic!!.setSystemBarsAppearance(
-                APPEARANCE_LIGHT_STATUS_BARS,
-                APPEARANCE_LIGHT_STATUS_BARS
-            )
-        } else if (Build.VERSION.SDK_INT >= 23) {
-            window.statusBarColor = Color.TRANSPARENT
-            val decorView = window.decorView
-            @Suppress("DEPRECATION")
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
-    }
-
-    fun setStatusBar(isTransparent: Boolean) {
-        // 요청 여부에 따라 포인트를 조절한다. (각 fragment pause/resume 딜레이를 방지하기 위함)
-        transparentPoint += if (isTransparent) 1 else -1
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (transparentPoint > 0) {
-                window.setDecorFitsSystemWindows(false)
-                window.findViewById<View>(android.R.id.content)
-                    .updatePadding(bottom = SystemUtil.getBottomNavigationBarHeight(this))
-            } else {
-                window.setDecorFitsSystemWindows(true)
-                window.findViewById<View>(android.R.id.content).updatePadding(bottom = 0)
-            }
-            return
-        }
-
-        @Suppress("DEPRECATION")
-        if (Build.VERSION.SDK_INT >= 23) {
-            val decorView = window.decorView
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            if (transparentPoint > 0) {
-                decorView.systemUiVisibility =
-                    decorView.systemUiVisibility or (View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-            }
-            return
-        }
-    }
 }
