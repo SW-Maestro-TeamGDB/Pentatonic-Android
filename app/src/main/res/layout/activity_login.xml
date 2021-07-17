@@ -56,7 +56,8 @@
             android:layout_height="60dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:text="LOGIN"
+            android:id="@+id/loginButton"
+            android:text="로그인"
             android:fontFamily="@font/nanum_extrabold"
             android:textColor="@color/white"
             android:layout_marginHorizontal="24dp"
@@ -64,12 +65,23 @@
             android:paddingHorizontal="16dp"
             android:layout_below="@+id/userPasswordEditText"
             android:background="@drawable/custom_radius_background_light"
+            android:backgroundTint="@color/main_light_transparent"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/loginButton"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:text="비밀번호를 잊으셨나요?"/>
+
 
         <androidx.appcompat.widget.AppCompatButton
-            android:text="REGISTER"
+            android:id="@+id/registerButton"
+            android:text="가입하기"
             android:fontFamily="@font/nanum_extrabold"
             android:textColor="@color/white"
             android:layout_marginHorizontal="24dp"
@@ -78,6 +90,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="24dp"
             android:background="@drawable/custom_radius_background_dark"
+            android:backgroundTint="@color/main_dark_transparent"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
 

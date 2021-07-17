@@ -12,4 +12,8 @@
     <color name="main_light">#417AB5</color>
     <color name="main_regular">#23588F</color>
     <color name="main_dark">#1B446E</color>
+
+    <color name="main_light_transparent">#CC417AB5</color>
+    <color name="main_regular_transparent">#CC23588F</color>
+    <color name="main_dark_transparent">#CC1B446E</color>
 </resources>
