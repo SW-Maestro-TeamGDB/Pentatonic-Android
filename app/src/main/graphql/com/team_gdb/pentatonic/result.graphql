@@ -1,0 +1,3 @@
+query CheckID($checkIdId: String!) {
+    checkId(id: $checkIdId)
+}

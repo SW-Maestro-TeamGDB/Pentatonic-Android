@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.di
 
+import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
@@ -26,8 +27,14 @@ val viewModelModule = module {
         LoginViewModel()
     }
     viewModel {
-        RegisterViewModel()
+        RegisterViewModel(get())
     }
 }
 
-val moduleList = listOf(viewModelModule)
+val repositoryModule = module {
+    single{
+        RegisterRepository()
+    }
+}
+
+val moduleList = listOf(viewModelModule, repositoryModule)
