@@ -19,7 +19,17 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
     }
 
     override fun initDataBinding() {
-
+        viewModel.checkDone.observe(this){
+            if (it[0] && it[1]){
+                Timber.d("YEAH")
+                if (viewModel.isValidId.value == false){
+                    binding.idEditText.error = "아이디 형식이 올바르지 않습니다"
+                }
+                if (viewModel.isValidNickname.value == false){
+                    binding.nicknameEditText.error = "닉네임 형식이 올바르지 않습니다"
+                }
+            }
+        }
     }
 
     override fun initAfterBinding() {
@@ -30,22 +40,8 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
 
     private fun confirmRegisterForm() {
         if (isValidForm()) {
-            val formErrorList = viewModel.isValidForm()
-            if (formErrorList.isEmpty()) {  // 만약 오류가 없다면 실명인증 페이지로 이동
-                startActivity(Intent(this, UserVerifyActivity::class.java))
-                finish()
-            } else {  // 만약 오류가 있다면 해당 EditText 오류 처리
-                formErrorList.forEach {
-                    if (it == RegisterFormError.ID_INVALID) {
-                        binding.idEditText.error = "아이디 형식이 올바르지 않습니다"
-                    }
-                    if (it == RegisterFormError.NICKNAME_INVALID) {
-                        binding.idEditText.error = "닉네임 형식이 올바르지 않습니다"
-                    }
-                }
-            }
+            viewModel.isValidForm()
         }
-        Snackbar.make(binding.root, "입력 정보를 다시 확인해주세요!", Snackbar.LENGTH_LONG).show()
     }
 
     // 비어있는 EditText 모두 오류 처리, 패스워드 확인란 일치 여부 확인

@@ -13,13 +13,23 @@ class RegisterViewModel(private val repository: RegisterRepository) : BaseViewMo
     val nicknameField: MutableLiveData<String> = MutableLiveData<String>()
     val userTypeField: MutableLiveData<Int> = MutableLiveData<Int>()
 
+    val checkDone: MutableLiveData<MutableList<Boolean>>
+        get() = repository.checkDone
+
+    val isValidId: MutableLiveData<Boolean>
+        get() = repository.isValidId
+    val isValidNickname: MutableLiveData<Boolean>
+        get() = repository.isValidNickname
+
     /**
      * @return : RegisterFormError enum 클래스 값 중 하나 (어떤 오류가 발생한 건지)
      */
-    fun isValidForm(): List<RegisterFormError> {
+    fun isValidForm() {
         val id: String = idField.value ?: ""
         val nickname: String = nicknameField.value ?: ""
 
-        return repository.isValidForm(id, nickname)
+        repository.isValidForm(id, nickname)
     }
+
+
 }
