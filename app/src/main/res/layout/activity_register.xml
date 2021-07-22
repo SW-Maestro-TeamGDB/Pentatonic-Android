@@ -77,9 +77,8 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/custom_radius_background_white"
                     android:backgroundTint="@color/gray"
-                    android:ems="10"
                     android:text="@={viewModel.idField}"
-                    android:hint="아이디을 입력해주세요"
+                    android:hint="아이디를 입력해주세요"
                     android:inputType="text"
                     android:paddingHorizontal="16dp"
                     android:textSize="14sp" />

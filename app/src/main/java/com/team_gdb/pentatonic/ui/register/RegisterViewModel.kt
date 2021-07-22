@@ -1,30 +1,25 @@
 package com.team_gdb.pentatonic.ui.register
 
-import androidx.databinding.ObservableField
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.newidea.mcpestore.libs.base.BaseViewModel
-import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
+import timber.log.Timber
 
 class RegisterViewModel(private val repository: RegisterRepository) : BaseViewModel() {
-    val idField: ObservableField<String> = ObservableField("")
-    val passwordField: ObservableField<String> = ObservableField("")
-    val passwordConfirmField: ObservableField<String> = ObservableField("")
-    val nicknameField: ObservableField<String> = ObservableField("")
-    var userTypeField: MutableLiveData<Int> = MutableLiveData<Int>()
-
+    val idField: MutableLiveData<String> = MutableLiveData<String>()
+    val passwordField: MutableLiveData<String> = MutableLiveData<String>()
+    val passwordConfirmField: MutableLiveData<String> = MutableLiveData<String>()
+    val nicknameField: MutableLiveData<String> = MutableLiveData<String>()
+    val userTypeField: MutableLiveData<Int> = MutableLiveData<Int>()
 
     /**
      * @return : RegisterFormError enum 클래스 값 중 하나 (어떤 오류가 발생한 건지)
      */
-    fun isValidForm(): RegisterFormError {
-        val id: String = idField.get() ?: ""
-        val nickname: String = nicknameField.get() ?: ""
+    fun isValidForm(): List<RegisterFormError> {
+        val id: String = idField.value ?: ""
+        val nickname: String = nicknameField.value ?: ""
 
-        repository.isValidForm(id)
-
-
-
-        return RegisterFormError.VALID
+        return repository.isValidForm(id, nickname)
     }
 }

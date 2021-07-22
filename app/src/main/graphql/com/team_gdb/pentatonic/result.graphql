@@ -1,3 +1,7 @@
-query CheckID($checkIdId: String!) {
-    checkId(id: $checkIdId)
+query CheckID($checkIdInput: CheckIdInput!) {
+    checkId(input: $checkIdInput)
+}
+
+query CheckNickname($checkUsernameInput: CheckUsernameInput!) {
+    checkUsername(input: $checkUsernameInput)
 }

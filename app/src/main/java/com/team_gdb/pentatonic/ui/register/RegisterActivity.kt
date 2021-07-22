@@ -1,13 +1,13 @@
 package com.team_gdb.pentatonic.ui.register
 
-import android.graphics.Color
-import android.widget.Toast
+import android.content.Intent
 import com.google.android.material.snackbar.Snackbar
-import com.jakewharton.rxbinding4.widget.checked
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ActivityRegisterBinding
+import com.team_gdb.pentatonic.ui.user_verify.UserVerifyActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>() {
     override val layoutResourceId: Int
@@ -15,9 +15,11 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
     override val viewModel: RegisterViewModel by viewModel()
 
     override fun initStartView() {
+        binding.viewModel = viewModel
     }
 
     override fun initDataBinding() {
+
     }
 
     override fun initAfterBinding() {
@@ -28,17 +30,22 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
 
     private fun confirmRegisterForm() {
         if (isValidForm()) {
-            when (viewModel.isValidForm()) {
-                RegisterFormError.ID_INVALID -> {
-                }
-                RegisterFormError.NICKNAME_INVALID -> {
-                }
-                RegisterFormError.VALID -> {
+            val formErrorList = viewModel.isValidForm()
+            if (formErrorList.isEmpty()) {  // 만약 오류가 없다면 실명인증 페이지로 이동
+                startActivity(Intent(this, UserVerifyActivity::class.java))
+                finish()
+            } else {  // 만약 오류가 있다면 해당 EditText 오류 처리
+                formErrorList.forEach {
+                    if (it == RegisterFormError.ID_INVALID) {
+                        binding.idEditText.error = "아이디 형식이 올바르지 않습니다"
+                    }
+                    if (it == RegisterFormError.NICKNAME_INVALID) {
+                        binding.idEditText.error = "닉네임 형식이 올바르지 않습니다"
+                    }
                 }
             }
-        } else {
-            Snackbar.make(binding.root, "입력 정보를 다시 확인해주세요!", Snackbar.LENGTH_LONG).show()
         }
+        Snackbar.make(binding.root, "입력 정보를 다시 확인해주세요!", Snackbar.LENGTH_LONG).show()
     }
 
     // 비어있는 EditText 모두 오류 처리, 패스워드 확인란 일치 여부 확인
@@ -66,11 +73,11 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
             valid = false
         }
 
-//        if (viewModel.userTypeField.value == null) {
-//            binding.userTypeText.text = "사용자 유형을 선택해주세요"
-//            binding.userTypeText.setTextColor(getColor(R.color.red))
-//            valid = false
-//        }
+        if (viewModel.userTypeField.value == null) {
+            binding.userTypeText.text = "사용자 유형을 선택해주세요"
+            binding.userTypeText.setTextColor(getColor(R.color.red))
+            valid = false
+        }
 
         return valid
     }
