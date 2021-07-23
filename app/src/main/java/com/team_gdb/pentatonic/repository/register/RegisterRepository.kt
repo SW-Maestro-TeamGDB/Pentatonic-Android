@@ -16,7 +16,7 @@ import timber.log.Timber
 
 class RegisterRepository {
     // Boolean List 로, ID 검사와 닉네임 검사가 모두 일어나면 두 개 원소가 모두 true 를 담음
-    val checkCompleteEvent: MutableLiveData<MutableList<Boolean>> = MutableLiveData<MutableList<Boolean>>(mutableListOf(false, false))
+    val checkCompleteEvent: MutableLiveData<MutableList<Boolean>> = MutableLiveData<MutableList<Boolean>>(mutableListOf())
 
     val isValidId: MutableLiveData<Boolean> = MutableLiveData<Boolean>(true)
     val isValidNickname: MutableLiveData<Boolean> = MutableLiveData<Boolean>(true)
@@ -42,10 +42,13 @@ class RegisterRepository {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    isValidId.value = it.data != null
+                    isValidId.value = it.data != null && it.data!!.checkId == true
+                    Timber.d(isValidId.value.toString())
                 },
                 onComplete = {
-                    checkCompleteEvent.value?.set(0, true)
+                    checkCompleteEvent.value?.add(true)
+                    checkCompleteEvent.value = checkCompleteEvent.value
+                    Timber.d(checkCompleteEvent.value.toString())
                 },
                 onError = {
                     Timber.i(it)
@@ -64,10 +67,13 @@ class RegisterRepository {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    isValidNickname.value = it.data != null
+                    isValidNickname.value = it.data != null && it.data!!.checkUsername == true
+                    Timber.d(isValidId.value.toString())
                 },
                 onComplete = {
-                    checkCompleteEvent.value?.set(1, true)
+                    checkCompleteEvent.value?.add(true)
+                    checkCompleteEvent.value = checkCompleteEvent.value
+                    Timber.d(checkCompleteEvent.value.toString())
                 },
                 onError = {
                     Timber.i(it)

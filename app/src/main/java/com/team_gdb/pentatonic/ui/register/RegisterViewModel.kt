@@ -9,7 +9,7 @@ class RegisterViewModel(private val repository: RegisterRepository) : BaseViewMo
     val nicknameField: MutableLiveData<String> = MutableLiveData<String>()
     val userTypeField: MutableLiveData<Int> = MutableLiveData<Int>()
 
-    val checkDone: MutableLiveData<MutableList<Boolean>>
+    val checkCompleteEvent: MutableLiveData<MutableList<Boolean>>
         get() = repository.checkCompleteEvent
 
     val isValidId: MutableLiveData<Boolean>

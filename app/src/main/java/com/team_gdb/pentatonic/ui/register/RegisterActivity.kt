@@ -7,6 +7,7 @@ import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.databinding.ActivityRegisterBinding
 import com.team_gdb.pentatonic.ui.user_verify.UserVerifyActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>() {
     override val layoutResourceId: Int
@@ -14,12 +15,13 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
     override val viewModel: RegisterViewModel by viewModel()
 
     override fun initStartView() {
-        binding.viewModel = viewModel
+        binding.viewModel = this.viewModel
     }
 
     override fun initDataBinding() {
-        viewModel.checkDone.observe(this) {
-            if (it[0] && it[1]) {  // ID, 닉네임 체크가 모두 완료되었을 때 진입
+        viewModel.checkCompleteEvent.observe(this) {
+            Timber.d(it.toString())
+            if (it.size == 2) {  // ID, 닉네임 체크가 모두 완료되었을 때 진입
                 if (viewModel.isValidId.value == false) {
                     binding.idEditText.error = "아이디 형식이 올바르지 않습니다"
                 }
@@ -38,6 +40,8 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                     startActivity(intent)
                     finish()
                 }
+            } else{
+                Timber.d("Not Done")
             }
         }
     }
