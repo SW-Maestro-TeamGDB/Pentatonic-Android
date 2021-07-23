@@ -1,0 +1,7 @@
+mutation SendAuthCodeMutation($sendAuthCodeInput: sendAuthCodeInput!) {
+    sendAuthCode(input: $sendAuthCodeInput)
+}
+
+mutation RegisterMutation($registerInput: RegisterInput!) {
+    register(input: $registerInput)
+}

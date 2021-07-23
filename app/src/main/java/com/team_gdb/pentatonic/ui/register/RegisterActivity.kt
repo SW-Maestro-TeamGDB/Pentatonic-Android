@@ -1,13 +1,12 @@
 package com.team_gdb.pentatonic.ui.register
 
 import android.content.Intent
-import com.google.android.material.snackbar.Snackbar
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.databinding.ActivityRegisterBinding
 import com.team_gdb.pentatonic.ui.user_verify.UserVerifyActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>() {
     override val layoutResourceId: Int
@@ -19,14 +18,25 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
     }
 
     override fun initDataBinding() {
-        viewModel.checkDone.observe(this){
-            if (it[0] && it[1]){
-                Timber.d("YEAH")
-                if (viewModel.isValidId.value == false){
+        viewModel.checkDone.observe(this) {
+            if (it[0] && it[1]) {  // ID, 닉네임 체크가 모두 완료되었을 때 진입
+                if (viewModel.isValidId.value == false) {
                     binding.idEditText.error = "아이디 형식이 올바르지 않습니다"
                 }
-                if (viewModel.isValidNickname.value == false){
+                if (viewModel.isValidNickname.value == false) {
                     binding.nicknameEditText.error = "닉네임 형식이 올바르지 않습니다"
+                }
+                if (viewModel.isValidId.value == true && viewModel.isValidNickname.value == true) {
+                    val registerForm = RegisterForm(
+                        id = binding.idEditText.toString(),
+                        nickname = binding.nicknameEditText.toString(),
+                        password = binding.passwordEditText.toString(),
+                        userType = viewModel.userTypeField.value!!
+                    )
+                    val intent = Intent(this, UserVerifyActivity::class.java)
+                    intent.putExtra(EXTRA_NAME, registerForm)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
@@ -39,14 +49,14 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
     }
 
     private fun confirmRegisterForm() {
-        if (isValidForm()) {
+        if (checkEmptyField()) {
             viewModel.isValidForm()
         }
     }
 
     // 비어있는 EditText 모두 오류 처리, 패스워드 확인란 일치 여부 확인
-    private fun isValidForm(): Boolean {
-        var valid = true
+    private fun checkEmptyField(): Boolean {
+        var isNotEmpty = true
         val fieldList = listOf(
             binding.idEditText,
             binding.passwordEditText,
@@ -58,7 +68,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         fieldList.forEach {
             if (it.text.isNullOrBlank()) {
                 it.error = "필수 입력 항목입니다"
-                valid = false
+                isNotEmpty = false
             }
         }
 
@@ -66,15 +76,19 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         if (fieldList[1].text.toString() != fieldList[2].text.toString()) {
             fieldList[1].error = "비밀번호와 확인란이 일치하지 않습니다"
             fieldList[2].error = "비밀번호와 확인란이 일치하지 않습니다"
-            valid = false
+            isNotEmpty = false
         }
 
         if (viewModel.userTypeField.value == null) {
             binding.userTypeText.text = "사용자 유형을 선택해주세요"
             binding.userTypeText.setTextColor(getColor(R.color.red))
-            valid = false
+            isNotEmpty = false
         }
 
-        return valid
+        return isNotEmpty
+    }
+
+    companion object {
+        val EXTRA_NAME = "REGISTER_FROM"
     }
 }

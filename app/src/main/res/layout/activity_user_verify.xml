@@ -1,9 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.user_verify.UserVerifyActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:padding="24dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.user_verify.UserVerifyActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginTop="32dp"
+            android:text="휴대전화 인증"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nanum_extrabold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:text="원활한 서비스 이용을 위해 실명 인증을 진행합니다.\nSMS로 인증번호를 전송합니다."
+            android:textColor="@color/black"
+            android:fontFamily="@font/nanum_light"/>
+
+        <EditText
+            android:id="@+id/phoneNumberEditText"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/nanum_light"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_radius_background_white"
+            android:backgroundTint="@color/gray"
+            android:text="@={viewModel.phoneNumberField}"
+            android:hint="휴대폰 번호를 입력해주세요 ('-' 제외)"
+            android:inputType="phone"
+            android:paddingHorizontal="16dp"
+            android:textSize="14sp" />
+
+        <EditText
+            android:visibility="gone"
+            android:id="@+id/authCodeEditText"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/nanum_light"
+            android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/custom_radius_background_white"
+            android:backgroundTint="@color/gray"
+            android:text="@={viewModel.authCodeField}"
+            android:hint="수신받은 인증번호를 입력해주세요."
+            android:inputType="phone"
+            android:paddingHorizontal="16dp"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirmPhoneNumberButton"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/nanum_light"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_radius_background_white"
+            android:backgroundTint="@color/main_light"
+            android:textColor="@color/white"
+            android:text="인증번호 전송하기"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:visibility="gone"
+            android:id="@+id/confirmAuthCodeButton"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/nanum_light"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_radius_background_white"
+            android:backgroundTint="@color/main_light"
+            android:textColor="@color/white"
+            android:text="인증하기"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.user_verify.UserVerifyViewModel" />
+
+    </data>
+</layout>

@@ -15,7 +15,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 class RegisterRepository {
-    val checkDone: MutableLiveData<MutableList<Boolean>> = MutableLiveData<MutableList<Boolean>>(mutableListOf(false, false))
+    // Boolean List 로, ID 검사와 닉네임 검사가 모두 일어나면 두 개 원소가 모두 true 를 담음
+    val checkCompleteEvent: MutableLiveData<MutableList<Boolean>> = MutableLiveData<MutableList<Boolean>>(mutableListOf(false, false))
 
     val isValidId: MutableLiveData<Boolean> = MutableLiveData<Boolean>(true)
     val isValidNickname: MutableLiveData<Boolean> = MutableLiveData<Boolean>(true)
@@ -24,7 +25,6 @@ class RegisterRepository {
      * 회원가입시 입력한 정보가 올바른지 검사함
      * @param id : 사용자의 ID
      * @param nickname : 사용자의 닉네임
-     * @return 어떤 정보가 잘못 되었는지 반환 (아이디 오류, 닉네임 오류 등)
      */
     fun isValidForm(id: String, nickname: String) {
         isValidId(id)
@@ -45,7 +45,7 @@ class RegisterRepository {
                     isValidId.value = it.data != null
                 },
                 onComplete = {
-                    checkDone.value?.set(0, true)
+                    checkCompleteEvent.value?.set(0, true)
                 },
                 onError = {
                     Timber.i(it)
@@ -67,7 +67,7 @@ class RegisterRepository {
                     isValidNickname.value = it.data != null
                 },
                 onComplete = {
-                    checkDone.value?.set(1, true)
+                    checkCompleteEvent.value?.set(1, true)
                 },
                 onError = {
                     Timber.i(it)
