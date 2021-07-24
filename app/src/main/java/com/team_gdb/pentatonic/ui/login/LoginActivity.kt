@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.login
 
+import android.app.Application
 import android.content.Intent
 import android.graphics.Color
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.databinding.ActivityLoginBinding
 import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.register.RegisterActivity
@@ -24,13 +26,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun initDataBinding() {
         viewModel.loginCompleteEvent.observe(this) {
-            if (it.hasBeenHandled){
+            if (it.hasBeenHandled) {
                 val userToken = viewModel.userToken.value
-                if (userToken.isNullOrBlank()){
+                if (userToken.isNullOrBlank()) {
                     Toast.makeText(this, "로그인에 실패했습니다", Toast.LENGTH_LONG).show()
-                } else{
-                    // TODO : JWT 토큰 저장 과정 필요
+                } else {
+                    BaseApplication.prefs.token = userToken
                     startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
                 }
             }
         }
@@ -48,7 +51,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 viewModel.login()
             }
         }
-
     }
 
     // 비어있는 EditText 모두 오류 처리, 패스워드 확인란 일치 여부 확인

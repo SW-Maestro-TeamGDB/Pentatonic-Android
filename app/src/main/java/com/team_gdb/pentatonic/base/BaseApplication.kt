@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.team_gdb.pentatonic.BuildConfig
 import com.team_gdb.pentatonic.di.moduleList
+import com.team_gdb.pentatonic.util.Prefs
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
@@ -20,12 +21,15 @@ class BaseApplication : Application() {
         fun applicationContext(): Context {
             return instance.applicationContext
         }
+
+        lateinit var prefs: Prefs
     }
 
     override fun onCreate() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        prefs = Prefs(applicationContext)
         super.onCreate()
 
         startKoin {
