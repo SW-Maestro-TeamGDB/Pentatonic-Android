@@ -17,6 +17,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
 
     /**
      * 사용자가 입력한 로그인 정보를 기반으로 로그인 뮤테이션 호출
+     * - 만약 로그인에 성공하면 JWT 토큰을 Event Content 에 담음
      */
     fun login() {
         val disposable =

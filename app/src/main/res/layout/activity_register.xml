@@ -1,40 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Activity.RegisterActivity">
-
-    <ImageView
-        android:tintMode="src_over"
-        app:tint="#80000000"
-        android:src="@drawable/login_background"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="80dp"
-        android:text="회원가입"
-        android:textColor="#fff"
-        android:textSize="30sp"
-        android:fontFamily="@font/nanum_extrabold"/>
-
-    <androidx.cardview.widget.CardView
-        app:cardElevation="0dp"
-        android:layout_below="@+id/title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="20dp">
+        android:orientation="vertical"
+        tools:context=".Activity.RegisterActivity">
 
         <ScrollView
             android:overScrollMode="never"
@@ -43,17 +15,28 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="24dp">
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/register_title_text"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/nanum_extrabold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="아이디"
+                    android:text="@string/register_id_title_text"
                     android:textColor="#434343"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -61,10 +44,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="6자 이상 영문과 숫자로 구성된 아이디를 설정해주세요"
+                    android:text="@string/register_id_hint_text"
                     android:textColor="#434343"
                     android:textSize="15sp" />
 
@@ -78,7 +61,7 @@
                     android:background="@drawable/custom_radius_background_white"
                     android:backgroundTint="@color/gray"
                     android:text="@={viewModel.idField}"
-                    android:hint="아이디를 입력해주세요"
+                    android:hint="@string/register_id_edit_text_hint_text"
                     android:inputType="text"
                     android:paddingHorizontal="16dp"
                     android:textSize="14sp" />
@@ -86,10 +69,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/nanum_extrabold"
                     android:layout_marginTop="24dp"
-                    android:text="비밀번호"
+                    android:text="@string/register_pw_title_text"
                     android:textColor="#434343"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -97,10 +80,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="8 ~ 25자 이내의 비밀번호를 설정해주세요"
+                    android:text="@string/register_pw_hint_text"
                     android:textColor="#434343"
                     android:textSize="15sp" />
 
@@ -113,7 +96,7 @@
                     android:background="@drawable/custom_radius_background_white"
                     android:ems="10"
                     android:backgroundTint="@color/gray"
-                    android:hint="비밀번호를 입력해주세요"
+                    android:hint="@string/register_pw_edit_text_hint_text"
                     android:inputType="textPassword"
                     android:paddingHorizontal="16dp"
                     android:textSize="14sp" />
@@ -126,7 +109,7 @@
                     android:background="@drawable/custom_radius_background_white"
                     android:backgroundTint="@color/gray"
                     android:ems="10"
-                    android:hint="비밀번호를 다시 한 번 입력해주세요"
+                    android:hint="@string/register_pw_confirm_hint_text"
                     android:inputType="textPassword"
                     android:paddingHorizontal="16dp"
                     android:textSize="14sp" />
@@ -134,9 +117,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
-                    android:text="닉네임"
+                    android:text="@string/register_nickname_title"
                     android:textColor="#434343"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textSize="18sp"
@@ -145,10 +128,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/nanum_light"
                     android:layout_marginTop="4dp"
-                    android:text="2글자 이상의 닉네임을 설정해주세요"
+                    android:text="@string/register_nickname_hint_text"
                     android:textColor="#434343"
                     android:textSize="15sp" />
 
@@ -163,7 +146,7 @@
                     android:backgroundTint="@color/gray"
                     android:ems="10"
                     android:text="@={viewModel.nicknameField}"
-                    android:hint="닉네임을 입력해주세요"
+                    android:hint="@string/register_nickname_edit_text_hint_text"
                     android:inputType="textEmailAddress"
                     android:paddingHorizontal="16dp"
                     android:textSize="14sp" />
@@ -171,10 +154,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="사용자 유형"
+                    android:text="@string/register_user_type_title_text"
                     android:textColor="#434343"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -184,9 +167,9 @@
                     android:fontFamily="@font/nanum_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="4dp"
-                    android:text="음악이 본업인지, 취미인지, 혹은 청취자인지 알려주세요"
+                    android:text="@string/register_user_type_hint_text"
                     android:textColor="#434343"
                     android:textSize="15sp" />
 
@@ -205,7 +188,7 @@
                         android:fontFamily="@font/nanum_regular"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="본업" />
+                        android:text="@string/register_user_type_musician" />
 
                     <RadioButton
                         android:id="@+id/hobby"
@@ -213,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/nanum_regular"
-                        android:text="취미" />
+                        android:text="@string/register_user_type_hobby" />
 
                     <RadioButton
                         android:id="@+id/onlyListen"
@@ -221,7 +204,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nanum_regular"
                         android:layout_weight="1"
-                        android:text="리스너" />
+                        android:text="@string/register_user_type_listener" />
 
                 </RadioGroup>
 
@@ -234,7 +217,7 @@
                     android:background="@drawable/custom_radius_background_white"
                     android:backgroundTint="@color/main_regular"
                     android:gravity="center"
-                    android:text="다음으로"
+                    android:text="@string/register_goto_next_button_text"
                     android:textColor="#ffffff"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -243,9 +226,7 @@
 
         </ScrollView>
 
-
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+    </LinearLayout>
 
     <data>
         <variable
@@ -256,6 +237,5 @@
             name="viewModel"
             type="com.team_gdb.pentatonic.ui.register.RegisterViewModel" />
     </data>
-
 
 </layout>

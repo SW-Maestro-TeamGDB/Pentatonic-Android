@@ -28,14 +28,14 @@
             android:layout_height="100dp"/>
 
         <EditText
-            android:hint="아이디를 입력해주세요."
+            android:hint="@string/login_id_hint_text"
             android:textSize="14sp"
             android:text="@={viewModel.idField}"
             android:drawablePadding="8dp"
             android:id="@+id/idEditText"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="100dp"
-            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawableStart="@drawable/ic_baseline_person_24"
             android:paddingHorizontal="16dp"
             android:layout_below="@+id/logo"
             android:background="@drawable/custom_radius_background_white"
@@ -43,7 +43,7 @@
             android:layout_height="60dp"/>
 
         <EditText
-            android:hint="비밀번호를 입력해주세요."
+            android:hint="@string/login_pw_hint_text"
             android:textSize="14sp"
             android:drawablePadding="8dp"
             android:text="@={viewModel.passwordField}"
@@ -59,7 +59,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
-            android:text="로그인"
+            android:text="@string/login_button_text"
             android:fontFamily="@font/nanum_extrabold"
             android:textColor="@color/white"
             android:layout_marginHorizontal="24dp"
@@ -78,12 +78,12 @@
             android:layout_below="@+id/loginButton"
             android:textColor="@color/white"
             android:layout_marginTop="16dp"
-            android:text="비밀번호를 잊으셨나요?"/>
+            android:text="@string/login_pw_forget_text"/>
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
-            android:text="가입하기"
+            android:text="@string/login_register_button_text"
             android:fontFamily="@font/nanum_extrabold"
             android:textColor="@color/white"
             android:layout_marginHorizontal="24dp"

@@ -34,7 +34,7 @@ class RegisterRepository {
     /**
      * 사용자가 입력한 ID 가 올바른지 검사
      * @param id : 사용자의 ID
-     * @return 올바른지 true, false 형태로 반환
+     * @return : 올바른지 true, false 형태로 반환
      */
     private fun isValidId(id: String) {
         apolloClient.rxQuery(CheckIDQuery(CheckIdInput(CheckIdArgs(id))))
@@ -59,7 +59,7 @@ class RegisterRepository {
     /**
      * 사용자가 입력한 닉네임이 올바른지 검사
      * @param nickname : 사용자의 닉네임
-     * @return 올바른지 true, false 형태로 반환
+     * @return : 올바른지 true, false 형태로 반환
      */
     private fun isValidNickname(nickname: String) {
         apolloClient.rxQuery(CheckNicknameQuery(CheckUsernameInput(CheckUsernameArgs(nickname))))
