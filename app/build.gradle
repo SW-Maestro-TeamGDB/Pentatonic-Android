@@ -37,6 +37,9 @@ android {
     }
     apollo {
         generateKotlinModels = true
+        customTypeMapping = [
+                "JWT" : "String"
+        ]
     }
 }
 

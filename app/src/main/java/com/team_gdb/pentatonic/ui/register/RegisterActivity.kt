@@ -28,12 +28,27 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 if (viewModel.isValidNickname.value == false) {
                     binding.nicknameEditText.error = "닉네임 형식이 올바르지 않습니다"
                 }
+
+                // RadioGroup 중 어떤 버튼을 선택했는지에 따라 회원 유형을 달리함
+                var userType: Int = 0
+                when (viewModel.userTypeField.value){
+                    R.id.musician -> {
+                        userType = 0
+                    }
+                    R.id.hobby -> {
+                        userType = 1
+                    }
+                    R.id.onlyListen -> {
+                        userType = 2
+                    }
+                }
+
                 if (viewModel.isValidId.value == true && viewModel.isValidNickname.value == true) {
                     val registerForm = RegisterForm(
-                        id = binding.idEditText.toString(),
-                        nickname = binding.nicknameEditText.toString(),
-                        password = binding.passwordEditText.toString(),
-                        userType = viewModel.userTypeField.value!!
+                        id = binding.idEditText.text.toString(),
+                        nickname = binding.nicknameEditText.text.toString(),
+                        password = binding.passwordEditText.text.toString(),
+                        userType = userType
                     )
                     val intent = Intent(this, UserVerifyActivity::class.java)
                     intent.putExtra(EXTRA_NAME, registerForm)

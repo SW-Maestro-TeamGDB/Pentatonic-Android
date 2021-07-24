@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:text="휴대전화 인증"
             android:textColor="@color/black"
             android:fontFamily="@font/nanum_extrabold"/>

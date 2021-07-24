@@ -13,9 +13,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
     val idField: MutableLiveData<String> = MutableLiveData()
     val passwordField: MutableLiveData<String> = MutableLiveData()
 
-    var loginCompleteEvent: MutableLiveData<Event<Boolean>> =
-        MutableLiveData<Event<Boolean>>(Event(false))
-    var userToken: MutableLiveData<String> = MutableLiveData<String>("")
+    var loginCompleteEvent: MutableLiveData<Event<String>> = MutableLiveData<Event<String>>()
 
     /**
      * 사용자가 입력한 로그인 정보를 기반으로 로그인 뮤테이션 호출
@@ -26,10 +24,11 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy {
-                    Timber.d(it.data.toString())
-                    if (it.data != null) {
-                        loginCompleteEvent.value = Event(true)
-                        userToken.value = it.data!!.login.toString()
+                    Timber.d(it.data?.login)
+                    if (it.data?.login != "null") {
+                        loginCompleteEvent.value = Event(it.data?.login.toString())
+                    } else {
+                        loginCompleteEvent.value = Event("")
                     }
                 }
         addDisposable(disposable)

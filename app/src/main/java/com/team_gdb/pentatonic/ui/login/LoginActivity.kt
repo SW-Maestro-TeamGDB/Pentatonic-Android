@@ -1,10 +1,6 @@
 package com.team_gdb.pentatonic.ui.login
 
-import android.app.Application
 import android.content.Intent
-import android.graphics.Color
-import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
@@ -12,8 +8,8 @@ import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.databinding.ActivityLoginBinding
 import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.register.RegisterActivity
-import com.team_gdb.pentatonic.util.makeStatusBarTransparent
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override val layoutResourceId: Int
@@ -22,14 +18,24 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+
+        Timber.d("JWT Token ${BaseApplication.prefs.token}")
+        if (!BaseApplication.prefs.token.isNullOrBlank()) {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
 
     override fun initDataBinding() {
         viewModel.loginCompleteEvent.observe(this) {
             it.getContentIfNotHandled()?.let {
-                val userToken = viewModel.userToken.value
-                if (userToken.isNullOrBlank()) {
-                    Toast.makeText(this, "로그인에 실패했습니다", Toast.LENGTH_LONG).show()
+                val userToken = it
+                if (userToken.isBlank()) {
+                    Toast.makeText(
+                        this,
+                        "회원 정보가 일치하지 않습니다! 확인 후 다시 로그인 해주세요",
+                        Toast.LENGTH_LONG
+                    ).show()
                 } else {
                     BaseApplication.prefs.token = userToken
                     startActivity(Intent(this, HomeActivity::class.java))
