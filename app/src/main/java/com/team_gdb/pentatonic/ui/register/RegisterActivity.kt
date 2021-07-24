@@ -40,7 +40,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                     startActivity(intent)
                     finish()
                 }
-            } else{
+            } else {
                 Timber.d("Not Done")
             }
         }
