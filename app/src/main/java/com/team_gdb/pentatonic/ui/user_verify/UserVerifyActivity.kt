@@ -36,7 +36,7 @@ class UserVerifyActivity : BaseActivity<ActivityUserVerifyBinding, UserVerifyVie
         }
 
         viewModel.registerCompleteEvent.observe(this) {
-            if (it.hasBeenHandled){
+            it.getContentIfNotHandled()?.let {
                 Toast.makeText(this, "펜타토닉 회원이 되신 것을 축하드립니다!", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()

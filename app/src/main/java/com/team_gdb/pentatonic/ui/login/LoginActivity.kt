@@ -26,7 +26,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun initDataBinding() {
         viewModel.loginCompleteEvent.observe(this) {
-            if (it.hasBeenHandled) {
+            it.getContentIfNotHandled()?.let {
                 val userToken = viewModel.userToken.value
                 if (userToken.isNullOrBlank()) {
                     Toast.makeText(this, "로그인에 실패했습니다", Toast.LENGTH_LONG).show()
