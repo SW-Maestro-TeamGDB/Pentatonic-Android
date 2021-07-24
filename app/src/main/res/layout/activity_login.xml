@@ -30,8 +30,9 @@
         <EditText
             android:hint="아이디를 입력해주세요."
             android:textSize="14sp"
+            android:text="@={viewModel.idField}"
             android:drawablePadding="8dp"
-            android:id="@+id/userIDEditText"
+            android:id="@+id/idEditText"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="100dp"
             android:drawableStart="@drawable/ic_baseline_email_24"
@@ -45,12 +46,13 @@
             android:hint="비밀번호를 입력해주세요."
             android:textSize="14sp"
             android:drawablePadding="8dp"
-            android:id="@+id/userPasswordEditText"
+            android:text="@={viewModel.passwordField}"
+            android:id="@+id/passwordEditText"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:paddingHorizontal="16dp"
-            android:layout_below="@+id/userIDEditText"
+            android:layout_below="@+id/idEditText"
             android:background="@drawable/custom_radius_background_white"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
@@ -63,7 +65,7 @@
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
             android:paddingHorizontal="16dp"
-            android:layout_below="@+id/userPasswordEditText"
+            android:layout_below="@+id/passwordEditText"
             android:background="@drawable/custom_radius_background_light"
             android:backgroundTint="@color/main_light_transparent"
             android:layout_width="match_parent"
@@ -100,5 +102,8 @@
         <variable
             name="login"
             type="com.team_gdb.pentatonic.ui.login.LoginActivity" />
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.login.LoginViewModel" />
     </data>
 </layout>

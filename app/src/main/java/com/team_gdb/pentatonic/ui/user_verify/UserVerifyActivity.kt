@@ -8,9 +8,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.databinding.ActivityUserVerifyBinding
-import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.login.LoginActivity
 import com.team_gdb.pentatonic.ui.register.RegisterActivity.Companion.EXTRA_NAME
+import timber.log.Timber
 
 class UserVerifyActivity : BaseActivity<ActivityUserVerifyBinding, UserVerifyViewModel>() {
     override val layoutResourceId: Int
@@ -21,6 +21,8 @@ class UserVerifyActivity : BaseActivity<ActivityUserVerifyBinding, UserVerifyVie
     override fun initStartView() {
         binding.viewModel = viewModel
         registerForm = intent.getSerializableExtra(EXTRA_NAME) as RegisterForm
+
+        Timber.d("넘어온 회원가입 정보는 이러함 : $registerForm")
     }
 
     override fun initDataBinding() {
@@ -34,7 +36,7 @@ class UserVerifyActivity : BaseActivity<ActivityUserVerifyBinding, UserVerifyVie
         }
 
         viewModel.registerCompleteEvent.observe(this) {
-            it.getContentIfNotHandled()?.let {
+            if (it.hasBeenHandled){
                 Toast.makeText(this, "펜타토닉 회원이 되신 것을 축하드립니다!", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()

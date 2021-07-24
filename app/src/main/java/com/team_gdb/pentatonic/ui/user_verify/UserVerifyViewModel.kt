@@ -17,8 +17,10 @@ class UserVerifyViewModel(private val repository: UserVerifyRepository) : BaseVi
     val registerCompleteEvent: MutableLiveData<Event<Boolean>> = MutableLiveData(Event(false))
 
     fun sendAuthCode() {
+        // +8210 형식으로 전화번호 변경 해줘야 함
+        val parsedPhoneNumber = "+82" + phoneNumberField.value!!.substring(1)
         val disposable =
-            repository.sendAuthCode(phoneNumberField.value!!).subscribeOn(Schedulers.io())
+            repository.sendAuthCode(parsedPhoneNumber).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {

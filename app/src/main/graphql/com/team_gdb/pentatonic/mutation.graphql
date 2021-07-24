@@ -5,3 +5,7 @@ mutation SendAuthCodeMutation($sendAuthCodeInput: sendAuthCodeInput!) {
 mutation RegisterMutation($registerInput: RegisterInput!) {
     register(input: $registerInput)
 }
+
+mutation LoginMutation($loginInput: LoginInput!) {
+  login(input: $loginInput)
+}

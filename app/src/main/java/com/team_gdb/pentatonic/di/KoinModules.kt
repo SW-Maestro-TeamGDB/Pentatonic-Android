@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.di
 
+import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
@@ -26,7 +27,7 @@ val viewModelModule = module {
         MyPageViewModel()
     }
     viewModel {
-        LoginViewModel()
+        LoginViewModel(get())
     }
     viewModel {
         RegisterViewModel(get())
@@ -42,6 +43,9 @@ val repositoryModule = module {
     }
     single{
         UserVerifyRepository()
+    }
+    single{
+        LoginRepository()
     }
 }
 
