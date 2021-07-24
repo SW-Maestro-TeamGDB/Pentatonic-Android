@@ -34,6 +34,7 @@
             app:cardUseCompatPadding="true">
 
             <RelativeLayout
+                android:id="@+id/weeklyChallengeSongButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -168,5 +169,9 @@
         <variable
             name="home"
             type="com.team_gdb.pentatonic.ui.lounge.LoungeFragment" />
+        
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.lounge.LoungeViewModel" />
     </data>
 </layout>

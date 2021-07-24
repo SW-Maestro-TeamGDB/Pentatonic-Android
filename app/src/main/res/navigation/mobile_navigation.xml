@@ -9,7 +9,21 @@
         android:id="@+id/navigation_lounge"
         android:name="com.team_gdb.pentatonic.ui.lounge.LoungeFragment"
         android:label="@string/title_lounge"
-        tools:layout="@layout/fragment_lounge" />
+        tools:layout="@layout/fragment_lounge" >
+
+        <action
+            android:id="@+id/action_navigation_lounge_to_navigation_weekly_challenge"
+            app:destination="@id/navigation_weekly_challenge"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_weekly_challenge"
+        android:name="com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeFragment"
+        tools:layout="@layout/fragment_weekly_challenge" />
 
     <fragment
         android:id="@+id/navigation_studio"
@@ -22,7 +36,6 @@
         android:name="com.team_gdb.pentatonic.ui.artist.ArtistFragment"
         android:label="@string/title_artist"
         tools:layout="@layout/fragment_artist" />
-
 
     <fragment
         android:id="@+id/navigation_my_page"
