@@ -2,9 +2,13 @@ package com.team_gdb.pentatonic.di
 
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.team_gdb.pentatonic.repository.login.LoginRepository
+import com.team_gdb.pentatonic.repository.login.LoginRepositoryImpl
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
+import com.team_gdb.pentatonic.repository.register.RegisterRepositoryImpl
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
+import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepositoryImpl
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepository
+import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepositoryImpl
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
@@ -55,17 +59,17 @@ val viewModelModule = module {
 }
 
 val repositoryModule = module {
-    single{
-        RegisterRepository()
+    single<RegisterRepository> {
+        RegisterRepositoryImpl()
     }
-    single{
-        UserVerifyRepository()
+    single<UserVerifyRepository> {
+        UserVerifyRepositoryImpl()
     }
-    single{
-        LoginRepository()
+    single<LoginRepository> {
+        LoginRepositoryImpl()
     }
-    single{
-        WeeklyChallengeRepository()
+    single<WeeklyChallengeRepository> {
+        WeeklyChallengeRepositoryImpl()
     }
 }
 
