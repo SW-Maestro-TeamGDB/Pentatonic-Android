@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
+import com.team_gdb.pentatonic.ui.record.RecordViewModel
 import com.team_gdb.pentatonic.ui.register.RegisterViewModel
 import com.team_gdb.pentatonic.ui.rising_band.RisingBandViewModel
 import com.team_gdb.pentatonic.ui.rising_solo.RisingSoloViewModel
@@ -55,6 +56,10 @@ val viewModelModule = module {
 
     viewModel {
         RisingSoloViewModel()
+    }
+
+    viewModel {
+        RecordViewModel()
     }
 }
 

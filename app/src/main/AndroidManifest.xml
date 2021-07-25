@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.team_gdb.pentatonic">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:name=".base.BaseApplication"
         android:allowBackup="true"
@@ -16,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pentatonic"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.user_verify.UserVerifyActivity"></activity>
+        <activity android:name=".ui.record.RecordActivity"></activity>
+        <activity android:name=".ui.user_verify.UserVerifyActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
@@ -30,11 +26,16 @@
             android:label="@string/title_activity_home" />
     </application>
     <uses-feature
-        android:name="android.software.leanback"
-        android:required="false" />
-
-    <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
