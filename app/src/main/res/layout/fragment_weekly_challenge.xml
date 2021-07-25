@@ -1,159 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.weekly_challenge.WeeklyChallengeFragment">
+        android:layout_height="match_parent">
 
-        <!--   위클리 챌린지 배너   -->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.weekly_challenge.WeeklyChallengeFragment">
 
-            <ImageView
-                android:id="@+id/weeklyChallengeSongImage"
+            <!--   위클리 챌린지 배너   -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/beautiful_album_jacket"
-                android:tintMode="src_atop"
-                app:tint="#80000000" />
+                android:layout_height="250dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_margin="24dp"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="Weekly Challenge"
-                android:textColor="@color/white" />
+                <ImageView
+                    android:id="@+id/weeklyChallengeSongImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beautiful_album_jacket"
+                    android:tintMode="src_atop"
+                    app:tint="#80000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="24dp"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="Weekly Challenge"
+                    android:textColor="@color/white" />
 
 
-            <TextView
-                android:id="@+id/weeklyChallengeSongArtist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/weeklyChallengeSongName"
+                <TextView
+                    android:id="@+id/weeklyChallengeSongArtist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/weeklyChallengeSongName"
+                    android:layout_marginHorizontal="24dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="DAY6"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/weeklyChallengeSongName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_above="@+id/weeklyChallengeSongDescription"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="예뻤어"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="24dp"
+                    android:id="@+id/weeklyChallengeSongDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="24dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="'Every DAY6 February' 앨범의 타이틀 곡 '예뻤어'는 헤어진 연인에 대해 함께한 모든 순간에 넌 예뻤다고 회상하는 한 남자의 감성을 그려낸 곡. 팝적인 코드와 파워풀한 락 사운드가 결합된 트랙에 장면 장면을 연상시키는 가사와 멜로디가 만나 극적인 전개를 보여준다."
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
                 android:layout_marginHorizontal="24dp"
-                android:fontFamily="@font/nanum_light"
-                android:text="DAY6"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/weeklyChallengeSongName"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="16dp"
+                android:id="@+id/searchViewLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_above="@+id/weeklyChallengeSongDescription"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="예뻤어"
-                android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:elevation="2dp"
+                app:cardCornerRadius="12dp">
 
-            <TextView
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="24dp"
-                android:id="@+id/weeklyChallengeSongDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginHorizontal="24dp"
-                android:fontFamily="@font/nanum_light"
-                android:text="'Every DAY6 February' 앨범의 타이틀 곡 '예뻤어'는 헤어진 연인에 대해 함께한 모든 순간에 넌 예뻤다고 회상하는 한 남자의 감성을 그려낸 곡. 팝적인 코드와 파워풀한 락 사운드가 결합된 트랙에 장면 장면을 연상시키는 가사와 멜로디가 만나 극적인 전개를 보여준다."
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-        </RelativeLayout>
+                    <EditText
+                        android:id="@+id/searchView"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_baseline_search_24"
+                        android:drawablePadding="8dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textSize="14sp" />
 
+                    <ImageButton
+                        android:id="@+id/textClearButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="12dp"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:src="@drawable/ic_baseline_cancel_24"
+                        android:visibility="gone" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:id="@+id/searchViewLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="2dp"
-            app:cardCornerRadius="12dp">
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
 
             <LinearLayout
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/addImageButton"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/dash_border"
+                android:gravity="center"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/searchView"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:drawableStart="@drawable/ic_baseline_search_24"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:textSize="14sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_add_circle_outline_24" />
 
-                <ImageButton
-                    android:id="@+id/textClearButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="12dp"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:src="@drawable/ic_baseline_cancel_24"
-                    android:visibility="gone" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="새로운 밴드 만들기"
+                    android:fontFamily="@font/nanum_light"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-
-        <LinearLayout
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:id="@+id/addImageButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/dash_border"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_add_circle_outline_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="새로운 밴드 만들기"
-                android:fontFamily="@font/nanum_light"
-                android:textSize="16sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginHorizontal="16dp"
+                tools:listitem="@layout/list_item_cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            tools:itemCount="2"
-            android:layout_marginHorizontal="16dp"
-            tools:listitem="@layout/list_item_cover"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <data>
-
         <variable
             name="viewModel"
             type="com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeViewModel" />

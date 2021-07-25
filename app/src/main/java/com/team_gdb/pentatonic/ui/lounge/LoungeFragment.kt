@@ -35,7 +35,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         }
 
         // 라이징 솔로 페이지로 이동
-        binding.risingBandDetailButton.setOnClickListener {
+        binding.risingSoloDetailButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_navigation_lounge_to_navigation_rising_solo
             )

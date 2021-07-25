@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
-                android:text="떠오르는 솔로 커버"
+                android:text="@string/rising_solo_title_text"
                 android:layout_marginTop="56dp"
                 android:layout_marginStart="32dp"
                 android:fontFamily="@font/nanum_extrabold"
@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="새롭게 떠오르는 솔로 커버를\n감상하거나 연주를 업로드해보세요!"
+                android:text="@string/rising_solo_hint_text"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
                 android:fontFamily="@font/nanum_light"
@@ -76,6 +76,13 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginHorizontal="16dp"
+                tools:listitem="@layout/list_item_cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

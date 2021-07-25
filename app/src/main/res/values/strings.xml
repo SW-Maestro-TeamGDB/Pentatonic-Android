@@ -36,4 +36,8 @@
     <string name="verify_auth_code_hint_text">수신받은 인증번호를 입력해주세요.</string>
     <string name="verify_send_auth_code_button_text">인증번호 전송하기</string>
     <string name="verify_register_text">인증 및 가입하기</string>
+    <string name="rising_solo_title_text">떠오르는 솔로 커버</string>
+    <string name="rising_solo_hint_text">새롭게 떠오르는 솔로 커버를\n감상하거나 연주를 업로드해보세요!</string>
+    <string name="rising_band_title_text">떠오르는 밴드 커버</string>
+    <string name="rising_band_hint_text">새롭게 떠오르는 밴드 커버를\n감상하고 참여해보세요!</string>
 </resources>
