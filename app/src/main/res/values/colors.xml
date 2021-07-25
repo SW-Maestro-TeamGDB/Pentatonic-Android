@@ -10,6 +10,7 @@
     <color name="gray">#F1F1F1</color>
     <color name="red">#FF0000</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="background">#E2E6ED</color>
 
     <color name="main_light">#417AB5</color>
     <color name="main_regular">#23588F</color>
