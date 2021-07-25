@@ -15,6 +15,11 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 interface RegisterRepository {
+    val checkCompleteEvent: MutableLiveData<MutableList<Boolean>>
+    val isValidId: MutableLiveData<Boolean>
+    val isValidNickname: MutableLiveData<Boolean>
+
     fun isValidForm(id: String, nickname: String)
-    fun isValidId(id: String) fun isValidNickname(nickname: String)
+    fun isValidIdQuery(id: String)
+    fun isValidNicknameQuery(nickname: String)
 }

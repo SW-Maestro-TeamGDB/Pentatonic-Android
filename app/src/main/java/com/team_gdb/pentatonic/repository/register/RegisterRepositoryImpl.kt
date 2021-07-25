@@ -16,11 +16,11 @@ import timber.log.Timber
 
 class RegisterRepositoryImpl : RegisterRepository {
     // Boolean List 로, ID 검사와 닉네임 검사가 모두 일어나면 두 개 원소가 모두 true 를 담음
-    val checkCompleteEvent: MutableLiveData<MutableList<Boolean>> =
+    override val checkCompleteEvent: MutableLiveData<MutableList<Boolean>> =
         MutableLiveData<MutableList<Boolean>>(mutableListOf())
 
-    val isValidId: MutableLiveData<Boolean> = MutableLiveData<Boolean>(true)
-    val isValidNickname: MutableLiveData<Boolean> = MutableLiveData<Boolean>(true)
+    override val isValidId: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
+    override val isValidNickname: MutableLiveData<Boolean> = MutableLiveData<Boolean>()
 
     /**
      * 회원가입시 입력한 정보가 올바른지 검사함
@@ -28,8 +28,8 @@ class RegisterRepositoryImpl : RegisterRepository {
      * @param nickname : 사용자의 닉네임
      */
     override fun isValidForm(id: String, nickname: String) {
-        isValidId(id)
-        isValidNickname(nickname)
+        isValidIdQuery(id)
+        isValidNicknameQuery(nickname)
     }
 
     /**
@@ -37,7 +37,7 @@ class RegisterRepositoryImpl : RegisterRepository {
      * @param id : 사용자의 ID
      * @return : 올바른지 true, false 형태로 반환
      */
-    override fun isValidId(id: String) {
+    override fun isValidIdQuery(id: String) {
         apolloClient.rxQuery(CheckIDQuery(CheckIdInput(CheckIdArgs(id))))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -62,7 +62,7 @@ class RegisterRepositoryImpl : RegisterRepository {
      * @param nickname : 사용자의 닉네임
      * @return : 올바른지 true, false 형태로 반환
      */
-    override fun isValidNickname(nickname: String) {
+    override fun isValidNicknameQuery(nickname: String) {
         apolloClient.rxQuery(CheckNicknameQuery(CheckUsernameInput(CheckUsernameArgs(nickname))))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
