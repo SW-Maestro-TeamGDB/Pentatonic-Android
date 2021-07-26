@@ -1,7 +1,7 @@
-query CheckID($checkIdInput: CheckIdInput!) {
-    checkId(input: $checkIdInput)
+query CheckID($isValidIdId: ID!) {
+  isValidId(id: $isValidIdId)
 }
 
-query CheckNickname($checkUsernameInput: CheckUsernameInput!) {
-    checkUsername(input: $checkUsernameInput)
+query CheckNickname($isValidUsernameUsername: String!) {
+  isValidUsername(username: $isValidUsernameUsername)
 }

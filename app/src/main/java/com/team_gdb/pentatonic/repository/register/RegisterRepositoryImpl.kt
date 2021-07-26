@@ -5,10 +5,6 @@ import com.apollographql.apollo.rx3.rxQuery
 import com.team_gdb.pentatonic.CheckIDQuery
 import com.team_gdb.pentatonic.CheckNicknameQuery
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
-import com.team_gdb.pentatonic.type.CheckIdArgs
-import com.team_gdb.pentatonic.type.CheckIdInput
-import com.team_gdb.pentatonic.type.CheckUsernameArgs
-import com.team_gdb.pentatonic.type.CheckUsernameInput
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -38,12 +34,12 @@ class RegisterRepositoryImpl : RegisterRepository {
      * @return : 올바른지 true, false 형태로 반환
      */
     override fun isValidIdQuery(id: String) {
-        apolloClient.rxQuery(CheckIDQuery(CheckIdInput(CheckIdArgs(id))))
+        apolloClient.rxQuery(CheckIDQuery(isValidIdId = id))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    isValidId.value = it.data != null && it.data!!.checkId == true
+                    isValidId.value = it.data != null && it.data!!.isValidId == true
                     Timber.d(isValidId.value.toString())
                 },
                 onComplete = {
@@ -63,12 +59,12 @@ class RegisterRepositoryImpl : RegisterRepository {
      * @return : 올바른지 true, false 형태로 반환
      */
     override fun isValidNicknameQuery(nickname: String) {
-        apolloClient.rxQuery(CheckNicknameQuery(CheckUsernameInput(CheckUsernameArgs(nickname))))
+        apolloClient.rxQuery(CheckNicknameQuery(isValidUsernameUsername = nickname))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    isValidNickname.value = it.data != null && it.data!!.checkUsername == true
+                    isValidNickname.value = it.data != null && it.data!!.isValidUsername == true
                     Timber.d(isValidId.value.toString())
                 },
                 onComplete = {
