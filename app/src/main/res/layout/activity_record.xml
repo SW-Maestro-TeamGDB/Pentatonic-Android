@@ -8,6 +8,13 @@
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordActivity">
 
+
+        <com.team_gdb.pentatonic.ui.record.SoundVisualizerView
+            android:id="@+id/soundVisualizerView"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/resetButton"
             android:layout_width="wrap_content"
@@ -17,6 +24,7 @@
             android:text="RESET" />
 
         <com.team_gdb.pentatonic.ui.record.RecordButton
+            android:layout_below="@+id/soundVisualizerView"
             android:id="@+id/recordButton"
             android:layout_width="150dp"
             android:layout_height="150dp"
@@ -24,16 +32,13 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_record" />
 
-        <TextView
-            android:layout_below="@+id/resetButton"
+        <com.team_gdb.pentatonic.ui.record.CountUpTextView
+            android:layout_below="@+id/recordButton"
             android:id="@+id/recordTimeTextView"
+            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <View
-            android:id="@+id/soundVisualizerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
     </RelativeLayout>
 
     <data>

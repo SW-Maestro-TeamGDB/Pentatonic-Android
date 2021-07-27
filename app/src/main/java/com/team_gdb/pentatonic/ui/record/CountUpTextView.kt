@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.SystemClock
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import kotlin.math.min
 
 class CountUpTextView(
     context: Context,
@@ -15,22 +14,22 @@ class CountUpTextView(
 
     private val countUpAction: Runnable = object : Runnable {
         override fun run() {
-            // 시작했을 때 타임 트탬프를 계산
+            // 시작했을 때 타임 스탬프를 계산
             val currentTimeStamp = SystemClock.elapsedRealtime()
-
             val countTimeSeconds =
-                ((currentTimeStamp - startTimeStamp) / 1000L).toInt() // 얼마의 시간 차이가 나는지
+                ((currentTimeStamp - startTimeStamp) / 1000L).toInt()  // 시간차이 계산
+
             updateCountTime(countTimeSeconds)
             handler?.postDelayed(this, 1000L)
         }
     }
 
-    fun startCountup() {
+    fun startCountUp() {
         startTimeStamp = SystemClock.elapsedRealtime()
         handler?.post(countUpAction)
     }
 
-    fun stopCountup() {
+    fun stopCountUp() {
         handler?.removeCallbacks(countUpAction)
     }
 
