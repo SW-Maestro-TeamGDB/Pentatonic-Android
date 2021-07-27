@@ -22,7 +22,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     override val viewModel: RecordViewModel by viewModel()
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장될 위치
-        "${externalCacheDir?.absolutePath}/recording.3gp"
+        "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
     /**
@@ -87,7 +87,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         recorder = MediaRecorder()
             .apply {
                 setAudioSource(MediaRecorder.AudioSource.MIC)
-                setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP) // 포멧
+                setOutputFormat(MediaRecorder.OutputFormat.MPEG_4) // 포멧
                 setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // 인코더
                 setOutputFile(recordingFilePath) // 저장 경로 (캐싱 방식으로 구현)
                 prepare()
