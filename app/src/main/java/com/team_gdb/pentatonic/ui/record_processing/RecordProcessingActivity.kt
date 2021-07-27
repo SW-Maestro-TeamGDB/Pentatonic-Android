@@ -22,13 +22,14 @@ class RecordProcessingActivity :
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
-    private var state = ButtonState.BEFORE_RECORDING
+    private var state = ButtonState.BEFORE_PLAYING
         set(value) { // setter 설정
             field = value // 실제 프로퍼티에 대입
             binding.playButton.updateIconWithState(value)
         }
 
     override fun initStartView() {
+        binding.playButton.updateIconWithState(state)
         drawingAmplitudes = intent.getIntegerArrayListExtra(RECORD_AMPLITUDE) as List<Int>
     }
 
@@ -39,10 +40,10 @@ class RecordProcessingActivity :
 
         binding.playButton.setOnClickListener {
             when (state) {
-                ButtonState.BEFORE_RECORDING -> {
+                ButtonState.BEFORE_PLAYING -> {
                     startPlaying()
                 }
-                ButtonState.ON_RECORDING -> {
+                ButtonState.ON_PLAYING -> {
                     stopPlaying()
                 }
             }

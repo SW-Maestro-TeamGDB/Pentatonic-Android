@@ -62,7 +62,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             }
         }
 
-
         // 임시로 사용, 이상적인 로직은 녹음 후 자동으로 인텐트
         // - 페이지 이동할 때, 해당 녹음본의 진폭 정보를 같이 넘겨줌
         binding.recordCompleteButton.setOnClickListener {
