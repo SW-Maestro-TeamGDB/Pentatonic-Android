@@ -1,12 +1,15 @@
 package com.team_gdb.pentatonic.ui.record
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.os.Bundle
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
+import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
 
 /**
  *  커버 녹음을 위한 페이지
@@ -14,8 +17,6 @@ import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
  *  - MediaRecorder, MediaPlayer 를 사용하지 않을 때는 메모리 해제를 꼭 해줘야함
  */
 class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
-    private var recorder: MediaRecorder? = null // MediaRecorder 사용하지 않을 때는 메모리 해제
-
     override val layoutResourceId: Int
         get() = R.layout.activity_record
     override val viewModel: RecordViewModel by viewModel()
@@ -24,6 +25,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
+    private var recorder: MediaRecorder? = null // MediaRecorder 사용하지 않을 때는 메모리 해제
+
     /**
      * TODO : state 를 viewModel 로 옮겨야 함
     옵저브 하는 부분에서 updateIconWithState() 호출해야 할듯
@@ -31,8 +34,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private var state = ButtonState.BEFORE_RECORDING
         set(value) {
             field = value
-            binding.resetButton.isEnabled =
-                (value == ButtonState.BEFORE_RECORDING || value == ButtonState.ON_PLAYING)
+            binding.resetButton.isEnabled = (value == ButtonState.ON_RECORDING)
             binding.recordButton.updateIconWithState(value)
         }
 
@@ -60,12 +62,17 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             }
         }
 
-        binding.resetButton.setOnClickListener {
-            binding.soundVisualizerView.clearVisualization()
-            binding.recordTimeTextView.clearCountTime()
-            state = ButtonState.BEFORE_RECORDING
-        }
 
+        // 임시로 사용, 이상적인 로직은 녹음 후 자동으로 인텐트
+        // - 페이지 이동할 때, 해당 녹음본의 진폭 정보를 같이 넘겨줌
+        binding.recordCompleteButton.setOnClickListener {
+            val intent = Intent(this, RecordProcessingActivity::class.java)
+            intent.putExtra(
+                RECORD_AMPLITUDE,
+                binding.soundVisualizerView.drawingAmplitudes as ArrayList<Int>
+            )
+            startActivity(intent)
+        }
 
     }
 
@@ -84,6 +91,9 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 prepare()
             }
         recorder?.start()
+        // 이전 상태 삭제
+        binding.soundVisualizerView.clearVisualization()
+        binding.recordTimeTextView.clearCountTime()
 
         binding.recordTimeTextView.startCountUp()
         binding.soundVisualizerView.startVisualizing(false)
@@ -97,9 +107,16 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             release()
         }
         recorder = null
+
         binding.soundVisualizerView.stopVisualizing()
         binding.recordTimeTextView.stopCountUp()
+
+
         state = ButtonState.BEFORE_RECORDING
+    }
+
+    companion object {
+        val RECORD_AMPLITUDE = "RECORD_AMPLITUDE"
     }
 
 }

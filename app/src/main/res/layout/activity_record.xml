@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:id="@+id/recordCompleteButton"
             android:text="다음으로"
             android:textColor="@color/white"
             android:gravity="center"
