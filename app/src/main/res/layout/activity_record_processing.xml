@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.record_processing.RecordProcessingActivity">
+        tools:context=".ui.record.RecordProcessActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.team_gdb.pentatonic.ui.record.CountUpTextView
+            android:text="00:00"
+            android:id="@+id/recordTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/playButton"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="24dp" />
+
+        <com.team_gdb.pentatonic.ui.record_processing.PlayButton
+            android:id="@+id/playButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/soundVisualizerView"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_play"
+            android:tint="@color/main_dark" />
+
+        <com.team_gdb.pentatonic.ui.record.SoundVisualizerView
+            android:id="@+id/soundVisualizerView"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
     <data>
+
         <variable
             name="viewModel"
             type="com.team_gdb.pentatonic.ui.record_processing.RecordProcessingViewModel" />

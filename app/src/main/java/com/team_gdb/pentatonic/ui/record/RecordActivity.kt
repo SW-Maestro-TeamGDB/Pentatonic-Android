@@ -15,7 +15,6 @@ import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
  */
 class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private var recorder: MediaRecorder? = null // MediaRecorder 사용하지 않을 때는 메모리 해제
-    private var player: MediaPlayer? = null
 
     override val layoutResourceId: Int
         get() = R.layout.activity_record
@@ -27,13 +26,13 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
     /**
      * TODO : state 를 viewModel 로 옮겨야 함
-              옵저브 하는 부분에서 updateIconWithState() 호출해야 할듯
+    옵저브 하는 부분에서 updateIconWithState() 호출해야 할듯
      */
     private var state = ButtonState.BEFORE_RECORDING
-        set(value) { // setter 설정
-            field = value // 실제 프로퍼티에 대입
+        set(value) {
+            field = value
             binding.resetButton.isEnabled =
-                (value == ButtonState.AFTER_RECORDING || value == ButtonState.ON_PLAYING)
+                (value == ButtonState.BEFORE_RECORDING || value == ButtonState.ON_PLAYING)
             binding.recordButton.updateIconWithState(value)
         }
 
@@ -58,18 +57,10 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 ButtonState.ON_RECORDING -> {
                     stopRecording()
                 }
-                ButtonState.AFTER_RECORDING -> {
-                    startPlaying()
-                }
-                ButtonState.ON_PLAYING -> {
-                    stopPlaying()
-                }
             }
         }
 
         binding.resetButton.setOnClickListener {
-            stopPlaying()
-            // clear
             binding.soundVisualizerView.clearVisualization()
             binding.recordTimeTextView.clearCountTime()
             state = ButtonState.BEFORE_RECORDING
@@ -108,43 +99,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         recorder = null
         binding.soundVisualizerView.stopVisualizing()
         binding.recordTimeTextView.stopCountUp()
-        state = ButtonState.AFTER_RECORDING
-    }
-
-    /**
-     * 녹음 완료한 파일을 재생함
-     */
-    private fun startPlaying() {
-        player = MediaPlayer()
-            .apply {
-                setDataSource(recordingFilePath)
-                prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
-            }
-
-        player?.start() // 재생
-        binding.recordTimeTextView.startCountUp()
-        binding.soundVisualizerView.startVisualizing(true)
-
-
-        // 끝까지 재생이 끝났을 때
-        player?.setOnCompletionListener {
-            stopPlaying()
-            state = ButtonState.AFTER_RECORDING
-        }
-
-        state = ButtonState.ON_PLAYING
-    }
-
-    /**
-     * 음원 재생 중지
-     */
-    private fun stopPlaying() {
-        player?.release()
-        player = null
-        binding.soundVisualizerView.stopVisualizing()
-        binding.recordTimeTextView.stopCountUp()
-
-        state = ButtonState.AFTER_RECORDING
+        state = ButtonState.BEFORE_RECORDING
     }
 
 }
