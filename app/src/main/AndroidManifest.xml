@@ -11,15 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pentatonic"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.record.RecordActivity"></activity>
-        <activity android:name=".ui.user_verify.UserVerifyActivity" />
-        <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.login.LoginActivity">
+        <activity android:name=".ui.record.RecordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.user_verify.UserVerifyActivity" />
+        <activity android:name=".ui.register.RegisterActivity" />
+        <activity android:name=".ui.login.LoginActivity">
+
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"

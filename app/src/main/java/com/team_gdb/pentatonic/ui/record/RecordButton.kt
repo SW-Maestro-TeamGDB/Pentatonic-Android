@@ -10,10 +10,14 @@ class RecordButton(
     attrs: AttributeSet
 ) : AppCompatImageButton(context, attrs) {
 
-//    init {
-//        setBackgroundResource(R.drawable.shape_oval_button)
-//    }
+    init {
+        setBackgroundResource(R.color.transparent)
+    }
 
+    /**
+     * 전달받은 버튼 상태에 따라 이미지 리소스 변경
+     * @param state : 현재 버튼 상태
+     */
     fun updateIconWithState(state: ButtonState) {
         when (state) {
             ButtonState.BEFORE_RECORDING -> {

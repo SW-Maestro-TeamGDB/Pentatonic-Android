@@ -12,14 +12,14 @@ class SoundVisualizerView(
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
 
-    // 호출 Activity 에서 콜백 함수 지정
+    // 호출 Activity 에서 콜백 함수 지정하여 현재 진폭값 얻어올 수 있도록 함
     var onRequestCurrentAmplitude: (() -> Int)? = null
 
     // 계단화 방지 플레그
     private val amplitudePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = context.getColor(R.color.purple_500)
+        color = context.getColor(R.color.main_light)
         strokeWidth = LINE_WIDTH
-        strokeCap = Paint.Cap.ROUND // 라인의 양 끄투머리 동그랗게
+        strokeCap = Paint.Cap.ROUND // 라인의 양 끝을 동그랗게
     }
 
     private var drawingWidth: Int = 0
@@ -31,9 +31,7 @@ class SoundVisualizerView(
     // 반복적인 드로우 처리를 위한 Runnable 객체
     private val visualizeRepeatAction: Runnable = object : Runnable {
         override fun run() {
-            if (!isReplaying) {
-                // Amplitude 를 가져오고, Draw 를 요청
-
+            if (!isReplaying) {  // Amplitude 를 가져오고, Draw 를 요청
                 // Amplitude 값 가져오기
                 val currentAmplitude = onRequestCurrentAmplitude?.invoke() ?: 0
                 // 오른 쪽 부터 순차적으로 그리기
@@ -53,6 +51,11 @@ class SoundVisualizerView(
         drawingHeight = h
     }
 
+    /**
+     * Custom Draw 수행
+     * - 진폭값 배열 정보를 기반으로 차례대로 하나씩 값에 비례하는 높이로 선을 그리는 동작 수행
+     * @param canvas
+     */
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
@@ -93,18 +96,28 @@ class SoundVisualizerView(
     }
 
 
+    /**
+     * 음원 시각화 동작 시작
+     * - visualizeRepeatAction Runnable post 호출
+     * @param isReplaying : 녹음 후 확인 재생 동작이면 true, 녹음 동작이면 false
+     */
     fun startVisualizing(isReplaying: Boolean) {
         this.isReplaying = isReplaying
-        // 반복 호출 하기 위해 post
         handler?.post(visualizeRepeatAction)
     }
 
+    /**
+     * 음원 시각화 동작 정지
+     * - visualizeRepeatAction Runnable remove 호출
+     */
     fun stopVisualizing() {
-        // 반복 호출 제거
         replayingPosition = 0 // 구간 초기화
         handler?.removeCallbacks(visualizeRepeatAction)
     }
 
+    /**
+     * View 내용물 모두 클리어
+     */
     fun clearVisualization() {
         drawingAmplitudes = emptyList()
         invalidate()
