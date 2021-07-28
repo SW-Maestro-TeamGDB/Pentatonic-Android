@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.ui.record
 
 import android.content.Intent
 import android.media.MediaRecorder
+import android.media.audiofx.AudioEffect
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel

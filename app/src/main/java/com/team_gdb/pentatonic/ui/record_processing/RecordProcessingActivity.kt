@@ -1,10 +1,15 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
 import android.media.MediaPlayer
+import android.media.audiofx.AudioEffect
+import android.media.audiofx.EnvironmentalReverb
+import android.media.audiofx.PresetReverb
+import android.provider.MediaStore
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.record.ButtonState
+import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RecordProcessingActivity :
@@ -17,6 +22,10 @@ class RecordProcessingActivity :
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
+    }
+
+    private val audioEffectDescriptor: AudioEffect.Descriptor by lazy {  // AudioEffect 모듈 Descriptor
+        AudioEffect.Descriptor()
     }
 
     private var state = ButtonState.BEFORE_PLAYING
@@ -33,6 +42,12 @@ class RecordProcessingActivity :
     }
 
     override fun initAfterBinding() {
+        binding.applyReverbButton.setOnClickListener {
+            audioEffectDescriptor.apply{
+                type = AudioEffect.EFFECT_TYPE_ENV_REVERB
+                connectMode = AudioEffect.EFFECT_INSERT
+            }
+        }
 
         binding.playButton.setOnClickListener {
             when (state) {
@@ -44,12 +59,11 @@ class RecordProcessingActivity :
                 }
             }
         }
-
     }
 
 
     /**
-     * 녹음본을 재생
+     * 녹음본을 재생 (리버브 이펙트 테스트)
      */
     private fun startPlaying() {
         player = MediaPlayer()
@@ -57,6 +71,15 @@ class RecordProcessingActivity :
                 setDataSource(recordingFilePath)
                 prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
             }
+//        val reverbEffect = EnvironmentalReverb(1, player!!.audioSessionId)
+        val reverbEffect = PresetReverb(1, player!!.audioSessionId)
+        reverbEffect.preset = PresetReverb.PRESET_LARGEHALL
+        reverbEffect.enabled = true
+
+        player?.apply {
+            attachAuxEffect(reverbEffect.id)
+            setAuxEffectSendLevel(1.0f)
+        }
 
         player?.start() // 재생
         binding.recordTimeTextView.startCountUp()
