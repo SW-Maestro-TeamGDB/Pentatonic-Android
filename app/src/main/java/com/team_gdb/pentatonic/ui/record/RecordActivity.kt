@@ -1,9 +1,7 @@
 package com.team_gdb.pentatonic.ui.record
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.media.MediaRecorder
-import android.os.Bundle
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -65,12 +63,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         // 임시로 사용, 이상적인 로직은 녹음 후 자동으로 인텐트
         // - 페이지 이동할 때, 해당 녹음본의 진폭 정보를 같이 넘겨줌
         binding.recordCompleteButton.setOnClickListener {
-            val intent = Intent(this, RecordProcessingActivity::class.java)
-            intent.putExtra(
-                RECORD_AMPLITUDE,
-                binding.soundVisualizerView.drawingAmplitudes as ArrayList<Int>
-            )
-            startActivity(intent)
+            startActivity(Intent(this, RecordProcessingActivity::class.java))
         }
 
     }

@@ -24,7 +24,7 @@ class SoundVisualizerView(
 
     private var drawingWidth: Int = 0
     private var drawingHeight: Int = 0
-    var drawingAmplitudes: List<Int> = emptyList()
+    private var drawingAmplitudes: List<Int> = emptyList()
     private var isReplaying: Boolean = false
     private var replayingPosition: Int = 0
 

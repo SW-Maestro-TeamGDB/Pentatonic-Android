@@ -28,11 +28,6 @@
             android:src="@drawable/ic_play"
             android:tint="@color/main_dark" />
 
-        <com.team_gdb.pentatonic.ui.record.SoundVisualizerView
-            android:id="@+id/soundVisualizerView"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
