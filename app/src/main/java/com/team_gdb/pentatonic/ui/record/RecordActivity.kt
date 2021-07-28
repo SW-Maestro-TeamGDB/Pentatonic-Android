@@ -2,13 +2,15 @@ package com.team_gdb.pentatonic.ui.record
 
 import android.content.Intent
 import android.media.MediaRecorder
-import android.media.audiofx.AudioEffect
+import android.os.CountDownTimer
+import android.view.View
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
+import kotlin.math.roundToInt
 
 /**
  *  커버 녹음을 위한 페이지
@@ -37,6 +39,19 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             binding.recordButton.updateIconWithState(value)
         }
 
+    // 3초 카운트 후 녹음 시작
+    private val countDownTimer = object : CountDownTimer(3000, 1000) {
+        override fun onTick(millisUntilFinished: Long) {
+            binding.startCountDownTextView.text =
+                "${(millisUntilFinished.toFloat() / 1000.0f).roundToInt()}초"
+        }
+
+        override fun onFinish() {
+            binding.startCountDownTextView.visibility = View.GONE
+            startRecoding()
+        }
+    }
+
     override fun initStartView() {
         binding.recordButton.updateIconWithState(state)
     }
@@ -53,7 +68,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         binding.recordButton.setOnClickListener {
             when (state) {
                 ButtonState.BEFORE_RECORDING -> {
-                    startRecoding()
+                    binding.startCountDownTextView.visibility = View.VISIBLE
+                    countDownTimer.start()
                 }
                 ButtonState.ON_RECORDING -> {
                     stopRecording()
