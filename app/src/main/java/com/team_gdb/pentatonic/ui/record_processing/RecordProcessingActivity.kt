@@ -43,10 +43,10 @@ class RecordProcessingActivity :
 
     override fun initAfterBinding() {
         binding.applyReverbButton.setOnClickListener {
-            audioEffectDescriptor.apply{
-                type = AudioEffect.EFFECT_TYPE_ENV_REVERB
-                connectMode = AudioEffect.EFFECT_INSERT
-            }
+//            audioEffectDescriptor.apply{
+//                type = AudioEffect.EFFECT_TYPE_ENV_REVERB
+//                connectMode = AudioEffect.EFFECT_INSERT
+//            }
         }
 
         binding.playButton.setOnClickListener {

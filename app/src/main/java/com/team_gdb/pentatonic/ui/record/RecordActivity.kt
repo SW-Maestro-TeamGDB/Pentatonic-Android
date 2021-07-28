@@ -1,7 +1,9 @@
 package com.team_gdb.pentatonic.ui.record
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.media.MediaRecorder
+import android.media.audiofx.PresetReverb
 import android.os.CountDownTimer
 import android.view.View
 import com.newidea.mcpestore.libs.base.BaseActivity
@@ -26,7 +28,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
-    private var recorder: MediaRecorder? = null // MediaRecorder 사용하지 않을 때는 메모리 해제
+    private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
+    private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
 
     /**
      * TODO : state 를 viewModel 로 옮겨야 함
@@ -78,13 +81,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         }
 
         // 임시로 사용, 이상적인 로직은 녹음 후 자동으로 인텐트
-        // - 페이지 이동할 때, 해당 녹음본의 진폭 정보를 같이 넘겨줌
         binding.recordCompleteButton.setOnClickListener {
             startActivity(Intent(this, RecordProcessingActivity::class.java))
         }
 
     }
-
 
     /**
      * 녹음 버튼이 눌렸을 때 동작
@@ -126,6 +127,32 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
     companion object {
         val RECORD_AMPLITUDE = "RECORD_AMPLITUDE"
+    }
+
+    /**
+     * 녹음본을 재생 (리버브 이펙트 테스트)
+     */
+    private fun startPlaying() {
+        player = MediaPlayer()
+            .apply {
+                setDataSource(recordingFilePath)
+                prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
+            }
+
+        player?.start()  // 재생
+
+        // 끝까지 재생이 끝났을 때
+        player?.setOnCompletionListener {
+            stopPlaying()
+        }
+    }
+
+    /**
+     * 음원 재생 중지
+     */
+    private fun stopPlaying() {
+        player?.release()
+        player = null
     }
 
 }
