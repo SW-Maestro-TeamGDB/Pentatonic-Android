@@ -43,6 +43,11 @@
                 android:clipToPadding="false">
 
                 <View
+                    android:background="@drawable/tab_bg_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
+
+                <View
                     android:id="@+id/indicator"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -56,7 +61,7 @@
                     app:tabGravity="fill"
                     app:tabMode="fixed"
                     app:tabSelectedTextColor="#ffffff"
-                    app:tabIndicatorColor="@null"
+                    app:tabIndicatorHeight="0dp"
                     app:tabRippleColor="@null"/>
 
             </FrameLayout>
