@@ -40,4 +40,6 @@
     <string name="rising_solo_hint_text">새롭게 떠오르는 솔로 커버를\n감상하거나 연주를 업로드해보세요!</string>
     <string name="rising_band_title_text">떠오르는 밴드 커버</string>
     <string name="rising_band_hint_text">새롭게 떠오르는 밴드 커버를\n감상하고 참여해보세요!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

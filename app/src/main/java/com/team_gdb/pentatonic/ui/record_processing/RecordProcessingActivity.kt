@@ -1,16 +1,16 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
 import android.media.MediaPlayer
-import android.media.audiofx.AudioEffect
-import android.media.audiofx.EnvironmentalReverb
 import android.media.audiofx.PresetReverb
-import android.provider.MediaStore
+import android.widget.FrameLayout
+import androidx.viewpager2.widget.ViewPager2
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.record.ButtonState
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
+
 
 class RecordProcessingActivity :
     BaseActivity<ActivityRecordProcessingBinding, RecordProcessingViewModel>() {
@@ -22,10 +22,6 @@ class RecordProcessingActivity :
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
-    }
-
-    private val audioEffectDescriptor: AudioEffect.Descriptor by lazy {  // AudioEffect 모듈 Descriptor
-        AudioEffect.Descriptor()
     }
 
     private var state = ButtonState.BEFORE_PLAYING
@@ -42,12 +38,31 @@ class RecordProcessingActivity :
     }
 
     override fun initAfterBinding() {
-        binding.applyReverbButton.setOnClickListener {
-//            audioEffectDescriptor.apply{
-//                type = AudioEffect.EFFECT_TYPE_ENV_REVERB
-//                connectMode = AudioEffect.EFFECT_INSERT
-//            }
+        val indicatorParams = binding.indicator.layoutParams
+        val indicatorWidth = binding.tabLayout.width / NUM_PAGES
+
+        binding.viewPager.adapter = TabFragmentAdapter(this)
+        binding.tabLayout.post {
+            indicatorParams.width = indicatorWidth
+            binding.indicator.layoutParams = indicatorParams
         }
+
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
+
+                val translationOffset: Float = (positionOffset + position) * indicatorWidth
+                params.leftMargin = translationOffset.toInt()
+                binding.indicator.layoutParams = params
+            }
+        })
+
+
 
         binding.playButton.setOnClickListener {
             when (state) {
@@ -67,21 +82,36 @@ class RecordProcessingActivity :
      */
     private fun startPlaying() {
         player = MediaPlayer()
-            .apply {
-                setDataSource(recordingFilePath)
-                prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
-            }
-//        val reverbEffect = EnvironmentalReverb(1, player!!.audioSessionId)
-        val reverbEffect = PresetReverb(1, player!!.audioSessionId)
-        reverbEffect.preset = PresetReverb.PRESET_LARGEHALL
-        reverbEffect.enabled = true
-
         player?.apply {
-            attachAuxEffect(reverbEffect.id)
-            setAuxEffectSendLevel(1.0f)
-        }
+            setDataSource(recordingFilePath)
+            try {
+                val reverbEffect = PresetReverb(0, 0)
+                reverbEffect.preset = PresetReverb.PRESET_LARGEHALL
+                reverbEffect.enabled = true
+                attachAuxEffect(reverbEffect.id)
+//                val environmentalReverb = EnvironmentalReverb(0, 0)
+//                environmentalReverb.decayTime = 2000
+//                environmentalReverb.reflectionsDelay = 250
+//                environmentalReverb.reflectionsLevel = -8500
+//                environmentalReverb.roomLevel = -8500
+                attachAuxEffect(reverbEffect.id)
 
-        player?.start() // 재생
+            } catch (e: IllegalArgumentException) {
+                Timber.i("IllegalArgumentException 잼 ㅋㅋ :  ${player?.audioSessionId}")
+                Timber.e(e)
+            } catch (e: UnsupportedOperationException) {
+                Timber.i("UnsupportedOperationException 잼 ㅋㅋ :  ${player?.audioSessionId}")
+                Timber.e(e)
+            } catch (e: RuntimeException) {
+                Timber.i("RuntimeException 잼 ㅋㅋ :  ${player?.audioSessionId}")
+                Timber.e(e)
+            } finally {
+                Timber.i("오잉 또잉 ㅋㅋ")
+            }
+            setAuxEffectSendLevel(1.0f)
+            prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
+            start()
+        }
         binding.recordTimeTextView.startCountUp()
 
         // 끝까지 재생이 끝났을 때
@@ -102,6 +132,10 @@ class RecordProcessingActivity :
         binding.recordTimeTextView.stopCountUp()
 
         state = ButtonState.BEFORE_PLAYING
+    }
+
+    companion object {
+        const val NUM_PAGES = 2
     }
 
 }

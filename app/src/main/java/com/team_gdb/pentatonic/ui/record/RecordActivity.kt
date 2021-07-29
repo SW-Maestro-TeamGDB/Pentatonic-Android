@@ -28,6 +28,10 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
+    private val mrFilePath: String by lazy {  // 서버에서 받아온 MR이 저장될 위치
+        "${externalCacheDir?.absolutePath}/mr.mp3"
+    }
+
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
     private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
 
@@ -38,7 +42,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private var state = ButtonState.BEFORE_RECORDING
         set(value) {
             field = value
-            binding.resetButton.isEnabled = (value == ButtonState.ON_RECORDING)
             binding.recordButton.updateIconWithState(value)
         }
 
@@ -51,6 +54,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
         override fun onFinish() {
             binding.startCountDownTextView.visibility = View.GONE
+            startPlaying()
             startRecoding()
         }
     }
@@ -75,6 +79,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                     countDownTimer.start()
                 }
                 ButtonState.ON_RECORDING -> {
+                    stopPlaying()
                     stopRecording()
                 }
             }
@@ -135,7 +140,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private fun startPlaying() {
         player = MediaPlayer()
             .apply {
-                setDataSource(recordingFilePath)
+                setDataSource(mrFilePath)
                 prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
             }
 
@@ -144,6 +149,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         // 끝까지 재생이 끝났을 때
         player?.setOnCompletionListener {
             stopPlaying()
+            stopRecording()
         }
     }
 
