@@ -51,7 +51,6 @@ class RecordProcessingActivity :
         }.attach()
 
         binding.tabLayout.post {
-            Timber.d("FXXKING ${binding.tabLayout.width}, ${NUM_PAGES}, $indicatorWidth")
             indicatorWidth = binding.tabLayout.width / NUM_PAGES
             val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
             params.width = indicatorWidth
