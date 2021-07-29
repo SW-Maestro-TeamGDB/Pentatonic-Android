@@ -3,7 +3,6 @@ package com.team_gdb.pentatonic.ui.record_processing
 import android.media.MediaPlayer
 import android.media.audiofx.PresetReverb
 import android.widget.FrameLayout
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.newidea.mcpestore.libs.base.BaseActivity
@@ -21,6 +20,8 @@ class RecordProcessingActivity :
     override val viewModel: RecordProcessingViewModel by viewModel()
 
     private var player: MediaPlayer? = null
+
+    private var indicatorWidth: Int = 0
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
@@ -40,22 +41,24 @@ class RecordProcessingActivity :
     }
 
     override fun initAfterBinding() {
-        val indicatorParams = binding.indicator.layoutParams
-        val indicatorWidth = binding.tabLayout.width / NUM_PAGES
-
-        binding.tabLayout.post {
-            indicatorParams.width = indicatorWidth
-            binding.indicator.layoutParams = indicatorParams
-        }
 
         binding.viewPager.adapter = TabFragmentAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = "Title $position"
             when(position){
                 0 -> tab.text = "컨트롤"
                 1 -> tab.text = "이펙터"
             }
         }.attach()
+
+        binding.tabLayout.post {
+            Timber.d("FXXKING ${binding.tabLayout.width}, ${NUM_PAGES}, $indicatorWidth")
+            indicatorWidth = binding.tabLayout.width / NUM_PAGES
+            val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
+            params.width = indicatorWidth
+            binding.indicator.layoutParams = params
+        }
+
+        // Indicator 이동을 위한 PageChangeCallback 리스너 등록
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,

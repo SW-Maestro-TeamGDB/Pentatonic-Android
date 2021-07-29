@@ -42,12 +42,6 @@
                 android:padding="32dp"
                 android:clipToPadding="false">
 
-                <View
-                    android:id="@+id/indicator"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/gradient_bg"/>
-
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
@@ -58,6 +52,12 @@
                     app:tabSelectedTextColor="#ffffff"
                     app:tabIndicatorColor="@null"
                     app:tabRippleColor="@null"/>
+
+                <View
+                    android:id="@+id/indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/gradient_bg"/>
 
             </FrameLayout>
 
