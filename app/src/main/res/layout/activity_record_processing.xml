@@ -14,7 +14,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_play"
             android:tint="@color/main_dark" />
@@ -72,6 +72,18 @@
                 android:layout_height="500dp"/>
 
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/recordCompleteButton"
+            android:text="완료하기"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:fontFamily="@font/nanum_extrabold"
+            android:background="@color/main_regular"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
 
     </RelativeLayout>
 
