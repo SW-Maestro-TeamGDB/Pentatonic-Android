@@ -44,7 +44,6 @@
 
                 <View
                     android:id="@+id/indicator"
-                    android:elevation="1dp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:background="@drawable/gradient_bg"/>

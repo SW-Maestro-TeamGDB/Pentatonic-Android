@@ -3,7 +3,9 @@ package com.team_gdb.pentatonic.ui.record_processing
 import android.media.MediaPlayer
 import android.media.audiofx.PresetReverb
 import android.widget.FrameLayout
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
@@ -41,12 +43,19 @@ class RecordProcessingActivity :
         val indicatorParams = binding.indicator.layoutParams
         val indicatorWidth = binding.tabLayout.width / NUM_PAGES
 
-        binding.viewPager.adapter = TabFragmentAdapter(this)
         binding.tabLayout.post {
             indicatorParams.width = indicatorWidth
             binding.indicator.layoutParams = indicatorParams
         }
 
+        binding.viewPager.adapter = TabFragmentAdapter(this)
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = "Title $position"
+            when(position){
+                0 -> tab.text = "컨트롤"
+                1 -> tab.text = "이펙터"
+            }
+        }.attach()
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
@@ -62,8 +71,6 @@ class RecordProcessingActivity :
             }
         })
 
-
-
         binding.playButton.setOnClickListener {
             when (state) {
                 ButtonState.BEFORE_PLAYING -> {
@@ -72,6 +79,7 @@ class RecordProcessingActivity :
                 ButtonState.ON_PLAYING -> {
                     stopPlaying()
                 }
+                else -> { /* no-op */ }
             }
         }
     }
