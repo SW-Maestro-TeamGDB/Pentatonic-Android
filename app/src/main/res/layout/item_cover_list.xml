@@ -38,7 +38,7 @@
 
                 <TextView
                     android:id="@+id/coverOriginalSongTextView"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_light"
@@ -73,9 +73,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_light"
-                    android:text="153"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:drawableStartCompat="@drawable/ic_left_image_like"
                     app:drawableTint="@color/white" />
 
@@ -86,11 +85,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_light"
-                    android:text="850"
                     app:drawableStartCompat="@drawable/ic_left_image_view"
                     app:drawableTint="@color/white"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </RelativeLayout>

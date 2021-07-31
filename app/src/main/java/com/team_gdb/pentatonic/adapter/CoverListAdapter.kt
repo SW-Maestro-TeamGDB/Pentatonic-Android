@@ -63,6 +63,9 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
             sessionListText += "참여중"
             binding.coverSessionListTextView.text = sessionListText
 
+            binding.coverLikeTextView.text = item.like.toString()
+            binding.coverViewTextView.text = item.view.toString()
+
             binding.root.setOnClickListener {
                 itemClick(item)
             }
