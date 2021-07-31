@@ -26,6 +26,9 @@ class RecordButton(
             ButtonState.ON_RECORDING -> {
                 setImageResource(R.drawable.ic_stop)
             }
+            ButtonState.STOP_RECORDING -> {
+                setImageResource(R.drawable.ic_reset)
+            }
         }
     }
 }

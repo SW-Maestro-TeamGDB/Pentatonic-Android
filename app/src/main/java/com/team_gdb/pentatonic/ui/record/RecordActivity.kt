@@ -81,6 +81,12 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 ButtonState.ON_RECORDING -> {
                     stopPlaying()
                     stopRecording()
+                    state = ButtonState.STOP_RECORDING
+                    binding.recordButton.updateIconWithState(state)
+                }
+                ButtonState.STOP_RECORDING -> {
+                    binding.startCountDownTextView.visibility = View.VISIBLE
+                    countDownTimer.start()
                 }
             }
         }
