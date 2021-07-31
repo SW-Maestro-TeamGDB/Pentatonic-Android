@@ -26,7 +26,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initAfterBinding() {
-        // 밴드 커버 리사이클러뷰 어댑터 접합
+        // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
         }
@@ -37,7 +37,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             this.setHasFixedSize(true)
         }
 
-        // 솔로 커버 리사이클러뷰 어댑터 접합
+        bandCoverListAdapter.setItem(TestData.itemList)
+
+        // 솔로 커버 리사이클러뷰 어댑터 생성
         soloCoverListAdapter = CoverListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationSoloCover(it))
         }
@@ -47,6 +49,8 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)
         }
+
+        soloCoverListAdapter.setItem(TestData.itemList)
 
         // 위클리 챌린지 페이지로 이동
         binding.weeklyChallengeSongButton.setOnClickListener {

@@ -92,10 +92,10 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_centerVertical="true"
-                android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="@string/rising_band_cover_title_text"
                 android:textColor="@color/black"

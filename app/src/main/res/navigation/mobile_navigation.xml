@@ -90,8 +90,8 @@
         android:name="com.team_gdb.pentatonic.ui.band_cover.BandCoverFragment"
         tools:layout="@layout/fragment_band_cover">
         <argument
-            android:name="coverItem"
-            app:argType="CoverItem" />
+            android:name="bandCoverItem"
+            app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
     </fragment>
 
     <fragment
@@ -99,8 +99,8 @@
         android:name="com.team_gdb.pentatonic.ui.solo_cover.SoloCoverFragment"
         tools:layout="@layout/fragment_solo_cover">
         <argument
-            android:name="coverItem"
-            app:argType="CoverItem" />
+            android:name="soloCoverItem"
+            app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
     </fragment>
 
 </navigation>
