@@ -119,7 +119,7 @@
         <androidx.recyclerview.widget.RecyclerView
             tools:itemCount="2"
             android:layout_marginTop="8dp"
-            tools:listitem="@layout/list_item_cover"
+            tools:listitem="@layout/item_cover_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -161,7 +161,7 @@
         <androidx.recyclerview.widget.RecyclerView
             tools:itemCount="2"
             android:layout_marginTop="8dp"
-            tools:listitem="@layout/list_item_cover"
+            tools:listitem="@layout/item_cover_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

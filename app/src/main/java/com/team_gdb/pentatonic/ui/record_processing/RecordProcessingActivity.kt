@@ -94,30 +94,30 @@ class RecordProcessingActivity :
         player = MediaPlayer()
         player?.apply {
             setDataSource(recordingFilePath)
-            try {
-                val reverbEffect = PresetReverb(0, 0)
-                reverbEffect.preset = PresetReverb.PRESET_LARGEHALL
-                reverbEffect.enabled = true
-                attachAuxEffect(reverbEffect.id)
+
+//                val reverbEffect = PresetReverb(0, 0)
+//                reverbEffect.preset = PresetReverb.PRESET_LARGEHALL
+//                reverbEffect.enabled = true
+//                attachAuxEffect(reverbEffect.id)
 //                val environmentalReverb = EnvironmentalReverb(0, 0)
 //                environmentalReverb.decayTime = 2000
 //                environmentalReverb.reflectionsDelay = 250
 //                environmentalReverb.reflectionsLevel = -8500
 //                environmentalReverb.roomLevel = -8500
-                attachAuxEffect(reverbEffect.id)
-
-            } catch (e: IllegalArgumentException) {
-                Timber.i("IllegalArgumentException 잼 ㅋㅋ :  ${player?.audioSessionId}")
-                Timber.e(e)
-            } catch (e: UnsupportedOperationException) {
-                Timber.i("UnsupportedOperationException 잼 ㅋㅋ :  ${player?.audioSessionId}")
-                Timber.e(e)
-            } catch (e: RuntimeException) {
-                Timber.i("RuntimeException 잼 ㅋㅋ :  ${player?.audioSessionId}")
-                Timber.e(e)
-            } finally {
-                Timber.i("오잉 또잉 ㅋㅋ")
-            }
+//                attachAuxEffect(reverbEffect.id)
+//
+//            } catch (e: IllegalArgumentException) {
+//                Timber.i("IllegalArgumentException 잼 ㅋㅋ :  ${player?.audioSessionId}")
+//                Timber.e(e)
+//            } catch (e: UnsupportedOperationException) {
+//                Timber.i("UnsupportedOperationException 잼 ㅋㅋ :  ${player?.audioSessionId}")
+//                Timber.e(e)
+//            } catch (e: RuntimeException) {
+//                Timber.i("RuntimeException 잼 ㅋㅋ :  ${player?.audioSessionId}")
+//                Timber.e(e)
+//            } finally {
+//                Timber.i("오잉 또잉 ㅋㅋ")
+//            }
             setAuxEffectSendLevel(1.0f)
             prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
             start()
