@@ -35,17 +35,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
     private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
 
-    /**
-     * TODO : state 를 viewModel 로 옮겨야 함
-    옵저브 하는 부분에서 updateIconWithState() 호출해야 할듯
-     */
-    private var state = ButtonState.BEFORE_RECORDING
-        set(value) {
-            field = value
-            binding.recordButton.updateIconWithState(value)
-        }
-
-    // 3초 카운트 후 녹음 시작
+    // 카운트 후 녹음 시작을 위한 CountDownTimer (3초)
     private val countDownTimer = object : CountDownTimer(3000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
             binding.startCountDownTextView.text =
@@ -54,16 +44,20 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
         override fun onFinish() {
             binding.startCountDownTextView.visibility = View.GONE
+            binding.totalTimeTextView.visibility = View.VISIBLE
             startPlaying()
             startRecoding()
         }
     }
 
     override fun initStartView() {
-        binding.recordButton.updateIconWithState(state)
+
     }
 
     override fun initDataBinding() {
+        viewModel.buttonState.observe(this) {
+            binding.recordButton.updateIconWithState(it)
+        }
     }
 
     override fun initAfterBinding() {
@@ -73,7 +67,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         }
 
         binding.recordButton.setOnClickListener {
-            when (state) {
+            when (viewModel.buttonState.value) {
                 ButtonState.BEFORE_RECORDING -> {
                     binding.startCountDownTextView.visibility = View.VISIBLE
                     countDownTimer.start()
@@ -81,8 +75,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 ButtonState.ON_RECORDING -> {
                     stopPlaying()
                     stopRecording()
-                    state = ButtonState.STOP_RECORDING
-                    binding.recordButton.updateIconWithState(state)
+                    viewModel.buttonState.postValue(ButtonState.STOP_RECORDING)
                 }
                 ButtonState.STOP_RECORDING -> {
                     binding.startCountDownTextView.visibility = View.VISIBLE
@@ -119,7 +112,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         binding.recordTimeTextView.startCountUp()
         binding.soundVisualizerView.startVisualizing(false)
 
-        state = ButtonState.ON_RECORDING
+        viewModel.buttonState.postValue(ButtonState.ON_RECORDING)
     }
 
     private fun stopRecording() {
@@ -132,8 +125,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         binding.soundVisualizerView.stopVisualizing()
         binding.recordTimeTextView.stopCountUp()
 
-
-        state = ButtonState.BEFORE_RECORDING
+        viewModel.buttonState.postValue(ButtonState.BEFORE_RECORDING)
     }
 
     companion object {
