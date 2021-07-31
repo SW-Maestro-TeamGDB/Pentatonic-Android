@@ -46,9 +46,6 @@ class RecordProcessingActivity :
     }
 
     override fun initAfterBinding() {
-        amplitudeData = intent.extras?.getByteArray(AMPLITUDE_DATA)!!
-        binding.audioSeekBar.scaledData = amplitudeData
-
         // ViewPager 어댑터 지정 및 탭 이름 설정
         binding.viewPager.adapter = TabFragmentAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
@@ -82,9 +79,9 @@ class RecordProcessingActivity :
             }
         })
 
-        amplitudeData.forEach {
-            Timber.d("BYTE : $it")
-        }
+        // AudioWave SeekBar 데이터 입력 (ByteArray)
+        amplitudeData = intent.extras?.getByteArray(AMPLITUDE_DATA)!!
+        binding.audioSeekBar.setRawData(amplitudeData)
         binding.audioSeekBar.onProgressListener = object: OnProgressListener{
             override fun onProgressChanged(progress: Float, byUser: Boolean) {
                 Timber.d("SeekBar : $progress")

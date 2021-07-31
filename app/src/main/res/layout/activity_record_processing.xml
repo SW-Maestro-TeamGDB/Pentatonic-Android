@@ -15,7 +15,7 @@
             android:layout_marginHorizontal="24dp"
             app:cardCornerRadius="24dp"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="170dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -45,19 +45,17 @@
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_below="@+id/recordPlayCardView"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginVertical="16dp"
             app:animateExpansion="true"
             app:chunkHeight="24dp"
-            app:chunkRadius="1dp"
+            app:chunkRadius="5dp"
             app:chunkSpacing="1dp"
             app:chunkWidth="3dp"
-            app:minChunkHeight="2dp"
+            app:minChunkHeight="3dp"
             app:touchable="true"
-            app:waveColor="@color/black" />
+            app:waveColor="@color/main_dark" />
 
         <com.team_gdb.pentatonic.ui.record.CountUpTextView
             android:id="@+id/recordTimeTextView"
