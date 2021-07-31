@@ -4,6 +4,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.media.audiofx.PresetReverb
+import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import com.newidea.mcpestore.libs.base.BaseActivity
@@ -12,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
+import timber.log.Timber
 import kotlin.math.roundToInt
 
 /**
@@ -85,7 +87,15 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
         // 임시로 사용, 이상적인 로직은 녹음 후 자동으로 인텐트
         binding.recordCompleteButton.setOnClickListener {
-            startActivity(Intent(this, RecordProcessingActivity::class.java))
+            var byteArray = byteArrayOf()
+            binding.soundVisualizerView.drawingAmplitudes.forEach {
+                byteArray += it.toByte()
+            }
+            val intent = Intent(this, RecordProcessingActivity::class.java)
+            val bundle = Bundle()
+            bundle.putByteArray(AMPLITUDE_DATA, byteArray)
+            intent.putExtras(bundle)
+            startActivity(intent)
         }
 
     }
@@ -154,6 +164,10 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private fun stopPlaying() {
         player?.release()
         player = null
+    }
+
+    companion object{
+        const val AMPLITUDE_DATA = "AMPLITUDE_DATA"
     }
 
 }

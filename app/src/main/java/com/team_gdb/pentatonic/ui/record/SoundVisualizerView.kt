@@ -24,9 +24,10 @@ class SoundVisualizerView(
 
     private var drawingWidth: Int = 0
     private var drawingHeight: Int = 0
-    private var drawingAmplitudes: List<Int> = emptyList()
     private var isReplaying: Boolean = false
     private var replayingPosition: Int = 0
+    
+    var drawingAmplitudes: List<Int> = emptyList()
 
     // 반복적인 드로우 처리를 위한 Runnable 객체
     private val visualizeRepeatAction: Runnable = object : Runnable {

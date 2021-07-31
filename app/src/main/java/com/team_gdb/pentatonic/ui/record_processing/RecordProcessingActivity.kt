@@ -9,7 +9,9 @@ import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.record.ButtonState
+import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
 
 
@@ -27,6 +29,8 @@ class RecordProcessingActivity :
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
+    lateinit var amplitudeData: ByteArray
+
     private var state = ButtonState.BEFORE_PLAYING
         set(value) { // setter 설정
             field = value // 실제 프로퍼티에 대입
@@ -35,12 +39,15 @@ class RecordProcessingActivity :
 
     override fun initStartView() {
         binding.playButton.updateIconWithState(state)
+
     }
 
     override fun initDataBinding() {
     }
 
     override fun initAfterBinding() {
+        amplitudeData = intent.extras?.getByteArray(AMPLITUDE_DATA)!!
+        binding.audioSeekBar.scaledData = amplitudeData
 
         // ViewPager 어댑터 지정 및 탭 이름 설정
         binding.viewPager.adapter = TabFragmentAdapter(this)
@@ -74,6 +81,21 @@ class RecordProcessingActivity :
                 binding.indicator.layoutParams = params
             }
         })
+
+        amplitudeData.forEach {
+            Timber.d("BYTE : $it")
+        }
+        binding.audioSeekBar.onProgressListener = object: OnProgressListener{
+            override fun onProgressChanged(progress: Float, byUser: Boolean) {
+                Timber.d("SeekBar : $progress")
+            }
+
+            override fun onStartTracking(progress: Float) {
+            }
+
+            override fun onStopTracking(progress: Float) {
+            }
+        }
 
         binding.playButton.setOnClickListener {
             when (state) {
