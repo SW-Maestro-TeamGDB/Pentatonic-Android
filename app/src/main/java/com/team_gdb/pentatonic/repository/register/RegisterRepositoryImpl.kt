@@ -20,8 +20,8 @@ class RegisterRepositoryImpl : RegisterRepository {
 
     /**
      * 회원가입시 입력한 정보가 올바른지 검사함
-     * @param id : 사용자의 ID
-     * @param nickname : 사용자의 닉네임
+     * @param id        사용자의 ID
+     * @param nickname  사용자의 닉네임
      */
     override fun isValidForm(id: String, nickname: String) {
         isValidIdQuery(id)
@@ -30,8 +30,8 @@ class RegisterRepositoryImpl : RegisterRepository {
 
     /**
      * 사용자가 입력한 ID 가 올바른지 검사
-     * @param id : 사용자의 ID
-     * @return : 올바른지 true, false 형태로 반환
+     * @param id    사용자의 ID
+     * @return      올바른지 true, false 형태로 반환
      */
     override fun isValidIdQuery(id: String) {
         apolloClient.rxQuery(CheckIDQuery(isValidIdId = id))
@@ -55,8 +55,8 @@ class RegisterRepositoryImpl : RegisterRepository {
 
     /**
      * 사용자가 입력한 닉네임이 올바른지 검사
-     * @param nickname : 사용자의 닉네임
-     * @return : 올바른지 true, false 형태로 반환
+     * @param nickname  사용자의 닉네임
+     * @return          올바른지 true, false 형태로 반환
      */
     override fun isValidNicknameQuery(nickname: String) {
         apolloClient.rxQuery(CheckNicknameQuery(isValidUsernameUsername = nickname))

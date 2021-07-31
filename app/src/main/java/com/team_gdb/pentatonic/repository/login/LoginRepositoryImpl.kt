@@ -12,9 +12,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class LoginRepositoryImpl: LoginRepository {
     /**
      * 로그인 시 입력한 정보가 올바른 지 검사함
-     * @param id : 사용자의 ID
-     * @param nickname : 사용자의 닉네임
-     * @return : Rx Single Observable 객체
+     * @param id        사용자의 ID
+     * @param password  사용자의 패스워드
+     * @return          Rx Single Observable 객체
      */
     override fun requestLogin(id: String, password: String): Single<Response<LoginMutation.Data>> =
         NetworkHelper.apolloClient.rxMutate(LoginMutation(LoginInput(LoginArgs(id, password))))

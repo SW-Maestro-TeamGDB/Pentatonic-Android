@@ -16,8 +16,8 @@ class UserVerifyRepositoryImpl : UserVerifyRepository {
 
     /**
      * 인증번호 전송을 요청하는 메소드
-     * @param phoneNumber : 사용자 휴대전화 번호
-     * @return : Rx Single Observable 객체
+     * @param phoneNumber   사용자 휴대전화 번호
+     * @return              Rx Single Observable 객체
      */
     override fun sendAuthCode(phoneNumber: String): Single<Response<SendAuthCodeMutation.Data>> =
         apolloClient.rxMutate(
@@ -31,10 +31,10 @@ class UserVerifyRepositoryImpl : UserVerifyRepository {
 
     /**
      * 회원가입을 요청하는 메소드
-     * @param registerForm : 사용자 회원가입 입력폼 정보
-     * @param phoneNumber : 사용자 휴대전화 번호
-     * @param authCode : 사용자 인증번호
-     * @return : Rx Single Observable 객체
+     * @param registerForm  사용자 회원가입 입력폼 정보
+     * @param phoneNumber   사용자 휴대전화 번호
+     * @param authCode      사용자 인증번호
+     * @return              Rx Single Observable 객체
      */
     override fun requestRegister(
         registerForm: RegisterForm,
