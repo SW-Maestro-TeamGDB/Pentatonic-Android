@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 
-class RecordProcessingActivity :
+class RecordProcessingActivity : 
     BaseActivity<ActivityRecordProcessingBinding, RecordProcessingViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_record_processing
