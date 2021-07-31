@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'com.apollographql.apollo'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {

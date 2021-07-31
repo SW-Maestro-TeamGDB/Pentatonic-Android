@@ -1,5 +1,7 @@
 package com.team_gdb.pentatonic.data.model
 
+import java.io.Serializable
+
 
 /**
  * Cover (밴드, 솔로) 아이템 정보를 담는 클래스
@@ -20,4 +22,4 @@ data class CoverItem(
     val sessionList: List<Map<String, String>>,
     val like: Int,
     val view: Int,
-)
+): Serializable

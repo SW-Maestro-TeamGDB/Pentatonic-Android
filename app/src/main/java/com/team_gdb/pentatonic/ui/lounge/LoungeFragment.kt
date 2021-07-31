@@ -1,8 +1,11 @@
 package com.team_gdb.pentatonic.ui.lounge
 
+import android.content.Intent
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.adapter.CoverListAdapter
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -10,6 +13,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_lounge
     override val viewModel: LoungeViewModel by viewModel()
+
+    private lateinit var bandCoverListAdapter: CoverListAdapter  // 밴드 커버 리스트
+    private lateinit var soloCoverListAdapter: CoverListAdapter  // 솔로 커버 리스트
 
     override fun initStartView() {
         binding.viewModel = viewModel
@@ -20,6 +26,28 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initAfterBinding() {
+        // 밴드 커버 리사이클러뷰 어댑터 접합
+        bandCoverListAdapter = CoverListAdapter {
+            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
+        }
+
+        binding.bandCoverList.apply {
+            this.adapter = bandCoverListAdapter
+            this.layoutManager = LinearLayoutManager(context)
+            this.setHasFixedSize(true)
+        }
+
+        // 솔로 커버 리사이클러뷰 어댑터 접합
+        soloCoverListAdapter = CoverListAdapter {
+            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationSoloCover(it))
+        }
+
+        binding.soloCoverList.apply {
+            this.adapter = soloCoverListAdapter
+            this.layoutManager = LinearLayoutManager(context)
+            this.setHasFixedSize(true)
+        }
+
         // 위클리 챌린지 페이지로 이동
         binding.weeklyChallengeSongButton.setOnClickListener {
             findNavController().navigate(

@@ -117,6 +117,7 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bandCoverList"
             tools:itemCount="2"
             android:layout_marginTop="8dp"
             tools:listitem="@layout/item_cover_list"
@@ -159,6 +160,7 @@
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/soloCoverList"
             tools:itemCount="2"
             android:layout_marginTop="8dp"
             tools:listitem="@layout/item_cover_list"
