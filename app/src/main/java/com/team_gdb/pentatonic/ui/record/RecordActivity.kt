@@ -38,8 +38,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     // 카운트 후 녹음 시작을 위한 CountDownTimer (3초)
     private val countDownTimer = object : CountDownTimer(3000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
-            binding.startCountDownTextView.text =
-                "${(millisUntilFinished.toFloat() / 1000.0f).roundToInt()}초"
+            binding.startCountDownTextView.text = "${(millisUntilFinished.toFloat() / 1000.0f).roundToInt()}초"
         }
 
         override fun onFinish() {
@@ -122,14 +121,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         }
         recorder = null
 
+        binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
         binding.soundVisualizerView.stopVisualizing()
         binding.recordTimeTextView.stopCountUp()
 
         viewModel.buttonState.postValue(ButtonState.BEFORE_RECORDING)
-    }
-
-    companion object {
-        val RECORD_AMPLITUDE = "RECORD_AMPLITUDE"
     }
 
     /**
@@ -146,6 +142,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
         // 끝까지 재생이 끝났을 때
         player?.setOnCompletionListener {
+            binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
             stopPlaying()
             stopRecording()
         }

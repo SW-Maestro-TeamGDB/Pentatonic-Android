@@ -3,31 +3,70 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordProcessActivity">
 
-        <com.team_gdb.pentatonic.ui.record_processing.PlayButton
-            android:id="@+id/playButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_play"
-            android:tint="@color/main_dark" />
+
+        <TextView
+            android:id="@+id/recordTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="Recording"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <androidx.cardview.widget.CardView
+            app:cardElevation="12dp"
+            android:id="@+id/recordPlayCardView"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="24dp"
+            app:cardCornerRadius="24dp"
+            android:layout_below="@+id/recordTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/record_processing_bg" />
+
+                <com.team_gdb.pentatonic.ui.record_processing.PlayButton
+                    android:id="@+id/playButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_play"
+                    android:tint="@color/white" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
         <com.team_gdb.pentatonic.ui.record.CountUpTextView
             android:id="@+id/recordTimeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/playButton"
             android:layout_centerHorizontal="true"
-            android:layout_margin="24dp"
-            android:text="00:00" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="24dp"
+            android:layout_below="@+id/recordPlayCardView"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="00:00"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
 
         <LinearLayout
@@ -39,24 +78,25 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="32dp"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="8dp"
                 android:clipToPadding="false">
 
                 <View
                     android:background="@drawable/tab_bg_gray"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"/>
+                    android:layout_height="45dp"/>
 
                 <View
                     android:id="@+id/indicator"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/gradient_bg"/>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="45dp"
                     android:background="@drawable/tab_bg"
                     app:tabGravity="fill"
                     app:tabMode="fixed"
@@ -69,7 +109,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="500dp"/>
+                android:layout_height="match_parent"/>
 
         </LinearLayout>
 

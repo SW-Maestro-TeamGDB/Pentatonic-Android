@@ -8,37 +8,46 @@
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordActivity">
 
+        <ImageView
+            android:scaleType="centerCrop"
+            android:src="@drawable/record_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
         <TextView
             android:id="@+id/recordTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="48dp"
             android:fontFamily="@font/nanum_extrabold"
             android:text="Recording"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="24sp" />
 
+        <!-- 녹음되고있는 실시간 진폭을 기반으로 음성을 시각화하는 뷰 -->
         <com.team_gdb.pentatonic.ui.record.SoundVisualizerView
-            android:layout_marginTop="16dp"
             android:id="@+id/soundVisualizerView"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:layout_below="@+id/recordTitleText"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp" />
 
+        <!-- 녹음 시작 전 3초 카운트 다운을 보여주는 뷰 -->
         <TextView
             android:layout_centerHorizontal="true"
             android:textSize="24sp"
             android:fontFamily="@font/nanum_extrabold"
             android:visibility="gone"
-            android:textColor="@color/black"
             android:layout_margin="16dp"
+            android:textColor="@color/white"
             android:layout_below="@+id/recordButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/startCountDownTextView"/>
 
+        <!-- 녹음 시작, 중지, 재시도 상태를 가지는 커스텀 버튼 -->
         <com.team_gdb.pentatonic.ui.record.RecordButton
             android:id="@+id/recordButton"
             android:layout_width="120dp"
@@ -48,8 +57,9 @@
             android:layout_marginTop="32dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_record"
-            android:tint="@color/black" />
+            android:tint="@color/white" />
 
+        <!-- 녹음한 시간 표시 -->
         <com.team_gdb.pentatonic.ui.record.CountUpTextView
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/recordButton"
@@ -57,14 +67,17 @@
             android:fontFamily="@font/nanum_extrabold"
             android:layout_marginTop="16dp"
             android:layout_marginStart="24dp"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <!-- 총 MR 길이 표시 (최대 녹음 가능 시간) -->
         <com.team_gdb.pentatonic.ui.record.CountUpTextView
             android:id="@+id/totalTimeTextView"
             android:visibility="gone"
             android:layout_width="wrap_content"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_below="@+id/recordTimeTextView"
             android:layout_centerHorizontal="true"
@@ -74,6 +87,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/recordCompleteButton"
             android:text="다음으로"
             android:textColor="@color/white"

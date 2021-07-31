@@ -51,7 +51,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
         soloCoverListAdapter.setItem(TestData.testSoloCoverList)
 
-        // 위클리 챌린지 페이지로 이동
+        // 위클리 챌린지 페이지로 이동Z
         binding.weeklyChallengeSongButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_navigation_lounge_to_navigation_weekly_challenge
