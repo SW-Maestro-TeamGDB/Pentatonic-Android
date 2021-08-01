@@ -1,4 +1,4 @@
-package com.newidea.mcpestore.libs.base
+package com.team_gdb.pentatonic.base
 
 import android.content.Context
 import android.os.Bundle

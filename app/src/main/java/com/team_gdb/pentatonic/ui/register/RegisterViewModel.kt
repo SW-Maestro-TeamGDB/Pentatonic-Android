@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic.ui.register
 
 import androidx.lifecycle.MutableLiveData
-import com.newidea.mcpestore.libs.base.BaseViewModel
+import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 
 class RegisterViewModel(private val repository: RegisterRepository) : BaseViewModel() {

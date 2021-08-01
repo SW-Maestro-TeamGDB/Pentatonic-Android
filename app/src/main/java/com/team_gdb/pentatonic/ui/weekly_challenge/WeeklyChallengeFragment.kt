@@ -1,13 +1,7 @@
 package com.team_gdb.pentatonic.ui.weekly_challenge
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.FragmentWeeklyChallengeBinding
 

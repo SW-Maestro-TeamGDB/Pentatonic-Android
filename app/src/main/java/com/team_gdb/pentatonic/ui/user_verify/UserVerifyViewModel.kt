@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic.ui.user_verify
 
 import androidx.lifecycle.MutableLiveData
-import com.newidea.mcpestore.libs.base.BaseViewModel
+import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
 import com.team_gdb.pentatonic.util.Event

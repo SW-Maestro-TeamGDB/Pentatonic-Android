@@ -1,8 +1,8 @@
 package com.team_gdb.pentatonic.ui.rising_band
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentRisingBandBinding
 
 class RisingBandFragment : BaseFragment<FragmentRisingBandBinding, RisingBandViewModel>() {

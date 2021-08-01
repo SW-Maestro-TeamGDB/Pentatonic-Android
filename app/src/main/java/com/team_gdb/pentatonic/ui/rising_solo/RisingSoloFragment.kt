@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic.ui.rising_solo
 
-import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentRisingSoloBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

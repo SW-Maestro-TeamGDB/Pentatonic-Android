@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic.ui.login
 
 import androidx.lifecycle.MutableLiveData
-import com.newidea.mcpestore.libs.base.BaseViewModel
+import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

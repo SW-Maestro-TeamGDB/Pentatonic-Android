@@ -7,8 +7,8 @@ import android.media.audiofx.PresetReverb
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
-import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding

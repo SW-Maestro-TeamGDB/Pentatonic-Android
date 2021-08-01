@@ -3,9 +3,9 @@ package com.team_gdb.pentatonic.ui.user_verify
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
-import com.newidea.mcpestore.libs.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.databinding.ActivityUserVerifyBinding
 import com.team_gdb.pentatonic.ui.login.LoginActivity

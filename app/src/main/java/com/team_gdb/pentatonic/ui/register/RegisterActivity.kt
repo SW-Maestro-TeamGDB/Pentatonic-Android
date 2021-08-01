@@ -1,8 +1,8 @@
 package com.team_gdb.pentatonic.ui.register
 
 import android.content.Intent
-import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.RegisterForm
 import com.team_gdb.pentatonic.databinding.ActivityRegisterBinding
 import com.team_gdb.pentatonic.ui.user_verify.UserVerifyActivity

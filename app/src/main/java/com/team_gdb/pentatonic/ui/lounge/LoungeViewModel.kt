@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
-import com.newidea.mcpestore.libs.base.BaseViewModel
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseViewModel
 
 class LoungeViewModel : BaseViewModel() {
 

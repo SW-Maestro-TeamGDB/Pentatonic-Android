@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
+    <com.xw.repo.widget.BounceScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -101,7 +101,6 @@
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
-
             <TextView
                 android:gravity="center|end"
                 android:layout_width="70dp"
@@ -141,7 +140,6 @@
                 android:text="@string/rising_solo_cover_title_text"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
-
 
             <TextView
                 android:gravity="center|end"
@@ -200,17 +198,10 @@
                     android:textSize="24sp"
                     android:text="전체 커버 및 검색"/>
 
-
-
             </RelativeLayout>
-
-
         </androidx.cardview.widget.CardView>
-
     </LinearLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
+    </com.xw.repo.widget.BounceScrollView>
     <data>
 
         <variable

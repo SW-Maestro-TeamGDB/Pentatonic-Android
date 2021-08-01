@@ -1,8 +1,8 @@
 package com.team_gdb.pentatonic.ui.studio
 
 import android.content.Intent
-import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

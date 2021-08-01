@@ -2,8 +2,8 @@ package com.team_gdb.pentatonic.ui.login
 
 import android.content.Intent
 import android.widget.Toast
-import com.newidea.mcpestore.libs.base.BaseActivity
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.databinding.ActivityLoginBinding
 import com.team_gdb.pentatonic.ui.home.HomeActivity

@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic.ui.band_cover
 
-import androidx.lifecycle.ViewModel
+import com.team_gdb.pentatonic.base.BaseViewModel
 
-class BandCoverViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+class BandCoverViewModel : BaseViewModel() {
 }

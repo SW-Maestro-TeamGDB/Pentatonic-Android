@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic.ui.my_page
 
-import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -2,9 +2,9 @@ package com.team_gdb.pentatonic.ui.lounge
 
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.newidea.mcpestore.libs.base.BaseFragment
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.CoverListAdapter
+import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
