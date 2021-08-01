@@ -11,9 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pentatonic"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.record_processing.RecordProcessingActivity"></activity>
-        <activity android:name=".ui.record.RecordActivity">
+        <activity android:name=".ui.record_processing.RecordProcessingActivity">
 
+        </activity>
+        <activity android:name=".ui.record.RecordActivity">
         </activity>
         <activity android:name=".ui.user_verify.UserVerifyActivity" />
         <activity android:name=".ui.register.RegisterActivity" />

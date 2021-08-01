@@ -17,6 +17,8 @@
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/drawable_left_image_like.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.19703947368421051" />
+        <entry key="app/src/main/res/layout/fragment_control.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.14651639344262296" />
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.16154371584699453" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.10116354234001293" />
