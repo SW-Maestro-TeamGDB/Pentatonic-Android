@@ -15,15 +15,14 @@
             android:fontFamily="@font/nanum_extrabold"
             android:text="세션 이름"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_session_participant_list"
             android:id="@+id/sessionParticipantList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

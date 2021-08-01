@@ -14,8 +14,8 @@
             android:src="@drawable/profile_image_placeholder"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            android:layout_width="70dp"
-            android:layout_height="70dp"/>
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
         <TextView
             android:id="@+id/usernameTextView"
@@ -23,7 +23,7 @@
             android:text="닉네임"
             android:fontFamily="@font/nanum_extrabold"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
