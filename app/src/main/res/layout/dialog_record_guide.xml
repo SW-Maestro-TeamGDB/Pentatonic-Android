@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:padding="24dp"
-        android:layout_height="match_parent">
+        android:layout_height="300dp">
 
         <TextView
             android:id="@+id/guideTitleText"
-            android:text="녹음 주의사항"
-            android:fontFamily="@font/nanum_extrabold"
-            android:textSize="24sp"
-            android:layout_marginVertical="16dp"
-            android:textColor="@color/black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="녹음 주의사항"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/guideTitleText"
-            android:fontFamily="@font/nanum_light"
+            android:fontFamily="@font/nanum_extrabold"
             android:text="- 유선 이어폰 사용을 권장합니다.\n\n- 조용한 장소에서 녹음을 진행해주세요."
             android:textSize="16sp" />
 
@@ -32,6 +29,7 @@
             android:id="@+id/confirmGuideButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_extrabold"
             android:layout_alignParentBottom="true"
             android:background="@drawable/custom_radius_background_dark"
             android:text="알겠습니다"
