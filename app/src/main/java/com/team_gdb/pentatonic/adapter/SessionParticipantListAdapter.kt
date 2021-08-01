@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.team_gdb.pentatonic.data.model.CoverItem
-import com.team_gdb.pentatonic.data.model.User
+import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
 
 /**
@@ -13,10 +12,10 @@ import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
  *
  * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 클릭리스너 전달
  */
-class SessionParticipantListAdapter(val itemClick: (User) -> Unit) :
+class SessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
     RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
 
-    private var participantList: List<User> = emptyList()  // 세션 참가자들 목록
+    private var participantList: List<UserEntity> = emptyList()  // 세션 참가자들 목록
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -47,7 +46,7 @@ class SessionParticipantListAdapter(val itemClick: (User) -> Unit) :
         private val binding: ItemSessionParticipantListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: User) {
+        fun bind(item: UserEntity) {
             binding.usernameTextView.text = item.username
 
             if (item.profileImage.isNotBlank()) {
@@ -63,7 +62,7 @@ class SessionParticipantListAdapter(val itemClick: (User) -> Unit) :
         }
     }
 
-    fun setItem(items: List<User>) {
+    fun setItem(items: List<UserEntity>) {
         this.participantList = items
         notifyDataSetChanged()
     }

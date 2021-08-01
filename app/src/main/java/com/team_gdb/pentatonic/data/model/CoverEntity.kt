@@ -15,7 +15,7 @@ import java.io.Serializable
  * @property like           커버 좋아요 수
  * @property view           커버 조회 수
  */
-data class CoverItem(
+data class CoverEntity(
     val id: Int,
     val coverName: String,
     val originalSong: String,

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.CoverItem
+import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemCoverListBinding
 
 /**
@@ -13,10 +13,10 @@ import com.team_gdb.pentatonic.databinding.ItemCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동할 수 있도록 어댑터 생성 시 클릭리스너 동작 전달
  */
-class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
+class CoverListAdapter(val itemClick: (CoverEntity) -> Unit) :
     RecyclerView.Adapter<CoverListAdapter.ViewHolder>() {
 
-    private var coverItemList: List<CoverItem> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<CoverEntity> = emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -32,24 +32,24 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(coverItemList[position])
+        holder.bind(coverEntityList[position])
     }
 
     override fun getItemCount(): Int {
-        return coverItemList.size
+        return coverEntityList.size
     }
 
     inner class ViewHolder(
         private val binding: ItemCoverListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: CoverItem) {
-            binding.coverNameTextView.text = item.coverName
-            binding.coverOriginalSongTextView.text = item.originalSong
+        fun bind(entity: CoverEntity) {
+            binding.coverNameTextView.text = entity.coverName
+            binding.coverOriginalSongTextView.text = entity.originalSong
 
-            if (item.imageUrl.isNotBlank()) {
+            if (entity.imageUrl.isNotBlank()) {
                 Glide.with(binding.root)
-                    .load(item.imageUrl)
+                    .load(entity.imageUrl)
                     .override(480, 272)
                     .into(binding.coverImage)
             } else {
@@ -61,7 +61,7 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
 
             val sessionSet = mutableSetOf<String>()
             var sessionListText = ""
-            item.sessionList.forEach {
+            entity.sessionList.forEach {
                 sessionSet.add(it.sessionName)
             }
             sessionSet.forEach {
@@ -70,17 +70,17 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
             sessionListText += "참여중"
             binding.coverSessionListTextView.text = sessionListText
 
-            binding.coverLikeTextView.text = item.like.toString()
-            binding.coverViewTextView.text = item.view.toString()
+            binding.coverLikeTextView.text = entity.like.toString()
+            binding.coverViewTextView.text = entity.view.toString()
 
             binding.root.setOnClickListener {
-                itemClick(item)
+                itemClick(entity)
             }
         }
     }
 
-    fun setItem(items: List<CoverItem>) {
-        this.coverItemList = items
+    fun setItem(entities: List<CoverEntity>) {
+        this.coverEntityList = entities
         notifyDataSetChanged()
     }
 }

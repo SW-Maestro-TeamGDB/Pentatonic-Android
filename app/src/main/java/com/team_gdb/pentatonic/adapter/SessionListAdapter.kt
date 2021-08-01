@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.team_gdb.pentatonic.data.model.CoverItem
 import com.team_gdb.pentatonic.data.model.Session
-import com.team_gdb.pentatonic.data.model.User
+import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 
 /**
@@ -14,7 +13,7 @@ import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
  *
  * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 클릭리스너 전달 (내부 리사이클러뷰 어댑터에 전달)
  */
-class SessionListAdapter(val itemClick: (User) -> Unit) :
+class SessionListAdapter(val itemClick: (UserEntity) -> Unit) :
     RecyclerView.Adapter<SessionListAdapter.ViewHolder>() {
 
     private var sessionList: List<Session> = emptyList()  // 커버에 존재하는 Session 목록 리스트 정보 (일렉기타, 드럼 등)

@@ -1,12 +1,13 @@
-package com.team_gdb.pentatonic.ui.lounge
+package com.team_gdb.pentatonic
 
-import com.team_gdb.pentatonic.data.model.CoverItem
+import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.Session
-import com.team_gdb.pentatonic.data.model.User
+import com.team_gdb.pentatonic.data.model.SongEntity
+import com.team_gdb.pentatonic.data.model.UserEntity
 
 object TestData {
-    val testBandCoverList: List<CoverItem> = listOf(
-        CoverItem(
+    val TEST_BAND_COVER_LIST: List<CoverEntity> = listOf(
+        CoverEntity(
             id = 0,
             coverName = "데이식스 담당 찐따",
             originalSong = "DAY6 - 반드시 웃는다",
@@ -16,13 +17,13 @@ object TestData {
                 Session(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "1234",
                             username = "H43RO",
                             profileImage = "https://avatars.githubusercontent.com/u/30336663?v=4",
                             introduction = "취미로 기타 뜯고 놀아요"
                         ),
-                        User(
+                        UserEntity(
                             id = "1234",
                             username = "원필쓰",
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
@@ -33,31 +34,31 @@ object TestData {
                 Session(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "LULU",
                             profileImage = "http://file3.instiz.net/data/cached_img/upload/2018/05/11/16/45c97753ecfd78eca2a0418d70f8ebf2.png",
                             introduction = "고양이 완전 조아해요"
                         ),
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "YoungK",
                             profileImage = "",
                             introduction = "안녕하세요 DAY6 영케이 입니당"
                         ),
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "MUX",
                             profileImage = "https://files.porsche.com/filestore/news/korea/ko/2018-04-28/headimage1/4793193a-4f9a-11e8-bbc5-0019999cd470/porsche-%ED%8F%AC%EB%A5%B4%EC%89%90AG%2C-2018%EB%85%84%EB%8F%84-1%EB%B6%84%EA%B8%B0-%EB%A7%A4%EC%B6%9C-%EB%B0%8F-%EC%98%81%EC%97%85-%EC%9D%B4%EC%9D%B5-%EC%A6%9D%EB%8C%80.jpg",
                             introduction = ""
                         ),
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "크앙",
                             profileImage = "https://mblogthumb-phinf.pstatic.net/20140330_226/oulimmm_1396149063970IN3XW_JPEG/nord_8.jpg?type=w2",
                             introduction = ""
                         ),
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "맨땅에헤딩",
                             profileImage = "",
@@ -69,7 +70,7 @@ object TestData {
             like = 38,
             view = 59
         ),
-        CoverItem(
+        CoverEntity(
             id = 1,
             coverName = "무지성 합주",
             originalSong = "Coldplay - Fix You",
@@ -79,7 +80,7 @@ object TestData {
                 Session(
                     sessionName = "드럼",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "1234",
                             username = "부기",
                             profileImage = "",
@@ -90,7 +91,7 @@ object TestData {
                 Session(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "Xenon2",
                             profileImage = "",
@@ -101,7 +102,7 @@ object TestData {
                 Session(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "2345",
                             username = "LEON",
                             profileImage = "",
@@ -115,8 +116,8 @@ object TestData {
         )
     )
 
-    val testSoloCoverList: List<CoverItem> = listOf(
-        CoverItem(
+    val TEST_SOLO_COVER_LIST: List<CoverEntity> = listOf(
+        CoverEntity(
             id = 0,
             coverName = "요즘 보컬 연습중이에요",
             originalSong = "DAY6 - Not Fine",
@@ -126,7 +127,7 @@ object TestData {
                 Session(
                     sessionName = "보컬",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "1234",
                             username = "김원필",
                             profileImage = "",
@@ -138,7 +139,7 @@ object TestData {
             like = 38,
             view = 59
         ),
-        CoverItem(
+        CoverEntity(
             id = 1,
             coverName = "그저 평범한 일렉 솔로",
             originalSong = "Coldplay - Fix You",
@@ -148,7 +149,7 @@ object TestData {
                 Session(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
-                        User(
+                        UserEntity(
                             id = "1234",
                             username = "H43RO",
                             profileImage = "",
@@ -161,5 +162,29 @@ object TestData {
             view = 31
         )
     )
+
+    val TEST_SONG_LIST: List<SongEntity> = listOf(
+        SongEntity(
+            name = "역대급",
+            artist = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg"
+        ),
+        SongEntity(
+            name = "놓아 놓아 놓아",
+            artist = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg"
+        ),
+        SongEntity(
+            name = "행복했던 날들이었다",
+            artist = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg"
+        ),
+        SongEntity(
+            name = "예뻤어",
+            artist = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg"
+        )
+    )
+
 
 }

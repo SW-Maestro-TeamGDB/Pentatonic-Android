@@ -7,9 +7,8 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.SessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
-import com.team_gdb.pentatonic.data.model.CoverItem
+import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.FragmentBandCoverBinding
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewModel>() {
@@ -18,8 +17,8 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
     override val viewModel: BandCoverViewModel by viewModel()
 
     private val coverItemArgs: BandCoverFragmentArgs by navArgs()
-    private val coverItem: CoverItem by lazy {
-        coverItemArgs.bandCoverItem
+    private val coverEntity: CoverEntity by lazy {
+        coverItemArgs.bandCoverEntity
     }
 
     override fun initStartView() {
@@ -30,11 +29,11 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
     }
 
     override fun initAfterBinding() {
-        binding.coverNameTextView.text = coverItem.coverName
-        binding.coverIntroductionTextView.text = coverItem.introduction
-        if (coverItem.imageUrl.isNotBlank()) {
+        binding.coverNameTextView.text = coverEntity.coverName
+        binding.coverIntroductionTextView.text = coverEntity.introduction
+        if (coverEntity.imageUrl.isNotBlank()) {
             Glide.with(this)
-                .load(coverItem.imageUrl)
+                .load(coverEntity.imageUrl)
                 .override(480, 272)
                 .into(binding.coverImage)
         } else {
@@ -52,6 +51,6 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
             this.adapter = sessionListAdapter
             this.setHasFixedSize(true)
         }
-        sessionListAdapter.setItem(coverItem.sessionList)
+        sessionListAdapter.setItem(coverEntity.sessionList)
     }
 }

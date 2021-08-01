@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/drawable/ic_record.xml" value="0.1388157894736842" />
         <entry key="app/src/main/res/drawable/rounded_dialog.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.18" />
         <entry key="app/src/main/res/layout/dialog_record_guard.xml" value="0.20559210526315788" />

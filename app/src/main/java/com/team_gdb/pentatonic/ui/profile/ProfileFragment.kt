@@ -5,10 +5,8 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.base.BaseFragment
-import com.team_gdb.pentatonic.data.model.CoverItem
-import com.team_gdb.pentatonic.data.model.User
+import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.FragmentProfileBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverFragmentArgs
 
 class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
 
@@ -17,8 +15,8 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     override val viewModel: ProfileViewModel by viewModel()
 
     private val userItemArgs: ProfileFragmentArgs by navArgs()
-    private val userItem: User by lazy {
-        userItemArgs.userItem
+    private val userEntityItem: UserEntity by lazy {
+        userItemArgs.userEntity
     }
 
     override fun initStartView() {
@@ -29,11 +27,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
     }
 
     override fun initAfterBinding() {
-        binding.usernameTextView.text = userItem.username
-        binding.userIntroductionTextView.text = userItem.introduction
-        if (userItem.profileImage.isNotBlank()){
+        binding.usernameTextView.text = userEntityItem.username
+        binding.userIntroductionTextView.text = userEntityItem.introduction
+        if (userEntityItem.profileImage.isNotBlank()){
             Glide.with(this)
-                .load(userItem.profileImage)
+                .load(userEntityItem.profileImage)
                 .override(100, 100)
                 .into(binding.userProfileImage)
         }

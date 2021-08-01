@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:padding="24dp"
+            android:paddingVertical="24dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -18,8 +18,8 @@
                 android:fontFamily="@font/nanum_extrabold"
                 android:textSize="24sp"
                 android:textColor="@color/black"
-                android:text="이런 커버 어때요?"
-                android:layout_marginHorizontal="8dp"
+                android:text="H43RO님, 이런 커버 어때요?"
+                android:layout_marginHorizontal="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -27,6 +27,7 @@
                 android:id="@+id/recommendCoverList"
                 tools:itemCount="2"
                 android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="24dp"
                 tools:listitem="@layout/item_cover_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -35,13 +36,41 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/nanum_extrabold"
                 android:textSize="24sp"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="32dp"
+                android:textColor="@color/black"
+                android:text="이런 곡들도 있어요"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <HorizontalScrollView
+                android:scrollbarThumbHorizontal="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recommendSongList"
+                    android:layout_marginStart="24dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="1"
+                    android:layout_marginTop="8dp"
+                    tools:listitem="@layout/item_song_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:textSize="24sp"
+                android:layout_marginHorizontal="32dp"
                 android:textColor="@color/black"
                 android:text="커버 업로드하기"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
@@ -69,26 +98,26 @@
                             app:tint="#80000000" />
 
                         <LinearLayout
-                            android:layout_centerInParent="true"
-                            android:orientation="vertical"
-                            android:gravity="center_horizontal"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
 
                             <ImageView
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_drum_icon"
                                 android:layout_width="50dp"
-                                android:layout_height="50dp"/>
+                                android:layout_height="50dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_drum_icon" />
 
                             <TextView
-                                android:layout_marginTop="8dp"
-                                android:textColor="@color/white"
-                                android:text="밴드 커버"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/nanum_extrabold"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:fontFamily="@font/nanum_extrabold"
+                                android:text="밴드 커버"
+                                android:textColor="@color/white"
+                                android:textSize="18sp" />
                         </LinearLayout>
 
                     </RelativeLayout>

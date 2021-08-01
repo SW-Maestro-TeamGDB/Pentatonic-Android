@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.lounge
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.CoverListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
@@ -36,7 +37,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             this.setHasFixedSize(true)
         }
 
-        bandCoverListAdapter.setItem(TestData.testBandCoverList)
+        bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
         // 솔로 커버 리사이클러뷰 어댑터 생성
         soloCoverListAdapter = CoverListAdapter {
@@ -49,7 +50,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             this.setHasFixedSize(true)
         }
 
-        soloCoverListAdapter.setItem(TestData.testSoloCoverList)
+        soloCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
 
         // 위클리 챌린지 페이지로 이동
         binding.weeklyChallengeSongButton.setOnClickListener {

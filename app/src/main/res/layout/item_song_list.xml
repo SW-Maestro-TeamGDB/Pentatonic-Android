@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        app:cardCornerRadius="16dp"
         android:layout_width="170dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
         android:layout_height="170dp"
         android:padding="16dp">
 

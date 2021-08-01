@@ -98,8 +98,8 @@
         android:name="com.team_gdb.pentatonic.ui.band_cover.BandCoverFragment"
         tools:layout="@layout/fragment_band_cover">
         <argument
-            android:name="bandCoverItem"
-            app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
+            android:name="bandCoverEntity"
+            app:argType="com.team_gdb.pentatonic.data.model.CoverEntity" />
         <action
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -114,8 +114,8 @@
         android:name="com.team_gdb.pentatonic.ui.solo_cover.SoloCoverFragment"
         tools:layout="@layout/fragment_solo_cover">
         <argument
-            android:name="soloCoverItem"
-            app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
+            android:name="soloCoverEntity"
+            app:argType="com.team_gdb.pentatonic.data.model.CoverEntity" />
     </fragment>
 
 
@@ -124,8 +124,8 @@
         android:name="com.team_gdb.pentatonic.ui.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <argument
-            android:name="userItem"
-            app:argType="com.team_gdb.pentatonic.data.model.User" />
+            android:name="userEntity"
+            app:argType="com.team_gdb.pentatonic.data.model.UserEntity" />
     </fragment>
 
 </navigation>
