@@ -9,6 +9,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_marginStart="32dp"
             android:id="@+id/sessionNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,8 +18,13 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        <com.chauthai.overscroll.RecyclerViewBouncy
+            app:friction="200"
+            app:gapLimit="220"
+            app:speedFactor="5"
+            app:tension="1000"
+            app:maxAdapterSizeToEstimate="5"
+            app:viewCountEstimateSize="5"
             tools:listitem="@layout/item_session_participant_list"
             android:id="@+id/sessionParticipantList"
             android:layout_width="match_parent"

@@ -35,7 +35,7 @@ class SessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(participantList[position])
+        holder.bind(participantList[position], position)
     }
 
     override fun getItemCount(): Int {
@@ -46,7 +46,13 @@ class SessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
         private val binding: ItemSessionParticipantListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: UserEntity) {
+        fun bind(item: UserEntity, position: Int) {
+            if (position == 0){
+                val param = binding.userLayout.layoutParams as ViewGroup.MarginLayoutParams
+                param.setMargins(64, 0, 0, 0)
+                binding.userLayout.layoutParams = param
+            }
+
             binding.usernameTextView.text = item.username
 
             if (item.profileImage.isNotBlank()) {

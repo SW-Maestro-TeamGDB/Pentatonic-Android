@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:id="@+id/userLayout"
         android:paddingVertical="16dp"
         android:paddingHorizontal="16dp"
         android:gravity="center_horizontal"

@@ -50,10 +50,10 @@ class SessionListAdapter(val itemClick: (UserEntity) -> Unit) :
             }
             adapter.setItem(items = item.sessionParticipantList)
             binding.sessionParticipantList.apply {
-                this.adapter = adapter
                 this.layoutManager = LinearLayoutManager(context).apply {
                     this.orientation = LinearLayoutManager.HORIZONTAL
                 }
+                this.adapter = adapter
                 this.setHasFixedSize(true)
             }
         }

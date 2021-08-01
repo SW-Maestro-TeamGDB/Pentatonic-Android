@@ -75,8 +75,6 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:overScrollMode="never"
-                android:paddingStart="8dp"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:id="@+id/sessionList"
                 android:layout_width="match_parent"
