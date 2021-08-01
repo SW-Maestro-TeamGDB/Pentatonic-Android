@@ -13,6 +13,13 @@ class SessionListAdapter() :
 
     private var sessionList: List<Session> = emptyList()  // 커버에 존재하는 Session 목록 리스트 정보 (일렉기타, 드럼 등)
 
+    /**
+     * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
+     *
+     * @param parent    부모 ViewGroup
+     * @param viewType  리사이클러 뷰 뷰타입
+     * @return          생성된 ViewHolder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemSessionListBinding.inflate(LayoutInflater.from(parent.context), parent, false)

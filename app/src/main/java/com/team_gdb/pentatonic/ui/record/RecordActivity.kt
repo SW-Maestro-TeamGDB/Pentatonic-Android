@@ -52,7 +52,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
 
     override fun initStartView() {
-
+        val bottomSheetDialog = RecordGuideBottomSheetDialog()
+        bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
     }
 
     override fun initDataBinding() {

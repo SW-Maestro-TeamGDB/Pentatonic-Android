@@ -11,6 +11,13 @@ class SessionParticipantListAdapter : RecyclerView.Adapter<SessionParticipantLis
 
     private var participantList: List<User> = emptyList()  // 세션 참가자들 목록
 
+    /**
+     * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
+     *
+     * @param parent    부모 ViewGroup
+     * @param viewType  리사이클러 뷰 뷰타입
+     * @return          생성된 ViewHolder
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemSessionParticipantListBinding.inflate(

@@ -12,7 +12,7 @@ import com.team_gdb.pentatonic.util.ViewUtil
 abstract class BaseBottomSheetDialogFragment<T : ViewDataBinding, R : BaseViewModel> :
     BottomSheetDialogFragment(){
 
-    lateinit var viewDataBinding: T
+    lateinit var binding: T
 
     var progressView: View? = null
 
@@ -42,16 +42,16 @@ abstract class BaseBottomSheetDialogFragment<T : ViewDataBinding, R : BaseViewMo
     abstract fun initAfterBinding()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewDataBinding = DataBindingUtil.inflate(inflater, layoutResourceId, container, false)
+        binding = DataBindingUtil.inflate(inflater, layoutResourceId, container, false)
 
         initStartView()
         initDataBinding()
         initAfterBinding()
-        return viewDataBinding.root
+        return binding.root
     }
 
     fun setProgressVisible(visible : Boolean){
-        ViewUtil.disableEnableControls(!visible, viewDataBinding.root as ViewGroup)
+        ViewUtil.disableEnableControls(!visible, binding.root as ViewGroup)
         progressView?.let {
             it.visibility = if(visible) View.VISIBLE else View.INVISIBLE
         }
