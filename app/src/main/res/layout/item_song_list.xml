@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="16dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/albumJacketImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@color/cardview_dark_background" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:background="#99000000"
+                android:orientation="vertical"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="12dp">
+
+                <TextView
+                    android:id="@+id/songNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="SONG_NAME"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/songArtistTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="ARTIST_NAME"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
