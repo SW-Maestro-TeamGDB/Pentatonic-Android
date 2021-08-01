@@ -26,6 +26,9 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
     override fun initDataBinding() {
     }
 
+    // TODO 동적으로 커버 참여 세션 리스트 보여주기 (리사이클러뷰 안에 리사이클러뷰)
+
+
     override fun initAfterBinding() {
         binding.coverNameTextView.text = coverItem.coverName
         binding.coverIntroductionTextView.text = coverItem.introduction

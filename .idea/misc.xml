@@ -17,6 +17,8 @@
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.10116354234001293" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.10116354234001293" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.20592105263157895" />
+        <entry key="app/src/main/res/layout/item_session_list.xml" value="0.20592105263157895" />
+        <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.20592105263157895" />
         <entry key="app/src/main/res/layout/list_item_cover.xml" value="0.10116354234001293" />
       </map>
     </option>
