@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
@@ -28,7 +29,7 @@ class SongListAdapter(val itemClick: (SongEntity) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(songEntityList[position])
+        holder.bind(songEntityList[position], position)
     }
 
     override fun getItemCount(): Int {
@@ -39,7 +40,12 @@ class SongListAdapter(val itemClick: (SongEntity) -> Unit) :
         private val binding: ItemSongListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: SongEntity) {
+        fun bind(entity: SongEntity, position: Int) {
+            if (position == 0){
+                val param = binding.songItemCard.layoutParams as ViewGroup.MarginLayoutParams
+                param.setMargins(64, 0, 0, 0)
+                binding.songItemCard.layoutParams = param
+            }
             if (entity.albumJacketImage.isNotBlank()) {
                 Glide.with(binding.root)
                     .load(entity.albumJacketImage)

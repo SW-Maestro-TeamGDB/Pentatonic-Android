@@ -51,10 +51,10 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
         }
         binding.recommendSongList.apply {
-            this.adapter = recommendSongListAdapter
             this.layoutManager = LinearLayoutManager(context).apply {
                 this.orientation = LinearLayoutManager.HORIZONTAL
             }
+            this.adapter = recommendSongListAdapter
             this.setHasFixedSize(true)
         }
         recommendSongListAdapter.setItem(TestData.TEST_SONG_LIST)

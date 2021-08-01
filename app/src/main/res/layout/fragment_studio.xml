@@ -42,22 +42,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <HorizontalScrollView
-                android:scrollbarThumbHorizontal="@null"
+            <com.chauthai.overscroll.RecyclerViewBouncy
+                android:id="@+id/recommendSongList"
+                android:layout_marginTop="8dp"
+                app:friction="200"
+                app:gapLimit="220"
+                app:speedFactor="5"
+                app:tension="1000"
+                app:maxAdapterSizeToEstimate="5"
+                app:viewCountEstimateSize="5"
+                tools:listitem="@layout/item_song_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recommendSongList"
-                    android:layout_marginStart="24dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:itemCount="1"
-                    android:layout_marginTop="8dp"
-                    tools:listitem="@layout/item_song_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </HorizontalScrollView>
 
             <TextView
                 android:layout_marginTop="24dp"

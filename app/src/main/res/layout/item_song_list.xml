@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/songItemCard"
         android:layout_width="170dp"
         app:cardElevation="0dp"
         app:cardUseCompatPadding="true"
         android:layout_height="170dp"
-        android:padding="16dp">
+        android:paddingStart="16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -15,8 +16,8 @@
 
             <ImageView
                 android:id="@+id/albumJacketImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
                 android:src="@color/cardview_dark_background" />
 
             <LinearLayout
