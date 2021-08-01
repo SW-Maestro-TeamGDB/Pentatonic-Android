@@ -3,125 +3,149 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:padding="24dp"
-        android:orientation="vertical"
+    <com.xw.repo.widget.BounceScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.studio.StudioFragment">
-
-        <TextView
-            android:layout_marginTop="48dp"
-            android:fontFamily="@font/nanum_extrabold"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            android:text="커버 업로드하기"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_marginTop="12dp"
+            android:padding="24dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            tools:context=".ui.studio.StudioFragment">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/makeBandCoverButton"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="170dp">
+            <TextView
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:text="이런 커버 어때요?"
+                android:layout_marginHorizontal="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommendCoverList"
+                tools:itemCount="2"
+                android:layout_marginTop="8dp"
+                tools:listitem="@layout/item_cover_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-                    <ImageView
-                        android:tintMode="src_atop"
-                        app:tint="#80000000"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/band_cover_bg"
+            <TextView
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:textSize="24sp"
+                android:layout_marginHorizontal="8dp"
+                android:textColor="@color/black"
+                android:text="커버 업로드하기"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="8dp"
+                    android:id="@+id/makeBandCoverButton"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="24dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="170dp">
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                    <LinearLayout
-                        android:layout_centerInParent="true"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                         <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/ic_drum_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
+                            android:src="@drawable/band_cover_bg"
+                            android:tintMode="src_atop"
+                            app:tint="#80000000" />
 
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/white"
-                            android:text="밴드 커버"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/nanum_extrabold"
+                        <LinearLayout
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
+                            android:layout_height="wrap_content">
 
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                            <ImageView
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_drum_icon"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"/>
+
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:textColor="@color/white"
+                                android:text="밴드 커버"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/nanum_extrabold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
 
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/makeSoloCoverButton"
-                app:cardElevation="0dp"
-                app:cardCornerRadius="24dp"
-                android:layout_width="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:layout_height="170dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:tintMode="src_atop"
-                        app:tint="#80000000"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/solo_cover_bg"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/makeSoloCoverButton"
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="24dp"
+                    android:layout_width="0dp"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_weight="1"
+                    android:layout_height="170dp">
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                    <LinearLayout
-                        android:layout_centerInParent="true"
-                        android:orientation="vertical"
-                        android:gravity="center_horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="match_parent">
 
                         <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/ic_mic_icon"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"/>
+                            android:src="@drawable/solo_cover_bg"
+                            android:tintMode="src_atop"
+                            app:tint="#80000000" />
 
-                        <TextView
-                            android:layout_marginTop="8dp"
-                            android:textColor="@color/white"
-                            android:text="솔로 커버"
-                            android:textSize="18sp"
-                            android:fontFamily="@font/nanum_extrabold"
+                        <LinearLayout
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_mic_icon"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"/>
+
+                            <TextView
+                                android:layout_marginTop="8dp"
+                                android:textColor="@color/white"
+                                android:text="솔로 커버"
+                                android:textSize="18sp"
+                                android:fontFamily="@font/nanum_extrabold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
 
+    </com.xw.repo.widget.BounceScrollView>
     <data>
 
         <variable

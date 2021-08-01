@@ -93,7 +93,7 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:fontFamily="@font/nanum_extrabold"
-            android:background="@color/main_regular"
+            android:background="#B323588F"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
