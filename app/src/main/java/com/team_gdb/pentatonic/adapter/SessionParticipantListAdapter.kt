@@ -8,7 +8,13 @@ import com.team_gdb.pentatonic.data.model.CoverItem
 import com.team_gdb.pentatonic.data.model.User
 import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
 
-class SessionParticipantListAdapter(val itemClick: (User) -> Unit) : RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
+/**
+ * 세션 참가자 목록 (e.g. 해당 커버에 기타로 참가한 사람들) 을 보여주기 위한 리사이클러뷰 어댑터
+ *
+ * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 클릭리스너 전달
+ */
+class SessionParticipantListAdapter(val itemClick: (User) -> Unit) :
+    RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
 
     private var participantList: List<User> = emptyList()  // 세션 참가자들 목록
 
@@ -51,7 +57,7 @@ class SessionParticipantListAdapter(val itemClick: (User) -> Unit) : RecyclerVie
                     .into(binding.userProfileImage)
             }
 
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 itemClick(item)
             }
         }

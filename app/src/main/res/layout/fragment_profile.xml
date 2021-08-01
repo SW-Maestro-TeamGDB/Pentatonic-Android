@@ -16,11 +16,11 @@
             android:layout_marginTop="32dp"
             android:textSize="28sp"
             android:fontFamily="@font/nanum_extrabold"
-            android:text="Profile" />
+            android:text="아티스트" />
 
         <RelativeLayout
             android:id="@+id/userProfileCardLayout"
-            android:padding="24dp"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

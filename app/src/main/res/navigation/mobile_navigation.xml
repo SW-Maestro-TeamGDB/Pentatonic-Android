@@ -93,6 +93,10 @@
             android:name="bandCoverItem"
             app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
         <action
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             android:id="@+id/action_navigation_band_cover_to_navigation_profile"
             app:destination="@id/navigation_profile" />
     </fragment>

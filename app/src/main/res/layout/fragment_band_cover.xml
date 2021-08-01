@@ -19,7 +19,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="56dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="Stage"
+                android:text="스테이지"
                 android:textColor="@color/black"
                 android:textSize="28sp" />
 

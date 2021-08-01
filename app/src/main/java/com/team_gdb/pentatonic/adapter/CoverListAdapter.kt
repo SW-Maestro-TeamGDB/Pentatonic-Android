@@ -8,6 +8,11 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverItem
 import com.team_gdb.pentatonic.databinding.ItemCoverListBinding
 
+/**
+ * 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
+ *
+ * @property itemClick  해당 커버 정보 페이지로 이동할 수 있도록 어댑터 생성 시 클릭리스너 동작 전달
+ */
 class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
     RecyclerView.Adapter<CoverListAdapter.ViewHolder>() {
 

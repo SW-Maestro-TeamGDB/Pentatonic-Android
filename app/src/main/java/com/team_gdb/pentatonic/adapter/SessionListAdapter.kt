@@ -9,7 +9,11 @@ import com.team_gdb.pentatonic.data.model.Session
 import com.team_gdb.pentatonic.data.model.User
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 
-
+/**
+ * 세션 목록 (기타, 드럼 등) 을 보여주기 위한 리사이클러뷰 어댑터
+ *
+ * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 클릭리스너 전달 (내부 리사이클러뷰 어댑터에 전달)
+ */
 class SessionListAdapter(val itemClick: (User) -> Unit) :
     RecyclerView.Adapter<SessionListAdapter.ViewHolder>() {
 

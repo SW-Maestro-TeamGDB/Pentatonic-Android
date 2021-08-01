@@ -20,13 +20,13 @@ object TestData {
                             id = "1234",
                             username = "H43RO",
                             profileImage = "https://avatars.githubusercontent.com/u/30336663?v=4",
-                            introduction = ""
+                            introduction = "취미로 기타 뜯고 놀아요"
                         ),
                         User(
                             id = "1234",
                             username = "원필쓰",
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
-                            introduction = ""
+                            introduction = "안녕하세요 DAY6 원필입니다!"
                         )
                     )
                 ),
@@ -37,13 +37,13 @@ object TestData {
                             id = "2345",
                             username = "LULU",
                             profileImage = "http://file3.instiz.net/data/cached_img/upload/2018/05/11/16/45c97753ecfd78eca2a0418d70f8ebf2.png",
-                            introduction = ""
+                            introduction = "고양이 완전 조아해요"
                         ),
                         User(
                             id = "2345",
                             username = "YoungK",
                             profileImage = "",
-                            introduction = ""
+                            introduction = "안녕하세요 DAY6 영케이 입니당"
                         ),
                         User(
                             id = "2345",
