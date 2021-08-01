@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team_gdb.pentatonic.data.model.Session
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
@@ -10,7 +11,7 @@ import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 class SessionListAdapter() :
     RecyclerView.Adapter<SessionListAdapter.ViewHolder>() {
 
-    private var sessionItems: List<Session> = emptyList()  // Cover 아이템 리스트 정보
+    private var sessionList: List<Session> = emptyList()  // 커버에 존재하는 Session 목록 리스트 정보 (일렉기타, 드럼 등)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -19,11 +20,11 @@ class SessionListAdapter() :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(sessionItems[position])
+        holder.bind(sessionList[position])
     }
 
     override fun getItemCount(): Int {
-        return sessionItems.size
+        return sessionList.size
     }
 
     inner class ViewHolder(
@@ -31,12 +32,21 @@ class SessionListAdapter() :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Session) {
-
+            binding.sessionNameTextView.text = item.sessionName
+            val adapter = SessionParticipantListAdapter()
+            adapter.setItem(items = item.sessionParticipantList)
+            binding.sessionParticipantList.apply {
+                this.adapter = adapter
+                this.layoutManager = LinearLayoutManager(context).apply {
+                    this.orientation = LinearLayoutManager.HORIZONTAL
+                }
+                this.setHasFixedSize(true)
+            }
         }
     }
 
     fun setItem(items: List<Session>) {
-        this.sessionItems = items
+        this.sessionList = items
         notifyDataSetChanged()
     }
 }

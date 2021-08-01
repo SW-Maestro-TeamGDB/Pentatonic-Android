@@ -1,8 +1,10 @@
 package com.team_gdb.pentatonic.ui.band_cover
 
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.adapter.SessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.CoverItem
 import com.team_gdb.pentatonic.databinding.FragmentBandCoverBinding
@@ -26,9 +28,6 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
     override fun initDataBinding() {
     }
 
-    // TODO 동적으로 커버 참여 세션 리스트 보여주기 (리사이클러뷰 안에 리사이클러뷰)
-
-
     override fun initAfterBinding() {
         binding.coverNameTextView.text = coverItem.coverName
         binding.coverIntroductionTextView.text = coverItem.introduction
@@ -41,5 +40,13 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
                 .load(R.drawable.placeholder_cover_bg)
                 .into(binding.coverImage)
         }
+
+        val sessionListAdapter = SessionListAdapter()
+        binding.sessionList.apply {
+            this.adapter = sessionListAdapter
+            this.layoutManager = LinearLayoutManager(context)
+            this.setHasFixedSize(true)
+        }
+        sessionListAdapter.setItem(coverItem.sessionList)
     }
 }

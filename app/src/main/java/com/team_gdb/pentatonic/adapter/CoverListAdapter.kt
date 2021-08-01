@@ -11,7 +11,7 @@ import com.team_gdb.pentatonic.databinding.ItemCoverListBinding
 class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
     RecyclerView.Adapter<CoverListAdapter.ViewHolder>() {
 
-    private var coverItems: List<CoverItem> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverItemList: List<CoverItem> = emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -27,11 +27,11 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(coverItems[position])
+        holder.bind(coverItemList[position])
     }
 
     override fun getItemCount(): Int {
-        return coverItems.size
+        return coverItemList.size
     }
 
     inner class ViewHolder(
@@ -55,7 +55,7 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
             val sessionSet = mutableSetOf<String>()
             var sessionListText = ""
             item.sessionList.forEach {
-                sessionSet.add(it.value)
+                sessionSet.add(it.sessionName)
             }
             sessionSet.forEach {
                 sessionListText += "$it "
@@ -73,7 +73,7 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
     }
 
     fun setItem(items: List<CoverItem>) {
-        this.coverItems = items
+        this.coverItemList = items
         notifyDataSetChanged()
     }
 }

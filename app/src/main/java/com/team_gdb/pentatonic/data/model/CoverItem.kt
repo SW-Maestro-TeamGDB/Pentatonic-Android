@@ -21,7 +21,7 @@ data class CoverItem(
     val originalSong: String,
     val imageUrl: String,
     val introduction: String,
-    val sessionList: Map<String, String>,
+    val sessionList: List<Session>,
     val like: Int,
     val view: Int,
 ): Serializable
