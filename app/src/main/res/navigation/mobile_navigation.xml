@@ -92,6 +92,9 @@
         <argument
             android:name="bandCoverItem"
             app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
+        <action
+            android:id="@+id/action_navigation_band_cover_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
     <fragment
@@ -101,6 +104,16 @@
         <argument
             android:name="soloCoverItem"
             app:argType="com.team_gdb.pentatonic.data.model.CoverItem" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.team_gdb.pentatonic.ui.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <argument
+            android:name="userItem"
+            app:argType="com.team_gdb.pentatonic.data.model.User" />
     </fragment>
 
 </navigation>

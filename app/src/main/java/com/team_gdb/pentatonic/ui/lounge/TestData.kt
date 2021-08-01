@@ -19,12 +19,14 @@ object TestData {
                         User(
                             id = "1234",
                             username = "H43RO",
-                            profileImage = "https://avatars.githubusercontent.com/u/30336663?v=4"
+                            profileImage = "https://avatars.githubusercontent.com/u/30336663?v=4",
+                            introduction = ""
                         ),
                         User(
                             id = "1234",
                             username = "원필쓰",
-                            profileImage = ""
+                            profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
+                            introduction = ""
                         )
                     )
                 ),
@@ -34,27 +36,32 @@ object TestData {
                         User(
                             id = "2345",
                             username = "LULU",
-                            profileImage = ""
+                            profileImage = "http://file3.instiz.net/data/cached_img/upload/2018/05/11/16/45c97753ecfd78eca2a0418d70f8ebf2.png",
+                            introduction = ""
                         ),
                         User(
                             id = "2345",
                             username = "YoungK",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         ),
                         User(
                             id = "2345",
                             username = "MUX",
-                            profileImage = ""
+                            profileImage = "https://files.porsche.com/filestore/news/korea/ko/2018-04-28/headimage1/4793193a-4f9a-11e8-bbc5-0019999cd470/porsche-%ED%8F%AC%EB%A5%B4%EC%89%90AG%2C-2018%EB%85%84%EB%8F%84-1%EB%B6%84%EA%B8%B0-%EB%A7%A4%EC%B6%9C-%EB%B0%8F-%EC%98%81%EC%97%85-%EC%9D%B4%EC%9D%B5-%EC%A6%9D%EB%8C%80.jpg",
+                            introduction = ""
                         ),
                         User(
                             id = "2345",
                             username = "크앙",
-                            profileImage = ""
+                            profileImage = "https://mblogthumb-phinf.pstatic.net/20140330_226/oulimmm_1396149063970IN3XW_JPEG/nord_8.jpg?type=w2",
+                            introduction = ""
                         ),
                         User(
                             id = "2345",
                             username = "맨땅에헤딩",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         ),
                     )
                 )
@@ -75,7 +82,8 @@ object TestData {
                         User(
                             id = "1234",
                             username = "부기",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         )
                     )
                 ),
@@ -85,7 +93,8 @@ object TestData {
                         User(
                             id = "2345",
                             username = "Xenon2",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         )
                     )
                 ),
@@ -95,7 +104,8 @@ object TestData {
                         User(
                             id = "2345",
                             username = "LEON",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         )
                     )
                 )
@@ -119,7 +129,8 @@ object TestData {
                         User(
                             id = "1234",
                             username = "김원필",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         )
                     )
                 )
@@ -140,7 +151,8 @@ object TestData {
                         User(
                             id = "1234",
                             username = "H43RO",
-                            profileImage = ""
+                            profileImage = "",
+                            introduction = ""
                         )
                     )
                 )

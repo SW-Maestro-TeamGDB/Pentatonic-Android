@@ -16,6 +16,7 @@ import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
+import com.team_gdb.pentatonic.ui.profile.ProfileViewModel
 import com.team_gdb.pentatonic.ui.record.RecordViewModel
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingViewModel
 import com.team_gdb.pentatonic.ui.register.RegisterViewModel
@@ -72,6 +73,10 @@ val viewModelModule = module {
 
     viewModel {
         BandCoverViewModel()
+    }
+
+    viewModel {
+        ProfileViewModel()
     }
 }
 

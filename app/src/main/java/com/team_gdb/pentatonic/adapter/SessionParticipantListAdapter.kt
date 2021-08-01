@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.data.model.CoverItem
 import com.team_gdb.pentatonic.data.model.User
 import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
 
-class SessionParticipantListAdapter : RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
+class SessionParticipantListAdapter(val itemClick: (User) -> Unit) : RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
 
     private var participantList: List<User> = emptyList()  // 세션 참가자들 목록
 
@@ -48,6 +49,10 @@ class SessionParticipantListAdapter : RecyclerView.Adapter<SessionParticipantLis
                     .load(item.profileImage)
                     .override(80, 80)
                     .into(binding.userProfileImage)
+            }
+
+            binding.root.setOnClickListener{
+                itemClick(item)
             }
         }
     }

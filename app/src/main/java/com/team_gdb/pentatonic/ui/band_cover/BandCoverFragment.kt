@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.band_cover
 
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -43,7 +44,9 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
                 .into(binding.coverImage)
         }
 
-        val sessionListAdapter = SessionListAdapter()
+        val sessionListAdapter = SessionListAdapter{
+            findNavController().navigate(BandCoverFragmentDirections.actionNavigationBandCoverToNavigationProfile(it))
+        }
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = sessionListAdapter

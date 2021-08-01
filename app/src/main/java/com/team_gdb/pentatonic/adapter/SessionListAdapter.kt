@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.team_gdb.pentatonic.data.model.CoverItem
 import com.team_gdb.pentatonic.data.model.Session
+import com.team_gdb.pentatonic.data.model.User
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 
 
-class SessionListAdapter() :
+class SessionListAdapter(val itemClick: (User) -> Unit) :
     RecyclerView.Adapter<SessionListAdapter.ViewHolder>() {
 
     private var sessionList: List<Session> = emptyList()  // 커버에 존재하는 Session 목록 리스트 정보 (일렉기타, 드럼 등)
@@ -40,7 +42,9 @@ class SessionListAdapter() :
 
         fun bind(item: Session) {
             binding.sessionNameTextView.text = item.sessionName
-            val adapter = SessionParticipantListAdapter()
+            val adapter = SessionParticipantListAdapter {
+                itemClick(it)
+            }
             adapter.setItem(items = item.sessionParticipantList)
             binding.sessionParticipantList.apply {
                 this.adapter = adapter

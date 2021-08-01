@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="32dp"
+            android:textSize="28sp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="Profile" />
+
+        <RelativeLayout
+            android:id="@+id/userProfileCardLayout"
+            android:padding="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/userProfileImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/profile_image_placeholder"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize30Percent" />
+
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:padding="24dp"
+                android:layout_toRightOf="@+id/userProfileImage"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USER_NAME"/>
+
+                <TextView
+                    android:id="@+id/userIntroductionTextView"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="USER_INTRODUCTION"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:fontFamily="@font/nanum_extrabold"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:layout_marginStart="16dp"
+            android:text="포지션"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+        <TextView
+            android:fontFamily="@font/nanum_extrabold"
+            android:layout_marginTop="48dp"
+            android:textSize="24sp"
+            android:layout_marginStart="16dp"
+            android:text="커버 히스토리"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.profile.ProfileViewModel" />
+    </data>
+
+</layout>
