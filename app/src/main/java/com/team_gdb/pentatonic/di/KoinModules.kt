@@ -12,6 +12,7 @@ import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepositoryImpl
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepository
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepositoryImpl
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
@@ -67,6 +68,10 @@ val viewModelModule = module {
 
     viewModel {
         RecordProcessingViewModel()
+    }
+
+    viewModel {
+        BandCoverViewModel()
     }
 }
 

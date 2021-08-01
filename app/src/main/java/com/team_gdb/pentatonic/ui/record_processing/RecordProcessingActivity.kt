@@ -29,7 +29,9 @@ class RecordProcessingActivity :
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
 
-    lateinit var amplitudeData: ByteArray
+    private val amplitudeData: ByteArray by lazy {  // 녹음본 진폭 정보 (ByteArray)
+        intent.extras?.getByteArray(AMPLITUDE_DATA)!!
+    }
 
     private var state = ButtonState.BEFORE_PLAYING
         set(value) { // setter 설정
@@ -80,7 +82,6 @@ class RecordProcessingActivity :
         })
 
         // AudioWave SeekBar 데이터 입력 (ByteArray)
-        amplitudeData = intent.extras?.getByteArray(AMPLITUDE_DATA)!!
         binding.audioSeekBar.setRawData(amplitudeData)
         binding.audioSeekBar.onProgressListener = object: OnProgressListener{
             override fun onProgressChanged(progress: Float, byUser: Boolean) {
