@@ -45,10 +45,12 @@ class CoverListAdapter(val itemClick: (CoverItem) -> Unit) :
             if (item.imageUrl.isNotBlank()) {
                 Glide.with(binding.root)
                     .load(item.imageUrl)
+                    .override(480, 272)
                     .into(binding.coverImage)
             } else {
                 Glide.with(binding.root)
                     .load(R.drawable.placeholder_cover_bg)
+                    .override(480, 272)
                     .into(binding.coverImage)
             }
 

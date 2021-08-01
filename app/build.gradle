@@ -111,4 +111,5 @@ dependencies {
 
     //Bounce Scroll View
     implementation 'com.github.woxingxiao:BounceScrollView:1.5'
+    implementation 'com.chauthai.overscroll:overscroll-bouncy:0.1.1'
 }

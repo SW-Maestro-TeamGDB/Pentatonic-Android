@@ -39,13 +39,13 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    app:tint="#80000000"
-                    android:tintMode="src_atop"
                     android:id="@+id/weeklyChallengeSongImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/beautiful_album_jacket" />
+                    android:src="@drawable/beautiful_album_jacket"
+                    android:tintMode="src_atop"
+                    app:tint="#80000000" />
 
                 <TextView
                     android:layout_width="wrap_content"

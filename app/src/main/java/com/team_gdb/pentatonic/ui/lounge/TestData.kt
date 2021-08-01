@@ -19,6 +19,11 @@ object TestData {
                         User(
                             id = "1234",
                             username = "H43RO",
+                            profileImage = "https://avatars.githubusercontent.com/u/30336663?v=4"
+                        ),
+                        User(
+                            id = "1234",
+                            username = "원필쓰",
                             profileImage = ""
                         )
                     )
@@ -30,7 +35,27 @@ object TestData {
                             id = "2345",
                             username = "LULU",
                             profileImage = ""
-                        )
+                        ),
+                        User(
+                            id = "2345",
+                            username = "YoungK",
+                            profileImage = ""
+                        ),
+                        User(
+                            id = "2345",
+                            username = "MUX",
+                            profileImage = ""
+                        ),
+                        User(
+                            id = "2345",
+                            username = "크앙",
+                            profileImage = ""
+                        ),
+                        User(
+                            id = "2345",
+                            username = "맨땅에헤딩",
+                            profileImage = ""
+                        ),
                     )
                 )
             ),

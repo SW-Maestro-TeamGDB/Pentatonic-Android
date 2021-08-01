@@ -39,6 +39,7 @@ class SessionParticipantListAdapter : RecyclerView.Adapter<SessionParticipantLis
             if (item.profileImage.isNotBlank()) {
                 Glide.with(binding.root)
                     .load(item.profileImage)
+                    .override(80, 80)
                     .into(binding.userProfileImage)
             }
         }

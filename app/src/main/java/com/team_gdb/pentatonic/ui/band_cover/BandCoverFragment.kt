@@ -34,17 +34,19 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
         if (coverItem.imageUrl.isNotBlank()) {
             Glide.with(this)
                 .load(coverItem.imageUrl)
+                .override(480, 272)
                 .into(binding.coverImage)
         } else {
             Glide.with(this)
                 .load(R.drawable.placeholder_cover_bg)
+                .override(480, 272)
                 .into(binding.coverImage)
         }
 
         val sessionListAdapter = SessionListAdapter()
         binding.sessionList.apply {
-            this.adapter = sessionListAdapter
             this.layoutManager = LinearLayoutManager(context)
+            this.adapter = sessionListAdapter
             this.setHasFixedSize(true)
         }
         sessionListAdapter.setItem(coverItem.sessionList)

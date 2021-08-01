@@ -28,6 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="16dp"
+                app:cardUseCompatPadding="true"
                 app:cardCornerRadius="16dp">
 
                 <RelativeLayout
@@ -35,13 +36,13 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:tintMode="src_over"
-                        app:tint="#80000000"
                         android:id="@+id/coverImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/record_processing_bg" />
+                        android:src="@drawable/record_processing_bg"
+                        android:tintMode="src_over"
+                        app:tint="#80000000" />
 
                     <TextView
                         android:id="@+id/coverNameTextView"
@@ -73,6 +74,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:overScrollMode="never"
                 android:paddingHorizontal="8dp"
                 android:layout_marginTop="16dp"
                 android:id="@+id/sessionList"
