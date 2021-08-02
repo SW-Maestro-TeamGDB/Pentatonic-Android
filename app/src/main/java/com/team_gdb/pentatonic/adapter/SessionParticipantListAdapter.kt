@@ -47,6 +47,7 @@ class SessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: UserEntity, position: Int) {
+            // 리스트 첫 아이템의 경우에는 어느정도 마진을 줘야함
             if (position == 0){
                 val param = binding.userLayout.layoutParams as ViewGroup.MarginLayoutParams
                 param.setMargins(64, 0, 0, 0)

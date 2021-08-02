@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_record.xml" value="0.1388157894736842" />
         <entry key="app/src/main/res/drawable/rounded_dialog.xml" value="0.21546052631578946" />
+        <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.2049342105263158" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.18" />
