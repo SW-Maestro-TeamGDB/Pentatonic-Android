@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/dialog_record_guard.xml" value="0.20559210526315788" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/drawable_left_image_like.xml" value="0.1" />

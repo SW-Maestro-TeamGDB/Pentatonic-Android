@@ -5,7 +5,8 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentSessionConfigFormBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class SessionConfigFromFragment : BaseFragment<FragmentSessionConfigFormBinding, CreateCoverViewModel>() {
+class SessionConfigFromFragment :
+    BaseFragment<FragmentSessionConfigFormBinding, CreateCoverViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_session_config_form
 

@@ -3,18 +3,124 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp"
         tools:context=".ui.create_cover.BasicInfoFormFragment">
 
-        <TextView
+        <LinearLayout
+            android:padding="32dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_height="match_parent">
 
-    </FrameLayout>
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="밴드 이름"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="다른 사람들에게 보여질 밴드 이름을 설정합니다."
+                android:fontFamily="@font/nanum_extrabold"/>
+
+            <EditText
+                android:maxEms="1"
+                android:maxLines="1"
+                android:inputType="text"
+                android:id="@+id/coverNameEditText"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="밴드 소개"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="해당 밴드의 간단한 소개글을 입력해주세요."
+                android:fontFamily="@font/nanum_extrabold"/>
+
+            <EditText
+                android:maxEms="1"
+                android:maxLines="1"
+                android:inputType="text"
+                android:id="@+id/coverIntroductionEditText"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"/>
+
+            <TextView
+                android:layout_marginTop="24dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="곡 선택"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="커버할 곡을 선택해주세요."
+                android:fontFamily="@font/nanum_extrabold"/>
+
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/selectSongButton"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/dash_border"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="음원 선택하기"
+                    android:fontFamily="@font/nanum_light"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="다음으로"
+            android:background="@color/main_regular"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+    </RelativeLayout>
 
     <data>
         <variable
