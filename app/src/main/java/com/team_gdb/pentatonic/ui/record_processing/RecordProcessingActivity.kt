@@ -28,8 +28,9 @@ class RecordProcessingActivity :
     private var indicatorWidth: Int = 0
 
     private var duration: Float = 0.0F  // 음악 총 재생 길이
-    private var interval: Float =
-        0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
+    private var interval: Float = 0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
+
+    private var seekBarThread: Thread? = null
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
@@ -140,7 +141,7 @@ class RecordProcessingActivity :
     private fun startPlaying() {
         player?.start()
         state = ButtonState.ON_PLAYING
-        Thread {
+        seekBarThread = Thread {
             while (player?.isPlaying == true) {
                 try {
                     Thread.sleep(1000)
@@ -151,7 +152,8 @@ class RecordProcessingActivity :
                     binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
                 }
             }
-        }.start()
+        }
+        seekBarThread!!.start()
     }
 
     /**
@@ -171,13 +173,20 @@ class RecordProcessingActivity :
     }
 
     /**
+     * SeekBar Thread 종료 및 메모리 해제
+     */
+    private fun stopSeekBarThread() {
+        seekBarThread?.interrupt()
+        seekBarThread = null
+    }
+
+    /**
      * 뷰가 사라질 시점에 player 메모리 해제 안 되어있다면 해제
      */
     override fun onDestroy() {
         super.onDestroy()
-        player?.let {
-            stopPlaying()
-        }
+        stopPlaying()
+        stopSeekBarThread()
     }
 
     companion object {
