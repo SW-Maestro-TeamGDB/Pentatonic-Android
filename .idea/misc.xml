@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.21611842105263157" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_practice_room.xml" value="0.18013029315960913" />
         <entry key="app/src/main/res/drawable/ic_record.xml" value="0.1388157894736842" />
         <entry key="app/src/main/res/drawable/rounded_dialog.xml" value="0.21546052631578946" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.2049342105263158" />
@@ -26,8 +27,9 @@
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.14651639344262296" />
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.16154371584699453" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.20526315789473684" />
-        <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.2049342105263158" />
+        <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_session_config_from.xml" value="0.2049342105263158" />
+        <entry key="app/src/main/res/layout/fragment_solo_cover.xml" value="0.13486842105263158" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.10116354234001293" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.20592105263157895" />

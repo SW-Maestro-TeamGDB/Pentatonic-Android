@@ -25,7 +25,7 @@ class PlayButton(
                 setImageResource(R.drawable.ic_play)
             }
             ButtonState.ON_PLAYING -> {
-                setImageResource(R.drawable.ic_stop)
+                setImageResource(R.drawable.ic_baseline_pause_circle_outline_24)
             }
         }
     }

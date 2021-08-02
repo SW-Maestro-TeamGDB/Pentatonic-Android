@@ -11,7 +11,7 @@ object TestData {
             id = 0,
             coverName = "데이식스 담당 찐따",
             originalSong = "DAY6 - 반드시 웃는다",
-            imageUrl = "",
+            imageUrl = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",
             introduction = "그저 데식을 사랑하는..",
             sessionList = listOf(
                 Session(

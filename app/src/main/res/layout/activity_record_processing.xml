@@ -58,8 +58,8 @@
                     app:waveColor="@color/white" />
 
 
-                <com.team_gdb.pentatonic.ui.record.CountUpTextView
-                    android:id="@+id/recordTimeTextView"
+                <TextView
+                    android:id="@+id/playTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/audioSeekBar"

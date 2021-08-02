@@ -12,6 +12,8 @@ import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
+import java.lang.Exception
+import java.time.Duration
 
 
 class RecordProcessingActivity : 
@@ -21,8 +23,10 @@ class RecordProcessingActivity :
     override val viewModel: RecordProcessingViewModel by viewModel()
 
     private var player: MediaPlayer? = null
-
     private var indicatorWidth: Int = 0
+
+    private var duration: Float = 0.0F  // 음악 총 재생 길이
+    private var interval: Float = 0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
@@ -40,7 +44,7 @@ class RecordProcessingActivity :
 
     override fun initStartView() {
         binding.playButton.updateIconWithState(state)
-
+        initPlayer()
     }
 
     override fun initDataBinding() {
@@ -64,7 +68,7 @@ class RecordProcessingActivity :
             binding.indicator.layoutParams = params
         }
 
-        // Indicator 이동을 위한 PageChangeCallback 리스너 등록
+        // TabLayout Indicator 위치 이동을 위한 PageChangeCallback 리스너 등록
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
@@ -84,7 +88,10 @@ class RecordProcessingActivity :
         binding.audioSeekBar.setRawData(amplitudeData)
         binding.audioSeekBar.onProgressListener = object: OnProgressListener{
             override fun onProgressChanged(progress: Float, byUser: Boolean) {
-                Timber.d("SeekBar : $progress")
+                if (byUser) {  // 사용자가 SeekBar 움직였을 경우
+                    // 재생 위치를 해당 위치로 바꿔줌 (움직인 곳에서부터 음악 재생)
+                    player?.seekTo((progress * interval).toInt())
+                }
             }
 
             override fun onStartTracking(progress: Float) {
@@ -100,58 +107,51 @@ class RecordProcessingActivity :
                     startPlaying()
                 }
                 ButtonState.ON_PLAYING -> {
-                    stopPlaying()
+                    pausePlaying()
                 }
                 else -> { /* no-op */ }
             }
         }
     }
 
-
-    /**
-     * 녹음본을 재생 (리버브 이펙트 테스트)
-     */
-    private fun startPlaying() {
-        player = MediaPlayer()
-        player?.apply {
+    private fun initPlayer(){
+        player = MediaPlayer().apply {
             setDataSource(recordingFilePath)
-
-//                val reverbEffect = PresetReverb(0, 0)
-//                reverbEffect.preset = PresetReverb.PRESET_LARGEHALL
-//                reverbEffect.enabled = true
-//                attachAuxEffect(reverbEffect.id)
-//                val environmentalReverb = EnvironmentalReverb(0, 0)
-//                environmentalReverb.decayTime = 2000
-//                environmentalReverb.reflectionsDelay = 250
-//                environmentalReverb.reflectionsLevel = -8500
-//                environmentalReverb.roomLevel = -8500
-//                attachAuxEffect(reverbEffect.id)
-//
-//            } catch (e: IllegalArgumentException) {
-//                Timber.i("IllegalArgumentException 잼 ㅋㅋ :  ${player?.audioSessionId}")
-//                Timber.e(e)
-//            } catch (e: UnsupportedOperationException) {
-//                Timber.i("UnsupportedOperationException 잼 ㅋㅋ :  ${player?.audioSessionId}")
-//                Timber.e(e)
-//            } catch (e: RuntimeException) {
-//                Timber.i("RuntimeException 잼 ㅋㅋ :  ${player?.audioSessionId}")
-//                Timber.e(e)
-//            } finally {
-//                Timber.i("오잉 또잉 ㅋㅋ")
-//            }
             setAuxEffectSendLevel(1.0f)
             prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
-            start()
+            setOnCompletionListener {  // 끝까지 재생이 끝났을 때
+                pausePlaying()
+                state = ButtonState.BEFORE_PLAYING
+            }
+            this@RecordProcessingActivity.duration = this.duration.toFloat()
+            interval = this.duration.toFloat().div(100)
         }
-        binding.recordTimeTextView.startCountUp()
+    }
 
-        // 끝까지 재생이 끝났을 때
-        player?.setOnCompletionListener {
-            stopPlaying()
-            state = ButtonState.BEFORE_PLAYING
-        }
-
+    /**
+     * 녹음본을 재생
+     */
+    private fun startPlaying() {
+        player?.start()
         state = ButtonState.ON_PLAYING
+        Thread {
+            while (player?.isPlaying == true){
+                try{
+                    Thread.sleep(1000)
+                } catch (e: Exception){
+                    Timber.i(e)
+                }
+                binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
+            }
+        }.start()
+    }
+
+    /**
+     * 음원 재생 일시 정지
+     */
+    private fun pausePlaying() {
+        player?.pause()
+        state = ButtonState.BEFORE_PLAYING
     }
 
     /**
@@ -160,13 +160,19 @@ class RecordProcessingActivity :
     private fun stopPlaying() {
         player?.release()
         player = null
-        binding.recordTimeTextView.stopCountUp()
+    }
 
-        state = ButtonState.BEFORE_PLAYING
+    /**
+     * 뷰가 사라질 시점에 player 메모리 해제 안 되어있다면 해제
+     */
+    override fun onDestroy() {
+        super.onDestroy()
+        player?.let {
+            stopPlaying()
+        }
     }
 
     companion object {
         const val NUM_PAGES = 2
     }
-
 }

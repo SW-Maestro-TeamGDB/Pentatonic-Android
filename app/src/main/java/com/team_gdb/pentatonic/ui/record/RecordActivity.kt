@@ -75,9 +75,9 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                     countDownTimer.start()
                 }
                 ButtonState.ON_RECORDING -> {
+                    viewModel.buttonState.postValue(ButtonState.STOP_RECORDING)
                     stopPlaying()
                     stopRecording()
-                    viewModel.buttonState.postValue(ButtonState.STOP_RECORDING)
                 }
                 ButtonState.STOP_RECORDING -> {
                     binding.startCountDownTextView.visibility = View.VISIBLE
