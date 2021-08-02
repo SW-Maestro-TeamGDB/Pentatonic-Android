@@ -69,6 +69,17 @@
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
+
+                <TextView
+                    android:id="@+id/remainTimeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/audioSeekBar"
+                    android:layout_alignEnd="@+id/audioSeekBar"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="00:00"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

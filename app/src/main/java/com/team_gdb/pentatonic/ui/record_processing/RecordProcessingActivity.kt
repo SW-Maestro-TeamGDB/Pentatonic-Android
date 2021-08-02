@@ -13,10 +13,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
 import java.lang.Exception
+import java.text.SimpleDateFormat
 import java.time.Duration
+import java.util.*
 
 
-class RecordProcessingActivity : 
+class RecordProcessingActivity :
     BaseActivity<ActivityRecordProcessingBinding, RecordProcessingViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_record_processing
@@ -26,7 +28,8 @@ class RecordProcessingActivity :
     private var indicatorWidth: Int = 0
 
     private var duration: Float = 0.0F  // 음악 총 재생 길이
-    private var interval: Float = 0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
+    private var interval: Float =
+        0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
@@ -54,7 +57,7 @@ class RecordProcessingActivity :
         // ViewPager 어댑터 지정 및 탭 이름 설정
         binding.viewPager.adapter = TabFragmentAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            when(position){
+            when (position) {
                 0 -> tab.text = "컨트롤"
                 1 -> tab.text = "이펙터"
             }
@@ -86,12 +89,14 @@ class RecordProcessingActivity :
 
         // AudioWave SeekBar 데이터 입력 (ByteArray)
         binding.audioSeekBar.setRawData(amplitudeData)
-        binding.audioSeekBar.onProgressListener = object: OnProgressListener{
+        binding.audioSeekBar.onProgressListener = object : OnProgressListener {
             override fun onProgressChanged(progress: Float, byUser: Boolean) {
                 if (byUser) {  // 사용자가 SeekBar 움직였을 경우
                     // 재생 위치를 해당 위치로 바꿔줌 (움직인 곳에서부터 음악 재생)
                     player?.seekTo((progress * interval).toInt())
                 }
+                binding.playTimeTextView.text = SimpleDateFormat("mm:ss").format(Date(player?.currentPosition!!.toLong()))
+                binding.remainTimeTextView.text = "-${SimpleDateFormat("mm:ss").format(Date(player?.duration!! - player?.currentPosition!!.toLong()))}"
             }
 
             override fun onStartTracking(progress: Float) {
@@ -109,12 +114,13 @@ class RecordProcessingActivity :
                 ButtonState.ON_PLAYING -> {
                     pausePlaying()
                 }
-                else -> { /* no-op */ }
+                else -> { /* no-op */
+                }
             }
         }
     }
 
-    private fun initPlayer(){
+    private fun initPlayer() {
         player = MediaPlayer().apply {
             setDataSource(recordingFilePath)
             setAuxEffectSendLevel(1.0f)
@@ -135,13 +141,15 @@ class RecordProcessingActivity :
         player?.start()
         state = ButtonState.ON_PLAYING
         Thread {
-            while (player?.isPlaying == true){
-                try{
+            while (player?.isPlaying == true) {
+                try {
                     Thread.sleep(1000)
-                } catch (e: Exception){
+                } catch (e: Exception) {
                     Timber.i(e)
                 }
-                binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
+                runOnUiThread {
+                    binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
+                }
             }
         }.start()
     }
