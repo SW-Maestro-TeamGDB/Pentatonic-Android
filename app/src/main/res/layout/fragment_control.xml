@@ -31,6 +31,7 @@
                 android:layout_centerVertical="true"
                 android:background="@null"
                 android:fontFamily="@font/nanum_extrabold"
+                android:onClick="@{()->viewModel.controlSyncLevel(-1)}"
                 android:text="-"
                 android:textSize="24sp" />
 
@@ -43,6 +44,7 @@
                 android:background="@null"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="+"
+                android:onClick="@{()->viewModel.controlVolumeLevel(1)}"
                 android:textSize="24sp" />
 
             <ProgressBar
@@ -95,6 +97,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
+                android:onClick="@{()->viewModel.controlVolumeLevel(-1)}"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="-"
                 android:textSize="24sp" />
@@ -106,6 +109,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
+                android:onClick="@{()->viewModel.controlVolumeLevel(1)}"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="+"
                 android:textSize="24sp" />

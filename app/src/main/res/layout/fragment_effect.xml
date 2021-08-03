@@ -31,6 +31,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
+                android:onClick="@{()->viewModel.controlGainEffectLevel(-1)}"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="-"
                 android:textSize="24sp" />
@@ -38,6 +39,7 @@
             <Button
                 android:id="@+id/gainPlusButton"
                 android:layout_width="50dp"
+                android:onClick="@{()->viewModel.controlGainEffectLevel(1)}"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
@@ -97,6 +99,7 @@
                 android:background="@null"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="-"
+                android:onClick="@{()->viewModel.controlReverbEffectLevel(-1)}"
                 android:textSize="24sp" />
 
             <Button
@@ -108,6 +111,7 @@
                 android:background="@null"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="+"
+                android:onClick="@{()->viewModel.controlReverbEffectLevel(-1)}"
                 android:textSize="24sp" />
 
             <ProgressBar

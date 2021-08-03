@@ -14,7 +14,7 @@ class RecordProcessingViewModel : BaseViewModel() {
         volumeLevel.value = volumeLevel.value?.plus(amount)
     }
 
-    fun controlSyncLeve(amount: Int) {
+    fun controlSyncLevel(amount: Int) {
         syncLevel.value = syncLevel.value?.plus(amount)
     }
 
