@@ -54,7 +54,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/gainPlusButton"
                 android:layout_toRightOf="@+id/gainMinusButton"
-                android:progress="50"
+                android:max="100"
+                android:progress="@{ viewModel.gainEffectLevel}"
                 android:progressTint="@color/main_regular" />
 
             <TextView
@@ -117,7 +118,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/reverbPlusButton"
                 android:layout_toRightOf="@+id/reverbMinusButton"
-                android:progress="50"
+                android:max="100"
+                android:progress="@{viewModel.reverbEffectLevel}"
                 android:progressTint="@color/main_regular" />
 
             <TextView

@@ -16,12 +16,14 @@ class ControlFragment : BaseFragment<FragmentControlBinding, RecordProcessingVie
     override val viewModel: RecordProcessingViewModel by sharedViewModel()
 
     override fun initStartView() {
+        binding.viewModel = this.viewModel
     }
 
     override fun initDataBinding() {
     }
 
     override fun initAfterBinding() {
+
     }
 
 

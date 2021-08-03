@@ -11,6 +11,7 @@ class EffectFragment : BaseFragment<FragmentEffectBinding, RecordProcessingViewM
     override val viewModel: RecordProcessingViewModel by sharedViewModel()
 
     override fun initStartView() {
+        binding.viewModel = this.viewModel
     }
 
     override fun initDataBinding() {

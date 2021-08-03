@@ -53,7 +53,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/syncPlusButton"
                 android:layout_toRightOf="@+id/syncMinusButton"
-                android:progress="50"
+                android:max="100"
+                android:progress="@{viewModel.syncLevel}"
                 android:progressTint="@color/main_regular" />
 
             <TextView
@@ -117,7 +118,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/volumePlusButton"
                 android:layout_toRightOf="@+id/volumeMinusButton"
-                android:progress="50"
+                android:max="100"
+                android:progress="@{viewModel.volumeLevel}"
                 android:progressTint="@color/main_regular" />
 
             <TextView
