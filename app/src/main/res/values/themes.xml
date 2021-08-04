@@ -39,4 +39,8 @@
         <item name="cornerSize">5%</item>
     </style>
 
+    <style name="noStatusBar" parent="Theme.Pentatonic">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
 </resources>
