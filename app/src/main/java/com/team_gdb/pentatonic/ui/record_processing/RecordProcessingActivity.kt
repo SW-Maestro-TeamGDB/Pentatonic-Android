@@ -93,8 +93,8 @@ class RecordProcessingActivity :
                     // 재생 위치를 해당 위치로 바꿔줌 (움직인 곳에서부터 음악 재생)
                     player?.seekTo((progress * interval).toInt())
                 }
-                binding.playTimeTextView.text = SimpleDateFormat("mm:ss").format(Date(player?.currentPosition!!.toLong()))
-                binding.remainTimeTextView.text = "-${SimpleDateFormat("mm:ss").format(Date(player?.duration!! - player?.currentPosition!!.toLong()))}"
+                viewModel.playTime.postValue(SimpleDateFormat("mm:ss").format(Date(player?.currentPosition!!.toLong())))
+                viewModel.remainTime.postValue("-${SimpleDateFormat("mm:ss").format(Date(player?.duration!! - player?.currentPosition!!.toLong()))}")
             }
 
             override fun onStartTracking(progress: Float) {

@@ -10,6 +10,8 @@ import timber.log.Timber
 class RecordProcessingViewModel : BaseViewModel() {
     val buttonState: MutableLiveData<ButtonState> = MutableLiveData<ButtonState>(ButtonState.BEFORE_PLAYING)
 
+    val playTime: MutableLiveData<String> = MutableLiveData("00:00")
+    val remainTime: MutableLiveData<String> = MutableLiveData("00:00")
 
     val volumeLevel: MutableLiveData<Int> = MutableLiveData(50)
     val syncLevel: MutableLiveData<Int> = MutableLiveData(50)
