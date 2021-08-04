@@ -16,6 +16,7 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolBarLayout"
                 android:layout_width="match_parent"
+                app:collapsedTitleTextAppearance="@style/Toolbar.TitleText"
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
                 app:contentScrim="@color/white">
@@ -79,6 +80,7 @@
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.Toolbar
+                    android:layout_marginTop="56dp"
                     android:id="@+id/tbActivityMaterialDetail"
                     android:layout_width="match_parent"
                     android:gravity="bottom"
@@ -87,7 +89,24 @@
                     app:titleMarginStart="8dp"
                     app:title="Pentatonic"
                     app:layout_scrollFlags="scroll"
-                    app:layout_collapseMode="pin"/>
+                    app:layout_collapseMode="pin">
+
+                    <RelativeLayout
+                        android:elevation="1dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                            android:layout_marginTop="56dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="50dp"
+                            android:src="@drawable/profile_image_placeholder"
+                            android:layout_height="50dp"/>
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.Toolbar>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
