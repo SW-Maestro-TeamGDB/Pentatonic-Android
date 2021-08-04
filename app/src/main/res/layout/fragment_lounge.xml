@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             app:elevation="0dp"
             android:layout_height="300dp">
@@ -84,19 +85,18 @@
                     android:layout_width="match_parent"
                     android:gravity="bottom"
                     android:layout_height="100dp"
-                    app:titleMarginTop="32dp"
-                    app:titleMarginStart="8dp"
-                    app:title="Pentatonic"
                     app:layout_scrollFlags="scroll"
                     app:layout_collapseMode="pin">
 
                     <RelativeLayout
+                        android:paddingHorizontal="8dp"
                         android:paddingTop="48dp"
                         android:elevation="1dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
                         <TextView
+                            android:id="@+id/titleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignTop="@+id/userProfileImage"
@@ -110,10 +110,10 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/userProfileImage"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginEnd="24dp"
+                            android:layout_marginEnd="16dp"
                             android:src="@drawable/profile_image_placeholder"
                             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
                     </RelativeLayout>

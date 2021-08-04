@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.lounge
 import android.graphics.Color
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.AppBarLayout
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.CoverHorizontalListAdapter
@@ -27,6 +28,13 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initAfterBinding() {
+        binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
+                binding.titleTextView.setTextColor(resources.getColor(R.color.main_regular))
+            } else{
+                binding.titleTextView.setTextColor(resources.getColor(R.color.white))
+            }
+        })
 
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverHorizontalListAdapter {
