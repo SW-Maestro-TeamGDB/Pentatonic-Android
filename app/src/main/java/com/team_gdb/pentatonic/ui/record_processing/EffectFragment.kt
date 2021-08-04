@@ -12,6 +12,7 @@ class EffectFragment : BaseFragment<FragmentEffectBinding, RecordProcessingViewM
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
     }
 
     override fun initDataBinding() {

@@ -10,9 +10,9 @@ class TabFragmentAdapter(fragment: FragmentActivity) : FragmentStateAdapter(frag
 
     override fun createFragment(position: Int): Fragment {
         return if (position == 0) {
-            ControlFragment.newInstance("Control", "")
+            ControlFragment()
         } else {
-            EffectFragment.newInstance("Effect", "")
+            EffectFragment()
         }
     }
 }

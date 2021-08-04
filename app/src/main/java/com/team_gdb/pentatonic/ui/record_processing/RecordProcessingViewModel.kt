@@ -1,8 +1,10 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
+import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team_gdb.pentatonic.base.BaseViewModel
+import timber.log.Timber
 
 class RecordProcessingViewModel : BaseViewModel() {
     val volumeLevel: MutableLiveData<Int> = MutableLiveData(50)
@@ -12,6 +14,8 @@ class RecordProcessingViewModel : BaseViewModel() {
 
     fun controlVolumeLevel(amount: Int) {
         volumeLevel.value = volumeLevel.value?.plus(amount)
+        Timber.d("Volume Control 예아")
+        Timber.d("VolumeLevel : ${volumeLevel.value}")
     }
 
     fun controlSyncLevel(amount: Int) {
@@ -22,7 +26,7 @@ class RecordProcessingViewModel : BaseViewModel() {
         gainEffectLevel.value = gainEffectLevel.value?.plus(amount)
     }
 
-    fun controlReverbEffectLevel(amount: Int){
+    fun controlReverbEffectLevel(amount: Int) {
         reverbEffectLevel.value = reverbEffectLevel.value?.plus(amount)
     }
 }

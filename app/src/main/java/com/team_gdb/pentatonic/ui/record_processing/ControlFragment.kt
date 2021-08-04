@@ -17,6 +17,7 @@ class ControlFragment : BaseFragment<FragmentControlBinding, RecordProcessingVie
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
     }
 
     override fun initDataBinding() {
