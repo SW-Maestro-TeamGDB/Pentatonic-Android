@@ -39,18 +39,16 @@ class RecordProcessingActivity :
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
     }
 
-    private var state = ButtonState.BEFORE_PLAYING
-        set(value) { // setter 설정
-            field = value // 실제 프로퍼티에 대입
-            binding.playButton.updateIconWithState(value)
-        }
-
     override fun initStartView() {
-        binding.playButton.updateIconWithState(state)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         initPlayer()
     }
 
     override fun initDataBinding() {
+        viewModel.buttonState.observe(this) {
+            binding.playButton.updateIconWithState(it)
+        }
     }
 
     override fun initAfterBinding() {
@@ -107,7 +105,7 @@ class RecordProcessingActivity :
         }
 
         binding.playButton.setOnClickListener {
-            when (state) {
+            when (viewModel.buttonState.value) {
                 ButtonState.BEFORE_PLAYING -> {
                     startPlaying()
                 }
@@ -127,7 +125,6 @@ class RecordProcessingActivity :
             prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
             setOnCompletionListener {  // 끝까지 재생이 끝났을 때
                 pausePlaying()
-                state = ButtonState.BEFORE_PLAYING
             }
             totalDuration = this.duration.toFloat()
             interval = this.duration.toFloat().div(100)
@@ -139,7 +136,7 @@ class RecordProcessingActivity :
      */
     private fun startPlaying() {
         player?.start()
-        state = ButtonState.ON_PLAYING
+        viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {
             while (player?.isPlaying == true) {
                 try {
@@ -160,7 +157,7 @@ class RecordProcessingActivity :
      */
     private fun pausePlaying() {
         player?.pause()
-        state = ButtonState.BEFORE_PLAYING
+        viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
     }
 
     /**

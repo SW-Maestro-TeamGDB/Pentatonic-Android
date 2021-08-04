@@ -4,9 +4,13 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.ui.record.ButtonState
 import timber.log.Timber
 
 class RecordProcessingViewModel : BaseViewModel() {
+    val buttonState: MutableLiveData<ButtonState> = MutableLiveData<ButtonState>(ButtonState.BEFORE_PLAYING)
+
+
     val volumeLevel: MutableLiveData<Int> = MutableLiveData(50)
     val syncLevel: MutableLiveData<Int> = MutableLiveData(50)
     val gainEffectLevel: MutableLiveData<Int> = MutableLiveData(50)
