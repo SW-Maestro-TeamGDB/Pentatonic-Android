@@ -2,55 +2,40 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/songItemCard"
-        android:layout_width="170dp"
-        app:cardElevation="0dp"
-        app:cardUseCompatPadding="true"
-        android:layout_height="170dp"
-        android:paddingStart="16dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="12dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
                 android:id="@+id/albumJacketImage"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 android:src="@color/cardview_dark_background" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:background="#99000000"
-                android:orientation="vertical"
-                android:paddingVertical="8dp"
-                android:paddingHorizontal="12dp">
+            <TextView
+                android:layout_marginTop="8dp"
+                android:id="@+id/songNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_regular"
+                android:text="SONG_NAME"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/songNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="SONG_NAME"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+            <TextView
+                android:layout_marginTop="4dp"
+                android:id="@+id/songArtistTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_regular"
+                android:text="ARTIST_NAME"
+                android:textColor="#B3888888"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/songArtistTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="ARTIST_NAME"
-                    android:textColor="#B3FFFFFF"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
 </layout>

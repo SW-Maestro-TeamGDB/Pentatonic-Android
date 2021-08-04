@@ -18,7 +18,7 @@
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
-        <entry key="app/src/main/res/layout/item_song_list.xml" value="0.10100193923723336" />
+        <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_vertical_cover_list.xml" value="0.33" />
       </map>
     </option>

@@ -8,7 +8,6 @@
         android:layout_height="match_parent">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -34,11 +33,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:layout_above="@+id/weeklyChallengeSongArtist"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="Weekly Challenge"
                 android:textColor="@color/white" />
@@ -56,11 +55,11 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:layout_marginHorizontal="16dp"
-                android:layout_above="@+id/weeklyChallengeSongName"
                 android:id="@+id/weeklyChallengeSongArtist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/weeklyChallengeSongName"
+                android:layout_marginHorizontal="16dp"
                 android:fontFamily="@font/nanum_light"
                 android:text="DAY6"
                 android:textColor="@color/white"
@@ -73,6 +72,7 @@
         <RelativeLayout
             android:gravity="center_vertical"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="@dimen/menu_title_margin_bottom"
             android:layout_marginHorizontal="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,23 +82,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="@string/rising_band_cover_title_text"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="@dimen/menu_title_text_size" />
 
-            <TextView
-                android:gravity="center|end"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
+            <ImageView
                 android:id="@+id/risingBandDetailButton"
-                android:layout_centerVertical="true"
+                android:layout_width="18dp"
+                android:layout_height="25dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginHorizontal="8dp"
+                android:layout_centerVertical="true"
                 android:fontFamily="@font/nanum_light"
-                android:text="더 보기"
-                android:textSize="16sp" />
+                android:gravity="end"
+                android:src="@drawable/ic_more_button" />
 
         </RelativeLayout>
 
@@ -110,7 +107,6 @@
             app:maxAdapterSizeToEstimate="5"
             app:viewCountEstimateSize="5"
             android:id="@+id/bandCoverList"
-            android:layout_marginTop="8dp"
             tools:listitem="@layout/item_horizontal_cover_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -119,7 +115,8 @@
         <RelativeLayout
             android:layout_marginHorizontal="24dp"
             android:gravity="center_vertical"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="@dimen/menu_title_margin_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -128,27 +125,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="@string/rising_solo_cover_title_text"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="@dimen/menu_title_text_size" />
 
-            <TextView
-                android:gravity="center|end"
-                android:layout_width="70dp"
-                android:layout_height="25dp"
+            <ImageView
                 android:id="@+id/risingSoloDetailButton"
-                android:layout_centerVertical="true"
+                android:layout_width="18dp"
+                android:layout_height="25dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginHorizontal="8dp"
+                android:layout_centerVertical="true"
                 android:fontFamily="@font/nanum_light"
-                android:text="더 보기"
-                android:textSize="16sp" />
+                android:gravity="end"
+                android:src="@drawable/ic_more_button" />
 
         </RelativeLayout>
-
-
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             app:friction="200"
@@ -158,7 +150,6 @@
             app:maxAdapterSizeToEstimate="5"
             app:viewCountEstimateSize="5"
             android:id="@+id/soloCoverList"
-            android:layout_marginTop="8dp"
             tools:listitem="@layout/item_horizontal_cover_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -166,7 +157,7 @@
         <!--   떠오르는 솔로 커버   -->
         <androidx.cardview.widget.CardView
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="36dp"
             android:layout_width="match_parent"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="16dp"
