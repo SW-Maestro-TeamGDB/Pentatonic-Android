@@ -14,7 +14,6 @@ import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
 import java.lang.Exception
 import java.text.SimpleDateFormat
-import java.time.Duration
 import java.util.*
 
 
@@ -27,7 +26,7 @@ class RecordProcessingActivity :
     private var player: MediaPlayer? = null
     private var indicatorWidth: Int = 0
 
-    private var duration: Float = 0.0F  // 음악 총 재생 길이
+    private var totalDuration: Float = 0.0F  // 음악 총 재생 길이
     private var interval: Float = 0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
 
     private var seekBarThread: Thread? = null
@@ -130,7 +129,7 @@ class RecordProcessingActivity :
                 pausePlaying()
                 state = ButtonState.BEFORE_PLAYING
             }
-            this@RecordProcessingActivity.duration = this.duration.toFloat()
+            totalDuration = this.duration.toFloat()
             interval = this.duration.toFloat().div(100)
         }
     }
