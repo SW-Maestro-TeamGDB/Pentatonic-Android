@@ -16,7 +16,6 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolBarLayout"
                 android:layout_width="match_parent"
-                app:collapsedTitleTextAppearance="@style/Toolbar.TitleText"
                 android:layout_height="match_parent"
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
                 app:contentScrim="@color/white">
@@ -80,11 +79,11 @@
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.Toolbar
-                    android:layout_marginTop="56dp"
+                    android:layout_marginTop="32dp"
                     android:id="@+id/tbActivityMaterialDetail"
                     android:layout_width="match_parent"
                     android:gravity="bottom"
-                    android:layout_height="120dp"
+                    android:layout_height="100dp"
                     app:titleMarginTop="32dp"
                     app:titleMarginStart="8dp"
                     app:title="Pentatonic"
@@ -92,18 +91,31 @@
                     app:layout_collapseMode="pin">
 
                     <RelativeLayout
+                        android:paddingTop="48dp"
                         android:elevation="1dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/userProfileImage"
+                            android:layout_alignBottom="@+id/userProfileImage"
+                            android:layout_alignParentStart="true"
+                            android:fontFamily="@font/nanum_extrabold"
+                            android:gravity="center_vertical"
+                            android:text="Pentatonic"
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+
                         <com.google.android.material.imageview.ShapeableImageView
-                            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                            android:layout_marginTop="56dp"
-                            android:layout_marginEnd="24dp"
-                            android:layout_alignParentEnd="true"
+                            android:id="@+id/userProfileImage"
                             android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="24dp"
                             android:src="@drawable/profile_image_placeholder"
-                            android:layout_height="50dp"/>
+                            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
                     </RelativeLayout>
 
                 </androidx.appcompat.widget.Toolbar>

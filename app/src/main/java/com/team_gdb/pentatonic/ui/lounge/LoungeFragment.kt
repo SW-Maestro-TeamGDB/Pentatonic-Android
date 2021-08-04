@@ -27,11 +27,6 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initAfterBinding() {
-        binding.collapsingToolBarLayout.run {
-            title = "Pentatonic"
-            setExpandedTitleColor(resources.getColor(R.color.transparent))
-            setCollapsedTitleTextColor(resources.getColor(R.color.main_regular))
-        }
 
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverHorizontalListAdapter {
