@@ -33,37 +33,40 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_above="@+id/weeklyChallengeSongName"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_above="@+id/weeklyChallengeSongArtist"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/background_gradient_text"
                 android:fontFamily="@font/nanum_extrabold"
+                android:padding="8dp"
                 android:text="Weekly Challenge"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="10dp" />
 
             <TextView
                 android:id="@+id/weeklyChallengeSongName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_above="@+id/weeklyChallengeSongArtist"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="예뻤어"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="36sp" />
 
             <TextView
                 android:id="@+id/weeklyChallengeSongArtist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/weeklyChallengeSongName"
-                android:layout_marginHorizontal="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/nanum_light"
                 android:text="DAY6"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:textSize="20sp"/>
 
         </RelativeLayout>
 

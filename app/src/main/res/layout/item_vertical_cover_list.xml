@@ -69,14 +69,14 @@
 
                 <TextView
                     android:drawablePadding="8dp"
+                    app:drawableStartCompat="@drawable/ic_left_image_like"
+                    app:drawableTint="@color/white"
                     android:id="@+id/coverLikeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_light"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:drawableStartCompat="@drawable/ic_left_image_like"
-                    app:drawableTint="@color/white" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:drawablePadding="8dp"
