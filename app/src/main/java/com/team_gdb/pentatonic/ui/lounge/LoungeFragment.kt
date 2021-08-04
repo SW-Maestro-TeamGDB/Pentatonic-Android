@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.lounge
 
+import android.graphics.Color
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
@@ -26,6 +27,12 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initAfterBinding() {
+        binding.collapsingToolBarLayout.run {
+            title = "Pentatonic"
+            setExpandedTitleColor(resources.getColor(R.color.transparent))
+            setCollapsedTitleTextColor(resources.getColor(R.color.main_regular))
+        }
+
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverHorizontalListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
