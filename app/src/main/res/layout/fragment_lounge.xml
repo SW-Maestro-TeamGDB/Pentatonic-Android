@@ -8,88 +8,72 @@
         android:layout_height="match_parent">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp"
         tools:context=".ui.lounge.LoungeFragment">
 
-        <!--   서비스 타이틀 텍스트   -->
-        <TextView
-            android:layout_marginTop="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_extrabold"
-            android:text="@string/lounge_title_text"
-            android:textColor="@color/black"
-            android:textSize="28sp" />
 
         <!--   위클리 챌린지 배너   -->
-        <androidx.cardview.widget.CardView
+        <RelativeLayout
             android:id="@+id/weeklyChallengeSongButton"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="8dp"
-            app:cardCornerRadius="16dp"
-            app:cardUseCompatPadding="true">
+            android:layout_height="300dp"
+            app:cardCornerRadius="16dp">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/weeklyChallengeSongImage"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/beautiful_album_jacket"
+                android:tintMode="src_atop"
+                app:tint="#80000000" />
 
-                <ImageView
-                    android:id="@+id/weeklyChallengeSongImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/beautiful_album_jacket"
-                    android:tintMode="src_atop"
-                    app:tint="#80000000" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="Weekly Challenge"
+                android:textColor="@color/white" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="Weekly Challenge"
-                    android:textColor="@color/white" />
+            <TextView
+                android:id="@+id/weeklyChallengeSongName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="예뻤어"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/weeklyChallengeSongName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="예뻤어"
-                    android:textColor="@color/white"
-                    android:textSize="30sp" />
+            <TextView
+                android:layout_marginHorizontal="16dp"
+                android:layout_above="@+id/weeklyChallengeSongName"
+                android:id="@+id/weeklyChallengeSongArtist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_light"
+                android:text="DAY6"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_above="@+id/weeklyChallengeSongName"
-                    android:id="@+id/weeklyChallengeSongArtist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="DAY6"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+        </RelativeLayout>
 
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
 
         <!--   떠오르는 밴드 커버   -->
         <RelativeLayout
             android:gravity="center_vertical"
             android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -118,16 +102,22 @@
 
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.chauthai.overscroll.RecyclerViewBouncy
+            app:friction="200"
+            app:gapLimit="220"
+            app:speedFactor="5"
+            app:tension="1000"
+            app:maxAdapterSizeToEstimate="5"
+            app:viewCountEstimateSize="5"
             android:id="@+id/bandCoverList"
-            tools:itemCount="2"
             android:layout_marginTop="8dp"
-            tools:listitem="@layout/item_cover_list"
+            tools:listitem="@layout/item_horizontal_cover_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <!--   떠오르는 솔로 커버   -->
         <RelativeLayout
+            android:layout_marginHorizontal="24dp"
             android:gravity="center_vertical"
             android:layout_marginTop="24dp"
             android:layout_width="match_parent"
@@ -135,10 +125,10 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_centerVertical="true"
-                android:layout_marginHorizontal="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="8dp"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="@string/rising_solo_cover_title_text"
                 android:textColor="@color/black"
@@ -160,17 +150,22 @@
 
 
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.chauthai.overscroll.RecyclerViewBouncy
+            app:friction="200"
+            app:gapLimit="220"
+            app:speedFactor="5"
+            app:tension="1000"
+            app:maxAdapterSizeToEstimate="5"
+            app:viewCountEstimateSize="5"
             android:id="@+id/soloCoverList"
-            tools:itemCount="2"
             android:layout_marginTop="8dp"
-            tools:listitem="@layout/item_cover_list"
+            tools:listitem="@layout/item_horizontal_cover_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <!--   떠오르는 솔로 커버   -->
         <androidx.cardview.widget.CardView
-            android:layout_marginHorizontal="8dp"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             app:cardBackgroundColor="@color/white"
@@ -185,21 +180,21 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:tintMode="src_over"
-                    app:tint="#80000000"
-                    android:src="@drawable/band_image"
-                    android:scaleType="centerCrop"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/band_image"
+                    android:tintMode="src_over"
+                    app:tint="#80000000" />
 
                 <TextView
-                    android:layout_centerInParent="true"
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:textSize="24sp"
-                    android:text="전체 커버 및 검색"/>
+                    android:text="전체 커버 및 검색"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

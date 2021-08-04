@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.CoverListAdapter
+import com.team_gdb.pentatonic.adapter.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import com.team_gdb.pentatonic.TestData
@@ -17,7 +17,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         get() = R.layout.fragment_studio
     override val viewModel: StudioViewModel by viewModel()
 
-    private lateinit var recommendCoverListAdapter: CoverListAdapter  // 추천 커버 리스트
+    private lateinit var recommendCoverListAdapter: CoverHorizontalListAdapter  // 추천 커버 리스트
     private lateinit var recommendSongListAdapter: SongListAdapter  // 추천  리스트
 
 
@@ -33,13 +33,15 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         }
 
         // 추천 커버 리사이클러뷰 어댑터 생성
-        recommendCoverListAdapter = CoverListAdapter {
+        recommendCoverListAdapter = CoverHorizontalListAdapter {
             findNavController().navigate(StudioFragmentDirections.actionNavigationStudioToNavigationBandCover(it))
         }
 
         binding.recommendCoverList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
             this.adapter = recommendCoverListAdapter
-            this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)
         }
 

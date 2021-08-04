@@ -25,10 +25,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recommendCoverList"
-                tools:itemCount="2"
+                tools:itemCount="1"
                 android:layout_marginTop="8dp"
-                android:layout_marginHorizontal="24dp"
-                tools:listitem="@layout/item_cover_list"
+                tools:listitem="@layout/item_horizontal_cover_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

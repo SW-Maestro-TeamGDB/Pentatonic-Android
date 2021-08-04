@@ -4,7 +4,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.adapter.CoverListAdapter
+import com.team_gdb.pentatonic.adapter.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -14,8 +14,8 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         get() = R.layout.fragment_lounge
     override val viewModel: LoungeViewModel by viewModel()
 
-    private lateinit var bandCoverListAdapter: CoverListAdapter  // 밴드 커버 리스트
-    private lateinit var soloCoverListAdapter: CoverListAdapter  // 솔로 커버 리스트
+    private lateinit var bandCoverListAdapter: CoverHorizontalListAdapter  // 밴드 커버 리스트
+    private lateinit var soloCoverListAdapter: CoverHorizontalListAdapter  // 솔로 커버 리스트
 
     override fun initStartView() {
         binding.viewModel = viewModel
@@ -27,26 +27,30 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
     override fun initAfterBinding() {
         // 밴드 커버 리사이클러뷰 어댑터 생성
-        bandCoverListAdapter = CoverListAdapter {
+        bandCoverListAdapter = CoverHorizontalListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
         }
 
         binding.bandCoverList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
             this.adapter = bandCoverListAdapter
-            this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)
         }
 
         bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
         // 솔로 커버 리사이클러뷰 어댑터 생성
-        soloCoverListAdapter = CoverListAdapter {
+        soloCoverListAdapter = CoverHorizontalListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationSoloCover(it))
         }
 
         binding.soloCoverList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
             this.adapter = soloCoverListAdapter
-            this.layoutManager = LinearLayoutManager(context)
             this.setHasFixedSize(true)
         }
 

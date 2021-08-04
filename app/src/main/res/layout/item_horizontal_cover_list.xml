@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/coverItemLayout"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="16dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="170dp"
+            android:layout_height="240dp">
+
+            <ImageView
+                android:id="@+id/coverImage"
+                android:layout_width="170dp"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/band_cover_bg"
+                android:tintMode="src_over"
+                app:tint="#80000000" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginVertical="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/coverNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="본격 신성모독 밴드"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/coverOriginalSongTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="DAY6 - You make me"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:drawablePadding="4dp"
+                    app:drawableStartCompat="@drawable/ic_left_participants"
+                    app:drawableTint="@color/white"
+                    android:id="@+id/coverSessionListTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="3명"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:drawablePadding="4dp"
+                    android:id="@+id/coverLikeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_light"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:text="100"
+                    app:drawableStartCompat="@drawable/ic_left_image_like"
+                    app:drawableTint="@color/white" />
+
+                <TextView
+                    android:drawablePadding="4dp"
+                    android:id="@+id/coverViewTextView"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:text="50"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_light"
+                    app:drawableStartCompat="@drawable/ic_left_image_view"
+                    app:drawableTint="@color/white"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

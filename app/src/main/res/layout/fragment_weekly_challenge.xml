@@ -148,7 +148,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_marginHorizontal="16dp"
-                tools:listitem="@layout/item_cover_list"
+                tools:listitem="@layout/item_Vertical_cover_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:drawable="@drawable/ic_like"
-        android:width="15dp"
-        android:height="15dp"/>
+        android:width="12dp"
+        android:height="12dp"/>
 </layer-list>

@@ -27,7 +27,8 @@ class RecordProcessingActivity :
     private var indicatorWidth: Int = 0
 
     private var totalDuration: Float = 0.0F  // 음악 총 재생 길이
-    private var interval: Float = 0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
+    private var interval: Float =
+        0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
 
     private var seekBarThread: Thread? = null
 
