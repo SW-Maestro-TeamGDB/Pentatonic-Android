@@ -26,7 +26,7 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                     binding.coverNameEditText.error = "필수 항목입니다"
                 }
                 if (viewModel.coverSong.value == null) {
-                    binding.selectSongTitleTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.error_red))
+                    binding.selectSongTitleTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
                 }
                 PlayAnimation.playErrorAnimation(binding.formLayout)
             }

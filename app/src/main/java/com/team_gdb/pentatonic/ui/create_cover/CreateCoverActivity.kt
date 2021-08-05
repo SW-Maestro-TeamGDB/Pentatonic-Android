@@ -37,6 +37,9 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
 
     override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "밴드 커버 만들기"
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
+        }
         transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
             replace(R.id.fragmentContainer, basicInfoFormFragment)
             commit()
