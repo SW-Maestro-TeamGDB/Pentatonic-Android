@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -59,8 +59,41 @@
 
 
         <RelativeLayout
+            android:layout_marginTop="4dp"
+            android:paddingVertical="12dp"
+            android:paddingHorizontal="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/selectGenreButton"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_radius_stroke_gray"
+                android:fontFamily="@font/nanum_regular"
+                android:text="장르" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginStart="12dp"
+                android:layout_toRightOf="@+id/selectGenreButton"
+                android:fontFamily="@font/nanum_regular"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:background="@drawable/custom_radius_stroke_gray"
+                android:text="난이도" />
+
+            <TextView
+                android:id="@+id/selectFreeCoverButton"
+                android:textSize="16sp"
+                android:drawablePadding="8dp"
+                android:drawableStart="@drawable/ic_left_image_add"
+                android:fontFamily="@font/nanum_regular"
+                android:layout_centerVertical="true"
+                android:text="자유곡 커버하기"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </RelativeLayout>
 
@@ -72,7 +105,6 @@
             app:tension="1000"
             app:maxAdapterSizeToEstimate="5"
             app:viewCountEstimateSize="5"
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
