@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:gravity="center_vertical"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="12dp"
         android:orientation="horizontal"
         android:id="@+id/songItemCard"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="110dp">
 
             <com.google.android.material.imageview.ShapeableImageView
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
@@ -18,16 +18,17 @@
                 android:src="@color/cardview_dark_background" />
 
             <RelativeLayout
+                android:paddingVertical="16dp"
                 android:id="@+id/songInfoLayout"
                 android:layout_marginStart="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_alignParentTop="true"
                     android:id="@+id/songNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/nanum_extrabold"
                     android:text="SONG_NAME"
                     android:textColor="@color/black"
@@ -38,11 +39,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/songNameTextView"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="2dp"
                     android:fontFamily="@font/nanum_regular"
                     android:text="ARTIST_NAME"
                     android:textColor="#B3888888"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -52,7 +53,7 @@
                     android:fontFamily="@font/nanum_regular"
                     android:text="보컬, 일렉, 드럼, 베이스"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="11sp" />
 
                 <RatingBar
                     style="?android:attr/ratingBarStyleSmall"
