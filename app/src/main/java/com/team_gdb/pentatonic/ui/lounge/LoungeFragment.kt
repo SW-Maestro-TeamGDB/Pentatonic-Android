@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.lounge
 
 import android.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
@@ -30,9 +31,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override fun initAfterBinding() {
         binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                binding.titleTextView.setTextColor(resources.getColor(R.color.main_regular))
+                binding.titleTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.main_regular))
             } else{
-                binding.titleTextView.setTextColor(resources.getColor(R.color.white))
+                binding.titleTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
             }
         })
 

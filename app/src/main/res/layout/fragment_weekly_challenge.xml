@@ -17,7 +17,63 @@
             <!--   위클리 챌린지 배너   -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp">
+                android:layout_height="400dp">
+
+                <ImageView
+                    android:layout_alignTop="@+id/searchViewLayout"
+                    android:layout_alignBottom="@id/searchViewLayout"
+                    android:elevation="1dp"
+                    android:id="@+id/backButton"
+                    android:layout_marginStart="24dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_back_button"
+                    app:tint="@color/white" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginTop="48dp"
+                    android:layout_toRightOf="@+id/backButton"
+                    app:cardBackgroundColor="#80434343"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:id="@+id/searchViewLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/searchView"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:drawableStart="@drawable/ic_baseline_search_24"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="14sp" />
+
+                        <ImageButton
+                            android:id="@+id/textClearButton"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="12dp"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:src="@drawable/ic_baseline_cancel_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
                 <ImageView
                     android:id="@+id/weeklyChallengeSongImage"
@@ -28,14 +84,6 @@
                     android:tintMode="src_atop"
                     app:tint="#80000000" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_margin="24dp"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="Weekly Challenge"
-                    android:textColor="@color/white" />
 
 
                 <TextView
@@ -132,80 +180,10 @@
 
             </RelativeLayout>
 
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
-                android:id="@+id/searchViewLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="2dp"
-                app:cardCornerRadius="12dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/searchView"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_baseline_search_24"
-                        android:drawablePadding="8dp"
-                        android:gravity="center_vertical"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:textSize="14sp" />
-
-                    <ImageButton
-                        android:id="@+id/textClearButton"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="12dp"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:src="@drawable/ic_baseline_cancel_24"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-
-            <LinearLayout
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:id="@+id/addImageButton"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/dash_border"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_add_circle_outline_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="새로운 밴드 만들기"
-                    android:fontFamily="@font/nanum_light"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginVertical="16dp"
                 android:layout_marginHorizontal="16dp"
-                tools:listitem="@layout/item_Vertical_cover_list"
+                tools:listitem="@layout/item_vertical_cover_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
