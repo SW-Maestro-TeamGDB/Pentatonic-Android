@@ -17,14 +17,14 @@
             <!--   위클리 챌린지 배너   -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp">
+                android:layout_height="350dp">
 
                 <ImageView
                     android:id="@+id/weeklyChallengeSongImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/beautiful_album_jacket"
+                    android:src="@drawable/coldplay"
                     android:tintMode="src_atop"
                     app:tint="#80000000" />
 
@@ -39,39 +39,96 @@
 
 
                 <TextView
+                    android:layout_centerHorizontal="true"
                     android:id="@+id/weeklyChallengeSongArtist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/weeklyChallengeSongName"
+                    android:layout_above="@+id/weeklyChallengeSongDescription"
                     android:layout_marginHorizontal="24dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="DAY6"
+                    android:text="coldplay"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <TextView
+
+                    android:layout_above="@+id/weeklyChallengeSongArtist"
                     android:id="@+id/weeklyChallengeSongName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginHorizontal="24dp"
-                    android:layout_above="@+id/weeklyChallengeSongDescription"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="예뻤어"
+                    android:text="Higher Power"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
 
                 <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="24dp"
+                    android:layout_above="@+id/buttonLayout"
                     android:id="@+id/weeklyChallengeSongDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_marginHorizontal="24dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/nanum_light"
                     android:text="'Every DAY6 February' 앨범의 타이틀 곡 '예뻤어'는 헤어진 연인에 대해 함께한 모든 순간에 넌 예뻤다고 회상하는 한 남자의 감성을 그려낸 곡. 팝적인 코드와 파워풀한 락 사운드가 결합된 트랙에 장면 장면을 연상시키는 가사와 멜로디가 만나 극적인 전개를 보여준다."
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+
+                <LinearLayout
+                    android:padding="24dp"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/buttonLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radius_stroke_white"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp">
+                        <ImageView
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_weekly_challenge_create_band"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="새로운 밴드 만들기"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_radius_background_white"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp">
+                        <ImageView
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/ic_weekly_challenge_record"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"/>
+
+                        <TextView
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="파트 녹음하기"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
             </RelativeLayout>
 

@@ -35,7 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/beautiful_album_jacket"
+                        android:src="@drawable/coldplay"
                         android:tintMode="src_atop"
                         app:tint="#80000000" />
 
@@ -61,7 +61,7 @@
                         android:layout_above="@+id/weeklyChallengeSongArtist"
                         android:layout_marginHorizontal="16dp"
                         android:fontFamily="@font/nanum_extrabold"
-                        android:text="예뻤어"
+                        android:text="Higher Power"
                         android:textColor="@color/white"
                         android:textSize="36sp" />
 
@@ -73,7 +73,7 @@
                         android:layout_marginHorizontal="18dp"
                         android:layout_marginBottom="16dp"
                         android:fontFamily="@font/nanum_light"
-                        android:text="DAY6"
+                        android:text="coldplay"
                         android:textColor="@color/white"
                         android:textSize="20sp"/>
 
