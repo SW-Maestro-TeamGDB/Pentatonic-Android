@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#F1F1F1</color>
     <color name="red">#FF0000</color>
+    <color name="error_red">#B30000</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="background">#E2E6ED</color>
 

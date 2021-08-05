@@ -24,15 +24,13 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     }
 
     override fun initDataBinding() {
-        binding.viewModel?.coverBasicInfoValidation?.observe(this) {
-            // Basic Information Form Validation 성립하는 경우
+        viewModel?.coverBasicInfoValidation?.observe(this) {
+            // Basic Information Form Validation 성립하는 경우 프래그먼트 이동
             if (it.getContentIfNotHandled() == true) {
                 transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
                     replace(R.id.fragmentContainer, sessionConfigGormFragment)
                     commit()
                 }
-            } else {
-
             }
         }
     }

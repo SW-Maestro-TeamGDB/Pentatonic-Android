@@ -111,4 +111,7 @@ dependencies {
     //Bounce Scroll View
     implementation 'com.github.woxingxiao:BounceScrollView:1.5'
     implementation 'com.chauthai.overscroll:overscroll-bouncy:0.1.1'
+
+    // View Animation
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
 }
