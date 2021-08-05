@@ -55,7 +55,16 @@
     <fragment
         android:id="@+id/navigation_weekly_challenge"
         android:name="com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeFragment"
-        tools:layout="@layout/fragment_weekly_challenge" />
+        tools:layout="@layout/fragment_weekly_challenge" >
+        <action
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            android:id="@+id/action_navigation_weekly_challenge_to_navigation_lounge"
+            app:destination="@id/navigation_lounge"
+            app:popUpTo="@id/navigation_lounge" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_rising_band"

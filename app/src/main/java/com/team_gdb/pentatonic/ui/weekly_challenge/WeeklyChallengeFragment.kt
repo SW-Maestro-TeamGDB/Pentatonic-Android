@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.weekly_challenge
 
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
@@ -37,5 +38,9 @@ class WeeklyChallengeFragment :
             this.setHasFixedSize(true)
         }
         weeklyChallengeCoverListAdapter.setItem(TestData.TEST_WEEKLY_COVER_LIST)
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_weekly_challenge_to_navigation_lounge)
+        }
     }
 }
