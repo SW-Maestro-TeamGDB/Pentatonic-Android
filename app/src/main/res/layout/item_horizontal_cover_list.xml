@@ -16,7 +16,7 @@
 
             <RelativeLayout
                 android:layout_width="170dp"
-                android:layout_height="240dp">
+                android:layout_height="220dp">
 
                 <ImageView
                     android:id="@+id/coverImage"

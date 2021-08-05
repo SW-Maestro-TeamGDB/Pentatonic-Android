@@ -17,7 +17,7 @@
             <!--   위클리 챌린지 배너   -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
+                android:layout_height="500dp">
 
                 <ImageView
                     android:layout_alignTop="@+id/searchViewLayout"
@@ -31,7 +31,7 @@
                     app:tint="@color/white" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="32dp"
                     android:layout_toRightOf="@+id/backButton"
                     app:cardBackgroundColor="#80434343"
                     android:layout_marginStart="8dp"
@@ -56,7 +56,7 @@
                             android:drawableStart="@drawable/ic_baseline_search_24"
                             android:drawablePadding="8dp"
                             android:gravity="center_vertical"
-                            android:paddingStart="8dp"
+                            android:paddingHorizontal="16dp"
                             android:paddingEnd="8dp"
                             android:textSize="14sp" />
 
@@ -112,14 +112,15 @@
                     android:textSize="30sp" />
 
                 <TextView
-                    android:layout_above="@+id/buttonLayout"
                     android:id="@+id/weeklyChallengeSongDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_above="@+id/buttonLayout"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="'Every DAY6 February' 앨범의 타이틀 곡 '예뻤어'는 헤어진 연인에 대해 함께한 모든 순간에 넌 예뻤다고 회상하는 한 남자의 감성을 그려낸 곡. 팝적인 코드와 파워풀한 락 사운드가 결합된 트랙에 장면 장면을 연상시키는 가사와 멜로디가 만나 극적인 전개를 보여준다."
+                    android:gravity="center"
+                    android:text="콜드플레이가 신곡 'Higher Power'를 발표했다. 'Everyday Life' 이후 처음으로 공개하는 신곡이다. 밴드의 리더 크리스 마틴은 이 곡을 '욕실과 작은 세면대에서 만들어진 곡'이라고 설명했다."
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
@@ -181,6 +182,7 @@
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/weeklyChallengeCoverList"
                 android:layout_marginVertical="16dp"
                 android:layout_marginHorizontal="16dp"
                 tools:listitem="@layout/item_vertical_cover_list"
