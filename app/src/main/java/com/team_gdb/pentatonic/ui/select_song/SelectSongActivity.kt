@@ -34,7 +34,7 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
 
 
         val songListAdapter = SongVerticalListAdapter {
-            val bottomSheetDialog = RecordGuideBottomSheetDialog()
+            val bottomSheetDialog = SongConfirmBottomSheetDialog(it)
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
 

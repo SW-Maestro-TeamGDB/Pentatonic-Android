@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/guideTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="이 곡을 커버 하시겠습니까?"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:orientation="horizontal"
+            android:id="@+id/songItemCard"
+            android:layout_width="match_parent"
+            android:layout_height="110dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                android:id="@+id/albumJacketImage"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@color/cardview_dark_background" />
+
+            <RelativeLayout
+                android:paddingVertical="16dp"
+                android:id="@+id/songInfoLayout"
+                android:layout_marginStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/songNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="SONG_NAME"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/songArtistTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/songNameTextView"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="ARTIST_NAME"
+                    android:textColor="#B3888888"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/songSessionConfigTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/songDifficulty"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="보컬, 일렉, 드럼, 베이스"
+                    android:textColor="@color/black"
+                    android:textSize="11sp" />
+
+                <RatingBar
+                    android:id="@+id/songDifficulty"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="보컬, 일렉, 드럼, 베이스"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirmSongButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guideLineTextView"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/custom_radius_background_dark"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="맞습니다"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel" />
+    </data>
+</layout>
