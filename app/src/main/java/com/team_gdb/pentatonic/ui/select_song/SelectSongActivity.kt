@@ -8,8 +8,10 @@ import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.SongVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivitySelectSongBinding
+import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongViewModel>() {
     override val layoutResourceId: Int
@@ -26,10 +28,14 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
 
     override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "곡 선택"
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
+        }
 
 
         val songListAdapter = SongVerticalListAdapter {
-
+            val bottomSheetDialog = RecordGuideBottomSheetDialog()
+            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
 
         binding.songList.apply {

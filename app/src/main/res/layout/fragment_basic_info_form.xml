@@ -30,7 +30,7 @@
                 android:maxEms="1"
                 android:text="@={viewModel.coverName}"
                 android:maxLines="1"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:paddingHorizontal="16dp"
                 android:hint="ex) 콜드플레이를 좋아한다면 누구나! 실력 상관 X"
                 android:textCursorDrawable="@drawable/edittext_cursor_drawable"
@@ -57,7 +57,7 @@
                 android:maxLines="1"
                 android:hint="ex) 실력보단 그루브로!"
                 android:paddingHorizontal="16dp"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:inputType="text"
                 android:textCursorDrawable="@drawable/edittext_cursor_drawable"
                 android:id="@+id/coverIntroductionEditText"
@@ -87,7 +87,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:text="커버할 곡을 선택해주세요. (필수)"
                     android:fontFamily="@font/nanum_extrabold"/>
             </LinearLayout>
