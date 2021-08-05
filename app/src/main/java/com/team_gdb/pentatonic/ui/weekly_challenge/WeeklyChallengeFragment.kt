@@ -36,6 +36,6 @@ class WeeklyChallengeFragment :
             this.adapter = weeklyChallengeCoverListAdapter
             this.setHasFixedSize(true)
         }
-        weeklyChallengeCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+        weeklyChallengeCoverListAdapter.setItem(TestData.TEST_WEEKLY_COVER_LIST)
     }
 }
