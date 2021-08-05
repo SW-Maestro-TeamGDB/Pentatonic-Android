@@ -14,7 +14,11 @@
         <activity
             android:name=".ui.create_cover.CreateCoverActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.record_processing.RecordProcessingActivity"></activity>
         <activity android:name=".ui.record.RecordActivity"></activity>
@@ -25,11 +29,7 @@
             android:theme="@style/noStatusBar"
             android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
     <uses-feature

@@ -15,14 +15,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="밴드 이름"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
                 android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,11 +23,13 @@
                 android:fontFamily="@font/nanum_extrabold"/>
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:backgroundTint="@color/main_dark"
+                android:background="@drawable/custom_radius_background_white"
+                android:backgroundTint="@color/gray"
                 android:fontFamily="@font/nanum_extrabold"
                 android:maxEms="1"
                 android:maxLines="1"
-                android:textSize="16sp"
+                android:textSize="12sp"
+                android:paddingHorizontal="16dp"
                 android:hint="ex) 콜드플레이를 좋아한다면 누구나! 실력 상관 X"
                 android:textCursorDrawable="@drawable/edittext_cursor_drawable"
                 android:inputType="text"
@@ -45,29 +39,22 @@
                 android:layout_height="50dp"/>
 
             <TextView
-                android:layout_marginTop="36dp"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="밴드 소개"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:text="해당 밴드의 간단한 소개글을 입력해주세요."
                 android:fontFamily="@font/nanum_extrabold"/>
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:backgroundTint="@color/main_dark"
+                android:background="@drawable/custom_radius_background_white"
+                android:backgroundTint="@color/gray"
                 android:maxEms="1"
                 android:fontFamily="@font/nanum_extrabold"
                 android:maxLines="1"
                 android:hint="ex) 실력보단 그루브로!"
-                android:textSize="16sp"
+                android:paddingHorizontal="16dp"
+                android:textSize="12sp"
                 android:inputType="text"
                 android:textCursorDrawable="@drawable/edittext_cursor_drawable"
                 android:id="@+id/coverIntroductionEditText"
@@ -97,7 +84,7 @@
                 android:layout_marginBottom="16dp"
                 android:id="@+id/selectSongButton"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="100dp"
                 android:background="@drawable/dash_border"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -120,14 +107,15 @@
         </LinearLayout>
 
         <TextView
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:fontFamily="@font/nanum_extrabold"
-            android:text="다음으로"
-            android:background="@color/main_regular"
+            android:background="@drawable/background_gradient_button"
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_margin="24dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/nanum_extrabold"
+            android:gravity="center"
+            android:text="다음으로"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

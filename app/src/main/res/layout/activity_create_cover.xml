@@ -8,15 +8,30 @@
         android:orientation="vertical"
         tools:context=".ui.create_cover.CreateCoverActivity">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
+        <LinearLayout
             android:layout_marginTop="56dp"
-            android:fontFamily="@font/nanum_extrabold"
-            android:text="밴드 커버 만들기"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:layout_marginHorizontal="24dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_button"
+                app:tint="@color/black" />
+
+            <TextView
+                android:layout_marginStart="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_regular"
+                android:text="밴드 커버 만들기"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
 
         <FrameLayout
             tools:layout="@layout/fragment_basic_info_form"

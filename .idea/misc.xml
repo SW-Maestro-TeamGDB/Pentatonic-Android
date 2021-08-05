@@ -4,29 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
-        <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.14539473684210527" />
-        <entry key="app/src/main/res/drawable/ic_baseline_groups_24.xml" value="0.26458333333333334" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
-        <entry key="app/src/main/res/drawable/ic_weekly_challenge_create_band.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/ic_weekly_challenge_record.xml" value="0.26458333333333334" />
+        <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_artist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.10100193923723336" />
+        <entry key="app/src/main/res/layout/fragment_basic_info_form.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.2515400410677618" />
+        <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />
