@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:orientation="horizontal"
+        android:id="@+id/songItemCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                android:id="@+id/albumJacketImage"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@color/cardview_dark_background" />
+
+            <RelativeLayout
+                android:id="@+id/songInfoLayout"
+                android:layout_marginStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/songNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="SONG_NAME"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/songArtistTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/songNameTextView"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="ARTIST_NAME"
+                    android:textColor="#B3888888"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/sessionConfigInfo"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="보컬, 일렉, 드럼, 베이스"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <RatingBar
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:id="@+id/sessionConfigInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="보컬, 일렉, 드럼, 베이스"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

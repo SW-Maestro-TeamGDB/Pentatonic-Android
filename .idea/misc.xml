@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
@@ -29,6 +30,7 @@
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_vertical_cover_list.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/page_title_bar.xml" value="0.15986842105263158" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13519736842105262" />
       </map>

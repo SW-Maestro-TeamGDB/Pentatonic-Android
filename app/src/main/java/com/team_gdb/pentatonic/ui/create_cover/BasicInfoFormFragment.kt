@@ -8,6 +8,9 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentBasicInfoFormBinding
 import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import android.content.Intent
+import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
+
 
 class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateCoverViewModel>() {
     override val layoutResourceId: Int
@@ -34,5 +37,9 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
     }
 
     override fun initAfterBinding() {
+        binding.selectSongButton.setOnClickListener {
+            val intent = Intent(activity, SelectSongActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -40,6 +40,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
         binding.titleBar.backButton.setOnClickListener {
             finish()
         }
+
         transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
             replace(R.id.fragmentContainer, basicInfoFormFragment)
             commit()

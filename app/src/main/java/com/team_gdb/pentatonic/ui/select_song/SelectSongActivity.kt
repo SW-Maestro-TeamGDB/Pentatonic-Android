@@ -2,7 +2,10 @@ package com.team_gdb.pentatonic.ui.select_song
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.TestData
+import com.team_gdb.pentatonic.adapter.SongVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivitySelectSongBinding
 
@@ -13,6 +16,8 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
         get() = R.layout.activity_select_song
     override val viewModel: SelectSongViewModel by viewModel()
 
+    private lateinit var songList: SongVerticalListAdapter
+
     override fun initStartView() {
     }
 
@@ -21,5 +26,18 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
 
     override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "곡 선택"
+
+
+        val songListAdapter = SongVerticalListAdapter {
+
+        }
+
+        binding.songList.apply {
+            this.layoutManager = LinearLayoutManager(context)
+            adapter = songListAdapter
+            setHasFixedSize(true)
+        }
+
+        songListAdapter.setItem(TestData.TEST_SONG_LIST)
     }
 }

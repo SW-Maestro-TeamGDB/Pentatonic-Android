@@ -31,7 +31,9 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/noStatusBar"></activity>
+            android:theme="@style/noStatusBar">
+
+        </activity>
     </application>
     <uses-feature
         android:name="android.software.leanback"

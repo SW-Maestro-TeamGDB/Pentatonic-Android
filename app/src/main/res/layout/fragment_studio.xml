@@ -51,7 +51,7 @@
                 app:tension="1000"
                 app:maxAdapterSizeToEstimate="5"
                 app:viewCountEstimateSize="5"
-                tools:listitem="@layout/item_song_list"
+                tools:listitem="@layout/item_horizontal_song_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 

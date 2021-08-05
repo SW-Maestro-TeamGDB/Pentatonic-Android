@@ -2,16 +2,15 @@ package com.team_gdb.pentatonic.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
-import com.team_gdb.pentatonic.databinding.ItemSongListBinding
+import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
+import com.team_gdb.pentatonic.databinding.ItemHorizontalSongListBinding
 
-class SongListAdapter(val itemClick: (SongEntity) -> Unit) :
-    RecyclerView.Adapter<SongListAdapter.ViewHolder>() {
+class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
+    RecyclerView.Adapter<SongHorizontalListAdapter.ViewHolder>() {
 
     private var songEntityList: List<SongEntity> = emptyList()  // Cover 아이템 리스트 정보
 
@@ -24,7 +23,7 @@ class SongListAdapter(val itemClick: (SongEntity) -> Unit) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemSongListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemHorizontalSongListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -37,7 +36,7 @@ class SongListAdapter(val itemClick: (SongEntity) -> Unit) :
     }
 
     inner class ViewHolder(
-        private val binding: ItemSongListBinding
+        private val binding: ItemHorizontalSongListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SongEntity, position: Int) {
