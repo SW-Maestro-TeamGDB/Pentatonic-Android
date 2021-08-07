@@ -34,6 +34,18 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
     private val selectSongActivityLauncher =
         registerForActivityResult(SelectSongResultContract()) {
             if (it is SongEntity) {
+                viewModel.coverSong.postValue(it)
+            }
+        }
+
+
+    override fun initStartView() {
+        binding.viewModel = this.viewModel
+    }
+
+    override fun initDataBinding() {
+        viewModel.coverSong.observe(this){
+            if (it is SongEntity){
                 binding.beforeSelectSongTextView.visibility = View.GONE
                 Glide.with(binding.root)
                     .load(it.albumJacketImage)
@@ -45,18 +57,9 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                 binding.afterSelectSongLayout.visibility = View.VISIBLE
                 binding.selectedSongNameTextView.text = it.name
                 binding.selectedSongArtistTextView.text = it.artist
-
-                viewModel.coverSong.postValue(it)
             }
         }
-
-
-    override fun initStartView() {
-        binding.viewModel = this.viewModel
-    }
-
-    override fun initDataBinding() {
-        viewModel?.coverBasicInfoValidation?.observe(this) {
+        viewModel.coverBasicInfoValidation.observe(this) {
             // Basic Information Form Validation 성립하지 않는 경우
             if (!it.peekContent()) {
                 if (viewModel.coverName.value.isNullOrBlank()) {

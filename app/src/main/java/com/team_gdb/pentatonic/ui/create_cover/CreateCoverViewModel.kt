@@ -13,9 +13,12 @@ class CreateCoverViewModel : BaseViewModel() {
 
     val coverBasicInfoValidation: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
 
+    /**
+     * 커버 제목이 없거나, 커버 곡을 선택하지 않은 경우 Event(false) 지정
+     */
     fun checkBasicInfoValidation() {
         when {
-            this.coverName.value.isNullOrBlank() || this.coverIntroduction.value.isNullOrBlank() || this.coverSong.value == null -> {
+            this.coverName.value.isNullOrBlank() || this.coverSong.value == null -> {
                 coverBasicInfoValidation.value = Event(false)  // Validation False
             }
             else -> {

@@ -28,6 +28,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
             if (it.getContentIfNotHandled() == true) {
                 transaction = supportFragmentManager.beginTransaction()
                 transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
+                    addToBackStack(null)
                     setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
                     replace(R.id.fragmentContainer, sessionConfigGormFragment)
                     commit()
