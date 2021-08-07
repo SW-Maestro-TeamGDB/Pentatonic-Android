@@ -44,15 +44,16 @@
                 android:layout_height="28dp"/>
 
             <TextView
-                android:id="@+id/count"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanum_regular"
-                android:layout_marginHorizontal="32dp"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/addButton"
+                android:id="@+id/countTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1명"/>
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="32dp"
+                android:layout_toLeftOf="@+id/addButton"
+                android:fontFamily="@font/nanum_regular"
+                android:text="1명"
+                android:textSize="18sp"
+                android:textColor="@color/black" />
 
             <ImageView
                 android:src="@drawable/minus_button"
@@ -60,7 +61,7 @@
                 android:layout_height="28dp"
                 android:id="@+id/minueButton"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/count"/>
+                android:layout_toLeftOf="@+id/countTextView"/>
 
 
         </RelativeLayout>

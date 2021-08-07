@@ -1,9 +1,7 @@
 package com.team_gdb.pentatonic
 
-import com.team_gdb.pentatonic.data.model.CoverEntity
-import com.team_gdb.pentatonic.data.model.SessionData
-import com.team_gdb.pentatonic.data.model.SongEntity
-import com.team_gdb.pentatonic.data.model.UserEntity
+import com.team_gdb.pentatonic.data.model.*
+import com.team_gdb.pentatonic.ui.create_cover.SessionSetting
 
 object TestData {
     val TEST_BAND_COVER_LIST: List<CoverEntity> = listOf(
@@ -454,6 +452,14 @@ object TestData {
             like = 38,
             view = 59
         ),
+    )
+
+    val TEST_SESSION_SETTING_LIST = listOf<SessionSettingEntity>(
+        SessionSettingEntity(SessionSetting.ACOUSTIC_GUITAR, 1),
+        SessionSettingEntity(SessionSetting.DRUM, 1),
+        SessionSettingEntity(SessionSetting.KEYBOARD, 1),
+        SessionSettingEntity(SessionSetting.GAYAGEUM, 1),
+        SessionSettingEntity(SessionSetting.VOCAL, 1)
     )
 
 
