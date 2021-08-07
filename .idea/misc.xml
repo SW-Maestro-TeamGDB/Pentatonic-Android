@@ -8,8 +8,10 @@
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.14802631578947367" />
         <entry key="app/src/main/res/drawable/custom_radius_background_gray.xml" value="0.14802631578947367" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.12861842105263158" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_gray.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/custom_radius_stroke_main.xml" value="0.12861842105263158" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.13717105263157894" />
@@ -39,6 +41,7 @@
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
+        <entry key="app/src/main/res/layout/item_session_config_list.xml" value="0.14309210526315788" />
         <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />

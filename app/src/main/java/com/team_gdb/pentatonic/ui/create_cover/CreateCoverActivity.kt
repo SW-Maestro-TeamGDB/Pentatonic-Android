@@ -1,6 +1,5 @@
 package com.team_gdb.pentatonic.ui.create_cover
 
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
@@ -14,7 +13,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     override val viewModel: CreateCoverViewModel by viewModel()
 
     private val basicInfoFormFragment: Fragment = BasicInfoFormFragment()
-    private val sessionConfigGormFragment: Fragment = SessionConfigFromFragment()
+    private val sessionConfigGormFragment: Fragment = SessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
 
@@ -23,12 +22,12 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     }
 
     override fun initDataBinding() {
-        viewModel?.coverBasicInfoValidation?.observe(this) {
+        viewModel.coverBasicInfoValidation.observe(this) {
             // Basic Information Form Validation 성립하는 경우 프래그먼트 이동
             if (it.getContentIfNotHandled() == true) {
                 transaction = supportFragmentManager.beginTransaction()
-                transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
-                    addToBackStack(null)
+                transaction.apply {
+                    addToBackStack(null)  // 뒤로가기 키 누르면 기본 정보 입력폼으로 올 수 있도록
                     setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
                     replace(R.id.fragmentContainer, sessionConfigGormFragment)
                     commit()
