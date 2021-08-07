@@ -9,12 +9,15 @@ import com.team_gdb.pentatonic.databinding.FragmentBasicInfoFormBinding
 import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
+import org.koin.android.ext.android.bind
 import timber.log.Timber
 import java.sql.Time
 
@@ -33,9 +36,14 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                 binding.beforeSelectSongTextView.visibility = View.GONE
                 Glide.with(binding.root)
                     .load(it.albumJacketImage)
-                    .load(R.drawable.placeholder_cover_bg)
+                    .placeholder(R.drawable.placeholder_cover_bg)
                     .override(480, 272)
                     .into(binding.selectedSongAlbumJacketImage)
+                binding.selectedSongAlbumJacketImage.setColorFilter(Color.parseColor("#80000000"))
+
+                binding.afterSelectSongLayout.visibility = View.VISIBLE
+                binding.selectedSongNameTextView.text = it.name
+                binding.selectedSongArtistTextView.text = it.artist
             }
         }
 

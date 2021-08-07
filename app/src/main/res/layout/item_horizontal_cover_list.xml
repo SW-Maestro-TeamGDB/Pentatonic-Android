@@ -23,7 +23,6 @@
                     android:layout_width="170dp"
                     android:layout_height="240dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/band_cover_bg"
                     android:tintMode="src_over"
                     app:tint="#80000000" />
 
