@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic
 
 import com.team_gdb.pentatonic.data.model.CoverEntity
-import com.team_gdb.pentatonic.data.model.Session
+import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.data.model.UserEntity
 
@@ -13,8 +13,8 @@ object TestData {
             originalSong = "DAY6 - 반드시 웃는다",
             imageUrl = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",
             introduction = "그저 데식을 사랑하는..",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -31,7 +31,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -76,8 +76,8 @@ object TestData {
             originalSong = "Coldplay - Fix You",
             imageUrl = "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80",
             introduction = "본격 띵곡 신성모독",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "드럼",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -88,7 +88,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -99,7 +99,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -120,8 +120,8 @@ object TestData {
             originalSong = "DAY6 - Deep in love",
             imageUrl = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",
             introduction = "초보 방 입니당",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -138,7 +138,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -186,8 +186,8 @@ object TestData {
             originalSong = "DAY6 - Not Fine",
             imageUrl = "https://img.wowtv.co.kr/wowtv_news/dnrs/20210705/2021070508054205981d3244b4fed182172186127.jpg",
             introduction = "못 불러도 눈감고 들어봐주세요..",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "보컬",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -208,8 +208,8 @@ object TestData {
             originalSong = "Coldplay - Fix You",
             imageUrl = "https://images.unsplash.com/photo-1598518141892-06ba05f87bbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=932&q=80",
             introduction = "일렉 함 뜯어봤습니다",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -230,8 +230,8 @@ object TestData {
             originalSong = "DAY6 - 뚫고 지나가요",
             imageUrl = "https://img.wowtv.co.kr/wowtv_news/dnrs/20210705/2021070508054205981d3244b4fed182172186127.jpg",
             introduction = "못 불러도 눈감고 들어봐주세요..",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "보컬",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -278,8 +278,8 @@ object TestData {
             originalSong = "Coldplay - Higher Power",
             imageUrl = "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80",
             introduction = "콜드플레이 사랑합니다",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -308,7 +308,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -353,8 +353,8 @@ object TestData {
             originalSong = "Coldplay - Higher Power",
             imageUrl = "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80",
             introduction = "본격 띵곡 신성모독",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "드럼",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -365,7 +365,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -376,7 +376,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -397,8 +397,8 @@ object TestData {
             originalSong = "DAY6 - Deep in love",
             imageUrl = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",
             introduction = "초보 방 입니당",
-            sessionList = listOf(
-                Session(
+            sessionDataList = listOf(
+                SessionData(
                     sessionName = "일렉기타",
                     sessionParticipantList = listOf(
                         UserEntity(
@@ -415,7 +415,7 @@ object TestData {
                         )
                     )
                 ),
-                Session(
+                SessionData(
                     sessionName = "키보드",
                     sessionParticipantList = listOf(
                         UserEntity(

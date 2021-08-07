@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.team_gdb.pentatonic.data.model.Session
+import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 
@@ -16,7 +16,7 @@ import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 class SessionListAdapter(val itemClick: (UserEntity) -> Unit) :
     RecyclerView.Adapter<SessionListAdapter.ViewHolder>() {
 
-    private var sessionList: List<Session> = emptyList()  // 커버에 존재하는 Session 목록 리스트 정보 (일렉기타, 드럼 등)
+    private var sessionDataList: List<SessionData> = emptyList()  // 커버에 존재하는 Session 목록 리스트 정보 (일렉기타, 드럼 등)
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -32,18 +32,18 @@ class SessionListAdapter(val itemClick: (UserEntity) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(sessionList[position])
+        holder.bind(sessionDataList[position])
     }
 
     override fun getItemCount(): Int {
-        return sessionList.size
+        return sessionDataList.size
     }
 
     inner class ViewHolder(
         private val binding: ItemSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Session) {
+        fun bind(item: SessionData) {
             binding.sessionNameTextView.text = item.sessionName
             val adapter = SessionParticipantListAdapter {
                 itemClick(it)
@@ -59,8 +59,8 @@ class SessionListAdapter(val itemClick: (UserEntity) -> Unit) :
         }
     }
 
-    fun setItem(items: List<Session>) {
-        this.sessionList = items
+    fun setItem(items: List<SessionData>) {
+        this.sessionDataList = items
         notifyDataSetChanged()
     }
 }

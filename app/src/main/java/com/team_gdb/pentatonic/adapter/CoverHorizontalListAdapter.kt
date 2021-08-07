@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
-import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
  * 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
@@ -64,7 +63,7 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
                 .override(480, 272)
                 .into(binding.coverImage)
 
-            binding.coverSessionListTextView.text = "${entity.sessionList.size}명 참여중"
+            binding.coverSessionListTextView.text = "${entity.sessionDataList.size}명 참여중"
 
             binding.coverLikeTextView.text = entity.like.toString()
             binding.coverViewTextView.text = entity.view.toString()

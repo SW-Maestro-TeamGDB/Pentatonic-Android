@@ -16,6 +16,8 @@
         <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/ic_drum.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_electric_guitar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_left_image_add.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
@@ -36,6 +38,7 @@
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
+        <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.1256578947368421" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
         <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />

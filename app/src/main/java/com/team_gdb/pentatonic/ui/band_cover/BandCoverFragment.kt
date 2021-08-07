@@ -51,6 +51,6 @@ class BandCoverFragment : BaseFragment<FragmentBandCoverBinding, BandCoverViewMo
             this.adapter = sessionListAdapter
             this.setHasFixedSize(true)
         }
-        sessionListAdapter.setItem(coverEntity.sessionList)
+        sessionListAdapter.setItem(coverEntity.sessionDataList)
     }
 }

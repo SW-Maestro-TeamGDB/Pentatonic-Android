@@ -11,7 +11,7 @@ import java.io.Serializable
  * @property original       커버 원곡
  * @property imageUrl       커버 대표 이미지 URL
  * @property introduction   커버 한줄 소개
- * @property sessionList    커버 참여중인 세션 목록 <사용자 아이템, 악기>
+ * @property sessionDataList    커버 참여중인 세션 목록 <사용자 아이템, 악기>
  * @property like           커버 좋아요 수
  * @property view           커버 조회 수
  */
@@ -21,7 +21,7 @@ data class CoverEntity(
     val originalSong: String,
     val imageUrl: String,
     val introduction: String,
-    val sessionList: List<Session>,
+    val sessionDataList: List<SessionData>,
     val like: Int,
     val view: Int,
 ): Serializable
