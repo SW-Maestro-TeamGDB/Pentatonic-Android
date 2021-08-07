@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardMaxElevation="0dp"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/card_background_gray"
+        android:layout_marginBottom="24dp"
+        app:cardElevation="0dp">
+
+
+        <RelativeLayout
+            android:paddingHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:id="@+id/sessionIconImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_mic_icon"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/sessionNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_toRightOf="@+id/sessionIconImage"
+                android:fontFamily="@font/nanum_bold"
+                android:text="보컬"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:src="@drawable/add_button"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/addButton"
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
+
+            <TextView
+                android:id="@+id/count"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_regular"
+                android:layout_marginHorizontal="32dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1명"/>
+
+            <ImageView
+                android:src="@drawable/minus_button"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:id="@+id/minueButton"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/count"/>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

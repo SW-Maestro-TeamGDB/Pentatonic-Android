@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.14802631578947367" />
@@ -44,6 +45,7 @@
         <entry key="app/src/main/res/layout/item_session_config_list.xml" value="0.14309210526315788" />
         <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
+        <entry key="app/src/main/res/layout/item_session_setting_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_vertical_cover_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.20526315789473684" />
