@@ -2,13 +2,12 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         app:cardMaxElevation="0dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/card_background_gray"
         android:layout_marginBottom="24dp"
         app:cardElevation="0dp">
-
 
         <RelativeLayout
             android:paddingHorizontal="24dp"
@@ -28,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_toRightOf="@+id/sessionIconImage"
                 android:fontFamily="@font/nanum_bold"
                 android:text="보컬"
@@ -50,10 +49,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginHorizontal="32dp"
                 android:layout_toLeftOf="@+id/addButton"
-                android:fontFamily="@font/nanum_regular"
+                android:fontFamily="@font/nanum_bold"
                 android:text="1명"
-                android:textSize="18sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
             <ImageView
                 android:src="@drawable/minus_button"

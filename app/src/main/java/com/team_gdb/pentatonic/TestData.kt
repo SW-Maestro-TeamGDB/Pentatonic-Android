@@ -455,11 +455,10 @@ object TestData {
     )
 
     val TEST_SESSION_SETTING_LIST = listOf<SessionSettingEntity>(
+        SessionSettingEntity(SessionSetting.VOCAL, 1),
         SessionSettingEntity(SessionSetting.ACOUSTIC_GUITAR, 1),
         SessionSettingEntity(SessionSetting.DRUM, 1),
         SessionSettingEntity(SessionSetting.KEYBOARD, 1),
-        SessionSettingEntity(SessionSetting.GAYAGEUM, 1),
-        SessionSettingEntity(SessionSetting.VOCAL, 1)
     )
 
 
