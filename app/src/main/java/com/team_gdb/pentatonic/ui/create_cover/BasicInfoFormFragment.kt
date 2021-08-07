@@ -17,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
+import com.team_gdb.pentatonic.util.Event
 import org.koin.android.ext.android.bind
 import timber.log.Timber
 import java.sql.Time
@@ -32,7 +33,7 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
      */
     private val selectSongActivityLauncher =
         registerForActivityResult(SelectSongResultContract()) {
-            if (it is SongEntity){
+            if (it is SongEntity) {
                 binding.beforeSelectSongTextView.visibility = View.GONE
                 Glide.with(binding.root)
                     .load(it.albumJacketImage)
@@ -44,6 +45,8 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                 binding.afterSelectSongLayout.visibility = View.VISIBLE
                 binding.selectedSongNameTextView.text = it.name
                 binding.selectedSongArtistTextView.text = it.artist
+
+                viewModel.coverSong.postValue(it)
             }
         }
 
@@ -54,17 +57,14 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
 
     override fun initDataBinding() {
         viewModel?.coverBasicInfoValidation?.observe(this) {
-            // Basic Information Form Validation 성립하는 경우
+            // Basic Information Form Validation 성립하지 않는 경우
             if (!it.peekContent()) {
                 if (viewModel.coverName.value.isNullOrBlank()) {
                     binding.coverNameEditText.error = "필수 항목입니다"
                 }
                 if (viewModel.coverSong.value == null) {
                     binding.selectSongTitleTextView.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.red
-                        )
+                        ContextCompat.getColor(requireContext(), R.color.red)
                     )
                 }
                 PlayAnimation.playErrorAnimation(binding.formLayout)

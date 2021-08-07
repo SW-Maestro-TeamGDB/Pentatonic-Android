@@ -15,9 +15,8 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
 
     private val basicInfoFormFragment: Fragment = BasicInfoFormFragment()
     private val sessionConfigGormFragment: Fragment = SessionConfigFromFragment()
-    private val transaction: FragmentTransaction by lazy {
-        supportFragmentManager.beginTransaction()
-    }
+    private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -27,7 +26,9 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
         viewModel?.coverBasicInfoValidation?.observe(this) {
             // Basic Information Form Validation 성립하는 경우 프래그먼트 이동
             if (it.getContentIfNotHandled() == true) {
+                transaction = supportFragmentManager.beginTransaction()
                 transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
+                    setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
                     replace(R.id.fragmentContainer, sessionConfigGormFragment)
                     commit()
                 }

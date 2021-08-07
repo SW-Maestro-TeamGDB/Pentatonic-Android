@@ -11,8 +11,7 @@ class CreateCoverViewModel : BaseViewModel() {
     val coverIntroduction: MutableLiveData<String> = MutableLiveData()
     val coverSong: MutableLiveData<SongEntity> = MutableLiveData()
 
-    var coverBasicInfoValidation: MutableLiveData<Event<Boolean>> =
-        MutableLiveData<Event<Boolean>>()
+    val coverBasicInfoValidation: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
 
     fun checkBasicInfoValidation() {
         when {
