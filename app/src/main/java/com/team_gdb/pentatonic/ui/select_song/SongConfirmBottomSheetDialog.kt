@@ -9,7 +9,8 @@ import com.team_gdb.pentatonic.databinding.DialogSongConfirmBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
-class SongConfirmBottomSheetDialog(val songEntity: SongEntity): BaseBottomSheetDialogFragment<DialogSongConfirmBinding, SelectSongViewModel>()  {
+class SongConfirmBottomSheetDialog(val songEntity: SongEntity) :
+    BaseBottomSheetDialogFragment<DialogSongConfirmBinding, SelectSongViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.dialog_song_confirm
     override val viewModel: SelectSongViewModel by sharedViewModel()
@@ -26,20 +27,23 @@ class SongConfirmBottomSheetDialog(val songEntity: SongEntity): BaseBottomSheetD
         if (songEntity.albumJacketImage.isNotBlank()) {
             Glide.with(binding.root)
                 .load(songEntity.albumJacketImage)
-                .override(480, 272)
+                .override(270, 270)
                 .into(binding.albumJacketImage)
         } else {
             Glide.with(binding.root)
                 .load(R.drawable.placeholder_cover_bg)
-                .override(480, 272)
+                .override(270, 270)
                 .into(binding.albumJacketImage)
         }
 
         binding.songNameTextView.text = songEntity.name
         binding.songArtistTextView.text = songEntity.artist
 
-        // TODO : ActivityResult 로 SongEntity 넘겨주는 로직 필요함 (혹은 Entity 의 고유 ID)
         binding.confirmSongButton.setOnClickListener {
+            viewModel.selectedSong.postValue(songEntity)
+        }
+
+        binding.cancelButton.setOnClickListener {
             dismiss()
         }
     }

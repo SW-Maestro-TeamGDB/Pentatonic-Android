@@ -6,6 +6,8 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.14802631578947367" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_gray.xml" value="0.14802631578947367" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_gray.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />
