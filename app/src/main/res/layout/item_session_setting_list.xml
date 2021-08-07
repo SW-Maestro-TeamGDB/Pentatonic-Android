@@ -2,17 +2,17 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="65dp"
         app:cardMaxElevation="0dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/card_background_gray"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         app:cardElevation="0dp">
 
         <RelativeLayout
             android:paddingHorizontal="24dp"
             android:layout_width="match_parent"
-            android:layout_height="70dp">
+            android:layout_height="65dp">
 
             <ImageView
                 android:id="@+id/sessionIconImage"
