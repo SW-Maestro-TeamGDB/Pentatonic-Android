@@ -28,7 +28,11 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemHorizontalCoverListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemHorizontalCoverListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return ViewHolder(binding)
     }
 
@@ -51,30 +55,14 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
                 param.setMargins(64, 0, 0, 0)
                 binding.coverItemLayout.layoutParams = param
             }
-                binding.coverNameTextView.text = entity.coverName
-                binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverNameTextView.text = entity.coverName
+            binding.coverOriginalSongTextView.text = entity.originalSong
 
-            if (entity.imageUrl.isNotBlank()) {
-                Glide.with(binding.root)
-                    .load(entity.imageUrl)
-                    .override(480, 272)
-                    .into(binding.coverImage)
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.placeholder_cover_bg)
-                    .override(480, 272)
-                    .into(binding.coverImage)
-            }
-
-//            val sessionSet = mutableSetOf<String>()
-//            var sessionListText = ""
-//            entity.sessionList.forEach {
-//                sessionSet.add(it.sessionName)
-//            }
-//            sessionSet.forEach {
-//                sessionListText += "$it "
-//            }
-
+            Glide.with(binding.root)
+                .load(entity.imageUrl)
+                .placeholder(R.drawable.placeholder_cover_bg)
+                .override(480, 272)
+                .into(binding.coverImage)
 
             binding.coverSessionListTextView.text = "${entity.sessionList.size}명 참여중"
 

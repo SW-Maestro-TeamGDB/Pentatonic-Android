@@ -48,27 +48,11 @@ class CoverVerticalListAdapter(val itemClick: (CoverEntity) -> Unit) :
                 binding.coverNameTextView.text = entity.coverName
                 binding.coverOriginalSongTextView.text = entity.originalSong
 
-            if (entity.imageUrl.isNotBlank()) {
-                Glide.with(binding.root)
-                    .load(entity.imageUrl)
-                    .override(480, 272)
-                    .into(binding.coverImage)
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.placeholder_cover_bg)
-                    .override(480, 272)
-                    .into(binding.coverImage)
-            }
-
-//            val sessionSet = mutableSetOf<String>()
-//            var sessionListText = ""
-//            entity.sessionList.forEach {
-//                sessionSet.add(it.sessionName)
-//            }
-//            sessionSet.forEach {
-//                sessionListText += "$it "
-//            }
-
+            Glide.with(binding.root)
+                .load(entity.imageUrl)
+                .placeholder(R.drawable.placeholder_cover_bg)
+                .override(480, 272)
+                .into(binding.coverImage)
 
             binding.coverSessionListTextView.text = "${entity.sessionList.size}명 참여중"
 

@@ -9,8 +9,11 @@ import com.team_gdb.pentatonic.databinding.FragmentBasicInfoFormBinding
 import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import android.content.Intent
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
 import timber.log.Timber
 import java.sql.Time
@@ -21,10 +24,19 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
         get() = R.layout.fragment_basic_info_form
     override val viewModel: CreateCoverViewModel by sharedViewModel()
 
+    /**
+     * SelectSongActivity 에서 선택한 곡에 대한 정보가 콜백 형태로 담기게 됨
+     */
     private val selectSongActivityLauncher =
         registerForActivityResult(SelectSongResultContract()) {
-            Timber.d("제에발 여기 좀 보세요!")
-            Timber.d(it.toString())
+            if (it is SongEntity){
+                binding.beforeSelectSongTextView.visibility = View.GONE
+                Glide.with(binding.root)
+                    .load(it.albumJacketImage)
+                    .load(R.drawable.placeholder_cover_bg)
+                    .override(480, 272)
+                    .into(binding.selectedSongAlbumJacketImage)
+            }
         }
 
 

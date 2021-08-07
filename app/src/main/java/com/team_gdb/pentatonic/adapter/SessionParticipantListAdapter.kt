@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
 
@@ -56,12 +57,12 @@ class SessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
 
             binding.usernameTextView.text = item.username
 
-            if (item.profileImage.isNotBlank()) {
-                Glide.with(binding.root)
-                    .load(item.profileImage)
-                    .override(80, 80)
-                    .into(binding.userProfileImage)
-            }
+            Glide.with(binding.root)
+                .load(item.profileImage)
+                .placeholder(R.drawable.profile_image_placeholder)
+                .override(80, 80)
+                .into(binding.userProfileImage)
+
 
             binding.root.setOnClickListener {
                 itemClick(item)

@@ -46,17 +46,11 @@ class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
                 param.setMargins(64, 0, 0, 0)
                 binding.songItemCard.layoutParams = param
             }
-            if (entity.albumJacketImage.isNotBlank()) {
-                Glide.with(binding.root)
-                    .load(entity.albumJacketImage)
-                    .override(480, 272)
-                    .into(binding.albumJacketImage)
-            } else {
-                Glide.with(binding.root)
-                    .load(R.drawable.placeholder_cover_bg)
-                    .override(480, 272)
-                    .into(binding.albumJacketImage)
-            }
+            Glide.with(binding.root)
+                .load(entity.albumJacketImage)
+                .placeholder(R.drawable.placeholder_cover_bg)
+                .override(480, 272)
+                .into(binding.albumJacketImage)
 
             binding.songNameTextView.text = entity.name
             binding.songArtistTextView.text = entity.artist
