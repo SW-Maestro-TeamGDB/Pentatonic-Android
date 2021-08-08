@@ -9,9 +9,11 @@ import android.os.CountDownTimer
 import android.view.View
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
 import timber.log.Timber
 import kotlin.math.roundToInt
@@ -37,10 +39,15 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
     private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
 
+    private val createdCoverEntity: CreatedCoverEntity by lazy {
+        intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedCoverEntity
+    }
+
     // 카운트 후 녹음 시작을 위한 CountDownTimer (3초)
     private val countDownTimer = object : CountDownTimer(3000, 1000) {
         override fun onTick(millisUntilFinished: Long) {
-            binding.startCountDownTextView.text = "${(millisUntilFinished.toFloat() / 1000.0f).roundToInt()}초"
+            binding.startCountDownTextView.text =
+                "${(millisUntilFinished.toFloat() / 1000.0f).roundToInt()}초"
         }
 
         override fun onFinish() {
@@ -54,6 +61,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     override fun initStartView() {
         val bottomSheetDialog = RecordGuideBottomSheetDialog()
         bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+
+        Timber.d("넘어온 애 : ${createdCoverEntity}")
     }
 
     override fun initDataBinding() {
@@ -167,7 +176,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         player = null
     }
 
-    companion object{
+    companion object {
         const val AMPLITUDE_DATA = "AMPLITUDE_DATA"
     }
 
