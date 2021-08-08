@@ -1,7 +1,9 @@
 package com.team_gdb.pentatonic.ui.create_cover
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.util.Event
 
@@ -11,7 +13,11 @@ class CreateCoverViewModel : BaseViewModel() {
     val coverIntroduction: MutableLiveData<String> = MutableLiveData()
     val coverSong: MutableLiveData<SongEntity> = MutableLiveData()
 
-    val coverBasicInfoValidation: MutableLiveData<Event<Boolean>> = MutableLiveData<Event<Boolean>>()
+    val coverBasicInfoValidation: MutableLiveData<Event<Boolean>> =
+        MutableLiveData<Event<Boolean>>()
+
+    val coverSessionConfigList: MutableLiveData<MutableList<SessionSettingEntity>> =
+        MutableLiveData<MutableList<SessionSettingEntity>>()
 
     /**
      * 커버 제목이 없거나, 커버 곡을 선택하지 않은 경우 Event(false) 지정

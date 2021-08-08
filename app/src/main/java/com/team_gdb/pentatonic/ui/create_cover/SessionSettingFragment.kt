@@ -24,6 +24,9 @@ class SessionSettingFragment :
     }
 
     override fun initDataBinding() {
+        viewModel.coverSessionConfigList.observe(this) {
+            sessionSettingListAdapter.setItem(it)
+        }
     }
 
     override fun initAfterBinding() {
@@ -36,12 +39,12 @@ class SessionSettingFragment :
             setHasFixedSize(true)
         }
 
-        sessionSettingListAdapter.setItem(TestData.TEST_SESSION_SETTING_LIST)
-
         binding.addSessionButton.setOnClickListener {
             val bottomSheetDialogFragment = SelectSessionBottomSheetDialog()
-            bottomSheetDialogFragment.show(requireActivity().supportFragmentManager, bottomSheetDialogFragment.tag)
+            bottomSheetDialogFragment.show(
+                requireActivity().supportFragmentManager,
+                bottomSheetDialogFragment.tag
+            )
         }
-
     }
 }
