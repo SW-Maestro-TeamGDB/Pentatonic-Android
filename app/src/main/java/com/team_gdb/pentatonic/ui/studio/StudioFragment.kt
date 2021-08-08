@@ -31,7 +31,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
     override fun initAfterBinding() {
         // 솔로 커버 버튼 클릭했을 때
         binding.makeSoloCoverButton.setOnClickListener {
-            startActivity(Intent(activity, RecordActivity::class.java))
+            startActivity(Intent(activity, CreateCoverActivity::class.java))
         }
 
         // 밴드 커버 버튼 클릭했을 때

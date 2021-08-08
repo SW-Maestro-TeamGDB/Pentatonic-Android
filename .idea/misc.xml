@@ -25,7 +25,7 @@
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_record.xml" value="0.10559210526315789" />
+        <entry key="app/src/main/res/layout/activity_record.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_select_song.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
