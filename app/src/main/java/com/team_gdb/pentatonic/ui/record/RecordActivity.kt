@@ -61,8 +61,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     override fun initStartView() {
         val bottomSheetDialog = RecordGuideBottomSheetDialog()
         bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
-
-        Timber.d("넘어온 애 : ${createdCoverEntity}")
     }
 
     override fun initDataBinding() {
@@ -72,6 +70,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
 
     override fun initAfterBinding() {
+        binding.titleBar.titleTextView.text = "Recording"
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
+        }
+
         // 현재 진폭을 알려줌으로써 진폭 크기에 비례하여 뷰를 그릴 수 있도록 함
         binding.soundVisualizerView.onRequestCurrentAmplitude = {
             recorder?.maxAmplitude ?: 0

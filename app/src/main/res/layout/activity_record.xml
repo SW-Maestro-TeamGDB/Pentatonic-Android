@@ -8,16 +8,9 @@
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordActivity">
 
-        <TextView
-            android:id="@+id/recordTitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
-            android:fontFamily="@font/nanum_extrabold"
-            android:text="Recording"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+
+        <include layout="@layout/page_title_bar"
+            android:id="@+id/titleBar"/>
 
 
         <!-- 녹음 시작 전 3초 카운트 다운을 보여주는 뷰 -->

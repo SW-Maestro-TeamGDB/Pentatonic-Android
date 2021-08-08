@@ -23,9 +23,13 @@
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/ic_play.xml" value="0.21578947368421053" />
+        <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
+        <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.13831967213114754" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_select_song.xml" value="0.25" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
