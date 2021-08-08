@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.create_cover
+package com.team_gdb.pentatonic.ui.create_cover.session_setting
 
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -8,6 +8,7 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.FragmentSessionSettingBinding
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SessionSettingFragment :
@@ -49,6 +50,10 @@ class SessionSettingFragment :
                 requireActivity().supportFragmentManager,
                 bottomSheetDialogFragment.tag
             )
+        }
+
+        binding.completeSessionSettingButton.setOnClickListener {
+
         }
     }
 

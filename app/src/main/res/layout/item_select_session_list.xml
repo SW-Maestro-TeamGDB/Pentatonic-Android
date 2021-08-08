@@ -32,7 +32,7 @@
                 android:fontFamily="@font/nanum_bold"
                 android:text="보컬"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
 
         </RelativeLayout>

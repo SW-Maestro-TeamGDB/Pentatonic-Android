@@ -4,38 +4,56 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
+        <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
-        <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.26458333333333334" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.14802631578947367" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_gray.xml" value="0.14802631578947367" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.12861842105263158" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/custom_radius_stroke_gray.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/custom_radius_stroke_main.xml" value="0.12861842105263158" />
+        <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.14539473684210527" />
-        <entry key="app/src/main/res/drawable/ic_baseline_groups_24.xml" value="0.26458333333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/ic_drum.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_electric_guitar.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_left_image_add.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
-        <entry key="app/src/main/res/drawable/ic_weekly_challenge_create_band.xml" value="0.26458333333333334" />
-        <entry key="app/src/main/res/drawable/ic_weekly_challenge_record.xml" value="0.26458333333333334" />
+        <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/dialog_select_session.xml" value="0.21105072463768115" />
+        <entry key="app/src/main/res/layout/activity_record.xml" value="0.10559210526315789" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_select_song.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
+        <entry key="app/src/main/res/layout/dialog_song_confirm.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_artist.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.10100193923723336" />
+        <entry key="app/src/main/res/layout/fragment_basic_info_form.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
+        <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.1256578947368421" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.2515400410677618" />
+        <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
+        <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/item_select_session_list.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
+        <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
+        <entry key="app/src/main/res/layout/item_select_session_list.xml" value="0.20559210526315788" />
+        <entry key="app/src/main/res/layout/item_session_config_list.xml" value="0.14309210526315788" />
         <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
-        <entry key="app/src/main/res/layout/item_session_setting_list.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/item_session_setting_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_vertical_cover_list.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.12552083333333333" />
+        <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.20526315789473684" />
+        <entry key="app/src/main/res/layout/page_title_bar.xml" value="0.15986842105263158" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13519736842105262" />
       </map>
     </option>

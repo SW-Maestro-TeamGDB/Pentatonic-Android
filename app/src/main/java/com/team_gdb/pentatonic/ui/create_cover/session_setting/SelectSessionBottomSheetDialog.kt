@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.create_cover
+package com.team_gdb.pentatonic.ui.create_cover.session_setting
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
@@ -6,6 +6,7 @@ import com.team_gdb.pentatonic.adapter.create_cover.SelectSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.DialogSelectSessionBinding
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SelectSessionBottomSheetDialog() :

@@ -1,8 +1,6 @@
-package com.team_gdb.pentatonic.ui.create_cover
+package com.team_gdb.pentatonic.ui.create_cover.basic_info
 
 import androidx.core.content.ContextCompat
-import com.daimajia.androidanimations.library.Techniques
-import com.daimajia.androidanimations.library.YoYo
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentBasicInfoFormBinding
@@ -10,17 +8,11 @@ import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.view.View
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.data.model.SongEntity
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
-import com.team_gdb.pentatonic.util.Event
-import org.koin.android.ext.android.bind
-import timber.log.Timber
-import java.sql.Time
 
 
 class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateCoverViewModel>() {

@@ -5,7 +5,8 @@ import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
-import com.team_gdb.pentatonic.ui.select_song.SongConfirmBottomSheetDialog
+import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicInfoFormFragment
+import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSettingFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCoverViewModel>() {

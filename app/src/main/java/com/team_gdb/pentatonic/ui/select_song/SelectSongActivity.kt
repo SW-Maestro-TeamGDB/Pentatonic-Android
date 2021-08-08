@@ -8,7 +8,7 @@ import com.team_gdb.pentatonic.adapter.song_list.SongVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ActivitySelectSongBinding
-import com.team_gdb.pentatonic.ui.create_cover.SelectSongResultContract.Companion.SELECT_SONG
+import com.team_gdb.pentatonic.ui.create_cover.basic_info.SelectSongResultContract.Companion.SELECT_SONG
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

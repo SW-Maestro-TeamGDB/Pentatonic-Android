@@ -7,7 +7,7 @@
         android:id="@+id/formLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.create_cover.BasicInfoFormFragment">
+        tools:context=".ui.create_cover.basic_info.BasicInfoFormFragment">
 
         <LinearLayout
             android:padding="24dp"

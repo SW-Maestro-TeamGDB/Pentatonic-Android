@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.create_cover
+package com.team_gdb.pentatonic.ui.create_cover.session_setting
 
 import com.team_gdb.pentatonic.R
 

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
-import com.team_gdb.pentatonic.ui.create_cover.SessionSetting
+import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSetting
 
 /**
  * 세션 추가하기 버튼을 눌렀을 때 추가할 수 있는 세션 목록을 보여줌

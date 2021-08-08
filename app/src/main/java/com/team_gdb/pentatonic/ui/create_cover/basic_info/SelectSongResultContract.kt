@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.create_cover
+package com.team_gdb.pentatonic.ui.create_cover.basic_info
 
 import android.content.Context
 import android.content.Intent
