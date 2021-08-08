@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/guideTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="추가할 세션을 선택해주세요."
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <com.chauthai.overscroll.RecyclerViewBouncy
+            android:id="@+id/sessionList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel" />
+    </data>
+</layout>

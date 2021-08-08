@@ -1,13 +1,12 @@
 package com.team_gdb.pentatonic.ui.lounge
 
-import android.graphics.Color
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.adapter.CoverHorizontalListAdapter
+import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

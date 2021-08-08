@@ -1,13 +1,12 @@
 package com.team_gdb.pentatonic.ui.create_cover
 
+import CreateCoverSessionSettingListAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.adapter.SessionSettingListAdapter
-import com.team_gdb.pentatonic.adapter.SongVerticalListAdapter
+import com.team_gdb.pentatonic.adapter.SelectSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentSessionSettingBinding
-import com.team_gdb.pentatonic.ui.select_song.SongConfirmBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SessionSettingFragment :
@@ -17,7 +16,7 @@ class SessionSettingFragment :
 
     override val viewModel: CreateCoverViewModel by sharedViewModel()
 
-    private lateinit var sessionSettingListAdapter: SessionSettingListAdapter
+    private lateinit var sessionSettingListAdapter: CreateCoverSessionSettingListAdapter
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -27,7 +26,7 @@ class SessionSettingFragment :
     }
 
     override fun initAfterBinding() {
-        sessionSettingListAdapter = SessionSettingListAdapter {
+        sessionSettingListAdapter = CreateCoverSessionSettingListAdapter {
         }
 
         binding.sessionConfigList.apply {

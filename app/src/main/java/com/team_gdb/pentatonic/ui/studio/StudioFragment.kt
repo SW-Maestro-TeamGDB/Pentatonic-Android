@@ -4,11 +4,11 @@ import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.CoverHorizontalListAdapter
+import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.adapter.SongHorizontalListAdapter
+import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

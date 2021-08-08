@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.adapter
+package com.team_gdb.pentatonic.adapter.cover_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

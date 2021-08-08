@@ -24,18 +24,11 @@ class SongConfirmBottomSheetDialog(val songEntity: SongEntity) :
 
     override fun initAfterBinding() {
         // 곡 정보를 모두 채워줌
-        if (songEntity.albumJacketImage.isNotBlank()) {
-            Glide.with(binding.root)
-                .load(songEntity.albumJacketImage)
-                .override(270, 270)
-                .into(binding.albumJacketImage)
-        } else {
-            Glide.with(binding.root)
-                .load(R.drawable.placeholder_cover_bg)
-                .override(270, 270)
-                .into(binding.albumJacketImage)
-        }
-
+        Glide.with(binding.root)
+            .load(songEntity.albumJacketImage)
+            .placeholder(R.drawable.placeholder_cover_bg)
+            .override(270, 270)
+            .into(binding.albumJacketImage)
         binding.songNameTextView.text = songEntity.name
         binding.songArtistTextView.text = songEntity.artist
 
