@@ -12,10 +12,10 @@
             android:id="@+id/syncControlTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_regular"
+            android:fontFamily="@font/nanum_bold"
             android:text="싱크 조절"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <RelativeLayout
             android:id="@+id/syncControlLayout"
@@ -79,10 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/syncControlLayout"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/nanum_regular"
+            android:fontFamily="@font/nanum_bold"
             android:text="볼륨 조절"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
 
         <RelativeLayout

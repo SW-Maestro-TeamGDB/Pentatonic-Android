@@ -129,16 +129,18 @@
                 android:layout_height="match_parent"/>
         </LinearLayout>
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/recordCompleteButton"
-            android:text="완료하기"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:fontFamily="@font/nanum_extrabold"
-            android:background="@color/main_regular"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_gradient_button"
+            android:fontFamily="@font/nanum_extrabold"
+            android:gravity="center"
+            android:text="완료하기"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
