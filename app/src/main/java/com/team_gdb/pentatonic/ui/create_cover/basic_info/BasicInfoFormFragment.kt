@@ -51,7 +51,7 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                 binding.selectedSongArtistTextView.text = it.artist
             }
         }
-        viewModel.coverBasicInfoValidation.observe(this) {
+        viewModel.coverBasicInfoValidationEvent.observe(this) {
             // Basic Information Form Validation 성립하지 않는 경우
             if (!it.peekContent()) {
                 if (viewModel.coverName.value.isNullOrBlank()) {

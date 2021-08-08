@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.create_cover.session_setting
 
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.team_gdb.pentatonic.adapter.create_cover.CoverSessionSettingListAdapter
@@ -9,6 +10,7 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.FragmentSessionSettingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
+import com.team_gdb.pentatonic.util.PlayAnimation.playErrorAnimation
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SessionSettingFragment :
@@ -53,7 +55,15 @@ class SessionSettingFragment :
         }
 
         binding.completeSessionSettingButton.setOnClickListener {
-
+            if (sessionSettingListAdapter.itemCount == 0) {
+                playErrorAnimation(binding.addSessionButton)
+                Toast.makeText(context, "세션은 1개 이상 꼭 포함되어야 합니다!", Toast.LENGTH_LONG).apply {
+                    setMargin(0F, 0.1F)
+                    show()
+                }
+            } else {
+                viewModel.completeCreateCover()
+            }
         }
     }
 
@@ -73,8 +83,18 @@ class SessionSettingFragment :
             }
         }
         builder.show().run {
-            getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.main_regular))
-            getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.main_regular
+                )
+            )
+            getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.black
+                )
+            )
         }
     }
 }

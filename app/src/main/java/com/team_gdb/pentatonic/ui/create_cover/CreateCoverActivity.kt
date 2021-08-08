@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.create_cover
 
+import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
@@ -7,8 +8,15 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSettingFragment
+import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * 커버를 생성하는 페이지
+ * - 사용자에 의해 입력되는 것
+ *   1. 기본 정보 (BasicInfo) : 커버 이름, 소개글, 원곡
+ *   2. 세션 구성 (SessionSetting) : 참여할 수 있는 세션 종류와 최대 인원
+ */
 class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCoverViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_create_cover
@@ -24,7 +32,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     }
 
     override fun initDataBinding() {
-        viewModel.coverBasicInfoValidation.observe(this) {
+        viewModel.coverBasicInfoValidationEvent.observe(this) {
             // Basic Information Form Validation 성립하는 경우 프래그먼트 이동
             if (it.getContentIfNotHandled() == true) {
                 transaction = supportFragmentManager.beginTransaction()
@@ -34,6 +42,15 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                     replace(R.id.fragmentContainer, sessionConfigGormFragment)
                     commit()
                 }
+            }
+        }
+
+        viewModel.completeCreateCoverEvent.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                val intent = Intent(this, RecordActivity::class.java).apply {
+                    putExtra(CREATED_COVER_ENTITY, viewModel.createdCoverEntity)
+                }
+                startActivity(intent)
             }
         }
     }
@@ -48,5 +65,9 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
             replace(R.id.fragmentContainer, basicInfoFormFragment)
             commit()
         }
+    }
+
+    companion object {
+        const val CREATED_COVER_ENTITY = "CREATED_COVER_ENTITY"
     }
 }
