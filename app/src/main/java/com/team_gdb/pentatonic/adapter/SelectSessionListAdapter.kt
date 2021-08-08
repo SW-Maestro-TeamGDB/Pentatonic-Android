@@ -9,7 +9,7 @@ import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 import com.team_gdb.pentatonic.databinding.ItemSessionSettingListBinding
 import com.team_gdb.pentatonic.ui.create_cover.SessionSetting
 
-class SelectSessionListAdapter(val itemLongClick: (SessionSetting) -> Unit) :
+class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
     private var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
@@ -50,6 +50,9 @@ class SelectSessionListAdapter(val itemLongClick: (SessionSetting) -> Unit) :
                 .into(binding.sessionIconImage)
 
             binding.sessionNameTextView.text = entity.sessionName
+            binding.root.setOnClickListener {
+                itemClick(entity)
+            }
         }
     }
 

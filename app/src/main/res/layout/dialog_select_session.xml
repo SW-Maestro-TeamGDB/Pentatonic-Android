@@ -28,6 +28,6 @@
     <data>
         <variable
             name="viewModel"
-            type="com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel" />
+            type="com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel" />
     </data>
 </layout>

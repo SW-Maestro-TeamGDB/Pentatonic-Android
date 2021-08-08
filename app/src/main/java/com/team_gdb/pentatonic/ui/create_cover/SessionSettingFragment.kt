@@ -25,7 +25,9 @@ class SessionSettingFragment :
 
     override fun initDataBinding() {
         viewModel.coverSessionConfigList.observe(this) {
-            sessionSettingListAdapter.setItem(it)
+            it?.let {
+                sessionSettingListAdapter.setItem(it)
+            }
         }
     }
 
