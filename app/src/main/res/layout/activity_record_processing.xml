@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordProcessActivity">
@@ -14,11 +15,10 @@
         <rm.com.audiowave.AudioWaveView
             android:id="@+id/audioSeekBar"
             android:layout_width="match_parent"
-            android:layout_below="@+id/titleBar"
             android:layout_height="32dp"
+            android:layout_below="@+id/titleBar"
             android:layout_centerHorizontal="true"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginBottom="16dp"
             android:layout_marginTop="56dp"
             app:animateExpansion="true"
             app:chunkHeight="24dp"
@@ -58,13 +58,34 @@
             android:layout_height="70dp"
             android:layout_below="@+id/audioSeekBar"
             android:layout_centerInParent="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginVertical="36dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_play"
             android:tint="@color/main_regular" />
 
+        <ImageButton
+            android:background="@null"
+            android:layout_alignTop="@+id/playButton"
+            android:layout_alignBottom="@+id/playButton"
+            android:layout_toLeftOf="@+id/playButton"
+            android:src="@drawable/ic_move_forward"
+            android:id="@+id/moveForwardButton"
+            android:layout_marginEnd="48dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+        <ImageButton
+            android:background="@null"
+            android:layout_alignTop="@+id/playButton"
+            android:layout_alignBottom="@+id/playButton"
+            android:layout_toRightOf="@+id/playButton"
+            android:src="@drawable/ic_move_backward"
+            android:id="@+id/moveBackButton"
+            android:layout_marginStart="48dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"/>
+
         <LinearLayout
-            android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

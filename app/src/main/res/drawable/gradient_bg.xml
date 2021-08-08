@@ -7,5 +7,5 @@
     <gradient
         android:type="linear"
         android:startColor="@color/main_regular"
-        android:endColor="@color/main_light"/>
+        android:endColor="@color/main_regular"/>
 </shape>

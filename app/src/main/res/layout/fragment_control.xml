@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -12,10 +12,10 @@
             android:id="@+id/syncControlTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_extrabold"
+            android:fontFamily="@font/nanum_regular"
             android:text="싱크 조절"
             android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:id="@+id/syncControlLayout"
@@ -23,29 +23,30 @@
             android:layout_height="90dp"
             android:layout_below="@+id/syncControlTitleText">
 
-            <Button
+            <ImageButton
                 android:id="@+id/syncMinusButton"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:fontFamily="@font/nanum_extrabold"
                 android:onClick="@{()->viewModel.controlSyncLevel(-1)}"
-                android:text="-"
-                android:textSize="24sp" />
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_minus"
+                app:tint="@color/button_background_gray" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/syncPlusButton"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:fontFamily="@font/nanum_extrabold"
                 android:onClick="@{()->viewModel.controlSyncLevel(1)}"
-                android:text="+"
-                android:textSize="24sp" />
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_plus"
+                android:textSize="24sp"
+                app:tint="@color/button_background_gray" />
 
             <ProgressBar
                 android:id="@+id/syncProgressBar"
@@ -57,7 +58,7 @@
                 android:layout_toRightOf="@+id/syncMinusButton"
                 android:max="100"
                 android:progress="@{viewModel.syncLevel}"
-                android:progressTint="@color/main_regular" />
+                android:progressTint="@color/black" />
 
             <TextView
                 android:id="@+id/syncProgressTextView"
@@ -78,10 +79,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/syncControlLayout"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/nanum_extrabold"
+            android:fontFamily="@font/nanum_regular"
             android:text="볼륨 조절"
             android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
 
         <RelativeLayout
@@ -90,29 +91,29 @@
             android:layout_height="90dp"
             android:layout_below="@+id/volumeControlTitleText">
 
-            <Button
+            <ImageButton
                 android:id="@+id/volumeMinusButton"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:fontFamily="@font/nanum_extrabold"
                 android:onClick="@{()->viewModel.controlVolumeLevel(-1)}"
-                android:text="-"
-                android:textSize="24sp" />
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_minus"
+                app:tint="@color/button_background_gray" />
 
-            <Button
+            <ImageButton
+                android:scaleType="fitEnd"
+                android:src="@drawable/ic_plus"
+                app:tint="@color/button_background_gray"
                 android:id="@+id/volumePlusButton"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="@null"
-                android:fontFamily="@font/nanum_extrabold"
-                android:onClick="@{()->viewModel.controlVolumeLevel(1)}"
-                android:text="+"
-                android:textSize="24sp" />
+                android:onClick="@{()->viewModel.controlVolumeLevel(1)}" />
 
             <ProgressBar
                 android:id="@+id/volumeProgressBar"
@@ -124,7 +125,7 @@
                 android:layout_toRightOf="@+id/volumeMinusButton"
                 android:max="100"
                 android:progress="@{viewModel.volumeLevel}"
-                android:progressTint="@color/main_regular" />
+                android:progressTint="@color/black" />
 
             <TextView
                 android:id="@+id/volumeProgressTextView"

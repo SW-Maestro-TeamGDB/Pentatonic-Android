@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordActivity">
@@ -29,8 +30,8 @@
         <!-- 녹음 시작, 중지, 재시도 상태를 가지는 커스텀 버튼 -->
         <com.team_gdb.pentatonic.ui.record.RecordButton
             android:id="@+id/recordButton"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_record"
@@ -70,9 +71,9 @@
             android:layout_width="wrap_content"
             android:layout_height="120dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="128dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp" />
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="128dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:visibility="gone"

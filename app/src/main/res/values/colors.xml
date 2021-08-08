@@ -18,6 +18,7 @@
     <color name="main_dark">#532BDF</color>
 
     <color name="card_background_gray">#EEEEEE</color>
+    <color name="button_background_gray">#CCCCCC</color>
 
     <color name="main_light_transparent">#CC417AB5</color>
     <color name="main_regular_transparent">#CC23588F</color>
