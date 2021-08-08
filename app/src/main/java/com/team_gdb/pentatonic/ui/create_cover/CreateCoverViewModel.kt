@@ -16,8 +16,7 @@ class CreateCoverViewModel : BaseViewModel() {
     val coverBasicInfoValidation: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
 
-    var coverSessionConfigList: MutableLiveData<List<SessionSettingEntity>> =
-        MutableLiveData<List<SessionSettingEntity>>()
+    var coverSessionConfigList: MutableLiveData<List<SessionSettingEntity>> = MutableLiveData<List<SessionSettingEntity>>()
 
     /**
      * 커버 제목이 없거나, 커버 곡을 선택하지 않은 경우 Event(false) 지정

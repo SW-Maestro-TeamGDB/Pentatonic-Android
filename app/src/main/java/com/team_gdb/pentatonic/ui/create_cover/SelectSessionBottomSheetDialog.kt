@@ -9,6 +9,7 @@ import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.DialogSelectSessionBinding
 import com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class SelectSessionBottomSheetDialog() :
     BaseBottomSheetDialogFragment<DialogSelectSessionBinding, CreateCoverViewModel>() {
@@ -27,10 +28,9 @@ class SelectSessionBottomSheetDialog() :
 
     override fun initAfterBinding() {
         sessionListAdapter = SelectSessionListAdapter { session ->
-            val sessionConfigList: MutableList<SessionSettingEntity>? = viewModel.coverSessionConfigList.value?.toMutableList()
+            val sessionConfigList = viewModel.coverSessionConfigList.value?.toMutableList()
             sessionConfigList?.add(SessionSettingEntity(session, 0))
-//            viewModel.coverSessionConfigList.postValue(sessionConfigList)
-            viewModel.coverSessionConfigList.value = sessionConfigList
+            viewModel.coverSessionConfigList.value = sessionConfigList?.toList()
             dismiss()
         }
 

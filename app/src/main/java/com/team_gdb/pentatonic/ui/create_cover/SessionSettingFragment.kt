@@ -9,6 +9,7 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentSessionSettingBinding
 import com.team_gdb.pentatonic.ui.select_song.SongConfirmBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class SessionSettingFragment :
     BaseFragment<FragmentSessionSettingBinding, CreateCoverViewModel>() {
@@ -21,6 +22,7 @@ class SessionSettingFragment :
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        viewModel.coverSessionConfigList.value = listOf()  // ViewModel List 초기화
     }
 
     override fun initDataBinding() {
