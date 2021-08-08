@@ -1,14 +1,17 @@
-package com.team_gdb.pentatonic.adapter
+package com.team_gdb.pentatonic.adapter.create_cover
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
-import com.team_gdb.pentatonic.databinding.ItemSessionSettingListBinding
 import com.team_gdb.pentatonic.ui.create_cover.SessionSetting
 
+/**
+ * 세션 추가하기 버튼을 눌렀을 때 추가할 수 있는 세션 목록을 보여줌
+ *
+ * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가 (람다로 클릭리스너 지정)
+ */
 class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 

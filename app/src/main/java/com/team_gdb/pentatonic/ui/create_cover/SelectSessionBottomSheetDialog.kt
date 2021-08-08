@@ -2,14 +2,11 @@ package com.team_gdb.pentatonic.ui.create_cover
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.SelectSessionListAdapter
+import com.team_gdb.pentatonic.adapter.create_cover.SelectSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
-import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.DialogSelectSessionBinding
-import com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import timber.log.Timber
 
 class SelectSessionBottomSheetDialog() :
     BaseBottomSheetDialogFragment<DialogSelectSessionBinding, CreateCoverViewModel>() {

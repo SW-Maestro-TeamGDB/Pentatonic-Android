@@ -1,17 +1,12 @@
-package com.team_gdb.pentatonic.adapter
+package com.team_gdb.pentatonic.adapter.cover_view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.data.model.SessionData
-import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.model.UserEntity
-import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
-import com.team_gdb.pentatonic.databinding.ItemSessionSettingListBinding
-import com.team_gdb.pentatonic.ui.create_cover.SessionSetting
 
 
 class SessionConfigListAdapter(val itemClick: (UserEntity) -> Unit) :

@@ -5,7 +5,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.SessionConfigListAdapter
+import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.FragmentBandCoverBinding
