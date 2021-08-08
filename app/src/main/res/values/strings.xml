@@ -40,4 +40,5 @@
     <string name="rising_solo_hint_text">새롭게 떠오르는 솔로 커버를\n감상하거나 연주를 업로드해보세요!</string>
     <string name="rising_band_title_text">떠오르는 밴드 커버</string>
     <string name="rising_band_hint_text">새롭게 떠오르는 밴드 커버를\n감상하고 참여해보세요!</string>
+    <string name="session_setting_title_text">밴드를 구성할 <b>세션</b>과\n<b>최대 인원</b>을 지정합니다</string>
 </resources>
