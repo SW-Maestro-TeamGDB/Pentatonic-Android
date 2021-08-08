@@ -48,4 +48,9 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorAccent">@color/main_regular</item>
+        <item name="fontFamily">@font/nanum_extrabold</item>
+    </style>
+
 </resources>

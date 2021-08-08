@@ -73,6 +73,11 @@ class CoverSessionSettingListAdapter(val itemLongClick: (SessionSettingEntity) -
                     playErrorAnimation(binding.sessionSettingItemLayout)
                 }
             }
+
+            binding.root.setOnLongClickListener {
+                itemLongClick(entity)
+                true
+            }
         }
     }
 
