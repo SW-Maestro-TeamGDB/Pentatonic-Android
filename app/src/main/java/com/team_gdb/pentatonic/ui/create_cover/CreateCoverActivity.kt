@@ -35,13 +35,6 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                 }
             }
         }
-
-        viewModel.addSessionButtonClicked.observe(this) {
-            if (it.getContentIfNotHandled() == true) {
-                val bottomSheetDialog = SelectSessionBottomSheetDialog()
-                bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
-            }
-        }
     }
 
     override fun initAfterBinding() {
