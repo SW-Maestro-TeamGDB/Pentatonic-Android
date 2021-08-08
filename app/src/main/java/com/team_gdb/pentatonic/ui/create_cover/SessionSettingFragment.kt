@@ -7,6 +7,7 @@ import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.SelectSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentSessionSettingBinding
+import com.team_gdb.pentatonic.ui.select_song.SongConfirmBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SessionSettingFragment :
@@ -36,5 +37,11 @@ class SessionSettingFragment :
         }
 
         sessionSettingListAdapter.setItem(TestData.TEST_SESSION_SETTING_LIST)
+
+        binding.addSessionButton.setOnClickListener {
+            val bottomSheetDialogFragment = SelectSessionBottomSheetDialog()
+            bottomSheetDialogFragment.show(requireActivity().supportFragmentManager, bottomSheetDialogFragment.tag)
+        }
+
     }
 }

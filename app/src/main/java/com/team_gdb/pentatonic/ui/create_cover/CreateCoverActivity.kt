@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
+import com.team_gdb.pentatonic.ui.select_song.SongConfirmBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCoverViewModel>() {
@@ -32,6 +33,13 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                     replace(R.id.fragmentContainer, sessionConfigGormFragment)
                     commit()
                 }
+            }
+        }
+
+        viewModel.addSessionButtonClicked.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                val bottomSheetDialog = SelectSessionBottomSheetDialog()
+                bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
             }
         }
     }

@@ -9,7 +9,7 @@ import com.team_gdb.pentatonic.databinding.DialogSelectSessionBinding
 import com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class SelectSessionBottomSheetDialog(val songEntity: SongEntity) :
+class SelectSessionBottomSheetDialog() :
     BaseBottomSheetDialogFragment<DialogSelectSessionBinding, SelectSongViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.dialog_select_session
