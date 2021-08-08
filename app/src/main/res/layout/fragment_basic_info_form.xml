@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:text="다른 사람들에게 보여질 밴드 이름을 설정합니다. (필수)"
+                android:text="다른 사람들에게 보여질 커버 이름을 설정합니다. (필수)"
                 android:fontFamily="@font/nanum_extrabold"/>
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -32,7 +32,7 @@
                 android:maxLines="1"
                 android:textSize="14sp"
                 android:paddingHorizontal="16dp"
-                android:hint="ex) 콜드플레이를 좋아한다면 누구나! 실력 상관 X"
+                android:hint="ex) 사랑해요 DAY6"
                 android:textCursorDrawable="@drawable/edittext_cursor_drawable"
                 android:inputType="text"
                 android:id="@+id/coverNameEditText"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:text="해당 밴드의 간단한 소개글을 입력해주세요."
+                android:text="해당 커버의 간단한 소개글을 입력해주세요."
                 android:fontFamily="@font/nanum_extrabold"/>
 
             <androidx.appcompat.widget.AppCompatEditText

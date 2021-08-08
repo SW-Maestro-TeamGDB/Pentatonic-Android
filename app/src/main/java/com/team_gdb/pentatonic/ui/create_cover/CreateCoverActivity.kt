@@ -9,6 +9,9 @@ import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSettingFragment
 import com.team_gdb.pentatonic.ui.record.RecordActivity
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.BAND_COVER
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.COVER_MODE
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SOLO_COVER
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -25,6 +28,10 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     private val basicInfoFormFragment: Fragment = BasicInfoFormFragment()
     private val sessionConfigGormFragment: Fragment = SessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+    private val coverMode: String by lazy {
+        intent.getStringExtra(COVER_MODE) as String
+    }
 
 
     override fun initStartView() {
@@ -56,11 +63,13 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     }
 
     override fun initAfterBinding() {
-        binding.titleBar.titleTextView.text = "밴드 커버 만들기"
+        when (coverMode){
+            SOLO_COVER -> binding.titleBar.titleTextView.text = "솔로 커버 만들기"
+            BAND_COVER -> binding.titleBar.titleTextView.text = "밴드 커버 만들기"
+        }
         binding.titleBar.backButton.setOnClickListener {
             finish()
         }
-
         transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
             replace(R.id.fragmentContainer, basicInfoFormFragment)
             commit()

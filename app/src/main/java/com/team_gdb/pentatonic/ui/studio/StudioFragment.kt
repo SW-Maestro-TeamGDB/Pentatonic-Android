@@ -31,21 +31,23 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
     override fun initAfterBinding() {
         // 솔로 커버 버튼 클릭했을 때
         binding.makeSoloCoverButton.setOnClickListener {
-            startActivity(Intent(activity, CreateCoverActivity::class.java))
+            val intent = Intent(activity, CreateCoverActivity::class.java).apply {
+                putExtra(COVER_MODE, SOLO_COVER)
+            }
+            startActivity(intent)
         }
 
         // 밴드 커버 버튼 클릭했을 때
         binding.makeBandCoverButton.setOnClickListener {
-            startActivity(Intent(activity, CreateCoverActivity::class.java))
+            val intent = Intent(activity, CreateCoverActivity::class.java).apply {
+                putExtra(COVER_MODE, BAND_COVER)
+            }
+            startActivity(intent)
         }
 
         // 추천 커버 리사이클러뷰 어댑터 생성
         recommendCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(
-                StudioFragmentDirections.actionNavigationStudioToNavigationBandCover(
-                    it
-                )
-            )
+            findNavController().navigate(StudioFragmentDirections.actionNavigationStudioToNavigationBandCover(it))
         }
 
         binding.recommendCoverList.apply {
@@ -72,5 +74,11 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             this.setHasFixedSize(true)
         }
         recommendSongListAdapter.setItem(TestData.TEST_SONG_LIST)
+    }
+
+    companion object {
+        const val COVER_MODE = "COVER_MODE"
+        const val SOLO_COVER = "SOLO_COVER"
+        const val BAND_COVER ="BAND_COVER"
     }
 }
