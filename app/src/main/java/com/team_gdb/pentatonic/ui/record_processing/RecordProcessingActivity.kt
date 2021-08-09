@@ -53,6 +53,11 @@ class RecordProcessingActivity :
     }
 
     override fun initAfterBinding() {
+        binding.titleBar.titleTextView.text = "다듬기"
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
+        }
+
         // ViewPager 어댑터 지정 및 탭 이름 설정
         binding.viewPager.adapter = TabFragmentAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->

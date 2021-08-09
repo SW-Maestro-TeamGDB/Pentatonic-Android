@@ -40,7 +40,8 @@
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.13763661202185792" />
         <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
         <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.18" />
