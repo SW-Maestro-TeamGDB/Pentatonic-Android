@@ -59,17 +59,17 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginButton"
-            android:text="@string/login_button_text"
-            android:fontFamily="@font/nanum_extrabold"
-            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/passwordEditText"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
-            android:paddingHorizontal="16dp"
-            android:layout_below="@+id/passwordEditText"
             android:background="@drawable/custom_radius_background_light"
-            android:backgroundTint="@color/main_light_transparent"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:backgroundTint="@color/main_regular_transparent"
+            android:fontFamily="@font/nanum_extrabold"
+            android:paddingHorizontal="16dp"
+            android:text="@string/login_button_text"
+            android:textColor="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,18 +83,18 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"
-            android:text="@string/login_register_button_text"
-            android:fontFamily="@font/nanum_extrabold"
-            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
-            android:paddingHorizontal="16dp"
-            android:layout_alignParentBottom="true"
             android:layout_marginBottom="24dp"
             android:background="@drawable/custom_radius_background_dark"
             android:backgroundTint="@color/main_dark_transparent"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:fontFamily="@font/nanum_extrabold"
+            android:paddingHorizontal="16dp"
+            android:text="@string/login_register_button_text"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

@@ -13,7 +13,7 @@ import okhttp3.Response
 
 
 object NetworkHelper {
-    private const val serverBaseUrl = "https://api.pukuba.dev/api/"
+    private const val serverBaseUrl = "https://api.penta-tonic.com/api/"
 
     val apolloClient: ApolloClient = ApolloClient.builder()
         .serverUrl(serverBaseUrl)

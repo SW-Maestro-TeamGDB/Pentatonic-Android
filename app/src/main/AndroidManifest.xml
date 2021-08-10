@@ -21,18 +21,22 @@
         </activity>
         <activity android:name=".ui.record_processing.RecordProcessingActivity" />
         <activity android:name=".ui.record.RecordActivity" />
-        <activity android:name=".ui.user_verify.UserVerifyActivity" />
+        <activity android:name=".ui.user_verify.UserVerifyActivity" >
+
+        </activity>
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.login.LoginActivity" />
-        <activity
-            android:name=".ui.home.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/noStatusBar">
+        <activity android:name=".ui.login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/noStatusBar">
+
         </activity>
     </application>
     <uses-feature
