@@ -67,6 +67,11 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_library"
+        android:name="com.team_gdb.pentatonic.ui.library.LibraryFragment"
+        tools:layout="@layout/fragment_library" />
+
+    <fragment
         android:id="@+id/navigation_rising_band"
         android:name="com.team_gdb.pentatonic.ui.rising_band.RisingBandFragment"
         tools:layout="@layout/fragment_rising_band" />
@@ -100,7 +105,17 @@
         android:id="@+id/navigation_my_page"
         android:name="com.team_gdb.pentatonic.ui.my_page.MyPageFragment"
         android:label="@string/title_my_page"
-        tools:layout="@layout/fragment_my_page" />
+        tools:layout="@layout/fragment_my_page">
+
+        <action
+            android:id="@+id/action_navigation_my_page_to_navigation_library"
+            app:destination="@id/navigation_library"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_band_cover"
