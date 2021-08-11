@@ -23,6 +23,7 @@ class UserVerifyActivity : BaseActivity<ActivityUserVerifyBinding, UserVerifyVie
         registerForm = intent.getSerializableExtra(EXTRA_NAME) as RegisterForm
 
         Timber.d("넘어온 회원가입 정보는 이러함 : $registerForm")
+
     }
 
     override fun initDataBinding() {

@@ -12,8 +12,9 @@
             android:id="@+id/titleBar"
             layout="@layout/page_title_bar" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.chauthai.overscroll.RecyclerViewBouncy
             android:id="@+id/libraryList"
+            android:layout_margin="24dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
