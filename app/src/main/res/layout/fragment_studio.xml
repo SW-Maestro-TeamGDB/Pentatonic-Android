@@ -165,5 +165,9 @@
         <variable
             name="home"
             type="com.team_gdb.pentatonic.ui.studio.StudioFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.studio.StudioViewModel" />
     </data>
 </layout>
