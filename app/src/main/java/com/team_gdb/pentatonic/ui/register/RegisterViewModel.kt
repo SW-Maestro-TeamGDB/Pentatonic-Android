@@ -27,9 +27,6 @@ class RegisterViewModel(private val repository: RegisterRepository) : BaseViewMo
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    Timber.d(it.data.toString())
-                    Timber.d(it.data?.isValidId.toString())
-                    Timber.d(it.data?.isValidUsername.toString())
                     if (it.data?.isValidId == true) {
                         eventResult[0] = true
                     }

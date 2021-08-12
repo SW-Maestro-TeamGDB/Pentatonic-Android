@@ -114,4 +114,8 @@ dependencies {
 
     // View Animation
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
+
+    implementation ('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
+        transitive = true
+    }
 }

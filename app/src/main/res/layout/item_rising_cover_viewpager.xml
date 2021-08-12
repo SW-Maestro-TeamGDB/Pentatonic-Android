@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/black">
+
+        <TextView
+            android:id="@+id/coverLikeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/nanum_light"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_left_image_like"
+            app:drawableTint="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/coverViewTextView"
+            app:layout_constraintTop_toBottomOf="@+id/coverOriginalSongTextView" />
+
+        <TextView
+            android:id="@+id/coverOriginalSongTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="90dp"
+            android:text="ORIGINAL SONG"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/coverSessionListTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/nanum_light"
+            android:text="3명"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_left_participants"
+            app:drawableTint="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/coverOriginalSongTextView"
+            app:layout_constraintTop_toBottomOf="@+id/coverOriginalSongTextView" />
+
+        <TextView
+            android:id="@+id/coverViewTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/nanum_light"
+            android:text="50"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_left_image_view"
+            app:drawableTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/coverSessionListTextView"
+            app:layout_constraintStart_toEndOf="@+id/coverSessionListTextView"
+            app:layout_constraintTop_toBottomOf="@+id/coverOriginalSongTextView" />
+
+        <TextView
+            android:id="@+id/coverNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginBottom="4dp"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/coverOriginalSongTextView"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
