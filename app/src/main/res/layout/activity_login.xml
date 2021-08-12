@@ -45,6 +45,7 @@
         <EditText
             android:hint="@string/login_pw_hint_text"
             android:textSize="14sp"
+            android:inputType="textPassword"
             android:drawablePadding="8dp"
             android:text="@={viewModel.passwordField}"
             android:id="@+id/passwordEditText"

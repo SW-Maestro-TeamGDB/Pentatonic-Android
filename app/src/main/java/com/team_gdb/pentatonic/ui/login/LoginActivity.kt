@@ -52,7 +52,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
         // 비어있는 필드가 없다면 로그인 요청 보냄
         binding.loginButton.setOnClickListener {
-            if (isThereAnythingEmpty()) {
+            if (!isThereAnythingEmpty()) {
                 viewModel.login()
             }
         }

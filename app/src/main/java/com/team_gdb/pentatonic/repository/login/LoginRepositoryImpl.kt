@@ -18,5 +18,4 @@ class LoginRepositoryImpl: LoginRepository {
      */
     override fun requestLogin(id: String, password: String): Single<Response<LoginMutation.Data>> =
         NetworkHelper.apolloClient.rxMutate(LoginMutation(LoginInput(LoginArgs(id, password))))
-            .observeOn(Schedulers.io())
 }
