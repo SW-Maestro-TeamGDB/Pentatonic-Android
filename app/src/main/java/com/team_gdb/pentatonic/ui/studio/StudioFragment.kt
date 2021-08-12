@@ -11,6 +11,7 @@ import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import com.team_gdb.pentatonic.TestData
+import com.team_gdb.pentatonic.TestRisingCoverData
 import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
@@ -92,7 +93,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             startActivity(intent)
         }
 
-        recommendCoverViewPagerAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+        recommendCoverViewPagerAdapter.setItem(TestRisingCoverData.TEST_BAND_COVER_LIST)
         recommendSongListAdapter.setItem(TestData.TEST_SONG_LIST)
 
         autoScrollViewPager()

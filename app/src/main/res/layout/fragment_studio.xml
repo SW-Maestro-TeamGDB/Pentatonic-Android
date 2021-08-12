@@ -16,17 +16,17 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp">
+                android:layout_height="300dp">
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/recommendCoverViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"/>
+                    android:layout_height="300dp"/>
 
                 <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                     android:id="@+id/viewpagerIndicator"
                     android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="34dp"
                     android:layout_gravity="end|bottom"
                     android:layout_width="wrap_content"
                     android:layout_height="7dp"
@@ -37,6 +37,37 @@
                     app:dotsColor="@color/white"
                     app:selectedDotColor="@color/white"
                     app:progressMode="true" />
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginStart="24dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp"
+                        android:background="@drawable/background_gradient_text"
+                        android:gravity="center_vertical"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="H43RO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="4dp"
+                        android:textSize="18sp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text=" 님을 위한 추천 커버"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
             </FrameLayout>
 
