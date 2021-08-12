@@ -19,6 +19,7 @@
                 android:layout_height="300dp">
 
                 <androidx.viewpager2.widget.ViewPager2
+                    android:overScrollMode="never"
                     android:id="@+id/recommendCoverViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"/>
@@ -60,7 +61,6 @@
 
                     <TextView
                         android:gravity="center_vertical"
-                        android:layout_marginStart="4dp"
                         android:textSize="18sp"
                         android:textColor="@color/white"
                         android:fontFamily="@font/nanum_extrabold"

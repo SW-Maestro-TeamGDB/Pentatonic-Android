@@ -27,7 +27,7 @@
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1369535519125683" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.21" />
@@ -47,7 +47,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.13763661202185792" />
         <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
         <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
         <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
