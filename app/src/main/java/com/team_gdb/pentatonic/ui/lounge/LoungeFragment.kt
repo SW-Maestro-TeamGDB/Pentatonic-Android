@@ -21,6 +21,33 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
     override fun initStartView() {
         binding.viewModel = viewModel
+
+
+        // 밴드 커버 리사이클러뷰 어댑터 생성
+        bandCoverListAdapter = CoverHorizontalListAdapter {
+            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
+        }
+
+        binding.bandCoverList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
+            this.adapter = bandCoverListAdapter
+            this.setHasFixedSize(true)
+        }
+
+        // 솔로 커버 리사이클러뷰 어댑터 생성
+        soloCoverListAdapter = CoverHorizontalListAdapter {
+            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationSoloCover(it))
+        }
+
+        binding.soloCoverList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
+            this.adapter = soloCoverListAdapter
+            this.setHasFixedSize(true)
+        }
     }
 
     override fun initDataBinding() {
@@ -36,33 +63,8 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             }
         })
 
-        // 밴드 커버 리사이클러뷰 어댑터 생성
-        bandCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
-        }
-
-        binding.bandCoverList.apply {
-            this.layoutManager = LinearLayoutManager(context).apply {
-                this.orientation = LinearLayoutManager.HORIZONTAL
-            }
-            this.adapter = bandCoverListAdapter
-            this.setHasFixedSize(true)
-        }
 
         bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
-
-        // 솔로 커버 리사이클러뷰 어댑터 생성
-        soloCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationSoloCover(it))
-        }
-
-        binding.soloCoverList.apply {
-            this.layoutManager = LinearLayoutManager(context).apply {
-                this.orientation = LinearLayoutManager.HORIZONTAL
-            }
-            this.adapter = soloCoverListAdapter
-            this.setHasFixedSize(true)
-        }
 
         soloCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
 

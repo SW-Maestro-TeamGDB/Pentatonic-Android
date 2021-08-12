@@ -23,6 +23,31 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
 
     override fun initStartView() {
+        // 추천 커버 리사이클러뷰 어댑터 생성
+        recommendCoverListAdapter = CoverHorizontalListAdapter {
+            findNavController().navigate(StudioFragmentDirections.actionNavigationStudioToNavigationBandCover(it))
+        }
+
+        binding.recommendCoverList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
+            this.adapter = recommendCoverListAdapter
+            this.setHasFixedSize(true)
+        }
+
+        // 추천 곡 리사이클러뷰 어댑터 생성
+        recommendSongListAdapter = SongHorizontalListAdapter {
+
+        }
+
+        binding.recommendSongList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
+            this.adapter = recommendSongListAdapter
+            this.setHasFixedSize(true)
+        }
     }
 
     override fun initDataBinding() {
@@ -45,34 +70,9 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             startActivity(intent)
         }
 
-        // 추천 커버 리사이클러뷰 어댑터 생성
-        recommendCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(StudioFragmentDirections.actionNavigationStudioToNavigationBandCover(it))
-        }
-
-        binding.recommendCoverList.apply {
-            this.layoutManager = LinearLayoutManager(context).apply {
-                this.orientation = LinearLayoutManager.HORIZONTAL
-            }
-            this.adapter = recommendCoverListAdapter
-            this.setHasFixedSize(true)
-        }
 
         recommendCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
 
-
-        // 추천 곡 리사이클러뷰 어댑터 생성
-        recommendSongListAdapter = SongHorizontalListAdapter {
-
-        }
-
-        binding.recommendSongList.apply {
-            this.layoutManager = LinearLayoutManager(context).apply {
-                this.orientation = LinearLayoutManager.HORIZONTAL
-            }
-            this.adapter = recommendSongListAdapter
-            this.setHasFixedSize(true)
-        }
         recommendSongListAdapter.setItem(TestData.TEST_SONG_LIST)
     }
 

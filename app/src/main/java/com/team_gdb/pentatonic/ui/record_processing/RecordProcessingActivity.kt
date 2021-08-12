@@ -44,19 +44,8 @@ class RecordProcessingActivity :
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initPlayer()
-    }
 
-    override fun initDataBinding() {
-        viewModel.buttonState.observe(this) {
-            binding.playButton.updateIconWithState(it)
-        }
-    }
-
-    override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "다듬기"
-        binding.titleBar.backButton.setOnClickListener {
-            finish()
-        }
 
         // ViewPager 어댑터 지정 및 탭 이름 설정
         binding.viewPager.adapter = TabFragmentAdapter(this)
@@ -66,6 +55,18 @@ class RecordProcessingActivity :
                 1 -> tab.text = "이펙터"
             }
         }.attach()
+    }
+
+    override fun initDataBinding() {
+        viewModel.buttonState.observe(this) {
+            binding.playButton.updateIconWithState(it)
+        }
+    }
+
+    override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
+        }
 
         // 동적으로 TabLayout Indicator Width 계산
         binding.tabLayout.post {

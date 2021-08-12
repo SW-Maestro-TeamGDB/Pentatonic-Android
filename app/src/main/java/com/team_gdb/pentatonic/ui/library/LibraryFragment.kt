@@ -20,20 +20,11 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, LibraryViewModel>()
     private lateinit var libraryListAdapter: LibraryListAdapter
 
     override fun initStartView() {
-    }
-
-    override fun initDataBinding() {
-    }
-
-    override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "라이브러리"
-        binding.titleBar.backButton.setOnClickListener {
-
-        }
 
         libraryListAdapter = LibraryListAdapter {
 //            findNavController().navigate(
-                // TOOD : 라이브러리 정보 페이지
+            // TOOD : 라이브러리 정보 페이지
 //            )
         }
         binding.libraryList.apply {
@@ -41,7 +32,15 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, LibraryViewModel>()
             this.adapter = libraryListAdapter
             this.setHasFixedSize(true)
         }
-        libraryListAdapter.setItem(TestLibraryData.TEST_LIBRARY_DATA)
+    }
 
+    override fun initDataBinding() {
+    }
+
+    override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+
+        }
+        libraryListAdapter.setItem(TestLibraryData.TEST_LIBRARY_DATA)
     }
 }

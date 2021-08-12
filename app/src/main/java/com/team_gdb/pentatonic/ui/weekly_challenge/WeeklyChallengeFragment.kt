@@ -19,12 +19,6 @@ class WeeklyChallengeFragment :
     private lateinit var weeklyChallengeCoverListAdapter: CoverVerticalListAdapter
 
     override fun initStartView() {
-    }
-
-    override fun initDataBinding() {
-    }
-
-    override fun initAfterBinding() {
         weeklyChallengeCoverListAdapter = CoverVerticalListAdapter {
             findNavController().navigate(
                 LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it)
@@ -35,6 +29,12 @@ class WeeklyChallengeFragment :
             this.adapter = weeklyChallengeCoverListAdapter
             this.setHasFixedSize(true)
         }
+    }
+
+    override fun initDataBinding() {
+    }
+
+    override fun initAfterBinding() {
         weeklyChallengeCoverListAdapter.setItem(TestData.TEST_WEEKLY_COVER_LIST)
 
         binding.backButton.setOnClickListener {

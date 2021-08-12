@@ -20,24 +20,9 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
     private lateinit var songListAdapter: SongVerticalListAdapter
 
     override fun initStartView() {
-    }
+        binding.viewModel = this.viewModel
 
-    override fun initDataBinding() {
-        viewModel.selectedSong.observe(this) {
-            if (it is SongEntity){
-                val intent = Intent()
-                intent.putExtra(SELECT_SONG, it)
-                setResult(RESULT_OK, intent)
-                finish()
-            }
-        }
-    }
-
-    override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "곡 선택"
-        binding.titleBar.backButton.setOnClickListener {
-            finish()
-        }
 
         songListAdapter = SongVerticalListAdapter {
             val bottomSheetDialog = SongConfirmBottomSheetDialog(it)
@@ -48,6 +33,23 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
             this.layoutManager = LinearLayoutManager(context)
             adapter = songListAdapter
             setHasFixedSize(true)
+        }
+    }
+
+    override fun initDataBinding() {
+        viewModel.selectedSong.observe(this) {
+            if (it is SongEntity) {
+                val intent = Intent()
+                intent.putExtra(SELECT_SONG, it)
+                setResult(RESULT_OK, intent)
+                finish()
+            }
+        }
+    }
+
+    override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
         }
 
         songListAdapter.setItem(TestData.TEST_SONG_LIST)

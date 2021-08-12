@@ -21,12 +21,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
-    }
-
-    override fun initDataBinding() {
-    }
-
-    override fun initAfterBinding() {
         binding.usernameTextView.text = userEntityItem.username
         binding.userIntroductionTextView.text = userEntityItem.introduction
         if (userEntityItem.profileImage.isNotBlank()){
@@ -35,5 +29,12 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>()
                 .override(100, 100)
                 .into(binding.userProfileImage)
         }
+    }
+
+    override fun initDataBinding() {
+    }
+
+    override fun initAfterBinding() {
+
     }
 }

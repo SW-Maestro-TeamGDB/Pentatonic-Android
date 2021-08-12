@@ -61,6 +61,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     override fun initStartView() {
         val bottomSheetDialog = RecordGuideBottomSheetDialog()
         bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+
+        binding.titleBar.titleTextView.text = "Recording"
     }
 
     override fun initDataBinding() {
@@ -70,7 +72,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
 
     override fun initAfterBinding() {
-        binding.titleBar.titleTextView.text = "Recording"
         binding.titleBar.backButton.setOnClickListener {
             finish()
         }

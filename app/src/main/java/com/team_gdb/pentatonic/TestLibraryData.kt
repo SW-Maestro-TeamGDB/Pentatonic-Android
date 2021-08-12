@@ -6,25 +6,25 @@ object TestLibraryData {
     val TEST_LIBRARY_DATA: List<LibraryEntity> = listOf(
         LibraryEntity(
             id = 0,
-            coverName = "커버 1",
+            coverName = "녹음 1",
             originalSong = "DAY6 - 반드시 웃는다",
-            imageUrl = "",
+            imageUrl = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg",
             introduction = "",
             coverSession = "드럼"
         ),
         LibraryEntity(
             id = 1,
-            coverName = "커버 2",
+            coverName = "녹음 2",
             originalSong = "DAY6 - 역대급(WALK)",
-            imageUrl = "",
+            imageUrl = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg",
             introduction = "",
             coverSession = "기타"
         ),
         LibraryEntity(
             id = 2,
-            coverName = "커버 3",
+            coverName = "녹음 3",
             originalSong = "DAY6 - 예뻤어",
-            imageUrl = "",
+            imageUrl = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg",
             introduction = "",
             coverSession = "보컬"
         ),

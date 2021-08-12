@@ -20,12 +20,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
-    }
 
-    override fun initDataBinding() {
-    }
-
-    override fun initAfterBinding() {
         coverHistoryListAdapter = CoverHorizontalListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
         }
@@ -38,7 +33,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
             this.setHasFixedSize(true)
         }
 
-        coverHistoryListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
         likedCoverListAdapter = CoverHorizontalListAdapter {
             findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
@@ -51,6 +45,13 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
             this.adapter = likedCoverListAdapter
             this.setHasFixedSize(true)
         }
+    }
+
+    override fun initDataBinding() {
+    }
+
+    override fun initAfterBinding() {
+        coverHistoryListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
         likedCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
