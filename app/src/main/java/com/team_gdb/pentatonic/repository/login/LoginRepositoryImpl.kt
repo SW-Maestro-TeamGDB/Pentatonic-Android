@@ -4,6 +4,7 @@ import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
 import com.team_gdb.pentatonic.LoginMutation
 import com.team_gdb.pentatonic.network.NetworkHelper
+import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import com.team_gdb.pentatonic.type.LoginArgs
 import com.team_gdb.pentatonic.type.LoginInput
 import io.reactivex.rxjava3.core.Single
@@ -17,5 +18,5 @@ class LoginRepositoryImpl: LoginRepository {
      * @return          Rx Single Observable 객체
      */
     override fun requestLogin(id: String, password: String): Single<Response<LoginMutation.Data>> =
-        NetworkHelper.apolloClient.rxMutate(LoginMutation(LoginInput(LoginArgs(id, password))))
+        apolloClient.rxMutate(LoginMutation(LoginInput(LoginArgs(id, password))))
 }
