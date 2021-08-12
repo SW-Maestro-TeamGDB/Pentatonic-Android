@@ -11,6 +11,8 @@
             android:src="@color/black"
             android:scaleType="centerCrop"
             android:id="@+id/coverImage"
+            android:tintMode="src_over"
+            app:tint="#80000000"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

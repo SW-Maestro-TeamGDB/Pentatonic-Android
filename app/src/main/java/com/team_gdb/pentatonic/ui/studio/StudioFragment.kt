@@ -53,6 +53,8 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             })
         }
 
+        binding.viewpagerIndicator.setViewPager2(binding.recommendCoverViewPager)
+
         // 추천 곡 리사이클러뷰 어댑터 생성
         recommendSongListAdapter = SongHorizontalListAdapter {
 
