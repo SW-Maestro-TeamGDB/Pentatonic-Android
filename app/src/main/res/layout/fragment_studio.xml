@@ -8,29 +8,16 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:background="@color/white"
-            android:paddingVertical="24dp"
+            android:paddingBottom="24dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.studio.StudioFragment">
 
-            <TextView
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="@dimen/menu_title_margin_bottom"
-                android:fontFamily="@font/nanum_extrabold"
-                android:textSize="@dimen/menu_title_text_size"
-                android:textColor="@color/black"
-                android:text="이런 커버 어때요?"
-                android:layout_marginHorizontal="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recommendCoverList"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_horizontal_cover_list"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/recommendCoverViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="250dp"/>
 
             <TextView
                 android:layout_marginTop="24dp"
