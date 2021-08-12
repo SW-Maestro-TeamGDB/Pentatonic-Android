@@ -29,7 +29,7 @@ object NetworkHelper {
 private class AuthorizationInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
-            .addHeader("Authorization", BaseApplication.prefs.token ?: "")
+//            .addHeader("Authorization", BaseApplication.prefs.token ?: "")
             .addHeader("Content-Type", "application/json")
             .build()
 
