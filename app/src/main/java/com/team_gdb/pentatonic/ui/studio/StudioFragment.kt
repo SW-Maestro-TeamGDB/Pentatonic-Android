@@ -59,8 +59,9 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
         // 추천 곡 리사이클러뷰 어댑터 생성
         recommendSongListAdapter = SongHorizontalListAdapter {
-            val intent = Intent(context, SongDetailActivity::class.java)
+            val intent = Intent(activity?.applicationContext, SongDetailActivity::class.java)
             intent.putExtra(SONG_ENTITY, it)
+            startActivity(intent)
         }
 
         binding.recommendSongList.apply {
