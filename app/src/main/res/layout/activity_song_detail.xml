@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
+        android:paddingHorizontal="24dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.song_detail.SongDetailActivity">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/albumJacketBackgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.songEntity.songTitle}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/albumJacketImage"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_below="@+id/titleBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/beautiful_album_jacket"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+        <TextView
+            android:layout_below="@+id/albumJacketImage"
+            android:text="예뻤어"
+            android:fontFamily="@font/nanum_extrabold"
+            android:textSize="28sp"
+            android:layout_marginTop="24dp"
+            android:id="@+id/songName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_below="@+id/songName"
+            android:text="DAY6"
+            android:fontFamily="@font/nanum_regular"
+            android:textSize="20sp"
+            android:layout_marginTop="4dp"
+            android:id="@+id/artistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/page_title_bar" />
+
+    </RelativeLayout>
 
     <data>
 
