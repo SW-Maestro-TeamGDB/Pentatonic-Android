@@ -1,13 +1,16 @@
 package com.team_gdb.pentatonic.ui.song_detail
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ActivitySongDetailBinding
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
+import jp.wasabeef.blurry.Blurry
 import timber.log.Timber
 
 class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailViewModel>() {
@@ -20,6 +23,14 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
 
         val songEntity: SongEntity = intent.getSerializableExtra(SONG_ENTITY) as SongEntity
         viewModel.songEntity.postValue(songEntity)
+
+        Blurry.with(this)
+            .radius(10)
+            .sampling(8)
+            .color(Color.argb(66, 255, 255, 0))
+            .async()
+            .animate(500)
+            .onto(binding.root as ViewGroup?)
     }
 
     override fun initDataBinding() {

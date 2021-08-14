@@ -117,4 +117,7 @@ dependencies {
 
     // ViewPager Indicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    // Image Blur
+    implementation 'jp.wasabeef:blurry:4.0.0'
 }
