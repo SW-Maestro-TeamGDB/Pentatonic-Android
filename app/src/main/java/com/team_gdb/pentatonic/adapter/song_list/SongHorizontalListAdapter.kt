@@ -51,8 +51,8 @@ class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
                 .override(480, 272)
                 .into(binding.albumJacketImage)
 
-            binding.songNameTextView.text = entity.name
-            binding.songArtistTextView.text = entity.artist
+            binding.songNameTextView.text = entity.songTitle
+            binding.songArtistTextView.text = entity.artistName
         }
     }
 

@@ -248,23 +248,23 @@ object TestData {
 
     val TEST_SONG_LIST: List<SongEntity> = listOf(
         SongEntity(
-            name = "역대급",
-            artist = "DAY6",
+            songTitle = "역대급",
+            artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg"
         ),
         SongEntity(
-            name = "놓아 놓아 놓아",
-            artist = "DAY6",
+            songTitle = "놓아 놓아 놓아",
+            artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg"
         ),
         SongEntity(
-            name = "행복했던 날들이었다",
-            artist = "DAY6",
+            songTitle = "행복했던 날들이었다",
+            artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg"
         ),
         SongEntity(
-            name = "예뻤어",
-            artist = "DAY6",
+            songTitle = "예뻤어",
+            artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg"
         )
     )

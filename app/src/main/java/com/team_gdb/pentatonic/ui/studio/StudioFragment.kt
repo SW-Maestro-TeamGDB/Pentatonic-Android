@@ -16,6 +16,7 @@ import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.record.RecordActivity
+import com.team_gdb.pentatonic.ui.song_detail.SongDetailActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,7 +59,8 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
         // 추천 곡 리사이클러뷰 어댑터 생성
         recommendSongListAdapter = SongHorizontalListAdapter {
-
+            val intent = Intent(context, SongDetailActivity::class.java)
+            intent.putExtra(SONG_ENTITY, it)
         }
 
         binding.recommendSongList.apply {
@@ -117,5 +119,6 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         const val COVER_MODE = "COVER_MODE"
         const val SOLO_COVER = "SOLO_COVER"
         const val BAND_COVER = "BAND_COVER"
+        const val SONG_ENTITY = "SONG_ENTITY"
     }
 }

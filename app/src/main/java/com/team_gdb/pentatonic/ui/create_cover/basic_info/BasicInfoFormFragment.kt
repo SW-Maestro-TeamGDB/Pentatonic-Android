@@ -47,8 +47,8 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                 binding.selectedSongAlbumJacketImage.setColorFilter(Color.parseColor("#80000000"))
 
                 binding.afterSelectSongLayout.visibility = View.VISIBLE
-                binding.selectedSongNameTextView.text = it.name
-                binding.selectedSongArtistTextView.text = it.artist
+                binding.selectedSongNameTextView.text = it.songTitle
+                binding.selectedSongArtistTextView.text = it.artistName
             }
         }
         viewModel.coverBasicInfoValidationEvent.observe(this) {
