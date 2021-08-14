@@ -250,22 +250,43 @@ object TestData {
         SongEntity(
             songTitle = "역대급",
             artistName = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg"
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg",
+            albumTitle = "Right Through Me",
+            albumReleaseDate = "2021.07.05",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
         ),
         SongEntity(
             songTitle = "놓아 놓아 놓아",
             artistName = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg"
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg",
+            albumTitle = "SUNRISE",
+            albumReleaseDate = "2016.07.15",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
+
         ),
         SongEntity(
             songTitle = "행복했던 날들이었다",
             artistName = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg"
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg",
+            albumTitle = "Remember Us: Youth Part2",
+            albumReleaseDate = "2018.12.10",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
         ),
         SongEntity(
             songTitle = "예뻤어",
             artistName = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg"
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg",
+            albumTitle = "Every Day6",
+            albumReleaseDate = "2017.02.06",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
         )
     )
 

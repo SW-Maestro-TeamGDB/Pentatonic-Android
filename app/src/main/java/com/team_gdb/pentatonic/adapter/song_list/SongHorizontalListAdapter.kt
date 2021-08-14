@@ -53,6 +53,10 @@ class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
 
             binding.songNameTextView.text = entity.songTitle
             binding.songArtistTextView.text = entity.artistName
+
+            binding.root.setOnClickListener {
+                itemClick(entity)
+            }
         }
     }
 
