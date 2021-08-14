@@ -33,6 +33,7 @@
         <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_select_song.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_song_detail.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/activity_user_verify.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
         <entry key="app/src/main/res/layout/dialog_song_confirm.xml" value="0.21" />
@@ -68,7 +69,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
