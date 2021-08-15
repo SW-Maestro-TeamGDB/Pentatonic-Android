@@ -5,6 +5,8 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toBitmap
+import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.base.BaseActivity
@@ -25,13 +27,12 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
         val songEntity: SongEntity = intent.getSerializableExtra(SONG_ENTITY) as SongEntity
         viewModel.songEntity.postValue(songEntity)
 
-        Blurry.with(this)
-            .radius(8)
-            .sampling(8)
-            .color(Color.argb(66, 255, 255, 255))
-            .animate(500)
-            .from(BitmapFactory.decodeResource(resources, R.drawable.beautiful_album_jacket))
-            .into(binding.albumJacketImageBackground)
+        Glide.with(binding.root)
+            .load(songEntity.albumJacketImage)
+            .placeholder(R.drawable.placeholder_cover_bg)
+            .override(480, 480)
+            .into(binding.albumJacketImage)
+
     }
 
     override fun initDataBinding() {
@@ -41,5 +42,11 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
     }
 
     override fun initAfterBinding() {
+        Blurry.with(this)
+            .radius(3)
+            .sampling(3)
+            .animate(500)
+            .from(binding.albumJacketImage.drawable.toBitmap())
+            .into(binding.albumJacketImageBackground)
     }
 }
