@@ -34,22 +34,6 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-
-        <action
-            android:id="@+id/action_navigation_lounge_to_navigation_band_cover"
-            app:destination="@id/navigation_band_cover"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-
-        <action
-            android:id="@+id/action_navigation_lounge_to_navigation_solo_cover"
-            app:destination="@id/navigation_solo_cover"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
     <fragment
@@ -86,13 +70,6 @@
         android:name="com.team_gdb.pentatonic.ui.studio.StudioFragment"
         android:label="@string/title_studio"
         tools:layout="@layout/fragment_studio" >
-        <action
-            android:id="@+id/action_navigation_studio_to_navigation_band_cover"
-            app:destination="@id/navigation_band_cover"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
@@ -120,8 +97,8 @@
 
     <fragment
         android:id="@+id/navigation_band_cover"
-        android:name="com.team_gdb.pentatonic.ui.band_cover.BandCoverFragment"
-        tools:layout="@layout/fragment_band_cover">
+        android:name="com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity"
+        tools:layout="@layout/activity_band_cover">
         <argument
             android:name="bandCoverEntity"
             app:argType="com.team_gdb.pentatonic.data.model.CoverEntity" />
@@ -136,8 +113,8 @@
 
     <fragment
         android:id="@+id/navigation_solo_cover"
-        android:name="com.team_gdb.pentatonic.ui.solo_cover.SoloCoverFragment"
-        tools:layout="@layout/fragment_solo_cover">
+        android:name="com.team_gdb.pentatonic.ui.solo_cover.SoloCoverActivity"
+        tools:layout="@layout/activity_solo_cover">
         <argument
             android:name="soloCoverEntity"
             app:argType="com.team_gdb.pentatonic.data.model.CoverEntity" />
@@ -146,8 +123,8 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.team_gdb.pentatonic.ui.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile">
+        android:name="com.team_gdb.pentatonic.ui.profile.ProfileActivity"
+        tools:layout="@layout/activity_profile">
         <argument
             android:name="userEntity"
             app:argType="com.team_gdb.pentatonic.data.model.UserEntity" />

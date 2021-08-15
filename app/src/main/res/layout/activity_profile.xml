@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="24dp"
-        tools:context=".ui.profile.ProfileFragment">
+        tools:context=".ui.profile.ProfileActivity">
 
         <TextView
             android:layout_width="wrap_content"

@@ -14,7 +14,9 @@ import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.TestRisingCoverData
 import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailActivity
 import kotlinx.coroutines.delay
@@ -35,11 +37,9 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
         // 추천 커버 뷰 페이저 어댑터 생성
         recommendCoverViewPagerAdapter = RisingCoverViewPagerAdapter {
-            findNavController().navigate(
-                StudioFragmentDirections.actionNavigationStudioToNavigationBandCover(
-                    it
-                )
-            )
+            val intent = Intent(requireContext(), BandCoverActivity::class.java)
+            intent.putExtra(LoungeFragment.COVER_ENTITY, it)
+            startActivity(intent)
         }
 
         binding.recommendCoverViewPager.apply {

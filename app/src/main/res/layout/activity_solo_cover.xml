@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.solo_cover.SoloCoverFragment">
+    tools:context=".ui.solo_cover.SoloCoverActivity">
 
     <TextView
         android:layout_width="match_parent"

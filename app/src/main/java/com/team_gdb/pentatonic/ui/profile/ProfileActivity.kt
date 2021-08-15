@@ -1,22 +1,21 @@
 package com.team_gdb.pentatonic.ui.profile
 
-import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.UserEntity
-import com.team_gdb.pentatonic.databinding.FragmentProfileBinding
+import com.team_gdb.pentatonic.databinding.ActivityProfileBinding
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity.Companion.USER_ENTITY
 
-class ProfileFragment : BaseFragment<FragmentProfileBinding, ProfileViewModel>() {
+class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>() {
 
     override val layoutResourceId: Int
-        get() = R.layout.fragment_profile
+        get() = R.layout.activity_profile
     override val viewModel: ProfileViewModel by viewModel()
 
-    private val userItemArgs: ProfileFragmentArgs by navArgs()
     private val userEntityItem: UserEntity by lazy {
-        userItemArgs.userEntity
+        intent.getSerializableExtra(USER_ENTITY) as UserEntity
     }
 
     override fun initStartView() {

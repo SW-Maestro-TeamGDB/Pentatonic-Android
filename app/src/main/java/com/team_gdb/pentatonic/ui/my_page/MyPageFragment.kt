@@ -1,12 +1,16 @@
 package com.team_gdb.pentatonic.ui.my_page
 
+import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
+import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -22,7 +26,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         binding.viewModel = this.viewModel
 
         coverHistoryListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
+            val intent = Intent(requireContext(), BandCoverActivity::class.java)
+            intent.putExtra(COVER_ENTITY, it)
+            startActivity(intent)
         }
 
         binding.coverHistoryList.apply {
@@ -35,7 +41,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
 
         likedCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
+            val intent = Intent(requireContext(), BandCoverActivity::class.java)
+            intent.putExtra(COVER_ENTITY, it)
+            startActivity(intent)
         }
 
         binding.likedCoverList.apply {
