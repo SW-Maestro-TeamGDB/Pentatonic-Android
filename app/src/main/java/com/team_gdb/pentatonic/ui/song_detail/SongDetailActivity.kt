@@ -48,7 +48,9 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
     }
 
     override fun initAfterBinding() {
-
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 
     /**
