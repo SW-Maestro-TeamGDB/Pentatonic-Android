@@ -64,6 +64,7 @@
 
                     <TextView
                         android:id="@+id/songName"
+                        android:layout_marginStart="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
@@ -74,6 +75,7 @@
 
                     <TextView
                         android:textColor="@color/white"
+                        android:layout_marginStart="4dp"
                         android:text="@{viewModel.songEntity.artistName}"
                         android:fontFamily="@font/nanum_regular"
                         android:textSize="20sp"
@@ -107,7 +109,7 @@
 
                             <TextView
                                 android:id="@+id/albumNameTextView"
-                                android:text="SUNRISE"
+                                android:text="@{viewModel.songEntity.albumTitle}"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
@@ -142,7 +144,7 @@
 
                             <TextView
                                 android:id="@+id/albumReleaseDateTextView"
-                                android:text="2021.08.21"
+                                android:text="@{viewModel.songEntity.albumReleaseDate}"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
@@ -177,7 +179,7 @@
 
                             <TextView
                                 android:id="@+id/songGenreTextView"
-                                android:text="락/힙합"
+                                android:text="@{viewModel.songEntity.songGenre}"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
@@ -203,7 +205,7 @@
                             android:layout_height="match_parent">
 
                             <TextView
-                                android:text="장르"
+                                android:text="작곡가"
                                 android:textSize="14sp"
                                 android:fontFamily="@font/nanum_light"
                                 android:textColor="@color/white"
@@ -212,7 +214,7 @@
 
                             <TextView
                                 android:id="@+id/songWriterTextView"
-                                android:text="강영현"
+                                android:text="@{viewModel.songEntity.songWriter}"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
@@ -248,7 +250,7 @@
 
                             <TextView
                                 android:id="@+id/lyricistTextView"
-                                android:text="강영현"
+                                android:text="@{viewModel.songEntity.lyricist}"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
