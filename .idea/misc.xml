@@ -35,6 +35,7 @@
         <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_select_song.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_solo_cover.xml" value="0.1555921052631579" />
         <entry key="app/src/main/res/layout/activity_song_detail.xml" value="0.1652542372881356" />
         <entry key="app/src/main/res/layout/activity_user_verify.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
@@ -48,6 +49,8 @@
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.13763661202185792" />
+        <entry key="app/src/main/res/layout/fragment_rising_band.xml" value="0.1555921052631579" />
+        <entry key="app/src/main/res/layout/fragment_rising_solo.xml" value="0.1555921052631579" />
         <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
         <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_solo_cover.xml" value="0.1555921052631579" />
