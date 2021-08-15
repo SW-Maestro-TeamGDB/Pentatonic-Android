@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable-v24/custom_radius_background_dark_sharpen.xml" value="0.16416938110749185" />
         <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
@@ -38,7 +39,7 @@
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
         <entry key="app/src/main/res/layout/dialog_song_confirm.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_artist.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.10100193923723336" />
+        <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_basic_info_form.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.21" />
@@ -58,7 +59,7 @@
         <entry key="app/src/main/res/layout/item_rising_cover_viewpager.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_select_session_list.xml" value="0.20559210526315788" />
         <entry key="app/src/main/res/layout/item_session_config_list.xml" value="0.14309210526315788" />
-        <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/item_session_list.xml" value="0.165" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />
         <entry key="app/src/main/res/layout/item_session_setting_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />

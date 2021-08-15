@@ -4,19 +4,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
+        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_marginStart="32dp"
-            android:id="@+id/sessionNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nanum_extrabold"
-            android:text="세션 이름"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="24dp"
+                android:id="@+id/sessionNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="세션 이름"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:gravity="center_vertical"
+                android:id="@+id/sessionPeopleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/sessionNameTextView"
+                android:fontFamily="@font/nanum_regular"
+                android:text="2/3"
+                android:textColor="@color/button_background_gray"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/custom_radius_background_dark_sharpen"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="참여하기"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:drawableTint="@color/white"
+                app:drawableStartCompat="@drawable/ic_plus" />
+        </RelativeLayout>
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             app:friction="200"
