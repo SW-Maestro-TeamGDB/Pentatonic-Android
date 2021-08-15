@@ -39,7 +39,7 @@
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
         <entry key="app/src/main/res/layout/dialog_song_confirm.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_artist.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_basic_info_form.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.21" />
