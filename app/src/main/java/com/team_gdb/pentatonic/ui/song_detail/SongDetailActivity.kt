@@ -2,11 +2,16 @@ package com.team_gdb.pentatonic.ui.song_detail
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.Target
 import com.team_gdb.pentatonic.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.base.BaseActivity
@@ -29,8 +34,11 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
 
         Glide.with(binding.root)
             .load(songEntity.albumJacketImage)
+            .centerCrop()
             .placeholder(R.drawable.placeholder_cover_bg)
+            .listener(glideLoadingListener)
             .into(binding.albumJacketImage)
+
     }
 
     override fun initDataBinding() {
@@ -40,12 +48,35 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
     }
 
     override fun initAfterBinding() {
-        Blurry.with(this)
-            .radius(5)
-            .sampling(5)
-            .async()
-            .animate(500)
-            .from(binding.albumJacketImage.drawable.toBitmap())
-            .into(binding.albumJacketBackgroundImage)
+
+    }
+
+    private val glideLoadingListener = object : RequestListener<Drawable> {
+        override fun onLoadFailed(
+            e: GlideException?,
+            model: Any?,
+            target: Target<Drawable>?,
+            isFirstResource: Boolean
+        ): Boolean {
+            Timber.i("asdf")
+            return false
+        }
+
+        override fun onResourceReady(
+            resource: Drawable?,
+            model: Any?,
+            target: Target<Drawable>?,
+            dataSource: DataSource?,
+            isFirstResource: Boolean
+        ): Boolean {
+            Blurry.with(applicationContext)
+                .radius(5)
+                .sampling(5)
+                .async()
+                .animate(500)
+                .from(resource?.toBitmap())
+                .into(binding.albumJacketBackgroundImage)
+            return false
+        }
     }
 }
