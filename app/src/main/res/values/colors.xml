@@ -23,4 +23,5 @@
     <color name="main_light_transparent">#CC8453DF</color>
     <color name="main_regular_transparent">#CC6236FF</color>
     <color name="main_dark_transparent">#CC4020AE</color>
+    <color name="song_detail_card_view_background">#99D6D6D6</color>
 </resources>

@@ -3,17 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.xw.repo.widget.BounceScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".ui.song_detail.SongDetailActivity">
 
             <ImageView
-                android:id="@+id/albumJacketImageBackground"
+                android:id="@+id/albumJacketBackgroundImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -47,44 +43,225 @@
                     android:textSize="@dimen/page_title_text_size" />
             </LinearLayout>
 
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/albumJacketImage"
-                android:layout_width="360dp"
-                android:layout_height="360dp"
+            <com.xw.repo.widget.BounceScrollView
                 android:layout_below="@+id/titleBar"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="36dp"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/songName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/albumJacketImage"
-                android:layout_marginTop="24dp"
-                android:layout_marginHorizontal="24dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel.songEntity.songTitle}"
-                android:textSize="28sp" />
+                <LinearLayout
+                    android:layout_marginTop="36dp"
+                    android:paddingHorizontal="24dp"
+                    android:layout_below="@+id/titleBar"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_marginHorizontal="24dp"
-                android:textColor="@color/white"
-                android:layout_below="@+id/songName"
-                android:text="@{viewModel.songEntity.artistName}"
-                android:fontFamily="@font/nanum_regular"
-                android:textSize="20sp"
-                android:layout_marginTop="4dp"
-                android:id="@+id/artistName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/albumJacketImage"
+                        android:layout_width="360dp"
+                        android:layout_height="360dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
+
+                    <TextView
+                        android:id="@+id/songName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="@{viewModel.songEntity.songTitle}"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:text="@{viewModel.songEntity.artistName}"
+                        android:fontFamily="@font/nanum_regular"
+                        android:textSize="20sp"
+                        android:layout_marginTop="4dp"
+                        android:id="@+id/artistName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginTop="48dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/song_detail_card_view_background"
+                        app:cardElevation="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:text="앨범명"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/nanum_light"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/albumNameTextView"
+                                android:text="SUNRISE"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/song_detail_card_view_background"
+                        app:cardElevation="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:text="발매일"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/nanum_light"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/albumReleaseDateTextView"
+                                android:text="2021.08.21"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/song_detail_card_view_background"
+                        app:cardElevation="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:text="장르"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/nanum_light"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/songGenreTextView"
+                                android:text="락/힙합"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/song_detail_card_view_background"
+                        app:cardElevation="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:text="장르"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/nanum_light"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/songWriterTextView"
+                                android:text="강영현"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginBottom="56dp"
+                        android:layout_marginTop="16dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/song_detail_card_view_background"
+                        app:cardElevation="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp">
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:padding="16dp"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:text="작사가"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/nanum_light"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/lyricistTextView"
+                                android:text="강영현"
+                                android:textSize="20sp"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
 
+            </com.xw.repo.widget.BounceScrollView>
         </RelativeLayout>
-
-    </com.xw.repo.widget.BounceScrollView>
 
     <data>
 

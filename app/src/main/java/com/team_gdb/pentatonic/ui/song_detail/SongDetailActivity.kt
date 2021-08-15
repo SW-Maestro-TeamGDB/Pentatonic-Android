@@ -30,9 +30,7 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
         Glide.with(binding.root)
             .load(songEntity.albumJacketImage)
             .placeholder(R.drawable.placeholder_cover_bg)
-            .override(480, 480)
             .into(binding.albumJacketImage)
-
     }
 
     override fun initDataBinding() {
@@ -43,10 +41,11 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
 
     override fun initAfterBinding() {
         Blurry.with(this)
-            .radius(3)
-            .sampling(3)
+            .radius(5)
+            .sampling(5)
+            .async()
             .animate(500)
             .from(binding.albumJacketImage.drawable.toBitmap())
-            .into(binding.albumJacketImageBackground)
+            .into(binding.albumJacketBackgroundImage)
     }
 }
