@@ -9,11 +9,13 @@
         tools:context=".ui.song_detail.SongDetailActivity">
 
         <ImageView
-            android:src="@drawable/band_cover_bg"
-            android:id="@+id/albumJacketBackgroundImage"
+            android:id="@+id/albumJacketImageBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:tintMode="src_over"
+            app:tint="#80000000"
+            android:src="@drawable/beautiful_album_jacket" />
 
         <LinearLayout
             android:id="@+id/titleBar"

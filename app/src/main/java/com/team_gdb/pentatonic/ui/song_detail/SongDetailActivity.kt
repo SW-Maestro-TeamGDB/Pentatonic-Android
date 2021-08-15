@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.song_detail
 
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,12 +26,12 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
         viewModel.songEntity.postValue(songEntity)
 
         Blurry.with(this)
-            .radius(10)
+            .radius(8)
             .sampling(8)
-            .color(Color.argb(66, 255, 255, 0))
-            .async()
+            .color(Color.argb(66, 255, 255, 255))
             .animate(500)
-            .onto(binding.root as ViewGroup?)
+            .from(BitmapFactory.decodeResource(resources, R.drawable.beautiful_album_jacket))
+            .into(binding.albumJacketImageBackground)
     }
 
     override fun initDataBinding() {
