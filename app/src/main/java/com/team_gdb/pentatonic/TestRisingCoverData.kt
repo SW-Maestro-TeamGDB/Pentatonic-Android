@@ -27,7 +27,8 @@ object TestRisingCoverData {
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
-                    )
+                    ),
+                    sessionMaxSize = 3
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -62,7 +63,8 @@ object TestRisingCoverData {
                             profileImage = "",
                             introduction = ""
                         ),
-                    )
+                    ),
+                    sessionMaxSize = 7
                 )
             ),
             like = 38,
@@ -84,7 +86,8 @@ object TestRisingCoverData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 ),
                 SessionData(
                     sessionName = "일렉기타",
@@ -95,7 +98,8 @@ object TestRisingCoverData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -106,7 +110,8 @@ object TestRisingCoverData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 )
             ),
             like = 15,
@@ -134,7 +139,8 @@ object TestRisingCoverData {
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
-                    )
+                    ),
+                    sessionMaxSize = 2
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -169,7 +175,8 @@ object TestRisingCoverData {
                             profileImage = "",
                             introduction = ""
                         ),
-                    )
+                    ),
+                    sessionMaxSize = 8
                 )
             ),
             like = 38,

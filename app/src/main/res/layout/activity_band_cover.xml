@@ -123,14 +123,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <View
+                    android:layout_alignParentTop="true"
+                    android:background="#F4F4F4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" />
+
                 <ImageView
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_centerVertical="true"
                     android:id="@+id/coverLikeButton"
-                    app:tint="@color/button_background_gray"
-                    android:src="@drawable/lb_ic_thumb_up"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/lb_ic_thumb_up"
+                    app:tint="@color/button_background_gray" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:layout_centerVertical="true"

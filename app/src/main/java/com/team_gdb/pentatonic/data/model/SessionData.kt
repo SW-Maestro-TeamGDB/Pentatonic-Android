@@ -4,5 +4,6 @@ import java.io.Serializable
 
 data class SessionData(
     val sessionName: String,
+    val sessionMaxSize: Int,
     val sessionParticipantList: List<UserEntity>
 ): Serializable

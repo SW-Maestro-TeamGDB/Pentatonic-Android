@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
         <entry key="app/src/main/res/drawable-v24/custom_radius_background_dark_sharpen.xml" value="0.16416938110749185" />
+        <entry key="app/src/main/res/drawable-v24/custom_radius_background_gray_sharpen.xml" value="0.16416938110749185" />
         <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
@@ -20,6 +21,7 @@
         <entry key="app/src/main/res/drawable/ic_drum.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_electric_guitar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_left_image_add.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/ic_left_image_add_no_circle.xml" value="0.16578947368421051" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
