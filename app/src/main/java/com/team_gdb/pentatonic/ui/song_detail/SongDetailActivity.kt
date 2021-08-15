@@ -51,6 +51,10 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
 
     }
 
+    /**
+     * Glide 가 앨범 자켓 이미지를 로드 완료 했을때, 해당 이미지 리소스를 통해
+     * Blurry 로 이미지 블러 처리를 수행해야 올바른 결과가 표시됨
+     */
     private val glideLoadingListener = object : RequestListener<Drawable> {
         override fun onLoadFailed(
             e: GlideException?,
@@ -58,7 +62,6 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
             target: Target<Drawable>?,
             isFirstResource: Boolean
         ): Boolean {
-            Timber.i("asdf")
             return false
         }
 
