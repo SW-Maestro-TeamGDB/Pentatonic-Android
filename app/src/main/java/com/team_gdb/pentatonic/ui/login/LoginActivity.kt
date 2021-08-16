@@ -21,6 +21,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
         Timber.d("JWT Token ${BaseApplication.prefs.token}")
         if (!BaseApplication.prefs.token.isNullOrBlank()) {  // JWT Token 로컬에 저장되어있다면 자동 로그인
+            Timber.d("JWT Token Stored : ${BaseApplication.prefs.token}")
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
