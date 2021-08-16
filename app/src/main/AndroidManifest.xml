@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Pentatonic"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.upload_test.UploadTestActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.song_detail.SongDetailActivity"
             android:exported="true" />
         <activity
@@ -19,17 +22,14 @@
             android:exported="true" />
         <activity
             android:name=".ui.create_cover.CreateCoverActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity android:name=".ui.record_processing.RecordProcessingActivity" />
         <activity android:name=".ui.record.RecordActivity" />
-        <activity android:name=".ui.user_verify.UserVerifyActivity">
-        </activity>
+        <activity android:name=".ui.user_verify.UserVerifyActivity"></activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.band_cover.BandCoverActivity" />
         <activity android:name=".ui.solo_cover.SoloCoverActivity" />
-        <activity android:name=".ui.profile.ProfileActivity"/>
+        <activity android:name=".ui.profile.ProfileActivity" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true">
@@ -42,24 +42,20 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/noStatusBar">
-
-        </activity>
+            android:theme="@style/noStatusBar"></activity>
     </application>
-
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
-
     <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
 </manifest>

@@ -1,12 +1,9 @@
 package com.team_gdb.pentatonic.ui.band_cover
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestLibraryData
-import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogLibrarySelectBinding

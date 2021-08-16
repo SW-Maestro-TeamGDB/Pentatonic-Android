@@ -10,7 +10,6 @@ import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
-import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewModel>() {

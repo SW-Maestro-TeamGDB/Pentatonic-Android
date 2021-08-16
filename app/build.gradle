@@ -39,7 +39,9 @@ android {
     apollo {
         generateKotlinModels = true
         customTypeMapping = [
-                "JWT" : "String"
+                "JWT" : "String",
+                "URL" : "String",
+                "UploadCoverFileInput" : "com.apollographql.apollo.api.FileUpload"
         ]
     }
 }

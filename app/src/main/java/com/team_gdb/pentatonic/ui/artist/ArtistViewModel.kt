@@ -6,8 +6,4 @@ import com.team_gdb.pentatonic.base.BaseViewModel
 
 class ArtistViewModel : BaseViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
 }

@@ -29,7 +29,7 @@
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
-        <entry key="app/src/main/res/layout/activity_band_cover.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_band_cover.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1369535519125683" />
@@ -39,6 +39,7 @@
         <entry key="app/src/main/res/layout/activity_select_song.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_solo_cover.xml" value="0.1555921052631579" />
         <entry key="app/src/main/res/layout/activity_song_detail.xml" value="0.1652542372881356" />
+        <entry key="app/src/main/res/layout/activity_upload_test.xml" value="0.1555921052631579" />
         <entry key="app/src/main/res/layout/activity_user_verify.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_library_select.xml" value="0.165" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
