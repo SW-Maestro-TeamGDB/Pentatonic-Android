@@ -9,10 +9,13 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
+import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 
 
-class SessionConfigListAdapter(val itemClick: (UserEntity) -> Unit) :
-    RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
+class SessionConfigListAdapter(
+    val itemClick: (UserEntity) -> Unit,
+    val participantButtonClick: (SessionData) -> Unit
+) : RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
 
     private var sessionDataList: List<SessionData> = emptyList()
 
@@ -43,16 +46,20 @@ class SessionConfigListAdapter(val itemClick: (UserEntity) -> Unit) :
 
         fun bind(item: SessionData) {
             binding.sessionNameTextView.text = item.sessionName
-            binding.sessionPeopleTextView.text = "${item.sessionParticipantList.size}/${item.sessionMaxSize}"
+            binding.sessionPeopleTextView.text =
+                "${item.sessionParticipantList.size}/${item.sessionMaxSize}"
 
-            if (item.sessionMaxSize == item.sessionParticipantList.size){
+            if (item.sessionMaxSize == item.sessionParticipantList.size) {
                 binding.participateButton.run {
                     isEnabled = false
-                    background = ContextCompat.getDrawable(context, R.drawable.custom_radius_background_gray_sharpen)
+                    background = ContextCompat.getDrawable(
+                        context,
+                        R.drawable.custom_radius_background_gray_sharpen
+                    )
                 }
-            } else{
+            } else {
                 binding.participateButton.setOnClickListener {
-                    // TODO 세션 참가 로직 구현 필요
+                    participantButtonClick(item)
                 }
             }
             val adapter = SessionParticipantListAdapter {
