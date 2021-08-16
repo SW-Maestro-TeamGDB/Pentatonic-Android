@@ -19,7 +19,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/record_processing_bg"
                         android:tintMode="src_over"
                         app:tint="#80000000" />
 
@@ -111,7 +110,7 @@
                 </RelativeLayout>
 
             <com.chauthai.overscroll.RecyclerViewBouncy
-                android:layout_marginBottom="56dp"
+                android:layout_marginBottom="90dp"
                 android:layout_below="@+id/bannerLayout"
                 android:overScrollMode="never"
                 android:id="@+id/sessionList"
@@ -119,6 +118,7 @@
                 android:layout_height="wrap_content"/>
 
             <RelativeLayout
+                android:background="@color/white"
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

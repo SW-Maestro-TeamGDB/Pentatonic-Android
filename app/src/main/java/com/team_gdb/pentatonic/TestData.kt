@@ -28,7 +28,7 @@ object TestData {
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
                     ),
-                    sessionMaxSize = 3
+                    sessionMaxSize = 2
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -64,8 +64,44 @@ object TestData {
                             introduction = ""
                         ),
                     ),
-                    sessionMaxSize = 5
-                )
+                    sessionMaxSize = 6
+                ),
+                SessionData(
+                    sessionName = "보컬",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "성진",
+                            profileImage = "https://i1.sndcdn.com/artworks-000663644827-3vq8g4-t500x500.jpg",
+                            introduction = "DAY6 성진"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Jae",
+                            profileImage = "https://blog.kakaocdn.net/dn/cGdzII/btq0LOFIyMM/racwmOVFNzqIptaCHOuktk/img.jpg",
+                            introduction = "안녕하세요 DAY6 영케이 입니당"
+                        ),
+                    ),
+                    sessionMaxSize = 3
+                ),
+                SessionData(
+                    sessionName = "드럼",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "Dowoon",
+                            profileImage = "https://newsimg.sedaily.com/2019/10/27/1VPON42YK1_1.jpg",
+                            introduction = "드러머입니당"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Tian",
+                            profileImage = "",
+                            introduction = "안녕하세요!"
+                        ),
+                    ),
+                    sessionMaxSize = 2
+                ),
             ),
             like = 38,
             view = 59
@@ -485,7 +521,43 @@ object TestData {
                         ),
                     ),
                     sessionMaxSize = 6
-                )
+                ),
+                SessionData(
+                    sessionName = "보컬",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "성진",
+                            profileImage = "https://i1.sndcdn.com/artworks-000663644827-3vq8g4-t500x500.jpg",
+                            introduction = "DAY6 성진"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Jae",
+                            profileImage = "https://blog.kakaocdn.net/dn/cGdzII/btq0LOFIyMM/racwmOVFNzqIptaCHOuktk/img.jpg",
+                            introduction = "안녕하세요 DAY6 영케이 입니당"
+                        ),
+                    ),
+                    sessionMaxSize = 3
+                ),
+                SessionData(
+                    sessionName = "드럼",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "Dowoon",
+                            profileImage = "https://newsimg.sedaily.com/2019/10/27/1VPON42YK1_1.jpg",
+                            introduction = "드러머입니당"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Tian",
+                            profileImage = "",
+                            introduction = "안녕하세요!"
+                        ),
+                    ),
+                    sessionMaxSize = 2
+                ),
             ),
             like = 38,
             view = 59
