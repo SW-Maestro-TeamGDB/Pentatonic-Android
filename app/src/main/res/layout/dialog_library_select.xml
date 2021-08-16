@@ -7,14 +7,27 @@
         android:padding="24dp"
         android:orientation="vertical">
 
-        <TextView
-            android:textSize="18sp"
-            android:text="라이브러리"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nanum_extrabold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                android:text="라이브러리"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_extrabold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
+            <ImageView
+                android:id="@+id/closeButton"
+                android:src="@drawable/ic_baseline_close_24"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:id="@+id/libraryList"
             app:friction="200"

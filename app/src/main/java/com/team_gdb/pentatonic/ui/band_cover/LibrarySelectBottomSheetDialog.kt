@@ -20,21 +20,8 @@ class LibrarySelectBottomSheetDialog() :
     }
 
     override fun initAfterBinding() {
-        // 곡 정보를 모두 채워줌
-//        Glide.with(binding.root)
-//            .load(songEntity.albumJacketImage)
-//            .placeholder(R.drawable.placeholder_cover_bg)
-//            .override(270, 270)
-//            .into(binding.albumJacketImage)
-//        binding.songNameTextView.text = songEntity.songTitle
-//        binding.songArtistTextView.text = songEntity.artistName
-//
-//        binding.confirmSongButton.setOnClickListener {
-//            viewModel.selectedSong.postValue(songEntity)
-//        }
-//
-//        binding.cancelButton.setOnClickListener {
-//            dismiss()
-//        }
+        binding.closeButton.setOnClickListener {
+            dismiss()
+        }
     }
 }
