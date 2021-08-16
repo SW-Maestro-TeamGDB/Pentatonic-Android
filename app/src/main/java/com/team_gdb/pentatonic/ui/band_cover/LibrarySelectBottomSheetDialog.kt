@@ -2,6 +2,8 @@ package com.team_gdb.pentatonic.ui.band_cover
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestLibraryData
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
@@ -19,6 +21,12 @@ class LibrarySelectBottomSheetDialog() :
     private lateinit var librarySelectListAdapter: LibrarySelectListAdapter
 
     override fun initStartView() {
+        val offsetFromTop = 400
+        (dialog as? BottomSheetDialog)?.behavior?.apply {
+            isFitToContents = true
+            expandedOffset = offsetFromTop
+        }
+
         binding.viewModel = this.viewModel
         librarySelectListAdapter = LibrarySelectListAdapter {
             // TODO : 라이브러리 내의 커버를 선택했을 때 동작 정의 (밴드 참여)
