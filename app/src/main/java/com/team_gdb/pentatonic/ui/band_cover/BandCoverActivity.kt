@@ -47,6 +47,9 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             .override(480, 272)
             .into(binding.coverImage)
 
+        binding.coverLikeTextView.text = coverEntity.like.toString()
+        binding.coverViewTextView.text = coverEntity.view.toString()
+
     }
 
     override fun initDataBinding() {
