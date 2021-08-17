@@ -13,10 +13,10 @@ import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.util.PlayAnimation.playErrorAnimation
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class SessionSettingFragment :
+class BandCoverSessionSettingFragment :
     BaseFragment<FragmentSessionSettingBinding, CreateCoverViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.fragment_session_setting
+        get() = R.layout.fragment_band_cover_session_setting
 
     override val viewModel: CreateCoverViewModel by sharedViewModel()
 
