@@ -1,7 +1,6 @@
 package com.team_gdb.pentatonic
 
 import com.team_gdb.pentatonic.data.model.*
-import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSetting
 
 object TestRisingCoverData {
     val TEST_BAND_COVER_LIST: List<CoverEntity> = listOf(
