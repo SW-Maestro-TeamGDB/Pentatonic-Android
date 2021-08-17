@@ -27,7 +27,7 @@ class SelectSessionBottomSheetDialog() :
     override fun initAfterBinding() {
         sessionListAdapter = SelectSessionListAdapter { session ->
             val sessionConfigList = viewModel.coverSessionConfigList.value?.toMutableList()
-            sessionConfigList?.add(SessionSettingEntity(session, 0))
+            sessionConfigList?.add(SessionSettingEntity(session, 1))
             viewModel.coverSessionConfigList.value = sessionConfigList?.toList()
             dismiss()
         }

@@ -29,6 +29,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     private val sessionConfigGormFragment: Fragment = SessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
+    // 밴드 커버 / 솔로 커버 구분을 위한 모드 변수
     private val coverMode: String by lazy {
         intent.getStringExtra(COVER_MODE) as String
     }

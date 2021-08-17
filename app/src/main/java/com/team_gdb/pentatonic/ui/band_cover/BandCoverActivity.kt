@@ -56,6 +56,10 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
     override fun initAfterBinding() {
         sessionListAdapter.setItem(coverEntity.sessionDataList)
+
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 
     companion object {

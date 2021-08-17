@@ -50,7 +50,6 @@ class RisingCoverViewPagerAdapter(val itemClick: (CoverEntity) -> Unit) :
 
             Glide.with(binding.root)
                 .load(entity.imageUrl)
-                .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
 
