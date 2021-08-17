@@ -15,7 +15,7 @@ import com.team_gdb.pentatonic.data.session.SessionSetting
 open class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
-    private var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
+    protected var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환

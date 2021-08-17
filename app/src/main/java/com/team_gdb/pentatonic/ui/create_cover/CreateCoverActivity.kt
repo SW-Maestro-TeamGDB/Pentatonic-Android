@@ -8,6 +8,7 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.BandCoverSessionSettingFragment
+import com.team_gdb.pentatonic.ui.create_cover.session_setting.SoloCoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.BAND_COVER
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.COVER_MODE
@@ -27,6 +28,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
 
     private val basicInfoFormFragment: Fragment = BasicInfoFormFragment()
     private val bandCoverSessionSettingFragment: Fragment = BandCoverSessionSettingFragment()
+    private val soloCoverSessionSettingFragment: Fragment = SoloCoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
     // 밴드 커버 / 솔로 커버 구분을 위한 모드 변수
@@ -47,8 +49,10 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                 transaction.apply {
                     addToBackStack(null)  // 뒤로가기 키 누르면 기본 정보 입력폼으로 올 수 있도록
                     setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
-                    replace(R.id.fragmentContainer, bandCoverSessionSettingFragment)
-                    commit()
+                    when (coverMode) {
+                        BAND_COVER -> replace(R.id.fragmentContainer, bandCoverSessionSettingFragment).commit()
+                        SOLO_COVER -> replace(R.id.fragmentContainer, soloCoverSessionSettingFragment).commit()
+                    }
                 }
             }
         }
