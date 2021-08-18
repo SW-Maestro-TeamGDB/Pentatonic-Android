@@ -7,9 +7,23 @@ mutation RegisterMutation($registerInput: RegisterInput!) {
 }
 
 mutation LoginMutation($loginInput: LoginInput!) {
-  login(input: $loginInput)
+    login(input: $loginInput)
 }
 
+# 커버 파일 (녹음본) 업로드 뮤테이션
 mutation UploadCoverFileMutation($uploadCoverFileInput: UploadCoverFileInput!) {
     uploadCoverFile(input: $uploadCoverFileInput)
+}
+
+# 생성한 커버 업로드 뮤테이션 (라이브러리에 업로드)
+mutation UploadCoverMutation($uploadCoverInput: UploadCoverInput!) {
+    uploadCover(input: $uploadCoverInput) {
+        songId
+        coverBy
+        coverURI
+        coverId
+        duration
+        name
+        position
+    }
 }

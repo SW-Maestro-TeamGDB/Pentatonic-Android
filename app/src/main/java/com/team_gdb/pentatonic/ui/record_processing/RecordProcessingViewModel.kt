@@ -4,10 +4,11 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import timber.log.Timber
 
-class RecordProcessingViewModel : BaseViewModel() {
+class RecordProcessingViewModel(val repository: RecordProcessingRepository) : BaseViewModel() {
     val buttonState: MutableLiveData<ButtonState> = MutableLiveData<ButtonState>(ButtonState.BEFORE_PLAYING)
 
     val playTime: MutableLiveData<String> = MutableLiveData("00:00")

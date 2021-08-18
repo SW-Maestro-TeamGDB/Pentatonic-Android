@@ -22,8 +22,8 @@ object NetworkHelper {
                 .addInterceptor(AuthorizationInterceptor())
                 .build()
         )
-        .addCustomTypeAdapter(CustomType.JWT, jwtTypeAdapter)
         .addCustomTypeAdapter(CustomType.URL, urlTypeAdapter)
+        .addCustomTypeAdapter(CustomType.JWT, jwtTypeAdapter)
         .build()
 }
 

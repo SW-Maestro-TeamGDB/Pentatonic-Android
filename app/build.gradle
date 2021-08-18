@@ -39,8 +39,8 @@ android {
     apollo {
         generateKotlinModels = true
         customTypeMapping = [
-                "JWT" : "String",
-                "URL" : "String",
+                "JWT" : "kotlin.String",
+                "URL" : "kotlin.String",
                 "UploadCoverFileInput" : "com.apollographql.apollo.api.FileUpload"
         ]
     }
@@ -62,6 +62,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     def lifecycle_version = "2.3.1"
+
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData

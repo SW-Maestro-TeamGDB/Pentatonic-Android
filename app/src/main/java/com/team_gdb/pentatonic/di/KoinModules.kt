@@ -5,6 +5,8 @@ import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.repository.login.LoginRepositoryImpl
 import com.team_gdb.pentatonic.repository.record.RecordRepository
 import com.team_gdb.pentatonic.repository.record.RecordRepositoryImpl
+import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
+import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepositoryImpl
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.repository.register.RegisterRepositoryImpl
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
@@ -72,7 +74,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        RecordProcessingViewModel()
+        RecordProcessingViewModel(get())
     }
 
     viewModel {
@@ -111,6 +113,9 @@ val repositoryModule = module {
     }
     single<RecordRepository> {
         RecordRepositoryImpl()
+    }
+    single<RecordProcessingRepository> {
+        RecordProcessingRepositoryImpl()
     }
 }
 
