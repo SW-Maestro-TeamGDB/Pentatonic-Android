@@ -5,9 +5,11 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogInputCoverNameBinding
 import com.team_gdb.pentatonic.databinding.DialogRecordGuideBinding
+import com.team_gdb.pentatonic.util.Event
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class InputCoverNameBottomSheetDialog: BaseBottomSheetDialogFragment<DialogInputCoverNameBinding, RecordProcessingViewModel>()  {
+class InputCoverNameBottomSheetDialog :
+    BaseBottomSheetDialogFragment<DialogInputCoverNameBinding, RecordProcessingViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.dialog_record_guide
     override val viewModel: RecordProcessingViewModel by sharedViewModel()
@@ -20,6 +22,9 @@ class InputCoverNameBottomSheetDialog: BaseBottomSheetDialogFragment<DialogInput
     }
 
     override fun initAfterBinding() {
-
+        binding.confirmCoverNameButton.setOnClickListener {
+            viewModel.coverNameInputComplete.postValue(Event(true))
+            dismiss()
+        }
     }
 }

@@ -9,6 +9,7 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
+import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
@@ -55,18 +56,6 @@ class RecordProcessingActivity :
                 1 -> tab.text = "이펙터"
             }
         }.attach()
-    }
-
-    override fun initDataBinding() {
-        viewModel.buttonState.observe(this) {
-            binding.playButton.updateIconWithState(it)
-        }
-    }
-
-    override fun initAfterBinding() {
-        binding.titleBar.backButton.setOnClickListener {
-            finish()
-        }
 
         // 동적으로 TabLayout Indicator Width 계산
         binding.tabLayout.post {
@@ -74,6 +63,25 @@ class RecordProcessingActivity :
             val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
             params.width = indicatorWidth
             binding.indicator.layoutParams = params
+        }
+    }
+
+    override fun initDataBinding() {
+        viewModel.buttonState.observe(this) {
+            binding.playButton.updateIconWithState(it)
+        }
+
+        viewModel.coverNameInputComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true){
+                // 커버 파일 업로드 및 커버 정보 업로드
+                viewModel.uploadCoverFile(recordingFilePath)
+            }
+        }
+    }
+
+    override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
         }
 
         // TabLayout Indicator 위치 이동을 위한 PageChangeCallback 리스너 등록
@@ -111,6 +119,7 @@ class RecordProcessingActivity :
             }
         }
 
+        // 재생 버튼 눌렀을 때
         binding.playButton.setOnClickListener {
             when (viewModel.buttonState.value) {
                 ButtonState.BEFORE_PLAYING -> {
@@ -122,6 +131,12 @@ class RecordProcessingActivity :
                 else -> { /* no-op */
                 }
             }
+        }
+
+        // 완료 버튼 눌렀을 때, 커버 제목 정보를 입력받도록 함
+        binding.completeButton.setOnClickListener {
+            val bottomSheetDialog = InputCoverNameBottomSheetDialog()
+            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
     }
 

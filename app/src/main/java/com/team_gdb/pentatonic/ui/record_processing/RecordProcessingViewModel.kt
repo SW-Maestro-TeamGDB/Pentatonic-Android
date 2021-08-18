@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
 import com.team_gdb.pentatonic.ui.record.ButtonState
+import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -23,7 +24,10 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     val gainEffectLevel: MutableLiveData<Int> = MutableLiveData(50)
     val reverbEffectLevel: MutableLiveData<Int> = MutableLiveData(50)
 
+    val coverNameField: MutableLiveData<String> = MutableLiveData()
     val coverFileURL: MutableLiveData<String> = MutableLiveData()
+
+    val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     fun controlVolumeLevel(amount: Int) {
         volumeLevel.value = volumeLevel.value?.plus(amount)
