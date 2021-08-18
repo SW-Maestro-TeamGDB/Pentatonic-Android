@@ -71,10 +71,18 @@ class RecordProcessingActivity :
             binding.playButton.updateIconWithState(it)
         }
 
+        // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
         viewModel.coverNameInputComplete.observe(this) {
-            if (it.getContentIfNotHandled() == true){
-                // 커버 파일 업로드 및 커버 정보 업로드
+            if (it.getContentIfNotHandled() == true) {
+                // 커버 파일 업로드
                 viewModel.uploadCoverFile(recordingFilePath)
+            }
+        }
+
+        // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
+        viewModel.coverFileURL.observe(this) {
+            if (it.isNotBlank()) {
+                Timber.d("커버 파일 업로드가 다 됐단다!")
             }
         }
     }

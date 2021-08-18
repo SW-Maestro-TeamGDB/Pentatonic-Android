@@ -63,6 +63,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                 onSuccess = {
                     if (!it.hasErrors()) {
                         Timber.d(it.data?.uploadCoverFile.toString())
+                        coverFileURL.value = it.data?.uploadCoverFile
                     } else {
                         it.errors?.forEach { e ->
                             Timber.i(e.message)
