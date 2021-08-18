@@ -1,4 +1,5 @@
 package com.team_gdb.pentatonic.adapter.create_cover
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -66,10 +67,10 @@ class CoverSessionSettingListAdapter(val itemLongClick: (SessionSettingEntity) -
 
             // - 버튼 눌렀을 때
             binding.minueButton.setOnClickListener {
-                if (entity.count != 0){  // 음수 방지
+                if (entity.count != 1) {  // 1 미만의 수 입력 방지
                     entity.count -= 1
                     binding.countTextView.text = entity.count.toString()
-                } else{
+                } else {
                     playErrorAnimation(binding.sessionSettingItemLayout)
                 }
             }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:background="@color/white"
         android:padding="24dp"
         android:orientation="vertical"
         android:layout_width="match_parent"

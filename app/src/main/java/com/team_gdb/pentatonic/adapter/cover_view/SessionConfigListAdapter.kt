@@ -2,15 +2,20 @@ package com.team_gdb.pentatonic.adapter.cover_view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
+import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 
 
-class SessionConfigListAdapter(val itemClick: (UserEntity) -> Unit) :
-    RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
+class SessionConfigListAdapter(
+    val itemClick: (UserEntity) -> Unit,
+    val participantButtonClick: (SessionData) -> Unit
+) : RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
 
     private var sessionDataList: List<SessionData> = emptyList()
 
@@ -41,6 +46,22 @@ class SessionConfigListAdapter(val itemClick: (UserEntity) -> Unit) :
 
         fun bind(item: SessionData) {
             binding.sessionNameTextView.text = item.sessionName
+            binding.sessionPeopleTextView.text =
+                "${item.sessionParticipantList.size}/${item.sessionMaxSize}"
+
+            if (item.sessionMaxSize == item.sessionParticipantList.size) {
+                binding.participateButton.run {
+                    isEnabled = false
+                    background = ContextCompat.getDrawable(
+                        context,
+                        R.drawable.custom_radius_background_gray_sharpen
+                    )
+                }
+            } else {
+                binding.participateButton.setOnClickListener {
+                    participantButtonClick(item)
+                }
+            }
             val adapter = SessionParticipantListAdapter {
                 itemClick(it)
             }

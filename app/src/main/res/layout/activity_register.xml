@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".Activity.RegisterActivity">
 
-        <ScrollView
+        <com.xw.repo.widget.BounceScrollView
             android:overScrollMode="never"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -24,11 +25,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="54dp"
                     android:text="@string/register_title_text"
                     android:textColor="@color/black"
                     android:textSize="30sp"
-                    android:fontFamily="@font/nanum_regular"/>
+                    android:fontFamily="@font/nanum_extrabold"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,7 +178,7 @@
                     android:layout_marginHorizontal="8dp"
                     android:id="@+id/userTypeRadioGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:checkedButton="@={viewModel.userTypeField}"
                     android:orientation="horizontal">
@@ -212,7 +213,7 @@
                     android:id="@+id/confirmButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="72dp"
                     android:layout_marginBottom="30dp"
                     android:background="@drawable/background_gradient_button"
                     android:gravity="center"
@@ -223,7 +224,7 @@
 
             </LinearLayout>
 
-        </ScrollView>
+        </com.xw.repo.widget.BounceScrollView>
 
     </LinearLayout>
 

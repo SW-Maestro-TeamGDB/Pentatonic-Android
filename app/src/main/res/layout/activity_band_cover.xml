@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.band_cover.BandCoverActivity">
+
+                <RelativeLayout
+                    android:id="@+id/bannerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                    <ImageView
+                        android:id="@+id/coverImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:tintMode="src_over"
+                        app:tint="#80000000" />
+
+                    <LinearLayout
+                        android:layout_alignParentTop="true"
+                        android:id="@+id/titleBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="@dimen/page_title_margin_top"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/backButton"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/ic_back_button"
+                            app:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/titleTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/nanum_extrabold"
+                            android:text="스테이지"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/page_title_text_size" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/coverNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/coverIntroductionTextView"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="24dp"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="커버 이름"
+                        android:textColor="@color/white"
+                        android:textSize="28sp" />
+
+                    <TextView
+                        android:layout_above="@+id/coverLikeTextView"
+                        android:id="@+id/coverIntroductionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:text="커버 소개"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:layout_marginStart="24dp"
+                        android:layout_marginBottom="24dp"
+                        android:layout_alignParentBottom="true"
+                        android:drawablePadding="8dp"
+                        app:drawableStartCompat="@drawable/ic_left_image_like"
+                        app:drawableTint="@color/white"
+                        android:id="@+id/coverLikeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_light"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/coverViewTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="24dp"
+                        android:layout_toEndOf="@+id/coverLikeTextView"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:drawableStartCompat="@drawable/ic_left_image_view"
+                        app:drawableTint="@color/white" />
+                </RelativeLayout>
+
+            <com.chauthai.overscroll.RecyclerViewBouncy
+                android:layout_marginBottom="70dp"
+                android:layout_below="@+id/bannerLayout"
+                android:overScrollMode="never"
+                android:id="@+id/sessionList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <View
+                android:layout_above="@+id/bottomLayout"
+                android:background="#F4F4F4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <RelativeLayout
+                android:id="@+id/bottomLayout"
+                android:paddingVertical="12dp"
+                android:background="@color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/coverLikeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:src="@drawable/lb_ic_thumb_up"
+                    app:tint="@color/button_background_gray" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/background_gradient_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/coverLikeButton"
+                    android:text="감상하기" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel" />
+    </data>
+
+</layout>

@@ -46,8 +46,8 @@ class SongVerticalListAdapter(val itemClick: (SongEntity) -> Unit) :
                 .into(binding.albumJacketImage)
 
 
-            binding.songNameTextView.text = entity.name
-            binding.songArtistTextView.text = entity.artist
+            binding.songNameTextView.text = entity.songTitle
+            binding.songArtistTextView.text = entity.artistName
 
             // 클릭하면, Bottom Sheet Dialog 모달을 보여줌으로써
             // 사용자로 하여금 곡 선택 의사결정을 유도함

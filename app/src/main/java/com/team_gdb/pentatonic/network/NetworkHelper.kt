@@ -23,13 +23,14 @@ object NetworkHelper {
                 .build()
         )
         .addCustomTypeAdapter(CustomType.JWT, jwtTypeAdapter)
+        .addCustomTypeAdapter(CustomType.URL, urlTypeAdapter)
         .build()
 }
 
 private class AuthorizationInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
-//            .addHeader("Authorization", BaseApplication.prefs.token ?: "")
+            .addHeader("Authorization", BaseApplication.prefs.token ?: "")
             .addHeader("Content-Type", "application/json")
             .build()
 
@@ -38,6 +39,20 @@ private class AuthorizationInterceptor : Interceptor {
 }
 
 val jwtTypeAdapter = object : CustomTypeAdapter<String> {
+    override fun decode(value: CustomTypeValue<*>): String {
+        return try {
+            value.value.toString()
+        } catch (e: ParseException) {
+            throw RuntimeException(e)
+        }
+    }
+
+    override fun encode(value: String): CustomTypeValue<*> {
+        return CustomTypeValue.GraphQLString(value)
+    }
+}
+
+val urlTypeAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {
             value.value.toString()

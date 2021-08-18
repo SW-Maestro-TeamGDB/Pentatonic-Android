@@ -9,3 +9,7 @@ mutation RegisterMutation($registerInput: RegisterInput!) {
 mutation LoginMutation($loginInput: LoginInput!) {
   login(input: $loginInput)
 }
+
+mutation UploadCoverFileMutation($uploadCoverFileInput: UploadCoverFileInput!) {
+    uploadCoverFile(input: $uploadCoverFileInput)
+}

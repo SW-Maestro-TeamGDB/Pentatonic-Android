@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.lounge
 
+import android.content.Intent
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
@@ -25,7 +27,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationBandCover(it))
+            val intent = Intent(requireContext(), BandCoverActivity::class.java)
+            intent.putExtra(COVER_ENTITY, it)
+            startActivity(intent)
         }
 
         binding.bandCoverList.apply {
@@ -38,7 +42,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
         // 솔로 커버 리사이클러뷰 어댑터 생성
         soloCoverListAdapter = CoverHorizontalListAdapter {
-            findNavController().navigate(LoungeFragmentDirections.actionNavigationLoungeToNavigationSoloCover(it))
+            it
         }
 
         binding.soloCoverList.apply {
@@ -63,9 +67,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             }
         })
 
-
         bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
-
         soloCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
 
         // 위클리 챌린지 페이지로 이동
@@ -89,5 +91,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             )
         }
 
+    }
+
+    companion object {
+        const val COVER_ENTITY = "COVER_ENTITY"
     }
 }

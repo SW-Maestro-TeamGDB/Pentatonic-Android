@@ -1,7 +1,7 @@
 package com.team_gdb.pentatonic
 
 import com.team_gdb.pentatonic.data.model.*
-import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSetting
+import com.team_gdb.pentatonic.data.session.SessionSetting
 
 object TestData {
     val TEST_BAND_COVER_LIST: List<CoverEntity> = listOf(
@@ -27,7 +27,8 @@ object TestData {
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
-                    )
+                    ),
+                    sessionMaxSize = 2
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -62,8 +63,45 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         ),
-                    )
-                )
+                    ),
+                    sessionMaxSize = 6
+                ),
+                SessionData(
+                    sessionName = "보컬",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "성진",
+                            profileImage = "https://i1.sndcdn.com/artworks-000663644827-3vq8g4-t500x500.jpg",
+                            introduction = "DAY6 성진"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Jae",
+                            profileImage = "https://blog.kakaocdn.net/dn/cGdzII/btq0LOFIyMM/racwmOVFNzqIptaCHOuktk/img.jpg",
+                            introduction = "안녕하세요 DAY6 영케이 입니당"
+                        ),
+                    ),
+                    sessionMaxSize = 3
+                ),
+                SessionData(
+                    sessionName = "드럼",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "Dowoon",
+                            profileImage = "https://newsimg.sedaily.com/2019/10/27/1VPON42YK1_1.jpg",
+                            introduction = "드러머입니당"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Tian",
+                            profileImage = "",
+                            introduction = "안녕하세요!"
+                        ),
+                    ),
+                    sessionMaxSize = 2
+                ),
             ),
             like = 38,
             view = 59
@@ -84,7 +122,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 2
                 ),
                 SessionData(
                     sessionName = "일렉기타",
@@ -95,7 +134,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -106,7 +146,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 3
                 )
             ),
             like = 15,
@@ -134,7 +175,8 @@ object TestData {
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
-                    )
+                    ),
+                    sessionMaxSize = 3
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -169,7 +211,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         ),
-                    )
+                    ),
+                    sessionMaxSize = 5
                 )
             ),
             like = 38,
@@ -194,7 +237,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 )
             ),
             like = 38,
@@ -216,7 +260,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 )
             ),
             like = 15,
@@ -238,7 +283,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 )
             ),
             like = 38,
@@ -248,24 +294,45 @@ object TestData {
 
     val TEST_SONG_LIST: List<SongEntity> = listOf(
         SongEntity(
-            name = "역대급",
-            artist = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg"
+            songTitle = "역대급",
+            artistName = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg",
+            albumTitle = "Right Through Me",
+            albumReleaseDate = "2021.07.05",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
         ),
         SongEntity(
-            name = "놓아 놓아 놓아",
-            artist = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg"
+            songTitle = "놓아 놓아 놓아",
+            artistName = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg",
+            albumTitle = "SUNRISE",
+            albumReleaseDate = "2016.07.15",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
+
         ),
         SongEntity(
-            name = "행복했던 날들이었다",
-            artist = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg"
+            songTitle = "행복했던 날들이었다",
+            artistName = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg",
+            albumTitle = "Remember Us: Youth Part2",
+            albumReleaseDate = "2018.12.10",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
         ),
         SongEntity(
-            name = "예뻤어",
-            artist = "DAY6",
-            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg"
+            songTitle = "예뻤어",
+            artistName = "DAY6",
+            albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg",
+            albumTitle = "Every Day6",
+            albumReleaseDate = "2017.02.06",
+            songGenre = "가요/락",
+            songWriter = "Young K,원필 (DAY6),홍지상",
+            lyricist = "Young K"
         )
     )
 
@@ -304,7 +371,8 @@ object TestData {
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
-                    )
+                    ),
+                    sessionMaxSize = 5
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -339,7 +407,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         ),
-                    )
+                    ),
+                    sessionMaxSize = 7
                 )
             ),
             like = 38,
@@ -361,7 +430,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 ),
                 SessionData(
                     sessionName = "일렉기타",
@@ -372,7 +442,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -383,7 +454,8 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         )
-                    )
+                    ),
+                    sessionMaxSize = 1
                 )
             ),
             like = 15,
@@ -411,7 +483,8 @@ object TestData {
                             profileImage = "https://img.theqoo.net/img/kJYkg.jpg",
                             introduction = "안녕하세요 DAY6 원필입니다!"
                         )
-                    )
+                    ),
+                    sessionMaxSize = 2
                 ),
                 SessionData(
                     sessionName = "키보드",
@@ -446,8 +519,45 @@ object TestData {
                             profileImage = "",
                             introduction = ""
                         ),
-                    )
-                )
+                    ),
+                    sessionMaxSize = 6
+                ),
+                SessionData(
+                    sessionName = "보컬",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "성진",
+                            profileImage = "https://i1.sndcdn.com/artworks-000663644827-3vq8g4-t500x500.jpg",
+                            introduction = "DAY6 성진"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Jae",
+                            profileImage = "https://blog.kakaocdn.net/dn/cGdzII/btq0LOFIyMM/racwmOVFNzqIptaCHOuktk/img.jpg",
+                            introduction = "안녕하세요 DAY6 영케이 입니당"
+                        ),
+                    ),
+                    sessionMaxSize = 3
+                ),
+                SessionData(
+                    sessionName = "드럼",
+                    sessionParticipantList = listOf(
+                        UserEntity(
+                            id = "2345",
+                            username = "Dowoon",
+                            profileImage = "https://newsimg.sedaily.com/2019/10/27/1VPON42YK1_1.jpg",
+                            introduction = "드러머입니당"
+                        ),
+                        UserEntity(
+                            id = "2345",
+                            username = "Tian",
+                            profileImage = "",
+                            introduction = "안녕하세요!"
+                        ),
+                    ),
+                    sessionMaxSize = 2
+                ),
             ),
             like = 38,
             view = 59

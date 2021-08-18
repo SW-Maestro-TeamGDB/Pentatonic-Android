@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        tools:context=".ui.create_cover.session_setting.BandCoverSessionSettingFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/completeSessionSettingButton"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="48dp">
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="@string/session_setting_title_text"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/subTitleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="추가한 항목을 길게 누르면 삭제할 수 있습니다"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sessionConfigList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:overScrollMode="never" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/addSessionButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="48dp"
+                    android:background="@drawable/custom_radius_stroke_main"
+                    android:text="+ 세션 생성하기"
+                    android:textColor="@color/main_regular"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/completeSessionSettingButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_gradient_button"
+            android:fontFamily="@font/nanum_extrabold"
+            android:gravity="center"
+            android:text="완료하기"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel" />
+    </data>
+
+</layout>

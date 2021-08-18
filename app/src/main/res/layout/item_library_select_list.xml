@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingVertical="16dp"
+        android:paddingHorizontal="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_album_track" />
+
+        <LinearLayout
+            android:layout_marginStart="12dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/icon"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/coverName"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="녹음 1"/>
+
+            <TextView
+                android:id="@+id/coverDate"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:fontFamily="@font/nanum_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2021/07/08 10:34"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

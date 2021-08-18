@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
-import com.team_gdb.pentatonic.ui.create_cover.session_setting.SessionSetting
+import com.team_gdb.pentatonic.data.session.SessionSetting
 
 /**
  * 세션 추가하기 버튼을 눌렀을 때 추가할 수 있는 세션 목록을 보여줌
  *
  * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가 (람다로 클릭리스너 지정)
  */
-class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
+open class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
-    private var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
+    protected var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -59,7 +59,7 @@ class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
         }
     }
 
-    fun setItem(entities: List<SessionSetting>) {
+    open fun setItem(entities: List<SessionSetting>) {
         this.sessionSettingList = entities
         notifyDataSetChanged()
     }

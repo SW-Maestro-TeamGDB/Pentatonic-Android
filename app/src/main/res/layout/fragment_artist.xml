@@ -3,22 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:background="@color/white"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.artist.ArtistFragment">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/testButton"
+            android:layout_marginStart="24dp"
+            android:text="테스트"
+            android:fontFamily="@font/nanum_extrabold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:background="@drawable/background_gradient_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <data>
 
         <variable
             name="home"
             type="com.team_gdb.pentatonic.ui.artist.ArtistFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.artist.ArtistViewModel" />
     </data>
 </layout>
