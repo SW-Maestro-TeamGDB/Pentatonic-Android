@@ -10,6 +10,7 @@ import com.team_gdb.pentatonic.data.session.SessionData
 import com.team_gdb.pentatonic.databinding.FragmentSoloCoverSessionSettingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class SoloCoverSessionSettingFragment :
     BaseFragment<FragmentSoloCoverSessionSettingBinding, CreateCoverViewModel>() {
@@ -23,14 +24,14 @@ class SoloCoverSessionSettingFragment :
     override fun initStartView() {
         binding.viewModel = this.viewModel
         sessionListAdapter = SoloCoverSessionListAdapter {
-            // TODO 선택 시 하이라이팅
+            viewModel.soloCoverSelectedSession.postValue(it)
+            Timber.d(it.toString())
         }
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
             adapter = sessionListAdapter
             setHasFixedSize(true)
         }
-
     }
 
     override fun initDataBinding() {

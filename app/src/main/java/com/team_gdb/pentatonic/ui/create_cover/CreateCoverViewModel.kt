@@ -5,6 +5,7 @@ import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
+import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.util.Event
 
 
@@ -16,6 +17,8 @@ class CreateCoverViewModel : BaseViewModel() {
 
     val coverBasicInfoValidationEvent: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
+
+    var soloCoverSelectedSession: MutableLiveData<SessionSetting> = MutableLiveData()
 
     // 커버를 구성할 세션 리스트 정보를 담음
     var coverSessionConfigList: MutableLiveData<List<SessionSettingEntity>> =
@@ -37,6 +40,7 @@ class CreateCoverViewModel : BaseViewModel() {
             )
             return entity
         }
+
     /**
      * 커버 제목이 없거나, 커버 곡을 선택하지 않은 경우 Event(false) 지정
      */

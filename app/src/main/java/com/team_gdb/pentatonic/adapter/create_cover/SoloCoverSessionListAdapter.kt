@@ -1,9 +1,13 @@
 package com.team_gdb.pentatonic.adapter.create_cover
 
+import android.graphics.Color
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 import com.team_gdb.pentatonic.data.session.SessionSetting
+import timber.log.Timber
 
 /**
  * 솔로 커버 모드에서 세션을 선택하기 위한 리스트
@@ -13,6 +17,9 @@ import com.team_gdb.pentatonic.data.session.SessionSetting
  */
 class SoloCoverSessionListAdapter(override val itemClick: (SessionSetting) -> Unit) :
     SelectSessionListAdapter(itemClick) {
+
+    var currentSelectedPosition: Int = -1
+    var lastSelectedPosition: Int = -1
 
     override fun getItemCount(): Int {
         return sessionSettingList.size
@@ -30,6 +37,7 @@ class SoloCoverSessionListAdapter(override val itemClick: (SessionSetting) -> Un
 
             binding.sessionNameTextView.text = entity.sessionName
             binding.root.setOnClickListener {
+                Timber.d("아이템 하나 눌림 : $position")
                 itemClick(entity)
             }
         }

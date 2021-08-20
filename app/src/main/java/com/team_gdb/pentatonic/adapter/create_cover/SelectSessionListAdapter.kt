@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.adapter.create_cover
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -45,7 +46,6 @@ open class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit
     inner class ViewHolder(
         private val binding: ItemSelectSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(entity: SessionSetting) {
             Glide.with(binding.root)
                 .load(entity.icon)
@@ -54,6 +54,8 @@ open class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit
 
             binding.sessionNameTextView.text = entity.sessionName
             binding.root.setOnClickListener {
+                binding.itemRootLayout.setCardBackgroundColor(Color.parseColor("#ff0000"))
+                binding.sessionNameTextView.setTextColor(Color.parseColor("#ff0000"))
                 itemClick(entity)
             }
         }
