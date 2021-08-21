@@ -6,7 +6,10 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
@@ -41,10 +44,16 @@ class RecordProcessingActivity :
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
     }
 
+    private val createdCoverEntity: CreatedCoverEntity by lazy {
+        intent.extras?.getSerializable(CREATED_COVER_ENTITY)!! as CreatedCoverEntity
+    }
+
     override fun initStartView() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         initPlayer()
+
+        Timber.d(createdCoverEntity.toString())
 
         binding.titleBar.titleTextView.text = "다듬기"
 

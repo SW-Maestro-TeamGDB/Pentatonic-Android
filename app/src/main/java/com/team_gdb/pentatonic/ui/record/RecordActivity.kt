@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
 import timber.log.Timber
@@ -63,6 +64,8 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
 
         binding.titleBar.titleTextView.text = "Recording"
+
+        Timber.d(createdCoverEntity.toString())
     }
 
     override fun initDataBinding() {
@@ -108,6 +111,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             val intent = Intent(this, RecordProcessingActivity::class.java)
             val bundle = Bundle()
             bundle.putByteArray(AMPLITUDE_DATA, byteArray)
+            bundle.putSerializable(CREATED_COVER_ENTITY, createdCoverEntity)
             intent.putExtras(bundle)
             startActivity(intent)
         }

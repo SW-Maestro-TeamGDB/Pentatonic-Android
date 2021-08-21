@@ -8,6 +8,8 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.session.SessionData
 import com.team_gdb.pentatonic.databinding.FragmentSoloCoverSessionSettingBinding
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
+import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -42,8 +44,8 @@ class SoloCoverSessionSettingFragment :
         sessionListAdapter.setItem(SessionData.sessionData)
 
         binding.completeSessionSettingButton.setOnClickListener {
-            val createCoverEntity = viewModel.createdCoverEntity.toString()
             val intent = Intent(context, RecordActivity::class.java)
+            intent.putExtra(CREATED_COVER_ENTITY, viewModel.createdCoverEntity)
             startActivity(intent)
         }
     }
