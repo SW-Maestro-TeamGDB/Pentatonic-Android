@@ -17,14 +17,10 @@ import com.team_gdb.pentatonic.data.session.SessionSetting
 class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SoloCoverSessionListAdapter.ViewHolder>() {
     var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
-    var selectedSession: Int = -1  // 선택된 아이템 포지션
+    var selectedSession: Int = -1  // 선택된 아이템 포지션 -> 이를 활용하여 ViewHolder 바인딩 시 하이라이팅 여부 나눔
 
     override fun getItemCount(): Int {
         return sessionSettingList.size
-    }
-
-    override fun onBindViewHolder(holder: SoloCoverSessionListAdapter.ViewHolder, position: Int) {
-        holder.bind(sessionSettingList[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -37,33 +33,47 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
         return ViewHolder(binding)
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(sessionSettingList[position])
+    }
+
     inner class ViewHolder(
         private val binding: ItemSelectSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SessionSetting) {
-            if (selectedSession != adapterPosition) {
-                binding.itemRootLayout.setCardBackgroundColor(Color.parseColor("#EEEEEE"))
-                binding.sessionIconImage.setColorFilter(Color.BLACK)
-                binding.sessionNameTextView.setTextColor(Color.BLACK)
-            } else{
-                binding.itemRootLayout.setCardBackgroundColor(Color.GRAY)
-                binding.sessionIconImage.setColorFilter(Color.WHITE)
-                binding.sessionNameTextView.setTextColor(Color.WHITE)
-            }
             Glide.with(binding.root)
                 .load(entity.icon)
                 .override(80, 80)
                 .into(binding.sessionIconImage)
 
+            if (selectedSession != adapterPosition) {   // 선택된 아이템이 아니라면 기본 스타일로 표현
+                setItemBasic()
+            } else {  // 선택된 아이템이라면, 하이라이팅 처리
+                setItemHighlighting()
+            }
+
             binding.sessionNameTextView.text = entity.sessionName
 
             binding.root.setOnClickListener {
-                selectedSession = adapterPosition
-                notifyDataSetChanged()
-                itemClick(entity)
+                if (selectedSession != adapterPosition) {
+                    selectedSession = adapterPosition
+                    notifyDataSetChanged()
+                    itemClick(entity)
+                }
             }
+        }
 
+        private fun setItemHighlighting() {
+            binding.itemRootLayout.setCardBackgroundColor(Color.GRAY)
+            binding.sessionIconImage.setColorFilter(Color.WHITE)
+            binding.sessionNameTextView.setTextColor(Color.WHITE)
+        }
+
+        private fun setItemBasic() {
+            binding.itemRootLayout.setCardBackgroundColor(Color.parseColor("#EEEEEE"))
+            binding.sessionIconImage.setColorFilter(Color.BLACK)
+            binding.sessionNameTextView.setTextColor(Color.BLACK)
         }
     }
 

@@ -14,7 +14,7 @@ import timber.log.Timber
  *
  * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가 (람다로 클릭리스너 지정)
  */
-class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit) :
+class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
     var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
@@ -43,6 +43,7 @@ class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit) :
     override fun getItemCount(): Int {
         return sessionSettingList.size
     }
+
     inner class ViewHolder(
         private val binding: ItemSelectSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -51,10 +52,6 @@ class SelectSessionListAdapter(open val itemClick: (SessionSetting) -> Unit) :
                 .load(entity.icon)
                 .override(80, 80)
                 .into(binding.sessionIconImage)
-
-            binding.itemRootLayout.setCardBackgroundColor(Color.parseColor("#EEEEEE"))
-            binding.sessionIconImage.setColorFilter(Color.BLACK)
-            binding.sessionNameTextView.setTextColor(Color.BLACK)
 
             binding.sessionNameTextView.text = entity.sessionName
             binding.root.setOnClickListener {
