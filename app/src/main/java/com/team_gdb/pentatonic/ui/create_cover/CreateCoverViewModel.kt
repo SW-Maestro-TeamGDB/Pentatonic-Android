@@ -18,9 +18,8 @@ class CreateCoverViewModel : BaseViewModel() {
     val coverBasicInfoValidationEvent: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
 
-    var soloCoverSelectedSession: MutableLiveData<SessionSetting> = MutableLiveData()
-
     // 커버를 구성할 세션 리스트 정보를 담음
+    // - 특이사항 : 솔로 커버의 경우, 최대 인원이 1인 세션 정보가 1개 담긴 리스트
     var coverSessionConfigList: MutableLiveData<List<SessionSettingEntity>> =
         MutableLiveData<List<SessionSettingEntity>>()
 

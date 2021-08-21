@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
+        <entry key="app/src/main/res/drawable/background_gray_button.xml" value="0.19769736842105262" />
         <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.14802631578947367" />
         <entry key="app/src/main/res/drawable/custom_radius_background_gray.xml" value="0.14802631578947367" />
         <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.12861842105263158" />
@@ -24,6 +25,7 @@
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.21578947368421053" />
+        <entry key="app/src/main/res/drawable/selector_button.xml" value="0.19769736842105262" />
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
@@ -48,6 +50,7 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.13763661202185792" />
         <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
         <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_solo_cover_session_setting.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
         <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />
@@ -66,6 +69,7 @@
         <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/page_title_bar.xml" value="0.15986842105263158" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13519736842105262" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14736842105263157" />
       </map>
     </option>
   </component>

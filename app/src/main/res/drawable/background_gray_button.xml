@@ -3,8 +3,5 @@
     android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="12dp"/>
-    <gradient
-        android:type="linear"
-        android:startColor="@color/main_regular"
-        android:endColor="@color/main_light"/>
+    <solid android:color="@color/button_background_gray"/>
 </shape>

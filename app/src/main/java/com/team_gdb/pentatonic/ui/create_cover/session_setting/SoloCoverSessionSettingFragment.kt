@@ -1,12 +1,15 @@
 package com.team_gdb.pentatonic.ui.create_cover.session_setting
 
+import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.create_cover.SoloCoverSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
+import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.session.SessionData
 import com.team_gdb.pentatonic.databinding.FragmentSoloCoverSessionSettingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
+import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
@@ -22,8 +25,8 @@ class SoloCoverSessionSettingFragment :
     override fun initStartView() {
         binding.viewModel = this.viewModel
         sessionListAdapter = SoloCoverSessionListAdapter {
-            viewModel.soloCoverSelectedSession.postValue(it)
-            Timber.d(it.toString())
+            viewModel.coverSessionConfigList.postValue(listOf(SessionSettingEntity(it, 1)))
+            binding.completeSessionSettingButton.isEnabled = true
         }
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
@@ -37,5 +40,11 @@ class SoloCoverSessionSettingFragment :
 
     override fun initAfterBinding() {
         sessionListAdapter.setItem(SessionData.sessionData)
+
+        binding.completeSessionSettingButton.setOnClickListener {
+            val createCoverEntity = viewModel.createdCoverEntity.toString()
+            val intent = Intent(context, RecordActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
