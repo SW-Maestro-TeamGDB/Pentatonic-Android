@@ -1,13 +1,12 @@
 package com.team_gdb.pentatonic.adapter.create_cover
 
 import android.graphics.Color
-import androidx.core.content.ContextCompat
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 import com.team_gdb.pentatonic.data.session.SessionSetting
-import timber.log.Timber
 
 /**
  * 솔로 커버 모드에서 세션을 선택하기 위한 리스트
@@ -15,14 +14,27 @@ import timber.log.Timber
  *
  * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가 (람다로 클릭리스너 지정)
  */
-class SoloCoverSessionListAdapter(override val itemClick: (SessionSetting) -> Unit) :
-    SelectSessionListAdapter(itemClick) {
-
-    var currentSelectedPosition: Int = -1
-    var lastSelectedPosition: Int = -1
+class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
+    RecyclerView.Adapter<SoloCoverSessionListAdapter.ViewHolder>() {
+    var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
+    var selectedSession: Int = -1  // 선택된 아이템 포지션
 
     override fun getItemCount(): Int {
         return sessionSettingList.size
+    }
+
+    override fun onBindViewHolder(holder: SoloCoverSessionListAdapter.ViewHolder, position: Int) {
+        holder.bind(sessionSettingList[position])
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding =
+            ItemSelectSessionListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        return ViewHolder(binding)
     }
 
     inner class ViewHolder(
@@ -30,16 +42,33 @@ class SoloCoverSessionListAdapter(override val itemClick: (SessionSetting) -> Un
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SessionSetting) {
+            if (selectedSession != adapterPosition) {
+                binding.itemRootLayout.setCardBackgroundColor(Color.parseColor("#EEEEEE"))
+                binding.sessionIconImage.setColorFilter(Color.BLACK)
+                binding.sessionNameTextView.setTextColor(Color.BLACK)
+            } else{
+                binding.itemRootLayout.setCardBackgroundColor(Color.GRAY)
+                binding.sessionIconImage.setColorFilter(Color.WHITE)
+                binding.sessionNameTextView.setTextColor(Color.WHITE)
+            }
             Glide.with(binding.root)
                 .load(entity.icon)
                 .override(80, 80)
                 .into(binding.sessionIconImage)
 
             binding.sessionNameTextView.text = entity.sessionName
+
             binding.root.setOnClickListener {
-                Timber.d("아이템 하나 눌림 : $position")
+                selectedSession = adapterPosition
+                notifyDataSetChanged()
                 itemClick(entity)
             }
+
         }
+    }
+
+    fun setItem(entities: List<SessionSetting>) {
+        this.sessionSettingList = entities
+        notifyDataSetChanged()
     }
 }

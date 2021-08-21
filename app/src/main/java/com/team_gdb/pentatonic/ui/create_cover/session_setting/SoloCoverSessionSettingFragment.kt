@@ -2,8 +2,6 @@ package com.team_gdb.pentatonic.ui.create_cover.session_setting
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.create_cover.CoverSessionSettingListAdapter
-import com.team_gdb.pentatonic.adapter.create_cover.SelectSessionListAdapter
 import com.team_gdb.pentatonic.adapter.create_cover.SoloCoverSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.session.SessionData
