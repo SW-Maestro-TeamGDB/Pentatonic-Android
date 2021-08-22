@@ -10,8 +10,9 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
  * 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
+ * - 세로로 스크롤되는 커버 리스트
  *
- * @property itemClick  해당 커버 정보 페이지로 이동할 수 있도록 어댑터 생성 시 클릭리스너 동작 전달
+ * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
 class CoverVerticalListAdapter(val itemClick: (CoverEntity) -> Unit) :
     RecyclerView.Adapter<CoverVerticalListAdapter.ViewHolder>() {
@@ -44,20 +45,25 @@ class CoverVerticalListAdapter(val itemClick: (CoverEntity) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: CoverEntity) {
-                binding.coverNameTextView.text = entity.coverName
-                binding.coverOriginalSongTextView.text = entity.originalSong
-
+            // 커버 대표 이미지
             Glide.with(binding.root)
                 .load(entity.imageUrl)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
 
+            // 커버명과 원곡명
+            binding.coverNameTextView.text = entity.coverName
+            binding.coverOriginalSongTextView.text = entity.originalSong
+
+            // 커버를 구성중인 인원수
             binding.coverSessionListTextView.text = "${entity.sessionDataList.size}명 참여중"
 
+            // 좋아요수와 조회수
             binding.coverLikeTextView.text = entity.like.toString()
             binding.coverViewTextView.text = entity.view.toString()
 
+            // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
                 itemClick(entity)
             }

@@ -8,11 +8,9 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
-import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
-import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber

@@ -11,14 +11,14 @@ import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
 import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
- * 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
+ * 라이브러리에 저장된 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
  *
- * @property itemClick  해당 커버 정보 페이지로 이동할 수 있도록 어댑터 생성 시 클릭리스너 동작 전달
+ * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
 class LibraryListAdapter(val itemClick: (LibraryEntity) -> Unit) :
     RecyclerView.Adapter<LibraryListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<LibraryEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<LibraryEntity> = emptyList()  // 커버 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환

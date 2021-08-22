@@ -8,6 +8,12 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ItemHorizontalSongListBinding
 
+/**
+ * 펜타토닉이 제공하는 곡 정보를 보여주는 리사이클러뷰 어댑터 (가로 버전)
+ * - 보통 '스튜디오' 탭에서 곡을 추천해주는 메뉴에서 사용
+ *
+ * @property itemClick  해당 곡의 상세 정보 페이지 이동 동작 수행
+ */
 class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
     RecyclerView.Adapter<SongHorizontalListAdapter.ViewHolder>() {
 
@@ -45,15 +51,19 @@ class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
                 param.setMargins(64, 0, 0, 0)
                 binding.songItemCard.layoutParams = param
             }
+
+            // 해당 곡의 앨범 자켓 이미지
             Glide.with(binding.root)
                 .load(entity.albumJacketImage)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.albumJacketImage)
 
+            // 해당 곡의 제목과 가수명
             binding.songNameTextView.text = entity.songTitle
             binding.songArtistTextView.text = entity.artistName
 
+            // 해당 곡의 상세 정보 페이지로 이동
             binding.root.setOnClickListener {
                 itemClick(entity)
             }

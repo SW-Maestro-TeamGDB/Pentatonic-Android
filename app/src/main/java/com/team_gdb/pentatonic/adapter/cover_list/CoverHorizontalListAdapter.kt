@@ -10,8 +10,9 @@ import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
 
 /**
  * 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
+ * - 가로로 스크롤되는 커버 리스트
  *
- * @property itemClick  해당 커버 정보 페이지로 이동할 수 있도록 어댑터 생성 시 클릭리스너 동작 전달
+ * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
 class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
     RecyclerView.Adapter<CoverHorizontalListAdapter.ViewHolder>() {
@@ -27,11 +28,7 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemHorizontalCoverListBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            ItemHorizontalCoverListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -54,20 +51,26 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
                 param.setMargins(64, 0, 0, 0)
                 binding.coverItemLayout.layoutParams = param
             }
-            binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong
 
+            // 커버 대표 이미지
             Glide.with(binding.root)
                 .load(entity.imageUrl)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
 
+            // 커버명과 원곡명
+            binding.coverNameTextView.text = entity.coverName
+            binding.coverOriginalSongTextView.text = entity.originalSong
+
+            // 커버를 구성중인 인원수
             binding.coverSessionListTextView.text = "${entity.sessionDataList.size}명 참여중"
 
+            // 좋아요수와 조회수
             binding.coverLikeTextView.text = entity.like.toString()
             binding.coverViewTextView.text = entity.view.toString()
 
+            // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
                 itemClick(entity)
             }

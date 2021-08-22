@@ -12,14 +12,14 @@ import com.team_gdb.pentatonic.databinding.ItemLibrarySelectListBinding
 import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
- * 밴드 커버에 참여함에 있어, 라이브러리 내의 어떤 녹음본으로 참여할지 표시하기 위한  리사이클러뷰 어댑터
+ * 밴드 커버에 참여함에 있어, 라이브러리 내의 어떤 녹음본으로 참여할지 선택할 수 있게 라이브러리 목록을 보여주는 리사이클러뷰 어댑터
  *
- * @property itemClick  해당 커버로 참여하는 것으로 간주, 어댑터 생성 시 클릭 리스너 동작 전달
+ * @property itemClick  사용자가 선택한(클릭한) 커버로 밴드에 참가하는 동작
  */
 class LibrarySelectListAdapter(val itemClick: (LibraryEntity) -> Unit) :
     RecyclerView.Adapter<LibrarySelectListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<LibraryEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<LibraryEntity> = emptyList()  // 커버 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -47,6 +47,7 @@ class LibrarySelectListAdapter(val itemClick: (LibraryEntity) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: LibraryEntity) {
+            // 해당 커버의 이름
             binding.coverName.text = entity.coverName
             // TODO : Cover Date 필드 추가해줘야 함
         }

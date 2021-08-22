@@ -10,9 +10,9 @@ import com.team_gdb.pentatonic.data.session.SessionSetting
 
 /**
  * 솔로 커버 모드에서 세션을 선택하기 위한 리스트
- * - 밴드 커버와 달리, 세션을 선택할 때 하이라이팅 기능이 필요하므로 밴드 커버에서의 세션 선택 리스트 어댑터를 상속받아 사용.
+ * - 밴드 커버와 달리 인원 지정이 필요 없어, 세션을 추가하는 방식이 아닌 선택하는 방식으로 구성
  *
- * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가 (람다로 클릭리스너 지정)
+ * @property itemClick  아이템 클릭되었을 때, 사용자의 선택 정보를 ViewModel 에 저장하는 동작
  */
 class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SoloCoverSessionListAdapter.ViewHolder>() {
@@ -25,11 +25,7 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemSelectSessionListBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            ItemSelectSessionListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -42,19 +38,23 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SessionSetting) {
+            // 해당 세션을 대표하는 이미지
             Glide.with(binding.root)
                 .load(entity.icon)
                 .override(80, 80)
                 .into(binding.sessionIconImage)
 
-            if (selectedSession != adapterPosition) {   // 선택된 아이템이 아니라면 기본 스타일로 표현
+            // 선택된 아이템이 아니라면 기본 스타일로 표현
+            if (selectedSession != adapterPosition) {
                 setItemBasic()
             } else {  // 선택된 아이템이라면, 하이라이팅 처리
                 setItemHighlighting()
             }
 
+            // 해당 세션의 이름
             binding.sessionNameTextView.text = entity.sessionName
 
+            // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
             binding.root.setOnClickListener {
                 if (selectedSession != adapterPosition) {
                     selectedSession = adapterPosition
@@ -64,12 +64,18 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
             }
         }
 
+        /**
+         * 아이템을 하이라이팅 하는 함수
+         */
         private fun setItemHighlighting() {
             binding.itemRootLayout.setCardBackgroundColor(Color.GRAY)
             binding.sessionIconImage.setColorFilter(Color.WHITE)
             binding.sessionNameTextView.setTextColor(Color.WHITE)
         }
 
+        /**
+         * 아이템에 기본 스타일 적용하는 함수
+         */
         private fun setItemBasic() {
             binding.itemRootLayout.setCardBackgroundColor(Color.parseColor("#EEEEEE"))
             binding.sessionIconImage.setColorFilter(Color.BLACK)

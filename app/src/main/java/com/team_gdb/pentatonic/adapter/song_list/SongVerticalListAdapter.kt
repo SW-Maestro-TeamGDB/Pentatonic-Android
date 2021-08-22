@@ -8,6 +8,12 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ItemVerticalSongListBinding
 
+/**
+ * 펜타토닉이 제공하는 곡 정보를 보여주는 리사이클러뷰 어댑터 (세로 버전)
+ * - 보통 커버할 곡을 선택하는 페이지에서 사용
+ *
+ * @property itemClick  커버 곡 선택 동작 수행
+ */
 class SongVerticalListAdapter(val itemClick: (SongEntity) -> Unit) :
     RecyclerView.Adapter<SongVerticalListAdapter.ViewHolder>() {
 
@@ -39,13 +45,14 @@ class SongVerticalListAdapter(val itemClick: (SongEntity) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SongEntity) {
+            // 해당 곡의 앨범 자켓 이미지
             Glide.with(binding.root)
                 .load(entity.albumJacketImage)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.albumJacketImage)
 
-
+            // 해당 곡의 제목과 가수명
             binding.songNameTextView.text = entity.songTitle
             binding.songArtistTextView.text = entity.artistName
 

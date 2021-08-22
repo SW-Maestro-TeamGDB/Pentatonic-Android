@@ -12,12 +12,20 @@ import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 
 
+/**
+ * 커버를 구성하고 있는 세션 (보컬, 일렉기타, 드럼 등) 구성 리사이클러뷰 어댑터
+ * - 각 세션 내에는, 해당 세션에 참가하고 있는 '참가자 목록'이 포함됨
+ * - 따라서 하위에 SessionParticipantListAdapter 포함
+ *
+ * @property itemClick               // 사용자 프로필 이미지 눌렀을 때 해당 사용자 프로필 페이지로 이동하는 동작
+ * @property participantButtonClick  // 해당 세션의 '참가하기' 버튼이 눌렸을 때의 동작
+ */
 class SessionConfigListAdapter(
     val itemClick: (UserEntity) -> Unit,
     val participantButtonClick: (SessionData) -> Unit
 ) : RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
 
-    private var sessionDataList: List<SessionData> = emptyList()
+    private var sessionDataList: List<SessionData> = emptyList()  // 커버를 구성하고 있는 세션의 리스트
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -45,23 +53,24 @@ class SessionConfigListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SessionData) {
+            // 세션명과 참가 현황 (현재 참가 인원 / 최대 참가 가능 인원)
             binding.sessionNameTextView.text = item.sessionName
             binding.sessionPeopleTextView.text =
                 "${item.sessionParticipantList.size}/${item.sessionMaxSize}"
 
+            // 만약 해당 세션에 더이상 참가할 수 없다면 '참가하기' 버튼 비활성화
             if (item.sessionMaxSize == item.sessionParticipantList.size) {
                 binding.participateButton.run {
                     isEnabled = false
-                    background = ContextCompat.getDrawable(
-                        context,
-                        R.drawable.custom_radius_background_gray_sharpen
-                    )
+                    background = ContextCompat.getDrawable(context, R.drawable.custom_radius_background_gray_sharpen)
                 }
-            } else {
+            } else {  // 참가할 수 있다면, 커버 참가 동작 수행
                 binding.participateButton.setOnClickListener {
                     participantButtonClick(item)
                 }
             }
+
+            // 해당 세션을 구성하는 참가자들을 보여주기 위한 리사이클러뷰 구성
             val adapter = SessionParticipantListAdapter {
                 itemClick(it)
             }

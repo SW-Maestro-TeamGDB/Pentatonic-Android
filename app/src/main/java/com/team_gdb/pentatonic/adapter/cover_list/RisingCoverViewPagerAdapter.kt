@@ -10,9 +10,10 @@ import com.team_gdb.pentatonic.databinding.ItemRisingCoverViewpagerBinding
 import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
- * 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
+ * 커버 목록을 보여주기 위한 뷰 페이저
+ * - 스튜디오 상단에 표시됨 (인기가 상승하고 있는 커버 표시)
  *
- * @property itemClick  해당 커버 정보 페이지로 이동할 수 있도록 어댑터 생성 시 클릭리스너 동작 전달
+ * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
 class RisingCoverViewPagerAdapter(val itemClick: (CoverEntity) -> Unit) :
     RecyclerView.Adapter<RisingCoverViewPagerAdapter.ViewHolder>() {
@@ -45,19 +46,24 @@ class RisingCoverViewPagerAdapter(val itemClick: (CoverEntity) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: CoverEntity) {
-                binding.coverNameTextView.text = entity.coverName
-                binding.coverOriginalSongTextView.text = entity.originalSong
-
+            // 커버 대표 이미지
             Glide.with(binding.root)
                 .load(entity.imageUrl)
                 .override(480, 272)
                 .into(binding.coverImage)
 
+            // 커버명과 원곡명
+            binding.coverNameTextView.text = entity.coverName
+            binding.coverOriginalSongTextView.text = entity.originalSong
+
+            // 커버를 구성중인 인원수
             binding.coverSessionListTextView.text = "${entity.sessionDataList.size}"
 
+            // 좋아요수와 조회수
             binding.coverLikeTextView.text = entity.like.toString()
             binding.coverViewTextView.text = entity.view.toString()
 
+            // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
                 itemClick(entity)
             }

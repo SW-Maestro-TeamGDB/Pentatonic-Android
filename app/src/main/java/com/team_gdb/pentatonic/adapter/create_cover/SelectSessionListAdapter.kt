@@ -10,9 +10,9 @@ import com.team_gdb.pentatonic.data.session.SessionSetting
 import timber.log.Timber
 
 /**
- * 세션 추가하기 버튼을 눌렀을 때 추가할 수 있는 세션 목록을 보여줌
+ * 세션 추가하기 버튼을 눌렀을 때, BottomSheetDialog 로 추가할 수 있는 세션을 보여주는 리사이클러뷰 어댑터
  *
- * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가 (람다로 클릭리스너 지정)
+ * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가하는 동작
  */
 class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
@@ -28,11 +28,7 @@ class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemSelectSessionListBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            ItemSelectSessionListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -47,17 +43,21 @@ class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     inner class ViewHolder(
         private val binding: ItemSelectSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(entity: SessionSetting) {
+            // 해당 세션을 대표하는 이미지
             Glide.with(binding.root)
                 .load(entity.icon)
                 .override(80, 80)
                 .into(binding.sessionIconImage)
 
+            // 해당 세션의 이름
             binding.sessionNameTextView.text = entity.sessionName
+
+            // 해당 세션 선택 시, 커버 구성 목록에 이를 추가하는 동작
             binding.root.setOnClickListener {
                 itemClick(entity)
             }
-
         }
     }
 
