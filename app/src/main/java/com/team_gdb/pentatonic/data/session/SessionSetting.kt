@@ -2,6 +2,12 @@ package com.team_gdb.pentatonic.data.session
 
 import com.team_gdb.pentatonic.R
 
+/**
+ * 펜타토닉이 지원하는 세션 ENUM 클래스
+ *
+ * @property sessionName   // 해당 세션 이름
+ * @property icon          // 대표 이미지
+ */
 enum class SessionSetting(val sessionName: String, val icon: Int) {
     VOCAL("보컬", R.drawable.ic_vocal),
     ACOUSTIC_GUITAR("어쿠스틱 기타", R.drawable.ic_acoustic_guitar),
