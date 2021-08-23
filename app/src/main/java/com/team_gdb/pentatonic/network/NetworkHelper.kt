@@ -38,6 +38,9 @@ private class AuthorizationInterceptor : Interceptor {
     }
 }
 
+/**
+ * 로그인 요청 시 반환되는 JWT 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ */
 val jwtTypeAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {
@@ -52,6 +55,9 @@ val jwtTypeAdapter = object : CustomTypeAdapter<String> {
     }
 }
 
+/**
+ * 파일 업로드 요청 시 반환되는 URL 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ */
 val urlTypeAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {

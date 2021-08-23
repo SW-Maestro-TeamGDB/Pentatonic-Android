@@ -18,7 +18,6 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-
 class RecordProcessingActivity :
     BaseActivity<ActivityRecordProcessingBinding, RecordProcessingViewModel>() {
     override val layoutResourceId: Int
@@ -42,7 +41,7 @@ class RecordProcessingActivity :
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
     }
 
-    private val createdCoverEntity: CreatedCoverEntity by lazy {
+    private val createdCoverEntity: CreatedCoverEntity by lazy {  // 사용자가 이전 페이지에서 입력한 커버 정보
         intent.extras?.getSerializable(CREATED_COVER_ENTITY)!! as CreatedCoverEntity
     }
 
@@ -66,10 +65,7 @@ class RecordProcessingActivity :
 
         // 동적으로 TabLayout Indicator Width 계산
         binding.tabLayout.post {
-            indicatorWidth = binding.tabLayout.width / NUM_PAGES
-            val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
-            params.width = indicatorWidth
-            binding.indicator.layoutParams = params
+            setViewPagerIndicatorWidth()
         }
     }
 
@@ -100,39 +96,11 @@ class RecordProcessingActivity :
         }
 
         // TabLayout Indicator 위치 이동을 위한 PageChangeCallback 리스너 등록
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-                val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
-
-                val translationOffset: Float = (positionOffset + position) * indicatorWidth
-                params.leftMargin = translationOffset.toInt()
-                binding.indicator.layoutParams = params
-            }
-        })
+        binding.viewPager.registerOnPageChangeCallback(pageChangeListener)
 
         // AudioWave SeekBar 데이터 입력 (ByteArray)
         binding.audioSeekBar.setRawData(amplitudeData)
-        binding.audioSeekBar.onProgressListener = object : OnProgressListener {
-            override fun onProgressChanged(progress: Float, byUser: Boolean) {
-                if (byUser) {  // 사용자가 SeekBar 움직였을 경우
-                    // 재생 위치를 해당 위치로 바꿔줌 (움직인 곳에서부터 음악 재생)
-                    player?.seekTo((progress * interval).toInt())
-                }
-                viewModel.playTime.postValue(SimpleDateFormat("mm:ss").format(Date(player?.currentPosition!!.toLong())))
-                viewModel.remainTime.postValue("-${SimpleDateFormat("mm:ss").format(Date(player?.duration!! - player?.currentPosition!!.toLong()))}")
-            }
-
-            override fun onStartTracking(progress: Float) {
-            }
-
-            override fun onStopTracking(progress: Float) {
-            }
-        }
+        binding.audioSeekBar.onProgressListener = audioProgressListener
 
         // 재생 버튼 눌렀을 때
         binding.playButton.setOnClickListener {
@@ -143,7 +111,8 @@ class RecordProcessingActivity :
                 ButtonState.ON_PLAYING -> {
                     pausePlaying()
                 }
-                else -> { /* no-op */
+                else -> {
+                    /* no-op */
                 }
             }
         }
@@ -153,6 +122,53 @@ class RecordProcessingActivity :
             val bottomSheetDialog = InputCoverNameBottomSheetDialog()
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
+    }
+
+    /**
+     * 오디오 프로그레스 값 변경될 때마다 처리해줘야 할 동작
+     * - 사용자가 SeekBar 조정을 통해 값이 변경된 것이라면, MedialPlayer 재생 위치를 옮김
+     * - 기본적으로, ViewModel 에 재생 시간과 남은 시간 postValue() 동작을 함
+     */
+    private val audioProgressListener = object : OnProgressListener {
+        override fun onProgressChanged(progress: Float, byUser: Boolean) {
+            if (byUser) {  // 사용자가 SeekBar 움직였을 경우
+                // 재생 위치를 해당 위치로 바꿔줌 (움직인 곳에서부터 음악 재생)
+                player?.seekTo((progress * interval).toInt())
+            }
+            viewModel.playTime.postValue(SimpleDateFormat("mm:ss").format(Date(player?.currentPosition!!.toLong())))
+            viewModel.remainTime.postValue("-${SimpleDateFormat("mm:ss").format(Date(player?.duration!! - player?.currentPosition!!.toLong()))}")
+        }
+
+        override fun onStartTracking(progress: Float) {
+        }
+
+        override fun onStopTracking(progress: Float) {
+        }
+    }
+
+    /**
+     * ViewPager 의 페이지 (컨트롤, 이펙트) 변경 시 인디케이터 UI 업데이트
+     */
+    private val pageChangeListener = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
+            super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
+
+            val translationOffset: Float = (positionOffset + position) * indicatorWidth
+            params.leftMargin = translationOffset.toInt()
+            binding.indicator.layoutParams = params
+        }
+    }
+
+    private fun setViewPagerIndicatorWidth() {
+        indicatorWidth = binding.tabLayout.width / NUM_PAGES
+        val params = binding.indicator.layoutParams as FrameLayout.LayoutParams
+        params.width = indicatorWidth
+        binding.indicator.layoutParams = params
     }
 
     private fun initPlayer() {
