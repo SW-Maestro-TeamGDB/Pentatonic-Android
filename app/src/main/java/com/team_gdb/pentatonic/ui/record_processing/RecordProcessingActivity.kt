@@ -1,6 +1,9 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
 import android.media.MediaPlayer
+import android.media.audiofx.BassBoost
+import android.media.audiofx.EnvironmentalReverb
+import android.media.audiofx.LoudnessEnhancer
 import android.media.audiofx.PresetReverb
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
@@ -174,7 +177,7 @@ class RecordProcessingActivity :
 
 
     /**
-     * PRESET_LARGEROOM 이펙트 적용
+     * LARGE ROOM Reverb 이펙트 적용
      */
     private fun setPresetReverb() {
         val reverb = PresetReverb(1, 0)
@@ -184,7 +187,37 @@ class RecordProcessingActivity :
         player?.setAuxEffectSendLevel(1.0f)
     }
 
+    /**
+     * Environment Reverb 이펙트 적용
+     */
+    private fun setEnvironmentReverb() {
+        val reverb = EnvironmentalReverb(0, 0)
+        player?.attachAuxEffect(reverb.id)
+        reverb.enabled = true
+        player?.setAuxEffectSendLevel(1.0f)
+    }
 
+    /**
+     * BassBoost 이펙트 적용
+     */
+    private fun setBassBoost() {
+        val bass = BassBoost(0, 0)
+        player?.attachAuxEffect(bass.id)
+        bass.enabled = true
+        player?.setAuxEffectSendLevel(1.0f)
+    }
+
+    /**
+     * LoudnessEnhancer 이펙트 적용
+     * - 타겟 게인 값을 입력받아 게인을 늘림
+     */
+    private fun setLoudnessEnhancer() {
+        val gain = LoudnessEnhancer(0)
+        player?.attachAuxEffect(gain.id)
+        gain.setTargetGain(100)
+        gain.enabled = true
+        player?.setAuxEffectSendLevel(1.0f)
+    }
 
     /**
      * MediaPlayer 초기화
