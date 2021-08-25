@@ -31,6 +31,7 @@
 
         <TextView
             android:id="@+id/playTimeTextView"
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/audioSeekBar"
@@ -42,6 +43,7 @@
 
         <TextView
             android:id="@+id/remainTimeTextView"
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/audioSeekBar"

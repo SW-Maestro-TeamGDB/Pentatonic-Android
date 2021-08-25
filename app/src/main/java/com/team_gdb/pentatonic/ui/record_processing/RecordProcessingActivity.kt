@@ -172,6 +172,10 @@ class RecordProcessingActivity :
         binding.indicator.layoutParams = params
     }
 
+
+    /**
+     * PRESET_LARGEROOM 이펙트 적용
+     */
     private fun setPresetReverb() {
         val reverb = PresetReverb(1, 0)
         player?.attachAuxEffect(reverb.id)
@@ -180,6 +184,11 @@ class RecordProcessingActivity :
         player?.setAuxEffectSendLevel(1.0f)
     }
 
+
+
+    /**
+     * MediaPlayer 초기화
+     */
     private fun initPlayer() {
         player = MediaPlayer().apply {
             setDataSource(recordingFilePath)
@@ -190,14 +199,13 @@ class RecordProcessingActivity :
             totalDuration = this.duration.toFloat()
             interval = this.duration.toFloat().div(100)
         }
-
-        setPresetReverb()
     }
 
     /**
      * 녹음본을 재생
      */
     private fun startPlaying() {
+        setPresetReverb()
         player?.start()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {
