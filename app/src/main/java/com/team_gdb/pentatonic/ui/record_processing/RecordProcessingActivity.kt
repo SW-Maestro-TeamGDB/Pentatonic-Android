@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
 import android.media.MediaPlayer
+import android.media.audiofx.PresetReverb
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -171,10 +172,17 @@ class RecordProcessingActivity :
         binding.indicator.layoutParams = params
     }
 
+    private fun setPresetReverb() {
+        val reverb = PresetReverb(1, 0)
+        player?.attachAuxEffect(reverb.id)
+        reverb.preset = PresetReverb.PRESET_LARGEROOM
+        reverb.enabled = true
+        player?.setAuxEffectSendLevel(1.0f)
+    }
+
     private fun initPlayer() {
         player = MediaPlayer().apply {
             setDataSource(recordingFilePath)
-            setAuxEffectSendLevel(1.0f)
             prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
             setOnCompletionListener {  // 끝까지 재생이 끝났을 때
                 pausePlaying()
@@ -182,6 +190,8 @@ class RecordProcessingActivity :
             totalDuration = this.duration.toFloat()
             interval = this.duration.toFloat().div(100)
         }
+
+        setPresetReverb()
     }
 
     /**

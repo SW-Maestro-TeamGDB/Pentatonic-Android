@@ -25,7 +25,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy {
-                    Timber.d(it.data?.login)
+                    Timber.d(it.data?.login.toString())
                     if (!it.hasErrors()) {
                         loginCompleteEvent.value = Event(it.data?.login.toString())
                     } else {
