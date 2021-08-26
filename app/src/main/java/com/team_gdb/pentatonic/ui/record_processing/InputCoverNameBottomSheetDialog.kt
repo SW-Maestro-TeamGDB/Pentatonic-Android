@@ -11,7 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class InputCoverNameBottomSheetDialog :
     BaseBottomSheetDialogFragment<DialogInputCoverNameBinding, RecordProcessingViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.dialog_record_guide
+        get() = R.layout.dialog_input_cover_name
     override val viewModel: RecordProcessingViewModel by sharedViewModel()
 
     override fun initStartView() {

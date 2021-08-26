@@ -32,7 +32,7 @@ class CreateCoverViewModel : BaseViewModel() {
         get() {
             val entity = CreatedCoverEntity(
                 coverName = coverName.value!!,
-                coverIntroduction = coverIntroduction.value!!,
+                coverIntroduction = coverIntroduction.value,
                 coverSong = coverSong.value!!,
                 coverSessionConfig = coverSessionConfigList.value!!,
                 coverRecord = null

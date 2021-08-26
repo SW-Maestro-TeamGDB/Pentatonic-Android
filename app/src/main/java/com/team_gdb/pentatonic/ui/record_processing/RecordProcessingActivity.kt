@@ -193,6 +193,7 @@ class RecordProcessingActivity :
     private fun setEnvironmentReverb() {
         val reverb = EnvironmentalReverb(0, 0)
         player?.attachAuxEffect(reverb.id)
+        reverb.reverbLevel = -2000
         reverb.enabled = true
         player?.setAuxEffectSendLevel(1.0f)
     }
@@ -238,6 +239,7 @@ class RecordProcessingActivity :
      * 녹음본을 재생
      */
     private fun startPlaying() {
+//        setPresetReverb()
         setPresetReverb()
         player?.start()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)

@@ -14,7 +14,7 @@ import java.io.Serializable
  */
 data class CreatedCoverEntity(
     val coverName: String,
-    val coverIntroduction: String,
+    val coverIntroduction: String?,
     val coverSong: SongEntity,
     var coverSessionConfig: List<SessionSettingEntity>,
     var coverRecord: Uri?
