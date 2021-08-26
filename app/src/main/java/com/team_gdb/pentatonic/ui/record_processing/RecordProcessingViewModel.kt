@@ -29,6 +29,8 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
+    val coverUploadComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
+
     fun controlVolumeLevel(amount: Int) {
         volumeLevel.value = volumeLevel.value?.plus(amount)
         Timber.d("Volume Control 예아")
@@ -63,7 +65,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                 onSuccess = {
                     if (!it.hasErrors()) {
                         Timber.d(it.data?.uploadCoverFile.toString())
-                        coverFileURL.value = it.data?.uploadCoverFile
+                        coverFileURL.postValue(it.data?.uploadCoverFile)
                     } else {
                         it.errors?.forEach { e ->
                             Timber.i(e.message)
@@ -72,4 +74,26 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                 }
             )
     }
+
+    fun uploadCoverToLibrary(name: String, coverURI: String, songId: String, position: String) {
+        repository.uploadCoverToLibrary(name, coverURI, songId, position)
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .observeOn(Schedulers.io())
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.uploadCover.toString())
+                        coverUploadComplete.postValue(Event(true))
+                    } else {
+                        it.errors?.forEach { e ->
+                            Timber.i(e.message)
+                        }
+                    }
+                }
+            )
+    }
+
 }

@@ -81,6 +81,8 @@ class RecordProcessingActivity :
         // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
         viewModel.coverNameInputComplete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
+
+                Timber.d("커버 파일 업로드 시작")
                 // 커버 파일 업로드
                 viewModel.uploadCoverFile(recordingFilePath)
             }

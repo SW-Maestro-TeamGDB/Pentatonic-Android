@@ -7,5 +7,11 @@ import io.reactivex.rxjava3.core.Single
 
 interface RecordProcessingRepository {
     fun uploadCoverFile(filePath: String): Single<Response<UploadCoverFileMutation.Data>>
-    fun uploadCoverToLibrary(name: String, coverURI: String, songId: String, position: String): Single<Response<UploadCoverMutation.Data>>
+    fun uploadCoverToLibrary(
+        name: String,
+        coverURI: String,
+        songId: String,
+        position: String
+    ): Single<Response<UploadCoverMutation.Data>>
+
 }
