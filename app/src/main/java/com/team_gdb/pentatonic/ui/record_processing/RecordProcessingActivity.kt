@@ -81,7 +81,6 @@ class RecordProcessingActivity :
         // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
         viewModel.coverNameInputComplete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
-
                 Timber.d("커버 파일 업로드 시작")
                 // 커버 파일 업로드
                 viewModel.uploadCoverFile(recordingFilePath)
@@ -92,6 +91,18 @@ class RecordProcessingActivity :
         viewModel.coverFileURL.observe(this) {
             if (it.isNotBlank()) {
                 Timber.d("커버 파일 업로드가 다 됐단다!")
+                // 커버 정보 라이브러리에 업로드
+                viewModel.uploadCoverToLibrary(
+                    viewModel.coverNameField.value.toString(),
+                    it, "000099998888777766665555", "VIOLIN"
+                )
+            }
+        }
+
+        // 라이브러리 커버 업로드가 완료됐을 때
+        viewModel.coverUploadComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                Timber.d("라이브러리 커버 업로드가 완료됐단다!")
             }
         }
     }

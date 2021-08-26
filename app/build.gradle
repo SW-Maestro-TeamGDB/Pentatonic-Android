@@ -41,6 +41,8 @@ android {
         customTypeMapping = [
                 "JWT" : "kotlin.String",
                 "URL" : "kotlin.String",
+                "NAME" : "kotlin.String",
+                "OBJECTID": "kotlin.String",
                 "UploadCoverFileInput" : "com.apollographql.apollo.api.FileUpload"
         ]
     }

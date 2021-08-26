@@ -24,6 +24,8 @@ object NetworkHelper {
         )
         .addCustomTypeAdapter(CustomType.URL, urlTypeAdapter)
         .addCustomTypeAdapter(CustomType.JWT, jwtTypeAdapter)
+        .addCustomTypeAdapter(CustomType.NAME, nameTypeAdapter)
+        .addCustomTypeAdapter(CustomType.OBJECTID, objectIdAdapter)
         .build()
 }
 
@@ -59,6 +61,41 @@ val jwtTypeAdapter = object : CustomTypeAdapter<String> {
  * 파일 업로드 요청 시 반환되는 URL 커스텀 타입을 String 으로 변환해주는 타입 어댑터
  */
 val urlTypeAdapter = object : CustomTypeAdapter<String> {
+    override fun decode(value: CustomTypeValue<*>): String {
+        return try {
+            value.value.toString()
+        } catch (e: ParseException) {
+            throw RuntimeException(e)
+        }
+    }
+
+    override fun encode(value: String): CustomTypeValue<*> {
+        return CustomTypeValue.GraphQLString(value)
+    }
+}
+
+
+/**
+ * 커버 업로드 요청 시 반환되는 NAME (커버 명) 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ */
+val nameTypeAdapter = object : CustomTypeAdapter<String> {
+    override fun decode(value: CustomTypeValue<*>): String {
+        return try {
+            value.value.toString()
+        } catch (e: ParseException) {
+            throw RuntimeException(e)
+        }
+    }
+
+    override fun encode(value: String): CustomTypeValue<*> {
+        return CustomTypeValue.GraphQLString(value)
+    }
+}
+
+/**
+ * 커버 업로드 요청 시 반환되는 OBJECT_ID (커버 명) 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ */
+val objectIdAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {
             value.value.toString()
