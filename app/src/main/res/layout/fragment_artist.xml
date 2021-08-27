@@ -4,22 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:background="@color/white"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.artist.ArtistFragment">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/testButton"
-            android:layout_marginStart="24dp"
-            android:text="테스트"
-            android:fontFamily="@font/nanum_extrabold"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:background="@drawable/background_gradient_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/recommendCoverViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@color/button_background_gray" />
+
+            <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/viewpagerIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="7dp"
+                android:layout_gravity="end|bottom"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="34dp"
+                app:dotsColor="@color/white"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="7dp"
+                app:dotsSpacing="4dp"
+                app:dotsWidthFactor="2.5"
+                app:progressMode="true"
+                app:selectedDotColor="@color/white" />
+
+        </FrameLayout>
+
+        <com.xw.repo.widget.BounceScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!--   밴드 커버 랭킹   -->
+                <RelativeLayout
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="@dimen/menu_title_margin_bottom"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="@string/band_cover_ranking_title_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/bandCoverRankingDetailButton"
+                        android:layout_width="18dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/nanum_light"
+                        android:gravity="end"
+                        android:src="@drawable/ic_more_button" />
+
+                </RelativeLayout>
+
+
+                <!--   아티스트 (사용자) 랭킹   -->
+                <RelativeLayout
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="@dimen/menu_title_margin_bottom"
+                    android:layout_marginHorizontal="24dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="@string/artist_ranking_title_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/menu_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/artistRankingDetailButton"
+                        android:layout_width="18dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/nanum_light"
+                        android:gravity="end"
+                        android:src="@drawable/ic_more_button" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </com.xw.repo.widget.BounceScrollView>
     </LinearLayout>
 
     <data>

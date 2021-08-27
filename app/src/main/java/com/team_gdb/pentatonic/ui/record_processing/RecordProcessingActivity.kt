@@ -88,6 +88,7 @@ class RecordProcessingActivity :
         }
 
         // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
+        // TODO : 테스트 데이터로 동작
         viewModel.coverFileURL.observe(this) {
             if (it.isNotBlank()) {
                 Timber.d("커버 파일 업로드가 다 됐단다!")
