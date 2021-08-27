@@ -1,6 +1,8 @@
 package com.team_gdb.pentatonic.di
 
 import androidx.navigation.fragment.FragmentNavigatorExtras
+import com.team_gdb.pentatonic.repository.artist.ArtistRepository
+import com.team_gdb.pentatonic.repository.artist.ArtistRepositoryImpl
 import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.repository.login.LoginRepositoryImpl
 import com.team_gdb.pentatonic.repository.record.RecordRepository
@@ -116,6 +118,10 @@ val repositoryModule = module {
     }
     single<RecordProcessingRepository> {
         RecordProcessingRepositoryImpl()
+    }
+
+    single<ArtistRepository> {
+        ArtistRepositoryImpl()
     }
 }
 

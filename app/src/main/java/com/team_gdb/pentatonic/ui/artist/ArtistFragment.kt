@@ -20,9 +20,6 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
     }
 
     override fun initAfterBinding() {
-        binding.testButton.setOnClickListener {
-            startActivity(Intent(context, UploadTestActivity::class.java))
-        }
     }
 
 }
