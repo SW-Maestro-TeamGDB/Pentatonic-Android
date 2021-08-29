@@ -76,6 +76,11 @@
 
                 </RelativeLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bandRankingList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
 
                 <!--   아티스트 (사용자) 랭킹   -->
                 <RelativeLayout
@@ -106,6 +111,11 @@
                         android:src="@drawable/ic_more_button" />
 
                 </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/artistRankingList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
         </com.xw.repo.widget.BounceScrollView>
