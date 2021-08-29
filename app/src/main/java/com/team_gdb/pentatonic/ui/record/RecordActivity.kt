@@ -22,7 +22,7 @@ import kotlin.math.roundToInt
 /**
  *  커버 녹음을 위한 페이지
  *  - MediaRecorder 를 통해 녹음 동작을 수행함
- *  - MediaRecorder, MediaPlayer 를 사용하지 않을 때는 메모리 해제를 꼭 해줘야함
+ *  - MediaRecorder, MediaPlayer 를 사용하지 않을 때는 메모리 해제를 꼭 해줘야 함
  */
 class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     override val layoutResourceId: Int

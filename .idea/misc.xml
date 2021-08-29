@@ -54,6 +54,7 @@
         <entry key="app/src/main/res/layout/fragment_studio.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_weekly_challenge.xml" value="0.18704710144927536" />
         <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />
+        <entry key="app/src/main/res/layout/item_band_ranking_list.xml" value="0.21" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
