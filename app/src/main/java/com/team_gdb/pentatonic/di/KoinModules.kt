@@ -11,6 +11,8 @@ import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepo
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepositoryImpl
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.repository.register.RegisterRepositoryImpl
+import com.team_gdb.pentatonic.repository.studio.StudioRepository
+import com.team_gdb.pentatonic.repository.studio.StudioRepositoryImpl
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepositoryImpl
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepository
@@ -39,13 +41,13 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     viewModel {
-        ArtistViewModel()
+        ArtistViewModel(get())
     }
     viewModel {
         LoungeViewModel()
     }
     viewModel {
-        StudioViewModel()
+        StudioViewModel(get())
     }
     viewModel {
         MyPageViewModel()
@@ -119,9 +121,11 @@ val repositoryModule = module {
     single<RecordProcessingRepository> {
         RecordProcessingRepositoryImpl()
     }
-
     single<ArtistRepository> {
         ArtistRepositoryImpl()
+    }
+    single<StudioRepository> {
+        StudioRepositoryImpl()
     }
 }
 

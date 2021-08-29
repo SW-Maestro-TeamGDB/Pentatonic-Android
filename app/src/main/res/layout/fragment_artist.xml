@@ -15,7 +15,7 @@
             android:layout_height="300dp">
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/recommendCoverViewPager"
+                android:id="@+id/risingCoverViewPager"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:background="@color/button_background_gray" />
