@@ -58,6 +58,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
     override fun initAfterBinding() {
         bandRankingListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+        artistRankingListAdapter.setItem(TestData.TEST_USER_LIST)
     }
 
 }

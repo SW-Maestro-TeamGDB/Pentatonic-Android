@@ -114,6 +114,7 @@
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginBottom="100dp"
                     android:overScrollMode="never"
                     android:id="@+id/artistRankingList"
                     android:layout_width="match_parent"

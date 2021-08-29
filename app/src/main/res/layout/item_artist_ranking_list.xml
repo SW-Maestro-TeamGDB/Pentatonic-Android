@@ -4,12 +4,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="24dp"
-        android:paddingVertical="16dp">
+        android:layout_height="90dp"
+        android:paddingHorizontal="24dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/artistProfileImage"
+            android:scaleType="centerCrop"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_centerVertical="true"
