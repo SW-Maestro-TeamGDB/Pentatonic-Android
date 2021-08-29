@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.artist
 import android.content.Intent
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -97,6 +98,18 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         artistRankingListAdapter.setItem(TestData.TEST_USER_LIST)
 
         autoScrollViewPager()
+
+        binding.bandCoverRankingDetailButton.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_navigation_artist_to_navigation_band_ranking
+            )
+        }
+
+        binding.artistRankingDetailButton.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_navigation_artist_to_navigation_artist_ranking
+            )
+        }
     }
 
     private fun autoScrollViewPager() {
