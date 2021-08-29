@@ -34,6 +34,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
 
         // 라이징 커버 뷰 페이저 어댑터 생성
         risingBandCoverViewPagerAdapter = RisingCoverViewPagerAdapter {
