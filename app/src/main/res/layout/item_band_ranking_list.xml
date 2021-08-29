@@ -23,15 +23,36 @@
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
-            <TextView
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanum_regular"
-                android:textSize="16sp"
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BAND_COVER_TITLE"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/bancCoverNameTextView"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nanum_regular"
+                    android:textSize="16sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BAND_COVER_TITLE"/>
+
+                <TextView
+                    android:id="@+id/bancCoverLikeTextView"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_left_image_like"
+                    android:text="186"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
 
             <TextView
+                android:id="@+id/bandCoverOriginalSongTextView"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/nanum_regular"
                 android:textSize="12sp"
