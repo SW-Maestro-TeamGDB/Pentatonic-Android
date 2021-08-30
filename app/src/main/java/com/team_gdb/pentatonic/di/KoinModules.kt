@@ -5,6 +5,8 @@ import com.team_gdb.pentatonic.repository.artist.ArtistRepository
 import com.team_gdb.pentatonic.repository.artist.ArtistRepositoryImpl
 import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.repository.login.LoginRepositoryImpl
+import com.team_gdb.pentatonic.repository.lounge.LoungeRepository
+import com.team_gdb.pentatonic.repository.lounge.LoungeRepositoryImpl
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepositoryImpl
 import com.team_gdb.pentatonic.repository.record.RecordRepository
@@ -46,7 +48,7 @@ val viewModelModule = module {
         ArtistViewModel(get())
     }
     viewModel {
-        LoungeViewModel()
+        LoungeViewModel(get())
     }
     viewModel {
         StudioViewModel(get())
@@ -105,6 +107,9 @@ val viewModelModule = module {
 }
 
 val repositoryModule = module {
+    single<LoungeRepository> {
+        LoungeRepositoryImpl()
+    }
     single<RegisterRepository> {
         RegisterRepositoryImpl()
     }
