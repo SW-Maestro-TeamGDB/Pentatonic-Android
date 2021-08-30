@@ -11,18 +11,20 @@ import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_lounge
-    override val viewModel: LoungeViewModel by viewModel()
+    override val viewModel: LoungeViewModel by sharedViewModel()
 
     private lateinit var bandCoverListAdapter: CoverHorizontalListAdapter  // 밴드 커버 리스트
     private lateinit var soloCoverListAdapter: CoverHorizontalListAdapter  // 솔로 커버 리스트
 
     override fun initStartView() {
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
 
         // 밴드 커버 리사이클러뷰 어댑터 생성
