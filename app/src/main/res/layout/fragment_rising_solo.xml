@@ -93,6 +93,6 @@
     <data>
         <variable
             name="viewModel"
-            type="com.team_gdb.pentatonic.ui.rising_solo.RisingSoloViewModel" />
+            type="com.team_gdb.pentatonic.ui.lounge.LoungeViewModel" />
     </data>
 </layout>

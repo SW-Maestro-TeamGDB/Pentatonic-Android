@@ -1,6 +1,5 @@
 package com.team_gdb.pentatonic.di
 
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.team_gdb.pentatonic.repository.artist.ArtistRepository
 import com.team_gdb.pentatonic.repository.artist.ArtistRepositoryImpl
 import com.team_gdb.pentatonic.repository.login.LoginRepository
@@ -31,14 +30,10 @@ import com.team_gdb.pentatonic.ui.profile.ProfileViewModel
 import com.team_gdb.pentatonic.ui.record.RecordViewModel
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingViewModel
 import com.team_gdb.pentatonic.ui.register.RegisterViewModel
-import com.team_gdb.pentatonic.ui.rising_band.RisingBandViewModel
-import com.team_gdb.pentatonic.ui.rising_solo.RisingSoloViewModel
-import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
 import com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailViewModel
 import com.team_gdb.pentatonic.ui.studio.StudioViewModel
 import com.team_gdb.pentatonic.ui.user_verify.UserVerifyViewModel
-import com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeFragment
 import com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -67,14 +62,6 @@ val viewModelModule = module {
     }
     viewModel {
         WeeklyChallengeViewModel(get())
-    }
-
-    viewModel {
-        RisingBandViewModel()
-    }
-
-    viewModel {
-        RisingSoloViewModel()
     }
 
     viewModel {
