@@ -10,16 +10,21 @@ import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
+import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-class LibraryFragment : BaseFragment<FragmentLibraryBinding, LibraryViewModel>() {
+class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_library
-    override val viewModel: LibraryViewModel by viewModel()
+    override val viewModel: MyPageViewModel by sharedViewModel()
 
     private lateinit var libraryListAdapter: LibraryListAdapter
 
     override fun initStartView() {
+        binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
         binding.titleBar.titleTextView.text = "라이브러리"
 
         libraryListAdapter = LibraryListAdapter {
@@ -35,6 +40,11 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, LibraryViewModel>()
     }
 
     override fun initDataBinding() {
+        viewModel.libraryList.observe(this) {
+            it.forEach {
+                Timber.d(it.toString())
+            }
+        }
     }
 
     override fun initAfterBinding() {

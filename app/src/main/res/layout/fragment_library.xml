@@ -24,7 +24,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.team_gdb.pentatonic.ui.library.LibraryViewModel" />
+            type="com.team_gdb.pentatonic.ui.my_page.MyPageViewModel" />
     </data>
 
 </layout>
