@@ -50,6 +50,8 @@
         <entry key="app/src/main/res/layout/fragment_lounge.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.13763661202185792" />
+        <entry key="app/src/main/res/layout/fragment_rising_band.xml" value="0.14605263157894738" />
+        <entry key="app/src/main/res/layout/fragment_rising_solo.xml" value="0.14605263157894738" />
         <entry key="app/src/main/res/layout/fragment_session_config_form.xml" value="0.13980263157894737" />
         <entry key="app/src/main/res/layout/fragment_session_setting.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_solo_cover_session_setting.xml" value="0.1875" />

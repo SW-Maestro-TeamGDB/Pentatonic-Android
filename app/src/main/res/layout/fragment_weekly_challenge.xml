@@ -32,7 +32,7 @@
                     app:tint="@color/white" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="@dimen/page_title_margin_top"
                     android:layout_toRightOf="@+id/backButton"
                     app:cardBackgroundColor="#80434343"
                     android:layout_marginStart="8dp"
@@ -53,6 +53,9 @@
                             android:layout_width="0dp"
                             android:layout_height="50dp"
                             android:layout_weight="1"
+                            android:fontFamily="@font/nanum_regular"
+                            android:textColor="@color/white"
+                            android:text="커버 검색"
                             android:background="@android:color/transparent"
                             android:drawableStart="@drawable/ic_baseline_search_24"
                             android:drawablePadding="8dp"

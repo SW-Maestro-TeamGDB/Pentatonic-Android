@@ -2,11 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:orientation="vertical"
             android:background="@color/white"
@@ -14,79 +9,87 @@
             android:layout_height="match_parent"
             tools:context=".ui.rising_band.RisingBandFragment">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="32sp"
-                android:text="@string/rising_solo_title_text"
+            <RelativeLayout
                 android:layout_marginTop="56dp"
-                android:layout_marginStart="32dp"
-                android:fontFamily="@font/nanum_extrabold"
-                android:textColor="@color/black"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignTop="@+id/searchViewLayout"
+                    android:layout_alignBottom="@id/searchViewLayout"
+                    android:layout_marginStart="24dp"
+                    android:elevation="1dp"
+                    android:src="@drawable/ic_back_button"
+                    app:tint="@color/black" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/searchViewLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_toRightOf="@+id/backButton"
+                    app:cardBackgroundColor="@color/card_background_gray"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/searchView"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/nanum_regular"
+                            android:hint="커버 검색"
+                            android:background="@android:color/transparent"
+                            android:drawableStart="@drawable/ic_baseline_search_24"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="16dp"
+                            android:paddingEnd="8dp"
+                            android:textSize="14sp" />
+
+                        <ImageButton
+                            android:id="@+id/textClearButton"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="12dp"
+                            android:background="@null"
+                            android:gravity="center"
+                            android:src="@drawable/ic_baseline_cancel_24"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="@string/rising_solo_hint_text"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="32dp"
-                android:fontFamily="@font/nanum_light"
-                android:textColor="@color/black"/>
-
-            <androidx.cardview.widget.CardView
+                android:textColor="@color/black"
+                android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="16dp"
-                android:id="@+id/searchViewLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="2dp"
-                app:cardCornerRadius="12dp">
+                android:id="@+id/bandRankingTitleTextView"
+                android:fontFamily="@font/nanum_regular"
+                android:textSize="24sp"
+                android:text="@string/rising_solo_hint_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/searchView"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_baseline_search_24"
-                        android:drawablePadding="8dp"
-                        android:gravity="center_vertical"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:textSize="14sp" />
-
-                    <ImageButton
-                        android:id="@+id/textClearButton"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="12dp"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:src="@drawable/ic_baseline_cancel_24"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_marginHorizontal="16dp"
-                tools:listitem="@layout/item_Vertical_cover_list"
+            <com.chauthai.overscroll.RecyclerViewBouncy
+                android:layout_marginTop="16dp"
+                android:id="@+id/risingBandList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
     <data>
         <variable
             name="viewModel"
