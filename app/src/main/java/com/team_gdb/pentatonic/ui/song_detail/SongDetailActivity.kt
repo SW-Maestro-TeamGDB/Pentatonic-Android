@@ -28,6 +28,7 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
 
         val songEntity: SongEntity = intent.getSerializableExtra(SONG_ENTITY) as SongEntity
         viewModel.songEntity.postValue(songEntity)
