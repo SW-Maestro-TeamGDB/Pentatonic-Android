@@ -1,6 +1,5 @@
 package com.team_gdb.pentatonic.network
 
-import android.content.Context
 import androidx.core.net.ParseException
 import com.apollographql.apollo.ApolloClient
 import com.apollographql.apollo.api.CustomTypeAdapter
@@ -24,8 +23,8 @@ object NetworkHelper {
         )
         .addCustomTypeAdapter(CustomType.URL, urlTypeAdapter)
         .addCustomTypeAdapter(CustomType.JWT, jwtTypeAdapter)
-        .addCustomTypeAdapter(CustomType.NAME, nameTypeAdapter)
-        .addCustomTypeAdapter(CustomType.OBJECTID, objectIdAdapter)
+        .addCustomTypeAdapter(CustomType.ID, idTypeAdapter)
+        .addCustomTypeAdapter(CustomType.OBJECTID, objectIdTypeAdapter)
         .build()
 }
 
@@ -77,8 +76,26 @@ val urlTypeAdapter = object : CustomTypeAdapter<String> {
 
 /**
  * 커버 업로드 요청 시 반환되는 NAME (커버 명) 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ * - 필요 없어짐
  */
-val nameTypeAdapter = object : CustomTypeAdapter<String> {
+//val nameTypeAdapter = object : CustomTypeAdapter<String> {
+//    override fun decode(value: CustomTypeValue<*>): String {
+//        return try {
+//            value.value.toString()
+//        } catch (e: ParseException) {
+//            throw RuntimeException(e)
+//        }
+//    }
+//
+//    override fun encode(value: String): CustomTypeValue<*> {
+//        return CustomTypeValue.GraphQLString(value)
+//    }
+//}
+
+/**
+ * 커버 업로드 요청 시 반환되는 OBJECT_ID (커버 명) 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ */
+val objectIdTypeAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {
             value.value.toString()
@@ -93,9 +110,9 @@ val nameTypeAdapter = object : CustomTypeAdapter<String> {
 }
 
 /**
- * 커버 업로드 요청 시 반환되는 OBJECT_ID (커버 명) 커스텀 타입을 String 으로 변환해주는 타입 어댑터
+ * User 정보 쿼리 시 인자로 넘기는 Id 커스텀 타입을 String 으로 변환해주는 어댑터
  */
-val objectIdAdapter = object : CustomTypeAdapter<String> {
+val idTypeAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {
             value.value.toString()

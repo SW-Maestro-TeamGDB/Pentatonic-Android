@@ -67,5 +67,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
             findNavController().navigate(R.id.action_navigation_my_page_to_navigation_library)
         }
 
+        viewModel.getUserInfo("h2is1234")
     }
 }

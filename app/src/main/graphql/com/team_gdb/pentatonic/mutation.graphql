@@ -1,11 +1,14 @@
+# 인증번호 발송 요청 뮤테이션
 mutation SendAuthCodeMutation($sendAuthCodeInput: sendAuthCodeInput!) {
     sendAuthCode(input: $sendAuthCodeInput)
 }
 
+# 회원가입 뮤테이션
 mutation RegisterMutation($registerInput: RegisterInput!) {
     register(input: $registerInput)
 }
 
+# 로그인 뮤테이션
 mutation LoginMutation($loginInput: LoginInput!) {
     login(input: $loginInput)
 }

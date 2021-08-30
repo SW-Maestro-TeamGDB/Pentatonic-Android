@@ -1,4 +1,41 @@
+# 아이디와 닉네임이 유효한지 검사 요청하는 쿼리
 query CheckIDAndUsername($isValidUsernameUsername: Username!, $isValidIdId: Id!) {
     isValidId(id: $isValidIdId)
     isValidUsername(username: $isValidUsernameUsername)
+}
+
+# 사용자 정보 가져오는 쿼리
+query GetUserInfo($getUserInfoUserId: Id) {
+    getUserInfo(userId: $getUserInfoUserId) {
+        id
+        username
+        profileURI
+        phoneNumber
+        prime
+        introduce
+        type
+        library {
+            songId
+            coverBy
+            coverURI
+            coverId
+            duration
+            name
+            date
+            position
+        }
+        followerCount
+        followingCount
+        followingStatus
+        band {
+            bandId
+            creatorId
+            songId
+            name
+            introduce
+            backGroundURI
+            createDate
+            likeCount
+        }
+    }
 }

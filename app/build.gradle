@@ -39,11 +39,11 @@ android {
     apollo {
         generateKotlinModels = true
         customTypeMapping = [
-                "JWT" : "kotlin.String",
-                "URL" : "kotlin.String",
-                "NAME" : "kotlin.String",
-                "OBJECTID": "kotlin.String",
-                "UploadCoverFileInput" : "com.apollographql.apollo.api.FileUpload"
+                "JWT"                 : "kotlin.String",
+                "URL"                 : "kotlin.String",
+                "OBJECTID"            : "kotlin.String",
+                "Id"                  : "kotlin.String",
+                "UploadCoverFileInput": "com.apollographql.apollo.api.FileUpload"
         ]
     }
 }
