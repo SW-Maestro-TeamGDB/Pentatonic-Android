@@ -5,6 +5,8 @@ import com.team_gdb.pentatonic.repository.artist.ArtistRepository
 import com.team_gdb.pentatonic.repository.artist.ArtistRepositoryImpl
 import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.repository.login.LoginRepositoryImpl
+import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
+import com.team_gdb.pentatonic.repository.my_page.MyPageRepositoryImpl
 import com.team_gdb.pentatonic.repository.record.RecordRepository
 import com.team_gdb.pentatonic.repository.record.RecordRepositoryImpl
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
@@ -50,7 +52,7 @@ val viewModelModule = module {
         StudioViewModel(get())
     }
     viewModel {
-        MyPageViewModel()
+        MyPageViewModel(get())
     }
     viewModel {
         LoginViewModel(get())
@@ -126,6 +128,9 @@ val repositoryModule = module {
     }
     single<StudioRepository> {
         StudioRepositoryImpl()
+    }
+    single<MyPageRepository> {
+        MyPageRepositoryImpl()
     }
 }
 
