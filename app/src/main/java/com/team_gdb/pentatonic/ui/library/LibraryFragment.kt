@@ -24,7 +24,6 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
-        binding.lifecycleOwner = this
         binding.titleBar.titleTextView.text = "라이브러리"
 
         libraryListAdapter = LibraryListAdapter {
@@ -50,6 +49,9 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
 
+        }
+        viewModel.libraryList.value?.forEach {
+            Timber.d(it.name)
         }
         libraryListAdapter.setItem(TestLibraryData.TEST_LIBRARY_DATA)
     }

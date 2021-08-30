@@ -12,19 +12,19 @@ import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_my_page
-    override val viewModel: MyPageViewModel by viewModel()
+    override val viewModel: MyPageViewModel by sharedViewModel()
 
     private lateinit var coverHistoryListAdapter: CoverHorizontalListAdapter
     private lateinit var likedCoverListAdapter: CoverHorizontalListAdapter
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
-        binding.lifecycleOwner = this
 
         coverHistoryListAdapter = CoverHorizontalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
