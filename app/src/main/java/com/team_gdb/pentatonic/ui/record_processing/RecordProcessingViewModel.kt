@@ -55,45 +55,49 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
      * @param filePath : 녹음본의 파일 경로 (보통 캐시 파일)
      */
     fun uploadCoverFile(filePath: String) {
-        repository.uploadCoverFile(filePath)
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .observeOn(Schedulers.io())
-            .subscribeBy(
-                onError = {
-                    Timber.i(it)
-                },
-                onSuccess = {
-                    if (!it.hasErrors()) {
-                        Timber.d(it.data?.uploadCoverFile.toString())
-                        coverFileURL.postValue(it.data?.uploadCoverFile)
-                    } else {
-                        it.errors?.forEach { e ->
-                            Timber.i(e.message)
+        val disposable =
+            repository.uploadCoverFile(filePath)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
+                .subscribeBy(
+                    onError = {
+                        Timber.i(it)
+                    },
+                    onSuccess = {
+                        if (!it.hasErrors()) {
+                            Timber.d(it.data?.uploadCoverFile.toString())
+                            coverFileURL.postValue(it.data?.uploadCoverFile)
+                        } else {
+                            it.errors?.forEach { e ->
+                                Timber.i(e.message)
+                            }
                         }
                     }
-                }
-            )
+                )
+        addDisposable(disposable)
     }
 
     fun uploadCoverToLibrary(name: String, coverURI: String, songId: String, position: String) {
-        repository.uploadCoverToLibrary(name, coverURI, songId, position)
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .observeOn(Schedulers.io())
-            .subscribeBy(
-                onError = {
-                    Timber.i(it)
-                },
-                onSuccess = {
-                    if (!it.hasErrors()) {
-                        Timber.d(it.data?.uploadCover.toString())
-                        coverUploadComplete.postValue(Event(true))
-                    } else {
-                        it.errors?.forEach { e ->
-                            Timber.i(e.message)
+        val disposable =
+            repository.uploadCoverToLibrary(name, coverURI, songId, position)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(Schedulers.io())
+                .subscribeBy(
+                    onError = {
+                        Timber.i(it)
+                    },
+                    onSuccess = {
+                        if (!it.hasErrors()) {
+                            Timber.d(it.data?.uploadCover.toString())
+                            coverUploadComplete.postValue(Event(true))
+                        } else {
+                            it.errors?.forEach { e ->
+                                Timber.i(e.message)
+                            }
                         }
                     }
-                }
-            )
+                )
+        addDisposable(disposable)
     }
 
 }
