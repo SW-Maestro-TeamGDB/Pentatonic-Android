@@ -8,6 +8,7 @@ import com.team_gdb.pentatonic.TestLibraryData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
+import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
@@ -40,9 +41,17 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
     override fun initDataBinding() {
         viewModel.libraryList.observe(this) {
-            it.forEach {
-                Timber.d(it.toString())
+            val list = it.map {
+                LibraryEntity(
+                    coverName = it.name,
+                    coverSession = it.position.rawValue,
+                    id = 0,
+                    imageUrl = "",
+                    introduction = "",
+                    originalSong = it.songId.toString()
+                )
             }
+            libraryListAdapter.setItem(list)
         }
     }
 
@@ -50,9 +59,5 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         binding.titleBar.backButton.setOnClickListener {
 
         }
-        viewModel.libraryList.value?.forEach {
-            Timber.d(it.name)
-        }
-        libraryListAdapter.setItem(TestLibraryData.TEST_LIBRARY_DATA)
     }
 }

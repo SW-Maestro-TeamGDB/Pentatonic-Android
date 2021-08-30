@@ -25,6 +25,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
 
         coverHistoryListAdapter = CoverHorizontalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
