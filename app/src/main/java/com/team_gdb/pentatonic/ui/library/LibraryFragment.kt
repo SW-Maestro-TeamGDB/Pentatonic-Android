@@ -16,6 +16,7 @@ import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
+import com.team_gdb.pentatonic.ui.record_processing.InputCoverNameBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -32,11 +33,12 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         binding.titleBar.titleTextView.text = "라이브러리"
 
         libraryListAdapter = LibraryListAdapter(
+            {   // 라이브러리 클릭
+                // TODO()
+            },  // 라이브러리 편집
             {
-//            findNavController().navigate(
-                // TOOD : 라이브러리 정보 페이지
-//            )
-            },
+                editDialog(it)
+            },  // 라이브러리 삭제
             {
                 deleteDialog(it)
             }
@@ -85,6 +87,13 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     .show()
             }
         }
+
+        viewModel.completeEditCoverName.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                // TODO 이름 변경 뮤테이션 구현
+
+            }
+        }
     }
 
     override fun initAfterBinding() {
@@ -121,5 +130,15 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 )
             )
         }
+    }
+
+
+    private fun editDialog(coverId: String) {
+        // 선택한 커버 ID ViewModel 에 저장
+        viewModel.selectedCoverID.postValue(coverId)
+
+        // 커버 이름 변경하는 모달 시트 띄움 (이후 커버 이름 변경 완료 이벤트 관찰)
+        val bottomSheetDialog = EditCoverNameBottomSheetDialog()
+        bottomSheetDialog.show(parentFragmentManager, bottomSheetDialog.tag)
     }
 }

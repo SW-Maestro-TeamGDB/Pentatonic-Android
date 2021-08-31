@@ -14,10 +14,13 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 /**
  * 라이브러리에 저장된 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
  *
- * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
+ * @property itemClick        해당 커버 정보 페이지로 이동하는 동작
+ * @property itemEditClick    해당 커버 정보 수정하는 동작
+ * @property itemDeleteClick  해당 커버 삭제하는 동작
  */
 class LibraryListAdapter(
     val itemClick: (LibraryEntity) -> Unit,
+    val itemEditClick: (String) -> Unit,
     val itemDeleteClick: (String) -> Unit
 ) :
     RecyclerView.Adapter<LibraryListAdapter.ViewHolder>() {
@@ -63,6 +66,10 @@ class LibraryListAdapter(
 
             binding.root.setOnClickListener {
                 itemClick(entity)
+            }
+
+            binding.editButton.setOnClickListener {
+                itemEditClick(entity.id)
             }
 
             binding.deleteButton.setOnClickListener {
