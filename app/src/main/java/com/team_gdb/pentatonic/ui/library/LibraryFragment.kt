@@ -2,24 +2,15 @@ package com.team_gdb.pentatonic.ui.library
 
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tapadoo.alerter.Alerter
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.TestLibraryData
-import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.LibraryEntity
-import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
-import com.team_gdb.pentatonic.ui.record_processing.InputCoverNameBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() {
     override val layoutResourceId: Int
@@ -65,7 +56,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
             libraryListAdapter.setItem(list)
         }
 
-        viewModel.coverDeleteComplete.observe(this) {
+        viewModel.completeCoverDelete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
                 Alerter.create(requireActivity())
                     .setText("커버 삭제 완료!")
@@ -90,9 +81,12 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
         viewModel.completeEditCoverName.observe(this) {
             if (it.getContentIfNotHandled() == true) {
-                // TODO 이름 변경 뮤테이션 구현
-
+                viewModel.editCover()
             }
+        }
+
+        viewModel.completeEditCoverNameMutation.observe(this) {
+            viewModel.getUserInfo("h2is1234")
         }
     }
 

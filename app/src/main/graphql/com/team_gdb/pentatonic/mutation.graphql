@@ -31,6 +31,14 @@ mutation UploadCoverMutation($uploadCoverInput: UploadCoverInput!) {
     }
 }
 
+# 커버 편집 (이름 변경) 뮤테이션
+mutation UpdateCoverMutation($updateCoverInput: UpdateCoverInput!) {
+    updateCover(input: $updateCoverInput){
+        name
+    }
+}
+
+
 # 커버 삭제 뮤테이션
 mutation DeleteCoverMutation($deleteCoverInput: DeleteCoverInput!) {
     deleteCover(input: $deleteCoverInput)

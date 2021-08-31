@@ -27,9 +27,10 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
 
     val selectedCoverID: MutableLiveData<String> = MutableLiveData()  // 선택한 커버 ID 저장
     val coverNameField: MutableLiveData<String> = MutableLiveData()  // 변경될 커버 이름
-    val completeEditCoverName: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 이름 변경 완료 여부
 
-    val coverDeleteComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 삭제 성공 여부
+    val completeEditCoverName: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 이름 변경 완료 여부
+    val completeEditCoverNameMutation: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 이름 변경 뮤테이션 호출 완료 여부
+    val completeCoverDelete: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 삭제 성공 여부
 
     /**
      * 사용자의 정보를 마이페이지에 적용하고, 라이브러리 정보도 가져옴
@@ -68,6 +69,24 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
         addDisposable(disposable)
     }
 
+    fun editCover() {
+        val disposable =
+            repository.editCover(selectedCoverID.value.toString(), coverNameField.value.toString())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onError = {
+                        Timber.i(it)
+                    },
+                    onSuccess = {
+                        if (it.hasErrors()) completeEditCoverNameMutation.postValue(Event(false))
+                        else completeEditCoverNameMutation.postValue(Event(true))
+                    }
+                )
+        addDisposable(disposable)
+    }
+
+
     /**
      * 라이브러리에서 특정 커버를 삭제함
      *
@@ -83,8 +102,8 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                         Timber.i(it)
                     },
                     onSuccess = {
-                        if (it.hasErrors()) coverDeleteComplete.postValue(Event(false))
-                        else coverDeleteComplete.postValue(Event(true))
+                        if (it.hasErrors()) completeCoverDelete.postValue(Event(false))
+                        else completeCoverDelete.postValue(Event(true))
                     }
                 )
         addDisposable(disposable)

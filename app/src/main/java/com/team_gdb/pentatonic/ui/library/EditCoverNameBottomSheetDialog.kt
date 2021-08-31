@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class EditCoverNameBottomSheetDialog :
     BaseBottomSheetDialogFragment<DialogEditCoverNameBinding, MyPageViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.dialog_input_cover_name
+        get() = R.layout.dialog_edit_cover_name
     override val viewModel: MyPageViewModel by sharedViewModel()
 
     override fun initStartView() {
@@ -25,6 +25,7 @@ class EditCoverNameBottomSheetDialog :
 
     override fun initAfterBinding() {
         binding.confirmCoverNameButton.setOnClickListener {
+            viewModel.completeEditCoverName.postValue(Event(true))
             dismiss()
         }
     }
