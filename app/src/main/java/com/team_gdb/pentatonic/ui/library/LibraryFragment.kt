@@ -1,5 +1,7 @@
 package com.team_gdb.pentatonic.ui.library
 
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
@@ -9,6 +11,7 @@ import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.LibraryEntity
+import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
@@ -34,7 +37,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 //            )
             },
             {
-                viewModel.deleteCover(it)
+                deleteDialog(it)
             }
         )
         binding.libraryList.apply {
@@ -63,6 +66,36 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
 
+        }
+    }
+
+    /**
+     * 커버 삭제 확인 다이얼로그
+     *
+     * @param coverId : 삭제할 커버 ID
+     */
+    private fun deleteDialog(coverId: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.apply {
+            this.setMessage("해당 커버를 삭제하시겠습니까?")
+            this.setNegativeButton("아니요") { _, _ -> }
+            this.setPositiveButton("네") { _, _ ->
+                viewModel.deleteCover(coverId)
+            }
+        }
+        builder.show().run {
+            getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.main_regular
+                )
+            )
+            getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.black
+                )
+            )
         }
     }
 }

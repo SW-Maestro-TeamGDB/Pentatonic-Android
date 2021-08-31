@@ -68,7 +68,6 @@
 
                 <ImageView
                     android:src="@drawable/ic_baseline_edit_24"
-                    android:layout_marginEnd="8dp"
                     android:scaleType="center"
                     android:id="@+id/editButton"
                     android:layout_width="40dp"
