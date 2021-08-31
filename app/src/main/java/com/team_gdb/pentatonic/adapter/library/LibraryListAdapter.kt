@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.LibraryEntity
+import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
 import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
@@ -15,7 +16,10 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class LibraryListAdapter(val itemClick: (LibraryEntity) -> Unit, val itemDeleteClick: (String) -> Unit) :
+class LibraryListAdapter(
+    val itemClick: (LibraryEntity) -> Unit,
+    val itemDeleteClick: (String) -> Unit
+) :
     RecyclerView.Adapter<LibraryListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<LibraryEntity> = emptyList()  // 커버 아이템 리스트 정보
@@ -48,12 +52,15 @@ class LibraryListAdapter(val itemClick: (LibraryEntity) -> Unit, val itemDeleteC
         fun bind(entity: LibraryEntity) {
             binding.coverNameTextView.text = entity.coverName
             binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverSessionTextView.text =
+                SessionSetting.valueOf(entity.coverSession).sessionName + " 커버"
 
             Glide.with(binding.root)
                 .load(entity.imageUrl)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
+
             binding.root.setOnClickListener {
                 itemClick(entity)
             }
