@@ -9,33 +9,46 @@ query GetUserInfo($getUserInfoUserId: Id) {
     getUserInfo(userId: $getUserInfoUserId) {
         id
         username
-        profileURI
         phoneNumber
+        profileURI
         prime
         introduce
         type
-        library {
-            songId
-            coverBy
-            coverURI
-            coverId
-            duration
+        band {
+            likeCount
+            backGroundURI
+            createDate
+            introduce
             name
-            date
+            creatorId
+            bandId
+            songId
+        }
+        library {
             position
+            date
+            name
+            duration
+            coverId
+            coverURI
+            coverBy
+            songId
+            song {
+                songId
+                name
+                songURI
+                songImg
+                genre
+                artist
+                album
+                weeklyChallenge
+                duration
+                level
+                releaseDate
+            }
         }
         followerCount
         followingCount
         followingStatus
-        band {
-            bandId
-            creatorId
-            songId
-            name
-            introduce
-            backGroundURI
-            createDate
-            likeCount
-        }
     }
 }

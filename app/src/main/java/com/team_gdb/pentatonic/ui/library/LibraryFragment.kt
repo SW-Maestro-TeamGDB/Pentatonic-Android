@@ -55,9 +55,9 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     coverName = it.name,
                     coverSession = it.position.rawValue,
                     id = it.coverId.toString(),
-                    imageUrl = "",
-                    introduction = "",
-                    originalSong = it.songId.toString()
+                    imageUrl = it.song.songImg,
+                    introduction = it.song.releaseDate.toString(),
+                    originalSong = it.song.name
                 )
             }
             libraryListAdapter.setItem(list)
