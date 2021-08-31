@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tapadoo.alerter.Alerter
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.TestLibraryData
@@ -60,6 +61,29 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 )
             }
             libraryListAdapter.setItem(list)
+        }
+
+        viewModel.coverDeleteComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                Alerter.create(requireActivity())
+                    .setText("커버 삭제 완료!")
+                    .setIcon(R.drawable.ic_acoustic_guitar)
+                    .setBackgroundColorRes(R.color.main_regular)
+                    .setIconColorFilter(0)
+                    .setIconSize(R.dimen.custom_icon_size)
+                    .show()
+
+                // 사용자 정보 리프레시
+                viewModel.getUserInfo("h2is1234")
+            } else if (!it.peekContent()) {
+                Alerter.create(requireActivity())
+                    .setText("오류가 발생했습니다. 다시 시도해주세요.")
+                    .setIcon(R.drawable.ic_acoustic_guitar)
+                    .setBackgroundColorRes(R.color.red)
+                    .setIconColorFilter(0)
+                    .setIconSize(R.dimen.custom_icon_size)
+                    .show()
+            }
         }
     }
 

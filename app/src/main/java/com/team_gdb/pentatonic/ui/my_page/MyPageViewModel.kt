@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetUserInfoQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
+import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -23,6 +24,8 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
 
     val libraryList: MutableLiveData<List<GetUserInfoQuery.Library>> =
         MutableLiveData()  // 라이브러리 리스트 정보
+
+    val coverDeleteComplete = MutableLiveData<Event<Boolean>>()  // 라이브러리 삭제 성공 여부
 
     /**
      * 사용자의 정보를 마이페이지에 적용하고, 라이브러리 정보도 가져옴
@@ -76,7 +79,8 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                         Timber.i(it)
                     },
                     onSuccess = {
-                        Timber.i(it.toString())
+                        if (it.hasErrors()) coverDeleteComplete.postValue(Event(false))
+                        else coverDeleteComplete.postValue(Event(true))
                     }
                 )
         addDisposable(disposable)

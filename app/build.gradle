@@ -125,4 +125,7 @@ dependencies {
 
     // Image Blur
     implementation 'jp.wasabeef:blurry:4.0.0'
+
+    // Alerter
+    implementation 'com.github.tapadoo:alerter:7.2.4'
 }
