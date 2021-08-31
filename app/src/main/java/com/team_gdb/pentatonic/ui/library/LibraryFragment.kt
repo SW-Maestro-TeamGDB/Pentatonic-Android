@@ -10,6 +10,8 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
+import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
+import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() {
@@ -58,24 +60,11 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
         viewModel.completeCoverDelete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
-                Alerter.create(requireActivity())
-                    .setText("커버 삭제 완료!")
-                    .setIcon(R.drawable.ic_acoustic_guitar)
-                    .setBackgroundColorRes(R.color.main_regular)
-                    .setIconColorFilter(0)
-                    .setIconSize(R.dimen.custom_icon_size)
-                    .show()
-
+                playSuccessAlert(requireActivity(), "커버 삭제 완료!")
                 // 사용자 정보 리프레시
                 viewModel.getUserInfo("h2is1234")
             } else if (!it.peekContent()) {
-                Alerter.create(requireActivity())
-                    .setText("오류가 발생했습니다. 다시 시도해주세요.")
-                    .setIcon(R.drawable.ic_acoustic_guitar)
-                    .setBackgroundColorRes(R.color.red)
-                    .setIconColorFilter(0)
-                    .setIconSize(R.dimen.custom_icon_size)
-                    .show()
+                playFailureAlert(requireActivity(), "오류가 발생했습니다. 다시 시도해주세요.")
             }
         }
 
@@ -86,7 +75,13 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         }
 
         viewModel.completeEditCoverNameMutation.observe(this) {
-            viewModel.getUserInfo("h2is1234")
+            if (it.getContentIfNotHandled() == true) {
+                playSuccessAlert(requireActivity(), "커버 제목 편집 완료!")
+                // 사용자 정보 리프레시
+                viewModel.getUserInfo("h2is1234")
+            } else if (!it.peekContent()) {
+                playFailureAlert(requireActivity(), "오류가 발생했습니다. 다시 시도해주세요.")
+            }
         }
     }
 

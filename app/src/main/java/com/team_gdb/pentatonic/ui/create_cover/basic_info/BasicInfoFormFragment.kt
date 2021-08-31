@@ -62,7 +62,7 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
                         ContextCompat.getColor(requireContext(), R.color.red)
                     )
                 }
-                PlayAnimation.playErrorAnimation(binding.formLayout)
+                PlayAnimation.playErrorAnimationOnEditText(binding.formLayout)
             }
         }
     }

@@ -10,7 +10,7 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.FragmentBandCoverSessionSettingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
-import com.team_gdb.pentatonic.util.PlayAnimation.playErrorAnimation
+import com.team_gdb.pentatonic.util.PlayAnimation.playErrorAnimationOnEditText
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class BandCoverSessionSettingFragment :
@@ -54,7 +54,7 @@ class BandCoverSessionSettingFragment :
 
         binding.completeSessionSettingButton.setOnClickListener {
             if (sessionSettingListAdapter.itemCount == 0) {
-                playErrorAnimation(binding.addSessionButton)
+                playErrorAnimationOnEditText(binding.addSessionButton)
                 Toast.makeText(context, "세션은 1개 이상 꼭 포함되어야 합니다!", Toast.LENGTH_LONG).apply {
                     setMargin(0F, 0.1F)
                     show()

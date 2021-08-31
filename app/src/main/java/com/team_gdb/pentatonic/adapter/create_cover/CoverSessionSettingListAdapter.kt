@@ -2,13 +2,11 @@ package com.team_gdb.pentatonic.adapter.create_cover
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.databinding.ItemSessionSettingListBinding
-import com.team_gdb.pentatonic.util.PlayAnimation
-import com.team_gdb.pentatonic.util.PlayAnimation.playErrorAnimation
+import com.team_gdb.pentatonic.util.PlayAnimation.playErrorAnimationOnEditText
 
 /**
  * 커버를 생성할 때, 해당 커버에 어떤 세션들이 참가할 수 있는지를 설정하기 위한 리사이클러뷰 어댑터
@@ -73,7 +71,7 @@ class CoverSessionSettingListAdapter(val itemLongClick: (SessionSettingEntity) -
                     entity.count -= 1
                     binding.countTextView.text = entity.count.toString()
                 } else {  // 오류 애니메이션 구동
-                    playErrorAnimation(binding.sessionSettingItemLayout)
+                    playErrorAnimationOnEditText(binding.sessionSettingItemLayout)
                 }
             }
 
