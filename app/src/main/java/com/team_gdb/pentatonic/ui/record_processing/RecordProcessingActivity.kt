@@ -95,7 +95,7 @@ class RecordProcessingActivity :
                 // 커버 정보 라이브러리에 업로드
                 viewModel.uploadCoverToLibrary(
                     viewModel.coverNameField.value.toString(),
-                    it, "000099998888777766665555", "VIOLIN"
+                    it, "611824fd287e5b0012e18160", "VIOLIN"
                 )
             }
         }

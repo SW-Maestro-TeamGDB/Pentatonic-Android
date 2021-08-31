@@ -27,11 +27,16 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         binding.viewModel = this.viewModel
         binding.titleBar.titleTextView.text = "라이브러리"
 
-        libraryListAdapter = LibraryListAdapter {
+        libraryListAdapter = LibraryListAdapter(
+            {
 //            findNavController().navigate(
-            // TOOD : 라이브러리 정보 페이지
+                // TOOD : 라이브러리 정보 페이지
 //            )
-        }
+            },
+            {
+                viewModel.deleteCover(it)
+            }
+        )
         binding.libraryList.apply {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = libraryListAdapter
@@ -45,7 +50,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 LibraryEntity(
                     coverName = it.name,
                     coverSession = it.position.rawValue,
-                    id = 0,
+                    id = it.coverId.toString(),
                     imageUrl = "",
                     introduction = "",
                     originalSong = it.songId.toString()

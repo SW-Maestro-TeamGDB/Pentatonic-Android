@@ -30,3 +30,8 @@ mutation UploadCoverMutation($uploadCoverInput: UploadCoverInput!) {
         position
     }
 }
+
+# 커버 삭제 뮤테이션
+mutation DeleteCoverMutation($deleteCoverInput: DeleteCoverInput!) {
+    deleteCover(input: $deleteCoverInput)
+}

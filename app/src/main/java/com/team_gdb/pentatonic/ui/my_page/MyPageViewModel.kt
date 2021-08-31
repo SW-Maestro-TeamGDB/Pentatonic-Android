@@ -24,6 +24,12 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val libraryList: MutableLiveData<List<GetUserInfoQuery.Library>> =
         MutableLiveData()  // 라이브러리 리스트 정보
 
+    /**
+     * 사용자의 정보를 마이페이지에 적용하고, 라이브러리 정보도 가져옴
+     * - LibraryFragment 에서 해당 데이터 옵저빙 함
+     *
+     * @param id : 사용자 식별을 위한 ID
+     */
     fun getUserInfo(id: String) {
         val disposable =
             repository.getUserInfo(id)
@@ -54,4 +60,26 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                 )
         addDisposable(disposable)
     }
+
+    /**
+     * 라이브러리에서 특정 커버를 삭제함
+     *
+     * @param coverId : 삭제할 커버의 아이디
+     */
+    fun deleteCover(coverId: String) {
+        val disposable =
+            repository.deleteCover(coverId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                    onError = {
+                        Timber.i(it)
+                    },
+                    onSuccess = {
+                        Timber.i(it.toString())
+                    }
+                )
+        addDisposable(disposable)
+    }
+
 }

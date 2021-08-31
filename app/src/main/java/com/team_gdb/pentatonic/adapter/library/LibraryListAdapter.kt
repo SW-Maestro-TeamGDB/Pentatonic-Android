@@ -15,7 +15,7 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class LibraryListAdapter(val itemClick: (LibraryEntity) -> Unit) :
+class LibraryListAdapter(val itemClick: (LibraryEntity) -> Unit, val itemDeleteClick: (String) -> Unit) :
     RecyclerView.Adapter<LibraryListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<LibraryEntity> = emptyList()  // 커버 아이템 리스트 정보
@@ -56,6 +56,10 @@ class LibraryListAdapter(val itemClick: (LibraryEntity) -> Unit) :
                 .into(binding.coverImage)
             binding.root.setOnClickListener {
                 itemClick(entity)
+            }
+
+            binding.deleteButton.setOnClickListener {
+                itemDeleteClick(entity.id)
             }
         }
     }

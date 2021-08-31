@@ -13,7 +13,7 @@ import java.io.Serializable
  * @property coverSession   세션 정보 (어떤 악기로 커버했는 지)
  */
 data class LibraryEntity(
-    val id: Int,
+    val id: String,
     val coverName: String,
     val originalSong: String,
     val imageUrl: String,
