@@ -30,7 +30,8 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 // TODO()
             },  // 라이브러리 편집
             {
-                editDialog(it)
+                viewModel.coverNameField.postValue(it.coverName)
+                editDialog(it.id)
             },  // 라이브러리 삭제
             {
                 deleteDialog(it)
@@ -55,6 +56,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     originalSong = it.song.name
                 )
             }
+
             libraryListAdapter.setItem(list)
         }
 

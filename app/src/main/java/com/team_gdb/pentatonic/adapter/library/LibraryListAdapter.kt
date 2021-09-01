@@ -20,7 +20,7 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  */
 class LibraryListAdapter(
     val itemClick: (LibraryEntity) -> Unit,
-    val itemEditClick: (String) -> Unit,
+    val itemEditClick: (LibraryEntity) -> Unit,
     val itemDeleteClick: (String) -> Unit
 ) :
     RecyclerView.Adapter<LibraryListAdapter.ViewHolder>() {
@@ -69,7 +69,7 @@ class LibraryListAdapter(
             }
 
             binding.editButton.setOnClickListener {
-                itemEditClick(entity.id)
+                itemEditClick(entity)
             }
 
             binding.deleteButton.setOnClickListener {
