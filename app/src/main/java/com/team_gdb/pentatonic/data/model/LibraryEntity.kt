@@ -15,6 +15,7 @@ import java.io.Serializable
 data class LibraryEntity(
     val id: String,
     val coverName: String,
+    val coverUrl: String,
     val originalSong: String,
     val imageUrl: String,
     val introduction: String,

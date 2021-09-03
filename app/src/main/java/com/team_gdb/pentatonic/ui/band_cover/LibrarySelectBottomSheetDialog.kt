@@ -3,7 +3,6 @@ package com.team_gdb.pentatonic.ui.band_cover
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestLibraryData
 import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogLibrarySelectBinding
@@ -42,6 +41,6 @@ class LibrarySelectBottomSheetDialog() :
         binding.closeButton.setOnClickListener {
             dismiss()
         }
-        librarySelectListAdapter.setItem(TestLibraryData.TEST_LIBRARY_DATA)
+//        librarySelectListAdapter.setItem(TestLibraryData.TEST_LIBRARY_DATA)
     }
 }

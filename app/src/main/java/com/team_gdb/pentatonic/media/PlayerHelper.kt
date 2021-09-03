@@ -1,6 +1,11 @@
 package com.team_gdb.pentatonic.media
 
+import android.media.AudioAttributes
+import android.media.AudioManager
 import android.media.MediaPlayer
+import android.net.Uri
+import com.team_gdb.pentatonic.base.BaseApplication
+import com.team_gdb.pentatonic.base.BaseApplication.Companion.applicationContext
 
 /**
  * 싱글톤 패턴으로 MediaPlayer 사용
@@ -9,8 +14,6 @@ object PlayerHelper {
     var player: MediaPlayer? = MediaPlayer()
     val duration: Int?
         get() = player?.duration
-    val currentPosition: Int?
-        get() = player?.currentPosition
 
     /**
      * MedialPlayer 세팅
@@ -19,13 +22,31 @@ object PlayerHelper {
      * @param listener    재생 완료 시 동작
      */
     fun initPlayer(filePath: String, listener: MediaPlayer.OnCompletionListener) {
-        if (player == null) {
-            player = MediaPlayer()
+        stopPlaying()
+        player = MediaPlayer().apply {
+            setDataSource(filePath)
+            prepare()
+            setOnCompletionListener(listener)
         }
-        player?.setDataSource(filePath)
-        player?.prepare()
+    }
 
-        setOnCompleteListener(listener)
+    fun initStreamingPlayer(url: String, listener: MediaPlayer.OnCompletionListener) {
+        stopPlaying()
+        player = MediaPlayer().apply {
+            setAudioAttributes(
+                AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MOVIE)
+                    .setLegacyStreamType(AudioManager.STREAM_MUSIC)
+                    .build()
+            )
+            setDataSource(
+                applicationContext(),
+                Uri.parse(url)
+            )
+            prepare()
+            setOnCompletionListener(listener)
+        }
     }
 
     // 음악 재생 시작
@@ -47,11 +68,6 @@ object PlayerHelper {
     // 재생 구간 탐색
     fun seekTo(progress: Int) {
         player?.seekTo(progress)
-    }
-
-    // 재생 완료 시 수행할 동작
-    private fun setOnCompleteListener(listener: MediaPlayer.OnCompletionListener) {
-        player?.setOnCompletionListener(listener)
     }
 
 }

@@ -5,21 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
-import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
  * 라이브러리에 저장된 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
  *
- * @property itemClick        해당 커버 정보 페이지로 이동하는 동작
+ * @property itemPlayClick    해당 커버 재생하는 동작
  * @property itemEditClick    해당 커버 정보 수정하는 동작
  * @property itemDeleteClick  해당 커버 삭제하는 동작
  */
 class LibraryListAdapter(
-    val itemClick: (LibraryEntity) -> Unit,
+    val itemPlayClick: (LibraryEntity) -> Unit,
     val itemEditClick: (LibraryEntity) -> Unit,
     val itemDeleteClick: (String) -> Unit
 ) :
@@ -64,8 +62,8 @@ class LibraryListAdapter(
                 .override(480, 272)
                 .into(binding.coverImage)
 
-            binding.root.setOnClickListener {
-                itemClick(entity)
+            binding.playButton.setOnClickListener {
+                itemPlayClick(entity)
             }
 
             binding.editButton.setOnClickListener {

@@ -138,6 +138,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/playButton"
                     app:tint="@color/white"
                     android:layout_width="30dp"
                     android:layout_height="30dp"

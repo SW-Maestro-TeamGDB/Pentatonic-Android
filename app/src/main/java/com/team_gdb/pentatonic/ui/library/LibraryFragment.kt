@@ -9,6 +9,9 @@ import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
+import com.team_gdb.pentatonic.media.PlayerHelper.initStreamingPlayer
+import com.team_gdb.pentatonic.media.PlayerHelper.pausePlaying
+import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
@@ -27,8 +30,11 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         binding.titleBar.titleTextView.text = "라이브러리"
 
         libraryListAdapter = LibraryListAdapter(
-            {   // 라이브러리 클릭
-                // TODO()
+            {   // 라이브러리 재생
+                initStreamingPlayer(it.coverUrl) {
+                    pausePlaying()
+                }
+                startPlaying()
             },  // 라이브러리 편집
             {
                 viewModel.coverNameField.postValue(it.coverName)
@@ -51,6 +57,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 LibraryEntity(
                     coverName = it.name,
                     coverSession = it.position.rawValue,
+                    coverUrl = it.coverURI,
                     id = it.coverId.toString(),
                     imageUrl = it.song.songImg,
                     introduction = it.song.releaseDate.toString(),
@@ -93,7 +100,6 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
         }
         recyclerViewTouchListener = RecyclerTouchListener(activity, binding.libraryList).apply {
-            setSwipeOptionViews(R.id.editButton, R.id.deleteButton)
             setSwipeable(
                 R.id.foregroundCard,
                 R.id.backgroundCard
