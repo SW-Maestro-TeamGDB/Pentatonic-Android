@@ -14,15 +14,30 @@
             android:orientation="vertical"
             tools:context=".ui.profile.ProfileActivity">
 
-            <TextView
-                android:layout_marginHorizontal="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
+            <RelativeLayout
                 android:layout_marginTop="@dimen/page_title_margin_top"
-                android:textSize="@dimen/page_title_text_size"
-                android:fontFamily="@font/nanum_bold"
-                android:text="마이페이지" />
+                android:layout_marginHorizontal="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/page_title_text_size"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="마이페이지" />
+
+                <ImageView
+                    android:src="@drawable/ic_baseline_settings_24"
+                    app:tint="@color/button_background_gray"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_marginHorizontal="24dp"
