@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
-import com.tapadoo.alerter.Alerter
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
@@ -96,8 +95,8 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         recyclerViewTouchListener = RecyclerTouchListener(activity, binding.libraryList).apply {
             setSwipeOptionViews(R.id.editButton, R.id.deleteButton)
             setSwipeable(
-                R.color.white,
-                R.color.red
+                R.id.foregroundCard,
+                R.id.backgroundCard
             ) { viewID, position ->
                 when (viewID) {
                     R.id.editButton -> {  // 편집 버튼

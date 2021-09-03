@@ -1,86 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        android:layout_marginBottom="16dp"
-        app:cardElevation="0dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp">
-
-            <ImageView
-                android:id="@+id/coverImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                android:scaleType="centerCrop"
-                android:tintMode="src_over"
-                app:tint="#80000000" />
+        <androidx.cardview.widget.CardView
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="24dp"
+            android:id="@+id/backgroundCard"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
 
             <LinearLayout
-                android:layout_marginHorizontal="24dp"
-                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/coverNameTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="커버 제목"
-                    android:textColor="@color/white"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:id="@+id/coverOriginalSongTextView"
-                    android:layout_marginTop="4dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="DAY6 - You make me"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/coverSessionTextView"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="세션 명"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginEnd="16dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:src="@drawable/ic_baseline_edit_24"
-                    android:scaleType="center"
+                <LinearLayout
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/editButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:src="@drawable/ic_baseline_delete_forever_24"
-                    android:scaleType="center"
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:tint="@color/button_background_gray"
+                        android:scaleType="center"
+                        android:layout_marginEnd="8dp"
+                        android:src="@drawable/ic_baseline_edit_24" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="편집"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="16dp"
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/deleteButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        app:tint="@color/button_background_gray"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_baseline_delete_forever_24" />
+
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="삭제"/>
+                </LinearLayout>
+
 
             </LinearLayout>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_marginHorizontal="24dp"
+            android:id="@+id/foregroundCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <ImageView
+                    android:id="@+id/coverImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/black"
+                    android:scaleType="centerCrop"
+                    android:tintMode="src_over"
+                    app:tint="#80000000" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginHorizontal="24dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/coverNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="커버 제목"
+                        android:textColor="@color/white"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/coverOriginalSongTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:text="DAY6 - You make me"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/coverSessionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:text="세션 명"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </layout>
