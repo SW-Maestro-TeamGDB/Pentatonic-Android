@@ -12,6 +12,12 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
+import com.team_gdb.pentatonic.media.PlayerHelper
+import com.team_gdb.pentatonic.media.PlayerHelper.duration
+import com.team_gdb.pentatonic.media.PlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.PlayerHelper.pausePlaying
+import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
+import com.team_gdb.pentatonic.media.PlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
@@ -52,7 +58,12 @@ class RecordProcessingActivity :
     override fun initStartView() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        initPlayer()
+
+        initPlayer(recordingFilePath) {
+            pausePlaying()
+        }
+        totalDuration = duration!!.toFloat()
+        interval = duration!!.toFloat().div(100)
 
         Timber.d(createdCoverEntity.toString())
 
@@ -234,28 +245,13 @@ class RecordProcessingActivity :
         player?.setAuxEffectSendLevel(1.0f)
     }
 
-    /**
-     * MediaPlayer 초기화
-     */
-    private fun initPlayer() {
-        player = MediaPlayer().apply {
-            setDataSource(recordingFilePath)
-            prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
-            setOnCompletionListener {  // 끝까지 재생이 끝났을 때
-                pausePlaying()
-            }
-            totalDuration = this.duration.toFloat()
-            interval = this.duration.toFloat().div(100)
-        }
-    }
-
-    /**
+    /*
      * 녹음본을 재생
      */
     private fun startPlaying() {
 //        setPresetReverb()
         setPresetReverb()
-        player?.start()
+        PlayerHelper.startPlaying()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {
             while (player?.isPlaying == true) {
@@ -276,16 +272,8 @@ class RecordProcessingActivity :
      * 음원 재생 일시 정지
      */
     private fun pausePlaying() {
-        player?.pause()
+        PlayerHelper.pausePlaying()
         viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
-    }
-
-    /**
-     * 음원 재생 중지
-     */
-    private fun stopPlaying() {
-        player?.release()
-        player = null
     }
 
     /**

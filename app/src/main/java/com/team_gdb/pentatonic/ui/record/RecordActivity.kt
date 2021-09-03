@@ -38,7 +38,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
 
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
-    // private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
 
     private val createdCoverEntity: CreatedCoverEntity by lazy {
         intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedCoverEntity
@@ -162,33 +161,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         viewModel.buttonState.postValue(ButtonState.BEFORE_RECORDING)
     }
 
-//    /**
-//     * 녹음본을 재생 (리버브 이펙트 테스트)
-//     */
-//    private fun startPlaying() {
-//        player = MediaPlayer()
-//            .apply {
-//                setDataSource(mrFilePath)
-//                prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
-//            }
-//
-//        player?.start()  // 재생
-//
-//        // 끝까지 재생이 끝났을 때
-//        player?.setOnCompletionListener {
-//            binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
-//            stopPlaying()
-//            stopRecording()
-//        }
-//    }
-//
-//    /**
-//     * 음원 재생 중지
-//     */
-//    private fun stopPlaying() {
-//        player?.release()
-//        player = null
-//    }
 
     companion object {
         const val AMPLITUDE_DATA = "AMPLITUDE_DATA"
