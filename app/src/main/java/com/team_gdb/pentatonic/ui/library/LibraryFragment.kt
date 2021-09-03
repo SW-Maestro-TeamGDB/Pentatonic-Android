@@ -98,14 +98,6 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 R.id.foregroundCard,
                 R.id.backgroundCard
             ) { viewID, position ->
-                when (viewID) {
-                    R.id.editButton -> {  // 편집 버튼
-
-                    }
-                    R.id.deleteButton -> {  // 삭제 버튼
-
-                    }
-                }
 
             }
         }
