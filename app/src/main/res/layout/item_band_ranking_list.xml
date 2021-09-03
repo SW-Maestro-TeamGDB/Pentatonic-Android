@@ -65,11 +65,11 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_play"
-            android:layout_alignParentEnd="true"
             android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_play" />
 
     </RelativeLayout>
 
