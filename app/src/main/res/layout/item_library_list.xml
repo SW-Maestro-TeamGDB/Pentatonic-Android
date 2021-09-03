@@ -34,12 +34,14 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        app:tint="@color/button_background_gray"
+                        app:tint="@color/main_regular"
                         android:scaleType="center"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_baseline_edit_24" />
 
                     <TextView
+                        android:textColor="@color/main_regular"
+                        android:fontFamily="@font/nanum_regular"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -64,6 +66,7 @@
                         android:src="@drawable/ic_baseline_delete_forever_24" />
 
                     <TextView
+                        android:fontFamily="@font/nanum_regular"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
