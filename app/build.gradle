@@ -128,4 +128,8 @@ dependencies {
 
     // Alerter
     implementation 'com.github.tapadoo:alerter:7.2.4'
+
+    // Enhanced RecyclerView (Swipe Action)
+    implementation 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0'
+
 }

@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.library
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
 import com.tapadoo.alerter.Alerter
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
@@ -20,6 +21,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
     override val viewModel: MyPageViewModel by sharedViewModel()
 
     private lateinit var libraryListAdapter: LibraryListAdapter
+    private lateinit var recyclerViewTouchListener: RecyclerTouchListener
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -91,6 +93,25 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         binding.titleBar.backButton.setOnClickListener {
 
         }
+        recyclerViewTouchListener = RecyclerTouchListener(activity, binding.libraryList).apply {
+            setSwipeOptionViews(R.id.editButton, R.id.deleteButton)
+            setSwipeable(
+                R.color.white,
+                R.color.red
+            ) { viewID, position ->
+                when (viewID) {
+                    R.id.editButton -> {  // 편집 버튼
+
+                    }
+                    R.id.deleteButton -> {  // 삭제 버튼
+
+                    }
+                }
+
+            }
+        }
+        binding.libraryList.addOnItemTouchListener(recyclerViewTouchListener)
+
     }
 
     /**
