@@ -1,9 +1,7 @@
 package com.team_gdb.pentatonic.ui.record
 
 import android.content.Intent
-import android.media.MediaPlayer
 import android.media.MediaRecorder
-import android.media.audiofx.PresetReverb
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -13,7 +11,9 @@ import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
-import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
+import com.team_gdb.pentatonic.media.PlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
+import com.team_gdb.pentatonic.media.PlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
 import timber.log.Timber
@@ -38,7 +38,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
 
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
-    private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
+    // private var player: MediaPlayer? = null  // MediaPlayer 사용하지 않을 때는 메모리 해제
 
     private val createdCoverEntity: CreatedCoverEntity by lazy {
         intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedCoverEntity
@@ -75,6 +75,12 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
 
     override fun initAfterBinding() {
+        initPlayer(mrFilePath) {
+            binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
+            stopPlaying()
+            stopRecording()
+        }
+
         binding.titleBar.backButton.setOnClickListener {
             finish()
         }
@@ -156,33 +162,33 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         viewModel.buttonState.postValue(ButtonState.BEFORE_RECORDING)
     }
 
-    /**
-     * 녹음본을 재생 (리버브 이펙트 테스트)
-     */
-    private fun startPlaying() {
-        player = MediaPlayer()
-            .apply {
-                setDataSource(mrFilePath)
-                prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
-            }
-
-        player?.start()  // 재생
-
-        // 끝까지 재생이 끝났을 때
-        player?.setOnCompletionListener {
-            binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
-            stopPlaying()
-            stopRecording()
-        }
-    }
-
-    /**
-     * 음원 재생 중지
-     */
-    private fun stopPlaying() {
-        player?.release()
-        player = null
-    }
+//    /**
+//     * 녹음본을 재생 (리버브 이펙트 테스트)
+//     */
+//    private fun startPlaying() {
+//        player = MediaPlayer()
+//            .apply {
+//                setDataSource(mrFilePath)
+//                prepare() // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
+//            }
+//
+//        player?.start()  // 재생
+//
+//        // 끝까지 재생이 끝났을 때
+//        player?.setOnCompletionListener {
+//            binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
+//            stopPlaying()
+//            stopRecording()
+//        }
+//    }
+//
+//    /**
+//     * 음원 재생 중지
+//     */
+//    private fun stopPlaying() {
+//        player?.release()
+//        player = null
+//    }
 
     companion object {
         const val AMPLITUDE_DATA = "AMPLITUDE_DATA"

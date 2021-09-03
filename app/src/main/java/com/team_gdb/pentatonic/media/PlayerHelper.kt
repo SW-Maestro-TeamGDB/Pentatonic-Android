@@ -5,7 +5,7 @@ import android.media.MediaPlayer
 /**
  * 싱글톤 패턴으로 MediaPlayer 사용
  */
-object MediaHelper {
+object PlayerHelper {
     var player: MediaPlayer? = MediaPlayer()
 
     /**
