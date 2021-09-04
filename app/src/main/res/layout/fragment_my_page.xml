@@ -30,20 +30,20 @@
                     android:text="마이페이지" />
 
                 <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginEnd="8dp"
                     android:layout_toStartOf="@+id/settingButton"
                     android:src="@drawable/ic_baseline_edit_24"
-                    app:tint="@color/button_background_gray"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"/>
+                    app:tint="@color/button_background_gray" />
 
                 <ImageView
                     android:id="@+id/settingButton"
                     android:src="@drawable/ic_baseline_settings_24"
                     app:tint="@color/button_background_gray"
                     android:layout_alignParentEnd="true"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"/>
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
 
             </RelativeLayout>
 

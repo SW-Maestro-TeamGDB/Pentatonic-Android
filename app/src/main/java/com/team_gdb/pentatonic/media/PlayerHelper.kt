@@ -16,7 +16,7 @@ object PlayerHelper {
         get() = player?.duration
 
     /**
-     * MedialPlayer 세팅
+     * MediaPlayer 세팅
      *
      * @param filePath    재생할 음원의 경로
      * @param listener    재생 완료 시 동작
@@ -30,6 +30,12 @@ object PlayerHelper {
         }
     }
 
+    /**
+     * 스트리밍 전용 MediaPlayer 세팅
+     *
+     * @param url         재생할 음원의 URL
+     * @param listener    재생 완료 시 동작
+     */
     fun initStreamingPlayer(url: String, listener: MediaPlayer.OnCompletionListener) {
         stopPlaying()
         player = MediaPlayer().apply {

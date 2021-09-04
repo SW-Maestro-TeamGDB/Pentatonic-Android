@@ -12,10 +12,12 @@ import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
 import com.team_gdb.pentatonic.media.PlayerHelper.initStreamingPlayer
 import com.team_gdb.pentatonic.media.PlayerHelper.pausePlaying
 import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
+import com.team_gdb.pentatonic.media.PlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() {
     override val layoutResourceId: Int
@@ -23,7 +25,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
     override val viewModel: MyPageViewModel by sharedViewModel()
 
     private lateinit var libraryListAdapter: LibraryListAdapter
-    private lateinit var recyclerViewTouchListener: RecyclerTouchListener
+    private lateinit var itemSwipeListener: RecyclerTouchListener
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -31,6 +33,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
         libraryListAdapter = LibraryListAdapter(
             {   // 라이브러리 재생
+                Timber.d("커버 URL : ${it.coverUrl}")
                 initStreamingPlayer(it.coverUrl) {
                     pausePlaying()
                 }
@@ -99,7 +102,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         binding.titleBar.backButton.setOnClickListener {
 
         }
-        recyclerViewTouchListener = RecyclerTouchListener(activity, binding.libraryList).apply {
+        itemSwipeListener = RecyclerTouchListener(activity, binding.libraryList).apply {
             setSwipeable(
                 R.id.foregroundCard,
                 R.id.backgroundCard
@@ -107,7 +110,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
             }
         }
-        binding.libraryList.addOnItemTouchListener(recyclerViewTouchListener)
+        binding.libraryList.addOnItemTouchListener(itemSwipeListener)
 
     }
 
@@ -149,5 +152,11 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         // 커버 이름 변경하는 모달 시트 띄움 (이후 커버 이름 변경 완료 이벤트 관찰)
         val bottomSheetDialog = EditCoverNameBottomSheetDialog()
         bottomSheetDialog.show(parentFragmentManager, bottomSheetDialog.tag)
+    }
+
+    override fun onDestroy() {
+        // 음악 재생 중단
+        stopPlaying()
+        super.onDestroy()
     }
 }
