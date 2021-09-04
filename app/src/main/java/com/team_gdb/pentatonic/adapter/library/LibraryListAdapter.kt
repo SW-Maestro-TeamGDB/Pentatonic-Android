@@ -52,7 +52,7 @@ class LibraryListAdapter(
 
         fun bind(entity: LibraryEntity) {
             binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverOriginalSongTextView.text = entity.originalSong.name
             binding.coverSessionTextView.text =
                 SessionSetting.valueOf(entity.coverSession).sessionName + " 커버"
 
