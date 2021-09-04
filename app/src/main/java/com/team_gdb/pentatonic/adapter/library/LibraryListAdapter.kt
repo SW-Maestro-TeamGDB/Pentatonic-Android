@@ -53,8 +53,8 @@ class LibraryListAdapter(
         fun bind(entity: LibraryEntity) {
             binding.coverNameTextView.text = entity.coverName
             binding.coverOriginalSongTextView.text = entity.originalSong.name
-            binding.coverSessionTextView.text =
-                SessionSetting.valueOf(entity.coverSession).sessionName + " 커버"
+            binding.coverSessionAndDateTextView.text =
+                "${SessionSetting.valueOf(entity.coverSession).sessionName} 커버 | ${entity.coverDate}"
 
             Glide.with(binding.root)
                 .load(entity.imageUrl)
