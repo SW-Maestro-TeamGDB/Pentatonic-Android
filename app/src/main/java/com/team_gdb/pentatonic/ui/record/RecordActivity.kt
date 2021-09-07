@@ -130,6 +130,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         // 녹음 시작 시 초기화
         recorder = MediaRecorder()
             .apply {
+
                 setAudioSource(MediaRecorder.AudioSource.MIC)
                 setOutputFormat(MediaRecorder.OutputFormat.MPEG_4) // 포멧
                 setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // 인코더
