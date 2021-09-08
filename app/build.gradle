@@ -132,4 +132,9 @@ dependencies {
     // Enhanced RecyclerView (Swipe Action)
     implementation 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0'
 
+
+    // ExoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.15.0'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.15.0'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
 }

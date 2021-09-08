@@ -11,9 +11,9 @@ import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
-import com.team_gdb.pentatonic.media.PlayerHelper.initPlayer
-import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
-import com.team_gdb.pentatonic.media.PlayerHelper.stopPlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.startPlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
 import timber.log.Timber

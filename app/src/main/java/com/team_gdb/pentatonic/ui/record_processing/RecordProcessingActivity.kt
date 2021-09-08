@@ -12,12 +12,10 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
-import com.team_gdb.pentatonic.media.PlayerHelper
-import com.team_gdb.pentatonic.media.PlayerHelper.duration
-import com.team_gdb.pentatonic.media.PlayerHelper.initPlayer
-import com.team_gdb.pentatonic.media.PlayerHelper.pausePlaying
-import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
-import com.team_gdb.pentatonic.media.PlayerHelper.stopPlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.duration
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
@@ -115,6 +113,7 @@ class RecordProcessingActivity :
         viewModel.coverUploadComplete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
+
             }
         }
     }
@@ -251,7 +250,7 @@ class RecordProcessingActivity :
     private fun startPlaying() {
 //        setPresetReverb()
         setPresetReverb()
-        PlayerHelper.startPlaying()
+        ExoPlayerHelper.startPlaying()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {
             while (player?.isPlaying == true) {
@@ -272,7 +271,7 @@ class RecordProcessingActivity :
      * 음원 재생 일시 정지
      */
     private fun pausePlaying() {
-        PlayerHelper.pausePlaying()
+        ExoPlayerHelper.pausePlaying()
         viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
     }
 

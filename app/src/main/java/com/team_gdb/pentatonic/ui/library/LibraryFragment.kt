@@ -9,10 +9,10 @@ import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.databinding.FragmentLibraryBinding
-import com.team_gdb.pentatonic.media.PlayerHelper.initStreamingPlayer
-import com.team_gdb.pentatonic.media.PlayerHelper.pausePlaying
-import com.team_gdb.pentatonic.media.PlayerHelper.startPlaying
-import com.team_gdb.pentatonic.media.PlayerHelper.stopPlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.pausePlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.startPlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
@@ -34,7 +34,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
         libraryListAdapter = LibraryListAdapter(
             {   // 라이브러리 재생
                 Timber.d("커버 URL : ${it.coverUrl}")
-                initStreamingPlayer(it.coverUrl) {
+                initPlayer(it.coverUrl) {
                     pausePlaying()
                 }
                 startPlaying()
