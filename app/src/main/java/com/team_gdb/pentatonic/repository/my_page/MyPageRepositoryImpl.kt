@@ -14,7 +14,7 @@ import io.reactivex.rxjava3.core.Single
 
 class MyPageRepositoryImpl : MyPageRepository {
     override fun getUserInfo(id: String): Observable<Response<GetUserInfoQuery.Data>> =
-        apolloClient.rxQuery(GetUserInfoQuery(getUserInfoUserId = Input.optional(id)))
+        apolloClient.rxQuery(GetUserInfoQuery(getUserInfoUserId = id))
 
     override fun editCover(
         coverId: String,
