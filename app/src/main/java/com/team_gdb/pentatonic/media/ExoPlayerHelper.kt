@@ -1,11 +1,10 @@
 package com.team_gdb.pentatonic.media
 
-import android.media.AudioAttributes
-import android.media.AudioManager
-import android.media.MediaParser
 import android.media.MediaPlayer
 import android.net.Uri
+import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -24,16 +23,37 @@ object ExoPlayerHelper {
     val duration: Long
         get() = player.duration
 
-    fun initPlayer(filePath: String, listener: MediaPlayer.OnCompletionListener) {
+    /**
+     * ExoPlayer 객체 생성
+     *
+     * @param filePath  음원 파일 경로 (URI 파싱 가능한 형태의 String)
+     */
+    fun initPlayer(filePath: String, onCompletePlaying: () -> Unit) {
         stopPlaying()
         val trackSelector = DefaultTrackSelector(applicationContext())
         player = SimpleExoPlayer.Builder(applicationContext())
             .setTrackSelector(trackSelector)
             .build()
-        player.setMediaSource(buildMediaSource(filePath = filePath))
-        player.prepare()
+            .apply {
+                addListener(object : Player.Listener {
+                    override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                        if (playbackState == Player.STATE_ENDED) {
+                            onCompletePlaying()
+                        }
+                        super.onPlayerStateChanged(playWhenReady, playbackState)
+                    }
+                })
+                setMediaSource(buildMediaSource(filePath = filePath))
+                prepare()
+            }
     }
 
+    /**
+     * MediaSource 생성
+     *
+     * @param filePath   재생할 음원의 URI
+     * @return           MediaSource 객체
+     */
     private fun buildMediaSource(filePath: String): MediaSource {
         val dataSourceFactory: DataSource.Factory =
             DefaultDataSourceFactory(
