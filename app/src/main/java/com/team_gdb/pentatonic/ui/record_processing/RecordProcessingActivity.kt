@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.media.audiofx.BassBoost
 import android.media.audiofx.EnvironmentalReverb
@@ -17,8 +18,10 @@ import com.team_gdb.pentatonic.media.ExoPlayerHelper.duration
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
+import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
+import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
@@ -60,8 +63,8 @@ class RecordProcessingActivity :
         initPlayer(recordingFilePath) {
             pausePlaying()
         }
-        totalDuration = duration!!.toFloat()
-        interval = duration!!.toFloat().div(100)
+        totalDuration = duration.toFloat()
+        interval = duration.toFloat().div(100)
 
         Timber.d(createdCoverEntity.toString())
 
@@ -113,7 +116,12 @@ class RecordProcessingActivity :
         viewModel.coverUploadComplete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
+                // 커버 업로드 성공 시 Alert 애니메이션 실행
+                PlayAnimation.playSuccessAlert(this, "커버가 성공적으로 업로드 되었습니다!")
 
+                // TODO 커버 정보 페이지 구현 뒤 커버 정보로 이동
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
             }
         }
     }

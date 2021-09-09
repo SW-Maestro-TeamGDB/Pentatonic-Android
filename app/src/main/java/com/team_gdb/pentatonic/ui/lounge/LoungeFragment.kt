@@ -26,7 +26,6 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverHorizontalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
