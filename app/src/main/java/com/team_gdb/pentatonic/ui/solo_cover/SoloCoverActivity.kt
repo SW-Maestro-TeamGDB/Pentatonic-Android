@@ -23,14 +23,25 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
         binding.coverNameTextView.text = coverEntity.coverName
         binding.coverIntroductionTextView.text = coverEntity.introduction
 
+        binding.coverLikeTextView.text = coverEntity.like.toString()
+        binding.coverViewTextView.text = coverEntity.view.toString()
+
         Glide.with(this)
             .load(coverEntity.imageUrl)
             .placeholder(R.drawable.placeholder_cover_bg)
             .override(480, 272)
             .into(binding.coverImage)
 
-        binding.coverLikeTextView.text = coverEntity.like.toString()
-        binding.coverViewTextView.text = coverEntity.view.toString()
+        // 솔로 커버는 세션 구성원이 1명인 밴드 커버로 취급됨. 따라서 아래와 같이 필드를 접근하면 됨.
+        Glide.with(this)
+            .load(coverEntity.sessionDataList[0].sessionParticipantList[0].introduction)
+            .placeholder(R.drawable.profile_image_placeholder)
+            .override(80, 80)
+            .into(binding.userProfileImage)
+
+        binding.userNameTextView.text = coverEntity.sessionDataList[0].sessionParticipantList[0].username
+        binding.userIntroductionTextView.text = coverEntity.sessionDataList[0].sessionParticipantList[0].introduction
+
     }
 
     override fun initDataBinding() {
