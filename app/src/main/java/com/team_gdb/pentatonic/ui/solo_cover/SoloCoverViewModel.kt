@@ -1,7 +1,6 @@
 package com.team_gdb.pentatonic.ui.solo_cover
 
-import androidx.lifecycle.ViewModel
+import com.team_gdb.pentatonic.base.BaseViewModel
 
-class SoloCoverViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class SoloCoverViewModel : BaseViewModel() {
 }

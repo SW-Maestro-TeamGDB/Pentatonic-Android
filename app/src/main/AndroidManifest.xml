@@ -23,22 +23,26 @@
             android:exported="true" />
         <activity
             android:name=".ui.create_cover.CreateCoverActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity android:name=".ui.record_processing.RecordProcessingActivity" />
         <activity android:name=".ui.record.RecordActivity" />
         <activity android:name=".ui.user_verify.UserVerifyActivity"></activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.band_cover.BandCoverActivity" />
-        <activity android:name=".ui.solo_cover.SoloCoverActivity" />
-        <activity android:name=".ui.profile.ProfileActivity" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="true">
+        <activity android:name=".ui.solo_cover.SoloCoverActivity" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.profile.ProfileActivity" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".ui.home.HomeActivity"
