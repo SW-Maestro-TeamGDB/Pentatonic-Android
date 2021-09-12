@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.user_verify
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.data.model.RegisterForm
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -22,8 +23,8 @@ class UserVerifyViewModel(private val repository: UserVerifyRepository) : BaseVi
         val parsedPhoneNumber = "+82" + phoneNumberField.value!!.substring(1)
         Timber.d("변환한 전화번호 : $parsedPhoneNumber")
         val disposable =
-            repository.sendAuthCode(parsedPhoneNumber).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+            repository.sendAuthCode(parsedPhoneNumber)
+                .applySchedulers()
                 .subscribeBy(
                     onSuccess = {
                         if (it.data != null) {

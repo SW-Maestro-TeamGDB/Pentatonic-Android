@@ -8,6 +8,7 @@ import com.apollographql.apollo.rx3.rxMutate
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.UploadCoverFileMutation
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.type.UploadCoverFileInput
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -36,8 +37,7 @@ class UploadTestActivity : AppCompatActivity() {
                 UploadCoverFileInput(file = FileUpload("audio/mpeg3", filePath))
             )
         )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .applySchedulers()
             .subscribeBy(
                 onError = {
                     Timber.i(it)

@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.register
 import android.util.EventLog
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -23,8 +24,7 @@ class RegisterViewModel(private val repository: RegisterRepository) : BaseViewMo
 
         var eventResult = arrayOf(false, false)
         repository.isValidForm(id, nickname)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+            .applySchedulers()
             .subscribeBy(
                 onNext = {
                     if (it.data?.isValidId == true) {

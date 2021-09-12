@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.my_page
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetUserInfoQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -41,8 +42,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     fun getUserInfo(id: String) {
         val disposable =
             repository.getUserInfo(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .applySchedulers()
                 .subscribeBy(
                     onError = {
                         Timber.i(it)
@@ -72,8 +72,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     fun editCover() {
         val disposable =
             repository.editCover(selectedCoverID.value.toString(), coverNameField.value.toString())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .applySchedulers()
                 .subscribeBy(
                     onError = {
                         Timber.i(it)
@@ -95,8 +94,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     fun deleteCover(coverId: String) {
         val disposable =
             repository.deleteCover(coverId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .applySchedulers()
                 .subscribeBy(
                     onError = {
                         Timber.i(it)

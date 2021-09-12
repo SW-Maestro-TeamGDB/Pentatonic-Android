@@ -4,6 +4,7 @@ import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
 import com.team_gdb.pentatonic.ui.record.ButtonState
 import com.team_gdb.pentatonic.util.Event
@@ -57,8 +58,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     fun uploadCoverFile(filePath: String) {
         val disposable =
             repository.uploadCoverFile(filePath)
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(Schedulers.io())
+                .applySchedulers()
                 .subscribeBy(
                     onError = {
                         Timber.i(it)
@@ -80,8 +80,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     fun uploadCoverToLibrary(name: String, coverURI: String, songId: String, position: String) {
         val disposable =
             repository.uploadCoverToLibrary(name, coverURI, songId, position)
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .observeOn(Schedulers.io())
+                .applySchedulers()
                 .subscribeBy(
                     onError = {
                         Timber.i(it)

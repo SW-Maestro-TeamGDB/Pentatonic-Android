@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.ui.login
 
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -22,8 +23,7 @@ class LoginViewModel(private val repository: LoginRepository) : BaseViewModel() 
     fun login() {
         val disposable =
             repository.requestLogin(idField.value.toString(), passwordField.value.toString())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .applySchedulers()
                 .subscribeBy {
                     Timber.d(it.data?.login.toString())
                     if (!it.hasErrors()) {
