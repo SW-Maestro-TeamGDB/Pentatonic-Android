@@ -33,11 +33,6 @@
         <activity android:name=".ui.band_cover.BandCoverActivity" />
         <activity android:name=".ui.solo_cover.SoloCoverActivity" >
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity
@@ -47,7 +42,14 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/noStatusBar"></activity>
+            android:theme="@style/noStatusBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
     <uses-feature
         android:name="android.software.leanback"

@@ -11,6 +11,7 @@ import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.solo_cover.SoloCoverActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,7 +44,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
         // 솔로 커버 리사이클러뷰 어댑터 생성
         soloCoverListAdapter = CoverHorizontalListAdapter {
-            it
+            val intent = Intent(requireContext(), SoloCoverActivity::class.java)
+            intent.putExtra(COVER_ENTITY, it)
+            startActivity(intent)
         }
 
         binding.soloCoverList.apply {
