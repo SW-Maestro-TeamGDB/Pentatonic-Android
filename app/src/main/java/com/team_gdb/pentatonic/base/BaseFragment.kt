@@ -9,8 +9,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.team_gdb.pentatonic.util.ViewUtil
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment() {
+
+    private val compositeDisposable = CompositeDisposable()
+
+    fun addDisposable(disposable: Disposable) {
+        compositeDisposable.add(disposable)
+    }
 
     private var activity: BaseActivity<*, *>? = null
 
@@ -62,5 +70,11 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
             it.isEnabled = visible
             it.visibility = if (visible) View.VISIBLE else View.INVISIBLE
         }
+    }
+
+
+    override fun onDestroy() {
+        compositeDisposable.clear()
+        super.onDestroy()
     }
 }

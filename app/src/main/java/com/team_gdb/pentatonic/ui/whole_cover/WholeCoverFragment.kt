@@ -6,55 +6,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseFragment
+import com.team_gdb.pentatonic.databinding.FragmentWholeCoverBinding
+import com.team_gdb.pentatonic.util.setQueryDebounce
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-/**
- * A simple [Fragment] subclass.
- * Use the [WholeCoverFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class WholeCoverFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverViewModel>() {
+    override val layoutResourceId: Int
+        get() = R.layout.fragment_whole_cover
+    override val viewModel: WholeCoverViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    override fun initStartView() {
+        binding.viewModel = this.viewModel
+        addDisposable(binding.searchView.setQueryDebounce {
+            // it 키워드에 사용자의 쿼리가 담기게 됨
+        })
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_whole_cover, container, false)
+    override fun initDataBinding() {
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WholeCoverFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WholeCoverFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun initAfterBinding() {
     }
 }
