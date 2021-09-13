@@ -1,11 +1,11 @@
 # 아이디와 닉네임이 유효한지 검사 요청하는 쿼리
-query CheckIDAndUsername($isValidUsernameUsername: Username!, $isValidIdId: Id!) {
+query CheckIDAndUsernameQuery($isValidUsernameUsername: Username!, $isValidIdId: Id!) {
     isValidId(id: $isValidIdId)
     isValidUsername(username: $isValidUsernameUsername)
 }
 
 # 사용자 정보 가져오는 쿼리
-query GetUserInfo($getUserInfoUserId: Id!) {
+query GetUserInfoQuery($getUserInfoUserId: Id!) {
     getUserInfo(userId: $getUserInfoUserId) {
         id
         username
@@ -50,5 +50,46 @@ query GetUserInfo($getUserInfoUserId: Id!) {
         followerCount
         followingCount
         followingStatus
+    }
+}
+
+query GetCoverQuery($queryBandFilter: QueryBandInput!) {
+    queryBand(filter: $queryBandFilter){
+        name
+        backGroundURI
+        bandId
+        likeCount
+        session {
+            position
+            maxMember
+            cover {
+                songId
+                coverBy
+                coverURI
+                coverId
+                duration
+                name
+                date
+                position
+                song {
+                    songId
+                    name
+                    songURI
+                    songImg
+                    genre
+                    artist
+                    album
+                    weeklyChallenge
+                    duration
+                    level
+                    releaseDate
+                }
+            }
+        }
+        song {
+            name
+            artist
+        }
+        introduce
     }
 }
