@@ -225,6 +225,7 @@
 
                 <!--   떠오르는 솔로 커버   -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/wholeCoverButton"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="36dp"

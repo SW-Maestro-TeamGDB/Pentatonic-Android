@@ -65,9 +65,19 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override fun initAfterBinding() {
         binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                binding.titleTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.main_regular))
-            } else{
-                binding.titleTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+                binding.titleTextView.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.main_regular
+                    )
+                )
+            } else {
+                binding.titleTextView.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.white
+                    )
+                )
             }
         })
 
@@ -92,6 +102,13 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         binding.risingSoloDetailButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_navigation_lounge_to_navigation_rising_solo
+            )
+        }
+
+        // 전체 커버 탐색 페이지로 이동
+        binding.wholeCoverButton.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_navigation_lounge_to_navigation_whole_cover
             )
         }
 
