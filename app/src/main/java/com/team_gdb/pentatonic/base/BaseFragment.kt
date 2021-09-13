@@ -1,10 +1,14 @@
 package com.team_gdb.pentatonic.base
 
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -71,7 +75,6 @@ abstract class BaseFragment<T : ViewDataBinding, R : BaseViewModel> : Fragment()
             it.visibility = if (visible) View.VISIBLE else View.INVISIBLE
         }
     }
-
 
     override fun onDestroy() {
         compositeDisposable.clear()

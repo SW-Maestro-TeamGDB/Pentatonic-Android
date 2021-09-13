@@ -32,10 +32,10 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
-        addDisposable(binding.searchView.setQueryDebounce {
+        addDisposable(binding.searchView.setQueryDebounce({
             // it 키워드에 사용자의 쿼리가 담기게 됨
             viewModel.getCover(it)
-        })
+        }, binding.textClearButton))
         coverListAdapter = CoverVerticalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(COVER_ENTITY, it)
@@ -58,5 +58,9 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
     override fun initAfterBinding() {
         // 초기 화면 : 모든 커버 표시
         viewModel.getCover("")
+
+        binding.textClearButton.setOnClickListener {
+            binding.searchView.text.clear()
+        }
     }
 }

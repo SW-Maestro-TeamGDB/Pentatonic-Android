@@ -4,6 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/main_regular</item>
         <item name="colorPrimaryVariant">@color/main_dark</item>
+        <item name="colorAccent">@color/lb_grey</item>
         <item name="colorOnPrimary">@color/main_light</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/main_light</item>

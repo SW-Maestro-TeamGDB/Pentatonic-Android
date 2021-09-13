@@ -38,8 +38,18 @@ fun View.setMarginTop(marginTop: Int) {
 }
 
 // Edit Text 에 쿼리 디바운싱 적용
-fun EditText.setQueryDebounce(queryFunction: (String) -> Unit): Disposable {
+fun EditText.setQueryDebounce(queryFunction: (String) -> Unit, clearButton: View): Disposable {
     val editTextChangeObservable = this.textChanges()
+
+    // EditText 에 포커스가 갔을 때 쿼리 삭제 버튼 활성화
+    this.setOnFocusChangeListener { v, hasFocus ->
+        if (hasFocus) {
+            clearButton.visibility = View.VISIBLE
+        }
+//        else {
+//            clearButton.visibility = View.GONE
+//        }
+    }
     val searchEditTextSubscription: Disposable =
         // 생성한 Observable 에 Operator 추가
         editTextChangeObservable
