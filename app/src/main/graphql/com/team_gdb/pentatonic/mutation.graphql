@@ -38,8 +38,12 @@ mutation UpdateCoverMutation($updateCoverInput: UpdateCoverInput!) {
     }
 }
 
-
 # 커버 삭제 뮤테이션
 mutation DeleteCoverMutation($deleteCoverInput: DeleteCoverInput!) {
     deleteCover(input: $deleteCoverInput)
+}
+
+# 커버 음원 병합 (머지) 뮤테이션
+mutation MergeAudiosMutation($mergeAudiosInput: MergeAudiosInput!) {
+    mergeAudios(input: $mergeAudiosInput)
 }
