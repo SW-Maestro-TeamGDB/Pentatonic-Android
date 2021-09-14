@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.my_page
 import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
@@ -26,6 +27,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
+
 
         coverHistoryListAdapter = CoverHorizontalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
@@ -58,6 +60,13 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     }
 
     override fun initDataBinding() {
+        viewModel.userProfileImage.observe(this) {
+            Glide.with(this)
+                .load(it)
+                .placeholder(R.drawable.profile_image_placeholder)
+                .override(100, 100)
+                .into(binding.userProfileImage)
+        }
     }
 
     override fun initAfterBinding() {

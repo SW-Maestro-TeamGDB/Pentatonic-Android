@@ -22,6 +22,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val userName: MutableLiveData<String> = MutableLiveData()
     val userFollowerCount: MutableLiveData<String> = MutableLiveData()
     val userIntroduce: MutableLiveData<String> = MutableLiveData()
+    val userProfileImage: MutableLiveData<String> = MutableLiveData()
 
     val libraryList: MutableLiveData<List<GetUserInfoQuery.Library>> =
         MutableLiveData()  // 라이브러리 리스트 정보
@@ -53,6 +54,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                             userName.postValue(it.data?.getUserInfo?.username.toString())
                             userFollowerCount.postValue(it.data?.getUserInfo?.followerCount.toString())
                             userIntroduce.postValue(it.data?.getUserInfo?.introduce.toString())
+                            userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
 
                             // LibraryFragment 에서 참조할 데이터 Library List postValue()
                             libraryList.postValue(it.data?.getUserInfo?.library)

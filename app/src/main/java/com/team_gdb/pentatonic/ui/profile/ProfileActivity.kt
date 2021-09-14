@@ -22,12 +22,10 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
         binding.viewModel = this.viewModel
         binding.usernameTextView.text = userEntityItem.username
         binding.userIntroductionTextView.text = userEntityItem.introduction
-        if (userEntityItem.profileImage.isNotBlank()){
-            Glide.with(this)
-                .load(userEntityItem.profileImage)
-                .override(100, 100)
-                .into(binding.userProfileImage)
-        }
+        Glide.with(this)
+            .load(userEntityItem.profileImage)
+            .override(100, 100)
+            .into(binding.userProfileImage)
     }
 
     override fun initDataBinding() {
