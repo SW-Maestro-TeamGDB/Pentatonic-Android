@@ -235,7 +235,7 @@ object TestData {
                             id = "1234",
                             username = "김원필",
                             profileImage = "",
-                            introduction = ""
+                            introduction = "DAY6 Keyboard"
                         )
                     ),
                     sessionMaxSize = 1
@@ -257,8 +257,8 @@ object TestData {
                         UserEntity(
                             id = "1234",
                             username = "H43RO",
-                            profileImage = "",
-                            introduction = ""
+                            profileImage = "https://t1.daumcdn.net/cfile/tistory/261AB546582DB2271A",
+                            introduction = "일렉 뜯는 백수입니다"
                         )
                     ),
                     sessionMaxSize = 1
@@ -281,7 +281,7 @@ object TestData {
                             id = "1234",
                             username = "김원필",
                             profileImage = "",
-                            introduction = ""
+                            introduction = "뮹"
                         )
                     ),
                     sessionMaxSize = 1

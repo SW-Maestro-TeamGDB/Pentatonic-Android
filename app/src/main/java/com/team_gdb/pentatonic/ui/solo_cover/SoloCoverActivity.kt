@@ -8,9 +8,11 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
+import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 
 class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewModel>() {
     override val layoutResourceId: Int
@@ -37,7 +39,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
 
         // 솔로 커버는 세션 구성원이 1명인 밴드 커버로 취급됨. 따라서 아래와 같이 필드를 접근하면 됨.
         Glide.with(this)
-            .load(coverEntity.sessionDataList[0].sessionParticipantList[0].introduction)
+            .load(coverEntity.sessionDataList[0].sessionParticipantList[0].profileImage)
             .placeholder(R.drawable.profile_image_placeholder)
             .override(80, 80)
             .into(binding.userProfileImage)
@@ -56,6 +58,12 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
         binding.coverPlayButton.setOnClickListener {
             val intent = Intent(this, CoverPlayActivity::class.java)
             intent.putExtra(COVER_ENTITY, coverEntity)
+            startActivity(intent)
+        }
+
+        binding.userProfileLayout.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra(BandCoverActivity.USER_ENTITY, coverEntity.sessionDataList[0].sessionParticipantList[0])
             startActivity(intent)
         }
 
