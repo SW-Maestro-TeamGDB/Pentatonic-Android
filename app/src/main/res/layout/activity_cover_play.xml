@@ -54,6 +54,7 @@
 
             <TextView
                 android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="8dp"
                 android:id="@+id/coverTitleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,6 +65,7 @@
 
 
             <TextView
+                android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="4dp"
                 android:id="@+id/coverIntroductionTextView"
                 android:layout_width="match_parent"
@@ -78,23 +80,25 @@
                 android:layout_height="wrap_content">
 
                 <SeekBar
-                    android:paddingStart="0dp"
-                    android:paddingEnd="0dp"
+                    android:thumbTint="@color/white"
                     android:id="@+id/audioSeekBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:progress="50"
                     android:progressBackgroundTint="@color/button_background_gray"
                     android:progressTint="@color/white" />
 
                 <TextView
                     android:id="@+id/playTimeTextView"
-                    android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/audioSeekBar"
                     android:layout_alignStart="@+id/audioSeekBar"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/nanum_light"
                     android:text="00:00"
                     android:textColor="@color/white"
@@ -104,6 +108,7 @@
                     android:id="@+id/remainTimeTextView"
                     android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/audioSeekBar"
                     android:layout_alignEnd="@+id/audioSeekBar"

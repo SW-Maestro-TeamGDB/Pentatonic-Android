@@ -13,8 +13,12 @@ import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityCoverPlayBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.custom_view.ButtonState
+import com.team_gdb.pentatonic.media.ExoPlayerHelper
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
+import java.lang.Exception
 
 class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingViewModel>() {
     override val layoutResourceId: Int = R.layout.activity_cover_play
@@ -36,13 +40,63 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
             .placeholder(R.drawable.placeholder_cover_bg)
             .listener(glideLoadingListener)
             .into(binding.coverBackgroundImageView)
+
+        // Test
+        initPlayer("https://penta-tonic.s3.ap-northeast-2.amazonaws.com/1628971969794-result.mp3") {
+            Timber.d("Play Complete")
+        }
     }
 
     override fun initDataBinding() {
+        viewModel.buttonState.observe(this) {
+            binding.playButton.updateIconWithState(it)
+        }
     }
 
     override fun initAfterBinding() {
-        binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
+        // 재생 버튼 눌렀을 때
+        binding.playButton.setOnClickListener {
+            when (viewModel.buttonState.value) {
+                ButtonState.BEFORE_PLAYING -> {
+                    startPlaying()
+                }
+                ButtonState.ON_PLAYING -> {
+                    pausePlaying()
+                }
+                else -> {
+                    /* no-op */
+                }
+            }
+        }
+    }
+
+
+    private fun startPlaying() {
+        viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
+        ExoPlayerHelper.startPlaying()
+//        seekBarThread = Thread {
+//            while (player?.isPlaying == true) {
+//                try {
+//                    Thread.sleep(1000)
+//                } catch (e: Exception) {
+//                    Timber.i(e)
+//                }
+//                runOnUiThread {
+//                    binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
+//                }
+//            }
+//        }
+//        seekBarThread!!.start()
+    }
+
+    private  fun pausePlaying() {
+        viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
+//        ExoPlayerHelper.pausePlaying()
+    }
+
+    override fun onDestroy() {
+        ExoPlayerHelper.stopPlaying()
+        super.onDestroy()
     }
 
     /**
