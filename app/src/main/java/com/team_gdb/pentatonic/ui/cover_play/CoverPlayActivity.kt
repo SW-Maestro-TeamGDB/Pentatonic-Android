@@ -45,6 +45,8 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         initPlayer("https://penta-tonic.s3.ap-northeast-2.amazonaws.com/1628971969794-result.mp3") {
             Timber.d("Play Complete")
         }
+
+        binding.playerView.player = ExoPlayerHelper.player
     }
 
     override fun initDataBinding() {
