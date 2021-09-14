@@ -49,45 +49,53 @@
             android:textSize="12sp" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:layout_marginVertical="24dp"
         android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageButton
+            android:id="@+id/moveForwardButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@null"
+            android:paddingStart="24dp"
+            android:src="@drawable/ic_move_forward"
+            app:tint="@color/white" />
+        <ImageButton
             android:id="@+id/exo_play"
-            android:layout_width="70dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="70dp"
             android:background="@color/transparent"
-            android:layout_centerInParent="true"
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             android:src="@drawable/ic_play"
             app:tint="@color/white" />
 
         <ImageButton
-            android:id="@+id/moveForwardButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_alignTop="@+id/exo_play"
-            android:layout_alignBottom="@+id/exo_play"
-            android:layout_marginEnd="48dp"
-            android:layout_toLeftOf="@+id/exo_play"
-            android:background="@null"
-            android:src="@drawable/ic_move_forward"
+            android:id="@+id/exo_pause"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="70dp"
+            android:background="@color/transparent"
+            android:scaleType="center"
+            android:src="@drawable/ic_pause"
             app:tint="@color/white" />
+
 
         <ImageButton
             android:id="@+id/moveBackButton"
-            android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_alignTop="@+id/exo_play"
-            android:layout_alignBottom="@+id/exo_play"
-            android:layout_marginStart="48dp"
-            android:layout_toRightOf="@+id/exo_play"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:background="@null"
+            android:paddingEnd="24dp"
             android:src="@drawable/ic_move_backward"
             app:tint="@color/white" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
