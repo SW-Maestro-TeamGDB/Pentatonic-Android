@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/drawable/ic_drum.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_electric_guitar.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_left_image_add.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/ic_left_image_comment.xml" value="0.18013029315960913" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
@@ -29,7 +30,7 @@
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/layout/activity_band_cover.xml" value="0.18519736842105264" />
-        <entry key="app/src/main/res/layout/activity_cover_play.xml" value="0.1375" />
+        <entry key="app/src/main/res/layout/activity_cover_play.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1369535519125683" />
