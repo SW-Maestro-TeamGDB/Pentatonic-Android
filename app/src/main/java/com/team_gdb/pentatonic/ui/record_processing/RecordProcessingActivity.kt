@@ -19,7 +19,7 @@ import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.home.HomeActivity
-import com.team_gdb.pentatonic.ui.record.ButtonState
+import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.viewModel

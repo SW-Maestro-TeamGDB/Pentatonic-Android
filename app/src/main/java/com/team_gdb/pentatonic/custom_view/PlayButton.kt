@@ -1,11 +1,11 @@
-package com.team_gdb.pentatonic.ui.record
+package com.team_gdb.pentatonic.custom_view
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageButton
 import com.team_gdb.pentatonic.R
 
-class RecordButton(
+class PlayButton(
     context: Context,
     attrs: AttributeSet
 ) : AppCompatImageButton(context, attrs) {
@@ -20,14 +20,11 @@ class RecordButton(
      */
     fun updateIconWithState(state: ButtonState) {
         when (state) {
-            ButtonState.BEFORE_RECORDING -> {
-                setImageResource(R.drawable.ic_record)
+            ButtonState.BEFORE_PLAYING -> {
+                setImageResource(R.drawable.ic_play)
             }
-            ButtonState.ON_RECORDING -> {
-                setImageResource(R.drawable.ic_stop)
-            }
-            ButtonState.STOP_RECORDING -> {
-                setImageResource(R.drawable.ic_reset)
+            ButtonState.ON_PLAYING -> {
+                setImageResource(R.drawable.ic_pause)
             }
         }
     }

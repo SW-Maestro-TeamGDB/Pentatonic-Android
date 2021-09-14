@@ -1,16 +1,12 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
-import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
-import com.team_gdb.pentatonic.ui.record.ButtonState
+import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.util.Event
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
-import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 class RecordProcessingViewModel(val repository: RecordProcessingRepository) : BaseViewModel() {

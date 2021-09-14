@@ -54,7 +54,7 @@
             android:textSize="12sp" />
 
 
-        <com.team_gdb.pentatonic.ui.record_processing.PlayButton
+        <com.team_gdb.pentatonic.custom_view.PlayButton
             android:id="@+id/playButton"
             android:layout_width="70dp"
             android:layout_height="70dp"

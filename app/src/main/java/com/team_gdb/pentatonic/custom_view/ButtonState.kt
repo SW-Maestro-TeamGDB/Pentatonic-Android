@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.record
+package com.team_gdb.pentatonic.custom_view
 
 enum class ButtonState {
     BEFORE_RECORDING,  // 녹음 시작 전

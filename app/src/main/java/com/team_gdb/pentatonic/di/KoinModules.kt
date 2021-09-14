@@ -24,6 +24,7 @@ import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepository
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepositoryImpl
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
+import com.team_gdb.pentatonic.ui.cover_play.CoverPlayingViewModel
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
@@ -103,6 +104,10 @@ val viewModelModule = module {
 
     viewModel {
         WholeCoverViewModel(get())
+    }
+
+    viewModel {
+        CoverPlayingViewModel()
     }
 }
 

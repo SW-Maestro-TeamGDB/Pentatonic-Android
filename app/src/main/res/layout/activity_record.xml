@@ -28,7 +28,7 @@
             android:id="@+id/startCountDownTextView"/>
 
         <!-- 녹음 시작, 중지, 재시도 상태를 가지는 커스텀 버튼 -->
-        <com.team_gdb.pentatonic.ui.record.RecordButton
+        <com.team_gdb.pentatonic.custom_view.RecordButton
             android:id="@+id/recordButton"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -66,7 +66,7 @@
 
 
         <!-- 녹음되고있는 실시간 진폭을 기반으로 음성을 시각화하는 뷰 -->
-        <com.team_gdb.pentatonic.ui.record.SoundVisualizerView
+        <com.team_gdb.pentatonic.custom_view.SoundVisualizerView
             android:id="@+id/soundVisualizerView"
             android:layout_width="wrap_content"
             android:layout_height="120dp"

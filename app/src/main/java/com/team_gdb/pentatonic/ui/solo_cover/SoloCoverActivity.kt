@@ -1,13 +1,16 @@
 package com.team_gdb.pentatonic.ui.solo_cover
 
 
+import android.content.Intent
 import com.bumptech.glide.Glide
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
+import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 
 class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewModel>() {
     override val layoutResourceId: Int
@@ -15,7 +18,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
     override val viewModel: SoloCoverViewModel by viewModel()
 
     private val coverEntity: CoverEntity by lazy {
-        intent.getSerializableExtra(LoungeFragment.COVER_ENTITY) as CoverEntity
+        intent.getSerializableExtra(COVER_ENTITY) as CoverEntity
     }
 
     override fun initStartView() {
@@ -39,8 +42,10 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
             .override(80, 80)
             .into(binding.userProfileImage)
 
-        binding.userNameTextView.text = coverEntity.sessionDataList[0].sessionParticipantList[0].username
-        binding.userIntroductionTextView.text = coverEntity.sessionDataList[0].sessionParticipantList[0].introduction
+        binding.userNameTextView.text =
+            coverEntity.sessionDataList[0].sessionParticipantList[0].username
+        binding.userIntroductionTextView.text =
+            coverEntity.sessionDataList[0].sessionParticipantList[0].introduction
 
     }
 
@@ -48,5 +53,11 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
     }
 
     override fun initAfterBinding() {
+        binding.coverPlayButton.setOnClickListener {
+            val intent = Intent(this, CoverPlayActivity::class.java)
+            intent.putExtra(COVER_ENTITY, coverEntity)
+            startActivity(intent)
+        }
+
     }
 }

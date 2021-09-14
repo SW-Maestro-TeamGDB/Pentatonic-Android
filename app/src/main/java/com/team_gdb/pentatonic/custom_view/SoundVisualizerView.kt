@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.record
+package com.team_gdb.pentatonic.custom_view
 
 import com.team_gdb.pentatonic.R
 import android.content.Context
