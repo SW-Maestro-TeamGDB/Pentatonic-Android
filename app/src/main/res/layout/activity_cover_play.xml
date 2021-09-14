@@ -63,7 +63,6 @@
                 android:fontFamily="@font/nanum_extrabold"
                 android:textSize="24sp" />
 
-
             <TextView
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="4dp"
@@ -75,89 +74,18 @@
                 android:fontFamily="@font/nanum_regular"
                 android:textSize="16sp" />
 
-            <RelativeLayout
+            <com.google.android.exoplayer2.ui.PlayerControlView
+                android:background="@color/transparent"
+                app:show_next_button="false"
+                app:show_timeout="10000000"
+                android:layout_gravity="center"
+                app:controller_layout_id="@layout/custom_exo_controller_view"
+                app:surface_type="surface_view"
+                app:resize_mode="fixed_width"
+                app:show_previous_button="false"
+                app:use_controller="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <SeekBar
-                    android:thumbTint="@color/white"
-                    android:id="@+id/audioSeekBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:progress="50"
-                    android:progressBackgroundTint="@color/button_background_gray"
-                    android:progressTint="@color/white" />
-
-                <TextView
-                    android:id="@+id/playTimeTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/audioSeekBar"
-                    android:layout_alignStart="@+id/audioSeekBar"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="00:00"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/remainTimeTextView"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/audioSeekBar"
-                    android:layout_alignEnd="@+id/audioSeekBar"
-                    android:fontFamily="@font/nanum_light"
-                    android:text="04:29"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginVertical="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.team_gdb.pentatonic.custom_view.PlayButton
-                    android:id="@+id/playButton"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_centerInParent="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_play"
-                    android:tint="@color/white" />
-
-                <ImageButton
-                    android:background="@null"
-                    android:layout_alignTop="@+id/playButton"
-                    android:layout_alignBottom="@+id/playButton"
-                    android:layout_toLeftOf="@+id/playButton"
-                    android:src="@drawable/ic_move_forward"
-                    android:id="@+id/moveForwardButton"
-                    android:layout_marginEnd="48dp"
-                    app:tint="@color/white"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"/>
-
-                <ImageButton
-                    android:id="@+id/moveBackButton"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:layout_alignTop="@+id/playButton"
-                    android:layout_alignBottom="@+id/playButton"
-                    android:layout_marginStart="48dp"
-                    android:layout_toRightOf="@+id/playButton"
-                    android:background="@null"
-                    android:src="@drawable/ic_move_backward"
-                    app:tint="@color/white" />
-
-            </RelativeLayout>
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

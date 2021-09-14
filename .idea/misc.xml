@@ -46,6 +46,7 @@
         <entry key="app/src/main/res/layout/dialog_input_cover_name.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
         <entry key="app/src/main/res/layout/dialog_song_confirm.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/exo_player_control_view.xml" value="0.17171052631578948" />
         <entry key="app/src/main/res/layout/fragment_artist.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_artist_ranking.xml" value="0.12056010928961748" />
         <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.10100193923723336" />

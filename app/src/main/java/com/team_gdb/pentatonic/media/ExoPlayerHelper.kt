@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.media
 
 import android.media.MediaPlayer
 import android.net.Uri
+import androidx.databinding.adapters.SeekBarBindingAdapter
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
@@ -67,6 +68,7 @@ object ExoPlayerHelper {
     // 음악 재생 시작
     fun startPlaying() {
         player.play()
+
     }
 
     // 음악 재생 정지

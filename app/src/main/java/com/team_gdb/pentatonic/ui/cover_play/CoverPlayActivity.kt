@@ -49,31 +49,34 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
 
     override fun initDataBinding() {
         viewModel.buttonState.observe(this) {
-            binding.playButton.updateIconWithState(it)
+//            binding.playButton.updateIconWithState(it)
         }
     }
 
     override fun initAfterBinding() {
         // 재생 버튼 눌렀을 때
-        binding.playButton.setOnClickListener {
-            when (viewModel.buttonState.value) {
-                ButtonState.BEFORE_PLAYING -> {
-                    startPlaying()
-                }
-                ButtonState.ON_PLAYING -> {
-                    pausePlaying()
-                }
-                else -> {
-                    /* no-op */
-                }
-            }
-        }
+//        binding.playButton.setOnClickListener {
+//            when (viewModel.buttonState.value) {
+//                ButtonState.BEFORE_PLAYING -> {
+//                    startPlaying()
+//                }
+//                ButtonState.ON_PLAYING -> {
+//                    pausePlaying()
+//                }
+//                else -> {
+//                    /* no-op */
+//                }
+//            }
+//        }
     }
 
 
     private fun startPlaying() {
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         ExoPlayerHelper.startPlaying()
+
+        viewModel.remainTime.postValue(ExoPlayerHelper.player.duration.toString())
+
 //        seekBarThread = Thread {
 //            while (player?.isPlaying == true) {
 //                try {
