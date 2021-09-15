@@ -141,15 +141,16 @@
                     app:tint="@color/button_background_gray" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/background_gradient_button"
+                    android:id="@+id/bandPlayButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
                     android:layout_toEndOf="@+id/coverLikeButton"
-                    android:text="감상하기" />
+                    android:background="@drawable/background_gradient_button"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="감상하기"
+                    android:textColor="@color/white" />
 
             </RelativeLayout>
 
