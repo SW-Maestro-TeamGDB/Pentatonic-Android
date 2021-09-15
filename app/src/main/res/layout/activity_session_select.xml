@@ -38,8 +38,8 @@
         </LinearLayout>
 
 
-        <TextView            android:layout_marginHorizontal="24dp"
-
+        <TextView
+            android:layout_marginHorizontal="24dp"
             android:id="@+id/hintTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

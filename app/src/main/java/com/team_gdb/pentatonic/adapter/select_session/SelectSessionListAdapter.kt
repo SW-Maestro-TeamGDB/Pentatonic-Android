@@ -10,16 +10,12 @@ import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 
 
 /**
- * 커버를 구성하고 있는 세션 (보컬, 일렉기타, 드럼 등) 구성 리사이클러뷰 어댑터
- * - 각 세션 내에는, 해당 세션에 참가하고 있는 '참가자 목록'이 포함됨
- * - 따라서 하위에 SessionParticipantListAdapter 포함
+ * 밴드 커버를 구성할 세션을 선택하기 위한 리스트
  *
- * @property itemClick               // 사용자 프로필 이미지 눌렀을 때 해당 사용자 프로필 페이지로 이동하는 동작
- * @property participantButtonClick  // 해당 세션의 '참가하기' 버튼이 눌렸을 때의 동작
+ * @property itemClick    사용자 프로필 이미지 눌렀을 때, 해당 사용자를 밴드에 참여시키는 동작
  */
 class SelectSessionListAdapter(
-    val itemClick: (UserEntity) -> Unit,
-    val participantButtonClick: (SessionData) -> Unit
+    val itemClick: (UserEntity) -> Unit
 ) : RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
     private var sessionDataList: List<SessionData> = emptyList()  // 커버를 구성하고 있는 세션의 리스트

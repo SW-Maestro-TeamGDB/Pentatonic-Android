@@ -30,14 +30,9 @@ class SessionSelectActivity : BaseActivity<ActivitySessionSelectBinding, BandCov
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
-        sessionListAdapter = SelectSessionListAdapter({
-            val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra(BandCoverActivity.USER_ENTITY, it)
-            startActivity(intent)
-        }, {
-            val bottomSheetDialog = LibrarySelectBottomSheetDialog()
-            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
-        })
+        sessionListAdapter = SelectSessionListAdapter {
+            // TODO : 선택한 사용자 정보 담을 ViewModel LiveData 필요
+        }
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = sessionListAdapter

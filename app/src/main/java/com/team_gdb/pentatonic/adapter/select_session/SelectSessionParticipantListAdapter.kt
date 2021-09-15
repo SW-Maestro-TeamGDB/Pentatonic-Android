@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.adapter.select_session
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionParticipantListBinding
-import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
 
 /**
  * 각 세션의 참가자 목록을 보여주기 위한 리사이클러뷰 어댑터
@@ -19,6 +19,7 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
     RecyclerView.Adapter<SelectSessionParticipantListAdapter.ViewHolder>() {
 
     private var participantList: List<UserEntity> = emptyList()  // 각 세션의 참가자들 목록
+    var selectedSession: Int = -1  // 선택된 아이템 포지션 -> 이를 활용하여 ViewHolder 바인딩 시 하이라이팅 여부 나눔
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -45,7 +46,7 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
         private val binding: ItemSelectSessionParticipantListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: UserEntity, position: Int) {
+        fun bind(entity: UserEntity, position: Int) {
             // 리스트 첫 아이템의 경우에는 어느정도 마진을 줘야함
             if (position == 0) {
                 val param = binding.userLayout.layoutParams as ViewGroup.MarginLayoutParams
@@ -55,18 +56,50 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
 
             // 해당 사용자의 프로필 사진
             Glide.with(binding.root)
-                .load(item.profileImage)
+                .load(entity.profileImage)
                 .placeholder(R.drawable.profile_image_placeholder)
                 .override(80, 80)
                 .into(binding.userProfileImage)
 
+            // 선택된 아이템이 아니라면 기본 스타일로 표현
+            if (selectedSession != adapterPosition) {
+                setItemBasic()
+            } else {  // 선택된 아이템이라면, 하이라이팅 처리
+                setItemHighlighting()
+            }
+
             // 해당 사용자의 닉네임
-            binding.usernameTextView.text = item.username
+            binding.usernameTextView.text = entity.username
 
             // 클릭시 해당 사용자의 프로필 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(item)
+                itemClick(entity)
             }
+
+            // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
+            binding.root.setOnClickListener {
+                if (selectedSession != adapterPosition) {
+                    selectedSession = adapterPosition
+                    notifyDataSetChanged()
+                    itemClick(entity)
+                }
+            }
+        }
+
+        /**
+         * 아이템을 하이라이팅 하는 함수
+         */
+        private fun setItemHighlighting() {
+            binding.itemRootLayout.setCardBackgroundColor(Color.LTGRAY)
+            binding.usernameTextView.setTextColor(Color.WHITE)
+        }
+
+        /**
+         * 아이템에 기본 스타일 적용하는 함수
+         */
+        private fun setItemBasic() {
+            binding.itemRootLayout.setCardBackgroundColor(Color.WHITE)
+            binding.usernameTextView.setTextColor(Color.BLACK)
         }
     }
 
