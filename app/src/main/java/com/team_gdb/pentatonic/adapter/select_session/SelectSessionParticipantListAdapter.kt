@@ -49,9 +49,9 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
         fun bind(entity: UserEntity, position: Int) {
             // 리스트 첫 아이템의 경우에는 어느정도 마진을 줘야함
             if (position == 0) {
-                val param = binding.userLayout.layoutParams as ViewGroup.MarginLayoutParams
+                val param = binding.itemRootLayout.layoutParams as ViewGroup.MarginLayoutParams
                 param.setMargins(64, 0, 0, 0)
-                binding.userLayout.layoutParams = param
+                binding.itemRootLayout.layoutParams = param
             }
 
             // 해당 사용자의 프로필 사진
@@ -90,7 +90,7 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
          * 아이템을 하이라이팅 하는 함수
          */
         private fun setItemHighlighting() {
-            binding.itemRootLayout.setCardBackgroundColor(Color.LTGRAY)
+            binding.itemCardLayout.setCardBackgroundColor(Color.LTGRAY)
             binding.usernameTextView.setTextColor(Color.WHITE)
         }
 
@@ -98,7 +98,7 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
          * 아이템에 기본 스타일 적용하는 함수
          */
         private fun setItemBasic() {
-            binding.itemRootLayout.setCardBackgroundColor(Color.WHITE)
+            binding.itemCardLayout.setCardBackgroundColor(Color.WHITE)
             binding.usernameTextView.setTextColor(Color.BLACK)
         }
     }

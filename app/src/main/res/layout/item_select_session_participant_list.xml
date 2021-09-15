@@ -2,41 +2,48 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
+    <FrameLayout
         android:id="@+id/itemRootLayout"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/userLayout"
-            android:paddingVertical="16dp"
-            android:paddingHorizontal="16dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/itemCardLayout"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/userProfileImage"
-                android:src="@drawable/profile_image_placeholder"
-                android:scaleType="centerCrop"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
-
-            <TextView
-                android:id="@+id/usernameTextView"
-                android:layout_marginTop="8dp"
-                android:text="닉네임"
-                android:fontFamily="@font/nanum_extrabold"
-                android:textColor="@color/black"
-                android:textSize="12sp"
+            <LinearLayout
+                android:id="@+id/userLayout"
+                android:paddingVertical="16dp"
+                android:paddingHorizontal="16dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-        </LinearLayout>
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userProfileImage"
+                    android:src="@drawable/profile_image_placeholder"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"/>
 
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    android:layout_marginTop="8dp"
+                    android:text="닉네임"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </FrameLayout>
 </layout>
