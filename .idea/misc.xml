@@ -75,8 +75,10 @@
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
         <entry key="app/src/main/res/layout/item_library_list.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/item_library_select_list.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/layout/item_rising_cover_viewpager.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_select_session_list.xml" value="0.20559210526315788" />
+        <entry key="app/src/main/res/layout/item_select_session_participant_list.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/layout/item_session_config_list.xml" value="0.14309210526315788" />
         <entry key="app/src/main/res/layout/item_session_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.10100193923723336" />

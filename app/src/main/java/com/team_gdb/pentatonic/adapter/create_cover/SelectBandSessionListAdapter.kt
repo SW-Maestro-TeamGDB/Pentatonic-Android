@@ -1,21 +1,20 @@
 package com.team_gdb.pentatonic.adapter.create_cover
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 import com.team_gdb.pentatonic.data.session.SessionSetting
-import timber.log.Timber
+import com.team_gdb.pentatonic.databinding.ItemSessionConfigListBinding
+import com.team_gdb.pentatonic.databinding.ItemSessionSettingListBinding
 
 /**
  * 세션 추가하기 버튼을 눌렀을 때, BottomSheetDialog 로 추가할 수 있는 세션을 보여주는 리사이클러뷰 어댑터
  *
  * @property itemClick  아이템 클릭되었을 때, 해당 세션을 리스트에 추가하는 동작
  */
-class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
-    RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
+class SelectBandSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
+    RecyclerView.Adapter<SelectBandSessionListAdapter.ViewHolder>() {
 
     var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
 
@@ -28,7 +27,7 @@ class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemSelectSessionListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemSessionConfigListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -41,7 +40,7 @@ class SelectSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     }
 
     inner class ViewHolder(
-        private val binding: ItemSelectSessionListBinding
+        private val binding: ItemSessionConfigListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SessionSetting) {

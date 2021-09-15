@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
 import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.databinding.ItemSessionConfigListBinding
 
 /**
  * 솔로 커버 모드에서 세션을 선택하기 위한 리스트
@@ -25,7 +26,7 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemSelectSessionListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemSessionConfigListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -34,7 +35,7 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
     }
 
     inner class ViewHolder(
-        private val binding: ItemSelectSessionListBinding
+        private val binding: ItemSessionConfigListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: SessionSetting) {
