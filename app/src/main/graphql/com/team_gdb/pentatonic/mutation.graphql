@@ -22,7 +22,9 @@ mutation UploadCoverFileMutation($uploadCoverFileInput: UploadCoverFileInput!) {
 mutation UploadCoverMutation($uploadCoverInput: UploadCoverInput!) {
     uploadCover(input: $uploadCoverInput) {
         songId
-        coverBy
+        coverBy {
+            id
+        }
         coverURI
         coverId
         duration

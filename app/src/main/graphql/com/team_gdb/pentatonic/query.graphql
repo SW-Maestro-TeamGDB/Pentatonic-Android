@@ -31,7 +31,9 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
             duration
             coverId
             coverURI
-            coverBy
+            coverBy {
+                id
+            }
             songId
             song {
                 songId
@@ -64,7 +66,9 @@ query GetCoverQuery($queryBandFilter: QueryBandInput!) {
             maxMember
             cover {
                 songId
-                coverBy
+                coverBy {
+                    id
+                }
                 coverURI
                 coverId
                 duration
@@ -91,5 +95,76 @@ query GetCoverQuery($queryBandFilter: QueryBandInput!) {
             artist
         }
         introduce
+    }
+}
+
+
+query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
+    getBand(bandId: $getBandBandId) {
+        bandId
+        song {
+            artist
+            songId
+            name
+            songURI
+            songImg
+            genre
+            album
+            weeklyChallenge
+            duration
+            level
+            releaseDate
+        }
+        name
+        introduce
+        creator {
+            id
+            username
+            profileURI
+            prime
+            type
+            followerCount
+            followingCount
+        }
+        backGroundURI
+        createDate
+        session {
+            position
+            maxMember
+            cover {
+                songId
+                coverBy {
+                    username
+                    id
+                    profileURI
+                    prime
+                    type
+                    followerCount
+                    followingCount
+                }
+                coverURI
+                coverId
+                duration
+                name
+                date
+                position
+            }
+        }
+        likeCount
+        comment {
+            bandId
+            user {
+                followingCount
+                followerCount
+                prime
+                type
+                profileURI
+                username
+                id
+            }
+            commentId
+            content
+            createdAt
+        }
     }
 }

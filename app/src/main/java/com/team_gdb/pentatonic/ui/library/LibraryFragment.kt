@@ -65,7 +65,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     imageUrl = it.song.songImg,
                     coverDate = it.date.toString(),
                     originalSong = it.song,
-                    coverBy = it.coverBy,
+                    coverBy = it.coverBy.id,
                     coverDuration = it.duration
                 )
             }
