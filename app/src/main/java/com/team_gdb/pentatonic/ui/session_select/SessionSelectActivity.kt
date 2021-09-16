@@ -1,6 +1,8 @@
 package com.team_gdb.pentatonic.ui.session_select
 
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.select_session.SelectSessionListAdapter
@@ -14,6 +16,7 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class SessionSelectActivity : BaseActivity<ActivitySessionSelectBinding, BandCoverViewModel>() {
     override val layoutResourceId: Int
@@ -26,12 +29,13 @@ class SessionSelectActivity : BaseActivity<ActivitySessionSelectBinding, BandCov
     private lateinit var sessionListAdapter: SelectSessionListAdapter
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
-        sessionListAdapter = SelectSessionListAdapter {
-            // TODO : 선택한 사용자 정보 담을 ViewModel LiveData 필요
+        sessionListAdapter = SelectSessionListAdapter { sessionData, userEntity ->
+            viewModel.addSession(sessionName = sessionData.sessionName, userName = userEntity.username)
         }
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
@@ -41,6 +45,9 @@ class SessionSelectActivity : BaseActivity<ActivitySessionSelectBinding, BandCov
     }
 
     override fun initDataBinding() {
+        viewModel.selectedSessionLiveData.observe(this) {
+            Timber.d(it.toString())
+        }
     }
 
     override fun initAfterBinding() {

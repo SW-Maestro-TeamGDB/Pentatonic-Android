@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionParticipantListBinding
 
@@ -70,11 +71,6 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
 
             // 해당 사용자의 닉네임
             binding.usernameTextView.text = entity.username
-
-            // 클릭시 해당 사용자의 프로필 페이지로 이동
-            binding.root.setOnClickListener {
-                itemClick(entity)
-            }
 
             // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
             binding.root.setOnClickListener {

@@ -15,7 +15,7 @@ import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
  * @property itemClick    사용자 프로필 이미지 눌렀을 때, 해당 사용자를 밴드에 참여시키는 동작
  */
 class SelectSessionListAdapter(
-    val itemClick: (UserEntity) -> Unit
+    val itemClick: (SessionData, UserEntity) -> Unit
 ) : RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
     private var sessionDataList: List<SessionData> = emptyList()  // 커버를 구성하고 있는 세션의 리스트
@@ -50,7 +50,7 @@ class SelectSessionListAdapter(
 
             // 해당 세션을 구성하는 참가자들을 보여주기 위한 리사이클러뷰 구성
             val adapter = SelectSessionParticipantListAdapter {
-                itemClick(it)
+                itemClick(item, it)
             }
             adapter.setItem(items = item.sessionParticipantList)
 
