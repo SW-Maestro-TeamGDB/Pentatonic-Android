@@ -2,6 +2,8 @@ package com.team_gdb.pentatonic.di
 
 import com.team_gdb.pentatonic.repository.artist.ArtistRepository
 import com.team_gdb.pentatonic.repository.artist.ArtistRepositoryImpl
+import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepository
+import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepositoryImpl
 import com.team_gdb.pentatonic.repository.login.LoginRepository
 import com.team_gdb.pentatonic.repository.login.LoginRepositoryImpl
 import com.team_gdb.pentatonic.repository.lounge.LoungeRepository
@@ -83,7 +85,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        BandCoverViewModel()
+        BandCoverViewModel(get())
     }
 
     viewModel {
@@ -142,8 +144,12 @@ val repositoryModule = module {
     single<MyPageRepository> {
         MyPageRepositoryImpl()
     }
-    single<WholeCoverRepository>{
-       WholeCoverRepositoryImpl()
+    single<WholeCoverRepository> {
+        WholeCoverRepositoryImpl()
+    }
+
+    single<BandCoverRepository> {
+        BandCoverRepositoryImpl()
     }
 }
 

@@ -12,6 +12,7 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.session_select.SessionSelectActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewModel>() {
     override val layoutResourceId: Int
@@ -25,6 +26,9 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+
+        viewModel.getBandInfoQuery("6141f76aa58e6e0014b27e69")
+
         binding.coverNameTextView.text = coverEntity.coverName
         binding.coverIntroductionTextView.text = coverEntity.introduction
         sessionListAdapter = SessionConfigListAdapter({
@@ -53,6 +57,9 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
     }
 
     override fun initDataBinding() {
+        viewModel.bandInfo.observe(this) {
+            Timber.d(it.toString())
+        }
     }
 
     override fun initAfterBinding() {
