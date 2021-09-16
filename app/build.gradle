@@ -43,6 +43,7 @@ android {
                 "URL"                 : "kotlin.String",
                 "OBJECTID"            : "kotlin.String",
                 "Id"                  : "kotlin.String",
+                "Username"            : "kotlin.String",
                 "UploadCoverFileInput": "com.apollographql.apollo.api.FileUpload"
         ]
     }

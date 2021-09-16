@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
+import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
 import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 
@@ -21,11 +23,12 @@ import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
  * @property participantButtonClick  // 해당 세션의 '참가하기' 버튼이 눌렸을 때의 동작
  */
 class SessionConfigListAdapter(
-    val itemClick: (UserEntity) -> Unit,
-    val participantButtonClick: (SessionData) -> Unit
+    val itemClick: (String) -> Unit,
+    val participantButtonClick: (GetBandCoverInfoQuery.Session) -> Unit
 ) : RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
 
-    private var sessionDataList: List<SessionData> = emptyList()  // 커버를 구성하고 있는 세션의 리스트
+    private var sessionDataList: List<GetBandCoverInfoQuery.Session?> =
+        emptyList()  // 커버를 구성하고 있는 세션의 리스트
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -41,7 +44,7 @@ class SessionConfigListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(sessionDataList[position])
+        sessionDataList[position]?.let { holder.bind(it) }
     }
 
     override fun getItemCount(): Int {
@@ -52,17 +55,21 @@ class SessionConfigListAdapter(
         private val binding: ItemSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: SessionData) {
+        fun bind(item: GetBandCoverInfoQuery.Session) {
             // 세션명과 참가 현황 (현재 참가 인원 / 최대 참가 가능 인원)
-            binding.sessionNameTextView.text = item.sessionName
+            binding.sessionNameTextView.text =
+                SessionSetting.valueOf(item.position.toString()).sessionName
             binding.sessionPeopleTextView.text =
-                "${item.sessionParticipantList.size}/${item.sessionMaxSize}"
+                "${item.cover?.size}/${item.maxMember}"
 
             // 만약 해당 세션에 더이상 참가할 수 없다면 '참가하기' 버튼 비활성화
-            if (item.sessionMaxSize == item.sessionParticipantList.size) {
+            if (item.maxMember == item.cover?.size) {
                 binding.participateButton.run {
                     isEnabled = false
-                    background = ContextCompat.getDrawable(context, R.drawable.custom_radius_background_gray_sharpen)
+                    background = ContextCompat.getDrawable(
+                        context,
+                        R.drawable.custom_radius_background_gray_sharpen
+                    )
                 }
             } else {  // 참가할 수 있다면, 커버 참가 동작 수행
                 binding.participateButton.setOnClickListener {
@@ -74,7 +81,8 @@ class SessionConfigListAdapter(
             val adapter = SessionParticipantListAdapter {
                 itemClick(it)
             }
-            adapter.setItem(items = item.sessionParticipantList)
+            adapter.setItem(items = item.cover)
+
             binding.sessionParticipantList.apply {
                 this.layoutManager = LinearLayoutManager(context).apply {
                     this.orientation = LinearLayoutManager.HORIZONTAL
@@ -85,7 +93,7 @@ class SessionConfigListAdapter(
         }
     }
 
-    fun setItem(items: List<SessionData>) {
+    fun setItem(items: List<GetBandCoverInfoQuery.Session?>) {
         this.sessionDataList = items
         notifyDataSetChanged()
     }

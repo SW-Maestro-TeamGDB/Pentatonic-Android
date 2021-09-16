@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.band_cover
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
@@ -29,8 +30,41 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         viewModel.getBandInfoQuery("6141f76aa58e6e0014b27e69")
 
-        binding.coverNameTextView.text = coverEntity.coverName
-        binding.coverIntroductionTextView.text = coverEntity.introduction
+    }
+
+    override fun initDataBinding() {
+        viewModel.bandInfo.observe(this) {
+            Timber.d(it.toString())
+            applyBandInfoOnView(it)
+        }
+    }
+
+    override fun initAfterBinding() {
+
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
+        binding.bandPlayButton.setOnClickListener {
+            val intent = Intent(this, SessionSelectActivity::class.java)
+            intent.putExtra(COVER_ENTITY, coverEntity)
+            startActivity(intent)
+        }
+    }
+
+    private fun applyBandInfoOnView(bandInfo: GetBandCoverInfoQuery.GetBand) {
+        binding.coverNameTextView.text = bandInfo.name
+        binding.coverIntroductionTextView.text = bandInfo.introduce
+
+        Glide.with(this)
+            .load(bandInfo.backGroundURI)
+            .placeholder(R.drawable.placeholder_cover_bg)
+            .override(480, 272)
+            .into(binding.coverImage)
+
+        binding.coverLikeTextView.text = bandInfo.likeCount.toString()
+        binding.coverViewTextView.text = "35"  // TODO : API 미구현
+
         sessionListAdapter = SessionConfigListAdapter({
             val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra(USER_ENTITY, it)
@@ -45,34 +79,8 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             this.setHasFixedSize(true)
         }
 
-        Glide.with(this)
-            .load(coverEntity.imageUrl)
-            .placeholder(R.drawable.placeholder_cover_bg)
-            .override(480, 272)
-            .into(binding.coverImage)
-
-        binding.coverLikeTextView.text = coverEntity.like.toString()
-        binding.coverViewTextView.text = coverEntity.view.toString()
-
-    }
-
-    override fun initDataBinding() {
-        viewModel.bandInfo.observe(this) {
-            Timber.d(it.toString())
-        }
-    }
-
-    override fun initAfterBinding() {
-        sessionListAdapter.setItem(coverEntity.sessionDataList)
-
-        binding.backButton.setOnClickListener {
-            finish()
-        }
-
-        binding.bandPlayButton.setOnClickListener {
-            val intent = Intent(this, SessionSelectActivity::class.java)
-            intent.putExtra(COVER_ENTITY, coverEntity)
-            startActivity(intent)
+        bandInfo.session?.let {
+            sessionListAdapter.setItem(it)
         }
     }
 
