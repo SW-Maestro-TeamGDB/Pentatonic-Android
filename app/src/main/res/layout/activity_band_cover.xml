@@ -110,7 +110,7 @@
                 </RelativeLayout>
 
             <com.chauthai.overscroll.RecyclerViewBouncy
-                android:layout_marginBottom="70dp"
+                android:layout_marginBottom="100dp"
                 android:layout_below="@+id/bannerLayout"
                 android:overScrollMode="never"
                 android:id="@+id/sessionList"

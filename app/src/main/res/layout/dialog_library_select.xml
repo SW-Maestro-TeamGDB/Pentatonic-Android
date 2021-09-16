@@ -43,26 +43,26 @@
             android:layout_height="400dp"/>
 
         <RelativeLayout
-            android:layout_below="@+id/libraryList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/libraryList">
 
             <View
-                android:layout_alignParentTop="true"
-                android:background="#F4F4F4"
                 android:layout_width="match_parent"
-                android:layout_height="1dp" />
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="#F4F4F4" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textColor="@color/white"
-                android:fontFamily="@font/nanum_extrabold"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="12dp"
                 android:background="@drawable/background_gradient_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="참여하기" />
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="참여하기"
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 

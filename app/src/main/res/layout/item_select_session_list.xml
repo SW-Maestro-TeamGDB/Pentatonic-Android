@@ -16,11 +16,12 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="24dp"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/nanum_extrabold"
             android:gravity="center_vertical"
             android:text="세션 이름"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:layout_marginTop="4dp"
