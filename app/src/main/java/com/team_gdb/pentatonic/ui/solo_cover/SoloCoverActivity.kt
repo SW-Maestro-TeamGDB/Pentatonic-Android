@@ -10,7 +10,6 @@ import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 
@@ -32,7 +31,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
         binding.coverViewTextView.text = coverEntity.view.toString()
 
         Glide.with(this)
-            .load(coverEntity.imageUrl)
+            .load(coverEntity.imageURL)
             .placeholder(R.drawable.placeholder_cover_bg)
             .override(480, 272)
             .into(binding.coverImage)

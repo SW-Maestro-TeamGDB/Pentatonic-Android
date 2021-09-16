@@ -13,9 +13,6 @@
         android:theme="@style/Theme.Pentatonic"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.session_select.SessionSelectActivity"
-            android:exported="true" />
-        <activity
             android:name=".ui.cover_play.CoverPlayActivity"
             android:exported="true" />
         <activity
@@ -23,9 +20,6 @@
             android:exported="true" />
         <activity
             android:name=".ui.song_detail.SongDetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.select_song.SelectSongActivity"
             android:exported="true" />
         <activity
             android:name=".ui.create_cover.CreateCoverActivity"

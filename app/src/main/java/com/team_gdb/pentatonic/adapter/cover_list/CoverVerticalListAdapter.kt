@@ -47,7 +47,7 @@ class CoverVerticalListAdapter(val itemClick: (CoverEntity) -> Unit) :
         fun bind(entity: CoverEntity) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageUrl)
+                .load(entity.imageURL)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)

@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemBandRankingListBinding
-import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
  * 커버 랭킹을 보여주기 위한 리사이클러뷰 어댑터
@@ -47,7 +46,7 @@ class BandRankingListAdapter(val itemClick: (CoverEntity) -> Unit) :
         fun bind(entity: CoverEntity) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageUrl)
+                .load(entity.imageURL)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)

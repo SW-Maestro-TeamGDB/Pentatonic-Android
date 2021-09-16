@@ -18,7 +18,6 @@ import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
-import java.lang.Exception
 
 class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingViewModel>() {
     override val layoutResourceId: Int = R.layout.activity_cover_play
@@ -35,7 +34,7 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         viewModel.coverEntity.postValue(coverEntity)
 
         Glide.with(binding.root)
-            .load(coverEntity.imageUrl)
+            .load(coverEntity.imageURL)
             .centerCrop()
             .placeholder(R.drawable.placeholder_cover_bg)
             .listener(glideLoadingListener)

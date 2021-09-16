@@ -8,25 +8,26 @@
 
         <RelativeLayout
             android:id="@+id/bannerLayout"
-            android:paddingHorizontal="24dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_centerVertical="true"
-                android:textSize="20sp"
-                android:text="라이브러리"
-                android:textColor="@color/black"
-                android:fontFamily="@font/nanum_extrabold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp">
 
             <ImageView
                 android:id="@+id/closeButton"
-                android:src="@drawable/ic_baseline_close_24"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_close_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="라이브러리"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </RelativeLayout>
 

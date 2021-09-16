@@ -8,7 +8,7 @@ object TestRisingCoverData {
             id = 0,
             coverName = "오늘도 어김없이 펜타토닉",
             originalSong = "잔나비 - 전설",
-            imageUrl = "https://images.unsplash.com/photo-1512405173804-40c66c0ed709?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            imageURL = "https://images.unsplash.com/photo-1512405173804-40c66c0ed709?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
             introduction = "그댄 나를 사랑이라 불러주오",
             sessionDataList = listOf(
                 SessionData(
@@ -73,7 +73,7 @@ object TestRisingCoverData {
             id = 1,
             coverName = "K-콜드플레이",
             originalSong = "Coldplay - Fix You",
-            imageUrl = "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            imageURL = "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
             introduction = "본격 띵곡 신성모독",
             sessionDataList = listOf(
                 SessionData(
@@ -120,7 +120,7 @@ object TestRisingCoverData {
             id = 2,
             coverName = "기타 맛깔나게 치시는 분 구함",
             originalSong = "DAY6 - Deep in love",
-            imageUrl = "https://images.unsplash.com/photo-1452722464566-db26e74a995b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+            imageURL = "https://images.unsplash.com/photo-1452722464566-db26e74a995b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
             introduction = "초보 방 입니당",
             sessionDataList = listOf(
                 SessionData(

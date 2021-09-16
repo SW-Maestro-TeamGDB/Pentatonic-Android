@@ -1,13 +1,8 @@
 package com.team_gdb.pentatonic.ui.whole_cover
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.apollographql.apollo.api.Response
-import com.team_gdb.pentatonic.GetCoverQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.data.model.CoverEntity
-import com.team_gdb.pentatonic.data.model.SessionData
-import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepository
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -31,7 +26,7 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
                                 id = 0,
                                 coverName = it.name,
                                 introduction = it.introduce,
-                                imageUrl = it.backGroundURI,
+                                imageURL = it.backGroundURI,
                                 sessionDataList = listOf(),
                                 like = it.likeCount,
                                 view = 50,

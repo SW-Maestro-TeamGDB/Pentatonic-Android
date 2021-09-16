@@ -4,38 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
-        android:background="@color/white"
+        android:paddingTop="24dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.session_select.SessionSelectActivity">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_marginHorizontal="24dp"
-            android:layout_alignParentTop="true"
-            android:id="@+id/titleBar"
+        <RelativeLayout
+            android:id="@+id/bannerLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/page_title_margin_top"
-            android:orientation="horizontal">
+            android:paddingHorizontal="24dp">
 
             <ImageView
-                android:id="@+id/backButton"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_back_button"
-                app:tint="@color/black" />
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_close_24" />
 
             <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="세션 구성"
                 android:textColor="@color/black"
-                android:textSize="@dimen/page_title_text_size" />
-        </LinearLayout>
+                android:textSize="20sp" />
+
+        </RelativeLayout>
 
 
         <TextView
@@ -43,12 +39,12 @@
             android:id="@+id/hintTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titleBar"
-            android:layout_marginTop="24dp"
+            android:layout_below="@+id/bannerLayout"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/nanum_regular"
             android:text="밴드에 참가시킬 세션을 선택해주세요."
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:id="@+id/sessionList"
@@ -64,9 +60,9 @@
             android:id="@+id/completeSessionSelectButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginVertical="16dp"
+            android:layout_below="@+id/sessionList"
             android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="16dp"
             android:background="@drawable/selector_button"
             android:enabled="false"
             android:fontFamily="@font/nanum_extrabold"

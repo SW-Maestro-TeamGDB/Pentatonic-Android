@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemRisingCoverViewpagerBinding
-import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
  * 커버 목록을 보여주기 위한 뷰 페이저
@@ -48,7 +46,7 @@ class RisingCoverViewPagerAdapter(val itemClick: (CoverEntity) -> Unit) :
         fun bind(entity: CoverEntity) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageUrl)
+                .load(entity.imageURL)
                 .override(480, 272)
                 .into(binding.coverImage)
 

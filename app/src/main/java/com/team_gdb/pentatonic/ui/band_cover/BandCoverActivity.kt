@@ -7,11 +7,10 @@ import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
-import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
-import com.team_gdb.pentatonic.ui.session_select.SessionSelectActivity
+import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
+import com.team_gdb.pentatonic.ui.session_select.SessionSelectBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -20,9 +19,6 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         get() = R.layout.activity_band_cover
     override val viewModel: BandCoverViewModel by viewModel()
 
-    private val coverEntity: CoverEntity by lazy {
-        intent.getSerializableExtra(COVER_ENTITY) as CoverEntity
-    }
     private lateinit var sessionListAdapter: SessionConfigListAdapter
 
     override fun initStartView() {
@@ -43,12 +39,6 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         binding.backButton.setOnClickListener {
             finish()
-        }
-
-        binding.bandPlayButton.setOnClickListener {
-            val intent = Intent(this, SessionSelectActivity::class.java)
-            intent.putExtra(COVER_ENTITY, coverEntity)
-            startActivity(intent)
         }
     }
 
@@ -81,6 +71,11 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         bandInfo.session?.let {
             sessionListAdapter.setItem(it)
+        }
+
+        binding.bandPlayButton.setOnClickListener {
+            val bottomSheetDialog = SessionSelectBottomSheetDialog()
+            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
     }
 
