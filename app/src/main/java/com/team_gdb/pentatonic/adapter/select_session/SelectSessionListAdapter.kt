@@ -4,9 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
+import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
+import timber.log.Timber
 
 
 /**
@@ -15,10 +18,11 @@ import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
  * @property itemClick    사용자 프로필 이미지 눌렀을 때, 해당 사용자를 밴드에 참여시키는 동작
  */
 class SelectSessionListAdapter(
-    val itemClick: (SessionData, UserEntity) -> Unit
+    val itemClick: (GetBandCoverInfoQuery.Session, GetBandCoverInfoQuery.CoverBy) -> Unit
 ) : RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
-    private var sessionDataList: List<SessionData> = emptyList()  // 커버를 구성하고 있는 세션의 리스트
+    private var sessionDataList: List<GetBandCoverInfoQuery.Session?> =
+        emptyList()  // 커버를 구성하고 있는 세션의 리스트
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -34,7 +38,7 @@ class SelectSessionListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(sessionDataList[position])
+        sessionDataList[position]?.let { holder.bind(it) }
     }
 
     override fun getItemCount(): Int {
@@ -45,14 +49,16 @@ class SelectSessionListAdapter(
         private val binding: ItemSelectSessionListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: SessionData) {
-            binding.sessionNameTextView.text = item.sessionName
+        fun bind(item: GetBandCoverInfoQuery.Session) {
+            binding.sessionNameTextView.text =
+                SessionSetting.valueOf(item.position.name).sessionName
 
             // 해당 세션을 구성하는 참가자들을 보여주기 위한 리사이클러뷰 구성
             val adapter = SelectSessionParticipantListAdapter {
                 itemClick(item, it)
             }
-            adapter.setItem(items = item.sessionParticipantList)
+
+            adapter.setItem(items = item.cover)
 
 
             binding.sessionParticipantList.apply {
@@ -65,8 +71,8 @@ class SelectSessionListAdapter(
         }
     }
 
-    fun setItem(items: List<SessionData>) {
-        this.sessionDataList = items
+    fun setItem(items: List<GetBandCoverInfoQuery.Session?>?) {
+        this.sessionDataList = items!!
         notifyDataSetChanged()
     }
 }

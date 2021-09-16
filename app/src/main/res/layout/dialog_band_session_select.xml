@@ -46,7 +46,7 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
-        <com.chauthai.overscroll.RecyclerViewBouncy
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/sessionList"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"

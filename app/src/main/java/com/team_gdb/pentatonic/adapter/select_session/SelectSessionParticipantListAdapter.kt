@@ -5,21 +5,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionParticipantListBinding
+import timber.log.Timber
 
 /**
  * 각 세션의 참가자 목록을 보여주기 위한 리사이클러뷰 어댑터
  * - 세션 구성 리스트 (SessionConfigListAdapter) 에 종속됨
  *
- * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 동작
+ * @property itemClick  밴드에 해당 세션을 포함시키는 동작
  */
-class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
+class SelectSessionParticipantListAdapter(val itemClick: (GetBandCoverInfoQuery.CoverBy) -> Unit) :
     RecyclerView.Adapter<SelectSessionParticipantListAdapter.ViewHolder>() {
 
-    private var participantList: List<UserEntity> = emptyList()  // 각 세션의 참가자들 목록
+    private var participantList: List<GetBandCoverInfoQuery.Cover>? = emptyList()  // 각 세션의 참가자들 목록
     var selectedSession: Int = -1  // 선택된 아이템 포지션 -> 이를 활용하여 ViewHolder 바인딩 시 하이라이팅 여부 나눔
 
     /**
@@ -36,18 +37,18 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(participantList[position], position)
+        holder.bind(participantList!![position], position)
     }
 
     override fun getItemCount(): Int {
-        return participantList.size
+        return participantList!!.size
     }
 
     inner class ViewHolder(
         private val binding: ItemSelectSessionParticipantListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: UserEntity, position: Int) {
+        fun bind(entity: GetBandCoverInfoQuery.Cover, position: Int) {
             // 리스트 첫 아이템의 경우에는 어느정도 마진을 줘야함
             if (position == 0) {
                 val param = binding.itemRootLayout.layoutParams as ViewGroup.MarginLayoutParams
@@ -57,7 +58,7 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
 
             // 해당 사용자의 프로필 사진
             Glide.with(binding.root)
-                .load(entity.profileImage)
+                .load(entity.coverBy.profileURI)
                 .placeholder(R.drawable.profile_image_placeholder)
                 .override(80, 80)
                 .into(binding.userProfileImage)
@@ -70,14 +71,14 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
             }
 
             // 해당 사용자의 닉네임
-            binding.usernameTextView.text = entity.username
+            binding.usernameTextView.text = entity.coverBy.username
 
             // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
             binding.root.setOnClickListener {
                 if (selectedSession != adapterPosition) {
                     selectedSession = adapterPosition
                     notifyDataSetChanged()
-                    itemClick(entity)
+                    itemClick(entity.coverBy)
                 }
             }
         }
@@ -99,8 +100,8 @@ class SelectSessionParticipantListAdapter(val itemClick: (UserEntity) -> Unit) :
         }
     }
 
-    fun setItem(items: List<UserEntity>) {
-        this.participantList = items
+    fun setItem(items: List<GetBandCoverInfoQuery.Cover>?) {
+        this.participantList = items!!
         notifyDataSetChanged()
     }
 }
