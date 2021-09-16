@@ -25,7 +25,6 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         binding.viewModel = this.viewModel
 
         viewModel.getBandInfoQuery("6141f76aa58e6e0014b27e69")
-
     }
 
     override fun initDataBinding() {
@@ -36,7 +35,6 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
     }
 
     override fun initAfterBinding() {
-
         binding.backButton.setOnClickListener {
             finish()
         }
@@ -63,6 +61,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             val bottomSheetDialog = LibrarySelectBottomSheetDialog()
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         })
+
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = sessionListAdapter

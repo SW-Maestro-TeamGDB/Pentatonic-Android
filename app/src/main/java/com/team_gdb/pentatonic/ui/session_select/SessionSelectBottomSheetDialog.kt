@@ -28,6 +28,7 @@ class SessionSelectBottomSheetDialog :
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun initDataBinding() {
+        // BandCoverActivity 에서 넘어온 밴드 상세 정보 (공유된 데이터)
         viewModel.bandInfo.observe(this) {
             sessionListAdapter = SelectSessionListAdapter { sessionData, userEntity ->
                 viewModel.addSession(
@@ -41,18 +42,22 @@ class SessionSelectBottomSheetDialog :
                 this.setHasFixedSize(true)
             }
 
+            // 아직 한 명도 참여하지 않은 세션에 대해서는 리스트 생성 X
             sessionListAdapter.setItem(it.session?.filter {
                 !it?.cover.isNullOrEmpty()
             })
         }
+
+        // 사용자에 의해 선택된 세션 정보
         viewModel.selectedSessionLiveData.observe(this) {
             Timber.d(it.toString())
+            binding.completeSessionSelectButton.isEnabled = it.size > 0
         }
-
     }
 
     override fun initAfterBinding() {
         binding.closeButton.setOnClickListener {
+            viewModel.selectedSessionLiveData.postValue(hashMapOf())
             dismiss()
         }
     }
