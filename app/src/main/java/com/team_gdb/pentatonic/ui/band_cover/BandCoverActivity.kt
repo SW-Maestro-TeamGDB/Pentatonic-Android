@@ -9,8 +9,6 @@ import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
-import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
-import com.team_gdb.pentatonic.ui.session_select.SessionSelectBottomSheetDialog
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 

@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.session_select
+package com.team_gdb.pentatonic.ui.band_cover
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -7,7 +7,6 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.select_session.SelectSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogBandSessionSelectBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 import timber.log.Timber

@@ -79,6 +79,10 @@ class SelectSessionParticipantListAdapter(val itemClick: (GetBandCoverInfoQuery.
                     selectedSession = adapterPosition
                     notifyDataSetChanged()
                     itemClick(entity.coverBy)
+                } else if(selectedSession == adapterPosition) {
+                    selectedSession = -1
+                    itemClick(entity.coverBy)
+                    notifyDataSetChanged()
                 }
             }
         }
