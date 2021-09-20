@@ -7,7 +7,12 @@ import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.data.model.CoverEntity
+import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
+import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
+import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.COVER_PLAY_ENTITY
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -29,6 +34,22 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         viewModel.bandInfo.observe(this) {
             Timber.d(it.toString())
             applyBandInfoOnView(it)
+        }
+
+        // 사용자 요청에 의해 병합된 커버 URL 옵저빙
+        viewModel.mergedCoverURL.observe(this) {
+            val coverEntity = CoverPlayEntity(
+                coverID = viewModel.bandInfo.value!!.bandId,
+                coverName = viewModel.bandInfo.value!!.name,
+                backgroundImgURL = viewModel.bandInfo.value!!.backGroundURI,
+                coverIntroduction = viewModel.bandInfo.value!!.introduce,
+                likeCount = viewModel.bandInfo.value!!.likeCount,
+                viewCount = 34,
+                coverURL = it
+            )
+            val intent = Intent(this, CoverPlayActivity::class.java)
+            intent.putExtra(COVER_PLAY_ENTITY, coverEntity)
+            startActivity(intent)
         }
     }
 

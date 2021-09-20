@@ -4,10 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CoverEntity
+import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
 
 class CoverPlayingViewModel: BaseViewModel() {
-    val coverEntity: MutableLiveData<CoverEntity> = MutableLiveData()
+    val coverEntity: MutableLiveData<CoverPlayEntity> = MutableLiveData()
 
     val buttonState: MutableLiveData<ButtonState> =
         MutableLiveData<ButtonState>(ButtonState.BEFORE_PLAYING)

@@ -19,6 +19,8 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     // 세션 to 커버 URL 로 구성된 HashMap
     val selectedSessionLiveData: MutableLiveData<HashMap<String, String>> = MutableLiveData()
 
+    // 사용자의 세션 구성 선택대로 병합된 커버 URL
+    val mergedCoverURL: MutableLiveData<String> = MutableLiveData()
 
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
@@ -61,6 +63,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                 onSuccess = {
                     if (!it.hasErrors()) {
                         Timber.d("getMergedCover() : ${it.data}")
+                        mergedCoverURL.postValue(it.data?.mergeAudios)
                     } else {
                         Timber.i(it.errors.toString())
                     }

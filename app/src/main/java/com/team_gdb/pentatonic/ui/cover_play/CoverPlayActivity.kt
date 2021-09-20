@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityCoverPlayBinding
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.custom_view.ButtonState
+import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.media.ExoPlayerHelper
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import jp.wasabeef.blurry.Blurry
@@ -23,8 +24,8 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
     override val layoutResourceId: Int = R.layout.activity_cover_play
     override val viewModel: CoverPlayingViewModel by viewModel()
 
-    val coverEntity: CoverEntity by lazy {
-        intent.getSerializableExtra(COVER_ENTITY) as CoverEntity
+    val coverEntity: CoverPlayEntity by lazy {
+        intent.getSerializableExtra(COVER_PLAY_ENTITY) as CoverPlayEntity
     }
 
     override fun initStartView() {
@@ -34,14 +35,14 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         viewModel.coverEntity.postValue(coverEntity)
 
         Glide.with(binding.root)
-            .load(coverEntity.imageURL)
+            .load(coverEntity.backgroundImgURL)
             .centerCrop()
             .placeholder(R.drawable.placeholder_cover_bg)
             .listener(glideLoadingListener)
             .into(binding.coverBackgroundImageView)
 
         // Test
-        initPlayer("https://penta-tonic.s3.ap-northeast-2.amazonaws.com/1628971969794-result.mp3") {
+        initPlayer(coverEntity.coverURL) {
             Timber.d("Play Complete")
         }
 
@@ -55,20 +56,7 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
     }
 
     override fun initAfterBinding() {
-        // 재생 버튼 눌렀을 때
-//        binding.playButton.setOnClickListener {
-//            when (viewModel.buttonState.value) {
-//                ButtonState.BEFORE_PLAYING -> {
-//                    startPlaying()
-//                }
-//                ButtonState.ON_PLAYING -> {
-//                    pausePlaying()
-//                }
-//                else -> {
-//                    /* no-op */
-//                }
-//            }
-//        }
+
     }
 
 
@@ -78,24 +66,6 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
 
         viewModel.remainTime.postValue(ExoPlayerHelper.player.duration.toString())
 
-//        seekBarThread = Thread {
-//            while (player?.isPlaying == true) {
-//                try {
-//                    Thread.sleep(1000)
-//                } catch (e: Exception) {
-//                    Timber.i(e)
-//                }
-//                runOnUiThread {
-//                    binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
-//                }
-//            }
-//        }
-//        seekBarThread!!.start()
-    }
-
-    private  fun pausePlaying() {
-        viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
-//        ExoPlayerHelper.pausePlaying()
     }
 
     override fun onDestroy() {
@@ -133,5 +103,9 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
                 .into(binding.backgroundImageView)
             return false
         }
+    }
+
+    companion object {
+        const val COVER_PLAY_ENTITY = "COVER_PLAY_ENTITY"
     }
 }

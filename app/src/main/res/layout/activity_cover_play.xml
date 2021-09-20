@@ -69,7 +69,7 @@
                 android:id="@+id/coverIntroductionTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.coverEntity.introduction}"
+                android:text="@{viewModel.coverEntity.coverIntroduction}"
                 android:textColor="@color/white"
                 android:fontFamily="@font/nanum_regular"
                 android:textSize="16sp" />

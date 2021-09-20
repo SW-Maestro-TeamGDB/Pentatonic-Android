@@ -61,6 +61,7 @@ class SessionSelectBottomSheetDialog :
             dismiss()
         }
 
+        // 밴드 세션 선택 완료 버튼을 누르면, 해당 세션으로 구성된 음원 요청
         binding.completeSessionSelectButton.setOnClickListener {
             viewModel.getMergedCover()
         }
