@@ -29,10 +29,10 @@ class SessionSelectBottomSheetDialog :
     override fun initDataBinding() {
         // BandCoverActivity 에서 넘어온 밴드 상세 정보 (공유된 데이터)
         viewModel.bandInfo.observe(this) {
-            sessionListAdapter = SelectSessionListAdapter { sessionData, userEntity ->
+            sessionListAdapter = SelectSessionListAdapter { sessionData, coverURL ->
                 viewModel.addSession(
                     sessionName = sessionData.position.name,
-                    userName = userEntity.username
+                    coverURL = coverURL
                 )
             }
             binding.sessionList.apply {
@@ -50,6 +50,7 @@ class SessionSelectBottomSheetDialog :
         // 사용자에 의해 선택된 세션 정보
         viewModel.selectedSessionLiveData.observe(this) {
             Timber.d(it.toString())
+            // 완료하기 버튼 활성화 여부 : 1개 이상 세션 선택 시 활성화
             binding.completeSessionSelectButton.isEnabled = it.size > 0
         }
     }

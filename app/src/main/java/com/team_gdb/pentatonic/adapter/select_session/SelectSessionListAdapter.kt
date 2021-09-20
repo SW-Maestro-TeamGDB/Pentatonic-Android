@@ -18,7 +18,7 @@ import timber.log.Timber
  * @property itemClick    사용자 프로필 이미지 눌렀을 때, 해당 사용자를 밴드에 참여시키는 동작
  */
 class SelectSessionListAdapter(
-    val itemClick: (GetBandCoverInfoQuery.Session, GetBandCoverInfoQuery.CoverBy) -> Unit
+    val itemClick: (GetBandCoverInfoQuery.Session, String) -> Unit
 ) : RecyclerView.Adapter<SelectSessionListAdapter.ViewHolder>() {
 
     private var sessionDataList: List<GetBandCoverInfoQuery.Session?> =

@@ -13,11 +13,11 @@ import timber.log.Timber
 
 /**
  * 각 세션의 참가자 목록을 보여주기 위한 리사이클러뷰 어댑터
- * - 세션 구성 리스트 (SessionConfigListAdapter) 에 종속됨
+ * - 세션 구성 리스트 (SelectSessionListAdapter) 에 종속됨
  *
  * @property itemClick  밴드에 해당 세션을 포함시키는 동작
  */
-class SelectSessionParticipantListAdapter(val itemClick: (GetBandCoverInfoQuery.CoverBy) -> Unit) :
+class SelectSessionParticipantListAdapter(val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<SelectSessionParticipantListAdapter.ViewHolder>() {
 
     private var participantList: List<GetBandCoverInfoQuery.Cover>? = emptyList()  // 각 세션의 참가자들 목록
@@ -74,16 +74,15 @@ class SelectSessionParticipantListAdapter(val itemClick: (GetBandCoverInfoQuery.
             binding.usernameTextView.text = entity.coverBy.username
 
             // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
+            // - coverURL 은 고유하므로, { 세션명 to coverURL } 형태로 저장
             binding.root.setOnClickListener {
                 if (selectedSession != adapterPosition) {
                     selectedSession = adapterPosition
-                    notifyDataSetChanged()
-                    itemClick(entity.coverBy)
                 } else if(selectedSession == adapterPosition) {
                     selectedSession = -1
-                    itemClick(entity.coverBy)
-                    notifyDataSetChanged()
                 }
+                notifyDataSetChanged()
+                itemClick(entity.coverURI)
             }
         }
 

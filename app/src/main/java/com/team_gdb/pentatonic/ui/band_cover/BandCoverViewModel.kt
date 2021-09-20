@@ -2,7 +2,6 @@ package com.team_gdb.pentatonic.ui.band_cover
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
@@ -16,6 +15,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     val bandInfo: MutableLiveData<GetBandCoverInfoQuery.GetBand> = MutableLiveData()
 
     private val selectedSession: HashMap<String, String> = hashMapOf()
+    // 세션 to 커버 URL 로 구성된 HashMap
     val selectedSessionLiveData: MutableLiveData<HashMap<String, String>> = MutableLiveData()
 
 
@@ -46,15 +46,15 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun addSession(sessionName: String, userName: String) {
+    fun addSession(sessionName: String, coverURL: String) {
         if (selectedSession.containsKey(sessionName)) {  // 이미 있는 세션인 경우
-            if (selectedSession[sessionName] == userName) {  // 같은 사람에 대한 요청인 경우 세션 정보 자체를 제거
+            if (selectedSession[sessionName] == coverURL) {  // 같은 사람에 대한 요청인 경우 세션 정보 자체를 제거
                 selectedSession.remove(sessionName)
             } else {
-                selectedSession.replace(sessionName, userName)  // 일반적인 경우 유저 정보를 replace
+                selectedSession.replace(sessionName, coverURL)  // 일반적인 경우 커버 URL replace
             }
         } else {  // 새로운 세션인 경우 put
-            selectedSession[sessionName] = userName
+            selectedSession[sessionName] = coverURL
         }
         selectedSessionLiveData.postValue(selectedSession)
     }
