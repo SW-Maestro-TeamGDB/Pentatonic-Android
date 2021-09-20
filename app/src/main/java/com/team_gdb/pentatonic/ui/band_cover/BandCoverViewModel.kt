@@ -15,6 +15,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     val bandInfo: MutableLiveData<GetBandCoverInfoQuery.GetBand> = MutableLiveData()
 
     private val selectedSession: HashMap<String, String> = hashMapOf()
+
     // 세션 to 커버 URL 로 구성된 HashMap
     val selectedSessionLiveData: MutableLiveData<HashMap<String, String>> = MutableLiveData()
 
@@ -39,7 +40,30 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                     }
                 },
                 onComplete = {
-                    Timber.d("GetBandCoverInfoQuery() Complete")
+                    Timber.d("getBandInfoQuery() Complete")
+                }
+            )
+    }
+
+    /**
+     * CoverURL 목록을 통해 병합된 음원을 요청하는 뮤테이션
+     *
+     * @param coverList  병합할 커버 리스트 (URL 형태)
+     */
+    fun getMergedCover() {
+        val coverList = selectedSession.values.toList()
+        repository.getMergedCover(coverList)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+                    if (!it.hasErrors()) {
+                        Timber.d("getMergedCover() : ${it.data}")
+                    } else {
+                        Timber.i(it.errors.toString())
+                    }
                 }
             )
     }

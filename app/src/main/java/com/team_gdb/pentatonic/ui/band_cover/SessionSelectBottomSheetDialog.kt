@@ -60,5 +60,9 @@ class SessionSelectBottomSheetDialog :
             viewModel.selectedSessionLiveData.postValue(hashMapOf())
             dismiss()
         }
+
+        binding.completeSessionSelectButton.setOnClickListener {
+            viewModel.getMergedCover()
+        }
     }
 }

@@ -46,6 +46,6 @@ mutation DeleteCoverMutation($deleteCoverInput: DeleteCoverInput!) {
 }
 
 # 커버 음원 병합 (머지) 뮤테이션
-mutation MergeAudiosMutation($mergeAudiosInput: MergeAudiosInput!) {
+mutation MergeCoverMutation($mergeAudiosInput: MergeAudiosInput!) {
     mergeAudios(input: $mergeAudiosInput)
 }
