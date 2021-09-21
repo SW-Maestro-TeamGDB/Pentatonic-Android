@@ -55,6 +55,37 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
     }
 }
 
+# 사용자 라이브러리 정보 가져오는 쿼리 (위 쿼리와 같은 쿼리를 호출하지만, 경량화된 동작을 함)
+query GetUserLibraryQuery($getUserInfoUserId: Id!) {
+    getUserInfo(userId: $getUserInfoUserId) {
+        library {
+            position
+            date
+            name
+            duration
+            coverId
+            coverURI
+            coverBy {
+                id
+            }
+            songId
+            song {
+                songId
+                name
+                songURI
+                songImg
+                genre
+                artist
+                album
+                weeklyChallenge
+                duration
+                level
+                releaseDate
+            }
+        }
+    }
+}
+
 query GetCoverQuery($queryBandFilter: QueryBandInput!) {
     queryBand(filter: $queryBandFilter){
         name

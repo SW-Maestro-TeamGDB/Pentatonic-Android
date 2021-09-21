@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
+import com.team_gdb.pentatonic.GetUserLibraryQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepository
@@ -21,6 +22,9 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
 
     // 사용자의 세션 구성 선택대로 병합된 커버 URL
     val mergedCoverURL: MutableLiveData<String> = MutableLiveData()
+
+    // 사용자의 라이브러리 목록
+    private val libraryList: MutableLiveData<List<GetUserLibraryQuery.Library>> = MutableLiveData()
 
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
@@ -72,6 +76,9 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     }
 
 
+    /**
+     * 밴드에 참여시킬 세션 데이터를 저장
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     fun addSession(sessionName: String, coverURL: String) {
         if (selectedSession.containsKey(sessionName)) {  // 이미 있는 세션인 경우
@@ -86,4 +93,23 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
         selectedSessionLiveData.postValue(selectedSession)
     }
 
+    fun getUserLibrary(userId: String) {
+        repository.getUserLibrary(userId)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onNext = {
+                    if (!it.hasErrors()) {
+                        libraryList.postValue(it.data?.getUserInfo?.library?.filter { library ->
+                            bandInfo.value?.song?.songId == library.song.songId
+                        })
+                    }
+                },
+                onComplete = {
+                    Timber.d("getUserLibrary() Complete")
+                }
+            )
+    }
 }
