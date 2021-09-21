@@ -13,7 +13,14 @@ class Prefs(context: Context) {
             prefs.edit().putString(TOKEN, value).apply()
         }
 
+    var userId: String?
+        get() = prefs.getString(USER_ID, null)
+        set(value) {
+            prefs.edit().putString(USER_ID, value).apply()
+        }
+
     companion object {
         const val TOKEN = "token"
+        const val USER_ID = "user_id"
     }
 }
