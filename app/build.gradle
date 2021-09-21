@@ -45,6 +45,7 @@ android {
                 "ObjectID"            : "kotlin.String",
                 "Id"                  : "kotlin.String",
                 "Username"            : "kotlin.String",
+                "DateTime"            : "kotlin.String",
                 "UploadCoverFileInput": "com.apollographql.apollo.api.FileUpload"
         ]
     }

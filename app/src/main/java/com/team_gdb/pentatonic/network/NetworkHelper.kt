@@ -26,6 +26,7 @@ object NetworkHelper {
         .addCustomTypeAdapter(CustomType.ID, idTypeAdapter)
         .addCustomTypeAdapter(CustomType.OBJECTID, objectIdTypeAdapter)
         .addCustomTypeAdapter(CustomType.USERNAME, usernameTypeAdapter)
+        .addCustomTypeAdapter(CustomType.DATETIME, dateTimeTypeAdapter)
         .build()
 }
 
@@ -131,6 +132,23 @@ val idTypeAdapter = object : CustomTypeAdapter<String> {
  * 커버 정보의 Username 타입을 String 으로 변환해주는 어댑터
  */
 val usernameTypeAdapter = object : CustomTypeAdapter<String> {
+    override fun decode(value: CustomTypeValue<*>): String {
+        return try {
+            value.value.toString()
+        } catch (e: ParseException) {
+            throw RuntimeException(e)
+        }
+    }
+
+    override fun encode(value: String): CustomTypeValue<*> {
+        return CustomTypeValue.GraphQLString(value)
+    }
+}
+
+/**
+ * 커버 정보의 Username 타입을 String 으로 변환해주는 어댑터
+ */
+val dateTimeTypeAdapter = object : CustomTypeAdapter<String> {
     override fun decode(value: CustomTypeValue<*>): String {
         return try {
             value.value.toString()

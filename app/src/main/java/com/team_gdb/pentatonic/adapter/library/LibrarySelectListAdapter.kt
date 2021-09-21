@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.adapter.library
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -17,10 +18,11 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  *
  * @property itemClick  사용자가 선택한(클릭한) 커버로 밴드에 참가하는 동작
  */
-class LibrarySelectListAdapter(val itemClick: (LibraryEntity) -> Unit) :
+class LibrarySelectListAdapter(val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<LibrarySelectListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<GetUserLibraryQuery.Library> = emptyList()  // 커버 아이템 리스트 정보
+    var selectedSession: Int = -1  // 선택된 아이템 포지션 -> 이를 활용하여 ViewHolder 바인딩 시 하이라이팅 여부 나눔
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -50,7 +52,44 @@ class LibrarySelectListAdapter(val itemClick: (LibraryEntity) -> Unit) :
         fun bind(entity: GetUserLibraryQuery.Library) {
             // 해당 커버의 이름
             binding.coverName.text = entity.name
-            // TODO : Cover Date 필드 추가해줘야 함
+            binding.coverDate.text = entity.date
+
+            // 선택된 아이템이 아니라면 기본 스타일로 표현
+            if (selectedSession != adapterPosition) {
+                setItemBasic()
+            } else {  // 선택된 아이템이라면, 하이라이팅 처리
+                setItemHighlighting()
+            }
+
+            // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
+            // - coverURL 은 고유하므로, { 세션명 to coverURL } 형태로 저장
+            binding.root.setOnClickListener {
+                if (selectedSession != adapterPosition) {
+                    selectedSession = adapterPosition
+                } else if(selectedSession == adapterPosition) {
+                    selectedSession = -1
+                }
+                notifyDataSetChanged()
+                itemClick(entity.coverURI)
+            }
+        }
+
+        /**
+         * 아이템을 하이라이팅 하는 함수
+         */
+        private fun setItemHighlighting() {
+            binding.itemCardLayout.setCardBackgroundColor(Color.LTGRAY)
+            binding.coverName.setTextColor(Color.WHITE)
+            binding.coverDate.setTextColor(Color.WHITE)
+        }
+
+        /**
+         * 아이템에 기본 스타일 적용하는 함수
+         */
+        private fun setItemBasic() {
+            binding.itemCardLayout.setCardBackgroundColor(Color.WHITE)
+            binding.coverName.setTextColor(Color.BLACK)
+            binding.coverDate.setTextColor(Color.BLACK)
         }
     }
 
