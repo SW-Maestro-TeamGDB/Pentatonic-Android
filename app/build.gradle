@@ -138,4 +138,10 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.15.0'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.15.0'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.15.0'
+
+    // Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    // Analytics library
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
 }

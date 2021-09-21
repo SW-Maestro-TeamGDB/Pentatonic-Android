@@ -30,7 +30,6 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
 
     private lateinit var coverListAdapter: CoverVerticalListAdapter  // 솔로 커버 리스트
 
-
     override fun initStartView() {
         binding.viewModel = this.viewModel
         addDisposable(binding.searchView.setQueryDebounce({
