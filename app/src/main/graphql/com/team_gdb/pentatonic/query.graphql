@@ -182,6 +182,10 @@ query GetTrendBandsQuery {
         backGroundURI
         session {
             position
+            cover {
+                name
+                position
+            }
         }
         likeCount
         likeStatus
