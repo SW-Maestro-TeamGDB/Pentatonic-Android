@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.band_cover
 
 import android.content.Intent
+import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
@@ -10,6 +11,7 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
+import com.team_gdb.pentatonic.type.SESSION_TYPE
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.COVER_PLAY_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
@@ -84,6 +86,9 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             startActivity(intent)
         }, {
             val bottomSheetDialog = LibrarySelectBottomSheetDialog()
+            bottomSheetDialog.arguments = Bundle().apply {
+                putString(SESSION_TYPE, it.position.rawValue)
+            }
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         })
 
@@ -101,5 +106,9 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             val bottomSheetDialog = SessionSelectBottomSheetDialog()
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
+    }
+
+    companion object {
+        const val SESSION_TYPE = "session_type"
     }
 }

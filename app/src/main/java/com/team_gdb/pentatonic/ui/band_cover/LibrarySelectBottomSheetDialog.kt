@@ -7,6 +7,7 @@ import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogLibrarySelectBinding
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity.Companion.SESSION_TYPE
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class LibrarySelectBottomSheetDialog() :
@@ -14,6 +15,10 @@ class LibrarySelectBottomSheetDialog() :
     override val layoutResourceId: Int
         get() = R.layout.dialog_library_select
     override val viewModel: BandCoverViewModel by sharedViewModel()
+
+    private val selectedSession: String by lazy {
+        arguments?.getString(SESSION_TYPE) as String
+    }
 
     private lateinit var librarySelectListAdapter: LibrarySelectListAdapter
 
@@ -36,6 +41,11 @@ class LibrarySelectBottomSheetDialog() :
     }
 
     override fun initDataBinding() {
+        viewModel.libraryList.observe(this) {
+            librarySelectListAdapter.setItem(it.filter {
+                selectedSession == it.position.rawValue
+            })
+        }
     }
 
     override fun initAfterBinding() {

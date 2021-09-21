@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetUserLibraryQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.LibraryEntity
@@ -19,7 +20,7 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 class LibrarySelectListAdapter(val itemClick: (LibraryEntity) -> Unit) :
     RecyclerView.Adapter<LibrarySelectListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<LibraryEntity> = emptyList()  // 커버 아이템 리스트 정보
+    private var coverEntityList: List<GetUserLibraryQuery.Library> = emptyList()  // 커버 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -46,14 +47,14 @@ class LibrarySelectListAdapter(val itemClick: (LibraryEntity) -> Unit) :
         private val binding: ItemLibrarySelectListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: LibraryEntity) {
+        fun bind(entity: GetUserLibraryQuery.Library) {
             // 해당 커버의 이름
-            binding.coverName.text = entity.coverName
+            binding.coverName.text = entity.name
             // TODO : Cover Date 필드 추가해줘야 함
         }
     }
 
-    fun setItem(entities: List<LibraryEntity>) {
+    fun setItem(entities: List<GetUserLibraryQuery.Library>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }

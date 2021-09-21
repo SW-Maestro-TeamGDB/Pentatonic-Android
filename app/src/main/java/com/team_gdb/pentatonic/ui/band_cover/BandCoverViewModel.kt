@@ -24,7 +24,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     val mergedCoverURL: MutableLiveData<String> = MutableLiveData()
 
     // 사용자의 라이브러리 목록
-    private val libraryList: MutableLiveData<List<GetUserLibraryQuery.Library>> = MutableLiveData()
+    val libraryList: MutableLiveData<List<GetUserLibraryQuery.Library>> = MutableLiveData()
 
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
