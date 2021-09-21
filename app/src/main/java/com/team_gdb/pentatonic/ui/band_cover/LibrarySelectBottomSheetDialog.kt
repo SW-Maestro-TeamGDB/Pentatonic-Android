@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.band_cover
 
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team_gdb.pentatonic.R
@@ -42,9 +43,14 @@ class LibrarySelectBottomSheetDialog() :
 
     override fun initDataBinding() {
         viewModel.libraryList.observe(this) {
-            librarySelectListAdapter.setItem(it.filter {
-                selectedSession == it.position.rawValue
-            })
+            val data = it.filter { selectedSession == it.position.rawValue }
+            if (data.isNullOrEmpty()){
+                binding.buttonLayout.visibility = View.GONE
+                binding.libraryList.visibility = View.GONE
+            } else {
+                binding.noDataImageView.visibility = View.GONE
+                librarySelectListAdapter.setItem(data)
+            }
         }
     }
 

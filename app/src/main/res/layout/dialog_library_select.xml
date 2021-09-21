@@ -31,18 +31,46 @@
 
         </RelativeLayout>
 
-        <com.chauthai.overscroll.RecyclerViewBouncy
+        <LinearLayout
+            android:id="@+id/noDataImageView"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="16dp"
             android:layout_below="@+id/bannerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="350dp">
+
+            <ImageView
+                android:src="@drawable/ic_album_track"
+                android:layout_gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:tint="@color/gray" />
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nanum_regular"
+                android:text="아직 커버가 존재하지 않습니다!"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <com.chauthai.overscroll.RecyclerViewBouncy
             android:id="@+id/libraryList"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@+id/bannerLayout"
+            android:layout_marginTop="16dp"
             app:friction="200"
             app:gapLimit="220"
             app:speedFactor="5"
-            app:tension="1000"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"/>
+            app:tension="1000" />
 
         <RelativeLayout
+            android:id="@+id/buttonLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/libraryList">
