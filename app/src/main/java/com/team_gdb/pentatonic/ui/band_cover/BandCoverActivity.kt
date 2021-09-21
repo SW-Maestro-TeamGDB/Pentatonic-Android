@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.COVER_PLAY_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -22,12 +23,16 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         get() = R.layout.activity_band_cover
     override val viewModel: BandCoverViewModel by viewModel()
 
+    private val coverID: String by lazy {
+        intent.getStringExtra(COVER_ID) as String
+    }
+
     private lateinit var sessionListAdapter: SessionConfigListAdapter
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
 
-        viewModel.getBandInfoQuery("6141f76aa58e6e0014b27e69")
+        viewModel.getBandInfoQuery(coverID)
     }
 
     override fun initDataBinding() {

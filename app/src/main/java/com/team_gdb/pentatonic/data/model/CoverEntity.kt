@@ -15,7 +15,7 @@ import java.io.Serializable
  * @property view              커버 조회 수
  */
 data class CoverEntity(
-    val id: Int,
+    val id: String,
     val originalSong: String,
     val coverName: String,
     val imageURL: String,

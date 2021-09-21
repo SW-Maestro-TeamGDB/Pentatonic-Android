@@ -23,7 +23,7 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
                     if (!it.hasErrors()) {
                         coverList.postValue(it.data?.queryBand?.map {
                             CoverEntity(
-                                id = 0,
+                                id = it.bandId,
                                 coverName = it.name,
                                 introduction = it.introduce,
                                 imageURL = it.backGroundURI,

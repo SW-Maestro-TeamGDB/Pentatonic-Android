@@ -17,6 +17,7 @@ import com.team_gdb.pentatonic.databinding.FragmentWholeCoverBinding
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.util.setQueryDebounce
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -38,7 +39,7 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
         }, binding.textClearButton))
         coverListAdapter = CoverVerticalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ENTITY, it)
+            intent.putExtra(COVER_ID, it.id)
             startActivity(intent)
         }
         binding.coverList.apply {

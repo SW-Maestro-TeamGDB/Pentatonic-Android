@@ -6,7 +6,7 @@ import com.team_gdb.pentatonic.data.session.SessionSetting
 object TestData {
     val TEST_BAND_COVER_LIST: List<CoverEntity> = listOf(
         CoverEntity(
-            id = 0,
+            id = "0",
             coverName = "데이식스 담당 찐따",
             originalSong = "DAY6 - 반드시 웃는다",
             imageURL = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",
@@ -107,7 +107,7 @@ object TestData {
             view = 59
         ),
         CoverEntity(
-            id = 1,
+            id = "1",
             coverName = "무지성 합주",
             originalSong = "Coldplay - Fix You",
             imageURL = "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80",
@@ -154,7 +154,7 @@ object TestData {
             view = 31
         ),
         CoverEntity(
-            id = 2,
+            id = "2",
             coverName = "초보 아무나 들와요",
             originalSong = "DAY6 - Deep in love",
             imageURL = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",
@@ -222,7 +222,7 @@ object TestData {
 
     val TEST_SOLO_COVER_LIST: List<CoverEntity> = listOf(
         CoverEntity(
-            id = 0,
+            id = "0",
             coverName = "요즘 보컬 연습중이에요",
             originalSong = "DAY6 - Not Fine",
             imageURL = "https://img.wowtv.co.kr/wowtv_news/dnrs/20210705/2021070508054205981d3244b4fed182172186127.jpg",
@@ -245,7 +245,7 @@ object TestData {
             view = 59
         ),
         CoverEntity(
-            id = 1,
+            id = "1",
             coverName = "그저 평범한 일렉 솔로",
             originalSong = "Coldplay - Fix You",
             imageURL = "https://images.unsplash.com/photo-1598518141892-06ba05f87bbe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=932&q=80",
@@ -268,7 +268,7 @@ object TestData {
             view = 31
         ),
         CoverEntity(
-            id = 2,
+            id = "2",
             coverName = "감성 보컬이 되자",
             originalSong = "DAY6 - 뚫고 지나가요",
             imageURL = "https://img.wowtv.co.kr/wowtv_news/dnrs/20210705/2021070508054205981d3244b4fed182172186127.jpg",
@@ -338,7 +338,7 @@ object TestData {
 
     val TEST_WEEKLY_COVER_LIST: List<CoverEntity> = listOf(
         CoverEntity(
-            id = 0,
+            id = "0",
             coverName = "콜드플레이 신성모독 현장",
             originalSong = "Coldplay - Higher Power",
             imageURL = "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1355&q=80",
@@ -415,7 +415,7 @@ object TestData {
             view = 59
         ),
         CoverEntity(
-            id = 1,
+            id = "1",
             coverName = "K-콜드플레이",
             originalSong = "Coldplay - Higher Power",
             imageURL = "https://images.unsplash.com/photo-1499364615650-ec38552f4f34?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1866&q=80",
@@ -462,7 +462,7 @@ object TestData {
             view = 31
         ),
         CoverEntity(
-            id = 2,
+            id = "2",
             coverName = "초보 아무나 들와요",
             originalSong = "DAY6 - Deep in love",
             imageURL = "https://images.unsplash.com/photo-1526478806334-5fd488fcaabc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1090&q=80",

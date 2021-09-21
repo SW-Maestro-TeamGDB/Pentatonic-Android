@@ -5,7 +5,7 @@ import com.team_gdb.pentatonic.data.model.*
 object TestRisingCoverData {
     val TEST_BAND_COVER_LIST: List<CoverEntity> = listOf(
         CoverEntity(
-            id = 0,
+            id = "0",
             coverName = "오늘도 어김없이 펜타토닉",
             originalSong = "잔나비 - 전설",
             imageURL = "https://images.unsplash.com/photo-1512405173804-40c66c0ed709?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
@@ -70,7 +70,7 @@ object TestRisingCoverData {
             view = 59
         ),
         CoverEntity(
-            id = 1,
+            id = "1",
             coverName = "K-콜드플레이",
             originalSong = "Coldplay - Fix You",
             imageURL = "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
@@ -117,7 +117,7 @@ object TestRisingCoverData {
             view = 31
         ),
         CoverEntity(
-            id = 2,
+            id = "2",
             coverName = "기타 맛깔나게 치시는 분 구함",
             originalSong = "DAY6 - Deep in love",
             imageURL = "https://images.unsplash.com/photo-1452722464566-db26e74a995b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",

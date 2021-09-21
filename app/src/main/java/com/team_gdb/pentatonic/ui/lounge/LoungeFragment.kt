@@ -30,6 +30,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverHorizontalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
+            intent.putExtra(COVER_ID, it)
             startActivity(intent)
         }
 
@@ -122,5 +123,6 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
     companion object {
         const val COVER_ENTITY = "COVER_ENTITY"
+        const val COVER_ID = "COVER_ID"
     }
 }
