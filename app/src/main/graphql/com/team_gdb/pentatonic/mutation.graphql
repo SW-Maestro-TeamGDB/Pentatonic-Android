@@ -49,3 +49,8 @@ mutation DeleteCoverMutation($deleteCoverInput: DeleteCoverInput!) {
 mutation MergeCoverMutation($mergeAudiosInput: MergeAudiosInput!) {
     mergeAudios(input: $mergeAudiosInput)
 }
+
+# 밴드 참가 뮤테이션
+mutation JoinBandMutation($joinBandInput: JoinBandInput!) {
+    joinBand(input: $joinBandInput)
+}

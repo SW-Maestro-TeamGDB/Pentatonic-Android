@@ -3,12 +3,9 @@ package com.team_gdb.pentatonic.repository.band_cover
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
 import com.apollographql.apollo.rx3.rxQuery
-import com.team_gdb.pentatonic.GetBandCoverInfoQuery
-import com.team_gdb.pentatonic.GetUserInfoQuery
-import com.team_gdb.pentatonic.GetUserLibraryQuery
-import com.team_gdb.pentatonic.MergeCoverMutation
+import com.team_gdb.pentatonic.*
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
-import com.team_gdb.pentatonic.type.MergeAudiosInput
+import com.team_gdb.pentatonic.type.*
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
@@ -21,6 +18,21 @@ class BandCoverRepositoryImpl : BandCoverRepository {
     override fun getMergedCover(coverList: List<String>) =
         apolloClient.rxMutate(MergeCoverMutation(mergeAudiosInput = MergeAudiosInput(coverList)))
 
+    // 사용자의 라이브러리를 조회하는 쿼리
     override fun getUserLibrary(userId: String): Observable<Response<GetUserLibraryQuery.Data>> =
         apolloClient.rxQuery(GetUserLibraryQuery(userId))
+
+    // 밴드 커버에 참여 요청하는 뮤테이션
+    override fun joinBand(bandId: String, coverId: String, session: String) =
+        apolloClient.rxMutate(
+            JoinBandMutation(
+                JoinBandInput(
+                    band = JoinBandArgsInput(bandId = bandId),
+                    session = JoinSessionInput(
+                        coverId = coverId,
+                        position = SESSION_TYPE.valueOf(session)
+                    )
+                )
+            )
+        )
 }
