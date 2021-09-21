@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
@@ -77,6 +78,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
             findNavController().navigate(R.id.action_navigation_my_page_to_navigation_library)
         }
 
-        viewModel.getUserInfo("h2is1234")
+        // SharedPreferences 에 저장된 사용자의 ID 를 기반으로 상세 정보 쿼리
+        BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
     }
 }
