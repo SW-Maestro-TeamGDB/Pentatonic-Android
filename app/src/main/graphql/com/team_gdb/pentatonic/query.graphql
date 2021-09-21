@@ -99,6 +99,7 @@ query GetCoverQuery($queryBandFilter: QueryBandInput!) {
 }
 
 
+# 밴드 고유 ID 를 기반으로 밴드 커버의 정보를 가져오는 쿼리
 query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
     getBand(bandId: $getBandBandId) {
         bandId
@@ -166,5 +167,23 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
             content
             createdAt
         }
+    }
+}
+
+# 떠오르는 밴드 커버 리스트를 가져오는 쿼리
+query GetTrendBandsQuery {
+    getTrendBands {
+        bandId
+        song {
+            name
+            artist
+        }
+        name
+        backGroundURI
+        session {
+            position
+        }
+        likeCount
+        likeStatus
     }
 }
