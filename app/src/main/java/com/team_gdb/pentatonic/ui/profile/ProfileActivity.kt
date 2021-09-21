@@ -25,6 +25,8 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
         viewModel.userData.observe(this) {
             binding.usernameTextView.text = it.username
             binding.userIntroductionTextView.text = it.introduce
+            binding.userFollowerCountTextView.text = it.followerCount.toString()
+
             Glide.with(this)
                 .load(it.profileURI)
                 .override(100, 100)
