@@ -11,5 +11,4 @@ import io.reactivex.rxjava3.core.Single
 class LoungeRepositoryImpl : LoungeRepository {
     override fun getTrendBands(): Observable<Response<GetTrendBandsQuery.Data>> =
         apolloClient.rxQuery(GetTrendBandsQuery())
-
 }

@@ -70,9 +70,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     }
 
     override fun initAfterBinding() {
-        coverHistoryListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
-
-        likedCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+//        coverHistoryListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+//        likedCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
         binding.goToLibraryButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_my_page_to_navigation_library)

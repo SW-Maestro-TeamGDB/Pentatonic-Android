@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_lounge
-    override val viewModel: LoungeViewModel by sharedViewModel()
+    override val viewModel: LoungeViewModel by viewModel()
 
     private lateinit var bandCoverListAdapter: CoverHorizontalListAdapter  // 밴드 커버 리스트
     private lateinit var soloCoverListAdapter: CoverHorizontalListAdapter  // 솔로 커버 리스트
@@ -58,6 +58,10 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initDataBinding() {
+        viewModel.trendBandCover.observe(this) {
+            bandCoverListAdapter.setItem(it)
+            soloCoverListAdapter.setItem(it)
+        }
 
     }
 
@@ -80,8 +84,11 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             }
         })
 
-        bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
-        soloCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
+
+        // 떠오르는 밴드 커버, 솔로 커버 가져오는 쿼리 호출
+        viewModel.getTrendBands()
+//        bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+//        soloCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
 
         // 위클리 챌린지 페이지로 이동
         binding.weeklyChallengeSongButton.setOnClickListener {

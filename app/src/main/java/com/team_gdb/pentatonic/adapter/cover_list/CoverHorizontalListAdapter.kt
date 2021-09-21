@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetTrendBandsQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
@@ -14,10 +15,11 @@ import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
+class CoverHorizontalListAdapter(val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<CoverHorizontalListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<CoverEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<GetTrendBandsQuery.GetTrendBand> =
+        emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -28,7 +30,11 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            ItemHorizontalCoverListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemHorizontalCoverListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
         return ViewHolder(binding)
     }
 
@@ -44,7 +50,7 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
         private val binding: ItemHorizontalCoverListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: CoverEntity, position: Int) {
+        fun bind(entity: GetTrendBandsQuery.GetTrendBand, position: Int) {
             // 리스트 첫 아이템의 경우에는 어느정도 마진을 줘야함
             if (position == 0) {
                 val param = binding.coverItemLayout.layoutParams as ViewGroup.MarginLayoutParams
@@ -54,30 +60,30 @@ class CoverHorizontalListAdapter(val itemClick: (CoverEntity) -> Unit) :
 
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageURL)
+                .load(entity.backGroundURI)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
 
             // 커버명과 원곡명
-            binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverNameTextView.text = entity.name
+            binding.coverOriginalSongTextView.text = entity.song.name
 
             // 커버를 구성중인 인원수
-            binding.coverSessionListTextView.text = "${entity.sessionDataList.size}명 참여중"
+            binding.coverSessionListTextView.text = "${entity.session?.size}명 참여중"
 
             // 좋아요수와 조회수
-            binding.coverLikeTextView.text = entity.like.toString()
-            binding.coverViewTextView.text = entity.view.toString()
+            binding.coverLikeTextView.text = entity.likeCount.toString()
+            binding.coverViewTextView.text = "34"  // 백엔드단 viewCount 아직 구현 안됨
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity)
+                itemClick(entity.bandId)
             }
         }
     }
 
-    fun setItem(entities: List<CoverEntity>) {
+    fun setItem(entities: List<GetTrendBandsQuery.GetTrendBand>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }
