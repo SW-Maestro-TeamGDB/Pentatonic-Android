@@ -10,6 +10,8 @@ import com.team_gdb.pentatonic.repository.lounge.LoungeRepository
 import com.team_gdb.pentatonic.repository.lounge.LoungeRepositoryImpl
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepositoryImpl
+import com.team_gdb.pentatonic.repository.profile.ProfileRepository
+import com.team_gdb.pentatonic.repository.profile.ProfileRepositoryImpl
 import com.team_gdb.pentatonic.repository.record.RecordRepository
 import com.team_gdb.pentatonic.repository.record.RecordRepositoryImpl
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
@@ -89,7 +91,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        ProfileViewModel()
+        ProfileViewModel(get())
     }
 
     viewModel {
@@ -150,6 +152,10 @@ val repositoryModule = module {
 
     single<BandCoverRepository> {
         BandCoverRepositoryImpl()
+    }
+
+    single<ProfileRepository> {
+        ProfileRepositoryImpl()
     }
 }
 

@@ -12,6 +12,7 @@ import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
+import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 
 class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewModel>() {
     override val layoutResourceId: Int
@@ -62,7 +63,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, SoloCoverViewMo
 
         binding.userProfileLayout.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra(BandCoverActivity.USER_ENTITY, coverEntity.sessionDataList[0].sessionParticipantList[0])
+            intent.putExtra(USER_ID, coverEntity.sessionDataList[0].sessionParticipantList[0])
             startActivity(intent)
         }
 

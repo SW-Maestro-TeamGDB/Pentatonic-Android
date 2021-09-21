@@ -2,6 +2,11 @@ package com.team_gdb.pentatonic.base
 
 import android.app.Application
 import android.content.Context
+import com.google.firebase.FirebaseApp
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import com.team_gdb.pentatonic.BuildConfig
 import com.team_gdb.pentatonic.di.moduleList
 import com.team_gdb.pentatonic.util.Prefs
@@ -17,6 +22,7 @@ class BaseApplication : Application() {
     }
 
     companion object {
+        private lateinit var firebaseAnalytics: FirebaseAnalytics
         lateinit var instance: BaseApplication
         fun applicationContext(): Context {
             return instance.applicationContext
@@ -26,9 +32,15 @@ class BaseApplication : Application() {
     }
 
     override fun onCreate() {
+        FirebaseApp.initializeApp(applicationContext())
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+
+
+        // Obtain the FirebaseAnalytics instance.
+        firebaseAnalytics = Firebase.analytics
+
         prefs = Prefs(applicationContext)
         super.onCreate()
 
@@ -38,5 +50,6 @@ class BaseApplication : Application() {
             androidFileProperties()
             modules(modules = moduleList)
         }
+
     }
 }

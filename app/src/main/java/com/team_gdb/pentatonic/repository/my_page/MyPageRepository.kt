@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
 interface MyPageRepository {
-    fun getUserInfo(id: String): Observable<Response<GetUserInfoQuery.Data>>
+    fun getUserInfo(userId: String): Observable<Response<GetUserInfoQuery.Data>>
     fun editCover(coverId: String, coverName: String): Single<Response<UpdateCoverMutation.Data>>
     fun deleteCover(coverId: String): Single<Response<DeleteCoverMutation.Data>>
 }

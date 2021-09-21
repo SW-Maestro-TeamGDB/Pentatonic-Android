@@ -15,6 +15,7 @@ import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.COVER_P
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
+import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -79,7 +80,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         sessionListAdapter = SessionConfigListAdapter({
             val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra(USER_ENTITY, it)
+            intent.putExtra(USER_ID, it)
             startActivity(intent)
         }, {
             val bottomSheetDialog = LibrarySelectBottomSheetDialog()
@@ -100,9 +101,5 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             val bottomSheetDialog = SessionSelectBottomSheetDialog()
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
-    }
-
-    companion object {
-        const val USER_ENTITY = "USER_ENTITY"
     }
 }

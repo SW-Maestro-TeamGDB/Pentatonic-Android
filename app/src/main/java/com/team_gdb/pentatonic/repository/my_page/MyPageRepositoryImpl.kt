@@ -13,8 +13,8 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 
 class MyPageRepositoryImpl : MyPageRepository {
-    override fun getUserInfo(id: String): Observable<Response<GetUserInfoQuery.Data>> =
-        apolloClient.rxQuery(GetUserInfoQuery(getUserInfoUserId = id))
+    override fun getUserInfo(userId: String): Observable<Response<GetUserInfoQuery.Data>> =
+        apolloClient.rxQuery(GetUserInfoQuery(getUserInfoUserId = userId))
 
     override fun editCover(
         coverId: String,

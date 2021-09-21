@@ -10,6 +10,7 @@ import com.team_gdb.pentatonic.databinding.FragmentArtistRankingBinding
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
+import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ArtistRankingFragment : BaseFragment<FragmentArtistRankingBinding, ArtistViewModel>() {
@@ -26,7 +27,7 @@ class ArtistRankingFragment : BaseFragment<FragmentArtistRankingBinding, ArtistV
         // 아티스트 랭킹 리스트 어댑터
         artistRankingListAdapter = ArtistRankingListAdapter {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
-            intent.putExtra(BandCoverActivity.USER_ENTITY, it)
+            intent.putExtra(USER_ID, it)
             startActivity(intent)
         }
 

@@ -19,6 +19,7 @@ import com.team_gdb.pentatonic.databinding.FragmentArtistBinding
 import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
+import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import com.team_gdb.pentatonic.ui.upload_test.UploadTestActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -75,7 +76,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         // 아티스트 랭킹 리스트 어댑터
         artistRankingListAdapter = ArtistRankingListAdapter {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
-            intent.putExtra(BandCoverActivity.USER_ENTITY, it)
+            intent.putExtra(USER_ID, it)
             startActivity(intent)
         }
 
