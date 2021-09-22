@@ -8,6 +8,7 @@ import com.team_gdb.pentatonic.GetUserLibraryQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepository
+import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
@@ -28,6 +29,9 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
 
     // 사용자가 선택한 라이브러리 커버 URL
     val selectedUserCoverID: MutableLiveData<String> = MutableLiveData()
+
+    // 밴드 참여 이벤트
+    val joinBandEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
@@ -136,9 +140,8 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                 },
                 onSuccess = {
                     Timber.d(it.toString())
-                    if (!it.hasErrors()) {
-                        Timber.d(it.data?.joinBand.toString())
-                    }
+                    if (!it.hasErrors()) joinBandEvent.postValue(Event(true))
+                    else joinBandEvent.postValue(Event(false))
                 }
             )
     }

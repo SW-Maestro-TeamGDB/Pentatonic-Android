@@ -18,6 +18,9 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
+import com.team_gdb.pentatonic.util.PlayAnimation
+import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
+import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -58,6 +61,12 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             val intent = Intent(this, CoverPlayActivity::class.java)
             intent.putExtra(COVER_PLAY_ENTITY, coverEntity)
             startActivity(intent)
+        }
+
+        // 밴드 참여 성공 여부를 담는 이벤트 옵저빙
+        viewModel.joinBandEvent.observe(this) {
+            if (it.getContentIfNotHandled() == true) playSuccessAlert(this, "밴드 참여가 완료되었습니다!")
+            else playFailureAlert(this, "밴드 참여 도중 오류가 발생했습니다")
         }
     }
 
