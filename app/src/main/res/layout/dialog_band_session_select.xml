@@ -40,9 +40,9 @@
             android:id="@+id/sessionList"
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:layout_below="@+id/bannerLayout"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="36dp"
             android:overScrollMode="never" />
 
 
@@ -59,12 +59,12 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/completeSessionSelectButton"
-                android:background="@drawable/selector_button"
-                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginVertical="16dp"
+                android:background="@drawable/selector_button"
+                android:enabled="false"
                 android:fontFamily="@font/nanum_extrabold"
                 android:gravity="center"
                 android:text="완료하기"
