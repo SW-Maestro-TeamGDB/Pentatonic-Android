@@ -50,7 +50,7 @@ class LibrarySelectListAdapter(val itemClick: (String) -> Unit) :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: GetUserLibraryQuery.Library) {
-            // 해당 커버의 이름
+            // 해당 커버의 이름과 날짜
             binding.coverName.text = entity.name
             binding.coverDate.text = entity.date
 
@@ -61,16 +61,16 @@ class LibrarySelectListAdapter(val itemClick: (String) -> Unit) :
                 setItemHighlighting()
             }
 
-            // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
-            // - coverURL 은 고유하므로, { 세션명 to coverURL } 형태로 저장
+            // 해당 라이브러리 클릭시, ViewModel 에 선택 정보 저장하는 동작
             binding.root.setOnClickListener {
                 if (selectedSession != adapterPosition) {
                     selectedSession = adapterPosition
-                } else if(selectedSession == adapterPosition) {
+                    itemClick(entity.coverURI)
+                } else if (selectedSession == adapterPosition) {
                     selectedSession = -1
+                    itemClick("")  // 만약 선택 해제 시 비어있는 값 전달
                 }
                 notifyDataSetChanged()
-                itemClick(entity.coverURI)
             }
         }
 

@@ -32,7 +32,7 @@ class LibrarySelectBottomSheetDialog() :
 
         binding.viewModel = this.viewModel
         librarySelectListAdapter = LibrarySelectListAdapter {
-            // TODO : 라이브러리 내의 커버를 선택했을 때 동작 정의 (밴드 참여)
+            viewModel.selectedCoverURL.postValue(it)
         }
         binding.libraryList.apply {
             this.layoutManager = LinearLayoutManager(context)
@@ -42,6 +42,7 @@ class LibrarySelectBottomSheetDialog() :
     }
 
     override fun initDataBinding() {
+        // 유효한 라이브러리 필터링하여 리스트로 보여줌
         viewModel.libraryList.observe(this) {
             val data = it.filter { selectedSession == it.position.rawValue }
             if (data.isNullOrEmpty()){
@@ -52,11 +53,21 @@ class LibrarySelectBottomSheetDialog() :
                 librarySelectListAdapter.setItem(data)
             }
         }
+
+        // 사용자가 라이브러리를 선택했다면 참여하기 버튼 활성화
+        // - 선택 해제 시 비어있는 String 을 전달하기 때문
+        viewModel.selectedCoverURL.observe(this) {
+            binding.joinBandButton.isEnabled = it.isNotBlank()
+        }
     }
 
     override fun initAfterBinding() {
         binding.closeButton.setOnClickListener {
             dismiss()
+        }
+
+        binding.joinBandButton.setOnClickListener {
+            // TODO : 밴드 커버 참여 동작
         }
 
         // 사용자의 라이브러리 정보 쿼리
