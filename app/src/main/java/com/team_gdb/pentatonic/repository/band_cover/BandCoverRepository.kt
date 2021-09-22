@@ -9,5 +9,5 @@ interface BandCoverRepository {
     fun getBandCoverInfo(bandId: String): Observable<Response<GetBandCoverInfoQuery.Data>>
     fun getMergedCover(coverList: List<String>): Single<Response<MergeCoverMutation.Data>>
     fun getUserLibrary(userId: String): Observable<Response<GetUserLibraryQuery.Data>>
-    fun joinBand(bandId: String, coverId: String, session: String): Single<Response<JoinBandMutation.Data>>
+    fun joinBand(bandId: String, coverId: String, sessionName: String): Single<Response<JoinBandMutation.Data>>
 }

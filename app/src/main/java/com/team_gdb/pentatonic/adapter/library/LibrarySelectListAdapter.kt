@@ -65,7 +65,7 @@ class LibrarySelectListAdapter(val itemClick: (String) -> Unit) :
             binding.root.setOnClickListener {
                 if (selectedSession != adapterPosition) {
                     selectedSession = adapterPosition
-                    itemClick(entity.coverURI)
+                    itemClick(entity.coverId)
                 } else if (selectedSession == adapterPosition) {
                     selectedSession = -1
                     itemClick("")  // 만약 선택 해제 시 비어있는 값 전달

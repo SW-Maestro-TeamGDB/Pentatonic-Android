@@ -27,7 +27,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     val libraryList: MutableLiveData<List<GetUserLibraryQuery.Library>> = MutableLiveData()
 
     // 사용자가 선택한 라이브러리 커버 URL
-    val selectedCoverURL: MutableLiveData<String> = MutableLiveData()
+    val selectedUserCoverID: MutableLiveData<String> = MutableLiveData()
 
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
@@ -96,6 +96,9 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
         selectedSessionLiveData.postValue(selectedSession)
     }
 
+    /**
+     * 사용자가 가지고 있는 라이브러리 커버 쿼리
+     * */
     fun getUserLibrary(userId: String) {
         repository.getUserLibrary(userId)
             .applySchedulers()
@@ -105,6 +108,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                 },
                 onNext = {
                     if (!it.hasErrors()) {
+                        // 가지고 있는 라이브러리들 중, 해당 밴드 커버와 같은 곡을 커버한 것만 필터링
                         libraryList.postValue(it.data?.getUserInfo?.library?.filter { library ->
                             bandInfo.value?.song?.songId == library.song.songId
                         })
@@ -112,6 +116,29 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                 },
                 onComplete = {
                     Timber.d("getUserLibrary() Complete")
+                }
+            )
+    }
+
+    /**
+     * Band ID, Cover ID, 세션명을 통해 사용자의 라이브러리 커버 기반으로 밴드 참여
+     */
+    fun joinBand(sessionName: String) {
+        repository.joinBand(
+            bandId = bandInfo.value!!.bandId,
+            coverId = selectedUserCoverID.value!!,
+            sessionName = sessionName
+        )
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+                    Timber.d(it.toString())
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.joinBand.toString())
+                    }
                 }
             )
     }

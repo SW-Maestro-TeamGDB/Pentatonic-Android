@@ -23,14 +23,14 @@ class BandCoverRepositoryImpl : BandCoverRepository {
         apolloClient.rxQuery(GetUserLibraryQuery(userId))
 
     // 밴드 커버에 참여 요청하는 뮤테이션
-    override fun joinBand(bandId: String, coverId: String, session: String) =
+    override fun joinBand(bandId: String, coverId: String, sessionName: String) =
         apolloClient.rxMutate(
             JoinBandMutation(
                 JoinBandInput(
                     band = JoinBandArgsInput(bandId = bandId),
                     session = JoinSessionInput(
                         coverId = coverId,
-                        position = SESSION_TYPE.valueOf(session)
+                        position = SESSION_TYPE.valueOf(sessionName)
                     )
                 )
             )
