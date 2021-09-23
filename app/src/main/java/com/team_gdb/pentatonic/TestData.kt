@@ -294,6 +294,8 @@ object TestData {
 
     val TEST_SONG_LIST: List<SongEntity> = listOf(
         SongEntity(
+            songId = "",
+            songUrl = "",
             songName = "역대급",
             artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/204070/20407021.jpg",
@@ -304,6 +306,8 @@ object TestData {
             lyricist = "Young K"
         ),
         SongEntity(
+            songId = "",
+            songUrl = "",
             songName = "놓아 놓아 놓아",
             artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200284/20028430.jpg",
@@ -315,6 +319,8 @@ object TestData {
 
         ),
         SongEntity(
+            songId = "",
+            songUrl = "",
             songName = "행복했던 날들이었다",
             artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/202143/20214346.jpg",
@@ -325,6 +331,8 @@ object TestData {
             lyricist = "Young K"
         ),
         SongEntity(
+            songId = "",
+            songUrl = "",
             songName = "예뻤어",
             artistName = "DAY6",
             albumJacketImage = "https://image.bugsm.co.kr/album/images/500/200804/20080494.jpg",

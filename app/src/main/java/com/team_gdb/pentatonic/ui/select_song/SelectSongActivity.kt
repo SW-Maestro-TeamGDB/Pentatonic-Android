@@ -45,6 +45,10 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
                 finish()
             }
         }
+
+        viewModel.songList.observe(this) {
+            songListAdapter.setItem(it)
+        }
     }
 
     override fun initAfterBinding() {
@@ -52,6 +56,8 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
             finish()
         }
 
-        songListAdapter.setItem(TestData.TEST_SONG_LIST)
+//        songListAdapter.setItem(TestData.TEST_SONG_LIST)
+
+        viewModel.getSongList("")
     }
 }
