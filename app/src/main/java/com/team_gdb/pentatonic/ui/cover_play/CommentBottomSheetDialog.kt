@@ -60,6 +60,10 @@ class CommentBottomSheetDialog() :
             .placeholder(R.drawable.placeholder_cover_bg)
             .listener(glideLoadingListener)
             .into(binding.commentBackgroundImageView)
+
+        binding.closeButton.setOnClickListener {
+            dismiss()
+        }
     }
 
     private val glideLoadingListener = object : RequestListener<Drawable> {

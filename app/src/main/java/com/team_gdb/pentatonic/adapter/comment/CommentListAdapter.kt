@@ -9,6 +9,8 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemCommentListBinding
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
+import com.team_gdb.pentatonic.util.formatTo
+import com.team_gdb.pentatonic.util.toDate
 
 class CommentListAdapter():
     RecyclerView.Adapter<CommentListAdapter.ViewHolder>() {
@@ -41,7 +43,7 @@ class CommentListAdapter():
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(entity: GetCoverCommentQuery.GetComment) {
-            binding.commentDateTextView.text = entity.createdAt
+            binding.commentDateTextView.text = entity.createdAt.toDate().formatTo("yyyy-MM-dd")
             binding.userNameTextView.text = entity.user.username
             binding.commentTextView.text = entity.content
 

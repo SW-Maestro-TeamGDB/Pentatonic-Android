@@ -8,6 +8,8 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
+import com.team_gdb.pentatonic.util.formatTo
+import com.team_gdb.pentatonic.util.toDate
 
 /**
  * 라이브러리에 저장된 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
@@ -54,7 +56,7 @@ class LibraryListAdapter(
             binding.coverNameTextView.text = entity.coverName
             binding.coverOriginalSongTextView.text = entity.originalSong.name
             binding.coverSessionAndDateTextView.text =
-                "${SessionSetting.valueOf(entity.coverSession).sessionName} 커버 | ${entity.coverDate}"
+                "${SessionSetting.valueOf(entity.coverSession).sessionName} 커버 | ${entity.coverDate.toDate().formatTo("yyyy-MM-dd HH:mm")}"
 
             Glide.with(binding.root)
                 .load(entity.imageUrl)

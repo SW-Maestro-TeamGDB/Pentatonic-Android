@@ -27,7 +27,7 @@
             android:layout_toEndOf="@+id/userProfileImageView"
             android:fontFamily="@font/nanum_bold"
             android:text="닉네임"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_alignTop="@+id/userProfileImageView"
@@ -35,7 +35,7 @@
             android:text="1시간 전"
             android:textColor="@color/gray"
             android:layout_marginTop="4dp"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:fontFamily="@font/nanum_regular"
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="8dp"
