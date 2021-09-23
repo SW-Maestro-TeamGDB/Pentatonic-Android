@@ -120,13 +120,38 @@ class BasicInfoFormFragment : BaseFragment<FragmentBasicInfoFormBinding, CreateC
             if (resultCode == Activity.RESULT_OK) {
                 val resultUri = result.uri
 
-                Timber.e(resultUri.toString())
-                viewModel.coverBackgroundImage.postValue(resultUri)
+                val bitmap =
+                    MediaStore.Images.Media.getBitmap(context?.contentResolver, resultUri)
+                val imageUri = bitmapToFile(bitmap!!) // Uri
 
+                Timber.e(imageUri.toString())
+                viewModel.uploadImageFile(imageUri.toString())
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Timber.e("이미지 선택 오류")
             }
         }
+    }
+
+    /**
+     * Bitmap 이미지를 Local 에 저장하고, URI 를 반환함
+     **/
+    private fun bitmapToFile(bitmap: Bitmap): Uri {
+        val wrapper = ContextWrapper(context)
+        val randomNumber = Random.nextInt(0, 1000000000).toString()
+        // Bitmap 파일 저장을 위한 File 객체
+        var file = wrapper.getDir("Images", Context.MODE_PRIVATE)
+        file = File(file, "item_${randomNumber}.jpg")
+        try {
+            // Bitmap 파일을 JPEG 형태로 압축해서 출력
+            val stream: OutputStream = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            stream.flush()
+            stream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Log.e("Error Saving Image", e.message!!)
+        }
+        return Uri.parse(file.absolutePath)
     }
 
 }

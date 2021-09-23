@@ -7,8 +7,11 @@ import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.create_cover.CreateCoverRepository
 import com.team_gdb.pentatonic.util.Event
+import io.reactivex.rxjava3.kotlin.subscribeBy
+import timber.log.Timber
 
 
 class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewModel() {
@@ -16,7 +19,7 @@ class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewMode
     val coverName: MutableLiveData<String> = MutableLiveData()
     val coverIntroduction: MutableLiveData<String> = MutableLiveData()
     val coverSong: MutableLiveData<SongEntity> = MutableLiveData()
-    val coverBackgroundImage: MutableLiveData<Uri> = MutableLiveData()
+    val coverBackgroundImage: MutableLiveData<String> = MutableLiveData()
 
     val coverBasicInfoValidationEvent: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
@@ -42,6 +45,25 @@ class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewMode
             )
             return entity
         }
+
+    fun uploadImageFile(filePath: String){
+        val disposable = repository.uploadImageFile(filePath)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+                    Timber.d(it.toString())
+                    if (!it.hasErrors()){
+                        Timber.d(it.data?.uploadImageFile)
+                        coverBackgroundImage.postValue(it.data?.uploadImageFile)
+                    }
+                }
+            )
+        addDisposable(disposable)
+    }
+
 
     /**
      * 커버 제목이 없거나, 커버 곡을 선택하지 않은 경우 Event(false) 지정
