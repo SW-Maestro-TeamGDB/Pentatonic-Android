@@ -18,7 +18,7 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
     val trendBandCover: MutableLiveData<List<GetTrendBandsQuery.GetTrendBand>> = MutableLiveData()
 
     fun getTrendBands() {
-        repository.getTrendBands()
+        val disposable = repository.getTrendBands()
             .applySchedulers()
             .subscribeBy(
                 onError = {
@@ -34,5 +34,6 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
                     Timber.d("getTrendBands() Complete")
                 }
             )
+        addDisposable(disposable)
     }
 }

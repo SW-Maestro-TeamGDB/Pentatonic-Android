@@ -30,8 +30,10 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val selectedCoverID: MutableLiveData<String> = MutableLiveData()  // 선택한 커버 ID 저장
     val coverNameField: MutableLiveData<String> = MutableLiveData()  // 변경될 커버 이름
 
-    val completeEditCoverName: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 이름 변경 완료 여부
-    val completeEditCoverNameMutation: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 이름 변경 뮤테이션 호출 완료 여부
+    val completeEditCoverName: MutableLiveData<Event<Boolean>> =
+        MutableLiveData()  // 라이브러리 이름 변경 완료 여부
+    val completeEditCoverNameMutation: MutableLiveData<Event<Boolean>> =
+        MutableLiveData()  // 라이브러리 이름 변경 뮤테이션 호출 완료 여부
     val completeCoverDelete: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 삭제 성공 여부
 
     /**
@@ -41,33 +43,32 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
      * @param id : 사용자 식별을 위한 ID
      */
     fun getUserInfo(id: String) {
-        val disposable =
-            repository.getUserInfo(id)
-                .applySchedulers()
-                .subscribeBy(
-                    onError = {
-                        Timber.i(it)
-                    },
-                    onNext = {
-                        if (!it.hasErrors()) {
-                            Timber.d(it.data?.getUserInfo.toString())
-                            userName.postValue(it.data?.getUserInfo?.username.toString())
-                            userFollowerCount.postValue(it.data?.getUserInfo?.followerCount.toString())
-                            userIntroduce.postValue(it.data?.getUserInfo?.introduce.toString())
-                            userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
+        val disposable = repository.getUserInfo(id)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onNext = {
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.getUserInfo.toString())
+                        userName.postValue(it.data?.getUserInfo?.username.toString())
+                        userFollowerCount.postValue(it.data?.getUserInfo?.followerCount.toString())
+                        userIntroduce.postValue(it.data?.getUserInfo?.introduce.toString())
+                        userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
 
-                            // LibraryFragment 에서 참조할 데이터 Library List postValue()
-                            libraryList.postValue(it.data?.getUserInfo?.library)
-                        } else {
-                            it.errors?.forEach {
-                                Timber.e(it.message)
-                            }
+                        // LibraryFragment 에서 참조할 데이터 Library List postValue()
+                        libraryList.postValue(it.data?.getUserInfo?.library)
+                    } else {
+                        it.errors?.forEach {
+                            Timber.e(it.message)
                         }
-                    },
-                    onComplete = {
-                        /* no-op */
                     }
-                )
+                },
+                onComplete = {
+                    /* no-op */
+                }
+            )
         addDisposable(disposable)
     }
 

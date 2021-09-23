@@ -7,4 +7,8 @@ import com.team_gdb.pentatonic.repository.select_song.SelectSongRepository
 
 class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel() {
     val selectedSong: MutableLiveData<SongEntity> = MutableLiveData()
+
+    fun getSongList(content: String) {
+
+    }
 }

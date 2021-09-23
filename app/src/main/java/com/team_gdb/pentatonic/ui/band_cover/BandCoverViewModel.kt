@@ -39,7 +39,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
      * @param bandId  해당 밴드의 고유 ObjectID
      */
     fun getBandInfoQuery(bandId: String) {
-        repository.getBandCoverInfo(bandId)
+        val disposable = repository.getBandCoverInfo(bandId)
             .applySchedulers()
             .subscribeBy(
                 onError = {
@@ -56,6 +56,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                     Timber.d("getBandInfoQuery() Complete")
                 }
             )
+        addDisposable(disposable)
     }
 
     /**
@@ -65,7 +66,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
      */
     fun getMergedCover() {
         val coverList = selectedSession.values.toList()
-        repository.getMergedCover(coverList)
+        val disposable = repository.getMergedCover(coverList)
             .applySchedulers()
             .subscribeBy(
                 onError = {
@@ -80,6 +81,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                     }
                 }
             )
+        addDisposable(disposable)
     }
 
 
@@ -104,7 +106,7 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
      * 사용자가 가지고 있는 라이브러리 커버 쿼리
      * */
     fun getUserLibrary(userId: String) {
-        repository.getUserLibrary(userId)
+        val disposable = repository.getUserLibrary(userId)
             .applySchedulers()
             .subscribeBy(
                 onError = {
@@ -122,13 +124,14 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                     Timber.d("getUserLibrary() Complete")
                 }
             )
+        addDisposable(disposable)
     }
 
     /**
      * Band ID, Cover ID, 세션명을 통해 사용자의 라이브러리 커버 기반으로 밴드 참여
      */
     fun joinBand(sessionName: String) {
-        repository.joinBand(
+        val disposable = repository.joinBand(
             bandId = bandInfo.value!!.bandId,
             coverId = selectedUserCoverID.value!!,
             sessionName = sessionName
@@ -144,5 +147,6 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                     else joinBandEvent.postValue(Event(false))
                 }
             )
+        addDisposable(disposable)
     }
 }

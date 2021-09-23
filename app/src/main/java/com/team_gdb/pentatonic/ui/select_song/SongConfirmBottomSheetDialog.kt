@@ -27,7 +27,7 @@ class SongConfirmBottomSheetDialog(val songEntity: SongEntity) :
             .placeholder(R.drawable.placeholder_cover_bg)
             .override(270, 270)
             .into(binding.albumJacketImage)
-        binding.songNameTextView.text = songEntity.songTitle
+        binding.songNameTextView.text = songEntity.songName
         binding.songArtistTextView.text = songEntity.artistName
 
         binding.confirmSongButton.setOnClickListener {

@@ -18,7 +18,7 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
     val commentList: MutableLiveData<List<GetCoverCommentQuery.GetComment>> = MutableLiveData()
 
     fun getComment(bandId: String) {
-        repository.getComment(bandId)
+        val disposable = repository.getComment(bandId)
             .applySchedulers()
             .subscribeBy(
                 onError = {
@@ -34,5 +34,6 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
                     Timber.d("getComment() Complete")
                 }
             )
+        addDisposable(disposable)
     }
 }

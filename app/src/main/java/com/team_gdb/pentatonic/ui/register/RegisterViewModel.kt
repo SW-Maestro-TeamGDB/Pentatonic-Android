@@ -23,7 +23,7 @@ class RegisterViewModel(private val repository: RegisterRepository) : BaseViewMo
         val nickname: String = nicknameField.value!!
 
         var eventResult = arrayOf(false, false)
-        repository.isValidForm(id, nickname)
+        val disposable = repository.isValidForm(id, nickname)
             .applySchedulers()
             .subscribeBy(
                 onNext = {
@@ -41,5 +41,6 @@ class RegisterViewModel(private val repository: RegisterRepository) : BaseViewMo
                     Timber.e(it)
                 }
             )
+        addDisposable(disposable)
     }
 }
