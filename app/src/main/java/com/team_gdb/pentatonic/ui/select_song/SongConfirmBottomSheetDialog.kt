@@ -30,6 +30,8 @@ class SongConfirmBottomSheetDialog(val songEntity: SongEntity) :
         binding.songNameTextView.text = songEntity.songName
         binding.songArtistTextView.text = songEntity.artistName
 
+        binding.songLevel.rating = songEntity.songLevel.toFloat()
+
         binding.confirmSongButton.setOnClickListener {
             viewModel.selectedSong.postValue(songEntity)
         }
