@@ -117,14 +117,14 @@
 
                     <TextView
                         android:id="@+id/beforeSelectSongTextView"
-                        android:layout_centerInParent="true"
-                        android:drawableStart="@drawable/ic_baseline_add_circle_outline_24"
-                        android:drawablePadding="4dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:layout_marginStart="4dp"
-                        android:gravity="center_vertical"
+                        android:drawableStart="@drawable/ic_baseline_add_circle_outline_24"
+                        android:drawablePadding="4dp"
                         android:fontFamily="@font/nanum_light"
+                        android:gravity="center_vertical"
                         android:text="음원 선택하기"
                         android:textSize="16sp" />
 
@@ -160,6 +160,75 @@
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginTop="36dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="대표 이미지 선택"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/selectImageTitleTextView"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:text="대표 이미지를 선택해주세요."
+                    android:fontFamily="@font/nanum_extrabold"/>
+            </LinearLayout>
+            <androidx.cardview.widget.CardView
+                app:cardElevation="0dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/card_background_gray"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <RelativeLayout
+                    android:id="@+id/selectBackgroundImageButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/selectedBackgroundImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dash_border" />
+
+                    <TextView
+                        android:id="@+id/beforeSelectImageTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="4dp"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:gravity="center_vertical"
+                        android:text="이미지 선택하기"
+                        android:textSize="16sp"
+                        app:drawableTint="#B0B0B0"
+                        app:drawableStartCompat="@drawable/ic_baseline_image_24" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton

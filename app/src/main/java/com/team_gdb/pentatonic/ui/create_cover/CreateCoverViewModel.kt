@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.create_cover
 
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
@@ -15,6 +16,7 @@ class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewMode
     val coverName: MutableLiveData<String> = MutableLiveData()
     val coverIntroduction: MutableLiveData<String> = MutableLiveData()
     val coverSong: MutableLiveData<SongEntity> = MutableLiveData()
+    val coverBackgroundImage: MutableLiveData<Uri> = MutableLiveData()
 
     val coverBasicInfoValidationEvent: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
