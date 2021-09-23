@@ -45,6 +45,7 @@
         <entry key="app/src/main/res/layout/activity_song_detail.xml" value="0.14638157894736842" />
         <entry key="app/src/main/res/layout/activity_user_verify.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_band_session_select.xml" value="0.21019736842105263" />
+        <entry key="app/src/main/res/layout/dialog_comment.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/layout/dialog_edit_cover_name.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/layout/dialog_input_cover_name.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/dialog_library_select.xml" value="0.165" />

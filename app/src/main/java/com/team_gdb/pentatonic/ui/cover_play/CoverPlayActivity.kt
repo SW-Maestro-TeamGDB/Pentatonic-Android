@@ -16,6 +16,7 @@ import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.media.ExoPlayerHelper
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.ui.band_cover.SessionSelectBottomSheetDialog
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -52,7 +53,9 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         viewModel.commentList.observe(this) {
             binding.commentCount.text = it.size.toString()
             binding.commentButton.setOnClickListener {
-
+                // 댓글 리스트를 표시하는 BottomSheetDialog 표시
+                val bottomSheetDialog = CommentBottomSheetDialog()
+                bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
             }
         }
     }

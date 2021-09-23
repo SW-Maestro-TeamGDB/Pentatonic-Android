@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp">
+
+        <RelativeLayout
+            android:id="@+id/bannerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp">
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_close_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="댓글"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
+        <com.chauthai.overscroll.RecyclerViewBouncy
+            android:id="@+id/libraryList"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@+id/bannerLayout"
+            android:layout_marginTop="16dp"
+            app:friction="200"
+            app:gapLimit="220"
+            app:speedFactor="5"
+            app:tension="1000" />
+
+    </RelativeLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.cover_play.CoverPlayingViewModel" />
+    </data>
+</layout>
