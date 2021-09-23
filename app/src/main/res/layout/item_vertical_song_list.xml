@@ -14,6 +14,7 @@
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                 android:id="@+id/albumJacketImage"
                 android:layout_width="90dp"
+                android:scaleType="centerCrop"
                 android:layout_height="90dp"
                 android:src="@color/cardview_dark_background" />
 
@@ -25,14 +26,30 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="4dp"
                     android:id="@+id/songNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:fontFamily="@font/nanum_extrabold"
                     android:text="SONG_NAME"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/weeklyChallengeBadge"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_gradient_text"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/songNameTextView"
+                    android:fontFamily="@font/nanum_regular"
+                    android:padding="8dp"
+                    android:text="WEEKLY"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/songArtistTextView"
@@ -45,25 +62,16 @@
                     android:textColor="#B3888888"
                     android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/sessionConfigInfo"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/nanum_regular"
-                    android:text="보컬, 일렉, 드럼, 베이스"
-                    android:textColor="@color/black"
-                    android:textSize="11sp" />
-
                 <RatingBar
+                    android:numStars="5"
+                    android:id="@+id/songLevel"
                     style="?android:attr/ratingBarStyleSmall"
-                    android:id="@+id/sessionConfigInfo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
+                    android:progressTint="@color/main_regular"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/nanum_regular"
-                    android:text="보컬, 일렉, 드럼, 베이스"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 

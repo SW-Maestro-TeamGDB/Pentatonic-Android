@@ -20,11 +20,13 @@ data class SongEntity(
     val songId: String,
     val songUrl: String,
     val songName: String,
+    val songLevel: Int,
     val artistName: String,
     val albumJacketImage: String,
     val albumName: String,
     val albumReleaseDate: String,
     val songGenre: String,
+    val isWeeklyChallenge: Boolean,
     val songWriter: String,
     val lyricist: String,
 ) : Serializable

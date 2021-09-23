@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.adapter.song_list
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -56,6 +57,11 @@ class SongVerticalListAdapter(val itemClick: (SongEntity) -> Unit) :
             binding.songNameTextView.text = entity.songName
             binding.songArtistTextView.text = entity.artistName
 
+            binding.songLevel.rating = entity.songLevel.toFloat()
+
+            if (entity.isWeeklyChallenge) {
+                binding.weeklyChallengeBadge.visibility = View.VISIBLE
+            }
             // 클릭하면, Bottom Sheet Dialog 모달을 보여줌으로써
             // 사용자로 하여금 곡 선택 의사결정을 유도함
             // e.g. "이 곡을 선택하시겠습니까?"

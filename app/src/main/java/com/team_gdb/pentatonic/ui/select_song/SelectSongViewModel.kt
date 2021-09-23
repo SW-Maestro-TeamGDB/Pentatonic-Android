@@ -29,6 +29,8 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
                                 songName = it.name,
                                 songGenre = it.genre.name,
                                 songUrl = it.songURI,
+                                songLevel = it.level,
+                                isWeeklyChallenge = it.weeklyChallenge,
                                 artistName = it.artist,
                                 albumName = it.album,
                                 albumReleaseDate = it.releaseDate,
