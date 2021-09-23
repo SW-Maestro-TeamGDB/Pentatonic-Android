@@ -47,7 +47,8 @@ android {
                 "Username"            : "kotlin.String",
                 "DateTime"            : "kotlin.String",
                 "Date"                : "kotlin.String",
-                "UploadCoverFileInput": "com.apollographql.apollo.api.FileUpload"
+                "UploadCoverFileInput": "com.apollographql.apollo.api.FileUpload",
+                "UploadImageInput"    : "com.apollographql.apollo.api.FileUpload"
         ]
     }
 }

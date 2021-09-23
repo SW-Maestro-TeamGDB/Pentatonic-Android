@@ -18,6 +18,12 @@ mutation UploadCoverFileMutation($uploadCoverFileInput: UploadCoverFileInput!) {
     uploadCoverFile(input: $uploadCoverFileInput)
 }
 
+# 이미지 파일 업로드 뮤테이션
+mutation UploadImageFileMutation($uploadImageFileInput: UploadImageInput!) {
+    uploadImageFile(input: $uploadImageFileInput)
+}
+
+
 # 생성한 커버 업로드 뮤테이션 (라이브러리에 업로드)
 mutation UploadCoverMutation($uploadCoverInput: UploadCoverInput!) {
     uploadCover(input: $uploadCoverInput) {

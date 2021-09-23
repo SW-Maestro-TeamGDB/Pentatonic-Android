@@ -6,10 +6,11 @@ import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.repository.create_cover.CreateCoverRepository
 import com.team_gdb.pentatonic.util.Event
 
 
-class CreateCoverViewModel : BaseViewModel() {
+class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewModel() {
     // 커버 기본 정보를 담음
     val coverName: MutableLiveData<String> = MutableLiveData()
     val coverIntroduction: MutableLiveData<String> = MutableLiveData()
@@ -18,8 +19,7 @@ class CreateCoverViewModel : BaseViewModel() {
     val coverBasicInfoValidationEvent: MutableLiveData<Event<Boolean>> =
         MutableLiveData<Event<Boolean>>()
 
-    // 커버를 구성할 세션 리스트 정보를 담음
-    // - 특이사항 : 솔로 커버의 경우, 최대 인원이 1인 세션 정보가 1개 담긴 리스트
+    // 커버를 구성할 세션 리스트 정보를 담음 (밴드 커버)
     var coverSessionConfigList: MutableLiveData<List<SessionSettingEntity>> =
         MutableLiveData<List<SessionSettingEntity>>()
 
@@ -34,6 +34,7 @@ class CreateCoverViewModel : BaseViewModel() {
                 coverName = coverName.value!!,
                 coverIntroduction = coverIntroduction.value,
                 coverSong = coverSong.value!!,
+                backgroundImg = "",
                 coverSessionConfig = coverSessionConfigList.value!!,
                 coverRecord = null
             )

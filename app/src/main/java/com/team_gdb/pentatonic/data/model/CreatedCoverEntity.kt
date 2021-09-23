@@ -16,6 +16,7 @@ data class CreatedCoverEntity(
     val coverName: String,
     val coverIntroduction: String?,
     val coverSong: SongEntity,
+    val backgroundImg: String,
     var coverSessionConfig: List<SessionSettingEntity>,
     var coverRecord: Uri?
 ) : Serializable
