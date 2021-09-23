@@ -54,8 +54,8 @@
             android:layout_toRightOf="@+id/userProfileImageView"
             android:background="@drawable/custom_radius_background_white_transparent"
             android:gravity="center_vertical"
-            android:paddingVertical="16dp"
             android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
             android:text="댓글"
             android:textColor="@color/white"
             android:textSize="16sp" />

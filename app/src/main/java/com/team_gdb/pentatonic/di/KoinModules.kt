@@ -20,6 +20,8 @@ import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepo
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepositoryImpl
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.repository.register.RegisterRepositoryImpl
+import com.team_gdb.pentatonic.repository.select_song.SelectSongRepository
+import com.team_gdb.pentatonic.repository.select_song.SelectSongRepositoryImpl
 import com.team_gdb.pentatonic.repository.studio.StudioRepository
 import com.team_gdb.pentatonic.repository.studio.StudioRepositoryImpl
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
@@ -101,7 +103,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        SelectSongViewModel()
+        SelectSongViewModel(get())
     }
 
     viewModel {
@@ -162,6 +164,10 @@ val repositoryModule = module {
 
     single<CoverPlayRepository> {
         CoverPlayRepositoryImpl()
+    }
+
+    single<SelectSongRepository> {
+        SelectSongRepositoryImpl()
     }
 }
 
