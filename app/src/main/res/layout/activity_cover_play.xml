@@ -125,6 +125,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/commentButton"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
@@ -140,12 +141,13 @@
                     app:tint="@color/white" />
 
                 <TextView
+                    android:id="@+id/commentCount"
                     android:fontFamily="@font/nanum_regular"
                     android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textColor="@color/white"
-                    android:text="32"
+                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

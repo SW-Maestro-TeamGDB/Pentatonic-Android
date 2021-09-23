@@ -41,7 +41,6 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
             .listener(glideLoadingListener)
             .into(binding.coverBackgroundImageView)
 
-        // Test
         initPlayer(coverEntity.coverURL) {
             Timber.d("Play Complete")
         }
@@ -50,22 +49,16 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
     }
 
     override fun initDataBinding() {
-        viewModel.buttonState.observe(this) {
-//            binding.playButton.updateIconWithState(it)
+        viewModel.commentList.observe(this) {
+            binding.commentCount.text = it.size.toString()
+            binding.commentButton.setOnClickListener {
+
+            }
         }
     }
 
     override fun initAfterBinding() {
-
-    }
-
-
-    private fun startPlaying() {
-        viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
-        ExoPlayerHelper.startPlaying()
-
-        viewModel.remainTime.postValue(ExoPlayerHelper.player.duration.toString())
-
+        viewModel.getComment(coverEntity.coverID)
     }
 
     override fun onDestroy() {
