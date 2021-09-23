@@ -222,3 +222,22 @@ query GetTrendBandsQuery {
         likeStatus
     }
 }
+
+# 밴드 커버의 댓글 가져오는 쿼리
+query GetCoverComment($getCommentsBandId: ObjectID!) {
+    getComments(bandId: $getCommentsBandId) {
+        bandId
+        user {
+            id
+            username
+            profileURI
+            prime
+            type
+            followerCount
+            followingCount
+        }
+        content
+        createdAt
+        commentId
+    }
+}

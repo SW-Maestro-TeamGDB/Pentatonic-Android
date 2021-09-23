@@ -31,6 +31,7 @@
         <activity android:name=".ui.band_cover.BandCoverActivity" />
         <activity android:name=".ui.solo_cover.SoloCoverActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
+        <activity android:name=".ui.select_song.SelectSongActivity"/>
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true" >

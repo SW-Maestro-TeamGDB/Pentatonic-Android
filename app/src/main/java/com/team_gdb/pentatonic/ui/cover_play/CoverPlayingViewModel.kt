@@ -6,13 +6,9 @@ import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.data.model.SongEntity
+import com.team_gdb.pentatonic.repository.cover_play.CoverPlayRepository
 
-class CoverPlayingViewModel: BaseViewModel() {
+class CoverPlayingViewModel(val repository: CoverPlayRepository): BaseViewModel() {
     val coverEntity: MutableLiveData<CoverPlayEntity> = MutableLiveData()
 
-    val buttonState: MutableLiveData<ButtonState> =
-        MutableLiveData<ButtonState>(ButtonState.BEFORE_PLAYING)
-
-    val playTime: MutableLiveData<String> = MutableLiveData("00:00")
-    val remainTime: MutableLiveData<String> = MutableLiveData("00:00")
 }
