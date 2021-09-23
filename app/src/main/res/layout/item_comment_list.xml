@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:paddingHorizontal="16dp"
-    android:paddingVertical="8dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/userProfileImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
-
-    <TextView
-        android:id="@+id/userNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_alignTop="@+id/userProfileImageView"
-        android:layout_toEndOf="@+id/userProfileImageView"
-        android:fontFamily="@font/nanum_bold"
-        android:text="닉네임"
-        android:textSize="14sp" />
-
-    <TextView
-        android:layout_alignTop="@+id/userProfileImageView"
-        android:id="@+id/commentDateTextView"
-        android:text="1시간 전"
-        android:layout_marginTop="4dp"
-        android:textSize="14sp"
-        android:fontFamily="@font/nanum_regular"
-        android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="8dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:gravity="center_vertical"
-        android:id="@+id/commentTextView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/userNameTextView"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toRightOf="@+id/userProfileImageView"
-        android:background="@drawable/custom_radius_background_gray_sharpen"
-        android:padding="8dp"
-        android:text="댓글"
-        android:textSize="16sp" />
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userProfileImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:layout_alignTop="@+id/userProfileImageView"
+            android:layout_toEndOf="@+id/userProfileImageView"
+            android:fontFamily="@font/nanum_bold"
+            android:text="닉네임"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_alignTop="@+id/userProfileImageView"
+            android:id="@+id/commentDateTextView"
+            android:text="1시간 전"
+            android:textColor="@color/gray"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:fontFamily="@font/nanum_regular"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/commentTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userNameTextView"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toRightOf="@+id/userProfileImageView"
+            android:background="@drawable/custom_radius_background_white_transparent"
+            android:gravity="center_vertical"
+            android:paddingVertical="16dp"
+            android:paddingHorizontal="16dp"
+            android:text="댓글"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</layout>

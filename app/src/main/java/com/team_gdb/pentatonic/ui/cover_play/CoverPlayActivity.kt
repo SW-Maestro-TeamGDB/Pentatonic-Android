@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.cover_play
 
 import android.graphics.drawable.Drawable
+import android.os.Bundle
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -16,6 +17,7 @@ import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.media.ExoPlayerHelper
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.band_cover.SessionSelectBottomSheetDialog
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -55,6 +57,9 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
             binding.commentButton.setOnClickListener {
                 // 댓글 리스트를 표시하는 BottomSheetDialog 표시
                 val bottomSheetDialog = CommentBottomSheetDialog()
+                bottomSheetDialog.arguments = Bundle().apply {
+                    putString(BACKGROUND_IMG, coverEntity.backgroundImgURL)
+                }
                 bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
             }
         }
@@ -103,5 +108,6 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
 
     companion object {
         const val COVER_PLAY_ENTITY = "COVER_PLAY_ENTITY"
+        const val BACKGROUND_IMG = "BACKGROUND_IMG"
     }
 }
