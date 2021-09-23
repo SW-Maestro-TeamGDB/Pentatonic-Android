@@ -75,6 +75,7 @@
         <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />
         <entry key="app/src/main/res/layout/item_artist_ranking_list.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/layout/item_band_ranking_list.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/item_comment_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
