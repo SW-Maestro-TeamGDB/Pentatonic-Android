@@ -50,8 +50,14 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                     addToBackStack(null)  // 뒤로가기 키 누르면 기본 정보 입력폼으로 올 수 있도록
                     setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_left)
                     when (coverMode) {
-                        BAND_COVER -> replace(R.id.fragmentContainer, bandCoverSessionSettingFragment).commit()
-                        SOLO_COVER -> replace(R.id.fragmentContainer, soloCoverSessionSettingFragment).commit()
+                        BAND_COVER -> replace(
+                            R.id.fragmentContainer,
+                            bandCoverSessionSettingFragment
+                        ).commit()
+                        SOLO_COVER -> replace(
+                            R.id.fragmentContainer,
+                            soloCoverSessionSettingFragment
+                        ).commit()
                     }
                 }
             }
@@ -62,13 +68,14 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                 val intent = Intent(this, RecordActivity::class.java).apply {
                     putExtra(CREATED_COVER_ENTITY, viewModel.createdCoverEntity)
                 }
+                finish()
                 startActivity(intent)
             }
         }
     }
 
     override fun initAfterBinding() {
-        when (coverMode){
+        when (coverMode) {
             SOLO_COVER -> binding.titleBar.titleTextView.text = "솔로 커버 만들기"
             BAND_COVER -> binding.titleBar.titleTextView.text = "밴드 커버 만들기"
         }

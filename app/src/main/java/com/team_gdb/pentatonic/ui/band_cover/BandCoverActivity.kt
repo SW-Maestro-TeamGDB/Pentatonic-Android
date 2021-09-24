@@ -14,6 +14,7 @@ import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
 import com.team_gdb.pentatonic.type.SESSION_TYPE
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.COVER_PLAY_ENTITY
+import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
@@ -66,8 +67,10 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         // 밴드 참여 성공 여부를 담는 이벤트 옵저빙
         viewModel.joinBandEvent.observe(this) {
-            if (it.getContentIfNotHandled() == true) playSuccessAlert(this, "밴드 참여가 완료되었습니다!")
-            else playFailureAlert(this, "밴드 참여 도중 오류가 발생했습니다")
+            if (it.getContentIfNotHandled() == true) {
+                playSuccessAlert(this, "밴드 참여가 완료되었습니다!")
+                viewModel.getBandInfoQuery(coverID)
+            } else playFailureAlert(this, "밴드 참여 도중 오류가 발생했습니다")
         }
     }
 

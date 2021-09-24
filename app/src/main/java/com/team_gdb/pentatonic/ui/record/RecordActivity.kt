@@ -118,6 +118,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             bundle.putByteArray(AMPLITUDE_DATA, byteArray)
             bundle.putSerializable(CREATED_COVER_ENTITY, createdCoverEntity)
             intent.putExtras(bundle)
+            finish()
             startActivity(intent)
         }
 

@@ -7,6 +7,7 @@ import android.media.audiofx.EnvironmentalReverb
 import android.media.audiofx.LoudnessEnhancer
 import android.media.audiofx.PresetReverb
 import android.widget.FrameLayout
+import androidx.core.app.ActivityCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.team_gdb.pentatonic.R
@@ -140,7 +141,7 @@ class RecordProcessingActivity :
                 val intent = Intent(this, BandCoverActivity::class.java)
                 intent.putExtra(CREATE_COVER, "CREATE_COVER")
                 intent.putExtra(COVER_ID, viewModel.createBandComplete.value!!.peekContent())
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK  // 지금까지 쌓인 액티비티 모두 제거
+                finish()
                 startActivity(intent)
             }
         }
