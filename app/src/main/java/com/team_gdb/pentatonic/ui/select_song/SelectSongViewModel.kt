@@ -27,14 +27,14 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
                             SongEntity(
                                 songId = it.songId,
                                 songName = it.name,
-                                songGenre = it.genre.name,
+                                songGenre = (it.genre ?: GENRE_TYPE.POP).name,
                                 songUrl = it.songURI,
-                                songLevel = it.level,
+                                songLevel = it.level ?: 2,
                                 isWeeklyChallenge = it.weeklyChallenge,
                                 artistName = it.artist,
-                                albumName = it.album,
-                                albumReleaseDate = it.releaseDate,
-                                albumJacketImage = it.songImg,
+                                albumName = it.album ?: "자유곡",
+                                albumReleaseDate = it.releaseDate ?: "자유곡",
+                                albumJacketImage = it.songImg ?: "",
                                 lyricist = "",
                                 songWriter = ""
                             )

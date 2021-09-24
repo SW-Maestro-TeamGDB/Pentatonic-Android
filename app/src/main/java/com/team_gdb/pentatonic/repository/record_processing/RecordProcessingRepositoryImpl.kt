@@ -48,6 +48,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
                 session = SESSION_TYPE.valueOf(it.sessionSetting.name)
             )
         }
+        val isSoloBand = sessionConfig.isEmpty() && sessionConfig[0].count == 1
         return apolloClient.rxMutate(
             CreateBandMutation(
                 CreateBandInput(
@@ -56,7 +57,8 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
                         name = bandName,
                         introduce = bandIntroduction,
                         backGroundURI = backgroundUrl,
-                        songId = songId
+                        songId = songId,
+                        isSoloBand = isSoloBand
                     )
                 )
             )

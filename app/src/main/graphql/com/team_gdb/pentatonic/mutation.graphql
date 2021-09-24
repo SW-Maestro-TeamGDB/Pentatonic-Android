@@ -77,3 +77,8 @@ mutation DeleteBandMutation($deleteBandInput: DeleteBandInput!) {
 mutation LikeMutation($likeInput: LikeInput!) {
     like(input: $likeInput)
 }
+
+# 밴드 추방 및 나가기 뮤테이션
+mutation LeaveBandMutation($leaveBandInput: LeaveBandInput!) {
+    leaveBand(input: $leaveBandInput)
+}

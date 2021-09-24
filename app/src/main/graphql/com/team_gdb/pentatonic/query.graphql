@@ -91,6 +91,7 @@ query GetCoverQuery($queryBandFilter: QueryBandInput!) {
         name
         backGroundURI
         bandId
+        isSoloBand
         likeCount
         session {
             position
@@ -149,6 +150,7 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
         }
         name
         introduce
+        isSoloBand
         creator {
             id
             username
@@ -212,6 +214,7 @@ query GetTrendBandsQuery {
         }
         name
         backGroundURI
+        isSoloBand
         session {
             position
             cover {
