@@ -2,8 +2,8 @@ package com.team_gdb.pentatonic.di
 
 import com.team_gdb.pentatonic.repository.artist.ArtistRepository
 import com.team_gdb.pentatonic.repository.artist.ArtistRepositoryImpl
-import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepository
-import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepositoryImpl
+import com.team_gdb.pentatonic.repository.cover_view.CoverViewRepository
+import com.team_gdb.pentatonic.repository.cover_view.CoverViewRepositoryImpl
 import com.team_gdb.pentatonic.repository.cover_play.CoverPlayRepository
 import com.team_gdb.pentatonic.repository.cover_play.CoverPlayRepositoryImpl
 import com.team_gdb.pentatonic.repository.create_cover.CreateCoverRepository
@@ -33,7 +33,7 @@ import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeReposi
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepository
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepositoryImpl
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
+import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayingViewModel
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
@@ -44,8 +44,6 @@ import com.team_gdb.pentatonic.ui.record.RecordViewModel
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingViewModel
 import com.team_gdb.pentatonic.ui.register.RegisterViewModel
 import com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel
-import com.team_gdb.pentatonic.ui.solo_cover.SoloCoverActivity
-import com.team_gdb.pentatonic.ui.solo_cover.SoloCoverViewModel
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailViewModel
 import com.team_gdb.pentatonic.ui.studio.StudioViewModel
 import com.team_gdb.pentatonic.ui.user_verify.UserVerifyViewModel
@@ -81,10 +79,6 @@ val viewModelModule = module {
     }
 
     viewModel {
-        SoloCoverViewModel(get())
-    }
-
-    viewModel {
         RecordViewModel()
     }
 
@@ -93,7 +87,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        BandCoverViewModel(get())
+        CoverViewViewModel(get())
     }
 
     viewModel {
@@ -156,8 +150,8 @@ val repositoryModule = module {
         WholeCoverRepositoryImpl()
     }
 
-    single<BandCoverRepository> {
-        BandCoverRepositoryImpl()
+    single<CoverViewRepository> {
+        CoverViewRepositoryImpl()
     }
 
     single<ProfileRepository> {

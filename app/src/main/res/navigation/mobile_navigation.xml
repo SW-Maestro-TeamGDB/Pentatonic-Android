@@ -119,7 +119,7 @@
 
     <fragment
         android:id="@+id/navigation_band_cover"
-        android:name="com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity"
+        android:name="com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity"
         tools:layout="@layout/activity_band_cover">
         <action
             android:id="@+id/action_navigation_band_cover_to_navigation_profile"
@@ -135,7 +135,7 @@
 
     <fragment
         android:id="@+id/navigation_solo_cover"
-        android:name="com.team_gdb.pentatonic.ui.solo_cover.SoloCoverActivity"
+        android:name="com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity"
         tools:layout="@layout/activity_solo_cover">
         <argument
             android:name="soloCoverEntity"

@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.band_cover
+package com.team_gdb.pentatonic.ui.cover_view.band_cover
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -7,15 +7,16 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.select_session.SelectSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogBandSessionSelectBinding
+import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 import timber.log.Timber
 
 class SessionSelectBottomSheetDialog :
-    BaseBottomSheetDialogFragment<DialogBandSessionSelectBinding, BandCoverViewModel>() {
+    BaseBottomSheetDialogFragment<DialogBandSessionSelectBinding, CoverViewViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.dialog_band_session_select
-    override val viewModel: BandCoverViewModel by sharedViewModel()
+    override val viewModel: CoverViewViewModel by sharedViewModel()
 
     private lateinit var sessionListAdapter: SelectSessionListAdapter
 

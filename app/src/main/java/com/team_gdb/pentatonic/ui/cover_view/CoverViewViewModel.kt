@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.band_cover
+package com.team_gdb.pentatonic.ui.cover_view
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -7,13 +7,13 @@ import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.GetUserLibraryQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
-import com.team_gdb.pentatonic.repository.band_cover.BandCoverRepository
+import com.team_gdb.pentatonic.repository.cover_view.CoverViewRepository
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
 
-class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() {
+class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() {
     val bandInfo: MutableLiveData<GetBandCoverInfoQuery.GetBand> = MutableLiveData()
 
     private val selectedSession: HashMap<String, String> = hashMapOf()

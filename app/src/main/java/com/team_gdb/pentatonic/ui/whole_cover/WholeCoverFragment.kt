@@ -1,27 +1,16 @@
 package com.team_gdb.pentatonic.ui.whole_cover
 
 import android.content.Intent
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
-import com.team_gdb.pentatonic.data.model.CoverEntity
-import com.team_gdb.pentatonic.data.model.SessionData
 import com.team_gdb.pentatonic.databinding.FragmentWholeCoverBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.util.setQueryDebounce
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverViewModel>() {
     override val layoutResourceId: Int

@@ -1,37 +1,27 @@
-package com.team_gdb.pentatonic.ui.solo_cover
+package com.team_gdb.pentatonic.ui.cover_view.solo_cover
 
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
 import android.widget.PopupMenu
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
-import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
-import com.team_gdb.pentatonic.ui.band_cover.LibrarySelectBottomSheetDialog
-import com.team_gdb.pentatonic.ui.band_cover.SessionSelectBottomSheetDialog
+import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
-import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import timber.log.Timber
 
-class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, BandCoverViewModel>() {
+class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_solo_cover
-    override val viewModel: BandCoverViewModel by viewModel()
+    override val viewModel: CoverViewViewModel by viewModel()
 
     private val coverID: String by lazy {
         intent.getStringExtra(COVER_ID) as String

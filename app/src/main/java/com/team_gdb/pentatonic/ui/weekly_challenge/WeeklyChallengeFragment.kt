@@ -9,9 +9,8 @@ import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.FragmentWeeklyChallengeBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragmentDirections
 
 class WeeklyChallengeFragment :
     BaseFragment<FragmentWeeklyChallengeBinding, WeeklyChallengeViewModel>() {

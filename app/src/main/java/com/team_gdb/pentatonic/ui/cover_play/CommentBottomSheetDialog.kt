@@ -10,16 +10,9 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.comment.CommentListAdapter
-import com.team_gdb.pentatonic.adapter.create_cover.SelectBandSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
-import com.team_gdb.pentatonic.data.model.SessionSettingEntity
-import com.team_gdb.pentatonic.data.session.SessionData
 import com.team_gdb.pentatonic.databinding.DialogCommentBinding
-import com.team_gdb.pentatonic.databinding.DialogSelectSessionBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.BACKGROUND_IMG
-import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.band_cover
+package com.team_gdb.pentatonic.ui.cover_view.band_cover
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,14 +8,15 @@ import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogLibrarySelectBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity.Companion.SESSION_TYPE
+import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity.Companion.SESSION_TYPE
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class LibrarySelectBottomSheetDialog() :
-    BaseBottomSheetDialogFragment<DialogLibrarySelectBinding, BandCoverViewModel>() {
+    BaseBottomSheetDialogFragment<DialogLibrarySelectBinding, CoverViewViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.dialog_library_select
-    override val viewModel: BandCoverViewModel by sharedViewModel()
+    override val viewModel: CoverViewViewModel by sharedViewModel()
 
     private val selectedSession: String by lazy {
         arguments?.getString(SESSION_TYPE) as String

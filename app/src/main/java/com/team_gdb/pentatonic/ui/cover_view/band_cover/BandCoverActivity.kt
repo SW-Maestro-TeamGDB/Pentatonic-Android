@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.band_cover
+package com.team_gdb.pentatonic.ui.cover_view.band_cover
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,28 +15,24 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
-import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
-import com.team_gdb.pentatonic.type.SESSION_TYPE
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity.Companion.COVER_PLAY_ENTITY
-import com.team_gdb.pentatonic.ui.home.HomeActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
+import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity.Companion.CREATE_COVER
-import com.team_gdb.pentatonic.util.PlayAnimation
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewModel>() {
+class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.activity_band_cover
-    override val viewModel: BandCoverViewModel by viewModel()
+    override val viewModel: CoverViewViewModel by viewModel()
 
     private val coverID: String by lazy {
         intent.getStringExtra(COVER_ID) as String

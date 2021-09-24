@@ -10,17 +10,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.TestRisingCoverData
-import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
 import com.team_gdb.pentatonic.adapter.ranking.BandRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentArtistBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
-import com.team_gdb.pentatonic.ui.upload_test.UploadTestActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

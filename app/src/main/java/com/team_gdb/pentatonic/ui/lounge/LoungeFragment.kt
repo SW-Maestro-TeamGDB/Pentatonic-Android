@@ -1,22 +1,16 @@
 package com.team_gdb.pentatonic.ui.lounge
 
 import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
-import com.team_gdb.pentatonic.ui.solo_cover.SoloCoverActivity
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {

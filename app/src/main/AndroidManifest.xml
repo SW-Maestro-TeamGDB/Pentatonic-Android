@@ -28,8 +28,8 @@
         <activity android:name=".ui.record.RecordActivity" />
         <activity android:name=".ui.user_verify.UserVerifyActivity" />
         <activity android:name=".ui.register.RegisterActivity" />
-        <activity android:name=".ui.band_cover.BandCoverActivity" />
-        <activity android:name=".ui.solo_cover.SoloCoverActivity" />
+        <activity android:name="com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity" />
+        <activity android:name="com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.select_song.SelectSongActivity"/>
         <activity

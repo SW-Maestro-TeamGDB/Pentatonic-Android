@@ -8,7 +8,6 @@ import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentArtistRankingBinding
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
-import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import org.koin.androidx.viewmodel.ext.android.viewModel
