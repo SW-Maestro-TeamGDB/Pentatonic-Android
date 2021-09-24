@@ -101,10 +101,12 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         binding.coverLikeButton.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton?) {
+                viewModel.likeBand()
                 playSuccessAlert(this@BandCoverActivity, "좋아요가 반영되었습니다!")
             }
 
             override fun unLiked(likeButton: LikeButton?) {
+                viewModel.likeBand()
                 playFailureAlert(this@BandCoverActivity, "좋아요가 취소되었습니다")
             }
         })
@@ -137,7 +139,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
                     }
                     R.id.action_delete -> {
-                        showDeleteDialog(bandInfo)
+                        showDeleteDialog()
                     }
                 }
                 false
@@ -174,12 +176,12 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         }
     }
 
-    private fun showDeleteDialog(bandInfo: GetBandCoverInfoQuery.GetBand) {
+    private fun showDeleteDialog() {
         MaterialDialog(this).show {
             title(R.string.band_delete_notice_title)
             message(R.string.band_delete_notice_content)
             positiveButton(R.string.yes_text) {
-                viewModel.deleteBand(bandInfo.bandId)
+                viewModel.deleteBand()
             }
             negativeButton(R.string.no_text) {
                 /* no-op */

@@ -72,3 +72,8 @@ mutation CreateBandMutation($createBandInput: CreateBandInput!) {
 mutation DeleteBandMutation($deleteBandInput: DeleteBandInput!) {
     deleteBand(input: $deleteBandInput)
 }
+
+# 밴드 좋아요 뮤테이션
+mutation LikeMutation($likeInput: LikeInput!) {
+    like(input: $likeInput)
+}

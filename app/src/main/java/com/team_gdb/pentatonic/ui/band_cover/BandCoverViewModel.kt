@@ -154,21 +154,36 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
         addDisposable(disposable)
     }
 
-    fun deleteBand(bandId: String) {
-        val disposable = repository.deleteBand(bandId)
+    fun deleteBand() {
+        val disposable = repository.deleteBand(bandInfo.value!!.bandId)
             .applySchedulers()
             .subscribeBy(
                 onError = {
                     Timber.e(it)
                 },
                 onSuccess = {
-                    Timber.d("씨발 왜 이래 개 씨발람")
                     if (!it.hasErrors()) {
                         deleteBandEvent.postValue(Event(true))
                     } else {
                         it.errors?.forEach {
                             Timber.e(it.message)
                         }
+                    }
+                }
+            )
+        addDisposable(disposable)
+    }
+
+    fun likeBand() {
+        val disposable = repository.likeBand(bandInfo.value!!.bandId)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onSuccess = {
+                    it.errors?.forEach {
+                        Timber.e(it.message)
                     }
                 }
             )

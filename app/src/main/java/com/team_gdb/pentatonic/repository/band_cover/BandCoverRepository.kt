@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.repository.band_cover
 
 import com.apollographql.apollo.api.Response
+import com.like.LikeButton
 import com.team_gdb.pentatonic.*
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
@@ -11,4 +12,5 @@ interface BandCoverRepository {
     fun getUserLibrary(userId: String): Observable<Response<GetUserLibraryQuery.Data>>
     fun joinBand(bandId: String, coverId: String, sessionName: String): Single<Response<JoinBandMutation.Data>>
     fun deleteBand(bandId: String): Single<Response<DeleteBandMutation.Data>>
+    fun likeBand(bandId: String): Single<Response<LikeMutation.Data>>
 }

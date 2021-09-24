@@ -36,8 +36,15 @@ class BandCoverRepositoryImpl : BandCoverRepository {
             )
         )
 
+    // 밴드 삭제 요청 뮤테이션
     override fun deleteBand(bandId: String): Single<Response<DeleteBandMutation.Data>> =
         apolloClient.rxMutate(
             DeleteBandMutation(DeleteBandInput(JoinBandArgsInput(bandId)))
+        )
+
+    // 밴드 좋아요 토글 뮤테이션
+    override fun likeBand(bandId: String): Single<Response<LikeMutation.Data>> =
+        apolloClient.rxMutate(
+            LikeMutation(LikeInput(band = JoinBandArgsInput(bandId)))
         )
 }
