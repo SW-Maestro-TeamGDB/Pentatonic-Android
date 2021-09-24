@@ -25,7 +25,8 @@ import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 class SessionConfigListAdapter(
     val creator: String,
     val itemClick: (String) -> Unit,
-    val participantButtonClick: (GetBandCoverInfoQuery.Session) -> Unit
+    val participantButtonClick: (GetBandCoverInfoQuery.Session) -> Unit,
+    val itemLongClick: (String) -> Unit
 ) : RecyclerView.Adapter<SessionConfigListAdapter.ViewHolder>() {
 
     private var sessionDataList: List<GetBandCoverInfoQuery.Session?> =
@@ -79,9 +80,12 @@ class SessionConfigListAdapter(
             }
 
             // 해당 세션을 구성하는 참가자들을 보여주기 위한 리사이클러뷰 구성
-            val adapter = SessionParticipantListAdapter(creator) {
+            val adapter = SessionParticipantListAdapter(creator, {
                 itemClick(it)
-            }
+            }, {
+                itemLongClick(it)
+            })
+
             adapter.setItem(items = item.cover)
 
             binding.sessionParticipantList.apply {

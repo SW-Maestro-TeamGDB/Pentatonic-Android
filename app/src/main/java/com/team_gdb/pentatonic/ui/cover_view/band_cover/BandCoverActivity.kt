@@ -83,6 +83,14 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
                 finish()
             }
         }
+
+        // 커버 삭제 성공 여부를 담는 이벤트 옵저빙
+        viewModel.deleteCoverEvent.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                playSuccessAlert(this, "커버 삭제가 완료되었습니다!")
+                viewModel.getBandInfoQuery(coverID)
+            } else playFailureAlert(this, "커버 삭제 도중 오류가 발생했습니다")
+        }
     }
 
     override fun initAfterBinding() {
@@ -137,7 +145,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
 
                     }
                     R.id.action_delete -> {
-                        showDeleteDialog()
+                        showBandDeleteDialog()
                     }
                 }
                 false
@@ -146,16 +154,25 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
         }
 
         sessionListAdapter = SessionConfigListAdapter(
-            bandInfo.creator.id, {
+            // 방장 구분을 위한 방장 아이디
+            bandInfo.creator.id,
+            {
+                // 프로필 조회
                 val intent = Intent(this, ProfileActivity::class.java)
                 intent.putExtra(USER_ID, it)
                 startActivity(intent)
-            }, {
+            },
+            {
+                // 밴드 참여
                 val bottomSheetDialog = LibrarySelectBottomSheetDialog()
                 bottomSheetDialog.arguments = Bundle().apply {
                     putString(SESSION_TYPE, it.position.rawValue)
                 }
                 bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+            },
+            {
+                // 밴드 추방 및 나가기
+                showCoverDeleteDialog(it)
             })
 
         binding.sessionList.apply {
@@ -174,7 +191,19 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
         }
     }
 
-    private fun showDeleteDialog() {
+    private fun showCoverDeleteDialog(coverId: String) {
+        MaterialDialog(this).show {
+            message(R.string.cover_delete_notice_title)
+            positiveButton(R.string.yes_text) {
+                viewModel.leaveBand(coverId)
+            }
+            negativeButton(R.string.no_text) {
+                /* no-op */
+            }
+        }
+    }
+
+    private fun showBandDeleteDialog() {
         MaterialDialog(this).show {
             title(R.string.band_delete_notice_title)
             message(R.string.band_delete_notice_content)

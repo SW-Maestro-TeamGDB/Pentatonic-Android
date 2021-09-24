@@ -47,4 +47,18 @@ class CoverViewRepositoryImpl : CoverViewRepository {
         apolloClient.rxMutate(
             LikeMutation(LikeInput(band = JoinBandArgsInput(bandId)))
         )
+
+    // 밴드 추방 및 나가기 뮤테이션
+    override fun leaveBand(
+        bandId: String,
+        coverId: String
+    ): Single<Response<LeaveBandMutation.Data>> =
+        apolloClient.rxMutate(
+            LeaveBandMutation(
+                LeaveBandInput(
+                    band = JoinBandArgsInput(bandId),
+                    session = LeaveSessionArgsInput(coverId)
+                )
+            )
+        )
 }

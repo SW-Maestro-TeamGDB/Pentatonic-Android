@@ -16,7 +16,11 @@ import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
  *
  * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 동작
  */
-class SessionParticipantListAdapter(val creator: String, val itemClick: (String) -> Unit) :
+class SessionParticipantListAdapter(
+    val creator: String,
+    val itemClick: (String) -> Unit,
+    val itemLongClick: (String) -> Unit
+) :
     RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
 
     private var participantList: List<GetBandCoverInfoQuery.Cover> = emptyList()  // 각 세션의 참가자들 목록
@@ -76,6 +80,11 @@ class SessionParticipantListAdapter(val creator: String, val itemClick: (String)
             // 클릭시 해당 사용자의 프로필 페이지로 이동
             binding.root.setOnClickListener {
                 itemClick(item.coverBy.id)
+            }
+
+            binding.root.setOnLongClickListener {
+                itemLongClick(item.coverId)
+                true
             }
         }
     }

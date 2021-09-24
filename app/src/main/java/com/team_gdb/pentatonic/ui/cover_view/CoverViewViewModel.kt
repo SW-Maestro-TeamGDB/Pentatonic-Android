@@ -36,6 +36,9 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
     // 밴드 삭제 이벤트
     val deleteBandEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
+    // 커버 삭제 이벤트
+    val deleteCoverEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
+
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
      *
@@ -153,6 +156,9 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
         addDisposable(disposable)
     }
 
+    /**
+     * 밴드 삭제 뮤테이션
+     */
     fun deleteBand() {
         val disposable = repository.deleteBand(bandInfo.value!!.bandId)
             .applySchedulers()
@@ -173,6 +179,9 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
         addDisposable(disposable)
     }
 
+    /**
+     * 밴드 좋아요 토글 뮤테이션
+     */
     fun likeBand() {
         val disposable = repository.likeBand(bandInfo.value!!.bandId)
             .applySchedulers()
@@ -188,4 +197,22 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
             )
         addDisposable(disposable)
     }
+
+    fun leaveBand(coverId: String) {
+        val disposable = repository.leaveBand(bandId = bandInfo.value!!.bandId, coverId = coverId)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onSuccess = {
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.leaveBand.toString())
+                        deleteCoverEvent.postValue(Event(true))
+                    }
+                }
+            )
+        addDisposable(disposable)
+    }
+
 }

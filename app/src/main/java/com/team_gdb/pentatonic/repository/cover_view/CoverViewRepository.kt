@@ -12,4 +12,5 @@ interface CoverViewRepository {
     fun joinBand(bandId: String, coverId: String, sessionName: String): Single<Response<JoinBandMutation.Data>>
     fun deleteBand(bandId: String): Single<Response<DeleteBandMutation.Data>>
     fun likeBand(bandId: String): Single<Response<LikeMutation.Data>>
+    fun leaveBand(bandId: String, coverId: String): Single<Response<LeaveBandMutation.Data>>
 }
