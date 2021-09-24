@@ -155,4 +155,7 @@ dependencies {
     // Material Dialog
     implementation 'com.afollestad.material-dialogs:core:3.3.0'
 
+    // Twitter St. Button
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
+
 }

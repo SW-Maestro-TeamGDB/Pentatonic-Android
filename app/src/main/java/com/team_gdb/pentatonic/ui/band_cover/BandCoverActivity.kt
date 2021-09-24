@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
@@ -96,6 +98,16 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         binding.backButton.setOnClickListener {
             finish()
         }
+
+        binding.coverLikeButton.setOnLikeListener(object : OnLikeListener{
+            override fun liked(likeButton: LikeButton?) {
+                Timber.d("liked() 호출됨")
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                Timber.d("unLiked() 호출됨")
+            }
+        })
     }
 
     private fun applyBandInfoOnView(bandInfo: GetBandCoverInfoQuery.GetBand) {
