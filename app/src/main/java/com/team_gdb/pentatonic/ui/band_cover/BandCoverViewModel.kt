@@ -33,6 +33,10 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     // 밴드 참여 이벤트
     val joinBandEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
+
+    // 밴드 삭제 이벤트
+    val deleteBandEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
+
     /**
      *  해당 밴드의 상세 정보를 가져오는 쿼리
      *
@@ -145,6 +149,27 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
                     Timber.d(it.toString())
                     if (!it.hasErrors()) joinBandEvent.postValue(Event(true))
                     else joinBandEvent.postValue(Event(false))
+                }
+            )
+        addDisposable(disposable)
+    }
+
+    fun deleteBand(bandId: String) {
+        val disposable = repository.deleteBand(bandId)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onSuccess = {
+                    Timber.d("씨발 왜 이래 개 씨발람")
+                    if (!it.hasErrors()) {
+                        deleteBandEvent.postValue(Event(true))
+                    } else {
+                        it.errors?.forEach {
+                            Timber.e(it.message)
+                        }
+                    }
                 }
             )
         addDisposable(disposable)

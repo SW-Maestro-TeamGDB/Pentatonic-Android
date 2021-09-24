@@ -67,3 +67,8 @@ mutation CreateBandMutation($createBandInput: CreateBandInput!) {
         bandId
     }
 }
+
+# 밴드 삭제 뮤테이션
+mutation DeleteBandMutation($deleteBandInput: DeleteBandInput!) {
+    deleteBand(input: $deleteBandInput)
+}

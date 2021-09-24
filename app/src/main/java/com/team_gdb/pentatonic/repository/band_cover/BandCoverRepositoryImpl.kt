@@ -35,4 +35,9 @@ class BandCoverRepositoryImpl : BandCoverRepository {
                 )
             )
         )
+
+    override fun deleteBand(bandId: String): Single<Response<DeleteBandMutation.Data>> =
+        apolloClient.rxMutate(
+            DeleteBandMutation(DeleteBandInput(JoinBandArgsInput(bandId)))
+        )
 }

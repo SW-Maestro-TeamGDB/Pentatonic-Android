@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
@@ -76,6 +77,14 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
                 viewModel.getBandInfoQuery(coverID)
             } else playFailureAlert(this, "밴드 참여 도중 오류가 발생했습니다")
         }
+
+        // 밴드 삭제 성공 여부를 담는 이벤트 옵저빙
+        viewModel.deleteBandEvent.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                Toast.makeText(this, "밴드가 삭제되었습니다!", Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
     }
 
     override fun initAfterBinding() {
@@ -116,7 +125,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
                     }
                     R.id.action_delete -> {
-                        showDeleteDialog()
+                        showDeleteDialog(bandInfo)
                     }
                 }
                 false
@@ -153,15 +162,15 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         }
     }
 
-    private fun showDeleteDialog() {
+    private fun showDeleteDialog(bandInfo: GetBandCoverInfoQuery.GetBand) {
         MaterialDialog(this).show {
             title(R.string.band_delete_notice_title)
             message(R.string.band_delete_notice_content)
-            positiveButton(R.string.yes_text) { dialog ->
-                dismiss()
+            positiveButton(R.string.yes_text) {
+                viewModel.deleteBand(bandInfo.bandId)
             }
-            negativeButton(R.string.no_text) { dialog ->
-                // Do something
+            negativeButton(R.string.no_text) {
+                /* no-op */
             }
         }
     }
