@@ -5,6 +5,7 @@ import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
 import com.team_gdb.pentatonic.custom_view.ButtonState
+import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
@@ -109,14 +110,14 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
      * @param songId            원곡 ID
      */
     fun createBand(
-        sessionName: String,
+        sessionConfig: List<SessionSettingEntity>,
         bandName: String,
         bandIntroduction: String,
         backgroundUrl: String,
         songId: String
     ) {
         val disposable =
-            repository.createBand(sessionName, bandName, bandIntroduction, backgroundUrl, songId)
+            repository.createBand(sessionConfig, bandName, bandIntroduction, backgroundUrl, songId)
                 .applySchedulers()
                 .subscribeBy(
                     onError = {

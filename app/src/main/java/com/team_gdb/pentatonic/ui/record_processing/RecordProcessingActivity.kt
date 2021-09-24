@@ -115,7 +115,7 @@ class RecordProcessingActivity :
             if (!it.getContentIfNotHandled().isNullOrBlank()) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
                 viewModel.createBand(
-                    sessionName = createdCoverEntity.coverSessionConfig[0].sessionSetting.name,
+                    sessionConfig = createdCoverEntity.coverSessionConfig,
                     bandName = createdCoverEntity.coverName,
                     bandIntroduction = createdCoverEntity.coverIntroduction ?: "",
                     backgroundUrl = createdCoverEntity.backgroundImg,

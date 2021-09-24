@@ -5,6 +5,7 @@ import com.team_gdb.pentatonic.CreateBandMutation
 import com.team_gdb.pentatonic.JoinBandMutation
 import com.team_gdb.pentatonic.UploadCoverFileMutation
 import com.team_gdb.pentatonic.UploadCoverMutation
+import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import io.reactivex.rxjava3.core.Single
 
 interface RecordProcessingRepository {
@@ -17,7 +18,7 @@ interface RecordProcessingRepository {
     ): Single<Response<UploadCoverMutation.Data>>
 
     fun createBand(
-        sessionName: String,
+        sessionConfig: List<SessionSettingEntity>,
         bandName: String,
         bandIntroduction: String,
         backgroundUrl: String,
