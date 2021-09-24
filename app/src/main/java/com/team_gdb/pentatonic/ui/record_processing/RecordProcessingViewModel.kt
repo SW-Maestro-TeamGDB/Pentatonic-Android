@@ -28,6 +28,8 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     val coverUploadComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
+    val createBandComplete: MutableLiveData<Event<String>> = MutableLiveData()
+
     fun controlVolumeLevel(amount: Int) {
         volumeLevel.value = volumeLevel.value?.plus(amount)
         Timber.d("Volume Control 예아")
@@ -95,4 +97,27 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
         addDisposable(disposable)
     }
 
+    fun createBand(
+        sessionName: String,
+        bandName: String,
+        bandIntroduction: String,
+        backgroundUrl: String,
+        songId: String
+    ) {
+        val disposable =
+            repository.createBand(sessionName, bandName, bandIntroduction, backgroundUrl, songId)
+                .applySchedulers()
+                .subscribeBy(
+                    onError = {
+                        Timber.e(it)
+                    },
+                    onSuccess = {
+                        if (!it.hasErrors()) {
+                            Timber.d(it.data?.createBand?.bandId)
+                            createBandComplete.postValue(Event(it.data?.createBand!!.bandId))
+                        }
+                    }
+                )
+        addDisposable(disposable)
+    }
 }

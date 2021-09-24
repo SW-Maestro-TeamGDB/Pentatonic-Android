@@ -3,13 +3,11 @@ package com.team_gdb.pentatonic.repository.record_processing
 import com.apollographql.apollo.api.FileUpload
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
+import com.team_gdb.pentatonic.CreateBandMutation
 import com.team_gdb.pentatonic.UploadCoverFileMutation
 import com.team_gdb.pentatonic.UploadCoverMutation
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
-import com.team_gdb.pentatonic.type.CoverInput
-import com.team_gdb.pentatonic.type.SESSION_TYPE
-import com.team_gdb.pentatonic.type.UploadCoverFileInput
-import com.team_gdb.pentatonic.type.UploadCoverInput
+import com.team_gdb.pentatonic.type.*
 import io.reactivex.rxjava3.core.Single
 
 class RecordProcessingRepositoryImpl : RecordProcessingRepository {
@@ -30,6 +28,26 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
             UploadCoverInput(
                 CoverInput(
                     name, coverURI, songId, position = SESSION_TYPE.valueOf(position)
+                )
+            )
+        )
+    )
+
+    override fun createBand(
+        sessionName: String,
+        bandName: String,
+        bandIntroduction: String,
+        backgroundUrl: String,
+        songId: String
+    ): Single<Response<CreateBandMutation.Data>> = apolloClient.rxMutate(
+        CreateBandMutation(
+            CreateBandInput(
+                sessionConfig = listOf(SessionConfigInput(SESSION_TYPE.valueOf(sessionName), 1)),
+                band = CreateBandArgsInput(
+                    name = bandName,
+                    introduce = bandIntroduction,
+                    backGroundURI = backgroundUrl,
+                    songId = songId
                 )
             )
         )

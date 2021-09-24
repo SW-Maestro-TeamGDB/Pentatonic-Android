@@ -99,7 +99,9 @@ class RecordProcessingActivity :
                 // 커버 정보 라이브러리에 업로드
                 viewModel.uploadCoverToLibrary(
                     viewModel.coverNameField.value.toString(),
-                    it, "611824fd287e5b0012e18160", "VIOLIN"
+                    it,
+                    createdCoverEntity.coverSong.songId,
+                    createdCoverEntity.coverSessionConfig[0].sessionSetting.name
                 )
             }
         }
@@ -111,9 +113,20 @@ class RecordProcessingActivity :
                 // 커버 업로드 성공 시 Alert 애니메이션 실행
                 PlayAnimation.playSuccessAlert(this, "커버가 성공적으로 업로드 되었습니다!")
 
-                // TODO 커버 정보 페이지 구현 뒤 커버 정보로 이동
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                viewModel.createBand(
+                    sessionName = createdCoverEntity.coverSessionConfig[0].sessionSetting.name,
+                    bandName = createdCoverEntity.coverName,
+                    bandIntroduction = createdCoverEntity.coverIntroduction ?: "",
+                    backgroundUrl = createdCoverEntity.backgroundImg,
+                    songId = createdCoverEntity.coverSong.songId
+                )
+            }
+        }
+
+        viewModel.createBandComplete.observe(this) {
+            if (!it.getContentIfNotHandled().isNullOrBlank()) {
+                Timber.e("createBand() Complete!")
+                Timber.e(it.peekContent())
             }
         }
     }

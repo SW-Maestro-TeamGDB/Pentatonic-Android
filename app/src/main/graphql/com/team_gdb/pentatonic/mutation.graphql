@@ -60,3 +60,10 @@ mutation MergeCoverMutation($mergeAudiosInput: MergeAudiosInput!) {
 mutation JoinBandMutation($joinBandInput: JoinBandInput!) {
     joinBand(input: $joinBandInput)
 }
+
+# 밴드 생성 뮤테이션
+mutation CreateBandMutation($createBandInput: CreateBandInput!) {
+    createBand(input: $createBandInput) {
+        bandId
+    }
+}
