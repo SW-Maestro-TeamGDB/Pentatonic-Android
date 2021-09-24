@@ -2,12 +2,14 @@ package com.team_gdb.pentatonic.ui.band_cover
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_view.SessionConfigListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.databinding.ActivityBandCoverBinding
@@ -97,6 +99,12 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
 
         binding.coverLikeTextView.text = bandInfo.likeCount.toString()
         binding.coverViewTextView.text = "35"  // TODO : API 미구현
+
+
+        // 사용자가 해당 밴드 방장일 경우 편집, 삭제 버튼 활성화
+        if (bandInfo.creator.id == BaseApplication.prefs.userId) {
+            binding.moreButton.visibility = View.VISIBLE
+        }
 
         sessionListAdapter = SessionConfigListAdapter(
             bandInfo.creator.id, {
