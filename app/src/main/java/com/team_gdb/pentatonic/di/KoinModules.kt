@@ -81,7 +81,7 @@ val viewModelModule = module {
     }
 
     viewModel {
-        SoloCoverViewModel()
+        SoloCoverViewModel(get())
     }
 
     viewModel {

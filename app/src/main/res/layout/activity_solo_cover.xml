@@ -23,17 +23,18 @@
                 android:tintMode="src_over"
                 app:tint="#80000000" />
 
-            <LinearLayout
+
+            <RelativeLayout
                 android:layout_alignParentTop="true"
                 android:id="@+id/titleBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="@dimen/page_title_margin_top"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/page_title_margin_top">
 
                 <ImageView
                     android:id="@+id/backButton"
+                    android:layout_centerVertical="true"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
@@ -41,16 +42,29 @@
                     app:tint="@color/white" />
 
                 <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/backButton"
                     android:id="@+id/titleTextView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/nanum_extrabold"
                     android:text="스테이지"
                     android:textColor="@color/white"
                     android:textSize="@dimen/page_title_text_size" />
-            </LinearLayout>
 
+                <ImageView
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/moreButton"
+                    android:layout_width="10dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    app:tint="@color/white" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/coverNameTextView"
@@ -201,14 +215,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.like.LikeButton
                 android:id="@+id/coverLikeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
-                android:layout_marginHorizontal="16dp"
-                android:src="@drawable/lb_ic_thumb_up"
-                app:tint="@color/button_background_gray" />
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="16dp"
+                app:anim_scale_factor="2.5"
+                app:circle_end_color="@color/main_light"
+                app:circle_start_color="@color/main_regular"
+                app:dots_primary_color="@color/main_light"
+                app:dots_secondary_color="@color/main_regular"
+                app:icon_size="30dp"
+                app:icon_type="thumb"
+                app:like_drawable="@drawable/ic_baseline_thumb_up_24"
+                app:liked="false"
+                app:unlike_drawable="@drawable/ic_baseline_thumb_up_off_24" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/coverPlayButton"
@@ -230,6 +253,6 @@
 
         <variable
             name="viewModel"
-            type="com.team_gdb.pentatonic.ui.solo_cover.SoloCoverViewModel" />
+            type="com.team_gdb.pentatonic.ui.band_cover.BandCoverViewModel" />
     </data>
 </layout>

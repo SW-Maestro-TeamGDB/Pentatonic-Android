@@ -159,8 +159,8 @@
                     app:dots_secondary_color="@color/main_regular"
                     app:icon_size="30dp"
                     app:icon_type="thumb"
-                    app:liked="false"
                     app:like_drawable="@drawable/ic_baseline_thumb_up_24"
+                    app:liked="false"
                     app:unlike_drawable="@drawable/ic_baseline_thumb_up_off_24" />
 
                 <androidx.appcompat.widget.AppCompatButton

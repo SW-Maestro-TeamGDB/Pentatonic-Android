@@ -33,7 +33,6 @@ class BandCoverViewModel(val repository: BandCoverRepository) : BaseViewModel() 
     // 밴드 참여 이벤트
     val joinBandEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
-
     // 밴드 삭제 이벤트
     val deleteBandEvent: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
