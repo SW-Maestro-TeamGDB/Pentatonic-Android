@@ -26,7 +26,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
-    val coverUploadComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
+    val coverUploadComplete: MutableLiveData<Event<String>> = MutableLiveData()
 
     val createBandComplete: MutableLiveData<Event<String>> = MutableLiveData()
 
@@ -86,7 +86,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                     onSuccess = {
                         if (!it.hasErrors()) {
                             Timber.d(it.data?.uploadCover.toString())
-                            coverUploadComplete.postValue(Event(true))
+                            coverUploadComplete.postValue(Event(it.data?.uploadCover?.coverId!!))
                         } else {
                             it.errors?.forEach { e ->
                                 Timber.i(e.message)
@@ -97,6 +97,15 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
         addDisposable(disposable)
     }
 
+    /**
+     * 솔로 커버 생성
+     *
+     * @param sessionName       세션명
+     * @param bandName          커버명
+     * @param bandIntroduction  밴드 소개
+     * @param backgroundUrl     대표 이미지
+     * @param songId            원곡 ID
+     */
     fun createBand(
         sessionName: String,
         bandName: String,
@@ -118,6 +127,27 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                         }
                     }
                 )
+        addDisposable(disposable)
+    }
+
+    /**
+     * Band ID, Cover ID, 세션명을 통해 사용자의 라이브러리 커버 기반으로 밴드 참여
+     */
+    fun joinBand(sessionName: String, bandId: String, coverId: String) {
+        val disposable = repository.joinBand(
+            bandId = bandId,
+            coverId = coverId,
+            sessionName = sessionName
+        )
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+
+                }
+            )
         addDisposable(disposable)
     }
 }

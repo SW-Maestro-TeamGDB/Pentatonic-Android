@@ -108,7 +108,7 @@ class RecordProcessingActivity :
 
         // 라이브러리 커버 업로드가 완료됐을 때
         viewModel.coverUploadComplete.observe(this) {
-            if (it.getContentIfNotHandled() == true) {
+            if (!it.getContentIfNotHandled().isNullOrBlank()) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
                 // 커버 업로드 성공 시 Alert 애니메이션 실행
                 PlayAnimation.playSuccessAlert(this, "커버가 성공적으로 업로드 되었습니다!")
@@ -125,8 +125,12 @@ class RecordProcessingActivity :
 
         viewModel.createBandComplete.observe(this) {
             if (!it.getContentIfNotHandled().isNullOrBlank()) {
-                Timber.e("createBand() Complete!")
-                Timber.e(it.peekContent())
+                Timber.d("createBand() Complete!")
+                viewModel.joinBand(
+                    sessionName = createdCoverEntity.coverSessionConfig[0].sessionSetting.name,
+                    bandId = it.peekContent(),
+                    coverId = viewModel.coverUploadComplete.value!!.peekContent()
+                )
             }
         }
     }

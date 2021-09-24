@@ -4,6 +4,7 @@ import com.apollographql.apollo.api.FileUpload
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
 import com.team_gdb.pentatonic.CreateBandMutation
+import com.team_gdb.pentatonic.JoinBandMutation
 import com.team_gdb.pentatonic.UploadCoverFileMutation
 import com.team_gdb.pentatonic.UploadCoverMutation
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
@@ -52,4 +53,18 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
             )
         )
     )
+
+    // 밴드 커버에 참여 요청하는 뮤테이션
+    override fun joinBand(bandId: String, coverId: String, sessionName: String) =
+        apolloClient.rxMutate(
+            JoinBandMutation(
+                JoinBandInput(
+                    band = JoinBandArgsInput(bandId = bandId),
+                    session = JoinSessionInput(
+                        coverId = coverId,
+                        position = SESSION_TYPE.valueOf(sessionName)
+                    )
+                )
+            )
+        )
 }

@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.repository.record_processing
 
 import com.apollographql.apollo.api.Response
 import com.team_gdb.pentatonic.CreateBandMutation
+import com.team_gdb.pentatonic.JoinBandMutation
 import com.team_gdb.pentatonic.UploadCoverFileMutation
 import com.team_gdb.pentatonic.UploadCoverMutation
 import io.reactivex.rxjava3.core.Single
@@ -22,4 +23,6 @@ interface RecordProcessingRepository {
         backgroundUrl: String,
         songId: String
     ): Single<Response<CreateBandMutation.Data>>
+
+    fun joinBand(bandId: String, coverId: String, sessionName: String): Single<Response<JoinBandMutation.Data>>
 }
