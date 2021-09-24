@@ -30,6 +30,13 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
 
     private lateinit var coverListAdapter: CoverVerticalListAdapter  // 솔로 커버 리스트
 
+    override fun onResume() {
+        super.onResume()
+
+        // 초기 화면 : 모든 커버 표시
+        viewModel.getCover("")
+    }
+
     override fun initStartView() {
         binding.viewModel = this.viewModel
         addDisposable(binding.searchView.setQueryDebounce({
@@ -56,8 +63,6 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
     }
 
     override fun initAfterBinding() {
-        // 초기 화면 : 모든 커버 표시
-        viewModel.getCover("")
 
         binding.textClearButton.setOnClickListener {
             binding.searchView.text.clear()

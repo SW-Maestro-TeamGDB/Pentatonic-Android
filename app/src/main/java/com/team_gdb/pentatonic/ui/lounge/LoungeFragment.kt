@@ -1,6 +1,10 @@
 package com.team_gdb.pentatonic.ui.lounge
 
 import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +26,13 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
     private lateinit var bandCoverListAdapter: CoverHorizontalListAdapter  // 밴드 커버 리스트
     private lateinit var soloCoverListAdapter: CoverHorizontalListAdapter  // 솔로 커버 리스트
+
+    override fun onResume() {
+        super.onResume()
+
+        // 떠오르는 밴드 커버, 솔로 커버 가져오는 쿼리 호출
+        viewModel.getTrendBands()
+    }
 
     override fun initStartView() {
         binding.viewModel = viewModel
@@ -85,9 +96,6 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             }
         })
 
-
-        // 떠오르는 밴드 커버, 솔로 커버 가져오는 쿼리 호출
-        viewModel.getTrendBands()
 //        bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 //        soloCoverListAdapter.setItem(TestData.TEST_SOLO_COVER_LIST)
 
