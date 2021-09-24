@@ -31,7 +31,6 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
         binding.viewModel = this.viewModel
 
         viewModel.getBandInfoQuery(coverID)
-
     }
 
     override fun initDataBinding() {

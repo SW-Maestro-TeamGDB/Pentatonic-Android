@@ -23,7 +23,6 @@ class SessionSelectBottomSheetDialog :
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
-
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
