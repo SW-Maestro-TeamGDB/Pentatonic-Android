@@ -152,4 +152,7 @@ dependencies {
     // Analytics library
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    // Material Dialog
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+
 }

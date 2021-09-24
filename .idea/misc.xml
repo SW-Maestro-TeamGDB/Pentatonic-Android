@@ -94,6 +94,7 @@
         <entry key="app/src/main/res/layout/item_vertical_cover_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/page_title_bar.xml" value="0.15986842105263158" />
+        <entry key="app/src/main/res/menu/band_creator_menu.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14736842105263157" />
       </map>

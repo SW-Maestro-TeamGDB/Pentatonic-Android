@@ -3,7 +3,9 @@ package com.team_gdb.pentatonic.ui.band_cover
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
@@ -105,6 +107,22 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         if (bandInfo.creator.id == BaseApplication.prefs.userId) {
             binding.moreButton.visibility = View.VISIBLE
         }
+        binding.moreButton.setOnClickListener {
+            var pop = PopupMenu(this, binding.moreButton)
+            menuInflater.inflate(R.menu.band_creator_menu, pop.menu)
+            pop.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_edit -> {
+
+                    }
+                    R.id.action_delete -> {
+                        showDeleteDialog()
+                    }
+                }
+                false
+            }
+            pop.show()
+        }
 
         sessionListAdapter = SessionConfigListAdapter(
             bandInfo.creator.id, {
@@ -132,6 +150,19 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         binding.bandPlayButton.setOnClickListener {
             val bottomSheetDialog = SessionSelectBottomSheetDialog()
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+        }
+    }
+
+    private fun showDeleteDialog() {
+        MaterialDialog(this).show {
+            title(R.string.band_delete_notice_title)
+            message(R.string.band_delete_notice_content)
+            positiveButton(R.string.yes_text) { dialog ->
+                dismiss()
+            }
+            negativeButton(R.string.no_text) { dialog ->
+                // Do something
+            }
         }
     }
 
