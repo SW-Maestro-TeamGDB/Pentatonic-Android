@@ -17,7 +17,7 @@ object PlayAnimation {
     fun playSuccessAlert(activity: Activity, text: String) {
         Alerter.create(activity)
             .setText(text)
-            .setIcon(R.drawable.ic_acoustic_guitar)
+            .setIcon(R.drawable.ic_baseline_check_circle_24)
             .setBackgroundColorRes(R.color.main_regular)
             .setIconColorFilter(0)
             .setIconSize(R.dimen.custom_icon_size)
@@ -28,7 +28,7 @@ object PlayAnimation {
         Alerter.create(activity)
             .setText(text)
             .setIcon(R.drawable.ic_baseline_error_outline_24)
-            .setBackgroundColorRes(R.color.red)
+            .setBackgroundColorRes(R.color.error_red)
             .setIconColorFilter(0)
             .setIconSize(R.dimen.custom_icon_size)
             .show()

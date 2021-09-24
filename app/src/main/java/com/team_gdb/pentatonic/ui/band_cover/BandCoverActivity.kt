@@ -99,13 +99,13 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
             finish()
         }
 
-        binding.coverLikeButton.setOnLikeListener(object : OnLikeListener{
+        binding.coverLikeButton.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton?) {
-                Timber.d("liked() 호출됨")
+                playSuccessAlert(this@BandCoverActivity, "좋아요가 반영되었습니다!")
             }
 
             override fun unLiked(likeButton: LikeButton?) {
-                Timber.d("unLiked() 호출됨")
+                playFailureAlert(this@BandCoverActivity, "좋아요가 취소되었습니다")
             }
         })
     }
