@@ -11,6 +11,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
+import com.team_gdb.pentatonic.data.session.SessionData
+import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
 import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
@@ -61,11 +63,24 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
 
         binding.coverLikeButton.isLiked = bandInfo.likeStatus == true
 
+        binding.userNameTextView.text = bandInfo.creator.username
+//        binding.userIntroductionTextView.text = bandInfo.creator.introduce
+
         Glide.with(this)
             .load(bandInfo.backGroundURI)
             .placeholder(R.drawable.placeholder_cover_bg)
             .override(480, 272)
             .into(binding.coverImage)
+
+        Glide.with(this)
+            .load(bandInfo.creator.profileURI)
+            .override(200, 200)
+            .into(binding.userProfileImage)
+
+        Glide.with(this)
+            .load(SessionSetting.valueOf(bandInfo.session?.get(0)!!.position.rawValue).icon)
+            .override(480, 272)
+            .into(binding.coverSessionImageView)
 
         binding.coverLikeTextView.text = bandInfo.likeCount.toString()
         binding.coverViewTextView.text = "35"  // TODO : API 미구현
@@ -74,6 +89,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
         if (bandInfo.creator.id == BaseApplication.prefs.userId) {
             binding.moreButton.visibility = View.VISIBLE
         }
+
         binding.moreButton.setOnClickListener {
             var pop = PopupMenu(this, binding.moreButton)
             menuInflater.inflate(R.menu.band_creator_menu, pop.menu)
