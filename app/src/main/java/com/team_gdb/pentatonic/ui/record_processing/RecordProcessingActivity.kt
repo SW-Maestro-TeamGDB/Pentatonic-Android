@@ -16,6 +16,9 @@ import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.custom_view.ButtonState
+import com.team_gdb.pentatonic.ui.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import com.team_gdb.pentatonic.util.PlayAnimation
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -110,9 +113,6 @@ class RecordProcessingActivity :
         viewModel.coverUploadComplete.observe(this) {
             if (!it.getContentIfNotHandled().isNullOrBlank()) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
-                // 커버 업로드 성공 시 Alert 애니메이션 실행
-                PlayAnimation.playSuccessAlert(this, "커버가 성공적으로 업로드 되었습니다!")
-
                 viewModel.createBand(
                     sessionName = createdCoverEntity.coverSessionConfig[0].sessionSetting.name,
                     bandName = createdCoverEntity.coverName,
@@ -131,6 +131,17 @@ class RecordProcessingActivity :
                     bandId = it.peekContent(),
                     coverId = viewModel.coverUploadComplete.value!!.peekContent()
                 )
+            }
+        }
+
+        viewModel.joinBandComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                // 밴드 생성 및 참여 완료 시 Alert 애니메이션 실행
+                val intent = Intent(this, BandCoverActivity::class.java)
+                intent.putExtra(CREATE_COVER, "CREATE_COVER")
+                intent.putExtra(COVER_ID, viewModel.createBandComplete.value!!.peekContent())
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK  // 지금까지 쌓인 액티비티 모두 제거
+                startActivity(intent)
             }
         }
     }
@@ -335,5 +346,6 @@ class RecordProcessingActivity :
 
     companion object {
         const val NUM_PAGES = 2
+        const val CREATE_COVER = "create_cover"
     }
 }

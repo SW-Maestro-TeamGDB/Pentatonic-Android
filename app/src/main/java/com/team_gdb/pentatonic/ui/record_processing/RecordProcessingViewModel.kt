@@ -30,6 +30,8 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     val createBandComplete: MutableLiveData<Event<String>> = MutableLiveData()
 
+    val joinBandComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
+
     fun controlVolumeLevel(amount: Int) {
         volumeLevel.value = volumeLevel.value?.plus(amount)
         Timber.d("Volume Control 예아")
@@ -145,7 +147,10 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                     Timber.i(it)
                 },
                 onSuccess = {
-
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.joinBand.toString())
+                        joinBandComplete.postValue(Event(true))
+                    }
                 }
             )
         addDisposable(disposable)

@@ -18,6 +18,7 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
+import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity.Companion.CREATE_COVER
 import com.team_gdb.pentatonic.util.PlayAnimation
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
@@ -71,6 +72,11 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
     }
 
     override fun initAfterBinding() {
+        // 커버 생성 후 넘어온 상황이라면 커버 생성 완료 애니메이션 재생
+        if (intent.getStringExtra(CREATE_COVER) != null) {
+            playSuccessAlert(this, "커버가 정상적으로 생성되었습니다!")
+        }
+
         binding.backButton.setOnClickListener {
             finish()
         }
