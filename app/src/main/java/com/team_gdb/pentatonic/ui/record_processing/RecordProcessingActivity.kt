@@ -13,10 +13,6 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
-import com.team_gdb.pentatonic.media.ExoPlayerHelper
-import com.team_gdb.pentatonic.media.ExoPlayerHelper.duration
-import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
-import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.custom_view.ButtonState
@@ -60,11 +56,7 @@ class RecordProcessingActivity :
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        initPlayer(recordingFilePath) {
-            pausePlaying()
-        }
-        totalDuration = duration.toFloat()
-        interval = duration.toFloat().div(100)
+        initPlayer()
 
         Timber.d(createdCoverEntity.toString())
 
@@ -160,6 +152,24 @@ class RecordProcessingActivity :
         }
     }
 
+    private fun initPlayer() {
+        player = MediaPlayer().apply {
+
+            setDataSource(recordingFilePath)
+            prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
+            setOnCompletionListener {  // 끝까지 재생이 끝났을 때
+                pausePlaying()
+            }
+            totalDuration = this.duration.toFloat()
+            interval = this.duration.toFloat().div(100)
+        }
+
+        totalDuration = player!!.duration.toFloat()
+        interval = player!!.duration.toFloat().div(100)
+
+//        setPresetReverb()
+    }
+
     /**
      * 오디오 프로그레스 값 변경될 때마다 처리해줘야 할 동작
      * - 사용자가 SeekBar 조정을 통해 값이 변경된 것이라면, MedialPlayer 재생 위치를 옮김
@@ -252,13 +262,11 @@ class RecordProcessingActivity :
         player?.setAuxEffectSendLevel(1.0f)
     }
 
-    /*
+    /**
      * 녹음본을 재생
      */
     private fun startPlaying() {
-//        setPresetReverb()
-        setPresetReverb()
-        ExoPlayerHelper.startPlaying()
+        player?.start()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {
             while (player?.isPlaying == true) {
@@ -279,8 +287,16 @@ class RecordProcessingActivity :
      * 음원 재생 일시 정지
      */
     private fun pausePlaying() {
-        ExoPlayerHelper.pausePlaying()
+        player?.pause()
         viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
+    }
+
+    /**
+     * 음원 재생 중지
+     */
+    private fun stopPlaying() {
+        player?.release()
+        player = null
     }
 
     /**

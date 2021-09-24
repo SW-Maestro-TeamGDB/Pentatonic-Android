@@ -39,14 +39,14 @@ class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewMode
                 coverName = coverName.value!!,
                 coverIntroduction = coverIntroduction.value,
                 coverSong = coverSong.value!!,
-                backgroundImg = "",
+                backgroundImg = coverBackgroundImage.value ?: "",
                 coverSessionConfig = coverSessionConfigList.value!!,
                 coverRecord = null
             )
             return entity
         }
 
-    fun uploadImageFile(filePath: String){
+    fun uploadImageFile(filePath: String) {
         val disposable = repository.uploadImageFile(filePath)
             .applySchedulers()
             .subscribeBy(
@@ -55,7 +55,7 @@ class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewMode
                 },
                 onSuccess = {
                     Timber.d(it.toString())
-                    if (!it.hasErrors()){
+                    if (!it.hasErrors()) {
                         Timber.d(it.data?.uploadImageFile)
                         coverBackgroundImage.postValue(it.data?.uploadImageFile)
                     }

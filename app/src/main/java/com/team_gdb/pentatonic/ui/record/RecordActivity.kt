@@ -33,15 +33,14 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     private val recordingFilePath: String by lazy {  // 녹음본이 저장될 위치
         "${externalCacheDir?.absolutePath}/recording.m4a"
     }
-
-    private val mrFilePath: String by lazy {  // 서버에서 받아온 MR이 저장될 위치
-        "${externalCacheDir?.absolutePath}/mr.mp3"
-    }
-
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
 
     private val createdCoverEntity: CreatedCoverEntity by lazy {
         intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedCoverEntity
+    }
+
+    private val mrFilePath: String by lazy {  // MR 스트리밍 URL
+        createdCoverEntity.coverSong.songUrl
     }
 
     // 카운트 후 녹음 시작을 위한 CountDownTimer (3초)
@@ -76,7 +75,6 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
     override fun initAfterBinding() {
         initPlayer(mrFilePath) {
-            binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
             stopPlaying()
             stopRecording()
         }
@@ -98,6 +96,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 }
                 ButtonState.ON_RECORDING -> {
                     viewModel.buttonState.postValue(ButtonState.STOP_RECORDING)
+                    binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
                     stopPlaying()
                     stopRecording()
                 }
