@@ -183,6 +183,7 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
             }
         }
         likeCount
+        likeStatus
         comment {
             bandId
             user {

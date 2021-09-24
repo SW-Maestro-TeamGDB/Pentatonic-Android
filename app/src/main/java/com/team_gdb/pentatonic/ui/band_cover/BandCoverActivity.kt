@@ -116,6 +116,8 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         binding.coverNameTextView.text = bandInfo.name
         binding.coverIntroductionTextView.text = bandInfo.introduce
 
+        binding.coverLikeButton.isLiked = bandInfo.likeStatus == true
+
         Glide.with(this)
             .load(bandInfo.backGroundURI)
             .placeholder(R.drawable.placeholder_cover_bg)
