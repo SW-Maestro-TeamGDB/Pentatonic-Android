@@ -71,8 +71,8 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
 
     override fun initDataBinding() {
         viewModel.trendBandCover.observe(this) {
-            bandCoverListAdapter.setItem(it)
-            soloCoverListAdapter.setItem(it)
+            bandCoverListAdapter.setItem(it.filter { !it.isSoloBand })
+            soloCoverListAdapter.setItem(it.filter { it.isSoloBand })
         }
 
     }

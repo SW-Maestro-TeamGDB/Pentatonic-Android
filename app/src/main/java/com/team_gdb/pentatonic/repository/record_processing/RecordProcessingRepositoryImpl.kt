@@ -48,7 +48,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
                 session = SESSION_TYPE.valueOf(it.sessionSetting.name)
             )
         }
-        val isSoloBand = sessionConfig.isEmpty() && sessionConfig[0].count == 1
+        val isSoloBand = sessionConfig.size == 1 && sessionConfig[0].count == 1
         return apolloClient.rxMutate(
             CreateBandMutation(
                 CreateBandInput(
