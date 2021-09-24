@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.adapter.cover_view
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -15,7 +16,7 @@ import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
  *
  * @property itemClick  세션 참가자 각각의 프로필을 볼 수 있도록 하기 위해 프로필 조회 페이지로 이동하는 동작
  */
-class SessionParticipantListAdapter(val itemClick: (String) -> Unit) :
+class SessionParticipantListAdapter(val creator: String, val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
 
     private var participantList: List<GetBandCoverInfoQuery.Cover> = emptyList()  // 각 세션의 참가자들 목록
@@ -66,6 +67,11 @@ class SessionParticipantListAdapter(val itemClick: (String) -> Unit) :
 
             // 해당 사용자의 닉네임
             binding.usernameTextView.text = item.coverBy.username
+
+            // 방장 (밴드를 만든 사용자) 인 경우 뱃지 표시
+            if (creator == item.coverBy.id) {
+                binding.ownerBadgeImageView.visibility = View.VISIBLE
+            }
 
             // 클릭시 해당 사용자의 프로필 페이지로 이동
             binding.root.setOnClickListener {

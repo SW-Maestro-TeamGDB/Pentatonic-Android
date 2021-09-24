@@ -98,17 +98,18 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, BandCoverViewMo
         binding.coverLikeTextView.text = bandInfo.likeCount.toString()
         binding.coverViewTextView.text = "35"  // TODO : API 미구현
 
-        sessionListAdapter = SessionConfigListAdapter({
-            val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra(USER_ID, it)
-            startActivity(intent)
-        }, {
-            val bottomSheetDialog = LibrarySelectBottomSheetDialog()
-            bottomSheetDialog.arguments = Bundle().apply {
-                putString(SESSION_TYPE, it.position.rawValue)
-            }
-            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
-        })
+        sessionListAdapter = SessionConfigListAdapter(
+            bandInfo.creator.id, {
+                val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra(USER_ID, it)
+                startActivity(intent)
+            }, {
+                val bottomSheetDialog = LibrarySelectBottomSheetDialog()
+                bottomSheetDialog.arguments = Bundle().apply {
+                    putString(SESSION_TYPE, it.position.rawValue)
+                }
+                bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+            })
 
         binding.sessionList.apply {
             this.layoutManager = LinearLayoutManager(context)
