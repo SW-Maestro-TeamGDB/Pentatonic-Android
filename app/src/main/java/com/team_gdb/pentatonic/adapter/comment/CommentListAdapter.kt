@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetCoverCommentQuery
 import com.team_gdb.pentatonic.R
@@ -16,7 +17,10 @@ import com.team_gdb.pentatonic.util.formatTo
 import com.team_gdb.pentatonic.util.toDate
 
 
-class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentDelete: (String, String) -> Unit) :
+class CommentListAdapter(
+    val commentEdit: (String, String) -> Unit,
+    val commentDelete: (String) -> Unit
+) :
     RecyclerView.Adapter<CommentListAdapter.ViewHolder>() {
 
     private var commentEntityList: List<GetCoverCommentQuery.GetComment> =
@@ -81,7 +85,8 @@ class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentD
             }
 
             binding.deleteButton.setOnClickListener {
-                commentDelete(entity.commentId, binding.commentEditText.text.toString())
+                hideCommentEditLayout()
+                commentDelete(entity.commentId)
             }
         }
 
@@ -99,6 +104,16 @@ class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentD
                 InputMethodManager.SHOW_FORCED,
                 InputMethodManager.HIDE_IMPLICIT_ONLY
             )
+        }
+
+        private fun hideCommentEditLayout() {
+            binding.deleteButton.visibility = View.GONE
+            binding.commentTextView.visibility = View.VISIBLE
+            binding.editCommentLayout.visibility = View.GONE
+
+            val imm =
+                applicationContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.commentEditText.windowToken, 0)
         }
     }
 

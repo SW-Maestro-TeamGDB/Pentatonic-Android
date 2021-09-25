@@ -51,7 +51,7 @@
     <string name="whole_cover_title_text">펜타토닉의 <b>모든 커버</b>를\n탐색해보세요.</string>
     <string name="band_delete_notice_title">밴드를 삭제하시겠습니까?</string>
     <string name="band_delete_notice_content">한 번 삭제된 밴드는 <b>복구할 수 없습니다.</b>\n그래도 삭제하시겠습니까?</string>
-
+    <string name="comment_delete_notice_content">해당 댓글을 삭제하시겠습니까?</string>
     <string name="cover_delete_notice_title">해당 커버를 삭제하시겠습니까?</string>
     <string name="yes_text">네</string>
     <string name="no_text">아니요</string>

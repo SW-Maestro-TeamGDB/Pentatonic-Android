@@ -2,7 +2,10 @@ package com.team_gdb.pentatonic.ui.cover_play
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -25,6 +28,9 @@ import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.getSystemService
+import com.afollestad.materialdialogs.MaterialDialog
+import com.team_gdb.pentatonic.GetCoverCommentQuery
+import com.team_gdb.pentatonic.base.BaseApplication
 
 
 class CommentBottomSheetDialog() :
@@ -45,12 +51,12 @@ class CommentBottomSheetDialog() :
 
         commentListAdapter = CommentListAdapter(
             { commentId, content ->
-                // 수정
+                // 댓글 수정
                 viewModel.updateComment(commentId, content)
             },
-            { commentId, content ->
-                // 삭제
-                viewModel.deleteComment(commentId)
+            { commentId ->
+                // 댓글 삭제
+                showDeleteCommentDialog(commentId)
             }
         )
 
@@ -111,6 +117,17 @@ class CommentBottomSheetDialog() :
         }
     }
 
+    private fun showDeleteCommentDialog(commentId: String) {
+        MaterialDialog(requireContext()).show {
+            message(R.string.comment_delete_notice_content)
+            positiveButton(R.string.yes_text) {
+                viewModel.deleteComment(commentId)
+            }
+            negativeButton(R.string.no_text) {
+                /* no-op */
+            }
+        }
+    }
     private val glideLoadingListener = object : RequestListener<Drawable> {
         override fun onLoadFailed(
             e: GlideException?,
