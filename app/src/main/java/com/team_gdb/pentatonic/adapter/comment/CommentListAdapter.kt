@@ -77,11 +77,8 @@ class CommentListAdapter(
 
             binding.updateCommentButton.setOnClickListener {
                 commentEdit(entity.commentId, binding.commentEditText.text.toString())
-                binding.commentTextView.apply {
-                    visibility = View.VISIBLE
-                    text = binding.commentEditText.text.toString()
-                }
-                binding.editCommentLayout.visibility = View.GONE
+                hideCommentEditLayout()
+                binding.commentTextView.text = binding.commentEditText.text.toString()
             }
 
             binding.deleteButton.setOnClickListener {
