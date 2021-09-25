@@ -68,7 +68,7 @@
                 android:layout_marginVertical="24dp">
 
                 <Button
-                    android:id="@+id/registerCommentButton"
+                    android:id="@+id/confirmCommentButton"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -84,10 +84,11 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
-                    android:layout_toStartOf="@+id/registerCommentButton"
+                    android:layout_toStartOf="@+id/confirmCommentButton"
                     android:background="@drawable/custom_radius_background_white_transparent"
                     android:fontFamily="@font/nanum_regular"
                     android:hint="댓글을 작성해보세요."
+                    android:text="@={viewModel.commentContent}"
                     android:paddingHorizontal="16dp"
                     android:textColor="@color/white"
                     android:textColorHint="#94FFFFFF"

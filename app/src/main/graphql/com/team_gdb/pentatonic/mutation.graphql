@@ -82,3 +82,13 @@ mutation LikeMutation($likeInput: LikeInput!) {
 mutation LeaveBandMutation($leaveBandInput: LeaveBandInput!) {
     leaveBand(input: $leaveBandInput)
 }
+
+# 커버 댓글 등록 뮤테이션
+mutation CreateCommentMutation($createCommentInput: CreateCommentInput!) {
+    createComment(input: $createCommentInput) {
+        bandId
+        content
+        createdAt
+        commentId
+    }
+}

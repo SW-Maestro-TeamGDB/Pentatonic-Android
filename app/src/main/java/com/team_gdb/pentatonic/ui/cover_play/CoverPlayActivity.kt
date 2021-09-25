@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.core.graphics.drawable.toBitmap
+import com.afollestad.materialdialogs.utils.MDUtil.isLandscape
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -17,6 +18,7 @@ import com.team_gdb.pentatonic.databinding.ActivityCoverPlayBinding
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.media.ExoPlayerHelper
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -56,7 +58,7 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
                 // 댓글 리스트를 표시하는 BottomSheetDialog 표시
                 val bottomSheetDialog = CommentBottomSheetDialog()
                 bottomSheetDialog.arguments = Bundle().apply {
-                    putString(BACKGROUND_IMG, coverEntity.backgroundImgURL)
+                    putSerializable(COVER_ENTITY, coverEntity)
                 }
                 bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
 
