@@ -172,7 +172,9 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
             },
             {
                 // 밴드 추방 및 나가기
-                showCoverDeleteDialog(it)
+                if (bandInfo.creator.id == BaseApplication.prefs.userId){
+                    showCoverDeleteDialog(it)
+                }
             })
 
         binding.sessionList.apply {

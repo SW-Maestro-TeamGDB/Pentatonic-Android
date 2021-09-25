@@ -12,6 +12,8 @@ import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
 import com.team_gdb.pentatonic.databinding.ItemLibrarySelectListBinding
 import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
+import com.team_gdb.pentatonic.util.formatTo
+import com.team_gdb.pentatonic.util.toDate
 
 /**
  * 밴드 커버에 참여함에 있어, 라이브러리 내의 어떤 녹음본으로 참여할지 선택할 수 있게 라이브러리 목록을 보여주는 리사이클러뷰 어댑터
@@ -52,7 +54,7 @@ class LibrarySelectListAdapter(val itemClick: (String) -> Unit) :
         fun bind(entity: GetUserLibraryQuery.Library) {
             // 해당 커버의 이름과 날짜
             binding.coverName.text = entity.name
-            binding.coverDate.text = entity.date
+            binding.coverDate.text = entity.date.toDate().formatTo("yyyy-MM-dd HH:mm")
 
             // 선택된 아이템이 아니라면 기본 스타일로 표현
             if (selectedSession != adapterPosition) {
