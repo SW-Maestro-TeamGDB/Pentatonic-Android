@@ -45,10 +45,12 @@ class CommentBottomSheetDialog() :
 
         commentListAdapter = CommentListAdapter(
             { commentId, content ->
+                // 수정
                 viewModel.updateComment(commentId, content)
             },
-            {
+            { commentId, content ->
                 // 삭제
+                viewModel.deleteComment(commentId)
             }
         )
 
@@ -79,6 +81,15 @@ class CommentBottomSheetDialog() :
                 viewModel.getComment(coverEntity.coverID)
             } else {
                 playSuccessAlert(activity as Activity, "댓글 수정 도중에 오류가 발생했습니다")
+            }
+        }
+
+        viewModel.deleteCommentComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                playSuccessAlert(activity as Activity, "댓글 삭제가 완료되었습니다!")
+                viewModel.getComment(coverEntity.coverID)
+            } else {
+                playSuccessAlert(activity as Activity, "댓글 삭제 도중에 오류가 발생했습니다")
             }
         }
     }

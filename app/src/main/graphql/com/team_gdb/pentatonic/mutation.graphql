@@ -102,3 +102,8 @@ mutation UpdateCommentMutation($updateCommentInput: UpdateCommentInput!) {
         commentId
     }
 }
+
+# 커버 댓글 삭제 뮤테이션
+mutation DeleteCommentMutation($deleteCommentInput: DeleteCommentInput!) {
+    deleteComment(input: $deleteCommentInput)
+}

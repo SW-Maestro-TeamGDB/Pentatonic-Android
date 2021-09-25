@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp">
@@ -60,14 +61,32 @@
             android:id="@+id/commentDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/userNameTextView"
+            android:layout_alignTop="@+id/userProfileImageView"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanum_regular"
+            android:text="DATE"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/userProfileImageView"
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="4dp"
+            android:drawablePadding="4dp"
             android:fontFamily="@font/nanum_regular"
-            android:text="1시간 전"
+            android:gravity="center_vertical"
+            android:text="삭제하기"
             android:textColor="@color/gray"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_left_image_delete" />
 
         <TextView
             android:id="@+id/commentTextView"

@@ -16,7 +16,7 @@ import com.team_gdb.pentatonic.util.formatTo
 import com.team_gdb.pentatonic.util.toDate
 
 
-class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentDelete: () -> Unit) :
+class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentDelete: (String, String) -> Unit) :
     RecyclerView.Adapter<CommentListAdapter.ViewHolder>() {
 
     private var commentEntityList: List<GetCoverCommentQuery.GetComment> =
@@ -59,7 +59,8 @@ class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentD
                 .into(binding.userProfileImageView)
 
             binding.commentTextView.setOnLongClickListener {
-                if (entity.user.username == BaseApplication.prefs.userId) {
+                // 사용자가 작성한 댓글의 경우 수정 UI 표시
+                if (entity.user.id == BaseApplication.prefs.userId) {
                     showCommentEditLayout(entity)
                 }
                 true
@@ -78,9 +79,14 @@ class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentD
                 }
                 binding.editCommentLayout.visibility = View.GONE
             }
+
+            binding.deleteButton.setOnClickListener {
+                commentDelete(entity.commentId, binding.commentEditText.text.toString())
+            }
         }
 
         fun showCommentEditLayout(entity: GetCoverCommentQuery.GetComment) {
+            binding.deleteButton.visibility = View.VISIBLE
             binding.commentTextView.visibility = View.GONE
             binding.editCommentLayout.visibility = View.VISIBLE
             binding.commentEditText.apply {
