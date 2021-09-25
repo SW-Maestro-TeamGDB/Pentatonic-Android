@@ -23,45 +23,45 @@
                         app:tint="#80000000" />
 
                     <RelativeLayout
-                        android:layout_alignParentTop="true"
                         android:id="@+id/titleBar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="@dimen/page_title_margin_top">
 
                         <ImageView
                             android:id="@+id/backButton"
-                            android:layout_centerVertical="true"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_back_button"
                             app:tint="@color/white" />
 
-                        <TextView
-                            android:layout_centerVertical="true"
-                            android:layout_toEndOf="@+id/backButton"
-                            android:id="@+id/titleTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:fontFamily="@font/nanum_extrabold"
-                            android:text="스테이지"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/page_title_text_size" />
-
                         <ImageView
-                            android:visibility="gone"
-                            android:scaleType="centerCrop"
                             android:id="@+id/moreButton"
                             android:layout_width="10dp"
                             android:layout_height="30dp"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center_vertical"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/ic_baseline_more_vert_24"
+                            android:visibility="gone"
                             app:tint="@color/white" />
+
+                        <TextView
+                            android:id="@+id/titleTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="8dp"
+                            android:layout_toEndOf="@+id/backButton"
+                            android:fontFamily="@font/nanum_extrabold"
+                            android:text="스테이지"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/page_title_text_size" />
                     </RelativeLayout>
 
 

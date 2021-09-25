@@ -1,46 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:paddingHorizontal="16dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/userProfileImageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/editCommentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userNameTextView"
+            android:layout_toRightOf="@+id/userProfileImageView">
+
+            <Button
+                android:id="@+id/updateCommentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/commentEditText"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/custom_radius_background_regular_transparent"
+                android:text="업데이트"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/commentEditText"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/updateCommentButton"
+                android:background="@drawable/custom_radius_background_gray_transparent"
+                android:text="취소"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/commentEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/custom_radius_background_white_transparent"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/userNameTextView"
+            android:id="@+id/commentDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/white"
             android:layout_alignTop="@+id/userProfileImageView"
-            android:layout_toEndOf="@+id/userProfileImageView"
-            android:fontFamily="@font/nanum_bold"
-            android:text="닉네임"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_alignTop="@+id/userProfileImageView"
-            android:id="@+id/commentDateTextView"
-            android:text="1시간 전"
-            android:textColor="@color/gray"
-            android:layout_marginTop="4dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/nanum_regular"
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanum_regular"
+            android:text="1시간 전"
+            android:textColor="@color/gray"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/commentTextView"
@@ -59,5 +86,27 @@
             android:text="댓글"
             android:textColor="@color/white"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/userProfileImageView"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/userProfileImageView"
+            android:fontFamily="@font/nanum_bold"
+            android:text="닉네임"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userProfileImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+
     </RelativeLayout>
 </layout>

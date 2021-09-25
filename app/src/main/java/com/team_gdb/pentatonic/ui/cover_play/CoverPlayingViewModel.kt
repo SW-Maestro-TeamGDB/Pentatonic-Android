@@ -31,6 +31,10 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
     val createCommentComplete: LiveData<Event<Boolean>>
         get() = _createCommentComplete
 
+    private val _updateCommentComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
+    val updateCommentComplete: LiveData<Event<Boolean>>
+        get() = _updateCommentComplete
+
     fun setCoverEntity(coverEntity: CoverPlayEntity) {
         _coverEntity.value = coverEntity
     }
@@ -69,6 +73,26 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
                             _createCommentComplete.value = Event(true)
                         } else {
                             _createCommentComplete.value = Event(false)
+                        }
+                    }
+                )
+        addDisposable(disposable)
+    }
+
+    fun updateComment(commentId: String, content: String){
+        val disposable =
+            repository.updateComment(commentId, content)
+                .applySchedulers()
+                .subscribeBy(
+                    onError = {
+                        Timber.e(it)
+                    },
+                    onSuccess = {
+                        if (!it.hasErrors()) {
+                            Timber.d(it.data?.updateComment.toString())
+                            _updateCommentComplete.value = Event(true)
+                        } else {
+                            _updateCommentComplete.value = Event(false)
                         }
                     }
                 )

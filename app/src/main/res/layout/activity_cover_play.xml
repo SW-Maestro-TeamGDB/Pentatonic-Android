@@ -114,6 +114,7 @@
                     android:layout_height="18dp"/>
 
                 <TextView
+                    android:id="@+id/coverLikeCountTextView"
                     android:fontFamily="@font/nanum_regular"
                     android:layout_marginStart="8dp"
                     android:gravity="center"

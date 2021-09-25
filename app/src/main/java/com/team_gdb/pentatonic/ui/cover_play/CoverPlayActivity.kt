@@ -47,8 +47,9 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         initPlayer(coverEntity.coverURL) {
             Timber.d("Play Complete")
         }
-
         binding.playerView.player = ExoPlayerHelper.player
+
+        binding.coverLikeCountTextView.text = coverEntity.likeCount.toString()
     }
 
     override fun initDataBinding() {
@@ -61,7 +62,6 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
                     putSerializable(COVER_ENTITY, coverEntity)
                 }
                 bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
-
             }
         }
     }

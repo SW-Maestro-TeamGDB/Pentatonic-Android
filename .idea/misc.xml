@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/background_gray_button.xml" value="0.19769736842105262" />
         <entry key="app/src/main/res/drawable/custom_radius_background_dark.xml" value="0.14802631578947367" />
         <entry key="app/src/main/res/drawable/custom_radius_background_gray.xml" value="0.14802631578947367" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_gray_transparent.xml" value="0.2182410423452769" />
         <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.12861842105263158" />
         <entry key="app/src/main/res/drawable/custom_radius_background_regular_transparent.xml" value="0.23778501628664495" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.13717105263157894" />
@@ -98,6 +99,7 @@
         <entry key="app/src/main/res/layout/page_title_bar.xml" value="0.15986842105263158" />
         <entry key="app/src/main/res/menu/band_creator_menu.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13519736842105262" />
+        <entry key="app/src/main/res/menu/comment_menu.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14736842105263157" />
       </map>
     </option>

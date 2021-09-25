@@ -1,7 +1,10 @@
 package com.team_gdb.pentatonic.ui.cover_play
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.drawable.Drawable
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -20,6 +23,9 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.ContextCompat.getSystemService
+
 
 class CommentBottomSheetDialog() :
     BaseBottomSheetDialogFragment<DialogCommentBinding, CoverPlayingViewModel>() {
@@ -37,7 +43,14 @@ class CommentBottomSheetDialog() :
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
-        commentListAdapter = CommentListAdapter()
+        commentListAdapter = CommentListAdapter(
+            { commentId, content ->
+                viewModel.updateComment(commentId, content)
+            },
+            {
+                // 삭제
+            }
+        )
 
         binding.commentList.apply {
             this.layoutManager = LinearLayoutManager(context)
@@ -57,6 +70,15 @@ class CommentBottomSheetDialog() :
                 viewModel.getComment(coverEntity.coverID)
             } else {
                 playSuccessAlert(activity as Activity, "댓글 작성 도중에 오류가 발생했습니다")
+            }
+        }
+
+        viewModel.updateCommentComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                playSuccessAlert(activity as Activity, "댓글 수정이 완료되었습니다!")
+                viewModel.getComment(coverEntity.coverID)
+            } else {
+                playSuccessAlert(activity as Activity, "댓글 수정 도중에 오류가 발생했습니다")
             }
         }
     }

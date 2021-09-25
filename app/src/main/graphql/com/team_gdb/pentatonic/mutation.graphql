@@ -92,3 +92,13 @@ mutation CreateCommentMutation($createCommentInput: CreateCommentInput!) {
         commentId
     }
 }
+
+# 커버 댓글 수정 뮤테이션
+mutation UpdateCommentMutation($updateCommentInput: UpdateCommentInput!) {
+    updateComment(input: $updateCommentInput) {
+        bandId
+        content
+        createdAt
+        commentId
+    }
+}
