@@ -2,12 +2,15 @@ package com.team_gdb.pentatonic.ui.cover_play
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.widget.FrameLayout
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCoverPlayBinding
@@ -56,6 +59,7 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
                     putString(BACKGROUND_IMG, coverEntity.backgroundImgURL)
                 }
                 bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+
             }
         }
     }

@@ -1,57 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:tintMode="src_over"
-            app:tint="#B3000000"
-            android:id="@+id/commentBackgroundImageView"
-            android:scaleType="centerCrop"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
         <RelativeLayout
-            android:layout_marginTop="24dp"
-            android:id="@+id/bannerLayout"
+            app:behavior_peekHeight="600dp"
+            app:behavior_hideable="false"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="24dp">
+            android:layout_height="600dp">
 
             <ImageView
-                android:id="@+id/closeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_baseline_close_24"
-                app:tint="@color/white" />
+                android:tintMode="src_over"
+                app:tint="#B3000000"
+                android:id="@+id/commentBackgroundImageView"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_marginTop="24dp"
+                android:id="@+id/bannerLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:fontFamily="@font/nanum_extrabold"
-                android:text="댓글"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:paddingHorizontal="24dp">
 
+                <ImageView
+                    android:id="@+id/closeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_baseline_close_24"
+                    app:tint="@color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="댓글"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <com.chauthai.overscroll.RecyclerViewBouncy
+                android:id="@+id/commentList"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_below="@+id/bannerLayout"
+                android:layout_marginTop="16dp"
+                app:friction="200"
+                app:gapLimit="220"
+                app:speedFactor="5"
+                app:tension="1000" />
+
+
+            <RelativeLayout
+                android:id="@+id/bottomLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginVertical="24dp">
+
+                <Button
+                    android:id="@+id/registerCommentButton"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/custom_radius_background_regular_transparent"
+                    android:backgroundTint="@color/main_light"
+                    android:text="등록"
+                    android:textColor="@color/white" />
+
+                <EditText
+                    android:id="@+id/bandPlayButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_toStartOf="@+id/registerCommentButton"
+                    android:background="@drawable/custom_radius_background_white_transparent"
+                    android:fontFamily="@font/nanum_regular"
+                    android:hint="댓글을 작성해보세요."
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#94FFFFFF"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
         </RelativeLayout>
 
-        <com.chauthai.overscroll.RecyclerViewBouncy
-            android:id="@+id/commentList"
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_below="@+id/bannerLayout"
-            android:layout_marginTop="16dp"
-            app:friction="200"
-            app:gapLimit="220"
-            app:speedFactor="5"
-            app:tension="1000" />
-
-    </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <data>
         <variable
             name="viewModel"
