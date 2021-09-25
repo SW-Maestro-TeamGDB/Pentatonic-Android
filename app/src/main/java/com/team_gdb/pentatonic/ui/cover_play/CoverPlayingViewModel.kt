@@ -15,9 +15,12 @@ import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
 class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel() {
-    val coverEntity: MutableLiveData<CoverPlayEntity> = MutableLiveData()
+    private val _coverEntity: MutableLiveData<CoverPlayEntity> = MutableLiveData()
+    val coverEntity: LiveData<CoverPlayEntity>
+        get() = _coverEntity
 
-    private val _commentList: MutableLiveData<List<GetCoverCommentQuery.GetComment>> = MutableLiveData()
+    private val _commentList: MutableLiveData<List<GetCoverCommentQuery.GetComment>> =
+        MutableLiveData()
     val commentList: LiveData<List<GetCoverCommentQuery.GetComment>>
         get() = _commentList
 
@@ -27,6 +30,10 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
     private val _createCommentComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
     val createCommentComplete: LiveData<Event<Boolean>>
         get() = _createCommentComplete
+
+    fun setCoverEntity(coverEntity: CoverPlayEntity) {
+        _coverEntity.value = coverEntity
+    }
 
     fun getComment(coverId: String) {
         val disposable = repository.getComment(coverId)
@@ -49,18 +56,22 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
     }
 
     fun createComment(coverId: String) {
-        val disposable = repository.createComment(coverEntity.value!!.coverID, commentContent.value!!)
-            .applySchedulers()
-            .subscribeBy(
-                onError = {
-                    Timber.e(it)
-                },
-                onSuccess = {
-                    if (!it.hasErrors()) {
-                        Timber.d(it.data?.createComment.toString())
+        val disposable =
+            repository.createComment(coverEntity.value!!.coverID, commentContent.value!!)
+                .applySchedulers()
+                .subscribeBy(
+                    onError = {
+                        Timber.e(it)
+                    },
+                    onSuccess = {
+                        if (!it.hasErrors()) {
+                            Timber.d(it.data?.createComment.toString())
+                            _createCommentComplete.value = Event(true)
+                        } else {
+                            _createCommentComplete.value = Event(false)
+                        }
                     }
-                }
-            )
+                )
         addDisposable(disposable)
     }
 }

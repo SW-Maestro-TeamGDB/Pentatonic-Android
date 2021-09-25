@@ -35,7 +35,7 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
-        viewModel.coverEntity.postValue(coverEntity)
+        viewModel.setCoverEntity(coverEntity)
 
         Glide.with(binding.root)
             .load(coverEntity.backgroundImgURL)
