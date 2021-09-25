@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetCoverCommentQuery
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseApplication.Companion.applicationContext
 import com.team_gdb.pentatonic.databinding.ItemCommentListBinding
 import com.team_gdb.pentatonic.util.formatTo
@@ -58,7 +59,9 @@ class CommentListAdapter(val commentEdit: (String, String) -> Unit, val commentD
                 .into(binding.userProfileImageView)
 
             binding.commentTextView.setOnLongClickListener {
-                showCommentEditLayout(entity)
+                if (entity.user.username == BaseApplication.prefs.userId) {
+                    showCommentEditLayout(entity)
+                }
                 true
             }
 
