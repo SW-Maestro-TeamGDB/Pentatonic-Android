@@ -9,10 +9,10 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ItemPositionRankingListBinding
 
-class PositionRankingListAdapter(val itemClick: (String) -> Unit) :
+class PositionRankingListAdapter() :
     RecyclerView.Adapter<PositionRankingListAdapter.ViewHolder>() {
 
-    private var positionRankingList: List<GetUserInfoQuery.Position> =
+    private var positionRankingList: List<GetUserInfoQuery.Position?> =
         emptyList()  // Cover 아이템 리스트 정보
 
     /**
@@ -33,7 +33,7 @@ class PositionRankingListAdapter(val itemClick: (String) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(positionRankingList[position], position)
+        positionRankingList[position]?.let { holder.bind(it, position) }
     }
 
     override fun getItemCount(): Int {
@@ -64,8 +64,9 @@ class PositionRankingListAdapter(val itemClick: (String) -> Unit) :
         }
     }
 
-    fun setItem(entities: List<GetUserInfoQuery.Position>) {
+    fun setItem(entities: List<GetUserInfoQuery.Position?>) {
         this.positionRankingList = entities
+
         notifyDataSetChanged()
     }
 }

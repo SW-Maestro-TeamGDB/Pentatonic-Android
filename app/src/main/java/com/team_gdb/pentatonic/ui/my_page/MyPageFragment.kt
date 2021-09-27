@@ -7,6 +7,7 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHistoryListAdapter
 import com.team_gdb.pentatonic.adapter.cover_list.TrendingCoverListAdapter
+import com.team_gdb.pentatonic.adapter.position.PositionRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
@@ -22,6 +23,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
     private lateinit var coverHistoryListAdapter: CoverHistoryListAdapter
     private lateinit var likedCoverListAdapter: TrendingCoverListAdapter
+    private lateinit var positionRankingAdapter: PositionRankingListAdapter
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -56,6 +58,17 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
             this.adapter = likedCoverListAdapter
             this.setHasFixedSize(true)
         }
+
+        positionRankingAdapter = PositionRankingListAdapter()
+
+        binding.positionRankingList.apply {
+            this.layoutManager = LinearLayoutManager(context).apply {
+                this.orientation = LinearLayoutManager.HORIZONTAL
+            }
+            this.adapter = positionRankingAdapter
+            this.setHasFixedSize(true)
+        }
+
     }
 
     override fun initDataBinding() {
@@ -72,7 +85,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         }
 
         viewModel.positionRankingList.observe(this) {
-
+            it?.let {
+                positionRankingAdapter.setItem(it)
+            }
         }
     }
 
