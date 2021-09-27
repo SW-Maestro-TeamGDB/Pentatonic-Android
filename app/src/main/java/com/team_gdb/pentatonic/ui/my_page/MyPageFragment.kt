@@ -70,6 +70,10 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         viewModel.coverHistoryList.observe(this) {
             coverHistoryListAdapter.setItem(it)
         }
+
+        viewModel.positionRankingList.observe(this) {
+
+        }
     }
 
     override fun initAfterBinding() {

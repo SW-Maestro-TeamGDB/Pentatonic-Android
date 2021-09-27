@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/coverItemLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="12dp">
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="@color/card_background_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:gravity="center_horizontal|center"
+                android:layout_width="100dp"
+                android:layout_height="130dp">
+
+                <ImageView
+                    android:id="@+id/positionImageView"
+                    android:src="@drawable/ic_vocal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+
+                <TextView
+                    android:id="@+id/positionNameTextView"
+                    android:text="이름"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/positionRankingTextView"
+                    android:text="128위"
+                    android:textSize="12sp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <RatingBar
+                    android:id="@+id/positionLevel"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:numStars="5"
+                    android:progressTint="@color/main_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

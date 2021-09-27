@@ -6,9 +6,7 @@ import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
 import com.team_gdb.pentatonic.util.Event
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.kotlin.subscribeBy
-import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
 
@@ -29,6 +27,9 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
 
     val coverHistoryList: MutableLiveData<List<GetUserInfoQuery.Band>> =
         MutableLiveData()  // 커버 (밴드 참여) 히스토리 정보
+
+    val positionRankingList: MutableLiveData<List<GetUserInfoQuery.Position?>> =
+        MutableLiveData()  // 포지션 정보
 
     val selectedCoverID: MutableLiveData<String> = MutableLiveData()  // 선택한 커버 ID 저장
     val coverNameField: MutableLiveData<String> = MutableLiveData()  // 변경될 커버 이름
@@ -65,6 +66,10 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
 
                         // 해당 사용자가 참여한 커버 히스토리 ViewModel
                         coverHistoryList.postValue(it.data?.getUserInfo?.band)
+
+                        // 해당 사용자의 포지션 랭킹 정보
+                        positionRankingList.postValue(it.data?.getUserInfo?.position)
+
                     } else {
                         it.errors?.forEach {
                             Timber.e(it.message)
