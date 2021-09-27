@@ -9,42 +9,25 @@
         android:paddingEnd="12dp">
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="@color/card_background_light_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/card_background_light_gray"
             app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:padding="4dp"
-                android:gravity="center_horizontal|center"
                 android:layout_width="100dp"
-                android:layout_height="130dp">
+                android:layout_height="130dp"
+                android:gravity="center_horizontal|center"
+                android:orientation="vertical"
+                android:padding="4dp">
 
                 <ImageView
                     android:id="@+id/positionImageView"
-                    android:src="@drawable/ic_vocal"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"/>
-
-                <TextView
-                    android:id="@+id/positionNameTextView"
-                    android:text="이름"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/positionRankingTextView"
-                    android:text="128위"
-                    android:textSize="12sp"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/nanum_light"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_vocal"
+                    app:tint="@color/black" />
 
                 <RatingBar
                     android:id="@+id/positionLevel"
@@ -57,6 +40,24 @@
                     android:progressTint="@color/main_regular"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/positionRankingTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="128위"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/positionNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="이름"
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
