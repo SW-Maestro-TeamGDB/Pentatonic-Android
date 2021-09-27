@@ -9,7 +9,7 @@
         android:paddingEnd="12dp">
 
         <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="@color/card_background_gray"
+            app:cardBackgroundColor="@color/card_background_light_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
@@ -17,7 +17,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:gravity="center_horizontal|center"
                 android:layout_width="100dp"
                 android:layout_height="130dp">
@@ -25,8 +25,8 @@
                 <ImageView
                     android:id="@+id/positionImageView"
                     android:src="@drawable/ic_vocal"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
 
                 <TextView
                     android:id="@+id/positionNameTextView"
