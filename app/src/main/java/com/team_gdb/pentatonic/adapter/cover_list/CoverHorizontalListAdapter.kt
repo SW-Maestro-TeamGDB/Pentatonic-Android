@@ -67,10 +67,11 @@ class CoverHorizontalListAdapter(val itemClick: (String) -> Unit) :
 
             // 커버명과 원곡명
             binding.coverNameTextView.text = entity.name
-            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
+//            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
 
             val participantCount = entity.session?.sumBy {
-                it?.cover?.size ?: 0
+//                it?.cover?.size ?: 0
+                1
             }
             // 커버를 구성중인 인원수
             binding.coverSessionListTextView.text = "${participantCount}명 참여중"

@@ -22,7 +22,7 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
             name
             creatorId
             bandId
-            songId
+#            songId
         }
         library {
             position
@@ -193,19 +193,19 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
 query GetTrendBandsQuery {
     getTrendBands {
         bandId
-        song {
-            name
-            artist
-        }
+#        song {
+#            name
+#            artist
+#        }
         name
         backGroundURI
         isSoloBand
         session {
             position
-            cover {
-                name
-                position
-            }
+#            cover {
+#                name
+#                position
+#            }
         }
         likeCount
         likeStatus

@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.library
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.library.LibraryListAdapter
@@ -41,10 +42,10 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
             },  // 라이브러리 편집
             {
                 viewModel.coverNameField.postValue(it.coverName)
-                editDialog(it.id)
+                showEditDialog(it.id)
             },  // 라이브러리 삭제
             {
-                deleteDialog(it)
+                showDeleteDialog(it)
             }
         )
         binding.libraryList.apply {
@@ -121,33 +122,21 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
      *
      * @param coverId : 삭제할 커버 ID
      */
-    private fun deleteDialog(coverId: String) {
-        val builder = AlertDialog.Builder(requireContext())
-        builder.apply {
-            this.setMessage("해당 커버를 삭제하시겠습니까?")
-            this.setNegativeButton("아니요") { _, _ -> }
-            this.setPositiveButton("네") { _, _ ->
+    private fun showDeleteDialog(coverId: String) {
+        MaterialDialog(requireContext()).show {
+            title(R.string.band_delete_notice_title)
+            message(R.string.band_delete_notice_content)
+            positiveButton(R.string.yes_text) {
                 viewModel.deleteCover(coverId)
             }
-        }
-        builder.show().run {
-            getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.main_regular
-                )
-            )
-            getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(
-                ContextCompat.getColor(
-                    requireContext(),
-                    R.color.black
-                )
-            )
+            negativeButton(R.string.no_text) {
+                /* no-op */
+            }
         }
     }
 
 
-    private fun editDialog(coverId: String) {
+    private fun showEditDialog(coverId: String) {
         // 선택한 커버 ID ViewModel 에 저장
         viewModel.selectedCoverID.postValue(coverId)
 

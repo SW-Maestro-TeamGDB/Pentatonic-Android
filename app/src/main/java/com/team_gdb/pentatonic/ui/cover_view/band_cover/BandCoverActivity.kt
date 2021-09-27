@@ -207,8 +207,8 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
 
     private fun showBandDeleteDialog() {
         MaterialDialog(this).show {
-            title(R.string.band_delete_notice_title)
-            message(R.string.band_delete_notice_content)
+            title(R.string.cover_delete_notice_title)
+            message(R.string.cover_delete_notice_content)
             positiveButton(R.string.yes_text) {
                 viewModel.deleteBand()
             }
