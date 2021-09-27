@@ -70,6 +70,7 @@
             app:tension="1000" />
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/buttonLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

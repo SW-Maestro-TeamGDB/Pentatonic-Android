@@ -47,10 +47,10 @@ class LibrarySelectBottomSheetDialog() :
         viewModel.libraryList.observe(this) {
             val data = it.filter { selectedSession == it.position.rawValue }
             if (data.isNullOrEmpty()){
-                binding.buttonLayout.visibility = View.GONE
                 binding.libraryList.visibility = View.GONE
             } else {
                 binding.noDataImageView.visibility = View.GONE
+                binding.buttonLayout.visibility = View.VISIBLE
                 librarySelectListAdapter.setItem(data)
             }
         }
