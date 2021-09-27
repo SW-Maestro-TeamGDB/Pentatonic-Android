@@ -6,7 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.cover_list.CoverHorizontalListAdapter
+import com.team_gdb.pentatonic.adapter.cover_list.TrendingCoverListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
@@ -18,8 +18,8 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         get() = R.layout.fragment_lounge
     override val viewModel: LoungeViewModel by viewModel()
 
-    private lateinit var bandCoverListAdapter: CoverHorizontalListAdapter  // 밴드 커버 리스트
-    private lateinit var soloCoverListAdapter: CoverHorizontalListAdapter  // 솔로 커버 리스트
+    private lateinit var bandCoverListAdapter: TrendingCoverListAdapter  // 밴드 커버 리스트
+    private lateinit var soloCoverListAdapter: TrendingCoverListAdapter  // 솔로 커버 리스트
 
     override fun onResume() {
         super.onResume()
@@ -33,7 +33,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         binding.lifecycleOwner = this
 
         // 밴드 커버 리사이클러뷰 어댑터 생성
-        bandCoverListAdapter = CoverHorizontalListAdapter {
+        bandCoverListAdapter = TrendingCoverListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(COVER_ID, it)
             startActivity(intent)
@@ -48,7 +48,7 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         }
 
         // 솔로 커버 리사이클러뷰 어댑터 생성
-        soloCoverListAdapter = CoverHorizontalListAdapter {
+        soloCoverListAdapter = TrendingCoverListAdapter {
             val intent = Intent(requireContext(), SoloCoverActivity::class.java)
             intent.putExtra(COVER_ID, it)
             startActivity(intent)

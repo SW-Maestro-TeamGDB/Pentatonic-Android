@@ -15,14 +15,21 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
         introduce
         type
         band {
-            likeCount
+            bandId
+            song {
+                name
+                artist
+            }
+            name
             backGroundURI
             createDate
-            introduce
-            name
-            creatorId
-            bandId
-#            songId
+            isSoloBand
+            session {
+                position
+                maxMember
+            }
+            likeCount
+            likeStatus
         }
         library {
             position
@@ -48,6 +55,10 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
                 level
                 releaseDate
             }
+        }
+        position {
+            position
+            likeCount
         }
         followerCount
         followingCount
@@ -193,19 +204,19 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
 query GetTrendBandsQuery {
     getTrendBands {
         bandId
-#        song {
-#            name
-#            artist
-#        }
+        song {
+            name
+            artist
+        }
         name
         backGroundURI
         isSoloBand
         session {
             position
-#            cover {
-#                name
-#                position
-#            }
+            #            cover {
+            #                name
+            #                position
+            #            }
         }
         likeCount
         likeStatus

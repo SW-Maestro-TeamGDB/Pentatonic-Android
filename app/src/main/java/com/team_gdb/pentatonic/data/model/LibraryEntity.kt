@@ -23,7 +23,7 @@ data class LibraryEntity(
     val coverDuration: Double,
     val coverBy: String,
     val coverUrl: String,
-    val originalSong: GetUserInfoQuery.Song,
+    val originalSong: GetUserInfoQuery.Song1,
     val imageUrl: String,
     val coverSession: String,
 ): Serializable

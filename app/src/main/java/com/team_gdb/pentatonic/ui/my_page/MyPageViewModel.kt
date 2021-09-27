@@ -27,6 +27,9 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val libraryList: MutableLiveData<List<GetUserInfoQuery.Library>> =
         MutableLiveData()  // 라이브러리 리스트 정보
 
+    val coverHistoryList: MutableLiveData<List<GetUserInfoQuery.Band>> =
+        MutableLiveData()  // 커버 (밴드 참여) 히스토리 정보
+
     val selectedCoverID: MutableLiveData<String> = MutableLiveData()  // 선택한 커버 ID 저장
     val coverNameField: MutableLiveData<String> = MutableLiveData()  // 변경될 커버 이름
 
@@ -59,6 +62,9 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
 
                         // LibraryFragment 에서 참조할 데이터 Library List postValue()
                         libraryList.postValue(it.data?.getUserInfo?.library)
+
+                        // 해당 사용자가 참여한 커버 히스토리 ViewModel
+                        coverHistoryList.postValue(it.data?.getUserInfo?.band)
                     } else {
                         it.errors?.forEach {
                             Timber.e(it.message)

@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetTrendBandsQuery
+import com.team_gdb.pentatonic.GetUserInfoQuery
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
 
 /**
@@ -15,10 +15,10 @@ import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverHorizontalListAdapter(val itemClick: (String) -> Unit) :
-    RecyclerView.Adapter<CoverHorizontalListAdapter.ViewHolder>() {
+class CoverHistoryListAdapter(val itemClick: (String) -> Unit) :
+    RecyclerView.Adapter<CoverHistoryListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<GetTrendBandsQuery.GetTrendBand> =
+    private var coverEntityList: List<GetUserInfoQuery.Band> =
         emptyList()  // Cover 아이템 리스트 정보
 
     /**
@@ -50,7 +50,7 @@ class CoverHorizontalListAdapter(val itemClick: (String) -> Unit) :
         private val binding: ItemHorizontalCoverListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: GetTrendBandsQuery.GetTrendBand, position: Int) {
+        fun bind(entity: GetUserInfoQuery.Band, position: Int) {
             // 리스트 첫 아이템의 경우에는 어느정도 마진을 줘야함
             if (position == 0) {
                 val param = binding.coverItemLayout.layoutParams as ViewGroup.MarginLayoutParams
@@ -67,10 +67,10 @@ class CoverHorizontalListAdapter(val itemClick: (String) -> Unit) :
 
             // 커버명과 원곡명
             binding.coverNameTextView.text = entity.name
-//            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
+            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
 
-            val participantCount = entity.session?.sumBy {
-//                it?.cover?.size ?: 0
+            val participantCount = entity.session.sumBy {
+        //                it?.cover?.size ?: 0
                 1
             }
             // 커버를 구성중인 인원수
@@ -87,7 +87,7 @@ class CoverHorizontalListAdapter(val itemClick: (String) -> Unit) :
         }
     }
 
-    fun setItem(entities: List<GetTrendBandsQuery.GetTrendBand>) {
+    fun setItem(entities: List<GetUserInfoQuery.Band>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }

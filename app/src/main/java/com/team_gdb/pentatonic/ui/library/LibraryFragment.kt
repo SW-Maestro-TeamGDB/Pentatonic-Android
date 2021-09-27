@@ -1,7 +1,5 @@
 package com.team_gdb.pentatonic.ui.library
 
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
@@ -45,7 +43,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 showEditDialog(it.id)
             },  // 라이브러리 삭제
             {
-                showDeleteDialog(it)
+                showDeleteDialog( it)
             }
         )
         binding.libraryList.apply {
@@ -64,13 +62,12 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     coverUrl = it.coverURI,
                     id = it.coverId,
                     imageUrl = it.song.songImg,
-                    coverDate = it.date.toString(),
+                    coverDate = it.date,
                     originalSong = it.song,
                     coverBy = it.coverBy.id,
                     coverDuration = it.duration
                 )
             }
-
             libraryListAdapter.setItem(list)
         }
 
