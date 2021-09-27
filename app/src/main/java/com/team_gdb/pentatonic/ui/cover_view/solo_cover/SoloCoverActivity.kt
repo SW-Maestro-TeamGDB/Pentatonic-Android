@@ -18,6 +18,7 @@ import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
+import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import timber.log.Timber
 
 class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewModel>() {
@@ -51,6 +52,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
 
         binding.userProfileLayout.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra(USER_ID, viewModel.bandInfo.value!!.creator.id)
 //            intent.putExtra(USER_ID, coverEntity.sessionDataList[0].sessionParticipantList[0])
             startActivity(intent)
         }
@@ -64,7 +66,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
         binding.coverLikeButton.isLiked = bandInfo.likeStatus == true
 
         binding.userNameTextView.text = bandInfo.creator.username
-//        binding.userIntroductionTextView.text = bandInfo.creator.introduce
+        binding.userIntroductionTextView.text = bandInfo.creator.introduce
 
         Glide.with(this)
             .load(bandInfo.backGroundURI)

@@ -165,6 +165,7 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
         creator {
             id
             username
+            introduce
             profileURI
             prime
             type
