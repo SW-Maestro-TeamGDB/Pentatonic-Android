@@ -10,227 +10,233 @@
         android:layout_height="match_parent"
         tools:context=".ui.create_cover.basic_info.BasicInfoFormFragment">
 
-        <LinearLayout
-            android:padding="24dp"
-            android:orientation="vertical"
+        <com.xw.repo.widget.BounceScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:layout_marginTop="4dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:text="다른 사람들에게 보여질 커버 이름을 설정합니다. (필수)"
-                android:fontFamily="@font/nanum_extrabold"/>
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:background="@drawable/custom_radius_background_white"
-                android:backgroundTint="@color/card_background_gray"
-                android:fontFamily="@font/nanum_extrabold"
-                android:maxEms="1"
-                android:text="@={viewModel.coverName}"
-                android:maxLines="1"
-                android:textSize="14sp"
-                android:paddingHorizontal="16dp"
-                android:hint="ex) 사랑해요 DAY6"
-                android:textCursorDrawable="@drawable/edittext_cursor_drawable"
-                android:inputType="text"
-                android:id="@+id/coverNameEditText"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
-
-            <TextView
-                android:layout_marginTop="48dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="해당 커버의 간단한 소개글을 입력해주세요."
-                android:fontFamily="@font/nanum_extrabold"/>
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:background="@drawable/custom_radius_background_white"
-                android:backgroundTint="@color/card_background_gray"
-                android:maxEms="1"
-                android:text="@={viewModel.coverIntroduction}"
-                android:fontFamily="@font/nanum_extrabold"
-                android:maxLines="1"
-                android:hint="ex) 실력보단 그루브로!"
-                android:paddingHorizontal="16dp"
-                android:textSize="14sp"
-                android:inputType="text"
-                android:textCursorDrawable="@drawable/edittext_cursor_drawable"
-                android:id="@+id/coverIntroductionEditText"
-                android:layout_marginTop="8dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"/>
-
             <LinearLayout
-                android:gravity="center_vertical"
-                android:layout_marginTop="48dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:padding="24dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="곡 선택"
+                    android:layout_marginTop="4dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="다른 사람들에게 보여질 커버 이름을 설정합니다. (필수)"
+                    android:fontFamily="@font/nanum_extrabold"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:background="@drawable/custom_radius_background_white"
+                    android:backgroundTint="@color/card_background_gray"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:maxEms="1"
+                    android:text="@={viewModel.coverName}"
+                    android:maxLines="1"
+                    android:textSize="14sp"
+                    android:paddingHorizontal="16dp"
+                    android:hint="ex) 사랑해요 DAY6"
+                    android:textCursorDrawable="@drawable/edittext_cursor_drawable"
+                    android:inputType="text"
+                    android:id="@+id/coverNameEditText"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"/>
 
                 <TextView
-                    android:id="@+id/selectSongTitleTextView"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="48dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:text="커버할 곡을 선택해주세요. (필수)"
+                    android:text="해당 커버의 간단한 소개글을 입력해주세요."
                     android:fontFamily="@font/nanum_extrabold"/>
-            </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                app:cardElevation="0dp"
-                app:cardCornerRadius="12dp"
-                app:cardBackgroundColor="@color/card_background_gray"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
-
-                <RelativeLayout
-                    android:id="@+id/selectSongButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal">
-
-                    <ImageView
-                        android:id="@+id/selectedSongAlbumJacketImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/dash_border" />
-
-                    <TextView
-                        android:id="@+id/beforeSelectSongTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginStart="4dp"
-                        android:drawableStart="@drawable/ic_baseline_add_circle_outline_24"
-                        android:drawablePadding="4dp"
-                        android:fontFamily="@font/nanum_light"
-                        android:gravity="center_vertical"
-                        android:text="음원 선택하기"
-                        android:textSize="16sp" />
-
-                    <LinearLayout
-                        android:visibility="gone"
-                        android:layout_marginStart="24dp"
-                        android:layout_centerVertical="true"
-                        android:id="@+id/afterSelectSongLayout"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:fontFamily="@font/nanum_extrabold"
-                            android:textColor="@color/white"
-                            android:textSize="24sp"
-                            android:id="@+id/selectedSongNameTextView"
-                            android:text="행복했던 날들이었다"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:layout_marginTop="4dp"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/nanum_regular"
-                            android:id="@+id/selectedSongArtistTextView"
-                            android:text="DAY6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:layout_marginTop="36dp"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:background="@drawable/custom_radius_background_white"
+                    android:backgroundTint="@color/card_background_gray"
+                    android:maxEms="1"
+                    android:text="@={viewModel.coverIntroduction}"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="대표 이미지 선택"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/selectImageTitleTextView"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:hint="ex) 실력보단 그루브로!"
+                    android:paddingHorizontal="16dp"
                     android:textSize="14sp"
-                    android:text="대표 이미지를 선택해주세요."
-                    android:fontFamily="@font/nanum_extrabold"/>
-            </LinearLayout>
-            <androidx.cardview.widget.CardView
-                app:cardElevation="0dp"
-                app:cardCornerRadius="12dp"
-                app:cardBackgroundColor="@color/card_background_gray"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="150dp">
-
-                <RelativeLayout
-                    android:id="@+id/selectBackgroundImageButton"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/edittext_cursor_drawable"
+                    android:id="@+id/coverIntroductionEditText"
+                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal">
+                    android:layout_height="50dp"/>
 
-                    <ImageView
-                        android:id="@+id/selectedBackgroundImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/dash_border" />
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="48dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/beforeSelectImageTextView"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="곡 선택"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/selectSongTitleTextView"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_marginStart="4dp"
-                        android:drawablePadding="4dp"
-                        android:fontFamily="@font/nanum_light"
+                        android:textSize="14sp"
+                        android:text="커버할 곡을 선택해주세요. (필수)"
+                        android:fontFamily="@font/nanum_extrabold"/>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="@color/card_background_gray"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp">
+
+                    <RelativeLayout
+                        android:id="@+id/selectSongButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/selectedSongAlbumJacketImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/dash_border" />
+
+                        <TextView
+                            android:id="@+id/beforeSelectSongTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="4dp"
+                            android:drawableStart="@drawable/ic_baseline_add_circle_outline_24"
+                            android:drawablePadding="4dp"
+                            android:fontFamily="@font/nanum_light"
+                            android:gravity="center_vertical"
+                            android:text="음원 선택하기"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:layout_marginStart="24dp"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/afterSelectSongLayout"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/nanum_extrabold"
+                                android:textColor="@color/white"
+                                android:textSize="24sp"
+                                android:id="@+id/selectedSongNameTextView"
+                                android:text="행복했던 날들이었다"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_marginTop="4dp"
+                                android:textColor="@color/white"
+                                android:fontFamily="@font/nanum_regular"
+                                android:id="@+id/selectedSongArtistTextView"
+                                android:text="DAY6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="36dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="대표 이미지 선택"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/selectImageTitleTextView"
                         android:gravity="center_vertical"
-                        android:text="이미지 선택하기"
-                        android:textSize="16sp"
-                        app:drawableTint="#B0B0B0"
-                        app:drawableStartCompat="@drawable/ic_baseline_image_24" />
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:text="대표 이미지를 선택해주세요."
+                        android:fontFamily="@font/nanum_extrabold"/>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    app:cardElevation="0dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="@color/card_background_gray"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="80dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                    <RelativeLayout
+                        android:id="@+id/selectBackgroundImageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/selectedBackgroundImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/dash_border" />
+
+                        <TextView
+                            android:id="@+id/beforeSelectImageTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginStart="4dp"
+                            android:drawablePadding="4dp"
+                            android:fontFamily="@font/nanum_light"
+                            android:gravity="center_vertical"
+                            android:text="이미지 선택하기"
+                            android:textSize="16sp"
+                            app:drawableTint="#B0B0B0"
+                            app:drawableStartCompat="@drawable/ic_baseline_image_24" />
 
 
-                </RelativeLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
 
 
-        </LinearLayout>
-
+        </com.xw.repo.widget.BounceScrollView>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
