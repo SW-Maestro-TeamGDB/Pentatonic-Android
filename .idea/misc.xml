@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/drawable/custom_radius_stroke_gray.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_main.xml" value="0.12861842105263158" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/custom_rating.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/drawable/ic_album_track.xml" value="0.16578947368421051" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.13717105263157894" />
@@ -33,6 +34,9 @@
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.21578947368421053" />
+        <entry key="app/src/main/res/drawable/ic_purple_oval.xml" value="0.17401315789473684" />
+        <entry key="app/src/main/res/drawable/rating_empty.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/rating_fill.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_button.xml" value="0.19769736842105262" />
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
@@ -89,6 +93,7 @@
         <entry key="app/src/main/res/layout/item_library_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_library_select_list.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/layout/item_position_list.xml" value="0.2299342105263158" />
+        <entry key="app/src/main/res/layout/item_position_ranking_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_rising_cover_viewpager.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_select_session_list.xml" value="0.20559210526315788" />
         <entry key="app/src/main/res/layout/item_select_session_participant_list.xml" value="0.21019736842105263" />

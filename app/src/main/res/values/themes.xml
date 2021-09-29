@@ -14,6 +14,15 @@
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
+    <style name="CustomRatingBarStyle" parent="Widget.AppCompat.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/custom_rating</item>
+        <item name="android:numStars">5</item>
+        <item name="android:minHeight">25dip</item>
+        <item name="android:maxHeight">25dip</item>
+
+
+    </style>
+
     <style name="AppBottomSheetDialogTheme"
         parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>

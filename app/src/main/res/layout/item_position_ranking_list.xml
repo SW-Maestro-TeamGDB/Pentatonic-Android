@@ -29,17 +29,15 @@
                     android:src="@drawable/ic_vocal"
                     app:tint="@color/black" />
 
-                <RatingBar
-                    android:id="@+id/positionLevel"
-                    style="?android:attr/ratingBarStyleSmall"
+                <TextView
+                    android:id="@+id/positionNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/nanum_regular"
-                    android:numStars="5"
-                    android:progressTint="@color/main_regular"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:text="이름"
+                    android:textColor="@color/black" />
+
 
                 <TextView
                     android:id="@+id/positionRankingTextView"
@@ -50,16 +48,28 @@
                     android:text="128위"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/positionNameTextView"
+                <com.willy.ratingbar.ScaleRatingBar
+                    android:id="@+id/positionLevel"
+                    android:gravity="center"
+                    style="@style/CustomRatingBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:text="이름"
-                    android:textColor="@color/black" />
-
-
+                    android:isIndicator="true"
+                    android:layout_marginTop="4dp"
+                    android:progressTint="@color/main_regular"
+                    app:srb_numStars="5"
+                    app:srb_minimumStars="1"
+                    app:srb_rating="2"
+                    app:srb_starWidth="10dp"
+                    app:srb_starHeight="10dp"
+                    app:srb_starPadding="2dp"
+                    app:srb_stepSize="1.0"
+                    app:srb_isIndicator="true"
+                    app:srb_clickable="false"
+                    app:srb_scrollable="true"
+                    app:srb_clearRatingEnabled="true"
+                    app:srb_drawableEmpty="@drawable/ic_gray_oval"
+                    app:srb_drawableFilled="@drawable/ic_purple_oval" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
