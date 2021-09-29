@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.profile
 
 import android.content.Intent
+import android.view.View
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -8,6 +9,7 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHistoryListAdapter
 import com.team_gdb.pentatonic.adapter.position.PositionRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.base.BaseApplication
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.ActivityProfileBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
@@ -29,6 +31,10 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
+
+        if (userID == BaseApplication.prefs.userId) {
+            binding.followButton.visibility = View.GONE
+        }
 
         coverHistoryListAdapter = CoverHistoryListAdapter {
             val intent = Intent(this, BandCoverActivity::class.java)
