@@ -58,6 +58,8 @@
     <string name="cover_delete_notice_title">해당 커버를 삭제하시겠습니까?</string>
     <string name="cover_delete_notice_content">한 번 삭제된 커버는 <b>복구할 수 없습니다.</b>\n그래도 삭제하시겠습니까?</string>
 
+    <string name="logout_title">로그아웃하시겠습니까?</string>
+
     <string name="yes_text">네</string>
     <string name="no_text">아니요</string>
 </resources>

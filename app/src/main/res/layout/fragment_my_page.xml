@@ -269,6 +269,18 @@
                 tools:listitem="@layout/item_horizontal_cover_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/logoutButton"
+                android:layout_marginBottom="56dp"
+                android:layout_marginHorizontal="24dp"
+                android:text="로그아웃"
+                android:fontFamily="@font/nanum_regular"
+                android:textColor="@color/white"
+                android:background="@drawable/custom_radius_background_gray_sharpen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </com.xw.repo.widget.BounceScrollView>

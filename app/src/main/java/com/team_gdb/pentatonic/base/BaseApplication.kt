@@ -37,7 +37,6 @@ class BaseApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
-
         // Obtain the FirebaseAnalytics instance.
         firebaseAnalytics = Firebase.analytics
 

@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.my_page
 import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverHistoryListAdapter
@@ -12,6 +13,7 @@ import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.login.LoginActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -100,5 +102,27 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
         // SharedPreferences 에 저장된 사용자의 ID 를 기반으로 상세 정보 쿼리
         BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
+
+        binding.logoutButton.setOnClickListener {
+            // 저장했던 로그인 정보 소멸 후 초기 화면으로 이동
+            showLogoutDialog()
+        }
+    }
+
+    private fun showLogoutDialog() {
+        MaterialDialog(requireContext()).show {
+            message(R.string.logout_title)
+            positiveButton(R.string.yes_text) {
+                BaseApplication.prefs.token = ""
+                BaseApplication.prefs.userId = ""
+
+                activity?.finish()
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                startActivity(intent)
+            }
+            negativeButton(R.string.no_text) {
+                /* no-op */
+            }
+        }
     }
 }
