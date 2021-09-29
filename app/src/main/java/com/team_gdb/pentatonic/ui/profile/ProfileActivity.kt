@@ -80,6 +80,10 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
     override fun initAfterBinding() {
         // 해당 사용자의 ID 를 기반으로 상세 정보 쿼리
         viewModel.getUserInfo(userID)
+
+        binding.followButton.setOnClickListener {
+
+        }
     }
 
     companion object {

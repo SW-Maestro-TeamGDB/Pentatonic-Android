@@ -107,3 +107,8 @@ mutation UpdateCommentMutation($updateCommentInput: UpdateCommentInput!) {
 mutation DeleteCommentMutation($deleteCommentInput: DeleteCommentInput!) {
     deleteComment(input: $deleteCommentInput)
 }
+
+# 유저 팔로우 뮤테이션
+mutation FollowMutation($followInput: FollowInput!) {
+    follow(input: $followInput)
+}

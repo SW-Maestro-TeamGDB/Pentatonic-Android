@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
+        <entry key="app/src/main/res/drawable-v24/custom_radius_background_dark_sharpen.xml" value="0.17434210526315788" />
         <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
@@ -12,6 +13,7 @@
         <entry key="app/src/main/res/drawable/custom_radius_background_gray.xml" value="0.14802631578947367" />
         <entry key="app/src/main/res/drawable/custom_radius_background_gray_transparent.xml" value="0.2182410423452769" />
         <entry key="app/src/main/res/drawable/custom_radius_background_light.xml" value="0.12861842105263158" />
+        <entry key="app/src/main/res/drawable/custom_radius_background_regular.xml" value="0.17434210526315788" />
         <entry key="app/src/main/res/drawable/custom_radius_background_regular_transparent.xml" value="0.23778501628664495" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white_transparent.xml" value="0.15427631578947368" />
@@ -45,7 +47,7 @@
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1369535519125683" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.13125" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_record.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_record_processing.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.22" />
