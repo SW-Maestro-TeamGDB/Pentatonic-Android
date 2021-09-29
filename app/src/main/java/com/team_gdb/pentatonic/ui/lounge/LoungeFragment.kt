@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.TrendingCoverListAdapter
@@ -67,6 +68,14 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         viewModel.trendBandCover.observe(this) {
             bandCoverListAdapter.setItem(it.filter { !it.isSoloBand })
             soloCoverListAdapter.setItem(it.filter { it.isSoloBand })
+        }
+
+        viewModel.userProfileImage.observe(this) {
+            Glide.with(this)
+                .load(it)
+                .placeholder(R.drawable.profile_image_placeholder)
+                .override(50, 50)
+                .into(binding.userProfileImage)
         }
 
     }

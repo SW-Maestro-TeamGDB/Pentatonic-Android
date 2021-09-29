@@ -17,6 +17,10 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
 
     val trendBandCover: MutableLiveData<List<GetTrendBandsQuery.GetTrendBand>> = MutableLiveData()
 
+    private val _userProfileImage: MutableLiveData<String> = MutableLiveData()
+    val userProfileImage: MutableLiveData<String>
+        get() = _userProfileImage
+
     fun getTrendBands() {
         val disposable = repository.getTrendBands()
             .applySchedulers()
@@ -32,6 +36,30 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
                 },
                 onComplete = {
                     Timber.d("getTrendBands() Complete")
+                }
+            )
+        addDisposable(disposable)
+    }
+
+    fun getUserInfo(id: String) {
+        val disposable = repository.getUserInfo(id)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onNext = {
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.getUserInfo.toString())
+                        _userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
+                    } else {
+                        it.errors?.forEach {
+                            Timber.e(it.message)
+                        }
+                    }
+                },
+                onComplete = {
+                    /* no-op */
                 }
             )
         addDisposable(disposable)
