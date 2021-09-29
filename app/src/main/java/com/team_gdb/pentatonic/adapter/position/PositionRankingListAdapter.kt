@@ -55,7 +55,7 @@ class PositionRankingListAdapter() :
             Glide.with(binding.root)
                 .load(SessionSetting.valueOf(entity.position).icon)
                 .placeholder(R.drawable.placeholder_cover_bg)
-                .override(200, 200)
+                .override(100, 100)
                 .into(binding.positionImageView)
 
             binding.positionNameTextView.text = SessionSetting.valueOf(entity.position).sessionName
