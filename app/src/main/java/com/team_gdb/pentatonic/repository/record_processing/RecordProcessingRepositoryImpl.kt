@@ -53,7 +53,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
             CreateBandMutation(
                 CreateBandInput(
                     sessionConfig = sessionList,
-                    band = CreateBandArgsInput(
+                    band = CreateBandInBandInput(
                         name = bandName,
                         introduce = bandIntroduction,
                         backGroundURI = backgroundUrl,
@@ -70,8 +70,8 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
         apolloClient.rxMutate(
             JoinBandMutation(
                 JoinBandInput(
-                    band = JoinBandArgsInput(bandId = bandId),
-                    session = JoinSessionInput(
+                    band = JoinBandInBandInput(bandId = bandId),
+                    session = JoinBandInSessionInput(
                         coverId = coverId,
                         position = SESSION_TYPE.valueOf(sessionName)
                     )

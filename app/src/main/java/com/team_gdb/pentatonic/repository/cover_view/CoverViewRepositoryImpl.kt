@@ -27,8 +27,8 @@ class CoverViewRepositoryImpl : CoverViewRepository {
         apolloClient.rxMutate(
             JoinBandMutation(
                 JoinBandInput(
-                    band = JoinBandArgsInput(bandId = bandId),
-                    session = JoinSessionInput(
+                    band = JoinBandInBandInput(bandId = bandId),
+                    session = JoinBandInSessionInput(
                         coverId = coverId,
                         position = SESSION_TYPE.valueOf(sessionName)
                     )
@@ -39,13 +39,13 @@ class CoverViewRepositoryImpl : CoverViewRepository {
     // 밴드 삭제 요청 뮤테이션
     override fun deleteBand(bandId: String): Single<Response<DeleteBandMutation.Data>> =
         apolloClient.rxMutate(
-            DeleteBandMutation(DeleteBandInput(JoinBandArgsInput(bandId)))
+            DeleteBandMutation(DeleteBandInput(JoinBandInBandInput(bandId)))
         )
 
     // 밴드 좋아요 토글 뮤테이션
     override fun likeBand(bandId: String): Single<Response<LikeMutation.Data>> =
         apolloClient.rxMutate(
-            LikeMutation(LikeInput(band = JoinBandArgsInput(bandId)))
+            LikeMutation(LikeInput(band = JoinBandInBandInput(bandId)))
         )
 
     // 밴드 추방 및 나가기 뮤테이션
@@ -56,8 +56,8 @@ class CoverViewRepositoryImpl : CoverViewRepository {
         apolloClient.rxMutate(
             LeaveBandMutation(
                 LeaveBandInput(
-                    band = JoinBandArgsInput(bandId),
-                    session = LeaveSessionArgsInput(coverId)
+                    band = JoinBandInBandInput(bandId),
+                    session = LeaveBandInSessionInput(coverId)
                 )
             )
         )

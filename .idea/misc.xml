@@ -43,6 +43,7 @@
         <entry key="app/src/main/res/drawable/selector_button.xml" value="0.19769736842105262" />
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
+        <entry key="app/src/main/res/drawable/toggle_selector_button.xml" value="0.23778501628664495" />
         <entry key="app/src/main/res/layout/activity_band_cover.xml" value="0.18519736842105264" />
         <entry key="app/src/main/res/layout/activity_cover_play.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_create_cover.xml" value="0.19728093384781123" />

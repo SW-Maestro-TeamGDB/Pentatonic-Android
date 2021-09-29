@@ -14,6 +14,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.ActivityProfileBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
+import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
+import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
 import timber.log.Timber
 
 class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>() {
@@ -92,6 +94,11 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
         binding.followButton.setOnClickListener {
             binding.followButton.toggle()
             viewModel.followUser(userID)
+            if (binding.followButton.isChecked) {
+                playSuccessAlert(this, "해당 유저를 팔로우했습니다")
+            } else {
+                playFailureAlert(this, "해당 유저를 팔로우 취소했습니다")
+            }
         }
     }
 

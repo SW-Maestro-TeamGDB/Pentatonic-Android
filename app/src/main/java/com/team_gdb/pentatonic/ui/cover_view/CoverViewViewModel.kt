@@ -55,7 +55,9 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
                     if (!it.hasErrors()) {
                         bandInfo.postValue(it.data?.getBand)
                     } else {
-                        Timber.i(it.errors.toString())
+                        it.errors?.forEach {
+                            Timber.e(it.message)
+                        }
                     }
                 },
                 onComplete = {

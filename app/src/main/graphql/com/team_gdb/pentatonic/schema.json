@@ -1278,7 +1278,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "SessionLink",
+                  "name": "Session",
                   "ofType": null
                 }
               }
@@ -1539,7 +1539,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "SessionLink",
+        "name": "Session",
         "description": null,
         "fields": [
           {
@@ -1569,6 +1569,26 @@
                 "kind": "SCALAR",
                 "name": "Int",
                 "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "cover",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Cover",
+                  "ofType": null
+                }
               }
             },
             "isDeprecated": false,
@@ -2510,69 +2530,6 @@
             "ofType": null
           }
         ]
-      },
-      {
-        "kind": "OBJECT",
-        "name": "Session",
-        "description": null,
-        "fields": [
-          {
-            "name": "position",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "SESSION_TYPE",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "maxMember",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "cover",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Cover",
-                  "ofType": null
-                }
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
       },
       {
         "kind": "OBJECT",
@@ -4908,7 +4865,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateBandArgsInput",
+                "name": "CreateBandInBandInput",
                 "ofType": null
               }
             },
@@ -4960,7 +4917,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "CreateBandArgsInput",
+        "name": "CreateBandInBandInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5053,7 +5010,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateBandArgsInput",
+                "name": "UpdateBandInBandInput",
                 "ofType": null
               }
             },
@@ -5080,7 +5037,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UpdateBandArgsInput",
+        "name": "UpdateBandInBandInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5157,7 +5114,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandArgsInput",
+                "name": "JoinBandInBandInput",
                 "ofType": null
               }
             },
@@ -5171,7 +5128,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinSessionInput",
+                "name": "JoinBandInSessionInput",
                 "ofType": null
               }
             },
@@ -5184,7 +5141,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "JoinBandArgsInput",
+        "name": "JoinBandInBandInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5209,7 +5166,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "JoinSessionInput",
+        "name": "JoinBandInSessionInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5260,7 +5217,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandArgsInput",
+                "name": "JoinBandInBandInput",
                 "ofType": null
               }
             },
@@ -5274,7 +5231,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "LeaveSessionArgsInput",
+                "name": "LeaveBandInSessionInput",
                 "ofType": null
               }
             },
@@ -5287,7 +5244,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "LeaveSessionArgsInput",
+        "name": "LeaveBandInSessionInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5324,7 +5281,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandArgsInput",
+                "name": "JoinBandInBandInput",
                 "ofType": null
               }
             },
@@ -5789,7 +5746,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandArgsInput",
+                "name": "JoinBandInBandInput",
                 "ofType": null
               }
             },

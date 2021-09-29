@@ -55,8 +55,7 @@
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="USER_NAME"/>
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
                     android:layout_marginTop="16dp"
@@ -72,11 +71,10 @@
 
                     <TextView
                         android:id="@+id/userFollowerCountTextView"
-                        android:textColor="@color/black"
-                        android:fontFamily="@font/nanum_regular"
-                        android:text="128"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/nanum_regular"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -87,8 +85,7 @@
                     android:fontFamily="@font/nanum_regular"
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="USER_INTRODUCTION"/>
+                    android:layout_height="wrap_content"/>
 
                 <androidx.appcompat.widget.AppCompatToggleButton
                     android:id="@+id/followButton"
