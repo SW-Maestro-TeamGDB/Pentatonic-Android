@@ -24,30 +24,47 @@ class ProfileViewModel(val repository: ProfileRepository) : BaseViewModel() {
         get() = _positionRankingList
 
     fun getUserInfo(userId: String) {
-        repository.getUserInfo(userId)
+        val disposable =
+            repository.getUserInfo(userId)
+                .applySchedulers()
+                .subscribeBy(
+                    onError = {
+                        Timber.i(it)
+                    },
+                    onNext = {
+                        Timber.d(it.data.toString())
+                        if (!it.hasErrors()) {
+                            userData.postValue(it.data?.getUserInfo)
+
+                            // 해당 사용자가 참여한 커버 히스토리 ViewModel
+                            _coverHistoryList.postValue(it.data?.getUserInfo?.band)
+
+                            // 해당 사용자의 포지션 랭킹 정보
+                            _positionRankingList.postValue(it.data?.getUserInfo?.position)
+                        }
+                        it.errors?.forEach {
+                            Timber.i(it.message)
+                        }
+                    },
+                    onComplete = {
+                        Timber.d("getUserInfo() Completed")
+                    }
+                )
+        addDisposable(disposable)
+    }
+
+    fun followUser(userId: String) {
+        val disposable = repository.followUser(userId)
             .applySchedulers()
             .subscribeBy(
                 onError = {
-                    Timber.i(it)
+                    Timber.e(it)
                 },
-                onNext = {
-                    Timber.d(it.data.toString())
-                    if (!it.hasErrors()) {
-                        userData.postValue(it.data?.getUserInfo)
-
-                        // 해당 사용자가 참여한 커버 히스토리 ViewModel
-                        _coverHistoryList.postValue(it.data?.getUserInfo?.band)
-
-                        // 해당 사용자의 포지션 랭킹 정보
-                        _positionRankingList.postValue(it.data?.getUserInfo?.position)
-                    }
-                    it.errors?.forEach {
-                        Timber.i(it.message)
-                    }
-                },
-                onComplete = {
-                    Timber.d("getUserInfo() Completed")
+                onSuccess = {
+                    Timber.d(it.data?.follow.toString())
+                    getUserInfo(userId)
                 }
             )
+        addDisposable(disposable)
     }
 }

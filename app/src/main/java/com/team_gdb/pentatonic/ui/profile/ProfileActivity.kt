@@ -57,14 +57,16 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
 
     override fun initDataBinding() {
         viewModel.userData.observe(this) {
-            binding.usernameTextView.text = it.username
-            binding.userIntroductionTextView.text = it.introduce
-            binding.userFollowerCountTextView.text = it.followerCount.toString()
-
             Glide.with(this)
                 .load(it.profileURI)
                 .override(100, 100)
                 .into(binding.userProfileImage)
+
+            binding.usernameTextView.text = it.username
+            binding.userIntroductionTextView.text = it.introduce
+            binding.userFollowerCountTextView.text = it.followerCount.toString()
+
+            binding.followButton.isChecked = it.followingStatus == false
         }
         viewModel.coverHistoryList.observe(this) {
             coverHistoryListAdapter.setItem(it)
@@ -82,7 +84,8 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
         viewModel.getUserInfo(userID)
 
         binding.followButton.setOnClickListener {
-
+            binding.followButton.toggle()
+            viewModel.followUser(userID)
         }
     }
 
