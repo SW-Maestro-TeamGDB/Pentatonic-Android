@@ -21,8 +21,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         get() = R.layout.fragment_my_page
     override val viewModel: MyPageViewModel by sharedViewModel()
 
-    private lateinit var coverHistoryListAdapter: CoverHistoryListAdapter
     private lateinit var likedCoverListAdapter: TrendingCoverListAdapter
+    private lateinit var coverHistoryListAdapter: CoverHistoryListAdapter
     private lateinit var positionRankingAdapter: PositionRankingListAdapter
 
     override fun initStartView() {
