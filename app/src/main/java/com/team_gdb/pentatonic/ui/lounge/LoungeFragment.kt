@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.TrendingCoverListAdapter
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
@@ -76,11 +77,19 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
                 .placeholder(R.drawable.profile_image_placeholder)
                 .override(50, 50)
                 .into(binding.userProfileImage)
+            binding.userProfileImage.setOnClickListener {
+                findNavController().navigate(
+                    R.id.action_navigation_lounge_to_navigation_my_page
+                )
+            }
         }
 
     }
 
     override fun initAfterBinding() {
+        // 유저 정보 (프로필 이미지 연동)
+        BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
+
         binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
             if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
                 binding.titleTextView.setTextColor(
