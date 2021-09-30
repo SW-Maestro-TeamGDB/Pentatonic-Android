@@ -27,6 +27,9 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
             session {
                 position
                 maxMember
+                cover {
+                    songId
+                }
             }
             likeCount
             likeStatus
@@ -215,10 +218,10 @@ query GetTrendBandsQuery {
         isSoloBand
         session {
             position
-            #            cover {
-            #                name
-            #                position
-            #            }
+            cover {
+                name
+                position
+            }
         }
         likeCount
         likeStatus
