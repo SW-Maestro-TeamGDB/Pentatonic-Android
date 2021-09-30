@@ -102,6 +102,7 @@
                             <TextView
                                 android:text="앨범명"
                                 android:textSize="14sp"
+                                android:maxLines="1"
                                 android:fontFamily="@font/nanum_light"
                                 android:textColor="@color/white"
                                 android:layout_width="wrap_content"
@@ -112,6 +113,8 @@
                                 android:text="@{viewModel.songEntity.albumName}"
                                 android:textSize="20sp"
                                 android:textColor="@color/white"
+                                android:ellipsize="end"
+                                android:maxLines="1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
 
@@ -159,6 +162,7 @@
                         app:cardCornerRadius="16dp"
                         app:cardBackgroundColor="@color/song_detail_card_view_background"
                         app:cardElevation="0dp"
+                        android:layout_marginBottom="80dp"
                         android:layout_width="match_parent"
                         android:layout_height="80dp">
 
