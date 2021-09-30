@@ -4,6 +4,7 @@ package com.team_gdb.pentatonic.ui.cover_view.solo_cover
 import android.content.Intent
 import android.view.View
 import android.widget.PopupMenu
+import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
@@ -19,6 +20,7 @@ import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
+import es.dmoral.toasty.Toasty
 import timber.log.Timber
 
 class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewModel>() {
@@ -120,6 +122,8 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
             message(R.string.band_delete_notice_content)
             positiveButton(R.string.yes_text) {
                 viewModel.deleteBand()
+                Toasty.success(context, "솔로 커버가 삭제되었습니다!", Toast.LENGTH_SHORT, true).show();
+                finish()
             }
             negativeButton(R.string.no_text) {
                 /* no-op */

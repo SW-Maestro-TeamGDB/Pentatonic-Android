@@ -161,4 +161,6 @@ dependencies {
     // RatingBar Custom
     implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
 
+    // Toast
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
 }

@@ -26,6 +26,7 @@ import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity.Companion.CREATE_COVER
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
+import es.dmoral.toasty.Toasty
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -211,6 +212,8 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
             message(R.string.cover_delete_notice_content)
             positiveButton(R.string.yes_text) {
                 viewModel.deleteBand()
+                Toasty.success(context, "밴드가 삭제되었습니다!", Toast.LENGTH_SHORT, true).show();
+                finish()
             }
             negativeButton(R.string.no_text) {
                 /* no-op */
