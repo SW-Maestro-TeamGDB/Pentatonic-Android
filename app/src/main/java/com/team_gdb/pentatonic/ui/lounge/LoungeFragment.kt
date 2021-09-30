@@ -26,6 +26,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override fun onResume() {
         super.onResume()
 
+        // 위클리 챌린지 곡 정보 조회 쿼리 호출
+        viewModel.getWeeklyChallengeSongInfo()
+
         // 떠오르는 밴드 커버, 솔로 커버 가져오는 쿼리 호출
         viewModel.getTrendBands()
     }
@@ -66,7 +69,11 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     }
 
     override fun initDataBinding() {
-        viewModel.trendBandCover.observe(this) {
+        viewModel.weeklyChallengeSongImage.observe(this) {
+            applyWeeklyChallengeImage(it)
+        }
+
+        viewModel.trendBandsQuery.observe(this) {
             bandCoverListAdapter.setItem(it.filter { !it.isSoloBand })
             soloCoverListAdapter.setItem(it.filter { it.isSoloBand })
         }
@@ -138,7 +145,13 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
                 R.id.action_navigation_lounge_to_navigation_whole_cover
             )
         }
+    }
 
+    private fun applyWeeklyChallengeImage(imageUrl: String) {
+        Glide.with(this)
+            .load(imageUrl)
+            .placeholder(R.drawable.placeholder_cover_bg)
+            .into(binding.weeklyChallengeSongImage)
     }
 
     companion object {

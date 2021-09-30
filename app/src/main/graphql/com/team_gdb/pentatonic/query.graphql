@@ -297,3 +297,19 @@ query GetBandListQuery($queryBandsFilter: QueryBandInput!, $queryBandsFirst: Int
         }
     }
 }
+
+query GetWeeklyChallengeSongInfoQuery($querySongFilter: QuerySongInput!) {
+    querySong(filter: $querySongFilter) {
+        songId
+        name
+        songURI
+        songImg
+        genre
+        artist
+        album
+        weeklyChallenge
+        duration
+        level
+        releaseDate
+    }
+}
