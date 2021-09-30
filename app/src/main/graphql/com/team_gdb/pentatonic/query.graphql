@@ -247,7 +247,7 @@ query GetCoverCommentQuery($getCommentsBandId: ObjectID!) {
     }
 }
 
-query GetSongQuery($querySongFilter: QuerySongInput!) {
+query GetSongListQuery($querySongFilter: QuerySongInput!) {
     querySong(filter: $querySongFilter) {
         songId
         name

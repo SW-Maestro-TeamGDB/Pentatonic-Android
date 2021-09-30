@@ -27,6 +27,4 @@ data class SongEntity(
     val albumReleaseDate: String,
     val songGenre: String,
     val isWeeklyChallenge: Boolean,
-    val songWriter: String,
-    val lyricist: String,
 ) : Serializable

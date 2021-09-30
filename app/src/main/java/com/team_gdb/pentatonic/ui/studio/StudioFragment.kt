@@ -75,9 +75,15 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         viewModel.currentPosition.observe(this) {
             binding.recommendCoverViewPager.currentItem = it
         }
+
+        viewModel.songList.observe(this) {
+            recommendSongListAdapter.setItem(it)
+        }
     }
 
     override fun initAfterBinding() {
+        viewModel.getSongList()
+
         // 솔로 커버 버튼 클릭했을 때
         binding.makeSoloCoverButton.setOnClickListener {
             val intent = Intent(activity, CreateCoverActivity::class.java).apply {
@@ -95,7 +101,6 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         }
 
         recommendCoverViewPagerAdapter.setItem(TestRisingCoverData.TEST_BAND_COVER_LIST)
-        recommendSongListAdapter.setItem(TestData.TEST_SONG_LIST)
 
         autoScrollViewPager()
     }
