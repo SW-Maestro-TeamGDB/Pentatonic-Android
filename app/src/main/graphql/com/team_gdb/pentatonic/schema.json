@@ -15,7 +15,7 @@
         "fields": [
           {
             "name": "getUserInfo",
-            "description": "유저의 정보를 가져옵니다",
+            "description": null,
             "args": [
               {
                 "name": "userId",
@@ -258,7 +258,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "BandLink",
+                  "name": "Band",
                   "ofType": null
                 }
               }
@@ -278,7 +278,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "BandLink",
+                  "name": "Band",
                   "ofType": null
                 }
               }
@@ -468,7 +468,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "UserLink",
+                  "name": "User",
                   "ofType": null
                 }
               }
@@ -503,7 +503,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "UserLink",
+                  "name": "User",
                   "ofType": null
                 }
               }
@@ -523,7 +523,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "UserLink",
+                  "name": "User",
                   "ofType": null
                 }
               }
@@ -533,7 +533,7 @@
           },
           {
             "name": "test",
-            "description": "Server의 health를 check하는 Query입니다",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -717,11 +717,11 @@
       {
         "kind": "OBJECT",
         "name": "User",
-        "description": "유저의 개인 정보 입니다",
+        "description": null,
         "fields": [
           {
             "name": "id",
-            "description": "아이디",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -737,7 +737,7 @@
           },
           {
             "name": "username",
-            "description": "유저 네임",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -753,7 +753,7 @@
           },
           {
             "name": "profileURI",
-            "description": "프로필 사진",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -769,7 +769,7 @@
           },
           {
             "name": "phoneNumber",
-            "description": "휴대번호",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -781,7 +781,7 @@
           },
           {
             "name": "prime",
-            "description": "프리미엄 유저인지",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -797,7 +797,7 @@
           },
           {
             "name": "introduce",
-            "description": "자기소개 메세지",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -813,7 +813,7 @@
           },
           {
             "name": "type",
-            "description": "회원 유형",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -842,7 +842,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "BandLink",
+                    "name": "Band",
                     "ofType": null
                   }
                 }
@@ -936,7 +936,7 @@
         "interfaces": [
           {
             "kind": "INTERFACE",
-            "name": "IUser",
+            "name": "UserInterface",
             "ofType": null
           }
         ],
@@ -945,7 +945,7 @@
       },
       {
         "kind": "INTERFACE",
-        "name": "IUser",
+        "name": "UserInterface",
         "description": null,
         "fields": [
           {
@@ -1065,11 +1065,6 @@
             "kind": "OBJECT",
             "name": "User",
             "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "UserLink",
-            "ofType": null
           }
         ]
       },
@@ -1135,1061 +1130,6 @@
       },
       {
         "kind": "OBJECT",
-        "name": "BandLink",
-        "description": null,
-        "fields": [
-          {
-            "name": "bandId",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ObjectID",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "song",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "SongLink",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "creatorId",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Id",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "name",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "introduce",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "backGroundURI",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "createDate",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Date",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "isSoloBand",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "session",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Session",
-                  "ofType": null
-                }
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "likeCount",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "likeStatus",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "ObjectID",
-        "description": "A field whose value conforms with the standard mongodb object ID as described here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId. Example: 5e5677d71bdc2ae76344968c",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "SongLink",
-        "description": null,
-        "fields": [
-          {
-            "name": "songId",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ObjectID",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "name",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "songURI",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "songImg",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "genre",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "artist",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "album",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "weeklyChallenge",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "duration",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "level",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "releaseDate",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Date",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Float",
-        "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Date",
-        "description": "A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "Session",
-        "description": null,
-        "fields": [
-          {
-            "name": "position",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "SESSION_TYPE",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "maxMember",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "cover",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Cover",
-                  "ofType": null
-                }
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "SESSION_TYPE",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "VOCAL",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ACOUSTIC_GUITAR",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ELECTRIC_GUITAR",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "BASS",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "DRUM",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "KEYBOARD",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "VIOLIN",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "CELLO",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GAYAGEUM",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "HAEGEUM",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "GEOMUNGO",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "Cover",
-        "description": "커버한 데이터",
-        "fields": [
-          {
-            "name": "songId",
-            "description": "커버한 곡의 Id",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ObjectID",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "coverBy",
-            "description": "커버한 사람의 id",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "UserLink",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "coverURI",
-            "description": "커버 파일의 주소",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "coverId",
-            "description": "고유 커버 Id",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ObjectID",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "duration",
-            "description": "커버의 길이",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "name",
-            "description": "커버의 제목",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "date",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "position",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "SESSION_TYPE",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "song",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "SongLink",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "UserLink",
-        "description": null,
-        "fields": [
-          {
-            "name": "id",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Id",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "username",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Username",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "profileURI",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "prime",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "introduce",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "phoneNumber",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "PhoneNumber",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "type",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "followerCount",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "followingCount",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "followingStatus",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [
-          {
-            "kind": "INTERFACE",
-            "name": "IUser",
-            "ofType": null
-          }
-        ],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "DateTime",
-        "description": "A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "PositionRank",
-        "description": null,
-        "fields": [
-          {
-            "name": "position",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "likeCount",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "FindIdResult",
-        "description": "FindId Query 의 반환 결과입니다",
-        "fields": [
-          {
-            "name": "id",
-            "description": "아이디",
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Id",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "QueryBandInput",
-        "description": null,
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "BandFilter",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "content",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "sort",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "SORT_OPTION",
-                "ofType": null
-              }
-            },
-            "defaultValue": "DATE_DESC"
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "BandFilter",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "NAME",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "INTRODUCE",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "CREATOR_ID",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "ALL",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "ENUM",
-        "name": "SORT_OPTION",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": [
-          {
-            "name": "DATE_DESC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "DATE_ASC",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
         "name": "Band",
         "description": null,
         "fields": [
@@ -2218,7 +1158,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "SongLink",
+                "name": "Song",
                 "ofType": null
               }
             },
@@ -2266,7 +1206,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "UserLink",
+                "name": "User",
                 "ofType": null
               }
             },
@@ -2323,6 +1263,22 @@
           },
           {
             "name": "isSoloBand",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "isFreeBand",
             "description": null,
             "args": [],
             "type": {
@@ -2512,7 +1468,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "UserLink",
+                "name": "User",
                 "ofType": null
               }
             },
@@ -2532,45 +1488,67 @@
         ]
       },
       {
+        "kind": "SCALAR",
+        "name": "ObjectID",
+        "description": "A field whose value conforms with the standard mongodb object ID as described here: https://docs.mongodb.com/manual/reference/method/ObjectId/#ObjectId. Example: 5e5677d71bdc2ae76344968c",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
-        "name": "CommentOutPut",
+        "name": "Session",
         "description": null,
         "fields": [
           {
-            "name": "comments",
+            "name": "position",
             "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "OBJECT",
-                    "name": "Comment",
-                    "ofType": null
-                  }
-                }
+                "kind": "ENUM",
+                "name": "SESSION_TYPE",
+                "ofType": null
               }
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "pageInfo",
+            "name": "maxMember",
             "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "OBJECT",
-                "name": "PageInfo",
+                "kind": "SCALAR",
+                "name": "Int",
                 "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "cover",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Cover",
+                  "ofType": null
+                }
               }
             },
             "isDeprecated": false,
@@ -2583,12 +1561,89 @@
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "SESSION_TYPE",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "VOCAL",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ACOUSTIC_GUITAR",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ELECTRIC_GUITAR",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "BASS",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DRUM",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "KEYBOARD",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "VIOLIN",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "CELLO",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GAYAGEUM",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "HAEGEUM",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "GEOMUNGO",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "OBJECT",
-        "name": "Comment",
+        "name": "Cover",
         "description": null,
         "fields": [
           {
-            "name": "bandId",
+            "name": "songId",
             "description": null,
             "args": [],
             "type": {
@@ -2604,7 +1659,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user",
+            "name": "coverBy",
             "description": null,
             "args": [],
             "type": {
@@ -2612,7 +1667,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "UserLink",
+                "name": "User",
                 "ofType": null
               }
             },
@@ -2620,7 +1675,55 @@
             "deprecationReason": null
           },
           {
-            "name": "content",
+            "name": "coverURI",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "URL",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "coverId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "duration",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
             "description": null,
             "args": [],
             "type": {
@@ -2636,7 +1739,7 @@
             "deprecationReason": null
           },
           {
-            "name": "createdAt",
+            "name": "date",
             "description": null,
             "args": [],
             "type": {
@@ -2652,93 +1755,23 @@
             "deprecationReason": null
           },
           {
-            "name": "commentId",
+            "name": "position",
             "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
-                "kind": "SCALAR",
-                "name": "ObjectID",
+                "kind": "ENUM",
+                "name": "SESSION_TYPE",
                 "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "PageInfo",
-        "description": null,
-        "fields": [
-          {
-            "name": "endCursor",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "hasNextPage",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
-        "inputFields": null,
-        "interfaces": [],
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "OBJECT",
-        "name": "BandOutPut",
-        "description": null,
-        "fields": [
-          {
-            "name": "bands",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "BandLink",
-                  "ofType": null
-                }
               }
             },
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "pageInfo",
+            "name": "song",
             "description": null,
             "args": [],
             "type": {
@@ -2746,7 +1779,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "PageInfo",
+                "name": "Song",
                 "ofType": null
               }
             },
@@ -2760,97 +1793,33 @@
         "possibleTypes": null
       },
       {
-        "kind": "INPUT_OBJECT",
-        "name": "QueryCoverInput",
-        "description": null,
+        "kind": "SCALAR",
+        "name": "Float",
+        "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
         "fields": null,
-        "inputFields": [
-          {
-            "name": "type",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "CoverFilter",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "content",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "sort",
-            "description": null,
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "ENUM",
-                "name": "SORT_OPTION",
-                "ofType": null
-              }
-            },
-            "defaultValue": "DATE_DESC"
-          }
-        ],
+        "inputFields": null,
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
       },
       {
-        "kind": "ENUM",
-        "name": "CoverFilter",
-        "description": null,
+        "kind": "SCALAR",
+        "name": "DateTime",
+        "description": "A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
-        "enumValues": [
-          {
-            "name": "ALL",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "NAME",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "SONG_ID",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "POSITION",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          }
-        ],
+        "enumValues": null,
         "possibleTypes": null
       },
       {
         "kind": "OBJECT",
         "name": "Song",
-        "description": "올라와 있는 곡에 대한 타입",
+        "description": null,
         "fields": [
           {
             "name": "songId",
-            "description": "song의 Id",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2866,7 +1835,7 @@
           },
           {
             "name": "name",
-            "description": "song의 제목",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2882,7 +1851,7 @@
           },
           {
             "name": "songURI",
-            "description": "song의 음원 URI",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2898,7 +1867,7 @@
           },
           {
             "name": "songImg",
-            "description": "song의 이미지 URI",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -2910,7 +1879,7 @@
           },
           {
             "name": "genre",
-            "description": "song의 장르",
+            "description": null,
             "args": [],
             "type": {
               "kind": "ENUM",
@@ -2922,7 +1891,7 @@
           },
           {
             "name": "artist",
-            "description": "song의 artist",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2938,7 +1907,7 @@
           },
           {
             "name": "album",
-            "description": "song이 포함되어있는 album",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -2950,7 +1919,7 @@
           },
           {
             "name": "weeklyChallenge",
-            "description": "해당 곡이 weeklyChallenge 인가",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2966,7 +1935,7 @@
           },
           {
             "name": "duration",
-            "description": "song의 duration",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -2982,7 +1951,7 @@
           },
           {
             "name": "level",
-            "description": "song의 level",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -2994,7 +1963,7 @@
           },
           {
             "name": "instrument",
-            "description": "해당 songId를 가지고 있는 Instruments",
+            "description": null,
             "args": [],
             "type": {
               "kind": "LIST",
@@ -3014,7 +1983,7 @@
           },
           {
             "name": "releaseDate",
-            "description": "음원 발매의 날짜",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -3215,11 +2184,11 @@
       {
         "kind": "OBJECT",
         "name": "Instrument",
-        "description": "Instrument",
+        "description": null,
         "fields": [
           {
             "name": "instId",
-            "description": "데모 세션에 대한 id",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -3235,7 +2204,7 @@
           },
           {
             "name": "songId",
-            "description": "해당 연주가 업로드 되어있는 노래에 대한 id",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -3251,7 +2220,7 @@
           },
           {
             "name": "instURI",
-            "description": "instreumt의 URI",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -3267,7 +2236,7 @@
           },
           {
             "name": "name",
-            "description": "instrument의 이름",
+            "description": null,
             "args": [],
             "type": {
               "kind": "NON_NULL",
@@ -3283,7 +2252,7 @@
           },
           {
             "name": "duration",
-            "description": "파일의 길이",
+            "description": null,
             "args": [],
             "type": {
               "kind": "SCALAR",
@@ -3313,6 +2282,505 @@
         "inputFields": null,
         "interfaces": [],
         "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Date",
+        "description": "A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "CommentOutPut",
+        "description": null,
+        "fields": [
+          {
+            "name": "comments",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "Comment",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pageInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "Comment",
+        "description": null,
+        "fields": [
+          {
+            "name": "bandId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "user",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "User",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "content",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "createdAt",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "commentId",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectID",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PageInfo",
+        "description": null,
+        "fields": [
+          {
+            "name": "endCursor",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "hasNextPage",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "PositionRank",
+        "description": null,
+        "fields": [
+          {
+            "name": "position",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "likeCount",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "FindIdResult",
+        "description": null,
+        "fields": [
+          {
+            "name": "id",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Id",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QueryBandInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "BandFilter",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "sort",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "SORT_OPTION",
+                "ofType": null
+              }
+            },
+            "defaultValue": "DATE_DESC"
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "BandFilter",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "NAME",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "INTRODUCE",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "CREATOR_ID",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ALL",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "SORT_OPTION",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "DATE_DESC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "DATE_ASC",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "BandOutPut",
+        "description": null,
+        "fields": [
+          {
+            "name": "bands",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Band",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "pageInfo",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "PageInfo",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "QueryCoverInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "type",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "CoverFilter",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "content",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "sort",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "SORT_OPTION",
+                "ofType": null
+              }
+            },
+            "defaultValue": "DATE_DESC"
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "ENUM",
+        "name": "CoverFilter",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "ALL",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "NAME",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "SONG_ID",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "POSITION",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
         "possibleTypes": null
       },
       {
@@ -3430,7 +2898,7 @@
         "fields": [
           {
             "name": "register",
-            "description": "회원가입",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3457,11 +2925,11 @@
           },
           {
             "name": "sendAuthCode",
-            "description": "인증번호를 전송합니다 (발송성공 ? true : false)",
+            "description": null,
             "args": [
               {
                 "name": "input",
-                "description": "휴대번호 정보를 입력해야합니다",
+                "description": null,
                 "type": {
                   "kind": "NON_NULL",
                   "name": null,
@@ -3484,7 +2952,7 @@
           },
           {
             "name": "login",
-            "description": "로그인",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3511,7 +2979,7 @@
           },
           {
             "name": "resetPassword",
-            "description": "비밀번호를 재설정 합니다",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3538,7 +3006,7 @@
           },
           {
             "name": "changePassword",
-            "description": "비밀번호를 변경합니다",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3565,7 +3033,7 @@
           },
           {
             "name": "uploadImageFile",
-            "description": "이미지를 Upload하고 URL을 반환합니다",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3592,7 +3060,7 @@
           },
           {
             "name": "changeProfile",
-            "description": "사용자의 프로필을 변경합니다",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3619,7 +3087,7 @@
           },
           {
             "name": "deleteAccount",
-            "description": "계정을 삭제합니다",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3916,7 +3384,7 @@
           },
           {
             "name": "uploadCoverFile",
-            "description": "커버 파일을 업로드",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3943,7 +3411,7 @@
           },
           {
             "name": "uploadCover",
-            "description": "커버 정보를 업로드",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3970,7 +3438,7 @@
           },
           {
             "name": "updateCover",
-            "description": "커버를 수정",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -3997,7 +3465,7 @@
           },
           {
             "name": "deleteCover",
-            "description": "커버를 삭제",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4051,7 +3519,7 @@
           },
           {
             "name": "uploadDefaultFile",
-            "description": "파일을 업로드",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4078,7 +3546,7 @@
           },
           {
             "name": "uploadSong",
-            "description": "Song을 업로드",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4105,7 +3573,7 @@
           },
           {
             "name": "updateSong",
-            "description": "Song을 업데이트",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4132,7 +3600,7 @@
           },
           {
             "name": "uploadInstrument",
-            "description": "Song과 같이 제공되는 Instrument를 업로드",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4159,7 +3627,7 @@
           },
           {
             "name": "updateInstrument",
-            "description": "Song과 같이 제공되는 Instrument를 업데이트",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4186,7 +3654,7 @@
           },
           {
             "name": "deleteSong",
-            "description": "Song을 삭제",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4213,7 +3681,7 @@
           },
           {
             "name": "deleteInstrument",
-            "description": "Instrument을 삭제",
+            "description": null,
             "args": [
               {
                 "name": "input",
@@ -4278,18 +3746,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "RegisterInput",
-        "description": "register Mutation에 사용되는 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "user",
-            "description": "유저의 정보를 담습니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "RegisterArgs",
+                "name": "RegeisterUserInput",
                 "ofType": null
               }
             },
@@ -4297,7 +3765,7 @@
           },
           {
             "name": "phoneNumber",
-            "description": "phoneNumber 은 +821012345678 와 같은 형식이여야 합니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4311,7 +3779,7 @@
           },
           {
             "name": "authCode",
-            "description": "authenticationNumber 는 123456 와 같은 100000~999999 사이의 숫자 입니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4330,13 +3798,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RegisterArgs",
-        "description": "회원가입에 사용되는 input 입니다",
+        "name": "RegeisterUserInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "username",
-            "description": "유저 네임",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4350,7 +3818,7 @@
           },
           {
             "name": "id",
-            "description": "유저 아이디",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4364,7 +3832,7 @@
           },
           {
             "name": "password",
-            "description": "유저 비밀번호",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4378,7 +3846,7 @@
           },
           {
             "name": "type",
-            "description": "회원 유형",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4418,12 +3886,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "sendAuthCodeInput",
-        "description": "sendAuthCode Mutation의 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "isRegistration",
-            "description": "회원가입인지: true, 아이디 | 비밀번호 찾기인지: false",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4437,7 +3905,7 @@
           },
           {
             "name": "phoneNumber",
-            "description": "phoneNumber 은 +821012345678 와 같은 형식이여야 합니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4457,18 +3925,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "LoginInput",
-        "description": "Login Mutation에 사용되는 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "user",
-            "description": "유저의 정보를 담습니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "LoginArgs",
+                "name": "LoginUserInput",
                 "ofType": null
               }
             },
@@ -4481,13 +3949,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "LoginArgs",
-        "description": "로그인에 사용되는 input 입니다",
+        "name": "LoginUserInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "id",
-            "description": "계정의 id 입니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4501,7 +3969,7 @@
           },
           {
             "name": "password",
-            "description": "계정의 password 입니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4526,7 +3994,7 @@
         "inputFields": [
           {
             "name": "phoneNumber",
-            "description": "phoneNumber 은 +821012345678 와 같은 형식이여야 합니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4540,7 +4008,7 @@
           },
           {
             "name": "authCode",
-            "description": "authenticationNumber 는 123456 와 같은 100000~999999 사이의 숫자 입니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4554,13 +4022,13 @@
           },
           {
             "name": "user",
-            "description": "유저의 정보를 담습니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PasswordArgs",
+                "name": "ResetUserPasswordInput",
                 "ofType": null
               }
             },
@@ -4573,19 +4041,19 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "PasswordArgs",
-        "description": "비밀번호를 입력하는 input 입니다",
+        "name": "ResetUserPasswordInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "password",
-            "description": "계정의 password 입니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "SCALAR",
-                "name": "Password",
+                "name": "String",
                 "ofType": null
               }
             },
@@ -4599,18 +4067,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "ChangePasswordInput",
-        "description": "changePassword Mutation에 사용되는 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "user",
-            "description": "유저의 정보를 담습니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "ChangePasswordArgs",
+                "name": "ChangeUserPasswordInput",
                 "ofType": null
               }
             },
@@ -4623,13 +4091,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ChangePasswordArgs",
-        "description": "비밀번호를 변경하는 input 입니다",
+        "name": "ChangeUserPasswordInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
-            "name": "changePassword",
-            "description": "변경할 비밀번호 입니다",
+            "name": "password",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4642,8 +4110,8 @@
             "defaultValue": null
           },
           {
-            "name": "password",
-            "description": "현 비밀번호 입니다",
+            "name": "changePassword",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4663,12 +4131,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UploadImageInput",
-        "description": "uploadImage Mutation의 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "file",
-            "description": "파일 입니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -4698,18 +4166,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "ChangeProfileInput",
-        "description": "changeProfile Mutation에 사용되는 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "user",
-            "description": "유저의 정보를 담습니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "ChangeProfileArgs",
+                "name": "ChangeUserProfileInput",
                 "ofType": null
               }
             },
@@ -4722,13 +4190,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "ChangeProfileArgs",
-        "description": "프로필을 변경하는 input 입니다 업데이트할 필드만 담아 요청합니다",
+        "name": "ChangeUserProfileInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "username",
-            "description": "계정의 username 입니다",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Username",
@@ -4738,7 +4206,7 @@
           },
           {
             "name": "profileURI",
-            "description": "계정의 profileURI 입니다",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "URL",
@@ -4748,7 +4216,7 @@
           },
           {
             "name": "introduce",
-            "description": "계정의 자기소개 글 입니다",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -4758,7 +4226,7 @@
           },
           {
             "name": "type",
-            "description": "계정의 회원 유형 입니다",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -4774,18 +4242,43 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "DeleteAccountInput",
-        "description": "deleteAccount Mutation에 사용되는 input 입니다",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "user",
-            "description": "유저의 정보를 담습니다",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "PasswordArgs",
+                "name": "DeleteUserAccountInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "DeleteUserAccountInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "password",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Password",
                 "ofType": null
               }
             },
@@ -4865,7 +4358,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateBandInBandInput",
+                "name": "CreateBandAllInput",
                 "ofType": null
               }
             },
@@ -4917,7 +4410,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "CreateBandInBandInput",
+        "name": "CreateBandAllInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5010,7 +4503,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateBandInBandInput",
+                "name": "UpdateBandAllInput",
                 "ofType": null
               }
             },
@@ -5037,7 +4530,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UpdateBandInBandInput",
+        "name": "UpdateBandAllInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5114,7 +4607,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandInBandInput",
+                "name": "JoinBandIdInput",
                 "ofType": null
               }
             },
@@ -5128,7 +4621,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandInSessionInput",
+                "name": "JoinBandSessionInput",
                 "ofType": null
               }
             },
@@ -5141,7 +4634,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "JoinBandInBandInput",
+        "name": "JoinBandIdInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5166,7 +4659,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "JoinBandInSessionInput",
+        "name": "JoinBandSessionInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5217,7 +4710,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandInBandInput",
+                "name": "LeaveBandIdInput",
                 "ofType": null
               }
             },
@@ -5231,7 +4724,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "LeaveBandInSessionInput",
+                "name": "LeaveBandCoverIdInput",
                 "ofType": null
               }
             },
@@ -5244,7 +4737,32 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "LeaveBandInSessionInput",
+        "name": "LeaveBandIdInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "bandId",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "LeaveBandCoverIdInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5281,7 +4799,32 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandInBandInput",
+                "name": "DeleteBandIdInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "DeleteBandIdInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "bandId",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectID",
                 "ofType": null
               }
             },
@@ -5306,7 +4849,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "CreateCommentInCommentInput",
+                "name": "CreateCommentAllInput",
                 "ofType": null
               }
             },
@@ -5319,7 +4862,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "CreateCommentInCommentInput",
+        "name": "CreateCommentAllInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5370,7 +4913,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteCommentInCommentInput",
+                "name": "DeleteCommentIdInput",
                 "ofType": null
               }
             },
@@ -5383,7 +4926,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "DeleteCommentInCommentInput",
+        "name": "DeleteCommentIdInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5420,7 +4963,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateCommentInComment",
+                "name": "UpdateCommentAllInput",
                 "ofType": null
               }
             },
@@ -5433,7 +4976,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UpdateCommentInComment",
+        "name": "UpdateCommentAllInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -5498,12 +5041,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UploadCoverFileInput",
-        "description": "uploadCoverFile Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "file",
-            "description": "파일",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5523,18 +5066,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UploadCoverInput",
-        "description": "uploadCover Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "cover",
-            "description": "커버 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "CoverInput",
+                "name": "UploadCoverAllInput",
                 "ofType": null
               }
             },
@@ -5547,13 +5090,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "CoverInput",
-        "description": "커버 정보",
+        "name": "UploadCoverAllInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "name",
-            "description": "커버의 제목 ex) 승원이의 viva la vida 바이올린 커버",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5567,7 +5110,7 @@
           },
           {
             "name": "coverURI",
-            "description": "커버 파일의 주소",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5581,7 +5124,7 @@
           },
           {
             "name": "songId",
-            "description": "어떤 노래에 커버를 하였는지 노래Id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5615,18 +5158,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UpdateCoverInput",
-        "description": "updateCover Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "cover",
-            "description": "업데이트할 커버의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateCover",
+                "name": "UpdateCoverAllInput",
                 "ofType": null
               }
             },
@@ -5639,13 +5182,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UpdateCover",
-        "description": "업데이트할 커버의 정보",
+        "name": "UpdateCoverAllInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "coverId",
-            "description": "커버의 id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5659,7 +5202,7 @@
           },
           {
             "name": "name",
-            "description": "커버의 이름",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -5685,18 +5228,18 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "DeleteCoverInput",
-        "description": "deleteCover Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "cover",
-            "description": "삭제할 커버의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteCover",
+                "name": "DeleteCoverIdInput",
                 "ofType": null
               }
             },
@@ -5709,13 +5252,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "DeleteCover",
-        "description": "삭제할 커버의 정보",
+        "name": "DeleteCoverIdInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "coverId",
-            "description": "커버의 id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5746,7 +5289,32 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "JoinBandInBandInput",
+                "name": "LikeBandIdInput",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "LikeBandIdInput",
+        "description": null,
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "bandId",
+            "description": null,
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ObjectID",
                 "ofType": null
               }
             },
@@ -5760,12 +5328,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UploadDefaultFileInput",
-        "description": "uploadDefaultFile Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5779,7 +5347,7 @@
           },
           {
             "name": "file",
-            "description": "업로드할 파일",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5799,12 +5367,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UploadSongInput",
-        "description": "uploadSong Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5818,13 +5386,13 @@
           },
           {
             "name": "song",
-            "description": "음원 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "SongInput",
+                "name": "UploadSongAllInput",
                 "ofType": null
               }
             },
@@ -5837,13 +5405,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "SongInput",
-        "description": "노래의 기본 음원을 업로드 할때 사용하는 input",
+        "name": "UploadSongAllInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "name",
-            "description": "song의 제목",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5857,7 +5425,7 @@
           },
           {
             "name": "songURI",
-            "description": "song의 음원 URI",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5871,7 +5439,7 @@
           },
           {
             "name": "songImg",
-            "description": "song의 이미지 URI",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5885,7 +5453,7 @@
           },
           {
             "name": "genre",
-            "description": "song의 장르",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5899,7 +5467,7 @@
           },
           {
             "name": "artist",
-            "description": "song의 artist",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5913,7 +5481,7 @@
           },
           {
             "name": "album",
-            "description": "해당 song이 포함되어있는 album",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5927,7 +5495,7 @@
           },
           {
             "name": "weeklyChallenge",
-            "description": "해당 song이 weeklyChallenge 인가",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5941,7 +5509,7 @@
           },
           {
             "name": "level",
-            "description": "song의 난이도",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5955,7 +5523,7 @@
           },
           {
             "name": "releaseDate",
-            "description": "음원의 날짜",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5975,12 +5543,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UpdateSongInput",
-        "description": "updateSong Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -5994,13 +5562,13 @@
           },
           {
             "name": "song",
-            "description": "업데이트할 song의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateSong",
+                "name": "UpdateSongAllInput",
                 "ofType": null
               }
             },
@@ -6013,13 +5581,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UpdateSong",
-        "description": "Song을 Update할때 사용되는 input",
+        "name": "UpdateSongAllInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "songId",
-            "description": "song의 id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6033,7 +5601,7 @@
           },
           {
             "name": "name",
-            "description": "song의 name",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -6043,7 +5611,7 @@
           },
           {
             "name": "songURI",
-            "description": "song의 음원 URI",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "URL",
@@ -6053,7 +5621,7 @@
           },
           {
             "name": "songImg",
-            "description": "song의 이미지 URI",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "URL",
@@ -6063,7 +5631,7 @@
           },
           {
             "name": "genre",
-            "description": "song의 장르",
+            "description": null,
             "type": {
               "kind": "ENUM",
               "name": "GENRE_TYPE",
@@ -6073,7 +5641,7 @@
           },
           {
             "name": "artist",
-            "description": "song의 artist",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -6083,7 +5651,7 @@
           },
           {
             "name": "album",
-            "description": "song의 album",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -6093,7 +5661,7 @@
           },
           {
             "name": "level",
-            "description": "song의 난이도",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Int",
@@ -6103,7 +5671,7 @@
           },
           {
             "name": "releaseDate",
-            "description": "song의 발매의 날짜",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Date",
@@ -6113,7 +5681,7 @@
           },
           {
             "name": "weeklyChallenge",
-            "description": "song이 weeklyChallenge 인가",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "Boolean",
@@ -6129,12 +5697,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UploadInstrumentInput",
-        "description": "uploadInstrument Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6148,13 +5716,13 @@
           },
           {
             "name": "instrument",
-            "description": "업로드할 Instrument의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UploadInstrumentArgs",
+                "name": "UploadInstrumentAllInput",
                 "ofType": null
               }
             },
@@ -6167,13 +5735,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UploadInstrumentArgs",
-        "description": "업로드 할 Instrument의 정보를 입력하는 input",
+        "name": "UploadInstrumentAllInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "songId",
-            "description": "음원의 Id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6187,7 +5755,7 @@
           },
           {
             "name": "name",
-            "description": "Instrument의 name",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6201,7 +5769,7 @@
           },
           {
             "name": "instURI",
-            "description": "Instrument의 음원 URI",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6235,12 +5803,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "UpdateInstrumentInput",
-        "description": "updateInstrument Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6254,13 +5822,13 @@
           },
           {
             "name": "instrument",
-            "description": "업데이트할 instrument의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UpdateInstrumentArgs",
+                "name": "UpdateInstrumentAllInput",
                 "ofType": null
               }
             },
@@ -6273,13 +5841,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UpdateInstrumentArgs",
-        "description": "Instrument를 Update 할때 사용하는 정보",
+        "name": "UpdateInstrumentAllInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "songId",
-            "description": "song의 id",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "ObjectID",
@@ -6289,7 +5857,7 @@
           },
           {
             "name": "instId",
-            "description": "instrument의 id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6303,7 +5871,7 @@
           },
           {
             "name": "name",
-            "description": "instrument의 name",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "String",
@@ -6313,7 +5881,7 @@
           },
           {
             "name": "instURI",
-            "description": "파일의 주소",
+            "description": null,
             "type": {
               "kind": "SCALAR",
               "name": "URL",
@@ -6339,12 +5907,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "DeleteSongInput",
-        "description": "deleteSong Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6358,13 +5926,13 @@
           },
           {
             "name": "song",
-            "description": "삭제할 song의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteSong",
+                "name": "DeleteSongIdInput",
                 "ofType": null
               }
             },
@@ -6377,13 +5945,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "DeleteSong",
-        "description": "삭제할 song의 정보",
+        "name": "DeleteSongIdInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "songId",
-            "description": "song의 id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6403,12 +5971,12 @@
       {
         "kind": "INPUT_OBJECT",
         "name": "DeleteInstrumentInput",
-        "description": "deleteInstrument Mutation의 input",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "code",
-            "description": "권한을 확인하기 위한 코드",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6422,13 +5990,13 @@
           },
           {
             "name": "instrument",
-            "description": "삭제할 instrument의 정보",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "DeleteInstrument",
+                "name": "DeleteInstrumentIdInput",
                 "ofType": null
               }
             },
@@ -6441,13 +6009,13 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "DeleteInstrument",
-        "description": "삭제할 instrument의 정보",
+        "name": "DeleteInstrumentIdInput",
+        "description": null,
         "fields": null,
         "inputFields": [
           {
             "name": "instId",
-            "description": "instrument의 id",
+            "description": null,
             "type": {
               "kind": "NON_NULL",
               "name": null,
@@ -6478,7 +6046,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UploadFreeSongInSong",
+                "name": "UploadFreeSongAllInput",
                 "ofType": null
               }
             },
@@ -6491,7 +6059,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UploadFreeSongInSong",
+        "name": "UploadFreeSongAllInput",
         "description": null,
         "fields": null,
         "inputFields": [

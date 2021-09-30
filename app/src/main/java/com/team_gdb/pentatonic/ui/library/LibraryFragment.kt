@@ -61,7 +61,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     coverSession = it.position.rawValue,
                     coverUrl = it.coverURI,
                     id = it.coverId,
-                    imageUrl = it.song.songImg,
+                    imageUrl = it.song.songImg ?: "",
                     coverDate = it.date,
                     originalSong = it.song,
                     coverBy = it.coverBy.id,

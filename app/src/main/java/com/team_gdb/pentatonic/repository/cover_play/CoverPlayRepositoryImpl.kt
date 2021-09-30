@@ -23,7 +23,7 @@ class CoverPlayRepositoryImpl : CoverPlayRepository {
         apolloClient.rxMutate(
             CreateCommentMutation(
                 CreateCommentInput(
-                    comment = CreateCommentInCommentInput(
+                    comment = CreateCommentAllInput(
                         content = content,
                         bandId = bandId
                     )
@@ -38,7 +38,7 @@ class CoverPlayRepositoryImpl : CoverPlayRepository {
         apolloClient.rxMutate(
             UpdateCommentMutation(
                 UpdateCommentInput(
-                    comment = UpdateCommentInComment(commentId = commentId, content = content)
+                    comment = UpdateCommentAllInput(commentId = commentId, content = content)
                 )
             )
         )
@@ -47,7 +47,7 @@ class CoverPlayRepositoryImpl : CoverPlayRepository {
         apolloClient.rxMutate(
             DeleteCommentMutation(
                 DeleteCommentInput(
-                    DeleteCommentInCommentInput(commentId)
+                    DeleteCommentIdInput(commentId)
                 )
             )
         )

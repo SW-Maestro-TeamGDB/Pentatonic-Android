@@ -22,7 +22,7 @@ class MyPageRepositoryImpl : MyPageRepository {
     ): Single<Response<UpdateCoverMutation.Data>> = apolloClient.rxMutate(
         UpdateCoverMutation(
             updateCoverInput = UpdateCoverInput(
-                UpdateCover(coverId, Input.optional(coverName))
+                UpdateCoverAllInput(coverId, Input.optional(coverName))
             )
         )
     )
@@ -31,7 +31,7 @@ class MyPageRepositoryImpl : MyPageRepository {
         apolloClient.rxMutate(
             DeleteCoverMutation(
                 deleteCoverInput = DeleteCoverInput(
-                    cover = DeleteCover(
+                    cover = DeleteCoverIdInput(
                         coverId
                     )
                 )

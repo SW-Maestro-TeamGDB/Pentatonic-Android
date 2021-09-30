@@ -28,7 +28,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
     ): Single<Response<UploadCoverMutation.Data>> = apolloClient.rxMutate(
         UploadCoverMutation(
             UploadCoverInput(
-                CoverInput(
+                UploadCoverAllInput(
                     name, coverURI, songId, position = SESSION_TYPE.valueOf(position)
                 )
             )
@@ -53,7 +53,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
             CreateBandMutation(
                 CreateBandInput(
                     sessionConfig = sessionList,
-                    band = CreateBandInBandInput(
+                    band = CreateBandAllInput(
                         name = bandName,
                         introduce = bandIntroduction,
                         backGroundURI = backgroundUrl,
@@ -70,8 +70,8 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
         apolloClient.rxMutate(
             JoinBandMutation(
                 JoinBandInput(
-                    band = JoinBandInBandInput(bandId = bandId),
-                    session = JoinBandInSessionInput(
+                    band = JoinBandIdInput(bandId = bandId),
+                    session = JoinBandSessionInput(
                         coverId = coverId,
                         position = SESSION_TYPE.valueOf(sessionName)
                     )
