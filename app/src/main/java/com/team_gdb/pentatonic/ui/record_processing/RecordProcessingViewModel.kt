@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
@@ -12,7 +13,11 @@ import timber.log.Timber
 
 class RecordProcessingViewModel(val repository: RecordProcessingRepository) : BaseViewModel() {
     val buttonState: MutableLiveData<ButtonState> =
-        MutableLiveData<ButtonState>(ButtonState.BEFORE_PLAYING)
+        MutableLiveData<ButtonState>()
+
+    private val _instMergedCover: MutableLiveData<String> = MutableLiveData()
+    val instMergedCover: LiveData<String>
+        get() = _instMergedCover
 
     val playTime: MutableLiveData<String> = MutableLiveData("00:00")
     val remainTime: MutableLiveData<String> = MutableLiveData("00:00")
@@ -49,6 +54,26 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     fun controlReverbEffectLevel(amount: Int) {
         reverbEffectLevel.value = reverbEffectLevel.value?.plus(amount)
+    }
+
+    fun getInstMergedCover(songUrl: String, coverUrl: String) {
+        val coverList = listOf(songUrl, coverUrl)
+        val disposable = repository.getMergedResult(coverList)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+                    if (!it.hasErrors()) {
+                        Timber.d("getMergedCover() : ${it.data}")
+                        _instMergedCover.postValue(it.data?.mergeAudios)
+                    } else {
+                        Timber.i(it.errors.toString())
+                    }
+                }
+            )
+        addDisposable(disposable)
     }
 
     /**

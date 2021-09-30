@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
 import android.content.Intent
+import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.media.audiofx.BassBoost
 import android.media.audiofx.EnvironmentalReverb
@@ -56,7 +57,10 @@ class RecordProcessingActivity :
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        initPlayer()
+        binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
+
+        // 커버 파일 업로드
+        viewModel.uploadCoverFile(recordingFilePath)
 
         Timber.d(createdCoverEntity.toString())
 
@@ -82,24 +86,26 @@ class RecordProcessingActivity :
             binding.playButton.updateIconWithState(it)
         }
 
-        // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
-        viewModel.coverNameInputComplete.observe(this) {
-            if (it.getContentIfNotHandled() == true) {
-                Timber.d("커버 파일 업로드 시작")
-                // 커버 파일 업로드
-                viewModel.uploadCoverFile(recordingFilePath)
+        // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
+        viewModel.coverFileURL.observe(this) {
+            if (it.isNotBlank()) {
+                viewModel.getInstMergedCover(createdCoverEntity.coverSong.songUrl, it)
             }
         }
 
-        // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
-        // TODO : 테스트 데이터로 동작
-        viewModel.coverFileURL.observe(this) {
-            if (it.isNotBlank()) {
-                Timber.d("커버 파일 업로드가 다 됐단다!")
+        // MR 과 합쳐진 녹음 결과 준비 완료
+        viewModel.instMergedCover.observe(this) {
+            Timber.d("MR 합본 : $it")
+            initPlayer(it)
+        }
+
+        // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
+        viewModel.coverNameInputComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
                 // 커버 정보 라이브러리에 업로드
                 viewModel.uploadCoverToLibrary(
                     viewModel.coverNameField.value.toString(),
-                    it,
+                    viewModel.coverFileURL.value!!,
                     createdCoverEntity.coverSong.songId,
                     createdCoverEntity.coverSessionConfig[0].sessionSetting.name
                 )
@@ -177,13 +183,15 @@ class RecordProcessingActivity :
         }
     }
 
-    private fun initPlayer() {
+    private fun initPlayer(url: String) {
         player = MediaPlayer().apply {
-
-            setDataSource(recordingFilePath)
+            setDataSource(url)
             prepare()  // 재생 할 수 있는 상태 (큰 파일 또는 네트워크로 가져올 때는 prepareAsync() )
             setOnCompletionListener {  // 끝까지 재생이 끝났을 때
                 pausePlaying()
+            }
+            setOnPreparedListener {
+                viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
             }
             totalDuration = this.duration.toFloat()
             interval = this.duration.toFloat().div(100)
