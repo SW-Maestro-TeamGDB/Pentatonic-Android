@@ -17,7 +17,7 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
         get() = R.layout.fragment_whole_cover
     override val viewModel: WholeCoverViewModel by viewModel()
 
-    private lateinit var coverListAdapter: CoverVerticalListAdapter  // 솔로 커버 리스트
+    private lateinit var coverListAdapter: CoverVerticalListAdapter
 
     override fun onResume() {
         super.onResume()
@@ -34,7 +34,7 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
         }, binding.textClearButton))
         coverListAdapter = CoverVerticalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ID, it.id)
+            intent.putExtra(COVER_ID, it)
             startActivity(intent)
         }
         binding.coverList.apply {

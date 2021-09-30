@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetSongInfoQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
@@ -14,10 +15,10 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverVerticalListAdapter(val itemClick: (String) -> Unit) :
-    RecyclerView.Adapter<CoverVerticalListAdapter.ViewHolder>() {
+class WeeklyChallengeCoverListAdapter(val itemClick: (String) -> Unit) :
+    RecyclerView.Adapter<WeeklyChallengeCoverListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<CoverEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<GetSongInfoQuery.Band> = emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -44,33 +45,36 @@ class CoverVerticalListAdapter(val itemClick: (String) -> Unit) :
         private val binding: ItemVerticalCoverListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: CoverEntity) {
+        fun bind(entity: GetSongInfoQuery.Band) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageURL)
+                .load(entity.backGroundURI)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
 
             // 커버명과 원곡명
-            binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverNameTextView.text = entity.name
+            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
 
+            val participantCount = entity.session?.sumBy {
+                it?.cover?.size ?: 0
+            }
             // 커버를 구성중인 인원수
-            binding.coverSessionListTextView.text = "${entity.sessionDataList.size}명 참여중"
+            binding.coverSessionListTextView.text = "${participantCount}명 참여중"
 
             // 좋아요수와 조회수
-            binding.coverLikeTextView.text = entity.like.toString()
-            binding.coverViewTextView.text = entity.view.toString()
+            binding.coverLikeTextView.text = entity.likeCount.toString()
+            binding.coverViewTextView.text = "234"
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity.id)
+                itemClick(entity.bandId)
             }
         }
     }
 
-    fun setItem(entities: List<CoverEntity>) {
+    fun setItem(entities: List<GetSongInfoQuery.Band>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }

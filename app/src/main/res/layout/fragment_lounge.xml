@@ -31,6 +31,7 @@
                     app:cardCornerRadius="16dp">
 
                     <ImageView
+                        android:src="@color/gray"
                         android:id="@+id/weeklyChallengeSongImage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
