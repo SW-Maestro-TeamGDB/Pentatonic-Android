@@ -12,6 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
+import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.data.session.SessionData
 import com.team_gdb.pentatonic.data.session.SessionSetting
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
@@ -112,7 +113,18 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
         }
 
         binding.coverPlayButton.setOnClickListener {
-            // TODO : 솔로커버 재생
+            val coverEntity = CoverPlayEntity(
+                coverID = bandInfo.bandId,
+                coverName = bandInfo.name,
+                backgroundImgURL = bandInfo.backGroundURI,
+                coverIntroduction = bandInfo.introduce,
+                likeCount = bandInfo.likeCount,
+                viewCount = 34,
+                coverURL = bandInfo.session[0]?.cover?.get(0)!!.coverURI
+            )
+            val intent = Intent(this, CoverPlayActivity::class.java)
+            intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
+            startActivity(intent)
         }
     }
 
