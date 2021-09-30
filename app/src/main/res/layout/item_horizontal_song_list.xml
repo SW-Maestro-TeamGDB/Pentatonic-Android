@@ -14,7 +14,7 @@
                 android:id="@+id/albumJacketImage"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@color/cardview_dark_background" />
 
             <TextView
