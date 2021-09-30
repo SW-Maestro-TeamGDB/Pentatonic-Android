@@ -97,6 +97,7 @@ query GetUserLibraryQuery($getUserInfoUserId: Id!) {
     }
 }
 
+# Deprecated
 query GetCoverQuery($queryBandFilter: QueryBandInput!) {
     queryBand(filter: $queryBandFilter){
         name
@@ -256,5 +257,40 @@ query GetSongQuery($querySongFilter: QuerySongInput!) {
         duration
         level
         releaseDate
+    }
+}
+
+query GetBandListQuery($queryBandsFilter: QueryBandInput!, $queryBandsFirst: Int!, $queryBandsAfter: String) {
+    queryBands(filter: $queryBandsFilter, first: $queryBandsFirst, after: $queryBandsAfter) {
+        bands {
+            bandId
+            song {
+                songId
+                name
+                songURI
+                songImg
+                genre
+                artist
+                album
+                weeklyChallenge
+                duration
+                level
+                releaseDate
+            }
+            name
+            introduce
+            backGroundURI
+            createDate
+            isSoloBand
+            likeCount
+            likeStatus
+            session {
+                position
+                maxMember
+                cover {
+                    position
+                }
+            }
+        }
     }
 }

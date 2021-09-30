@@ -13,7 +13,7 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
     val coverList: MutableLiveData<List<CoverEntity>> = MutableLiveData()
 
     fun getCover(query: String) {
-        val disposable = repository.getCover(query)
+        val disposable = repository.queryBandList(query)
             .applySchedulers()
             .subscribeBy(
                 onError = {
@@ -21,9 +21,9 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
                 },
                 onNext = {
                     if (!it.hasErrors()) {
-                        coverList.postValue(it.data?.queryBand?.map {
+                        coverList.postValue(it.data?.queryBands?.bands!!.map {
                             CoverEntity(
-                                id = it.bandId,
+                                id = it!!.bandId,
                                 coverName = it.name,
                                 introduction = it.introduce,
                                 imageURL = it.backGroundURI,
