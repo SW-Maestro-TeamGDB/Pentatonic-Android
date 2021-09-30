@@ -16,7 +16,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
     override fun uploadCoverFile(filePath: String): Single<Response<UploadCoverFileMutation.Data>> =
         apolloClient.rxMutate(
             UploadCoverFileMutation(
-                UploadCoverFileInput(file = FileUpload("audio/x-m4a", filePath))
+                UploadCoverFileInput(file = FileUpload("audio/mpeg3", filePath))
             )
         )
 

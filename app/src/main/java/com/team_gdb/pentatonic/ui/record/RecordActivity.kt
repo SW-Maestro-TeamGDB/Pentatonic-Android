@@ -31,7 +31,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     override val viewModel: RecordViewModel by viewModel()
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장될 위치
-        "${externalCacheDir?.absolutePath}/recording.m4a"
+        "${externalCacheDir?.absolutePath}/recording.mp3"
     }
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
 

@@ -41,7 +41,7 @@ class RecordProcessingActivity :
     private var seekBarThread: Thread? = null
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
-        "${externalCacheDir?.absolutePath}/recording.m4a"
+        "${externalCacheDir?.absolutePath}/recording.mp3"
     }
 
     private val amplitudeData: ByteArray by lazy {  // 녹음본 진폭 정보 (ByteArray)
