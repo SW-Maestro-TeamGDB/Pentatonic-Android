@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
+import com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
@@ -121,7 +122,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         // 위클리 챌린지 페이지로 이동
         binding.weeklyChallengeSongButton.setOnClickListener {
             findNavController().navigate(
-                R.id.action_navigation_lounge_to_navigation_weekly_challenge
+                LoungeFragmentDirections.actionNavigationLoungeToNavigationWeeklyChallenge(
+                    weeklyChallengeSongId = viewModel.getWeeklyChallengeSongId()
+                )
             )
         }
 

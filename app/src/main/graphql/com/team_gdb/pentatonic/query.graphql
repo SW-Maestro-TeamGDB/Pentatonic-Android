@@ -298,6 +298,7 @@ query GetBandListQuery($queryBandsFilter: QueryBandInput!, $queryBandsFirst: Int
     }
 }
 
+# 위클리 챌린지 곡 정보 쿼리 : 라운지 페이지에서 위클리 챌린지 곡의 정보를 최초로 얻을 때 사용
 query GetWeeklyChallengeSongInfoQuery($querySongFilter: QuerySongInput!) {
     querySong(filter: $querySongFilter) {
         songId
@@ -311,5 +312,48 @@ query GetWeeklyChallengeSongInfoQuery($querySongFilter: QuerySongInput!) {
         duration
         level
         releaseDate
+    }
+}
+
+# 특정 곡의 정보 쿼리  e.g. 위클리챌린지 곡에 대한 정보 (해당 곡으로 생성한 커버 정보 포함)
+query GetSongInfoQuery($getSongSongId: ObjectID!) {
+    getSong(songId: $getSongSongId) {
+        songId
+        name
+        songURI
+        songImg
+        genre
+        artist
+        album
+        weeklyChallenge
+        duration
+        level
+        releaseDate
+        band {
+            bandId
+            song {
+                songId
+                name
+                artist
+            }
+            name
+            introduce
+            creator {
+                id
+                username
+            }
+            backGroundURI
+            createDate
+            session {
+                position
+                maxMember
+                cover {
+                    coverURI
+                    coverId
+                }
+            }
+            isSoloBand
+            likeCount
+        }
     }
 }

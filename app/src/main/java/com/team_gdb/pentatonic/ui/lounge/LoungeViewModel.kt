@@ -16,6 +16,10 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
     val weeklyChallengeSongImage: LiveData<String>
         get() = _weeklyChallengeSongImage
 
+    private val _weeklyChallengeSongId: MutableLiveData<String> = MutableLiveData()
+    val weeklyChallengeSongId: LiveData<String>
+        get() = _weeklyChallengeSongId
+
     val weeklyChallengeSongName: MutableLiveData<String> = MutableLiveData()
     val weeklyChallengeSongArtist: MutableLiveData<String> = MutableLiveData()
 
@@ -28,6 +32,8 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
     val userProfileImage: MutableLiveData<String>
         get() = _userProfileImage
 
+    fun getWeeklyChallengeSongId(): String = _weeklyChallengeSongId.value!!
+
     fun getWeeklyChallengeSongInfo() {
         val disposable = repository.getWeeklyChallengeSongInfo()
             .applySchedulers()
@@ -38,6 +44,7 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
                 onNext = {
                     if (!it.hasErrors()) {
                         Timber.d(it.data.toString())
+                        _weeklyChallengeSongId.postValue(it.data?.querySong?.get(0)?.songId)
                         _weeklyChallengeSongImage.postValue(it.data?.querySong?.get(0)?.songImg)
                         weeklyChallengeSongName.postValue(it.data?.querySong?.get(0)?.name)
                         weeklyChallengeSongArtist.postValue(it.data?.querySong?.get(0)?.artist)

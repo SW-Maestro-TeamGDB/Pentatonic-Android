@@ -56,6 +56,12 @@
         android:id="@+id/navigation_weekly_challenge"
         android:name="com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeFragment"
         tools:layout="@layout/fragment_weekly_challenge">
+
+        <argument
+            android:name="weeklyChallengeSongId"
+            app:argType="string"
+            android:defaultValue=""/>
+
         <action
             android:id="@+id/action_navigation_weekly_challenge_to_navigation_lounge"
             app:destination="@id/navigation_lounge"

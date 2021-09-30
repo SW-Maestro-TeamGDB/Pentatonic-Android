@@ -98,20 +98,19 @@
                     android:layout_above="@+id/weeklyChallengeSongDescription"
                     android:layout_marginHorizontal="24dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="coldplay"
+                    android:text="@{viewModel.weeklyChallengeSongArtist}"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <TextView
-
-                    android:layout_above="@+id/weeklyChallengeSongArtist"
                     android:id="@+id/weeklyChallengeSongName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_above="@+id/weeklyChallengeSongArtist"
                     android:layout_centerHorizontal="true"
                     android:layout_marginHorizontal="24dp"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="Higher Power"
+                    android:text="@{viewModel.weeklyChallengeSongName}"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
 
