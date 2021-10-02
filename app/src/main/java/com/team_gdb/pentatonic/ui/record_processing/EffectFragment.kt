@@ -15,17 +15,21 @@ class EffectFragment : BaseFragment<FragmentEffectBinding, RecordProcessingViewM
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
-
     }
 
     override fun initDataBinding() {
+
     }
 
     override fun initAfterBinding() {
+        setOnSeekBarChangeListener()
+    }
+
+    private fun setOnSeekBarChangeListener() {
         binding.reverbProgressBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-
+                viewModel.setReverbEffectLevel(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -35,7 +39,21 @@ class EffectFragment : BaseFragment<FragmentEffectBinding, RecordProcessingViewM
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
                 /* no-op */
             }
+        })
 
+        binding.gainProgressBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                viewModel.setGainEffectLevel(progress)
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                /* no-op */
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                /* no-op */
+            }
         })
     }
 

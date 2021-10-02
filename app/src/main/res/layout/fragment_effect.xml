@@ -60,7 +60,7 @@
                 android:layout_toLeftOf="@+id/gainPlusButton"
                 android:layout_toRightOf="@+id/gainMinusButton"
                 android:max="100"
-                android:progress="@{ viewModel._gainEffectLevel}"
+                android:progress="@{ viewModel.gainEffectLevel}"
                 android:progressTint="@color/black" />
 
             <TextView
@@ -70,7 +70,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel._gainEffectLevel.toString()}"
+                android:text="@{viewModel.gainEffectLevel.toString()}"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -128,18 +128,18 @@
                 android:layout_toLeftOf="@+id/reverbPlusButton"
                 android:layout_toRightOf="@+id/reverbMinusButton"
                 android:max="100"
-                android:progress="@{viewModel._reverbEffectLevel}"
+                android:progress="@{viewModel.reverbEffectLevel}"
                 android:progressTint="@color/black" />
 
             <TextView
                 android:id="@+id/reverbProgressTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/volumeProgressBar"
+                android:layout_above="@+id/reverbProgressBar"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel._reverbEffectLevel.toString()}"
+                android:text="@{viewModel.reverbEffectLevel.toString()}"
                 android:textSize="16sp" />
 
         </RelativeLayout>
