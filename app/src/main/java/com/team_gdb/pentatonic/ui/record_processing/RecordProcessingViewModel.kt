@@ -22,39 +22,63 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     val playTime: MutableLiveData<String> = MutableLiveData("00:00")
     val remainTime: MutableLiveData<String> = MutableLiveData("00:00")
 
-    val volumeLevel: MutableLiveData<Int> = MutableLiveData(50)
-    val syncLevel: MutableLiveData<Int> = MutableLiveData(50)
-    val gainEffectLevel: MutableLiveData<Int> = MutableLiveData(50)
-    val reverbEffectLevel: MutableLiveData<Int> = MutableLiveData(50)
+    private val _volumeLevel: MutableLiveData<Int> = MutableLiveData(50)
+    val volumeLevel: LiveData<Int>
+        get() = _volumeLevel
+
+    private val _syncLevel: MutableLiveData<Int> = MutableLiveData(50)
+    val syncLevel: LiveData<Int>
+        get() = _syncLevel
+
+    private val _gainEffectLevel: MutableLiveData<Int> = MutableLiveData(0)
+    val gainEffectLevel: LiveData<Int>
+        get() = _gainEffectLevel
+
+    private val _reverbEffectLevel: MutableLiveData<Int> = MutableLiveData(0)
+    val reverbEffectLevel: LiveData<Int>
+        get() = _reverbEffectLevel
 
     val coverNameField: MutableLiveData<String> = MutableLiveData()
     val coverFileURL: MutableLiveData<String> = MutableLiveData()
 
     val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
-
     val coverUploadComplete: MutableLiveData<Event<String>> = MutableLiveData()
-
     val createBandComplete: MutableLiveData<Event<String>> = MutableLiveData()
-
     val joinBandComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     fun controlVolumeLevel(amount: Int) {
-        volumeLevel.value = volumeLevel.value?.plus(amount)
-        Timber.d("Volume Control 예아")
-        Timber.d("VolumeLevel : ${volumeLevel.value}")
+        _volumeLevel.value = _volumeLevel.value?.plus(amount)
     }
 
     fun controlSyncLevel(amount: Int) {
-        syncLevel.value = syncLevel.value?.plus(amount)
+        _syncLevel.value = _syncLevel.value?.plus(amount)
     }
 
     fun controlGainEffectLevel(amount: Int) {
-        gainEffectLevel.value = gainEffectLevel.value?.plus(amount)
+        _gainEffectLevel.value = _gainEffectLevel.value?.plus(amount)
     }
 
     fun controlReverbEffectLevel(amount: Int) {
-        reverbEffectLevel.value = reverbEffectLevel.value?.plus(amount)
+        _reverbEffectLevel.value = _reverbEffectLevel.value?.plus(amount)
     }
+
+    // SeekBar 바뀔 때 호출
+    fun setVolumeLevel(amount: Int) {
+        _volumeLevel.value = amount
+    }
+
+    fun setSyncLevel(amount: Int) {
+        _syncLevel.value = amount
+    }
+
+    fun setGainEffectLevel(amount: Int) {
+        _gainEffectLevel.value = amount
+    }
+
+    fun setReverbEffectLevel(amount: Int) {
+        _reverbEffectLevel.value = amount
+    }
+
 
     fun getInstMergedCover(songUrl: String, coverUrl: String) {
         val coverList = listOf(songUrl, coverUrl)

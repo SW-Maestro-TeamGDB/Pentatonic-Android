@@ -14,7 +14,7 @@
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
                 android:id="@+id/albumJacketImage"
                 android:layout_width="90dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:layout_height="90dp"
                 android:src="@color/cardview_dark_background" />
 

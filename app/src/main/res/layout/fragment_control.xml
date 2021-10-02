@@ -58,7 +58,7 @@
                 android:layout_toLeftOf="@+id/syncPlusButton"
                 android:layout_toRightOf="@+id/syncMinusButton"
                 android:max="100"
-                android:progress="@{viewModel.syncLevel}"
+                android:progress="@{viewModel._syncLevel}"
                 android:progressTint="@color/black" />
 
             <TextView
@@ -69,7 +69,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel.syncLevel.toString()}"
+                android:text="@{viewModel._syncLevel.toString()}"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -125,7 +125,7 @@
                 android:layout_toLeftOf="@+id/volumePlusButton"
                 android:layout_toRightOf="@+id/volumeMinusButton"
                 android:max="100"
-                android:progress="@{viewModel.volumeLevel}"
+                android:progress="@{viewModel._volumeLevel}"
                 android:progressTint="@color/black" />
 
             <TextView
@@ -136,7 +136,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel.volumeLevel.toString()}"
+                android:text="@{viewModel._volumeLevel.toString()}"
                 android:textSize="16sp" />
 
         </RelativeLayout>

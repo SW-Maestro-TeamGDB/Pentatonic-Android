@@ -200,7 +200,7 @@ class RecordProcessingActivity :
         totalDuration = player!!.duration.toFloat()
         interval = player!!.duration.toFloat().div(100)
 
-//        setPresetReverb()
+        setPresetReverb()
     }
 
     /**
@@ -249,7 +249,6 @@ class RecordProcessingActivity :
         params.width = indicatorWidth
         binding.indicator.layoutParams = params
     }
-
 
     /**
      * LARGE ROOM Reverb 이펙트 적용
