@@ -36,19 +36,31 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     val joinBandComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     fun controlVolumeLevel(amount: Int) {
-        volumeLevel.value = volumeLevel.value?.plus(amount)
+        val addedValue = volumeLevel.value?.plus(amount)
+        if (0 <= addedValue!! && addedValue <= 100) {
+            volumeLevel.value = addedValue
+        }
     }
 
     fun controlSyncLevel(amount: Int) {
-        syncLevel.value = syncLevel.value?.plus(amount)
+        val addedValue = syncLevel.value?.plus(amount)
+        if (0 <= addedValue!! && addedValue <= 100) {
+            syncLevel.value = addedValue
+        }
     }
 
     fun controlGainEffectLevel(amount: Int) {
-        gainEffectLevel.value = gainEffectLevel.value?.plus(amount)
+        val addedValue = gainEffectLevel.value?.plus(amount)
+        if (0 <= addedValue!! && addedValue <= 100) {
+            gainEffectLevel.value = addedValue
+        }
     }
 
     fun controlReverbEffectLevel(amount: Int) {
-        reverbEffectLevel.value = reverbEffectLevel.value?.plus(amount)
+        val addedValue = reverbEffectLevel.value?.plus(amount)
+        if (0 <= addedValue!! && addedValue <= 100) {
+            reverbEffectLevel.value = addedValue
+        }
     }
 
     // SeekBar 바뀔 때 호출
