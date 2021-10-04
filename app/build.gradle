@@ -163,4 +163,8 @@ dependencies {
 
     // Toast
     implementation 'com.github.GrenderG:Toasty:1.5.2'
+
+    // Audio Mixing
+    implementation 'com.github.ZeroOneZeroR:android_audio_mixer:v1.1'
+
 }

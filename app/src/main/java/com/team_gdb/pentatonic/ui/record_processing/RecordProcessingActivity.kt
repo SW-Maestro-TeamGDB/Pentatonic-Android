@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.media.audiofx.EnvironmentalReverb
 import android.media.audiofx.LoudnessEnhancer
 import android.media.audiofx.PresetReverb
+import android.os.Environment
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -23,6 +24,12 @@ import timber.log.Timber
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
+import android.widget.Toast
+import zeroonezero.android.audio_mixer.AudioMixer
+import zeroonezero.android.audio_mixer.input.AudioInput
+import zeroonezero.android.audio_mixer.input.BlankAudioInput
+import zeroonezero.android.audio_mixer.input.GeneralAudioInput
+
 
 class RecordProcessingActivity :
     BaseActivity<ActivityRecordProcessingBinding, RecordProcessingViewModel>() {
@@ -57,6 +64,8 @@ class RecordProcessingActivity :
     override fun initStartView() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+        mixAudio()
 
         binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
 
@@ -274,6 +283,74 @@ class RecordProcessingActivity :
         gain.setTargetGain(100)
         gain.enabled = true
         player?.setAuxEffectSendLevel(1.0f)
+    }
+
+    private fun mixAudio() {
+        val input1: AudioInput =
+            GeneralAudioInput("${externalCacheDir?.absolutePath}/recording.mp3")
+
+        input1.volume = 1.0f //Optional
+        input1.startTimeUs = 3000000
+
+        // It will produce a blank portion of 3 seconds between input1 and input2 if mixing type is sequential.
+        // But it will does nothing in parallel mixing.
+//        val blankInput: AudioInput = BlankAudioInput(3000000)
+//
+//        val input2: AudioInput =
+//            GeneralAudioInput("${externalCacheDir?.absolutePath}/fixyou_mr.mp3")
+
+//        input2.startTimeUs = 3000000 //Optional
+//        input2.endTimeUs = 9000000 //Optional
+//        input2.setStartOffsetUs(5000000) //Optional. It is needed to start mixing the input at a certain time.
+
+        val outputPath = "${externalCacheDir?.absolutePath}/output.mp3"
+
+        val audioMixer = AudioMixer(outputPath)
+
+        audioMixer.addDataSource(input1)
+//        audioMixer.addDataSource(blankInput)
+//        audioMixer.addDataSource(input2)
+
+        audioMixer.setSampleRate(44100) // Optional
+        audioMixer.setBitRate(128000) // Optional
+        audioMixer.setChannelCount(2) // Optional //1(mono) or 2(stereo)
+
+        // Smaller audio inputs will be encoded from start-time again if it reaches end-time
+        // It is only valid for parallel mixing
+        //audioMixer.setLoopingEnabled(true);
+
+        audioMixer.mixingType =
+            AudioMixer.MixingType.PARALLEL // or AudioMixer.MixingType.SEQUENTIAL
+
+        audioMixer.setProcessingListener(object : AudioMixer.ProcessingListener {
+            override fun onProgress(progress: Double) {
+                runOnUiThread {
+//                    progressDialog.setProgress((progress * 100).toInt())
+//                    Toast.makeText(applicationContext, "$progress", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onEnd() {
+                runOnUiThread {
+                    Toast.makeText(applicationContext, "Success!!!", Toast.LENGTH_SHORT).show()
+                    audioMixer.release()
+                }
+            }
+        })
+
+        //it is for setting up the all the things
+
+        //it is for setting up the all the things
+        audioMixer.start()
+
+        /* These getter methods must be called after calling 'start()'*/
+        //audioMixer.getOutputSampleRate();
+        //audioMixer.getOutputBitRate();
+        //audioMixer.getOutputChannelCount();
+        //audioMixer.getOutputDurationUs();
+
+        //starting real processing
+        audioMixer.processAsync()
     }
 
     /**
