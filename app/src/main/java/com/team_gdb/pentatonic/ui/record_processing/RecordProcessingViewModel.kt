@@ -23,7 +23,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     val remainTime: MutableLiveData<String> = MutableLiveData("00:00")
 
     val volumeLevel: MutableLiveData<Int> = MutableLiveData(50)
-    val syncLevel: MutableLiveData<Int> = MutableLiveData(50)
+    val syncLevel: MutableLiveData<Int> = MutableLiveData(-20)
     val gainEffectLevel: MutableLiveData<Int> = MutableLiveData(0)
     val reverbEffectLevel: MutableLiveData<Int> = MutableLiveData(0)
 
@@ -44,7 +44,7 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     fun controlSyncLevel(amount: Int) {
         val addedValue = syncLevel.value?.plus(amount)
-        if (0 <= addedValue!! && addedValue <= 100) {
+        if (-500 <= addedValue!! && addedValue <= 200) {
             syncLevel.value = addedValue
         }
     }
