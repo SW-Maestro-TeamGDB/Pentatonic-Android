@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.base
 
+import android.app.ProgressDialog
 import android.graphics.Color
 import android.graphics.Rect
 import android.os.Build

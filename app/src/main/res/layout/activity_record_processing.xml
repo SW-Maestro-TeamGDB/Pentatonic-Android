@@ -9,6 +9,20 @@
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordProcessActivity">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_below="@+id/playButton"
+            android:layout_marginTop="-16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:background="@android:color/transparent"
+            android:indeterminateOnly="true"
+            android:indeterminateTint="@color/main_regular"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="gone" />
+
         <include
             android:id="@+id/titleBar"
             layout="@layout/page_title_bar" />

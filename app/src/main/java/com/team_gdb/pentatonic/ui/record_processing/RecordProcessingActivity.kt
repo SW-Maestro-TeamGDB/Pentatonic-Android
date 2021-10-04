@@ -64,7 +64,9 @@ class RecordProcessingActivity :
     override fun initStartView() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        this.progressView = binding.progressBar
 
+        setProgressVisible(true)
         mixAudio()
 
         binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
@@ -334,6 +336,7 @@ class RecordProcessingActivity :
                 runOnUiThread {
                     Toast.makeText(applicationContext, "Success!!!", Toast.LENGTH_SHORT).show()
                     audioMixer.release()
+                    setProgressVisible(false)
                 }
             }
         })
