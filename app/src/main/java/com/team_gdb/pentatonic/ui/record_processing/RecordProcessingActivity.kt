@@ -260,13 +260,17 @@ class RecordProcessingActivity :
         reverb.preset = PresetReverb.PRESET_LARGEROOM
         reverb.enabled = true
         player?.setAuxEffectSendLevel(1.0f)
+
+        binding.effectButton.setOnClickListener {
+            reverb.enabled = !reverb.enabled
+        }
     }
 
     /**
      * Environment Reverb 이펙트 적용
      */
     private fun setEnvironmentReverb() {
-        val reverb = EnvironmentalReverb(0, 0)
+        val reverb = EnvironmentalReverb(1, 0)
         player?.attachAuxEffect(reverb.id)
         reverb.reverbLevel = -2000
         reverb.enabled = true
@@ -299,6 +303,7 @@ class RecordProcessingActivity :
      * 녹음본을 재생
      */
     private fun startPlaying() {
+        setPresetReverb()
         player?.start()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {

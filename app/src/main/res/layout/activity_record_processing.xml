@@ -9,8 +9,16 @@
         android:layout_height="match_parent"
         tools:context=".ui.record.RecordProcessActivity">
 
-        <include layout="@layout/page_title_bar"
-            android:id="@+id/titleBar"/>
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/page_title_bar" />
+
+        <Button
+            android:text="ㅋㅋ"
+            android:id="@+id/effectButton"
+            android:layout_below="@id/titleBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <rm.com.audiowave.AudioWaveView
             android:id="@+id/audioSeekBar"

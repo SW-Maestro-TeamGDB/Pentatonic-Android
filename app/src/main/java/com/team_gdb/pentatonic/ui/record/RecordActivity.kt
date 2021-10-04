@@ -2,9 +2,11 @@ package com.team_gdb.pentatonic.ui.record
 
 import android.content.Intent
 import android.media.MediaRecorder
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.custom_view.ButtonState
@@ -127,12 +129,12 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     /**
      * 녹음 버튼이 눌렸을 때 동작
      */
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun startRecoding() {
         // 녹음 시작 시 초기화
         recorder = MediaRecorder()
             .apply {
-
-                setAudioSource(MediaRecorder.AudioSource.MIC)
+                setAudioSource(MediaRecorder.AudioSource.VOICE_PERFORMANCE)
                 setOutputFormat(MediaRecorder.OutputFormat.MPEG_4) // 포멧
                 setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB) // 인코더
                 setOutputFile(recordingFilePath) // 저장 경로 (캐싱 방식으로 구현)
