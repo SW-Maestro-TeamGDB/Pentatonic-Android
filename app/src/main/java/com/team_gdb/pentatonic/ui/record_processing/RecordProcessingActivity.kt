@@ -1,9 +1,7 @@
 package com.team_gdb.pentatonic.ui.record_processing
 
 import android.content.Intent
-import android.media.AudioAttributes
 import android.media.MediaPlayer
-import android.media.audiofx.BassBoost
 import android.media.audiofx.EnvironmentalReverb
 import android.media.audiofx.LoudnessEnhancer
 import android.media.audiofx.PresetReverb
@@ -40,6 +38,9 @@ class RecordProcessingActivity :
         0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
 
     private var seekBarThread: Thread? = null
+
+    // ReverbEffect
+    private val reverbEffect = EnvironmentalReverb(1, 0)
 
     private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
         "${externalCacheDir?.absolutePath}/recording.mp3"
@@ -97,6 +98,10 @@ class RecordProcessingActivity :
         viewModel.instMergedCover.observe(this) {
             Timber.d("MR 합본 : $it")
             initPlayer(it)
+        }
+
+        viewModel.reverbEffectLevel.observe(this) {
+            reverbEffect.reverbLevel = (-8000 + (it * 100)).toShort()
         }
 
         // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
@@ -200,7 +205,6 @@ class RecordProcessingActivity :
         totalDuration = player!!.duration.toFloat()
         interval = player!!.duration.toFloat().div(100)
 
-        setPresetReverb()
     }
 
     /**
@@ -251,38 +255,12 @@ class RecordProcessingActivity :
     }
 
     /**
-     * LARGE ROOM Reverb 이펙트 적용
-     */
-    private fun setPresetReverb() {
-        val reverb = PresetReverb(1, 0)
-        player?.attachAuxEffect(reverb.id)
-        reverb.preset = PresetReverb.PRESET_LARGEROOM
-        reverb.enabled = true
-        player?.setAuxEffectSendLevel(1.0f)
-
-        binding.effectButton.setOnClickListener {
-            reverb.enabled = !reverb.enabled
-        }
-    }
-
-    /**
      * Environment Reverb 이펙트 적용
      */
     private fun setEnvironmentReverb() {
-        val reverb = EnvironmentalReverb(1, 0)
-        player?.attachAuxEffect(reverb.id)
-        reverb.reverbLevel = -2000
-        reverb.enabled = true
-        player?.setAuxEffectSendLevel(1.0f)
-    }
-
-    /**
-     * BassBoost 이펙트 적용
-     */
-    private fun setBassBoost() {
-        val bass = BassBoost(0, 0)
-        player?.attachAuxEffect(bass.id)
-        bass.enabled = true
+        player?.attachAuxEffect(reverbEffect.id)
+        reverbEffect.reverbLevel = -8000
+        reverbEffect.enabled = true
         player?.setAuxEffectSendLevel(1.0f)
     }
 
@@ -302,7 +280,7 @@ class RecordProcessingActivity :
      * 녹음본을 재생
      */
     private fun startPlaying() {
-        setPresetReverb()
+        setEnvironmentReverb()
         player?.start()
         viewModel.buttonState.postValue(ButtonState.ON_PLAYING)
         seekBarThread = Thread {

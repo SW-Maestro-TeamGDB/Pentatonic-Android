@@ -13,13 +13,6 @@
             android:id="@+id/titleBar"
             layout="@layout/page_title_bar" />
 
-        <Button
-            android:text="ㅋㅋ"
-            android:id="@+id/effectButton"
-            android:layout_below="@id/titleBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
         <rm.com.audiowave.AudioWaveView
             android:id="@+id/audioSeekBar"
             android:layout_width="match_parent"
