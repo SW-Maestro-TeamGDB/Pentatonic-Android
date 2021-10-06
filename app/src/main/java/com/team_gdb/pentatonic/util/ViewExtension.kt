@@ -2,12 +2,13 @@ package com.team_gdb.pentatonic.util
 
 import android.app.Activity
 import android.graphics.Color
-import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.EditText
-import com.jakewharton.rxbinding4.widget.textChanges
+import android.widget.SeekBar
+import com.jakewharton.rxbinding4.widget.*
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -64,4 +65,27 @@ fun EditText.setQueryDebounce(queryFunction: (String) -> Unit, clearButton: View
                 }
             )
     return searchEditTextSubscription
+}
+
+fun SeekBar.setDebounce(doNext: (Int) -> Unit): Disposable {
+    val seekBarChangeObservable = this.changes()
+    val seekBarSubscription: Disposable =
+        seekBarChangeObservable
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onNext = {
+                    doNext(it)
+                    Timber.d("syncSeekBar : ${it}")
+                },
+                onComplete = {
+                    Timber.d("SeekBar Complete!")
+                }
+            )
+
+
+    return seekBarSubscription
 }

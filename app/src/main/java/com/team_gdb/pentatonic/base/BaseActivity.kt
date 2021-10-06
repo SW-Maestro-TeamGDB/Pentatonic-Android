@@ -84,4 +84,6 @@ abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatA
         progressView?.let { it.visibility = if (visible) View.VISIBLE else View.INVISIBLE }
     }
 
+
+
 }

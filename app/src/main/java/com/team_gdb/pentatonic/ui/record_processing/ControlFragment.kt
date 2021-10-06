@@ -9,7 +9,9 @@ import android.widget.SeekBar
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentControlBinding
+import com.team_gdb.pentatonic.util.setDebounce
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class ControlFragment : BaseFragment<FragmentControlBinding, RecordProcessingViewModel>() {
     override val layoutResourceId: Int
@@ -25,40 +27,23 @@ class ControlFragment : BaseFragment<FragmentControlBinding, RecordProcessingVie
     }
 
     override fun initAfterBinding() {
-        setOnSeekBarChangeListener()
-    }
-
-    private fun setOnSeekBarChangeListener() {
-        binding.volumeProgressBar.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.setVolumeLevel(progress)
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                /* no-op */
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                /* no-op */
-            }
-        })
-
+//        addDisposable(binding.syncProgressBar.setDebounce {
+//            Timber.e("$it 받았습니다")
+//            viewModel.syncLevel.postValue(it)
+//        })
         binding.syncProgressBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                viewModel.setSyncLevel(progress)
+                Timber.d("${seekBar?.progress}")
+                seekBar?.progress = progress
             }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                /* no-op */
-            }
-
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                /* no-op */
+                Timber.d("Stop Tracking! ${seekBar?.progress}")
+                viewModel.syncLevel.value = seekBar?.progress
             }
         })
     }
-
 
 }

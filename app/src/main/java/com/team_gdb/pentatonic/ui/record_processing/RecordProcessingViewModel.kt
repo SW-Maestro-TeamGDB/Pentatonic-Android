@@ -31,6 +31,9 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     val coverFileURL: MutableLiveData<String> = MutableLiveData()
 
     val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
+
+    val audioProcessingComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
+
     val coverUploadComplete: MutableLiveData<Event<String>> = MutableLiveData()
     val createBandComplete: MutableLiveData<Event<String>> = MutableLiveData()
     val joinBandComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()

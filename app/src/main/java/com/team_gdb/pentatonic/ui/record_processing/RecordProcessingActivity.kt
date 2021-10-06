@@ -4,8 +4,6 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.media.audiofx.EnvironmentalReverb
 import android.media.audiofx.LoudnessEnhancer
-import android.media.audiofx.PresetReverb
-import android.os.Environment
 import android.widget.FrameLayout
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -18,17 +16,17 @@ import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
+import com.team_gdb.pentatonic.util.Event
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
-import android.widget.Toast
 import zeroonezero.android.audio_mixer.AudioMixer
 import zeroonezero.android.audio_mixer.input.AudioInput
-import zeroonezero.android.audio_mixer.input.BlankAudioInput
 import zeroonezero.android.audio_mixer.input.GeneralAudioInput
+import java.lang.NullPointerException
 
 
 class RecordProcessingActivity :
@@ -41,17 +39,18 @@ class RecordProcessingActivity :
     private var indicatorWidth: Int = 0
 
     private var totalDuration: Float = 0.0F  // 음악 총 재생 길이
-    private var interval: Float =
-        0.0F  // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
+    // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
+    private var interval: Float = 0.0F
 
     private var seekBarThread: Thread? = null
 
     // ReverbEffect
     private val reverbEffect = EnvironmentalReverb(1, 0)
 
-    private val recordingFilePath: String by lazy {  // 녹음본이 저장된 위치
-        "${externalCacheDir?.absolutePath}/recording.mp3"
-    }
+    // 녹음본이 저장된 위치
+    private val recordingFilePath: String by lazy { "${externalCacheDir?.absolutePath}/recording.mp3" }
+    private val processedAudioFilePath: String by lazy { "${externalCacheDir?.absolutePath}/result.mp3" }
+
 
     private val amplitudeData: ByteArray by lazy {  // 녹음본 진폭 정보 (ByteArray)
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
@@ -66,13 +65,7 @@ class RecordProcessingActivity :
         binding.lifecycleOwner = this
         this.progressView = binding.progressBar
 
-        setProgressVisible(true)
-        mixAudio()
-
         binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
-
-        // 커버 파일 업로드
-        viewModel.uploadCoverFile(recordingFilePath)
 
         Timber.d(createdCoverEntity.toString())
 
@@ -109,6 +102,20 @@ class RecordProcessingActivity :
         viewModel.instMergedCover.observe(this) {
             Timber.d("MR 합본 : $it")
             initPlayer(it)
+        }
+
+        // 사용자가 싱크 조절 값을 변경했을 때, 해당 수치에 따른 오디오 가공 실행
+        viewModel.syncLevel.observe(this) {
+            pausePlaying()
+            setProgressVisible(true)
+            doAudioProcessing(syncLevel = it.toLong())
+        }
+
+        viewModel.audioProcessingComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                // 커버 파일 업로드
+                viewModel.uploadCoverFile(processedAudioFilePath)
+            }
         }
 
         viewModel.reverbEffectLevel.observe(this) {
@@ -208,6 +215,7 @@ class RecordProcessingActivity :
             }
             setOnPreparedListener {
                 viewModel.buttonState.postValue(ButtonState.BEFORE_PLAYING)
+                setProgressVisible(false)
             }
             totalDuration = this.duration.toFloat()
             interval = this.duration.toFloat().div(100)
@@ -287,12 +295,17 @@ class RecordProcessingActivity :
         player?.setAuxEffectSendLevel(1.0f)
     }
 
-    private fun mixAudio() {
-        val input1: AudioInput =
-            GeneralAudioInput("${externalCacheDir?.absolutePath}/recording.mp3")
+    /**
+     * 입력받은 싱크 조절 레벨에 따라, 음원을 가공하는 함수
+     *
+     * @param syncLevel : 싱크를 얼마나 조절할지에 대한 수치
+     */
+    private fun doAudioProcessing(syncLevel: Long) {
+        val input: AudioInput =
+            GeneralAudioInput(recordingFilePath)
 
-        input1.volume = 1.0f //Optional
-        input1.startTimeUs = 3000000
+        input.volume = 1.0f //Optional
+        input.startTimeUs = syncLevel * 1000  // 함수의 입력값은 ms 기준이기 때문
 
         // It will produce a blank portion of 3 seconds between input1 and input2 if mixing type is sequential.
         // But it will does nothing in parallel mixing.
@@ -305,21 +318,19 @@ class RecordProcessingActivity :
 //        input2.endTimeUs = 9000000 //Optional
 //        input2.setStartOffsetUs(5000000) //Optional. It is needed to start mixing the input at a certain time.
 
-        val outputPath = "${externalCacheDir?.absolutePath}/output.mp3"
+        val audioMixer = AudioMixer(processedAudioFilePath)
 
-        val audioMixer = AudioMixer(outputPath)
-
-        audioMixer.addDataSource(input1)
+        audioMixer.addDataSource(input)
 //        audioMixer.addDataSource(blankInput)
 //        audioMixer.addDataSource(input2)
 
-        audioMixer.setSampleRate(44100) // Optional
-        audioMixer.setBitRate(128000) // Optional
-        audioMixer.setChannelCount(2) // Optional //1(mono) or 2(stereo)
+        audioMixer.setSampleRate(44100)  // Optional
+        audioMixer.setBitRate(128000)  // Optional
+        audioMixer.setChannelCount(2)  // Optional //1(mono) or 2(stereo)
 
         // Smaller audio inputs will be encoded from start-time again if it reaches end-time
         // It is only valid for parallel mixing
-        //audioMixer.setLoopingEnabled(true);
+        // audioMixer.setLoopingEnabled(true);
 
         audioMixer.mixingType =
             AudioMixer.MixingType.PARALLEL // or AudioMixer.MixingType.SEQUENTIAL
@@ -332,12 +343,12 @@ class RecordProcessingActivity :
                 }
             }
 
+            // 오디오 가공이 끝났을 때의 작업 정의
             override fun onEnd() {
                 runOnUiThread {
-                    Toast.makeText(applicationContext, "Success!!!", Toast.LENGTH_SHORT).show()
                     audioMixer.release()
-                    setProgressVisible(false)
                 }
+                viewModel.audioProcessingComplete.postValue(Event(true))
             }
         })
 
@@ -347,13 +358,19 @@ class RecordProcessingActivity :
         audioMixer.start()
 
         /* These getter methods must be called after calling 'start()'*/
-        //audioMixer.getOutputSampleRate();
-        //audioMixer.getOutputBitRate();
-        //audioMixer.getOutputChannelCount();
-        //audioMixer.getOutputDurationUs();
+        // audioMixer.getOutputSampleRate();
+        // audioMixer.getOutputBitRate();
+        // audioMixer.getOutputChannelCount();
+        // audioMixer.getOutputDurationUs();
 
-        //starting real processing
-        audioMixer.processAsync()
+        // starting real processing
+
+        try {
+            audioMixer.processAsync()
+        } catch (e: Exception) {
+            Timber.e(e)
+            viewModel.audioProcessingComplete.postValue(Event(false))
+        }
     }
 
     /**
@@ -371,7 +388,12 @@ class RecordProcessingActivity :
                     Timber.i(e)
                 }
                 runOnUiThread {
-                    binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
+                    try {
+                        binding.audioSeekBar.progress = player?.currentPosition?.div(interval)!!
+                    } catch (e: NullPointerException) {
+                        seekBarThread?.interrupt()
+                        Timber.e(e)
+                    }
                 }
             }
         }
