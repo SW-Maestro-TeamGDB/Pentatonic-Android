@@ -76,9 +76,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     // GraphQL
-    implementation "com.apollographql.apollo:apollo-runtime:2.5.2"
-    implementation "com.apollographql.apollo:apollo-android-support:2.5.2"
-    implementation 'com.apollographql.apollo:apollo-rx3-support:2.5.2'
+    implementation "com.apollographql.apollo:apollo-runtime:2.5.9"
+    implementation "com.apollographql.apollo:apollo-android-support:2.5.9"
+    implementation 'com.apollographql.apollo:apollo-rx3-support:2.5.9'
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
@@ -102,10 +102,15 @@ dependencies {
     implementation 'com.jakewharton.rxbinding4:rxbinding-viewpager2:4.0.0'
 
     // Koin (DI)
-    def koin_version = "2.2.2"
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    def koin_version = "3.1.2"
+    // Koin main features for Android (Scope,ViewModel ...)
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // Koin Java Compatibility
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    // Koin for Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    // Koin for Jetpack Compose
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
     // Glide
     def glide_version = "4.12.0"
