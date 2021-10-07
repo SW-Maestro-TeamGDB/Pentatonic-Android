@@ -9,8 +9,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import com.apollographql.apollo.api.Response
 import com.team_gdb.pentatonic.RegisterMutation
 import com.team_gdb.pentatonic.data.model.RegisterForm
-import com.team_gdb.pentatonic.type.RegeisterUserInput
 import com.team_gdb.pentatonic.type.RegisterInput
+import com.team_gdb.pentatonic.type.RegisterUserInput
 
 class UserVerifyRepositoryImpl : UserVerifyRepository {
 
@@ -44,7 +44,7 @@ class UserVerifyRepositoryImpl : UserVerifyRepository {
         apolloClient.rxMutate(
             RegisterMutation(
                 RegisterInput(
-                    RegeisterUserInput(
+                    RegisterUserInput(
                         registerForm.nickname,
                         registerForm.id,
                         registerForm.password,
