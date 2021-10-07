@@ -86,15 +86,15 @@
 
             <TextView
                 android:id="@+id/selectFreeCoverButton"
-                android:textSize="16sp"
-                android:drawablePadding="8dp"
-                android:drawableStart="@drawable/ic_left_image_add"
-                android:fontFamily="@font/nanum_regular"
-                android:layout_centerVertical="true"
-                android:text="자유곡 커버하기"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:drawableStart="@drawable/ic_left_image_add"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/nanum_regular"
+                android:text="자유곡 커버하기"
+                android:textSize="16sp" />
 
         </RelativeLayout>
 

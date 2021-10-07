@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/guideTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="자유곡 정보를 입력해주세요"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/nanum_regular"
+            android:text="곡 제목"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/freeSongNameEditText"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/nanum_light"
+            android:layout_height="60dp"
+            android:background="@drawable/custom_radius_background_white"
+            android:backgroundTint="@color/gray"
+            android:text="@={viewModel.freeSongName}"
+            android:hint="곡 제목을 입력해주세요."
+            android:inputType="text"
+            android:paddingHorizontal="8dp"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/nanum_regular"
+            android:text="아티스트 명"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/freeSongArtistEditText"
+            android:layout_width="match_parent"
+            android:fontFamily="@font/nanum_light"
+            android:layout_height="60dp"
+            android:background="@drawable/custom_radius_background_white"
+            android:backgroundTint="@color/gray"
+            android:text="@={viewModel.freeSongArtist}"
+            android:hint="아티스트 명을 입력해주세요."
+            android:inputType="text"
+            android:paddingHorizontal="8dp"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirmCoverNameButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/guideLineTextView"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/background_gradient_button"
+            android:fontFamily="@font/nanum_extrabold"
+            android:text="완료"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel" />
+    </data>
+</layout>

@@ -13,6 +13,9 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
     val selectedSong: MutableLiveData<SongEntity> = MutableLiveData()
     val songList: MutableLiveData<List<SongEntity>> = MutableLiveData()
 
+    val freeSongName: MutableLiveData<String> = MutableLiveData()
+    val freeSongArtist: MutableLiveData<String> = MutableLiveData()
+
     fun getSongList(content: String) {
         val disposable = repository.getSongQuery(content)
             .applySchedulers()
