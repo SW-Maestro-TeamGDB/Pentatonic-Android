@@ -6,6 +6,7 @@ import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.select_song.SelectSongRepository
 import com.team_gdb.pentatonic.type.GENRE_TYPE
+import com.team_gdb.pentatonic.util.combineWith
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
@@ -15,6 +16,11 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
 
     val freeSongName: MutableLiveData<String> = MutableLiveData()
     val freeSongArtist: MutableLiveData<String> = MutableLiveData()
+
+    // freeSongName 필드와 freeSongArtist 필드가 모두 비어있을 때 true 반환
+    val isValidForm = freeSongName.combineWith(freeSongArtist) { songName, artist ->
+        !songName.isNullOrBlank() && !artist.isNullOrBlank()
+    }
 
     fun getSongList(content: String) {
         val disposable = repository.getSongQuery(content)
