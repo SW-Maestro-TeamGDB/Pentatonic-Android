@@ -16,11 +16,18 @@ class RegisterFreeSongBottomSheetDialog() :
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
+        binding.lifecycleOwner = this
     }
 
     override fun initDataBinding() {
+        viewModel.isValidForm.observe(this) {
+            binding.confirmButton.isEnabled = it
+        }
     }
 
     override fun initAfterBinding() {
+        binding.confirmButton.setOnClickListener {
+            // 자유곡 정보 작성 완료 시 동작
+        }
     }
 }
