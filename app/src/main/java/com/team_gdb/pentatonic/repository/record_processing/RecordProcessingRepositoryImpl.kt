@@ -22,6 +22,16 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
             )
         )
 
+    override fun registerFreeSong(
+        coverUrl: String,
+        songName: String,
+        songArtist: String
+    ): Single<Response<UploadFreeSongMutation.Data>> = apolloClient.rxMutate(
+        UploadFreeSongMutation(
+            UploadFreeSongInput(UploadFreeSongAllInput(songName, coverUrl, songArtist))
+        )
+    )
+
     override fun uploadCoverToLibrary(
         name: String,
         coverURI: String,

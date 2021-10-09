@@ -9,6 +9,9 @@ interface RecordProcessingRepository {
     fun getMergedResult(coverList: List<String>): Single<Response<MergeCoverMutation.Data>>
 
     fun uploadCoverFile(filePath: String): Single<Response<UploadCoverFileMutation.Data>>
+
+    fun registerFreeSong(coverUrl: String, songName: String, songArtist: String): Single<Response<UploadFreeSongMutation.Data>>
+
     fun uploadCoverToLibrary(
         name: String,
         coverURI: String,

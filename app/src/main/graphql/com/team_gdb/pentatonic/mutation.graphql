@@ -112,3 +112,7 @@ mutation DeleteCommentMutation($deleteCommentInput: DeleteCommentInput!) {
 mutation FollowMutation($followInput: FollowInput!) {
     follow(input: $followInput)
 }
+
+mutation UploadFreeSongMutation($uploadFreeSongInput: UploadFreeSongInput!) {
+    uploadFreeSong(input: $uploadFreeSongInput)
+}

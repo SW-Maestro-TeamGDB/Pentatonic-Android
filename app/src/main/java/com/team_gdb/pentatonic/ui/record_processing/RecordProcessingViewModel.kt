@@ -6,12 +6,15 @@ import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
 import com.team_gdb.pentatonic.custom_view.ButtonState
+import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
 class RecordProcessingViewModel(val repository: RecordProcessingRepository) : BaseViewModel() {
+    val createdCoverEntity: MutableLiveData<CreatedCoverEntity> = MutableLiveData()
+
     val buttonState: MutableLiveData<ButtonState> =
         MutableLiveData<ButtonState>()
 
@@ -29,6 +32,8 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     val coverNameField: MutableLiveData<String> = MutableLiveData()
     val coverFileURL: MutableLiveData<String> = MutableLiveData()
+
+    val freeSongId: MutableLiveData<String> = MutableLiveData()
 
     val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
@@ -104,6 +109,10 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
         addDisposable(disposable)
     }
 
+    fun setInstMergedCover(coverUrl: String) {
+        _instMergedCover.value = coverUrl
+    }
+
     /**
      * 커버 파일(녹음본)을 업로드하는 뮤테이션
      *
@@ -125,6 +134,31 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
                             it.errors?.forEach { e ->
                                 Timber.i(e.message)
                             }
+                        }
+                    }
+                )
+        addDisposable(disposable)
+    }
+
+    /**
+     * 서버에 자유곡 정보를 등록하는 뮤테이션
+     *
+     * @param coverUrl   : 해당 자유곡의 연주본 (이게 곧 MR 역할 수행)
+     * @param songName   : 자유곡명
+     * @param songArtist : 자유곡 아티스트명
+     */
+    fun registerFreeSong(coverUrl: String, songName: String, songArtist: String) {
+        val disposable =
+            repository.registerFreeSong(coverUrl, songName, songArtist)
+                .applySchedulers()
+                .subscribeBy(
+                    onError = {
+                        Timber.i(it)
+                    },
+                    onSuccess = {
+                        if (!it.hasErrors()) {
+                            Timber.d(it.data?.uploadFreeSong)
+                            freeSongId.postValue(it.data?.uploadFreeSong)
                         }
                     }
                 )

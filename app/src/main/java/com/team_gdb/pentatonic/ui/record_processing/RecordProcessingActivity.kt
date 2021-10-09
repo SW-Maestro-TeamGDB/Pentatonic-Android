@@ -39,6 +39,7 @@ class RecordProcessingActivity :
     private var indicatorWidth: Int = 0
 
     private var totalDuration: Float = 0.0F  // 음악 총 재생 길이
+
     // 음악 총 재생 길이를 100으로 나눈 값 (AudioWave 라이브러리의 SeekBar 가 0 ~ 100 만 지원하기 때문)
     private var interval: Float = 0.0F
 
@@ -56,14 +57,17 @@ class RecordProcessingActivity :
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
     }
 
-    private val createdCoverEntity: CreatedCoverEntity by lazy {  // 사용자가 이전 페이지에서 입력한 커버 정보
-        intent.extras?.getSerializable(CREATED_COVER_ENTITY)!! as CreatedCoverEntity
-    }
+    private lateinit var createdCoverEntity: CreatedCoverEntity  // 사용자가 이전 페이지에서 입력한 커버 정보
+
 
     override fun initStartView() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         this.progressView = binding.progressBar
+
+        createdCoverEntity = intent.extras?.getSerializable(CREATED_COVER_ENTITY)!! as CreatedCoverEntity
+
+        viewModel.createdCoverEntity.value = createdCoverEntity
 
         binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
 
@@ -91,19 +95,6 @@ class RecordProcessingActivity :
             binding.playButton.updateIconWithState(it)
         }
 
-        // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
-        viewModel.coverFileURL.observe(this) {
-            if (it.isNotBlank()) {
-                viewModel.getInstMergedCover(createdCoverEntity.coverSong.songUrl, it)
-            }
-        }
-
-        // MR 과 합쳐진 녹음 결과 준비 완료
-        viewModel.instMergedCover.observe(this) {
-            Timber.d("MR 합본 : $it")
-            initPlayer(it)
-        }
-
         // 사용자가 싱크 조절 값을 변경했을 때, 해당 수치에 따른 오디오 가공 실행
         viewModel.syncLevel.observe(this) {
             pausePlaying()
@@ -116,6 +107,35 @@ class RecordProcessingActivity :
                 // 커버 파일 업로드
                 viewModel.uploadCoverFile(processedAudioFilePath)
             }
+        }
+
+        // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
+        viewModel.coverFileURL.observe(this) {
+            // 만약 업로드가 성공했고, 지정곡 커버라면 MR 이랑 합침
+            if (!(it.isNotBlank() and createdCoverEntity.coverSong.isFreeSong)) {
+                viewModel.getInstMergedCover(createdCoverEntity.coverSong.songUrl, it)
+            } else {  // 자유곡 커버일 경우 MR 합본 필요 없음 -> 그냥 녹음본만 재생
+                viewModel.setInstMergedCover(it)
+                // 그리고 해당 URL 을 기반으로 서버에 자유곡 등록
+                viewModel.registerFreeSong(
+                    coverUrl = it,
+                    songName = createdCoverEntity.coverSong.songName,
+                    songArtist = createdCoverEntity.coverSong.artistName
+                )
+            }
+        }
+
+        // 자유곡 정보 등록이 완료되면, 반환된 songId 를 현재 커버 정보 엔티티에 저장
+        viewModel.freeSongId.observe(this) {
+            if (it.isNotBlank()) {
+                createdCoverEntity.coverSong.songId = it
+            }
+        }
+
+        // MR 과 합쳐진 녹음 결과 준비 완료
+        viewModel.instMergedCover.observe(this) {
+            Timber.d("MR 합본 : $it")
+            initPlayer(it)
         }
 
         viewModel.reverbEffectLevel.observe(this) {

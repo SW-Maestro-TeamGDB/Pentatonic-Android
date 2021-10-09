@@ -17,7 +17,7 @@ import java.io.Serializable
  * @property isFreeSong         // 자유곡 여부
  */
 data class SongEntity(
-    val songId: String,
+    var songId: String,
     val songUrl: String,
     val songName: String,
     val songLevel: Int,
