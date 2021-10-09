@@ -100,52 +100,6 @@ query GetUserLibraryQuery($getUserInfoUserId: Id!) {
     }
 }
 
-# Deprecated
-query GetCoverQuery($queryBandFilter: QueryBandInput!) {
-    queryBand(filter: $queryBandFilter){
-        name
-        backGroundURI
-        bandId
-        isSoloBand
-        likeCount
-        session {
-            position
-            maxMember
-            cover {
-                songId
-                coverBy {
-                    id
-                }
-                coverURI
-                coverId
-                duration
-                name
-                date
-                position
-                song {
-                    songId
-                    name
-                    songURI
-                    songImg
-                    genre
-                    artist
-                    album
-                    weeklyChallenge
-                    duration
-                    level
-                    releaseDate
-                }
-            }
-        }
-        song {
-            name
-            artist
-        }
-        introduce
-    }
-}
-
-
 # 밴드 고유 ID 를 기반으로 밴드 커버의 정보를 가져오는 쿼리
 query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
     getBand(bandId: $getBandBandId) {
@@ -264,7 +218,7 @@ query GetSongListQuery($querySongFilter: QuerySongInput!) {
 }
 
 query GetBandListQuery($queryBandsFilter: QueryBandInput!, $queryBandsFirst: Int!, $queryBandsAfter: String) {
-    queryBands(filter: $queryBandsFilter, first: $queryBandsFirst, after: $queryBandsAfter) {
+    queryBand(filter: $queryBandsFilter, first: $queryBandsFirst, after: $queryBandsAfter) {
         bands {
             bandId
             song {

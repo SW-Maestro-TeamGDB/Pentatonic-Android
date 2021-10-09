@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.repository.record_processing
 import com.apollographql.apollo.api.FileUpload
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
+import com.apollographql.apollo.api.Input
 import com.team_gdb.pentatonic.*
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
@@ -71,7 +72,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
                     band = CreateBandAllInput(
                         name = bandName,
                         introduce = bandIntroduction,
-                        backGroundURI = backgroundUrl,
+                        backGroundURI = Input.optional(backgroundUrl),
                         songId = songId,
                         isSoloBand = isSoloBand
                     )

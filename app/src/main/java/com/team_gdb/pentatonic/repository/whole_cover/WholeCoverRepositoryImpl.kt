@@ -4,7 +4,6 @@ import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxQuery
 import com.team_gdb.pentatonic.GetBandListQuery
-import com.team_gdb.pentatonic.GetCoverQuery
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import com.team_gdb.pentatonic.type.BandFilter
 import com.team_gdb.pentatonic.type.QueryBandInput

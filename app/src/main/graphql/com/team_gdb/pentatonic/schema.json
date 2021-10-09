@@ -201,23 +201,39 @@
                   }
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "first",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": "10"
+              },
+              {
+                "name": "after",
+                "description": null,
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
               }
             ],
             "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "Band",
-                  "ofType": null
-                }
-              }
+              "kind": "OBJECT",
+              "name": "BandOutPut",
+              "ofType": null
             },
-            "isDeprecated": true,
-            "deprecationReason": "Use queryBands instead"
+            "isDeprecated": false,
+            "deprecationReason": null
           },
           {
             "name": "getBand",
@@ -282,57 +298,6 @@
                   "ofType": null
                 }
               }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "queryBands",
-            "description": null,
-            "args": [
-              {
-                "name": "filter",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "QueryBandInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "first",
-                "description": null,
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": "10"
-              },
-              {
-                "name": "after",
-                "description": null,
-                "type": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "BandOutPut",
-              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -2358,6 +2323,36 @@
             "defaultValue": null
           },
           {
+            "name": "isSoloBand",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "genre",
+            "description": null,
+            "type": {
+              "kind": "ENUM",
+              "name": "GENRE_TYPE",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "level",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "Int",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
             "name": "sort",
             "description": null,
             "type": {
@@ -2384,6 +2379,12 @@
         "inputFields": null,
         "interfaces": null,
         "enumValues": [
+          {
+            "name": "SONG_NAME",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
           {
             "name": "NAME",
             "description": null,
@@ -4228,15 +4229,11 @@
             "name": "backGroundURI",
             "description": null,
             "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "URL",
-                "ofType": null
-              }
+              "kind": "SCALAR",
+              "name": "URL",
+              "ofType": null
             },
-            "defaultValue": "\"https://cdn.wallpapersafari.com/39/72/MF1esV.jpg\""
+            "defaultValue": null
           },
           {
             "name": "songId",
