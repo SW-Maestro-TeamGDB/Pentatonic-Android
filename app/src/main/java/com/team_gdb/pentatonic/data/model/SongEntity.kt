@@ -7,14 +7,14 @@ import java.io.Serializable
  *
  * @property songId             // 곡 고유 아이디
  * @property songUrl            // 곡 MR URL
- * @property songName          // 곡 제목
+ * @property songName           // 곡 제목
+ * @property songLevel          // 곡 난이도
  * @property artistName         // 아티스트명 (가수명)
  * @property albumJacketImage   // 앨범자켓 이미지
- * @property albumName         // 앨범 제목
+ * @property albumName          // 앨범 제목
  * @property albumReleaseDate   // 앨범 발매일
  * @property songGenre          // 곡 장르
- * @property songWriter         // 작곡가
- * @property lyricist           // 작사가
+ * @property isFreeSong         // 자유곡 여부
  */
 data class SongEntity(
     val songId: String,
@@ -27,4 +27,5 @@ data class SongEntity(
     val albumReleaseDate: String,
     val songGenre: String,
     val isWeeklyChallenge: Boolean,
+    val isFreeSong: Boolean,
 ) : Serializable

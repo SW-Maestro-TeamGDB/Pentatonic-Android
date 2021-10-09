@@ -82,6 +82,7 @@ class SongHorizontalListAdapter(val itemClick: (SongEntity) -> Unit) :
                     albumName = entity.album ?: "자유곡",
                     albumReleaseDate = entity.releaseDate ?: "자유곡",
                     albumJacketImage = entity.songImg ?: "",
+                    isFreeSong = false
                 )
                 itemClick(songEntity)
             }
