@@ -14,8 +14,8 @@ class SelectSongResultContract : ActivityResultContract<Intent, SongEntity>() {
         return input
     }
 
-    override fun parseResult(resultCode: Int, intent: Intent?): SongEntity {
-        return intent?.getSerializableExtra(SELECT_SONG) as SongEntity
+    override fun parseResult(resultCode: Int, intent: Intent?): SongEntity? {
+        return intent?.getSerializableExtra(SELECT_SONG) as SongEntity?
     }
 
     companion object {

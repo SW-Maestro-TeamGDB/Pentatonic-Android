@@ -11,7 +11,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class RegisterFreeSongBottomSheetDialog() :
     BaseBottomSheetDialogFragment<DialogInputFreeSongInfoBinding, SelectSongViewModel>() {
     override val layoutResourceId: Int
-        get() = R.layout.dialog_song_confirm
+        get() = R.layout.dialog_input_free_song_info
     override val viewModel: SelectSongViewModel by sharedViewModel()
 
     override fun initStartView() {
@@ -28,6 +28,20 @@ class RegisterFreeSongBottomSheetDialog() :
     override fun initAfterBinding() {
         binding.confirmButton.setOnClickListener {
             // 자유곡 정보 작성 완료 시 동작
+            val songEntity = SongEntity(
+                songId = "",
+                songUrl = "",
+                songName = viewModel.freeSongName.value!!,
+                songLevel = 2,
+                artistName = viewModel.freeSongArtist.value!!,
+                albumJacketImage = "",
+                albumName = viewModel.freeSongName.value!!,
+                albumReleaseDate = "",
+                songGenre = "",
+                isWeeklyChallenge = false,
+                isFreeSong = true
+            )
+            viewModel.selectedSong.postValue(songEntity)
         }
     }
 }
