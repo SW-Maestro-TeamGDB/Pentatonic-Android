@@ -55,7 +55,10 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         override fun onFinish() {
             binding.startCountDownTextView.visibility = View.GONE
             binding.totalTimeTextView.visibility = View.VISIBLE
-            startPlaying()
+            // 지정곡이라면 MR 재생, 만약 자유곡이면 MR 재생 X
+            if (!createdCoverEntity.coverSong.isFreeSong) {
+                startPlaying()
+            }
             startRecoding()
         }
     }
