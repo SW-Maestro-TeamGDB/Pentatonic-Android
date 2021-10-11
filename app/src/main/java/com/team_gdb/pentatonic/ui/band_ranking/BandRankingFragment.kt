@@ -3,28 +3,27 @@ package com.team_gdb.pentatonic.ui.band_ranking
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.adapter.ranking.BandRankingListAdapter
+import com.team_gdb.pentatonic.adapter.ranking.CoverRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentBandRankingBinding
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_band_ranking
-    override val viewModel: ArtistViewModel by viewModel()
+    override val viewModel: ArtistViewModel by sharedViewModel()
 
-    private lateinit var bandRankingListAdapter: BandRankingListAdapter
+    private lateinit var coverRankingListAdapter: CoverRankingListAdapter
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
         // 밴드 랭킹 리스트 어댑터
-        bandRankingListAdapter = BandRankingListAdapter {
+        coverRankingListAdapter = CoverRankingListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(LoungeFragment.COVER_ENTITY, it)
             startActivity(intent)
@@ -32,15 +31,17 @@ class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewM
 
         binding.bandRankingList.apply {
             this.layoutManager = LinearLayoutManager(context)
-            this.adapter = bandRankingListAdapter
+            this.adapter = coverRankingListAdapter
             this.setHasFixedSize(true)
         }
     }
 
     override fun initDataBinding() {
+        viewModel.rankedCoverList.observe(this) {
+            coverRankingListAdapter.setItem(it)
+        }
     }
 
     override fun initAfterBinding() {
-        bandRankingListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
     }
 }

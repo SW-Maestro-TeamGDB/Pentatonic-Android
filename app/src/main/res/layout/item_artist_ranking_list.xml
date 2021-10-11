@@ -9,10 +9,10 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/artistProfileImage"
-            android:scaleType="centerCrop"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_centerVertical="true"
+            android:scaleType="fitXY"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
         <LinearLayout

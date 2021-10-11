@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.TestRisingCoverData
 import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
-import com.team_gdb.pentatonic.adapter.ranking.BandRankingListAdapter
+import com.team_gdb.pentatonic.adapter.ranking.CoverRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentArtistBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
@@ -28,8 +27,8 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
     override val viewModel: ArtistViewModel by viewModel()
 
     private lateinit var risingBandCoverViewPagerAdapter: RisingCoverViewPagerAdapter  // 라이징 밴드 커버 뷰페이저
-    private lateinit var bandRankingListAdapter: BandRankingListAdapter  // 밴드 랭킹 리스트
-    private lateinit var artistRankingListAdapter: ArtistRankingListAdapter  // 아티스트 랭킹 리스트
+    private lateinit var coverRankingListAdapter: CoverRankingListAdapter  // 밴드 랭킹 리스트
+    private lateinit var userRankingListAdapter: ArtistRankingListAdapter  // 아티스트 랭킹 리스트
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -59,7 +58,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
 
         // 밴드 랭킹 리스트 어댑터
-        bandRankingListAdapter = BandRankingListAdapter {
+        coverRankingListAdapter = CoverRankingListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(LoungeFragment.COVER_ENTITY, it)
             startActivity(intent)
@@ -67,12 +66,12 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
         binding.bandRankingList.apply {
             this.layoutManager = LinearLayoutManager(context)
-            this.adapter = bandRankingListAdapter
+            this.adapter = coverRankingListAdapter
             this.setHasFixedSize(true)
         }
 
         // 아티스트 랭킹 리스트 어댑터
-        artistRankingListAdapter = ArtistRankingListAdapter {
+        userRankingListAdapter = ArtistRankingListAdapter {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
             intent.putExtra(USER_ID, it)
             startActivity(intent)
@@ -80,7 +79,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
         binding.artistRankingList.apply {
             this.layoutManager = LinearLayoutManager(context)
-            this.adapter = artistRankingListAdapter
+            this.adapter = userRankingListAdapter
             this.setHasFixedSize(true)
         }
     }
@@ -91,11 +90,11 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         }
 
         viewModel.rankedCoverList.observe(this) {
-
+            coverRankingListAdapter.setItem(it)
         }
 
         viewModel.rankedUserList.observe(this) {
-
+            userRankingListAdapter.setItem(it)
         }
     }
 

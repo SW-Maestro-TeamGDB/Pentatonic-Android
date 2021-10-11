@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetRankedBandListQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemBandRankingListBinding
@@ -13,10 +14,11 @@ import com.team_gdb.pentatonic.databinding.ItemBandRankingListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class BandRankingListAdapter(val itemClick: (CoverEntity) -> Unit) :
-    RecyclerView.Adapter<BandRankingListAdapter.ViewHolder>() {
+class CoverRankingListAdapter(val itemClick: (String) -> Unit) :
+    RecyclerView.Adapter<CoverRankingListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<CoverEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<GetRankedBandListQuery.GetRankedBand> =
+        emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -43,29 +45,29 @@ class BandRankingListAdapter(val itemClick: (CoverEntity) -> Unit) :
         private val binding: ItemBandRankingListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: CoverEntity) {
+        fun bind(entity: GetRankedBandListQuery.GetRankedBand) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageURL)
+                .load(entity.backGroundURI)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.coverImage)
 
             // 커버명과 원곡명
-            binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverNameTextView.text = entity.name
+            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
 
             // 좋아요수
-            binding.coverLikeTextView.text = entity.like.toString()
+            binding.coverLikeTextView.text = entity.likeCount.toString()
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity)
+                itemClick(entity.bandId)
             }
         }
     }
 
-    fun setItem(entities: List<CoverEntity>) {
+    fun setItem(entities: List<GetRankedBandListQuery.GetRankedBand>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }

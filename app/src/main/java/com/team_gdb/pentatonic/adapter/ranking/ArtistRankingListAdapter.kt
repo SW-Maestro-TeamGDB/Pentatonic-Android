@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetRankedUserListQuery
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.UserEntity
@@ -16,10 +17,11 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class ArtistRankingListAdapter(val itemClick: (UserEntity) -> Unit) :
+class ArtistRankingListAdapter(val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<ArtistRankingListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<UserEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<GetRankedUserListQuery.GetRankedUser> =
+        emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -46,10 +48,10 @@ class ArtistRankingListAdapter(val itemClick: (UserEntity) -> Unit) :
         private val binding: ItemArtistRankingListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: UserEntity) {
+        fun bind(entity: GetRankedUserListQuery.GetRankedUser) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.profileImage)
+                .load(entity.profileURI)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(480, 272)
                 .into(binding.artistProfileImage)
@@ -59,12 +61,12 @@ class ArtistRankingListAdapter(val itemClick: (UserEntity) -> Unit) :
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity)
+                itemClick(entity.id)
             }
         }
     }
 
-    fun setItem(entities: List<UserEntity>) {
+    fun setItem(entities: List<GetRankedUserListQuery.GetRankedUser>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }
