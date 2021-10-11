@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.adapter.ranking
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -58,6 +59,13 @@ class ArtistRankingListAdapter(val itemClick: (String) -> Unit) :
 
             // 아티스트명
             binding.artistNameTextView.text = entity.username
+
+            // 아티스트 소개
+            if (entity.introduce.isNotBlank()){
+                binding.artistIntroductionTextView.text = entity.introduce
+            } else {
+                binding.artistIntroductionTextView.visibility = View.GONE
+            }
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {

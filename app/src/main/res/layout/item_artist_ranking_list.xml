@@ -32,6 +32,19 @@
                 android:layout_height="wrap_content"
                 android:text="ARTIST_NAME"/>
 
+
+            <TextView
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:id="@+id/artistIntroductionTextView"
+                android:fontFamily="@font/nanum_regular"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ARTIST_INTRODUCTION"/>
+
+
         </LinearLayout>
 
         <ImageView
