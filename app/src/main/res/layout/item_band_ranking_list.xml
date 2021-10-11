@@ -42,9 +42,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:drawableStart="@drawable/ic_left_image_like"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
                     android:text="186"
                     android:textSize="14sp" />
 
@@ -56,9 +53,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:drawablePadding="4dp"
+                app:drawableStartCompat="@drawable/ic_left_image_album"
+                android:gravity="center_vertical"
                 android:fontFamily="@font/nanum_regular"
                 android:text="BAND_COVER_ORIGINAL_SONG"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
 
         </LinearLayout>
 
