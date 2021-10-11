@@ -21,11 +21,12 @@ import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_artist
-    override val viewModel: ArtistViewModel by viewModel()
+    override val viewModel: ArtistViewModel by sharedViewModel()
 
     private lateinit var risingBandCoverViewPagerAdapter: RisingCoverViewPagerAdapter  // 라이징 밴드 커버 뷰페이저
     private lateinit var coverRankingListAdapter: CoverRankingListAdapter  // 밴드 랭킹 리스트
@@ -59,7 +60,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
 
         // 밴드 랭킹 리스트 어댑터
-        coverRankingListAdapter = CoverRankingListAdapter {
+        coverRankingListAdapter = CoverRankingListAdapter(isDetailView = false) {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(COVER_ID, it)
             startActivity(intent)
@@ -72,7 +73,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         }
 
         // 아티스트 랭킹 리스트 어댑터
-        userRankingListAdapter = ArtistRankingListAdapter {
+        userRankingListAdapter = ArtistRankingListAdapter(isDetailView = false) {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
             intent.putExtra(USER_ID, it)
             startActivity(intent)

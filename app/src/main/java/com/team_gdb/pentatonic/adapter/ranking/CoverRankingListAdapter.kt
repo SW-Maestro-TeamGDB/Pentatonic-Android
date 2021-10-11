@@ -14,7 +14,7 @@ import com.team_gdb.pentatonic.databinding.ItemBandRankingListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverRankingListAdapter(val itemClick: (String) -> Unit) :
+class CoverRankingListAdapter(val isDetailView: Boolean, val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<CoverRankingListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<GetRankedBandListQuery.GetRankedBand> =
@@ -38,7 +38,11 @@ class CoverRankingListAdapter(val itemClick: (String) -> Unit) :
     }
 
     override fun getItemCount(): Int {
-        return if (coverEntityList.size > 3) 3 else coverEntityList.size
+        return if (isDetailView) {  // 상세보기 페이지일 경우
+            coverEntityList.size
+        } else {  // 아티스트 탭에서의 리스트일 경우
+            if (coverEntityList.size > 3) 3 else coverEntityList.size
+        }
     }
 
     inner class ViewHolder(

@@ -9,6 +9,7 @@ import com.team_gdb.pentatonic.databinding.FragmentBandRankingBinding
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewModel>() {
@@ -23,9 +24,9 @@ class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewM
         binding.lifecycleOwner = this
 
         // 밴드 랭킹 리스트 어댑터
-        coverRankingListAdapter = CoverRankingListAdapter {
+        coverRankingListAdapter = CoverRankingListAdapter(isDetailView = true) {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(LoungeFragment.COVER_ENTITY, it)
+            intent.putExtra(COVER_ID, it)
             startActivity(intent)
         }
 

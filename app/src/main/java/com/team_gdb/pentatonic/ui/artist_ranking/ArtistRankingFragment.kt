@@ -23,7 +23,7 @@ class ArtistRankingFragment : BaseFragment<FragmentArtistRankingBinding, ArtistV
         binding.lifecycleOwner = this
 
         // 아티스트 랭킹 리스트 어댑터
-        userRankingListAdapter = ArtistRankingListAdapter {
+        userRankingListAdapter = ArtistRankingListAdapter(isDetailView = true){
             val intent = Intent(requireContext(), ProfileActivity::class.java)
             intent.putExtra(USER_ID, it)
             startActivity(intent)

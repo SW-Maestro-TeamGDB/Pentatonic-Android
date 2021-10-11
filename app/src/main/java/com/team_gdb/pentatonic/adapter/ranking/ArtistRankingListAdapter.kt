@@ -7,21 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetRankedUserListQuery
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.CoverEntity
-import com.team_gdb.pentatonic.data.model.UserEntity
 import com.team_gdb.pentatonic.databinding.ItemArtistRankingListBinding
-import com.team_gdb.pentatonic.databinding.ItemBandRankingListBinding
-import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
 
 /**
  * 아티스트 랭킹을 보여주기 위한 리사이클러뷰 어댑터
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class ArtistRankingListAdapter(val itemClick: (String) -> Unit) :
+class ArtistRankingListAdapter(val isDetailView: Boolean, val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<ArtistRankingListAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<GetRankedUserListQuery.GetRankedUser> =
+    private var userEntityList: List<GetRankedUserListQuery.GetRankedUser> =
         emptyList()  // Cover 아이템 리스트 정보
 
     /**
@@ -38,11 +34,15 @@ class ArtistRankingListAdapter(val itemClick: (String) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(coverEntityList[position])
+        holder.bind(userEntityList[position])
     }
 
     override fun getItemCount(): Int {
-        return if (coverEntityList.size > 3) 3 else coverEntityList.size
+        return if (isDetailView) {  // 상세보기 페이지일 경우
+            userEntityList.size
+        } else {  // 아티스트 탭에서의 리스트일 경우
+            if (userEntityList.size > 3) 3 else userEntityList.size
+        }
     }
 
     inner class ViewHolder(
@@ -75,7 +75,7 @@ class ArtistRankingListAdapter(val itemClick: (String) -> Unit) :
     }
 
     fun setItem(entities: List<GetRankedUserListQuery.GetRankedUser>) {
-        this.coverEntityList = entities
+        this.userEntityList = entities
         notifyDataSetChanged()
     }
 }
