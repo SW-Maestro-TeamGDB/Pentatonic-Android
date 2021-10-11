@@ -311,3 +311,39 @@ query GetSongInfoQuery($getSongSongId: ObjectID!) {
         }
     }
 }
+
+
+# 아티스트 (유저) 랭킹 가져오는 쿼리
+query GetRankedUserListQuery {
+    getRankedUser {
+        id
+        username
+        profileURI
+        introduce
+        prime
+        position {
+            position
+            likeCount
+        }
+        followerCount
+        followingCount
+        followingStatus
+    }
+}
+
+# 커버 (밴드, 솔로 포함) 랭킹 가져오는 쿼리
+query GetRankedBandListQuery {
+    getRankedBands {
+        bandId
+        song {
+            name
+            artist
+        }
+        introduce
+        name
+        likeCount
+        isSoloBand
+        isFreeBand
+        backGroundURI
+    }
+}
