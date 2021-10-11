@@ -89,13 +89,21 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         viewModel.currentPosition.observe(this) {
             binding.risingCoverViewPager.currentItem = it
         }
+
+        viewModel.rankedCoverList.observe(this) {
+
+        }
+
+        viewModel.rankedUserList.observe(this) {
+
+        }
     }
 
     override fun initAfterBinding() {
         risingBandCoverViewPagerAdapter.setItem(TestRisingCoverData.TEST_BAND_COVER_LIST)
 
-        bandRankingListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
-        artistRankingListAdapter.setItem(TestData.TEST_USER_LIST)
+        viewModel.getRankedCoverList()
+        viewModel.getRankedUserList()
 
         autoScrollViewPager()
 

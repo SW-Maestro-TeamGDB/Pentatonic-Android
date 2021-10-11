@@ -44,4 +44,10 @@
 
     </RelativeLayout>
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.artist.ArtistViewModel" />
+    </data>
+
 </layout>

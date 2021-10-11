@@ -7,5 +7,5 @@ import io.reactivex.rxjava3.core.Observable
 
 interface ArtistRepository {
     fun getRankedUserList(): Observable<Response<GetRankedUserListQuery.Data>>
-    fun getRankedBandList(): Observable<Response<GetRankedBandListQuery.Data>>
+    fun getRankedCoverList(): Observable<Response<GetRankedBandListQuery.Data>>
 }

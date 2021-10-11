@@ -11,6 +11,6 @@ class ArtistRepositoryImpl : ArtistRepository {
     override fun getRankedUserList(): Observable<Response<GetRankedUserListQuery.Data>> =
         apolloClient.rxQuery(GetRankedUserListQuery())
 
-    override fun getRankedBandList(): Observable<Response<GetRankedBandListQuery.Data>> =
+    override fun getRankedCoverList(): Observable<Response<GetRankedBandListQuery.Data>> =
         apolloClient.rxQuery(GetRankedBandListQuery())
 }
