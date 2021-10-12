@@ -47,13 +47,16 @@
 
         </LinearLayout>
 
-        <ImageView
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_acoustic_guitar"
-            android:layout_alignParentEnd="true"
-            android:layout_width="30dp"
+        <TextView
+            android:id="@+id/followerCountTextView"
+            android:layout_width="wrap_content"
             android:layout_height="30dp"
-            app:tint="#919191" />
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:drawablePadding="4dp"
+            android:layout_centerVertical="true"
+            app:drawableTint="@color/error_red"
+            app:drawableStartCompat="@drawable/ic_heart" />
 
     </RelativeLayout>
 

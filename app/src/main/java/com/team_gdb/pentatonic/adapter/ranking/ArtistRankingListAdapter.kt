@@ -67,6 +67,8 @@ class ArtistRankingListAdapter(val isDetailView: Boolean, val itemClick: (String
                 binding.artistIntroductionTextView.visibility = View.GONE
             }
 
+            binding.followerCountTextView.text = entity.followerCount.toString()
+
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
                 itemClick(entity.id)
