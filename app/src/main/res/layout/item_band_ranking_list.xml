@@ -42,6 +42,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:drawableStart="@drawable/ic_left_image_like"
+                    android:drawablePadding="4dp"
                     android:text="186"
                     android:textSize="14sp" />
 
