@@ -9,74 +9,80 @@
         android:layout_height="match_parent"
         tools:context=".ui.whole_cover.WholeCoverFragment">
 
+
+        <include layout="@layout/page_title_bar"
+            android:id="@+id/titleBar"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/searchViewLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_toRightOf="@+id/backButton"
+            app:cardBackgroundColor="@color/card_background_gray"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/searchView"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nanum_regular"
+                    android:hint="커버 검색"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="24dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/textClearButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="@null"
+                    android:gravity="center"
+                    android:src="@drawable/ic_baseline_cancel_24"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <RelativeLayout
-            android:layout_marginTop="56dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignTop="@+id/searchViewLayout"
-                android:layout_alignBottom="@id/searchViewLayout"
-                android:layout_marginStart="24dp"
-                android:elevation="1dp"
-                android:src="@drawable/ic_back_button"
-                app:tint="@color/black" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/genreSpinner"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/custom_radius_stroke_gray"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/searchViewLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_toRightOf="@+id/backButton"
-                app:cardBackgroundColor="@color/card_background_gray"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_toEndOf="@+id/genreSpinner"
+                android:id="@+id/levelSpinner"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/custom_radius_stroke_gray"
+                android:layout_width="100dp"
+                android:layout_height="40dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/searchView"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nanum_regular"
-                        android:hint="커버 검색"
-                        android:background="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_baseline_search_24"
-                        android:drawablePadding="8dp"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp"
-                        android:paddingEnd="8dp"
-                        android:textSize="14sp" />
-
-                    <ImageButton
-                        android:id="@+id/textClearButton"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="12dp"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:src="@drawable/ic_baseline_cancel_24"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/genreSpinner"
-            android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="24dp"
-            android:layout_width="100dp"
-            android:layout_height="40dp" />
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:layout_marginTop="16dp"

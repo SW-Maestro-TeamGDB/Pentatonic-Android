@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/drawable/custom_radius_background_regular_transparent.xml" value="0.23778501628664495" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_background_white_transparent.xml" value="0.15427631578947368" />
+        <entry key="app/src/main/res/drawable/custom_radius_sharpen_stroke_main.xml" value="0.15625" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_gray.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_main.xml" value="0.12861842105263158" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />

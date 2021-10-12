@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
@@ -56,6 +57,12 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
     }
 
     override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+
+        }
+
+        binding.titleBar.titleTextView.text = "전체 커버"
+
         binding.textClearButton.setOnClickListener {
             binding.searchView.text.clear()
         }
@@ -74,6 +81,7 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
             position: Int,
             id: Long
         ) {
+            if (position == 0) (parent?.getChildAt(0) as TextView).text = "장르"
             viewModel.genre.value = genreList[position]
         }
 
