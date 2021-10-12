@@ -57,10 +57,12 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
 
         viewModel.genre.observe(this) {
             // 장르 새로 선택할 때마다 다시 쿼리
+            viewModel.getCover()
         }
 
         viewModel.level.observe(this) {
             // 레벨 새로 선택할 때마다 다시 쿼리
+            viewModel.getCover()
         }
     }
 
