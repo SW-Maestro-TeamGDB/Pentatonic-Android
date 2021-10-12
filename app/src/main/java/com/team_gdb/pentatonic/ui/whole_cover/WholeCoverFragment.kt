@@ -1,10 +1,14 @@
 package com.team_gdb.pentatonic.ui.whole_cover
 
 import android.content.Intent
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
+import com.team_gdb.pentatonic.data.genre.GenreList.genreList
 import com.team_gdb.pentatonic.databinding.FragmentWholeCoverBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
@@ -52,9 +56,27 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
     }
 
     override fun initAfterBinding() {
-
         binding.textClearButton.setOnClickListener {
             binding.searchView.text.clear()
         }
+
+        val items = resources.getStringArray(R.array.genre_array)
+        binding.genreSpinner.adapter =
+            ArrayAdapter(requireContext(), R.layout.item_spinner, items)
+        binding.genreSpinner.onItemSelectedListener = genreSpinnerItemSelectedListener
+    }
+
+
+    private val genreSpinnerItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(
+            parent: AdapterView<*>?,
+            view: View?,
+            position: Int,
+            id: Long
+        ) {
+            viewModel.genre.value = genreList[position]
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {}
     }
 }

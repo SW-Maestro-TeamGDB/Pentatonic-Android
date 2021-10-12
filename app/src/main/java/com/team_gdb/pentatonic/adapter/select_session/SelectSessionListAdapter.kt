@@ -5,11 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
-import com.team_gdb.pentatonic.data.model.SessionData
-import com.team_gdb.pentatonic.data.model.UserEntity
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
-import timber.log.Timber
 
 
 /**
@@ -51,7 +48,7 @@ class SelectSessionListAdapter(
 
         fun bind(item: GetBandCoverInfoQuery.Session) {
             binding.sessionNameTextView.text =
-                SessionSetting.valueOf(item.position.name).sessionName
+                Session.valueOf(item.position.name).sessionName
 
             // 해당 세션을 구성하는 참가자들을 보여주기 위한 리사이클러뷰 구성
             val adapter = SelectSessionParticipantListAdapter {

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetUserInfoQuery
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemPositionRankingListBinding
 
 class PositionRankingListAdapter() :
@@ -53,12 +53,12 @@ class PositionRankingListAdapter() :
             }
 
             Glide.with(binding.root)
-                .load(SessionSetting.valueOf(entity.position).icon)
+                .load(Session.valueOf(entity.position).icon)
                 .placeholder(R.drawable.placeholder_cover_bg)
                 .override(100, 100)
                 .into(binding.positionImageView)
 
-            binding.positionNameTextView.text = SessionSetting.valueOf(entity.position).sessionName
+            binding.positionNameTextView.text = Session.valueOf(entity.position).sessionName
             binding.positionRankingTextView.text = "124위"
             binding.positionLevel.rating = 3.0F
         }

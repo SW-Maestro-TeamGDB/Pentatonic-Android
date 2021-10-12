@@ -5,7 +5,7 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.create_cover.SelectBandSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
-import com.team_gdb.pentatonic.data.session.SessionData
+import com.team_gdb.pentatonic.data.session.SessionList
 import com.team_gdb.pentatonic.databinding.DialogSelectSessionBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -39,6 +39,6 @@ class SelectSessionBottomSheetDialog() :
             setHasFixedSize(true)
         }
 
-        soloSessionListAdapter.setItem(SessionData.sessionData)
+        soloSessionListAdapter.setItem(SessionList.sessionList)
     }
 }

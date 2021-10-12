@@ -13,8 +13,7 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.data.model.CoverPlayEntity
-import com.team_gdb.pentatonic.data.session.SessionData
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
 import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
@@ -83,7 +82,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
             .into(binding.userProfileImage)
 
         Glide.with(this)
-            .load(SessionSetting.valueOf(bandInfo.session?.get(0)!!.position.rawValue).icon)
+            .load(Session.valueOf(bandInfo.session?.get(0)!!.position.rawValue).icon)
             .override(480, 272)
             .into(binding.coverSessionImageView)
 

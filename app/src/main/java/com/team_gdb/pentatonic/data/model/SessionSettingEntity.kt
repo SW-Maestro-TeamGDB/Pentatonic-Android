@@ -1,6 +1,6 @@
 package com.team_gdb.pentatonic.data.model
 
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import java.io.Serializable
 
 /**
@@ -10,6 +10,6 @@ import java.io.Serializable
  * @property count            해당 세션의 최대 참가 가능 인원 설정 정보
  */
 data class SessionSettingEntity(
-    val sessionSetting: SessionSetting,
+    val sessionSetting: Session,
     var count: Int
 ) : Serializable

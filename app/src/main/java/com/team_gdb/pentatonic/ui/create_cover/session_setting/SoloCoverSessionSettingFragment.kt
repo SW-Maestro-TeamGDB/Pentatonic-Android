@@ -6,14 +6,12 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.create_cover.SoloCoverSessionListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
-import com.team_gdb.pentatonic.data.session.SessionData
+import com.team_gdb.pentatonic.data.session.SessionList
 import com.team_gdb.pentatonic.databinding.FragmentSoloCoverSessionSettingBinding
-import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import timber.log.Timber
 
 class SoloCoverSessionSettingFragment :
     BaseFragment<FragmentSoloCoverSessionSettingBinding, CreateCoverViewModel>() {
@@ -41,7 +39,7 @@ class SoloCoverSessionSettingFragment :
     }
 
     override fun initAfterBinding() {
-        sessionListAdapter.setItem(SessionData.sessionData)
+        sessionListAdapter.setItem(SessionList.sessionList)
 
         binding.completeSessionSettingButton.setOnClickListener {
             val intent = Intent(context, RecordActivity::class.java)

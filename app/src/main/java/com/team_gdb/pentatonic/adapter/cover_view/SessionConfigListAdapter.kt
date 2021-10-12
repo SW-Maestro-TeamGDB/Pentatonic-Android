@@ -7,11 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.data.model.SessionData
-import com.team_gdb.pentatonic.data.model.UserEntity
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemSessionListBinding
-import com.team_gdb.pentatonic.ui.record.RecordGuideBottomSheetDialog
 
 
 /**
@@ -60,7 +57,7 @@ class SessionConfigListAdapter(
         fun bind(item: GetBandCoverInfoQuery.Session) {
             // 세션명과 참가 현황 (현재 참가 인원 / 최대 참가 가능 인원)
             binding.sessionNameTextView.text =
-                SessionSetting.valueOf(item.position.toString()).sessionName
+                Session.valueOf(item.position.toString()).sessionName
             binding.sessionPeopleTextView.text =
                 "${item.cover?.size}/${item.maxMember}"
 

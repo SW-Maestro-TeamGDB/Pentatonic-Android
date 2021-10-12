@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.ui.whole_cover
 
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.data.genre.Genre
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepository
@@ -11,6 +12,10 @@ import timber.log.Timber
 class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel() {
 
     val coverList: MutableLiveData<List<CoverEntity>> = MutableLiveData()
+
+    val content: MutableLiveData<String> = MutableLiveData()
+    val genre: MutableLiveData<Genre> = MutableLiveData()
+    val level: MutableLiveData<Int> = MutableLiveData()
 
     fun getCover(query: String) {
         val disposable = repository.queryBandList(query)

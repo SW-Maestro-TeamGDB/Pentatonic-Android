@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.team_gdb.pentatonic.databinding.ItemSelectSessionListBinding
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemSessionConfigListBinding
 
 /**
@@ -15,9 +14,9 @@ import com.team_gdb.pentatonic.databinding.ItemSessionConfigListBinding
  *
  * @property itemClick  아이템 클릭되었을 때, 사용자의 선택 정보를 ViewModel 에 저장하는 동작
  */
-class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
+class SoloCoverSessionListAdapter(val itemClick: (Session) -> Unit) :
     RecyclerView.Adapter<SoloCoverSessionListAdapter.ViewHolder>() {
-    var sessionSettingList: List<SessionSetting> = emptyList()  // 세션 악기 아이템 리스트 정보
+    var sessionSettingList: List<Session> = emptyList()  // 세션 악기 아이템 리스트 정보
     var selectedSession: Int = -1  // 선택된 아이템 포지션 -> 이를 활용하여 ViewHolder 바인딩 시 하이라이팅 여부 나눔
 
     override fun getItemCount(): Int {
@@ -38,7 +37,7 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
         private val binding: ItemSessionConfigListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: SessionSetting) {
+        fun bind(entity: Session) {
             // 해당 세션을 대표하는 이미지
             Glide.with(binding.root)
                 .load(entity.icon)
@@ -84,7 +83,7 @@ class SoloCoverSessionListAdapter(val itemClick: (SessionSetting) -> Unit) :
         }
     }
 
-    fun setItem(entities: List<SessionSetting>) {
+    fun setItem(entities: List<Session>) {
         this.sessionSettingList = entities
         notifyDataSetChanged()
     }

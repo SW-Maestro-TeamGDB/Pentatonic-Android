@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.data.model.LibraryEntity
-import com.team_gdb.pentatonic.data.session.SessionSetting
+import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
 import com.team_gdb.pentatonic.util.formatTo
 import com.team_gdb.pentatonic.util.toDate
@@ -56,7 +56,7 @@ class LibraryListAdapter(
             binding.coverNameTextView.text = entity.coverName
             binding.coverOriginalSongTextView.text = entity.originalSong.name
             binding.coverSessionAndDateTextView.text =
-                "${SessionSetting.valueOf(entity.coverSession).sessionName} 커버 | ${entity.coverDate.toDate().formatTo("yyyy-MM-dd HH:mm")}"
+                "${Session.valueOf(entity.coverSession).sessionName} 커버 | ${entity.coverDate.toDate().formatTo("yyyy-MM-dd HH:mm")}"
 
             Glide.with(binding.root)
                 .load(entity.imageUrl)

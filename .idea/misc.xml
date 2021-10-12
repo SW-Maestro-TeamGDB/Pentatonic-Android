@@ -44,6 +44,7 @@
         <entry key="app/src/main/res/drawable/rating_empty.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rating_fill.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_button.xml" value="0.19769736842105262" />
+        <entry key="app/src/main/res/drawable/spinner_background.xml" value="0.13256578947368422" />
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/toggle_selector_button.xml" value="0.23778501628664495" />
@@ -111,6 +112,7 @@
         <entry key="app/src/main/res/layout/item_session_participant_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_session_setting_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_song_list.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/item_spinner.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_vertical_cover_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_vertical_song_list.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/page_title_bar.xml" value="0.15986842105263158" />

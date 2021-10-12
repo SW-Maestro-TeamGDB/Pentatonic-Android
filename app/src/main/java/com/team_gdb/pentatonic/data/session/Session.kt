@@ -8,7 +8,7 @@ import com.team_gdb.pentatonic.R
  * @property sessionName   // 해당 세션 이름
  * @property icon          // 대표 이미지
  */
-enum class SessionSetting(val sessionName: String, val icon: Int) {
+enum class Session(val sessionName: String, val icon: Int) {
     VOCAL("보컬", R.drawable.ic_vocal),
     ACOUSTIC_GUITAR("어쿠스틱 기타", R.drawable.ic_acoustic_guitar),
     ELECTRIC_GUITAR("일렉트릭 기타", R.drawable.ic_electric_guitar),

@@ -71,16 +71,12 @@
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
-        <TextView
-            android:textColor="@color/black"
-            android:layout_marginTop="24dp"
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/genreSpinner"
+            android:layout_marginTop="16dp"
             android:layout_marginHorizontal="24dp"
-            android:id="@+id/wholeCoverTitleTextView"
-            android:fontFamily="@font/nanum_regular"
-            android:textSize="24sp"
-            android:text="@string/whole_cover_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:layout_marginTop="16dp"
