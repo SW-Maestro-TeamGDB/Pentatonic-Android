@@ -16,6 +16,7 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.util.setQueryDebounce
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverViewModel>() {
     override val layoutResourceId: Int
@@ -27,15 +28,14 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
     override fun onResume() {
         super.onResume()
 
-        // 초기 화면 : 모든 커버 표시
-        viewModel.getCover("")
+        viewModel.getCover()
     }
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
         addDisposable(binding.searchView.setQueryDebounce({
             // it 키워드에 사용자의 쿼리가 담기게 됨
-            viewModel.getCover(it)
+            viewModel.getCover()
         }, binding.textClearButton))
         coverListAdapter = CoverVerticalListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
@@ -53,6 +53,14 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
         viewModel.coverList.observe(this) {
             // CoverEntity List 를 리사이클러뷰에 바인딩
             coverListAdapter.setItem(it)
+        }
+
+        viewModel.genre.observe(this) {
+            // 장르 새로 선택할 때마다 다시 쿼리
+        }
+
+        viewModel.level.observe(this) {
+            // 레벨 새로 선택할 때마다 다시 쿼리
         }
     }
 

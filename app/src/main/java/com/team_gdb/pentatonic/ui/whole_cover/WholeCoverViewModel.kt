@@ -17,8 +17,8 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
     val genre: MutableLiveData<Genre> = MutableLiveData()
     val level: MutableLiveData<Int> = MutableLiveData()
 
-    fun getCover(query: String) {
-        val disposable = repository.queryBandList(query)
+    fun getCover() {
+        val disposable = repository.queryBandList(content.value ?: "")
             .applySchedulers()
             .subscribeBy(
                 onError = {
