@@ -12,6 +12,7 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.genre.GenreList.genreList
 import com.team_gdb.pentatonic.databinding.FragmentWholeCoverBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.util.setQueryDebounce
 
@@ -37,9 +38,15 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
             // it 키워드에 사용자의 쿼리가 담기게 됨
             viewModel.getCover()
         }, binding.textClearButton))
-        coverListAdapter = CoverVerticalListAdapter {
-            val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ID, it)
+        coverListAdapter = CoverVerticalListAdapter { coverId, isSoloBand ->
+            val intent = if (isSoloBand) {
+                Timber.e("솔로 ㅋㅋ")
+                Intent(requireContext(), SoloCoverActivity::class.java)
+            } else {
+                Timber.e("밴드 ㅋㅋ")
+                Intent(requireContext(), BandCoverActivity::class.java)
+            }
+            intent.putExtra(COVER_ID, coverId)
             startActivity(intent)
         }
         binding.coverList.apply {

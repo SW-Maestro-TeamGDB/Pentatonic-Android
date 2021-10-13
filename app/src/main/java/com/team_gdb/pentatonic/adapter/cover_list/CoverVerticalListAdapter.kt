@@ -14,7 +14,7 @@ import com.team_gdb.pentatonic.databinding.ItemVerticalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverVerticalListAdapter(val itemClick: (String) -> Unit) :
+class CoverVerticalListAdapter(val itemClick: (String, Boolean) -> Unit) :
     RecyclerView.Adapter<CoverVerticalListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<CoverEntity> = emptyList()  // Cover 아이템 리스트 정보
@@ -65,7 +65,8 @@ class CoverVerticalListAdapter(val itemClick: (String) -> Unit) :
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity.id)
+                val isSoloBand = entity.sessionDataList.size == 1 && entity.sessionDataList[0].sessionMaxSize == 1
+                itemClick(entity.id, isSoloBand)
             }
         }
     }
