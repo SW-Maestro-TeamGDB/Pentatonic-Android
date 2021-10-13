@@ -64,6 +64,23 @@
                             android:textSize="@dimen/page_title_text_size" />
                     </RelativeLayout>
 
+                    <TextView
+                        android:background="@drawable/custom_radius_background_gray_transparent"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:layout_above="@+id/coverNameTextView"
+                        android:id="@+id/coverSongInfoTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:textColor="@color/white"
+                        app:drawableTint="@color/white"
+                        android:drawablePadding="4dp"
+                        app:drawableStartCompat="@drawable/ic_left_image_album" />
 
                     <TextView
                         android:id="@+id/coverNameTextView"

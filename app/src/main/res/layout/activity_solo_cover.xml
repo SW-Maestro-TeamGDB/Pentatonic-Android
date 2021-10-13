@@ -15,7 +15,6 @@
             android:layout_height="350dp">
 
             <ImageView
-                android:src="@color/black"
                 android:id="@+id/coverImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -65,6 +64,24 @@
                     android:src="@drawable/ic_baseline_more_vert_24"
                     app:tint="@color/white" />
             </RelativeLayout>
+
+            <TextView
+                android:background="@drawable/custom_radius_background_gray_transparent"
+                android:id="@+id/coverSongInfoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:layout_above="@+id/coverNameTextView"
+                android:layout_marginBottom="8dp"
+                android:textSize="14sp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="24dp"
+                android:drawablePadding="4dp"
+                android:fontFamily="@font/nanum_light"
+                app:drawableStartCompat="@drawable/ic_left_image_album"
+                android:textColor="@color/white"
+                app:drawableTint="@color/white" />
 
             <TextView
                 android:id="@+id/coverNameTextView"

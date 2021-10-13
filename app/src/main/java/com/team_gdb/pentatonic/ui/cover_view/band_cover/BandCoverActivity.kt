@@ -118,6 +118,8 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
     }
 
     private fun applyBandInfoOnView(bandInfo: GetBandCoverInfoQuery.GetBand) {
+
+        binding.coverSongInfoTextView.text = "${bandInfo.song.name} - ${bandInfo.song.artist}"
         binding.coverNameTextView.text = bandInfo.name
         binding.coverIntroductionTextView.text = bandInfo.introduce
 
