@@ -14,12 +14,13 @@ import com.team_gdb.pentatonic.databinding.FragmentLoungeBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeFragmentDirections
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_lounge
-    override val viewModel: LoungeViewModel by viewModel()
+    override val viewModel: LoungeViewModel by sharedViewModel()
 
     private lateinit var bandCoverListAdapter: TrendingCoverListAdapter  // 밴드 커버 리스트
     private lateinit var soloCoverListAdapter: TrendingCoverListAdapter  // 솔로 커버 리스트

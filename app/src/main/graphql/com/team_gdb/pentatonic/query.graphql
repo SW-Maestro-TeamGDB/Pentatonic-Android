@@ -170,10 +170,12 @@ query GetTrendBandsQuery {
             artist
         }
         name
+        introduce
         backGroundURI
         isSoloBand
         session {
             position
+            maxMember
             cover {
                 name
                 position

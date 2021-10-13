@@ -84,7 +84,8 @@
 
             <com.chauthai.overscroll.RecyclerViewBouncy
                 android:layout_marginTop="16dp"
-                android:id="@+id/risingBandList"
+                android:layout_marginHorizontal="24dp"
+                android:id="@+id/soloCoverList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
