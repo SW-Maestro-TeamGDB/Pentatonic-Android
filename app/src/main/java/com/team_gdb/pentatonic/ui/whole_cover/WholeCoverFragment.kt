@@ -40,10 +40,8 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
         }, binding.textClearButton))
         coverListAdapter = CoverVerticalListAdapter { coverId, isSoloBand ->
             val intent = if (isSoloBand) {
-                Timber.e("솔로 ㅋㅋ")
                 Intent(requireContext(), SoloCoverActivity::class.java)
             } else {
-                Timber.e("밴드 ㅋㅋ")
                 Intent(requireContext(), BandCoverActivity::class.java)
             }
             intent.putExtra(COVER_ID, coverId)

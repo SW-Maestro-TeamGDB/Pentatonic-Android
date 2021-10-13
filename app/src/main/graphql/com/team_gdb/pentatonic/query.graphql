@@ -22,6 +22,7 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
             }
             name
             backGroundURI
+            introduce
             createDate
             isSoloBand
             session {

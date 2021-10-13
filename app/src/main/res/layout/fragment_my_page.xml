@@ -131,7 +131,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/goToLibraryButton"
+                android:id="@+id/libraryButton"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
                 app:cardElevation="0dp"

@@ -1,4 +1,4 @@
-package com.team_gdb.pentatonic.ui.library
+package com.team_gdb.pentatonic.ui.my_page.library
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog

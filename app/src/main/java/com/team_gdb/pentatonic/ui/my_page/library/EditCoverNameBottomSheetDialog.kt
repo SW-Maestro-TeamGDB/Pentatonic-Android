@@ -1,11 +1,8 @@
-package com.team_gdb.pentatonic.ui.library
+package com.team_gdb.pentatonic.ui.my_page.library
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
 import com.team_gdb.pentatonic.databinding.DialogEditCoverNameBinding
-import com.team_gdb.pentatonic.databinding.DialogInputCoverNameBinding
-import com.team_gdb.pentatonic.databinding.DialogRecordGuideBinding
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
 import com.team_gdb.pentatonic.util.Event
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

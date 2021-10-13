@@ -74,7 +74,7 @@
 
     <fragment
         android:id="@+id/navigation_library"
-        android:name="com.team_gdb.pentatonic.ui.library.LibraryFragment"
+        android:name="com.team_gdb.pentatonic.ui.my_page.library.LibraryFragment"
         tools:layout="@layout/fragment_library" />
 
     <fragment
@@ -129,6 +129,15 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
+        <action
+            android:id="@+id/action_navigation_my_page_to_navigation_cover_history"
+            app:destination="@id/navigation_cover_history"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
     </fragment>
 
     <fragment
@@ -180,5 +189,11 @@
         android:id="@+id/navigation_whole_cover"
         android:name="com.team_gdb.pentatonic.ui.whole_cover.WholeCoverFragment"
         tools:layout="@layout/fragment_whole_cover"/>
+
+    <fragment
+        android:id="@+id/navigation_cover_history"
+        android:name="com.team_gdb.pentatonic.ui.my_page.cover_history.CoverHistoryFragment"
+        tools:layout="@layout/fragment_cover_history" />
+
 
 </navigation>

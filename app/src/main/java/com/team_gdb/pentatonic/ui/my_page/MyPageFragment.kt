@@ -31,7 +31,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
-
         coverHistoryListAdapter = CoverHistoryListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(COVER_ID, it)
@@ -45,7 +44,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
             this.adapter = coverHistoryListAdapter
             this.setHasFixedSize(true)
         }
-
 
         likedCoverListAdapter = TrendingCoverListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
@@ -96,8 +94,12 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     override fun initAfterBinding() {
 //        likedCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
 
-        binding.goToLibraryButton.setOnClickListener {
+        binding.libraryButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_my_page_to_navigation_library)
+        }
+
+        binding.coverHistoryDetailButton.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_my_page_to_navigation_cover_history)
         }
 
         // SharedPreferences 에 저장된 사용자의 ID 를 기반으로 상세 정보 쿼리
