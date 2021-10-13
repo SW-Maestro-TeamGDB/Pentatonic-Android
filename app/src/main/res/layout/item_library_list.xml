@@ -7,7 +7,7 @@
         <androidx.cardview.widget.CardView
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginHorizontal="16dp"
             android:id="@+id/backgroundCard"
             app:cardBackgroundColor="@color/cardview_light_background"
             android:layout_width="wrap_content"
@@ -78,7 +78,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_marginHorizontal="24dp"
+            android:layout_marginHorizontal="16dp"
             android:id="@+id/foregroundCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

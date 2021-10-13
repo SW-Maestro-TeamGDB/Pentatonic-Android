@@ -73,8 +73,8 @@
 
             <TextView
                 android:textColor="@color/black"
-                android:layout_marginTop="24dp"
-                android:layout_marginHorizontal="24dp"
+                android:layout_marginVertical="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:id="@+id/bandRankingTitleTextView"
                 android:fontFamily="@font/nanum_regular"
                 android:textSize="24sp"
@@ -83,8 +83,7 @@
                 android:layout_height="wrap_content"/>
 
             <com.chauthai.overscroll.RecyclerViewBouncy
-                android:layout_marginTop="16dp"
-                android:layout_marginHorizontal="24dp"
+                android:layout_marginHorizontal="16dp"
                 android:id="@+id/soloCoverList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
