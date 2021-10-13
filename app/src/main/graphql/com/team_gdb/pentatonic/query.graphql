@@ -31,6 +31,7 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
                     songId
                 }
             }
+            viewCount
             likeCount
             likeStatus
         }
@@ -154,6 +155,7 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
                 position
             }
         }
+        viewCount
         likeCount
         likeStatus
     }
@@ -177,6 +179,7 @@ query GetTrendBandsQuery {
                 position
             }
         }
+        viewCount
         likeCount
         likeStatus
     }
@@ -239,6 +242,7 @@ query GetBandListQuery($queryBandsFilter: QueryBandInput!, $queryBandsFirst: Int
             backGroundURI
             createDate
             isSoloBand
+            viewCount
             likeCount
             likeStatus
             session {
@@ -307,6 +311,7 @@ query GetSongInfoQuery($getSongSongId: ObjectID!) {
                 }
             }
             isSoloBand
+            viewCount
             likeCount
         }
     }
@@ -342,6 +347,7 @@ query GetRankedBandListQuery {
         introduce
         name
         likeCount
+        viewCount
         isSoloBand
         isFreeBand
         backGroundURI

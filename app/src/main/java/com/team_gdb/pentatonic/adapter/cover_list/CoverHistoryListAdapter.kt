@@ -77,7 +77,7 @@ class CoverHistoryListAdapter(val itemClick: (String) -> Unit) :
 
             // 좋아요수와 조회수
             binding.coverLikeTextView.text = entity.likeCount.toString()
-            binding.coverViewTextView.text = "34"  // 백엔드단 viewCount 아직 구현 안됨
+            binding.coverViewTextView.text = entity.viewCount.toString()
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {

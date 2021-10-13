@@ -46,7 +46,7 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
                                 imageURL = it.backGroundURI,
                                 sessionDataList = sessionDataList!!,
                                 like = it.likeCount,
-                                view = 50,
+                                view = it.viewCount,
                                 originalSong = "${it.song.artist} - ${it.song.name}"
                             )
                         })

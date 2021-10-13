@@ -130,7 +130,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
             .into(binding.coverImage)
 
         binding.coverLikeTextView.text = bandInfo.likeCount.toString()
-        binding.coverViewTextView.text = "35"  // TODO : API 미구현
+        binding.coverViewTextView.text = bandInfo.viewCount.toString()
 
 
         // 사용자가 해당 밴드 방장일 경우 편집, 삭제 버튼 활성화
