@@ -23,6 +23,8 @@ class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewM
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
+        binding.titleBar.titleTextView.text = "밴드 랭킹"
+
         // 밴드 랭킹 리스트 어댑터
         coverRankingListAdapter = CoverRankingListAdapter(isDetailView = true) {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
