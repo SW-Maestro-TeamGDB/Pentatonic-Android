@@ -21,8 +21,8 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
     fun getCover() {
         val disposable = repository.queryBandList(
             content = content.value ?: "",
-            genre = genre.value ?: Genre.WHOLE,
-            level = level.value ?: 0
+            genre = genre.value,
+            level = level.value
         )
             .applySchedulers()
             .subscribeBy(

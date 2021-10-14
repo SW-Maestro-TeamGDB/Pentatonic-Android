@@ -8,8 +8,8 @@ import io.reactivex.rxjava3.core.Observable
 interface WholeCoverRepository {
     fun queryBandList(
         content: String,
-        genre: Genre,
-        level: Int,
+        genre: Genre?,
+        level: Int?,
         first: Int = 20,
         after: String = ""
     ): Observable<Response<GetBandListQuery.Data>>

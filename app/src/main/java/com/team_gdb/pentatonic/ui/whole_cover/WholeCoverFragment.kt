@@ -103,8 +103,12 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
             position: Int,
             id: Long
         ) {
-            if (position == 0) (parent?.getChildAt(0) as TextView).text = "장르"
-            viewModel.genre.value = genreList[position]
+            if (position == 0) {
+                (parent?.getChildAt(0) as TextView).text = "장르"
+                viewModel.genre.value = null
+            } else {
+                viewModel.genre.value = genreList[position]
+            }
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -121,10 +125,12 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
                 if (position == 0) {
                     text = "난이도"
                     textSize = 14F
+                    viewModel.level.value = null
+                } else {
+                    viewModel.level.value = levelList[position]
                 }
                 setTextColor(ContextCompat.getColor(context, R.color.white))
             }
-            viewModel.level.value = levelList[position]
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {}

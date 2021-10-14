@@ -15,40 +15,17 @@ import timber.log.Timber
 class WholeCoverRepositoryImpl : WholeCoverRepository {
     override fun queryBandList(
         content: String,
-        genre: Genre,
-        level: Int,
+        genre: Genre?,
+        level: Int?,
         first: Int,
         after: String
     ): Observable<Response<GetBandListQuery.Data>> {
-        val input = if (genre == Genre.WHOLE) {
-            if (level == 0) {
-                QueryBandInput(
-                    type = BandFilter.ALL,
-                    content = Input.optional(content),
-                )
-            } else {
-                QueryBandInput(
-                    type = BandFilter.ALL,
-                    content = Input.optional(content),
-                    level = Input.optional(level)
-                )
-            }
-        } else {
-            if (level == 0) {
-                QueryBandInput(
-                    type = BandFilter.ALL,
-                    content = Input.optional(content),
-                    genre = Input.optional(GENRE_TYPE.valueOf(genre.name))
-                )
-            } else {
-                QueryBandInput(
-                    type = BandFilter.ALL,
-                    content = Input.optional(content),
-                    genre = Input.optional(GENRE_TYPE.valueOf(genre.name)),
-                    level = Input.optional(level)
-                )
-            }
-        }
+        val input = QueryBandInput(
+            type = BandFilter.ALL,
+            content = Input.optional(content),
+            genre = Input.optional(genre?.let { GENRE_TYPE.valueOf(it.name) }),
+            level = Input.optional(level)
+        )
 
         return apolloClient.rxQuery(
             GetBandListQuery(
