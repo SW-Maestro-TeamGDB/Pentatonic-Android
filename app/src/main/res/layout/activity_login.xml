@@ -20,12 +20,11 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_marginTop="150dp"
-            android:layout_centerHorizontal="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/app_logo"
             android:layout_width="300dp"
-            android:layout_height="100dp"/>
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:src="@drawable/pentatonic_white" />
 
         <EditText
             android:hint="@string/login_id_hint_text"

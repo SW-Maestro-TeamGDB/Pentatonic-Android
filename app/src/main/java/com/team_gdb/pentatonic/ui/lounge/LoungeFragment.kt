@@ -100,21 +100,21 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
 
         binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
-                binding.titleTextView.setTextColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.main_regular
-                    )
-                )
-            } else {
-                binding.titleTextView.setTextColor(
-                    ContextCompat.getColor(
-                        requireContext(),
-                        R.color.white
-                    )
-                )
-            }
+//            if (Math.abs(verticalOffset) == appBarLayout.getTotalScrollRange()) {
+//                binding.titleTextView.setTextColor(
+//                    ContextCompat.getColor(
+//                        requireContext(),
+//                        R.color.main_regular
+//                    )
+//                )
+//            } else {
+//                binding.titleTextView.setTextColor(
+//                    ContextCompat.getColor(
+//                        requireContext(),
+//                        R.color.white
+//                    )
+//                )
+//            }
         })
 
 //        bandCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
