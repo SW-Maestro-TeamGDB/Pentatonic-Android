@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/custom_radius_stroke_main.xml" value="0.12861842105263158" />
         <entry key="app/src/main/res/drawable/custom_radius_stroke_white.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/custom_rating.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/custom_sharpen_stroke_main.xml" value="0.15765472312703582" />
         <entry key="app/src/main/res/drawable/gradient_bg.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/drawable/gradient_selector_button.xml" value="0.23127035830618892" />
         <entry key="app/src/main/res/drawable/ic_album_track.xml" value="0.16578947368421051" />
@@ -37,6 +38,7 @@
         <entry key="app/src/main/res/drawable/ic_left_image_comment.xml" value="0.18013029315960913" />
         <entry key="app/src/main/res/drawable/ic_left_image_delete.xml" value="0.2182410423452769" />
         <entry key="app/src/main/res/drawable/ic_left_image_like.xml" value="0.21368078175895766" />
+        <entry key="app/src/main/res/drawable/ic_left_image_star.xml" value="0.15765472312703582" />
         <entry key="app/src/main/res/drawable/ic_left_image_view.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
@@ -102,6 +104,7 @@
         <entry key="app/src/main/res/layout/item_cover_list.xml" value="0.18" />
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
+        <entry key="app/src/main/res/layout/item_level_spinner.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_library_list.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_library_select_list.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/layout/item_position_list.xml" value="0.2299342105263158" />

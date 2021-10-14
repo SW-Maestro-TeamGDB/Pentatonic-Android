@@ -13,4 +13,13 @@
         <item>발라드</item>
         <item>K-POP</item>
     </string-array>
+
+    <string-array name="level_array">
+        <item>전체</item>
+        <item>●</item>
+        <item>● ●</item>
+        <item>● ● ●</item>
+        <item>● ● ● ●</item>
+        <item>● ● ● ● ●</item>
+    </string-array>
 </resources>

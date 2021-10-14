@@ -70,7 +70,7 @@
                 android:id="@+id/selectGenreButton"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
-                android:background="@drawable/custom_radius_stroke_gray"
+                android:background="@drawable/custom_sharpen_stroke_gray"
                 android:fontFamily="@font/nanum_regular"
                 android:text="장르" />
 
@@ -81,7 +81,7 @@
                 android:fontFamily="@font/nanum_regular"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
-                android:background="@drawable/custom_radius_stroke_gray"
+                android:background="@drawable/custom_sharpen_stroke_gray"
                 android:text="난이도" />
 
             <TextView

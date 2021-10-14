@@ -68,19 +68,19 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
                 android:gravity="center_vertical"
-                android:background="@drawable/custom_radius_stroke_gray"
+                android:background="@drawable/custom_sharpen_stroke_gray"
                 android:layout_width="100dp"
                 android:layout_height="40dp" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:layout_toEndOf="@+id/genreSpinner"
                 android:id="@+id/levelSpinner"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="16dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/custom_radius_stroke_gray"
                 android:layout_width="100dp"
-                android:layout_height="40dp" />
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/genreSpinner"
+                android:background="@drawable/custom_radius_background_main_sharpen"
+                android:gravity="center_vertical" />
 
         </RelativeLayout>
 
