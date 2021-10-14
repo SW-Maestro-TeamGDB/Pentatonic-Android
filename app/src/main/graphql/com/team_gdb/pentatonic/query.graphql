@@ -356,3 +356,15 @@ query GetRankedBandListQuery {
         backGroundURI
     }
 }
+
+query GetUserListQuery($username: String!) {
+    queryUser(username: $username) {
+        id
+        username
+        profileURI
+        introduce
+        followerCount
+        followingCount
+        followingStatus
+    }
+}
