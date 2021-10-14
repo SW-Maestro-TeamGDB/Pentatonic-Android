@@ -16,10 +16,10 @@
 
     <string-array name="level_array">
         <item>전체</item>
-        <item>●</item>
-        <item>● ●</item>
-        <item>● ● ●</item>
-        <item>● ● ● ●</item>
+        <item>● ○ ○ ○ ○</item>
+        <item>● ● ○ ○ ○</item>
+        <item>● ● ● ○ ○</item>
+        <item>● ● ● ● ○</item>
         <item>● ● ● ● ●</item>
     </string-array>
 </resources>
