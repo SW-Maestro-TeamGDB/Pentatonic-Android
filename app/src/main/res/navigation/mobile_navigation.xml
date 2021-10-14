@@ -112,6 +112,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_artist_to_navigation_whole_artist"
+            app:destination="@id/navigation_whole_artist"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
 
     <fragment
@@ -195,5 +202,9 @@
         android:name="com.team_gdb.pentatonic.ui.my_page.cover_history.CoverHistoryFragment"
         tools:layout="@layout/fragment_cover_history" />
 
+    <fragment
+        android:id="@+id/navigation_whole_artist"
+        android:name="com.team_gdb.pentatonic.ui.whole_artist.WholeArtistFragment"
+        tools:layout="@layout/fragment_whole_artist" />
 
 </navigation>

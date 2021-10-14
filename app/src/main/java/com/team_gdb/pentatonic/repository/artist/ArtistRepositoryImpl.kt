@@ -4,6 +4,7 @@ import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxQuery
 import com.team_gdb.pentatonic.GetRankedBandListQuery
 import com.team_gdb.pentatonic.GetRankedUserListQuery
+import com.team_gdb.pentatonic.GetUserListQuery
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import io.reactivex.rxjava3.core.Observable
 

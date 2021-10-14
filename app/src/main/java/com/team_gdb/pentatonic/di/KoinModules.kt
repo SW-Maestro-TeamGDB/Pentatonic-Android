@@ -30,6 +30,8 @@ import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepository
 import com.team_gdb.pentatonic.repository.user_verify.UserVerifyRepositoryImpl
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepository
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepositoryImpl
+import com.team_gdb.pentatonic.repository.whole_artist.WholeArtistRepository
+import com.team_gdb.pentatonic.repository.whole_artist.WholeArtistRepositoryImpl
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepository
 import com.team_gdb.pentatonic.repository.whole_cover.WholeCoverRepositoryImpl
 import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
@@ -48,6 +50,7 @@ import com.team_gdb.pentatonic.ui.song_detail.SongDetailViewModel
 import com.team_gdb.pentatonic.ui.studio.StudioViewModel
 import com.team_gdb.pentatonic.ui.user_verify.UserVerifyViewModel
 import com.team_gdb.pentatonic.ui.weekly_challenge.WeeklyChallengeViewModel
+import com.team_gdb.pentatonic.ui.whole_artist.WholeArtistViewModel
 import com.team_gdb.pentatonic.ui.whole_cover.WholeCoverViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -111,6 +114,10 @@ val viewModelModule = module {
     }
 
     viewModel {
+        WholeArtistViewModel(get())
+    }
+
+    viewModel {
         CoverPlayingViewModel(get())
     }
 }
@@ -148,6 +155,10 @@ val repositoryModule = module {
     }
     single<WholeCoverRepository> {
         WholeCoverRepositoryImpl()
+    }
+
+    single<WholeArtistRepository> {
+        WholeArtistRepositoryImpl()
     }
 
     single<CoverViewRepository> {

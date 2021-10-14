@@ -10,67 +10,9 @@
         android:orientation="vertical"
         tools:context=".ui.band_ranking.ArtistRankingFragment">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp">
-
-            <ImageView
-                android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignTop="@+id/searchViewLayout"
-                android:layout_alignBottom="@id/searchViewLayout"
-                android:layout_marginStart="24dp"
-                android:elevation="1dp"
-                android:src="@drawable/ic_back_button"
-                app:tint="@color/black" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/searchViewLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="24dp"
-                android:layout_toRightOf="@+id/backButton"
-                app:cardBackgroundColor="@color/card_background_gray"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/searchView"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:drawableStart="@drawable/ic_baseline_search_24"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nanum_regular"
-                        android:gravity="center_vertical"
-                        android:hint="아티스트 검색"
-                        android:paddingHorizontal="16dp"
-                        android:paddingEnd="8dp"
-                        android:textSize="14sp" />
-
-                    <ImageButton
-                        android:id="@+id/textClearButton"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="12dp"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:src="@drawable/ic_baseline_cancel_24"
-                        android:visibility="gone" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </RelativeLayout>
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/page_title_bar"/>
 
         <TextView
             android:id="@+id/artistRankingTitleTextView"

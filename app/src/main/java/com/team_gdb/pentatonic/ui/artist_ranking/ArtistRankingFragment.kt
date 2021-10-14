@@ -43,5 +43,6 @@ class ArtistRankingFragment : BaseFragment<FragmentArtistRankingBinding, ArtistV
     }
 
     override fun initAfterBinding() {
+        binding.titleBar.titleTextView.text = "아티스트 랭킹"
     }
 }

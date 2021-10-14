@@ -6,7 +6,6 @@ import androidx.lifecycle.whenResumed
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.TestRisingCoverData
 import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
@@ -117,6 +116,12 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         binding.artistRankingDetailButton.setOnClickListener {
             findNavController().navigate(
                 R.id.action_navigation_artist_to_navigation_artist_ranking
+            )
+        }
+
+        binding.wholeArtistButton.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_navigation_artist_to_navigation_whole_artist
             )
         }
     }
