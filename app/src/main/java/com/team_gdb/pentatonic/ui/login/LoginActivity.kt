@@ -19,6 +19,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun initStartView() {
         binding.viewModel = this.viewModel
 
+        setTheme(R.style.Theme_Pentatonic)
+
         Timber.d("JWT Token ${BaseApplication.prefs.token}")
         if (!BaseApplication.prefs.token.isNullOrBlank()) {  // JWT Token 로컬에 저장되어있다면 자동 로그인
             Timber.d("JWT Token Stored : ${BaseApplication.prefs.token}")

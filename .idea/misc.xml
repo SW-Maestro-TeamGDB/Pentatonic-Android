@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.275" />
         <entry key="app/src/main/res/drawable-v24/custom_radius_background_dark_sharpen.xml" value="0.17434210526315788" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13651315789473684" />
         <entry key="app/src/main/res/drawable/add_button.xml" value="0.13585526315789473" />
         <entry key="app/src/main/res/drawable/background_gradient_button.xml" value="0.21335504885993486" />
         <entry key="app/src/main/res/drawable/background_gradient_text.xml" value="0.14539473684210527" />
@@ -33,6 +34,8 @@
         <entry key="app/src/main/res/drawable/ic_baseline_thumb_up_24.xml" value="0.23778501628664495" />
         <entry key="app/src/main/res/drawable/ic_drum.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_electric_guitar.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.12434210526315789" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.12434210526315789" />
         <entry key="app/src/main/res/drawable/ic_left_image_add.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/drawable/ic_left_image_album.xml" value="0.1506578947368421" />
         <entry key="app/src/main/res/drawable/ic_left_image_comment.xml" value="0.18013029315960913" />
@@ -48,6 +51,7 @@
         <entry key="app/src/main/res/drawable/rating_fill.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/selector_button.xml" value="0.19769736842105262" />
         <entry key="app/src/main/res/drawable/spinner_background.xml" value="0.13256578947368422" />
+        <entry key="app/src/main/res/drawable/splash.xml" value="0.12434210526315789" />
         <entry key="app/src/main/res/drawable/tab_bg.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/tab_bg_gray.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/toggle_selector_button.xml" value="0.23778501628664495" />
@@ -126,6 +130,7 @@
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/menu/comment_menu.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14736842105263157" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.12434210526315789" />
       </map>
     </option>
   </component>

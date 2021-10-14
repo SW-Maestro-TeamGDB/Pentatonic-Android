@@ -56,4 +56,8 @@
         <item name="fontFamily">@font/nanum_extrabold</item>
     </style>
 
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
 </resources>
