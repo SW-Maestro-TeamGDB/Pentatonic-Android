@@ -24,8 +24,8 @@ class ControlFragment : BaseFragment<FragmentControlBinding, RecordProcessingVie
     }
 
     override fun initDataBinding() {
-        viewModel.createdCoverEntity.observe(this) {
-            if (it.coverSong.isFreeSong) {
+        viewModel.createdRecordEntity.observe(this) {
+            if (it.recordSong.isFreeSong) {
                 binding.syncControlTitleText.visibility = View.GONE
                 binding.syncControlLayout.visibility = View.GONE
             }

@@ -8,7 +8,7 @@ import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.util.Event
 
 
-class CreateRecordViewModel() : BaseViewModel() {
+class CreateRecordViewModel : BaseViewModel() {
     // 녹음 기본 정보를 담음
     val recordName: MutableLiveData<String> = MutableLiveData()
     val recordOriginalSong: MutableLiveData<SongEntity> = MutableLiveData()
@@ -32,4 +32,19 @@ class CreateRecordViewModel() : BaseViewModel() {
             coverSession = coverSessionConfig.value!!,
             coverRecord = null
         )
+
+
+    /**
+     * 커버 제목이 없거나, 커버 곡을 선택하지 않은 경우 Event(false) 지정
+     */
+    fun checkBasicInfoValidation() {
+        when {
+            this.recordName.value.isNullOrBlank() || this.recordOriginalSong.value == null -> {
+                recordBasicInfoValidationEvent.value = Event(false)  // Validation False
+            }
+            else -> {
+                recordBasicInfoValidationEvent.value = Event(true)  // Validation True
+            }
+        }
+    }
 }

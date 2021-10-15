@@ -33,7 +33,7 @@
                     android:backgroundTint="@color/card_background_gray"
                     android:fontFamily="@font/nanum_extrabold"
                     android:maxEms="1"
-                    android:text="@={viewModel.coverName}"
+                    android:text="@={viewModel.recordName}"
                     android:maxLines="1"
                     android:textSize="14sp"
                     android:paddingHorizontal="16dp"
@@ -135,7 +135,6 @@
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
 
-
                     </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -146,12 +145,10 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-
-
             </LinearLayout>
 
-
         </com.xw.repo.widget.BounceScrollView>
+
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -172,6 +169,6 @@
     <data>
         <variable
             name="viewModel"
-            type="com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel" />
+            type="com.team_gdb.pentatonic.ui.create_record.CreateRecordViewModel" />
     </data>
 </layout>

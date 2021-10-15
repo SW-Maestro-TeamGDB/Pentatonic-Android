@@ -9,12 +9,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
-import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.custom_view.ButtonState
-import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
+import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
+import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import com.team_gdb.pentatonic.util.Event
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -57,7 +56,7 @@ class RecordProcessingActivity :
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
     }
 
-    private lateinit var createdCoverEntity: CreatedCoverEntity  // 사용자가 이전 페이지에서 입력한 커버 정보
+    private lateinit var createdRecordEntity: CreatedRecordEntity  // 사용자가 이전 페이지에서 입력한 커버 정보
 
 
     override fun initStartView() {
@@ -65,13 +64,13 @@ class RecordProcessingActivity :
         binding.lifecycleOwner = this
         this.progressView = binding.progressBar
 
-        createdCoverEntity = intent.extras?.getSerializable(CREATED_COVER_ENTITY)!! as CreatedCoverEntity
+        createdRecordEntity = intent.extras?.getSerializable(CREATED_COVER_ENTITY)!! as CreatedRecordEntity
 
-        viewModel.createdCoverEntity.value = createdCoverEntity
+        viewModel.createdRecordEntity.value = createdRecordEntity
 
         binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
 
-        Timber.d(createdCoverEntity.toString())
+        Timber.d(createdRecordEntity.toString())
 
         binding.titleBar.titleTextView.text = "다듬기"
 
@@ -112,15 +111,15 @@ class RecordProcessingActivity :
         // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
         viewModel.coverFileURL.observe(this) {
             // 만약 업로드가 성공했고, 지정곡 커버라면 MR 이랑 합침
-            if (!(it.isNotBlank() and createdCoverEntity.coverSong.isFreeSong)) {
-                viewModel.getInstMergedCover(createdCoverEntity.coverSong.songUrl, it)
+            if (!(it.isNotBlank() and createdRecordEntity.recordSong.isFreeSong)) {
+                viewModel.getInstMergedCover(createdRecordEntity.recordSong.songUrl, it)
             } else {  // 자유곡 커버일 경우 MR 합본 필요 없음 -> 그냥 녹음본만 재생
                 viewModel.setInstMergedCover(it)
                 // 그리고 해당 URL 을 기반으로 서버에 자유곡 등록
                 viewModel.registerFreeSong(
                     coverUrl = it,
-                    songName = createdCoverEntity.coverSong.songName,
-                    songArtist = createdCoverEntity.coverSong.artistName
+                    songName = createdRecordEntity.recordSong.songName,
+                    songArtist = createdRecordEntity.recordSong.artistName
                 )
             }
         }
@@ -128,7 +127,7 @@ class RecordProcessingActivity :
         // 자유곡 정보 등록이 완료되면, 반환된 songId 를 현재 커버 정보 엔티티에 저장
         viewModel.freeSongId.observe(this) {
             if (it.isNotBlank()) {
-                createdCoverEntity.coverSong.songId = it
+                createdRecordEntity.recordSong.songId = it
             }
         }
 
@@ -142,54 +141,48 @@ class RecordProcessingActivity :
             reverbEffect.reverbLevel = (-8000 + (it * 100)).toShort()
         }
 
-        // 커버 제목 입력이 완료되면, 커버 파일 업로드 뮤테이션 실행
-        viewModel.coverNameInputComplete.observe(this) {
-            if (it.getContentIfNotHandled() == true) {
-                // 커버 정보 라이브러리에 업로드
-                viewModel.uploadCoverToLibrary(
-                    viewModel.coverNameField.value.toString(),
-                    viewModel.coverFileURL.value!!,
-                    createdCoverEntity.coverSong.songId,
-                    createdCoverEntity.coverSessionConfig[0].sessionSetting.name
-                )
-            }
-        }
 
         // 라이브러리 커버 업로드가 완료됐을 때
         viewModel.coverUploadComplete.observe(this) {
             if (!it.getContentIfNotHandled().isNullOrBlank()) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
-                viewModel.createBand(
-                    sessionConfig = createdCoverEntity.coverSessionConfig,
-                    bandName = createdCoverEntity.coverName,
-                    bandIntroduction = createdCoverEntity.coverIntroduction ?: "",
-                    backgroundUrl = createdCoverEntity.backgroundImg,
-                    songId = createdCoverEntity.coverSong.songId
-                )
-            }
-        }
 
-        viewModel.createBandComplete.observe(this) {
-            if (!it.getContentIfNotHandled().isNullOrBlank()) {
-                Timber.d("createBand() Complete!")
-                viewModel.joinBand(
-                    sessionName = createdCoverEntity.coverSessionConfig[0].sessionSetting.name,
-                    bandId = it.peekContent(),
-                    coverId = viewModel.coverUploadComplete.value!!.peekContent()
-                )
-            }
-        }
-
-        viewModel.joinBandComplete.observe(this) {
-            if (it.getContentIfNotHandled() == true) {
-                // 밴드 생성 및 참여 완료 시 Alert 애니메이션 실행
-                val intent = Intent(this, BandCoverActivity::class.java)
-                intent.putExtra(CREATE_COVER, "CREATE_COVER")
-                intent.putExtra(COVER_ID, viewModel.createBandComplete.value!!.peekContent())
-                finish()
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+
+                finish()
+//                viewModel.createBand(
+//                    sessionConfig = createdRecordEntity.coverSessionConfig,
+//                    bandName = createdRecordEntity.coverName,
+//                    bandIntroduction = createdRecordEntity.coverIntroduction ?: "",
+//                    backgroundUrl = createdRecordEntity.backgroundImg,
+//                    songId = createdRecordEntity.coverSong.songId
+//                )
+                // TODO: 로직 끝
             }
         }
+
+//        viewModel.createBandComplete.observe(this) {
+//            if (!it.getContentIfNotHandled().isNullOrBlank()) {
+//                Timber.d("createBand() Complete!")
+//                viewModel.joinBand(
+//                    sessionName = createdRecordEntity.coverSessionConfig[0].sessionSetting.name,
+//                    bandId = it.peekContent(),
+//                    coverId = viewModel.coverUploadComplete.value!!.peekContent()
+//                )
+//            }
+//        }
+
+//        viewModel.joinBandComplete.observe(this) {
+//            if (it.getContentIfNotHandled() == true) {
+//                // 밴드 생성 및 참여 완료 시 Alert 애니메이션 실행
+//                val intent = Intent(this, BandCoverActivity::class.java)
+//                intent.putExtra(CREATE_COVER, "CREATE_COVER")
+//                intent.putExtra(COVER_ID, viewModel.createBandComplete.value!!.peekContent())
+//                finish()
+//                startActivity(intent)
+//            }
+//        }
     }
 
     override fun initAfterBinding() {
@@ -219,10 +212,14 @@ class RecordProcessingActivity :
             }
         }
 
-        // 완료 버튼 눌렀을 때, 커버 제목 정보를 입력받도록 함
+        // 완료 버튼 눌렀을 때 녹음본을 라이브러리에 업로드
         binding.completeButton.setOnClickListener {
-            val bottomSheetDialog = InputCoverNameBottomSheetDialog()
-            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+            viewModel.uploadCoverToLibrary(
+                createdRecordEntity.recordName,
+                viewModel.coverFileURL.value!!,
+                createdRecordEntity.recordSong.songId,
+                createdRecordEntity.coverSession.name
+            )
         }
     }
 

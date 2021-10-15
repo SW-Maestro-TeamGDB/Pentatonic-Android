@@ -7,7 +7,6 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateRecordBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicRecordInfoFormFragment
-import com.team_gdb.pentatonic.ui.create_cover.session_setting.SoloCoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,7 +22,7 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
     override val viewModel: CreateRecordViewModel by viewModel()
 
     private val basicInfoFormFragment: Fragment = BasicRecordInfoFormFragment()
-    private val coverSessionSettingFragment: Fragment = SoloCoverSessionSettingFragment()
+    private val coverSessionSettingFragment: Fragment = CoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
     override fun initStartView() {

@@ -8,7 +8,7 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicRecordInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.BandCoverSessionSettingFragment
-import com.team_gdb.pentatonic.ui.create_cover.session_setting.SoloCoverSessionSettingFragment
+import com.team_gdb.pentatonic.ui.create_record.CoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.record.RecordActivity
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.BAND_COVER
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.COVER_MODE
@@ -28,7 +28,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
 
     private val basicInfoFormFragment: Fragment = BasicRecordInfoFormFragment()
     private val bandCoverSessionSettingFragment: Fragment = BandCoverSessionSettingFragment()
-    private val soloCoverSessionSettingFragment: Fragment = SoloCoverSessionSettingFragment()
+    private val soloCoverSessionSettingFragment: Fragment = CoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
     // 밴드 커버 / 솔로 커버 구분을 위한 모드 변수

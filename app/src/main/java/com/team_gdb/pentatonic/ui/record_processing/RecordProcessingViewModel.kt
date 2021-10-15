@@ -7,13 +7,14 @@ import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepository
 import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
+import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
 import com.team_gdb.pentatonic.data.model.SessionSettingEntity
 import com.team_gdb.pentatonic.util.Event
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
 class RecordProcessingViewModel(val repository: RecordProcessingRepository) : BaseViewModel() {
-    val createdCoverEntity: MutableLiveData<CreatedCoverEntity> = MutableLiveData()
+    val createdRecordEntity: MutableLiveData<CreatedRecordEntity> = MutableLiveData()
 
     val buttonState: MutableLiveData<ButtonState> =
         MutableLiveData<ButtonState>()
@@ -35,7 +36,6 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     val freeSongId: MutableLiveData<String> = MutableLiveData()
 
-    val coverNameInputComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     val audioProcessingComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 

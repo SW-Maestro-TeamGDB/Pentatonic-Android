@@ -11,6 +11,7 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
+import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
@@ -37,12 +38,12 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
     }
     private var recorder: MediaRecorder? = null  // MediaRecorder 사용하지 않을 때는 메모리 해제
 
-    private val createdCoverEntity: CreatedCoverEntity by lazy {
-        intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedCoverEntity
+    private val createdCoverEntity: CreatedRecordEntity by lazy {
+        intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedRecordEntity
     }
 
     private val mrFilePath: String by lazy {  // MR 스트리밍 URL
-        createdCoverEntity.coverSong.songUrl
+        createdCoverEntity.recordSong.songUrl
     }
 
     // 카운트 후 녹음 시작을 위한 CountDownTimer (3초)
@@ -56,7 +57,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
             binding.startCountDownTextView.visibility = View.GONE
             binding.totalTimeTextView.visibility = View.VISIBLE
             // 지정곡이라면 MR 재생, 만약 자유곡이면 MR 재생 X
-            if (!createdCoverEntity.coverSong.isFreeSong) {
+            if (!createdCoverEntity.recordSong.isFreeSong) {
                 startPlaying()
             }
             startRecoding()

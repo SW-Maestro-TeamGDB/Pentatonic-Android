@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.FragmentBasicRecordInfoFormBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordViewModel
 import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
@@ -30,10 +31,10 @@ import java.io.OutputStream
 import kotlin.random.Random
 
 
-class BasicRecordInfoFormFragment : BaseFragment<FragmentBasicRecordInfoFormBinding, CreateCoverViewModel>() {
+class BasicRecordInfoFormFragment : BaseFragment<FragmentBasicRecordInfoFormBinding, CreateRecordViewModel>() {
     override val layoutResourceId: Int
         get() = R.layout.fragment_basic_record_info_form
-    override val viewModel: CreateCoverViewModel by sharedViewModel()
+    override val viewModel: CreateRecordViewModel by sharedViewModel()
 
     /**
      * SelectSongActivity 에서 선택한 곡에 대한 정보가 콜백 형태로 담기게 됨
@@ -41,7 +42,7 @@ class BasicRecordInfoFormFragment : BaseFragment<FragmentBasicRecordInfoFormBind
     private val selectSongActivityLauncher =
         registerForActivityResult(SelectSongResultContract()) {
             if (it is SongEntity) {
-                viewModel.coverSong.postValue(it)
+                viewModel.recordOriginalSong.postValue(it)
             }
         }
 
@@ -50,7 +51,7 @@ class BasicRecordInfoFormFragment : BaseFragment<FragmentBasicRecordInfoFormBind
     }
 
     override fun initDataBinding() {
-        viewModel.coverSong.observe(this) {
+        viewModel.recordOriginalSong.observe(this) {
             if (it is SongEntity) {
                 binding.beforeSelectSongTextView.visibility = View.GONE
                 Glide.with(binding.root)
@@ -65,13 +66,13 @@ class BasicRecordInfoFormFragment : BaseFragment<FragmentBasicRecordInfoFormBind
                 binding.selectedSongArtistTextView.text = it.artistName
             }
         }
-        viewModel.coverBasicInfoValidationEvent.observe(this) {
+        viewModel.recordBasicInfoValidationEvent.observe(this) {
             // Basic Information Form Validation 성립하지 않는 경우
             if (!it.peekContent()) {
-                if (viewModel.coverName.value.isNullOrBlank()) {
+                if (viewModel.recordName.value.isNullOrBlank()) {
                     binding.coverNameEditText.error = "필수 항목입니다"
                 }
-                if (viewModel.coverSong.value == null) {
+                if (viewModel.recordOriginalSong.value == null) {
                     binding.selectSongTitleTextView.setTextColor(
                         ContextCompat.getColor(requireContext(), R.color.red)
                     )
