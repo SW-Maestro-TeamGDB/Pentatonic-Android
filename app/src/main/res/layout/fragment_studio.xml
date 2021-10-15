@@ -185,7 +185,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/wholeArtistButton"
+                    android:id="@+id/createRecordButton"
                     android:layout_marginBottom="@dimen/menu_title_margin_bottom"
                     android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="16dp"
@@ -214,7 +214,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:fontFamily="@font/nanum_extrabold"
-                            android:text="커버 녹음하기"
+                            android:text="녹음하기"
                             android:drawablePadding="8dp"
                             android:textColor="@color/white"
                             android:textSize="24sp"

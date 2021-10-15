@@ -14,6 +14,7 @@ import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailActivity
 import kotlinx.coroutines.delay
@@ -97,6 +98,11 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             val intent = Intent(activity, CreateCoverActivity::class.java).apply {
                 putExtra(COVER_MODE, BAND_COVER)
             }
+            startActivity(intent)
+        }
+
+        binding.createRecordButton.setOnClickListener {
+            val intent = Intent(activity, CreateRecordActivity::class.java)
             startActivity(intent)
         }
 

@@ -24,7 +24,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel" />
+            type="com.team_gdb.pentatonic.ui.create_record.CreateRecordViewModel" />
     </data>
 
 </layout>

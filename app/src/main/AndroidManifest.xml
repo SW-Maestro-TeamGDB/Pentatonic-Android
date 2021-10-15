@@ -33,6 +33,7 @@
         <activity android:name="com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
         <activity android:name=".ui.select_song.SelectSongActivity"/>
+        <activity android:name=".ui.create_record.CreateRecordActivity"/>
         <activity
             android:name=".ui.login.LoginActivity"
             android:theme="@style/SplashTheme"

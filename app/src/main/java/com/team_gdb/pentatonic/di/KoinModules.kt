@@ -38,6 +38,7 @@ import com.team_gdb.pentatonic.ui.artist.ArtistViewModel
 import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayingViewModel
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordViewModel
 import com.team_gdb.pentatonic.ui.login.LoginViewModel
 import com.team_gdb.pentatonic.ui.lounge.LoungeViewModel
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
@@ -100,7 +101,9 @@ val viewModelModule = module {
     viewModel {
         CreateCoverViewModel(get())
     }
-
+    viewModel {
+        CreateRecordViewModel()
+    }
     viewModel {
         SelectSongViewModel(get())
     }
