@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        tools:context=".ui.create_cover.session_setting.CoverSessionSettingFragment">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="48dp">
+
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:text="@string/solo_cover_session_setting_title_text"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+
+                <com.chauthai.overscroll.RecyclerViewBouncy
+                    android:id="@+id/sessionList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="56dp"
+                    android:overScrollMode="never" />
+
+            </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/completeSessionSettingButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/gradient_selector_button"
+            android:enabled="false"
+            android:fontFamily="@font/nanum_extrabold"
+            android:gravity="center"
+            android:text="완료하기"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel" />
+    </data>
+
+</layout>

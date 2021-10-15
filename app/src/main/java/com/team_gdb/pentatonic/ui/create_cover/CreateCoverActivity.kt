@@ -8,7 +8,7 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicCoverInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.BandCoverSessionSettingFragment
-import com.team_gdb.pentatonic.ui.create_record.CoverSessionSettingFragment
+import com.team_gdb.pentatonic.ui.create_cover.session_setting.SoloCoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.select_library.SelectLibraryActivity
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.BAND_COVER
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.COVER_MODE
@@ -28,7 +28,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
 
     private val basicInfoFormFragment: Fragment = BasicCoverInfoFormFragment()
     private val bandCoverSessionSettingFragment: Fragment = BandCoverSessionSettingFragment()
-    private val soloCoverSessionSettingFragment: Fragment = CoverSessionSettingFragment()
+    private val soloCoverSessionSettingFragment: Fragment = SoloCoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
     // 밴드 커버 / 솔로 커버 구분을 위한 모드 변수
@@ -68,8 +68,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
                 val intent = Intent(this, SelectLibraryActivity::class.java).apply {
                     putExtra(CREATED_COVER_ENTITY, viewModel.createdCoverEntity)
                 }
-                finish()
-                startActivity(intent)
+                startActivity(intent)  // 커버 기본 정보 채워진 객체 전달
             }
         }
     }
