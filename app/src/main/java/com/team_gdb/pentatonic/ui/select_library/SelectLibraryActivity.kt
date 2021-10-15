@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.select_library
 
+import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
@@ -7,7 +8,10 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivitySelectLibraryBinding
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
+import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity.Companion.CREATE_COVER
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -56,7 +60,30 @@ class SelectLibraryActivity : BaseActivity<ActivitySelectLibraryBinding, SelectL
         }
 
         viewModel.selectedUserCoverID.observe(this) {
-            binding.librarySelectCompleteButton.isEnabled = !it.isNullOrEmpty()  // 선택된 라이브러리가 있다면 버튼 활성화
+            binding.librarySelectCompleteButton.isEnabled =
+                !it.isNullOrEmpty()  // 선택된 라이브러리가 있다면 버튼 활성화
+        }
+
+        viewModel.createBandComplete.observe(this) {
+            if (!it.getContentIfNotHandled().isNullOrBlank()) {
+                Timber.d("createBand() Complete!")
+                viewModel.joinBand(
+                    sessionName = createdCoverEntity.coverSessionConfig[0].sessionSetting.name,
+                    bandId = it.peekContent(),
+                    coverId = viewModel.selectedUserCoverID.value!!
+                )
+            }
+        }
+
+        viewModel.joinBandComplete.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                // 밴드 생성 및 참여 완료 시 Alert 애니메이션 실행
+                val intent = Intent(this, BandCoverActivity::class.java)
+                intent.putExtra(CREATE_COVER, "CREATE_COVER")
+                intent.putExtra(COVER_ID, viewModel.createBandComplete.value!!.peekContent())
+                finish()
+                startActivity(intent)
+            }
         }
     }
 
@@ -66,7 +93,13 @@ class SelectLibraryActivity : BaseActivity<ActivitySelectLibraryBinding, SelectL
         }
 
         binding.librarySelectCompleteButton.setOnClickListener {
-            // 라이브러리 선택 완료 시
+            viewModel.createBand(
+                sessionConfig = createdCoverEntity.coverSessionConfig,
+                bandName = createdCoverEntity.coverName,
+                bandIntroduction = createdCoverEntity.coverIntroduction ?: "",
+                backgroundUrl = createdCoverEntity.backgroundImg,
+                songId = createdCoverEntity.coverSong.songId
+            )
         }
 
     }

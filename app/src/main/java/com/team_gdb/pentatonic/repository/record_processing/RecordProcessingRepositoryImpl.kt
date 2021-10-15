@@ -50,48 +50,4 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
             )
         )
     )
-
-    override fun createBand(
-        sessionConfig: List<SessionSettingEntity>,
-        bandName: String,
-        bandIntroduction: String,
-        backgroundUrl: String,
-        songId: String
-    ): Single<Response<CreateBandMutation.Data>> {
-        val sessionList = sessionConfig.map {
-            SessionConfigInput(
-                maxMember = it.count,
-                session = SESSION_TYPE.valueOf(it.sessionSetting.name)
-            )
-        }
-        val isSoloBand = sessionConfig.size == 1 && sessionConfig[0].count == 1
-        return apolloClient.rxMutate(
-            CreateBandMutation(
-                CreateBandInput(
-                    sessionConfig = sessionList,
-                    band = CreateBandAllInput(
-                        name = bandName,
-                        introduce = bandIntroduction,
-                        backGroundURI = Input.optional(backgroundUrl),
-                        songId = songId,
-                        isSoloBand = isSoloBand
-                    )
-                )
-            )
-        )
-    }
-
-    // 밴드 커버에 참여 요청하는 뮤테이션
-    override fun joinBand(bandId: String, coverId: String, sessionName: String) =
-        apolloClient.rxMutate(
-            JoinBandMutation(
-                JoinBandInput(
-                    band = JoinBandIdInput(bandId = bandId),
-                    session = JoinBandSessionInput(
-                        coverId = coverId,
-                        position = SESSION_TYPE.valueOf(sessionName)
-                    )
-                )
-            )
-        )
 }

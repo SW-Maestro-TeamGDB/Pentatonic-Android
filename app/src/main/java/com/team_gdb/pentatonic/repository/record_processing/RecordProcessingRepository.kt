@@ -19,13 +19,4 @@ interface RecordProcessingRepository {
         position: String
     ): Single<Response<UploadCoverMutation.Data>>
 
-    fun createBand(
-        sessionConfig: List<SessionSettingEntity>,
-        bandName: String,
-        bandIntroduction: String,
-        backgroundUrl: String,
-        songId: String
-    ): Single<Response<CreateBandMutation.Data>>
-
-    fun joinBand(bandId: String, coverId: String, sessionName: String): Single<Response<JoinBandMutation.Data>>
 }

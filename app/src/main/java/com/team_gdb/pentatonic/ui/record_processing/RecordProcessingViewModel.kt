@@ -40,8 +40,6 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
     val audioProcessingComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     val coverUploadComplete: MutableLiveData<Event<String>> = MutableLiveData()
-    val createBandComplete: MutableLiveData<Event<String>> = MutableLiveData()
-    val joinBandComplete: MutableLiveData<Event<Boolean>> = MutableLiveData()
 
     fun controlVolumeLevel(amount: Int) {
         val addedValue = volumeLevel.value?.plus(amount)
@@ -187,60 +185,4 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
         addDisposable(disposable)
     }
 
-    /**
-     * 솔로 커버 생성
-     *
-     * @param sessionName       세션명
-     * @param bandName          커버명
-     * @param bandIntroduction  밴드 소개
-     * @param backgroundUrl     대표 이미지
-     * @param songId            원곡 ID
-     */
-    fun createBand(
-        sessionConfig: List<SessionSettingEntity>,
-        bandName: String,
-        bandIntroduction: String,
-        backgroundUrl: String,
-        songId: String
-    ) {
-        val disposable =
-            repository.createBand(sessionConfig, bandName, bandIntroduction, backgroundUrl, songId)
-                .applySchedulers()
-                .subscribeBy(
-                    onError = {
-                        Timber.e(it)
-                    },
-                    onSuccess = {
-                        if (!it.hasErrors()) {
-                            Timber.d(it.data?.createBand?.bandId)
-                            createBandComplete.postValue(Event(it.data?.createBand!!.bandId))
-                        }
-                    }
-                )
-        addDisposable(disposable)
-    }
-
-    /**
-     * Band ID, Cover ID, 세션명을 통해 사용자의 라이브러리 커버 기반으로 밴드 참여
-     */
-    fun joinBand(sessionName: String, bandId: String, coverId: String) {
-        val disposable = repository.joinBand(
-            bandId = bandId,
-            coverId = coverId,
-            sessionName = sessionName
-        )
-            .applySchedulers()
-            .subscribeBy(
-                onError = {
-                    Timber.i(it)
-                },
-                onSuccess = {
-                    if (!it.hasErrors()) {
-                        Timber.d(it.data?.joinBand.toString())
-                        joinBandComplete.postValue(Event(true))
-                    }
-                }
-            )
-        addDisposable(disposable)
-    }
 }

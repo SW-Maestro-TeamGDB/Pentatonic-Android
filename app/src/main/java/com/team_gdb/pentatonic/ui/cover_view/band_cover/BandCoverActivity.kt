@@ -214,7 +214,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
             message(R.string.cover_delete_notice_content)
             positiveButton(R.string.yes_text) {
                 viewModel.deleteBand()
-                Toasty.success(context, "밴드가 삭제되었습니다!", Toast.LENGTH_SHORT, true).show();
+                Toasty.success(context, "밴드가 삭제되었습니다!", Toast.LENGTH_SHORT, true).show()
                 finish()
             }
             negativeButton(R.string.no_text) {
