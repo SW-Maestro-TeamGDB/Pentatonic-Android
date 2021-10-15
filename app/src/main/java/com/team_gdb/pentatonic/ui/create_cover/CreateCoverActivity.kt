@@ -6,10 +6,10 @@ import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
-import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicRecordInfoFormFragment
+import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicCoverInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.BandCoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.create_record.CoverSessionSettingFragment
-import com.team_gdb.pentatonic.ui.record.RecordActivity
+import com.team_gdb.pentatonic.ui.select_library.SelectLibraryActivity
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.BAND_COVER
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.COVER_MODE
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SOLO_COVER
@@ -26,7 +26,7 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
         get() = R.layout.activity_create_cover
     override val viewModel: CreateCoverViewModel by viewModel()
 
-    private val basicInfoFormFragment: Fragment = BasicRecordInfoFormFragment()
+    private val basicInfoFormFragment: Fragment = BasicCoverInfoFormFragment()
     private val bandCoverSessionSettingFragment: Fragment = BandCoverSessionSettingFragment()
     private val soloCoverSessionSettingFragment: Fragment = CoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -35,7 +35,6 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     private val coverMode: String by lazy {
         intent.getStringExtra(COVER_MODE) as String
     }
-
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -65,7 +64,8 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
 
         viewModel.completeCreateCoverEvent.observe(this) {
             if (it.getContentIfNotHandled() == true) {
-                val intent = Intent(this, RecordActivity::class.java).apply {
+                // 라이브러리 선택 페이지로 이동
+                val intent = Intent(this, SelectLibraryActivity::class.java).apply {
                     putExtra(CREATED_COVER_ENTITY, viewModel.createdCoverEntity)
                 }
                 finish()

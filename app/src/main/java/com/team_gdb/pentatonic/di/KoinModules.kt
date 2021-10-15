@@ -22,6 +22,8 @@ import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepo
 import com.team_gdb.pentatonic.repository.record_processing.RecordProcessingRepositoryImpl
 import com.team_gdb.pentatonic.repository.register.RegisterRepository
 import com.team_gdb.pentatonic.repository.register.RegisterRepositoryImpl
+import com.team_gdb.pentatonic.repository.select_library.SelectLibraryRepository
+import com.team_gdb.pentatonic.repository.select_library.SelectLibraryRepositoryImpl
 import com.team_gdb.pentatonic.repository.select_song.SelectSongRepository
 import com.team_gdb.pentatonic.repository.select_song.SelectSongRepositoryImpl
 import com.team_gdb.pentatonic.repository.studio.StudioRepository
@@ -46,6 +48,7 @@ import com.team_gdb.pentatonic.ui.profile.ProfileViewModel
 import com.team_gdb.pentatonic.ui.record.RecordViewModel
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingViewModel
 import com.team_gdb.pentatonic.ui.register.RegisterViewModel
+import com.team_gdb.pentatonic.ui.select_library.SelectLibraryViewModel
 import com.team_gdb.pentatonic.ui.select_song.SelectSongViewModel
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailViewModel
 import com.team_gdb.pentatonic.ui.studio.StudioViewModel
@@ -123,6 +126,10 @@ val viewModelModule = module {
     viewModel {
         CoverPlayingViewModel(get())
     }
+
+    viewModel {
+        SelectLibraryViewModel(get())
+    }
 }
 
 val repositoryModule = module {
@@ -182,6 +189,10 @@ val repositoryModule = module {
 
     single<CreateCoverRepository> {
         CreateCoverRepositoryImpl()
+    }
+
+    single <SelectLibraryRepository> {
+        SelectLibraryRepositoryImpl()
     }
 }
 
