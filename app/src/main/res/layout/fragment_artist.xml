@@ -140,18 +140,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/band_image"
+                            android:src="@drawable/musician"
                             android:tintMode="src_over"
                             app:tint="#80000000" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawablePadding="8dp"
                             android:layout_centerInParent="true"
                             android:fontFamily="@font/nanum_extrabold"
-                            android:text="펜타토닉 아티스트 검색"
+                            android:text="아티스트 검색"
                             android:textColor="@color/white"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            app:drawableStartCompat="@drawable/ic_baseline_search_24"
+                            app:drawableTint="@color/white" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>

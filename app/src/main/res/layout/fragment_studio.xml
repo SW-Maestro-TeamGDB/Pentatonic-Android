@@ -142,6 +142,7 @@
                         android:layout_marginHorizontal="8dp"
                         android:layout_weight="1"
                         android:layout_height="170dp">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -215,10 +216,10 @@
                             android:fontFamily="@font/nanum_extrabold"
                             android:text="커버 녹음하기"
                             android:drawablePadding="8dp"
-                            android:drawableStart="@drawable/ic_baseline_mic_24"
-                            android:drawableTint="@color/white"
                             android:textColor="@color/white"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            app:drawableTint="@color/white"
+                            app:drawableStartCompat="@drawable/ic_baseline_mic_24" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>

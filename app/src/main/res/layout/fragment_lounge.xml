@@ -253,10 +253,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
+
+                            android:drawablePadding="8dp"
                             android:fontFamily="@font/nanum_extrabold"
                             android:text="전체 커버 및 검색"
                             android:textColor="@color/white"
-                            android:textSize="24sp" />
+                            android:textSize="24sp"
+                            app:drawableStartCompat="@drawable/ic_baseline_search_24"
+                            app:drawableTint="@color/white" />
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
