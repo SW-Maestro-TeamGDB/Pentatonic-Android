@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.media.audiofx.EnvironmentalReverb
 import android.media.audiofx.LoudnessEnhancer
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.team_gdb.pentatonic.R
@@ -16,6 +17,7 @@ import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
 import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import com.team_gdb.pentatonic.util.Event
+import es.dmoral.toasty.Toasty
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import rm.com.audiowave.OnProgressListener
 import timber.log.Timber
@@ -147,42 +149,15 @@ class RecordProcessingActivity :
             if (!it.getContentIfNotHandled().isNullOrBlank()) {
                 Timber.d("라이브러리 커버 업로드가 완료됐단다!")
 
+                Toasty.success(this, "라이브러리에 커버가 업로드되었습니다!", Toast.LENGTH_SHORT, true).show()
+
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
 
                 finish()
-//                viewModel.createBand(
-//                    sessionConfig = createdRecordEntity.coverSessionConfig,
-//                    bandName = createdRecordEntity.coverName,
-//                    bandIntroduction = createdRecordEntity.coverIntroduction ?: "",
-//                    backgroundUrl = createdRecordEntity.backgroundImg,
-//                    songId = createdRecordEntity.coverSong.songId
-//                )
-                // TODO: 로직 끝
             }
         }
 
-//        viewModel.createBandComplete.observe(this) {
-//            if (!it.getContentIfNotHandled().isNullOrBlank()) {
-//                Timber.d("createBand() Complete!")
-//                viewModel.joinBand(
-//                    sessionName = createdRecordEntity.coverSessionConfig[0].sessionSetting.name,
-//                    bandId = it.peekContent(),
-//                    coverId = viewModel.coverUploadComplete.value!!.peekContent()
-//                )
-//            }
-//        }
-
-//        viewModel.joinBandComplete.observe(this) {
-//            if (it.getContentIfNotHandled() == true) {
-//                // 밴드 생성 및 참여 완료 시 Alert 애니메이션 실행
-//                val intent = Intent(this, BandCoverActivity::class.java)
-//                intent.putExtra(CREATE_COVER, "CREATE_COVER")
-//                intent.putExtra(COVER_ID, viewModel.createBandComplete.value!!.peekContent())
-//                finish()
-//                startActivity(intent)
-//            }
-//        }
     }
 
     override fun initAfterBinding() {
