@@ -143,7 +143,21 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:launchSingleTop="false"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>\
+        <action
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            android:id="@+id/action_navigation_my_page_to_navigation_edit_profile"
+            app:destination="@id/navigation_edit_profile" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="com.team_gdb.pentatonic.ui.my_page.edit_profile.EditProfileFragment"
+        tools:layout="@layout/fragment_edit_profile">
 
     </fragment>
 

@@ -31,6 +31,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
+        // SharedPreferences 에 저장된 사용자의 ID 를 기반으로 상세 정보 쿼리
+        BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
+
         coverHistoryListAdapter = CoverHistoryListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(COVER_ID, it)
@@ -92,7 +95,11 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     }
 
     override fun initAfterBinding() {
-//        likedCoverListAdapter.setItem(TestData.TEST_BAND_COVER_LIST)
+
+        // 프로필 수정 버튼
+        binding.editProfileButton.setOnClickListener {
+
+        }
 
         binding.libraryButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_my_page_to_navigation_library)
@@ -101,9 +108,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         binding.coverHistoryDetailButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_my_page_to_navigation_cover_history)
         }
-
-        // SharedPreferences 에 저장된 사용자의 ID 를 기반으로 상세 정보 쿼리
-        BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
 
         binding.logoutButton.setOnClickListener {
             // 저장했던 로그인 정보 소멸 후 초기 화면으로 이동

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.xw.repo.widget.BounceScrollView
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".ui.profile.ProfileActivity">
+
+            <RelativeLayout
+                android:layout_marginTop="@dimen/page_title_margin_top"
+                android:layout_marginHorizontal="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/nanum_bold"
+                    android:text="수정하기"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/page_title_text_size" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                android:id="@+id/userProfileCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/userProfileImage"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_image_placeholder"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.userName}"/>
+
+                <TextView
+                    android:textColor="@color/black"
+                    android:id="@+id/userIntroductionTextView"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/nanum_regular"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.userIntroduce}"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.xw.repo.widget.BounceScrollView>
+    <data>
+
+        <variable
+            name="home"
+            type="com.team_gdb.pentatonic.ui.my_page.edit_profile.EditProfileFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.team_gdb.pentatonic.ui.my_page.MyPageViewModel" />
+    </data>
+</layout>
