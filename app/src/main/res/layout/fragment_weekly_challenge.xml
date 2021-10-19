@@ -91,7 +91,7 @@
                     android:layout_above="@+id/weeklyChallengeSongDescription"
                     android:layout_marginHorizontal="24dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="@{viewModel.weeklyChallengeSongArtist}"
+                    android:text="@{viewModel.weeklyChallengeSongEntity.artistName}"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -103,7 +103,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginHorizontal="24dp"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="@{viewModel.weeklyChallengeSongName}"
+                    android:text="@{viewModel.weeklyChallengeSongEntity.songName}"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
 
@@ -129,6 +129,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/createCoverButton"
                         android:orientation="horizontal"
                         android:gravity="center"
                         android:layout_weight="1"
@@ -152,6 +153,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/createRecordButton"
                         android:orientation="horizontal"
                         android:gravity="center"
                         android:layout_weight="1"

@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ActivityCreateRecordBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicRecordInfoFormFragment
 import com.team_gdb.pentatonic.ui.record.RecordActivity
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -24,6 +26,11 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
     private val basicInfoFormFragment: Fragment = BasicRecordInfoFormFragment()
     private val coverSessionSettingFragment: Fragment = CoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+    private val coverSong: SongEntity? by lazy {
+        intent.getSerializableExtra(SONG_ENTITY) as SongEntity
+    }
+
 
     override fun initStartView() {
         binding.viewModel = this.viewModel
@@ -61,6 +68,10 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
         transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
             replace(R.id.fragmentContainer, basicInfoFormFragment)
             commit()
+        }
+
+        if (coverSong != null){  // 만약 외부에서 곡을 지정해서 들어온 것이라면
+            viewModel.recordOriginalSong.value = coverSong
         }
     }
 

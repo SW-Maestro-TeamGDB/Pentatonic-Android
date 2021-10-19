@@ -10,12 +10,15 @@ import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
 import com.team_gdb.pentatonic.adapter.cover_list.WeeklyChallengeCoverListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
+import com.team_gdb.pentatonic.data.model.SongEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.FragmentWeeklyChallengeBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
 
 class WeeklyChallengeFragment :
     BaseFragment<FragmentWeeklyChallengeBinding, WeeklyChallengeViewModel>() {
@@ -59,6 +62,12 @@ class WeeklyChallengeFragment :
     override fun initAfterBinding() {
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_weekly_challenge_to_navigation_lounge)
+        }
+
+        binding.createRecordButton.setOnClickListener {
+            val intent = Intent(requireContext(), CreateRecordActivity::class.java)
+            intent.putExtra(SONG_ENTITY, viewModel.weeklyChallengeSongEntity.value)
+            startActivity(intent)
         }
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetSongInfoQuery
 import com.team_gdb.pentatonic.GetWeeklyChallengeSongInfoQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.weekly_challenge.WeeklyChallengeRepository
 import io.reactivex.rxjava3.kotlin.subscribeBy
@@ -13,12 +14,13 @@ import timber.log.Timber
 class WeeklyChallengeViewModel(private val repository: WeeklyChallengeRepository) :
     BaseViewModel() {
 
+    private val _weeklyChallengeSongEntity: MutableLiveData<SongEntity> = MutableLiveData()
+    val weeklyChallengeSongEntity: LiveData<SongEntity>
+        get() = _weeklyChallengeSongEntity
+
     private val _weeklyChallengeSongImage: MutableLiveData<String> = MutableLiveData()
     val weeklyChallengeSongImage: LiveData<String>
         get() = _weeklyChallengeSongImage
-
-    val weeklyChallengeSongName: MutableLiveData<String> = MutableLiveData()
-    val weeklyChallengeSongArtist: MutableLiveData<String> = MutableLiveData()
 
     private val _weeklyChallengeCoverList: MutableLiveData<List<GetSongInfoQuery.Band>> =
         MutableLiveData()
@@ -35,9 +37,22 @@ class WeeklyChallengeViewModel(private val repository: WeeklyChallengeRepository
                 onNext = {
                     if (!it.hasErrors()) {
                         Timber.d(it.data.toString())
+                        val songEntity = SongEntity(
+                            songId = songId,
+                            songName = it.data?.getSong?.name!!,
+                            artistName = it.data?.getSong?.artist!!,
+                            albumReleaseDate = it.data?.getSong?.releaseDate!!,
+                            albumName = it.data?.getSong?.album!!,
+                            albumJacketImage = it.data?.getSong?.songImg!!,
+                            isFreeSong = false,
+                            isWeeklyChallenge = true,
+                            songGenre = it.data?.getSong?.genre!!.rawValue,
+                            songLevel = it.data?.getSong?.level!!,
+                            songUrl = it.data?.getSong?.songURI!!
+                        )
+                        _weeklyChallengeSongEntity.postValue(songEntity)
+
                         _weeklyChallengeSongImage.postValue(it.data?.getSong?.songImg)
-                        weeklyChallengeSongName.postValue(it.data?.getSong?.name)
-                        weeklyChallengeSongArtist.postValue(it.data?.getSong?.artist)
                         _weeklyChallengeCoverList.postValue(it.data?.getSong?.band)
                     }
                 },
