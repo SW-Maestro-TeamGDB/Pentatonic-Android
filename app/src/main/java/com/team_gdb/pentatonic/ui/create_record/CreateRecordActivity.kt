@@ -27,10 +27,10 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
     private val coverSessionSettingFragment: Fragment = CoverSessionSettingFragment()
     private var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
+    // 외부에서 곡을 지정한 경우 담기는 Extra Data (곡 정보)
     private val coverSong: SongEntity? by lazy {
         intent.getSerializableExtra(SONG_ENTITY) as SongEntity
     }
-
 
     override fun initStartView() {
         binding.viewModel = this.viewModel

@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
+import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ActivityCreateCoverBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.BasicCoverInfoFormFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.BandCoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.create_cover.session_setting.SoloCoverSessionSettingFragment
 import com.team_gdb.pentatonic.ui.select_library.SelectLibraryActivity
+import com.team_gdb.pentatonic.ui.studio.StudioFragment
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.BAND_COVER
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.COVER_MODE
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SOLO_COVER
@@ -34,6 +36,11 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
     // 밴드 커버 / 솔로 커버 구분을 위한 모드 변수
     private val coverMode: String by lazy {
         intent.getStringExtra(COVER_MODE) as String
+    }
+
+    // 외부에서 곡을 지정한 경우 담기는 Extra Data (곡 정보)
+    private val coverSong: SongEntity? by lazy {
+        intent.getSerializableExtra(StudioFragment.SONG_ENTITY) as SongEntity
     }
 
     override fun initStartView() {
@@ -84,6 +91,10 @@ class CreateCoverActivity : BaseActivity<ActivityCreateCoverBinding, CreateCover
         transaction.apply {  // 초기 프래그먼트는 기본 정보 입력폼으로 설정
             replace(R.id.fragmentContainer, basicInfoFormFragment)
             commit()
+        }
+
+        if (coverSong != null){  // 만약 외부에서 곡을 지정해서 들어온 것이라면
+            viewModel.coverSong.value = coverSong
         }
     }
 
