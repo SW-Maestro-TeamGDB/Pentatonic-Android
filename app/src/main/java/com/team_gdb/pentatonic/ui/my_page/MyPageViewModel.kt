@@ -39,6 +39,8 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val completeEditCoverNameMutation: MutableLiveData<Event<Boolean>> =
         MutableLiveData()  // 라이브러리 이름 변경 뮤테이션 호출 완료 여부
     val completeCoverDelete: MutableLiveData<Event<Boolean>> = MutableLiveData()  // 라이브러리 삭제 성공 여부
+    val completeUpdateProfile: MutableLiveData<Event<Boolean>> =
+        MutableLiveData()  // 사용자 프로필 수정 성공 여부
 
     /**
      * 사용자의 정보를 마이페이지에 적용하고, 라이브러리 정보도 가져옴
@@ -136,6 +138,26 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                     if (!it.hasErrors()) {
                         Timber.d(it.data?.uploadImageFile)
                         userProfileImage.postValue(it.data?.uploadImageFile)
+                    }
+                }
+            )
+        addDisposable(disposable)
+    }
+
+    fun updateUserProfile() {
+        val disposable = repository.updateProfileMutation(
+            userName.value!!,
+            profileURI = userProfileImage.value ?: "",
+            introduce = userIntroduce.value!!
+        ).applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onSuccess = {
+                    Timber.d(it.data?.changeProfile?.id)
+                    if (!it.hasErrors()) {
+                        completeUpdateProfile.postValue(Event(true))
                     }
                 }
             )

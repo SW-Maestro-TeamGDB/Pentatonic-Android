@@ -69,6 +69,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
                 .setRequestedSize(1280, 1280)
                 .start(requireContext(), this)
         }
+
+        binding.editCompleteButton.setOnClickListener {
+            viewModel.updateUserProfile()
+        }
     }
 
     /**
