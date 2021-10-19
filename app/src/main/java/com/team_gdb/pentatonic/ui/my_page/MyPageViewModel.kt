@@ -121,4 +121,25 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
         addDisposable(disposable)
     }
 
+    /**
+     * 사용자 프로필 이미지 업로드
+     */
+    fun uploadImageFile(filePath: String) {
+        val disposable = repository.uploadImageFile(filePath)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.i(it)
+                },
+                onSuccess = {
+                    Timber.d(it.toString())
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.uploadImageFile)
+                        userProfileImage.postValue(it.data?.uploadImageFile)
+                    }
+                }
+            )
+        addDisposable(disposable)
+    }
+
 }
