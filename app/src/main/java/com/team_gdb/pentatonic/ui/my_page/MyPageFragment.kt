@@ -98,7 +98,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
 
         // 프로필 수정 버튼
         binding.editProfileButton.setOnClickListener {
-
+            findNavController().navigate(R.id.action_navigation_my_page_to_navigation_edit_profile)
         }
 
         binding.libraryButton.setOnClickListener {

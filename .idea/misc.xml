@@ -92,7 +92,7 @@
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
         <entry key="app/src/main/res/layout/fragment_cover_history.xml" value="0.12796052631578947" />
         <entry key="app/src/main/res/layout/fragment_cover_session_setting.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.12236842105263158" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_effect.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_free_songcontrol.xml" value="0.1299342105263158" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.22" />

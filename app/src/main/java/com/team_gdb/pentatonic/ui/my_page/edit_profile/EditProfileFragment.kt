@@ -38,6 +38,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
                 .override(100, 100)
                 .into(binding.userProfileImage)
         }
+
+        viewModel.userName.observe(this) {
+            binding.editCompleteButton.isEnabled = !it.isNullOrBlank()
+        }
     }
 
     override fun initAfterBinding() {

@@ -23,11 +23,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:fontFamily="@font/nanum_bold"
                     android:text="수정하기"
                     android:textColor="@color/black"
                     android:textSize="@dimen/page_title_text_size" />
+
             </RelativeLayout>
 
             <LinearLayout
@@ -48,24 +48,71 @@
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
                 <TextView
-                    android:id="@+id/usernameTextView"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/nanum_bold"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.userName}"/>
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/register_nickname_title"
+                    android:textColor="#434343"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/usernameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/nanum_bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/custom_radius_background_white"
+                    android:backgroundTint="@color/gray"
+                    android:ems="10"
+                    android:text="@={viewModel.userName}"
+                    android:hint="@string/register_nickname_edit_text_hint_text"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="16dp"/>
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="소개글"
+                    android:textColor="#434343"
+                    android:fontFamily="@font/nanum_extrabold"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
                     android:id="@+id/userIntroductionTextView"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/nanum_regular"
                     android:textSize="14sp"
-                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:hint="간단소개글을 입력해주세요."
+                    android:background="@drawable/custom_radius_background_white"
+                    android:backgroundTint="@color/gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingHorizontal="16dp"
+                    android:text="@={viewModel.userIntroduce}"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/editCompleteButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.userIntroduce}"/>
+                    android:layout_marginTop="72dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/gradient_selector_button"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:text="수정 완료"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </LinearLayout>
