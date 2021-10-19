@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -27,6 +28,7 @@ import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import es.dmoral.toasty.Toasty
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 import java.io.File
@@ -56,6 +58,14 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
 
         viewModel.userName.observe(this) {
             binding.editCompleteButton.isEnabled = it.length > 1
+        }
+
+        viewModel.completeUpdateProfile.observe(this) {
+            if (it.getContentIfNotHandled() == true) {
+                // 수정 페이지 종료
+                Toasty.success(requireContext(), "프로필이 변경됐습니다!", Toast.LENGTH_SHORT, true).show()
+                findNavController().popBackStack(R.id.navigation_edit_profile, true)
+            }
         }
     }
 
