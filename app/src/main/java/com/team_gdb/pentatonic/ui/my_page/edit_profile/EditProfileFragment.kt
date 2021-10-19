@@ -42,6 +42,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
         get() = R.layout.fragment_edit_profile
     override val viewModel: MyPageViewModel by sharedViewModel()
 
+    private val previousUsername: String by lazy {
+        viewModel.userName.value!!
+    }
+
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
@@ -81,7 +85,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
         }
 
         binding.editCompleteButton.setOnClickListener {
-            viewModel.updateUserProfile()
+            viewModel.updateUserProfile(previousUsername)
         }
     }
 

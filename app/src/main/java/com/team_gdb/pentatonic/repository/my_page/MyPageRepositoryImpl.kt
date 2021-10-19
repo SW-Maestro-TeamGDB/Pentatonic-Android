@@ -10,6 +10,7 @@ import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import com.team_gdb.pentatonic.type.*
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
+import timber.log.Timber
 
 class MyPageRepositoryImpl : MyPageRepository {
     override fun getUserInfo(userId: String): Observable<Response<GetUserInfoQuery.Data>> =
@@ -38,21 +39,33 @@ class MyPageRepositoryImpl : MyPageRepository {
         )
 
     override fun updateProfileMutation(
+        previousUsername: String,
         username: String,
         profileURI: String,
         introduce: String
-    ): Single<Response<ChangeProfileMutation.Data>> =
-        apolloClient.rxMutate(
+    ): Single<Response<ChangeProfileMutation.Data>> {
+        Timber.e(previousUsername)
+        Timber.e(username)
+        val input = if (previousUsername == username) {
+            ChangeUserProfileInput(
+                profileURI = Input.optional(profileURI),
+                introduce = Input.optional(introduce)
+            )
+        } else {
+            ChangeUserProfileInput(
+                username = Input.optional(username),
+                profileURI = Input.optional(profileURI),
+                introduce = Input.optional(introduce)
+            )
+        }
+        return apolloClient.rxMutate(
             ChangeProfileMutation(
                 ChangeProfileInput(
-                    user = ChangeUserProfileInput(
-                        username = Input.optional(username),
-                        profileURI = Input.optional(profileURI),
-                        introduce = Input.optional(introduce)
-                    )
+                    user = input
                 )
             )
         )
+    }
 
     override fun uploadImageFile(filePath: String): Single<Response<UploadImageFileMutation.Data>> =
         apolloClient.rxMutate(

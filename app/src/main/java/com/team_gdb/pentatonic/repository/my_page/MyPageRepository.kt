@@ -10,6 +10,7 @@ interface MyPageRepository {
     fun editCover(coverId: String, coverName: String): Single<Response<UpdateCoverMutation.Data>>
     fun deleteCover(coverId: String): Single<Response<DeleteCoverMutation.Data>>
     fun updateProfileMutation(
+        previousUsername: String,
         username: String,
         profileURI: String,
         introduce: String

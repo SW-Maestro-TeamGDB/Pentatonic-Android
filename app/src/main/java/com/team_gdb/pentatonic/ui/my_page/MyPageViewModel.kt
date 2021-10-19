@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.my_page
 
 import androidx.lifecycle.MutableLiveData
+import com.apollographql.apollo.api.Input
 import com.team_gdb.pentatonic.GetUserInfoQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
@@ -144,9 +145,10 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
         addDisposable(disposable)
     }
 
-    fun updateUserProfile() {
+    fun updateUserProfile(previousUsername: String) {
         val disposable = repository.updateProfileMutation(
-            userName.value!!,
+            previousUsername = previousUsername,
+            username = userName.value!!,
             profileURI = userProfileImage.value ?: "",
             introduce = userIntroduce.value!!
         ).applySchedulers()
@@ -158,6 +160,10 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                     Timber.d(it.data?.changeProfile?.id)
                     if (!it.hasErrors()) {
                         completeUpdateProfile.postValue(Event(true))
+                    } else {
+                        it.errors?.forEach {
+                            Timber.e(it.message)
+                        }
                     }
                 }
             )
