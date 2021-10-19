@@ -40,7 +40,7 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
         }
 
         viewModel.userName.observe(this) {
-            binding.editCompleteButton.isEnabled = !it.isNullOrBlank()
+            binding.editCompleteButton.isEnabled = it.length > 1
         }
     }
 
