@@ -56,7 +56,11 @@ class SelectLibraryActivity : BaseActivity<ActivitySelectLibraryBinding, SelectL
             Timber.e(it.toString())
             val data =
                 it.filter { createdCoverEntity.coverSessionConfig[0].sessionSetting.name == it.position.rawValue }
-            librarySelectListAdapter.setItem(data)
+            if (data.isEmpty()) {
+                // TODO ("해당 곡에 대해 커버 녹음하는 페이지로 이동할 수 있는 버튼 보여주기")
+            } else {
+                librarySelectListAdapter.setItem(data)
+            }
         }
 
         viewModel.selectedUserCoverID.observe(this) {
