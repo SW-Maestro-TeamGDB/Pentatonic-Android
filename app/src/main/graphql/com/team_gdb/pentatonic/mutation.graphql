@@ -13,6 +13,13 @@ mutation LoginMutation($loginInput: LoginInput!) {
     login(input: $loginInput)
 }
 
+# 프로필 수정 뮤테이션
+mutation ChangeProfileMutation($input: ChangeProfileInput!) {
+    changeProfile(input: $input) {
+        id
+    }
+}
+
 # 커버 파일 (녹음본) 업로드 뮤테이션
 mutation UploadCoverFileMutation($uploadCoverFileInput: UploadCoverFileInput!) {
     uploadCoverFile(input: $uploadCoverFileInput)

@@ -1,12 +1,11 @@
 package com.team_gdb.pentatonic.repository.my_page
 
+import com.apollographql.apollo.api.FileUpload
 import com.apollographql.apollo.api.Input
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
 import com.apollographql.apollo.rx3.rxQuery
-import com.team_gdb.pentatonic.DeleteCoverMutation
-import com.team_gdb.pentatonic.GetUserInfoQuery
-import com.team_gdb.pentatonic.UpdateCoverMutation
+import com.team_gdb.pentatonic.*
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import com.team_gdb.pentatonic.type.*
 import io.reactivex.rxjava3.core.Observable
@@ -35,6 +34,30 @@ class MyPageRepositoryImpl : MyPageRepository {
                         coverId
                     )
                 )
+            )
+        )
+
+    override fun updateProfileMutation(
+        username: String,
+        profileURI: String,
+        introduce: String
+    ): Single<Response<ChangeProfileMutation.Data>> =
+        apolloClient.rxMutate(
+            ChangeProfileMutation(
+                ChangeProfileInput(
+                    user = ChangeUserProfileInput(
+                        username = Input.optional(username),
+                        profileURI = Input.optional(profileURI),
+                        introduce = Input.optional(introduce)
+                    )
+                )
+            )
+        )
+
+    override fun uploadImageFile(filePath: String): Single<Response<UploadImageFileMutation.Data>> =
+        apolloClient.rxMutate(
+            UploadImageFileMutation(
+                UploadImageInput(file = FileUpload("image/*", filePath))
             )
         )
 }
