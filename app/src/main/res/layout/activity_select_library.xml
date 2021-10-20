@@ -28,6 +28,44 @@
         android:text="선택 완료"
         android:textColor="@color/white" />
 
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/noLibraryImageView"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+        <ImageView
+            android:src="@drawable/ic_album_track"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:tint="@color/gray" />
+
+        <TextView
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/nanum_regular"
+            android:text="아직 커버가 존재하지 않습니다!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/recordButton"
+            android:text="녹음하러 가기"
+            android:fontFamily="@font/nanum_extrabold"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/background_gradient_button"/>
+
+    </LinearLayout>
+
     <com.chauthai.overscroll.RecyclerViewBouncy
         android:id="@+id/libraryList"
         android:layout_width="match_parent"

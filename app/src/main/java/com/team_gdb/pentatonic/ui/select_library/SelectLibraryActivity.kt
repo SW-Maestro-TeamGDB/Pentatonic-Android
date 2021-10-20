@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.select_library
 
 import android.content.Intent
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
@@ -10,8 +11,11 @@ import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.databinding.ActivitySelectLibraryBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity.Companion.CREATE_COVER
+import com.team_gdb.pentatonic.ui.studio.StudioFragment
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -57,7 +61,9 @@ class SelectLibraryActivity : BaseActivity<ActivitySelectLibraryBinding, SelectL
             val data =
                 it.filter { createdCoverEntity.coverSessionConfig[0].sessionSetting.name == it.position.rawValue }
             if (data.isEmpty()) {
-                // TODO ("해당 곡에 대해 커버 녹음하는 페이지로 이동할 수 있는 버튼 보여주기")
+                // 해당 곡에 대해 커버 녹음하는 페이지로 이동할 수 있는 버튼 보여주기
+                binding.libraryList.visibility = View.GONE
+                binding.noLibraryImageView.visibility = View.VISIBLE
             } else {
                 librarySelectListAdapter.setItem(data)
             }
@@ -106,5 +112,11 @@ class SelectLibraryActivity : BaseActivity<ActivitySelectLibraryBinding, SelectL
             )
         }
 
+        binding.recordButton.setOnClickListener {
+            val intent = Intent(this, CreateRecordActivity::class.java)
+            intent.putExtra(SONG_ENTITY, createdCoverEntity.coverSong)
+            startActivity(intent)
+            finish()
+        }
     }
 }
