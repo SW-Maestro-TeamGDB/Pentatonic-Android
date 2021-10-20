@@ -61,4 +61,7 @@ class CoverViewRepositoryImpl : CoverViewRepository {
                 )
             )
         )
+
+    override fun getSongInstrument(songId: String): Observable<Response<GetSongInstrumentQuery.Data>> =
+        apolloClient.rxQuery(GetSongInstrumentQuery(songId))
 }

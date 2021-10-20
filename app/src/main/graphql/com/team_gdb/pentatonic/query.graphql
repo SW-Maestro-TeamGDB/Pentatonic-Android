@@ -368,3 +368,16 @@ query GetUserListQuery($username: String!) {
         followingStatus
     }
 }
+
+query GetSongInstrumentQuery($songId: ObjectID!) {
+    getSong(songId: $songId) {
+        instrument {
+            instId
+            songId
+            name
+            instURI
+            duration
+        position
+        }
+    }
+}

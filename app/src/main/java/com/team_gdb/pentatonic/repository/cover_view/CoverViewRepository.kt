@@ -13,4 +13,5 @@ interface CoverViewRepository {
     fun deleteBand(bandId: String): Single<Response<DeleteBandMutation.Data>>
     fun likeBand(bandId: String): Single<Response<LikeMutation.Data>>
     fun leaveBand(bandId: String, coverId: String): Single<Response<LeaveBandMutation.Data>>
+    fun getSongInstrument(songId: String): Observable<Response<GetSongInstrumentQuery.Data>>
 }
