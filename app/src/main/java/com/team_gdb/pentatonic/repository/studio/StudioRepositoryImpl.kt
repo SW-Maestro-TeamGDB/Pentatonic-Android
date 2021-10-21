@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.repository.studio
 
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxQuery
+import com.team_gdb.pentatonic.GetRecommendBandListQuery
 import com.team_gdb.pentatonic.GetSongListQuery
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import com.team_gdb.pentatonic.type.GetSongsFilter
@@ -19,4 +20,7 @@ class StudioRepositoryImpl : StudioRepository {
                 )
             )
         )
+
+    override fun getRecommendCoverList(): Observable<Response<GetRecommendBandListQuery.Data>> =
+        apolloClient.rxQuery(GetRecommendBandListQuery())
 }

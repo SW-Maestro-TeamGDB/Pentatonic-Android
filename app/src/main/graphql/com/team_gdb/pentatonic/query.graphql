@@ -382,3 +382,25 @@ query GetSongInstrumentQuery($songId: ObjectID!) {
         }
     }
 }
+
+query GetRecommendBandListQuery {
+    getRecommendBand {
+        bandId
+        song {
+            name
+            artist
+            weeklyChallenge
+        }
+        isFreeBand
+        isSoloBand
+        backGroundURI
+        creator {
+            username
+        }
+        viewCount
+        likeCount
+        likeStatus
+        name
+        introduce
+    }
+}

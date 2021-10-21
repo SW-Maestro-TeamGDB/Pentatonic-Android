@@ -334,6 +334,26 @@
             "deprecationReason": null
           },
           {
+            "name": "getRecommendBand",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Band",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "getComments",
             "description": null,
             "args": [
@@ -5999,6 +6019,16 @@
                 "name": "String",
                 "ofType": null
               }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "songImg",
+            "description": null,
+            "type": {
+              "kind": "SCALAR",
+              "name": "URL",
+              "ofType": null
             },
             "defaultValue": null
           }
