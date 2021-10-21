@@ -2,9 +2,11 @@ package com.team_gdb.pentatonic.ui.cover_view.solo_cover
 
 
 import android.content.Intent
+import android.os.Build
 import android.view.View
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
@@ -39,15 +41,33 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
         viewModel.getBandInfoQuery(coverID)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun initDataBinding() {
         viewModel.bandInfo.observe(this) {
             Timber.d(it.toString())
             applyBandInfoOnView(it)
+
+            // 솔로 커버의 경우 무조건 사용자의 커버는 추가되어야
+            viewModel.addSession("USER_COVER", it.session?.get(0)?.cover?.get(0)!!.coverURI)
+        }
+
+        viewModel.mergedCoverURL.observe(this) {
+            val coverEntity = CoverPlayEntity(
+                coverID = viewModel.bandInfo.value!!.bandId,
+                coverName = viewModel.bandInfo.value!!.name,
+                backgroundImgURL = viewModel.bandInfo.value!!.backGroundURI,
+                coverIntroduction = viewModel.bandInfo.value!!.introduce,
+                likeCount = viewModel.bandInfo.value!!.likeCount,
+                viewCount = 34,
+                coverURL = it
+            )
+            val intent = Intent(this, CoverPlayActivity::class.java)
+            intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
+            startActivity(intent)
         }
     }
 
     override fun initAfterBinding() {
-
         binding.userProfileLayout.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra(USER_ID, viewModel.bandInfo.value!!.creator.id)
@@ -57,8 +77,8 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun applyBandInfoOnView(bandInfo: GetBandCoverInfoQuery.GetBand) {
-
         binding.coverSongInfoTextView.text = "${bandInfo.song.name} - ${bandInfo.song.artist}"
         binding.coverNameTextView.text = bandInfo.name
         binding.coverIntroductionTextView.text = bandInfo.introduce
@@ -109,27 +129,25 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
             pop.show()
         }
 
-//        binding.coverPlayButton.setOnClickListener {
-//            val coverEntity = CoverPlayEntity(
-//                coverID = bandInfo.bandId,
-//                coverName = bandInfo.name,
-//                backgroundImgURL = bandInfo.backGroundURI,
-//                coverIntroduction = bandInfo.introduce,
-//                likeCount = bandInfo.likeCount,
-//                viewCount = 34,
-//                coverURL = bandInfo.session[0]?.cover?.get(0)!!.coverURI
-//            )
-//            val intent = Intent(this, CoverPlayActivity::class.java)
-//            intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
-//            startActivity(intent)
-//        }
 
         binding.coverPlayButton.setOnClickListener {
-            val bottomSheetDialog = InstSelectBottomSheetDialog()
-            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
-//            val intent = Intent(this, CoverPlayActivity::class.java)
-//            intent.putExtra(COVER_ENTITY, coverEntity)
-//            startActivity(intent)
+            if (bandInfo.isFreeBand) {
+                val coverEntity = CoverPlayEntity(
+                    coverID = bandInfo.bandId,
+                    coverName = bandInfo.name,
+                    backgroundImgURL = bandInfo.backGroundURI,
+                    coverIntroduction = bandInfo.introduce,
+                    likeCount = bandInfo.likeCount,
+                    viewCount = 34,
+                    coverURL = bandInfo.session[0]?.cover?.get(0)!!.coverURI
+                )
+                val intent = Intent(this, CoverPlayActivity::class.java)
+                intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
+                startActivity(intent)
+            } else {
+                val bottomSheetDialog = InstSelectBottomSheetDialog()
+                bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+            }
         }
     }
 

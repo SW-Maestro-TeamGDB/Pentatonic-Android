@@ -122,6 +122,7 @@ query GetBandCoverInfoQuery($getBandBandId: ObjectID!) {
         name
         introduce
         isSoloBand
+        isFreeBand
         creator {
             id
             username
