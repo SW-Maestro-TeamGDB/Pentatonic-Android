@@ -76,8 +76,10 @@
         <entry key="app/src/main/res/layout/dialog_edit_cover_name.xml" value="0.13717105263157894" />
         <entry key="app/src/main/res/layout/dialog_input_cover_name.xml" value="0.20526315789473684" />
         <entry key="app/src/main/res/layout/dialog_input_free_song_info.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dialog_inst_select.xml" value="0.2" />
         <entry key="app/src/main/res/layout/dialog_library_select.xml" value="0.13677285318559557" />
         <entry key="app/src/main/res/layout/dialog_record_guide.xml" value="0.10559210526315789" />
+        <entry key="app/src/main/res/layout/dialog_select_inst.xml" value="0.13453947368421051" />
         <entry key="app/src/main/res/layout/dialog_select_session.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_song_confirm.xml" value="0.21" />
         <entry key="app/src/main/res/layout/exo_player_control_view.xml" value="0.17171052631578948" />
@@ -121,6 +123,7 @@
         <entry key="app/src/main/res/layout/item_position_list.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/layout/item_position_ranking_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_rising_cover_viewpager.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_select_inst_list.xml" value="0.13453947368421051" />
         <entry key="app/src/main/res/layout/item_select_session_list.xml" value="0.20559210526315788" />
         <entry key="app/src/main/res/layout/item_select_session_participant_list.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/layout/item_session_config_list.xml" value="0.14309210526315788" />

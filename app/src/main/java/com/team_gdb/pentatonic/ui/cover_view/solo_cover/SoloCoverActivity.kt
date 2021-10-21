@@ -17,6 +17,7 @@ import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ActivitySoloCoverBinding
 import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_play.CoverPlayActivity
+import com.team_gdb.pentatonic.ui.cover_view.band_cover.SessionSelectBottomSheetDialog
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
@@ -46,11 +47,6 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
     }
 
     override fun initAfterBinding() {
-        binding.coverPlayButton.setOnClickListener {
-            val intent = Intent(this, CoverPlayActivity::class.java)
-//            intent.putExtra(COVER_ENTITY, coverEntity)
-            startActivity(intent)
-        }
 
         binding.userProfileLayout.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
@@ -113,19 +109,27 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
             pop.show()
         }
 
+//        binding.coverPlayButton.setOnClickListener {
+//            val coverEntity = CoverPlayEntity(
+//                coverID = bandInfo.bandId,
+//                coverName = bandInfo.name,
+//                backgroundImgURL = bandInfo.backGroundURI,
+//                coverIntroduction = bandInfo.introduce,
+//                likeCount = bandInfo.likeCount,
+//                viewCount = 34,
+//                coverURL = bandInfo.session[0]?.cover?.get(0)!!.coverURI
+//            )
+//            val intent = Intent(this, CoverPlayActivity::class.java)
+//            intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
+//            startActivity(intent)
+//        }
+
         binding.coverPlayButton.setOnClickListener {
-            val coverEntity = CoverPlayEntity(
-                coverID = bandInfo.bandId,
-                coverName = bandInfo.name,
-                backgroundImgURL = bandInfo.backGroundURI,
-                coverIntroduction = bandInfo.introduce,
-                likeCount = bandInfo.likeCount,
-                viewCount = 34,
-                coverURL = bandInfo.session[0]?.cover?.get(0)!!.coverURI
-            )
-            val intent = Intent(this, CoverPlayActivity::class.java)
-            intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
-            startActivity(intent)
+            val bottomSheetDialog = InstSelectBottomSheetDialog()
+            bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
+//            val intent = Intent(this, CoverPlayActivity::class.java)
+//            intent.putExtra(COVER_ENTITY, coverEntity)
+//            startActivity(intent)
         }
     }
 

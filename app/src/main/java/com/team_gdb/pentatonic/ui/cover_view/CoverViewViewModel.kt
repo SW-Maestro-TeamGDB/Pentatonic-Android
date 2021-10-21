@@ -4,6 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
+import com.team_gdb.pentatonic.GetSongInstrumentQuery
 import com.team_gdb.pentatonic.GetUserLibraryQuery
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
@@ -15,6 +16,8 @@ import timber.log.Timber
 
 class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() {
     val bandInfo: MutableLiveData<GetBandCoverInfoQuery.GetBand> = MutableLiveData()
+
+    val instList: MutableLiveData<List<GetSongInstrumentQuery.Instrument>> = MutableLiveData()
 
     private val selectedSession: HashMap<String, String> = hashMapOf()
 
@@ -200,6 +203,11 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
         addDisposable(disposable)
     }
 
+    /**
+     * 밴드 탈퇴 뮤테이션
+     *
+     * @param coverId : 밴드에서 제거(탈퇴)할 커버 ID
+     */
     fun leaveBand(coverId: String) {
         val disposable = repository.leaveBand(bandId = bandInfo.value!!.bandId, coverId = coverId)
             .applySchedulers()
@@ -216,5 +224,26 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
             )
         addDisposable(disposable)
     }
+
+    fun getSongInstrument() {
+        val disposable = repository.getSongInstrument(bandInfo.value!!.song.songId)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onNext = {
+                    if (!it.hasErrors()) {
+                        Timber.d(it.data?.getSong?.instrument.toString())
+                        instList.postValue(it.data?.getSong?.instrument)
+                    }
+                },
+                onComplete = {
+                    Timber.d("getSongInstrument() Complete")
+                }
+            )
+        addDisposable(disposable)
+    }
+
 
 }
