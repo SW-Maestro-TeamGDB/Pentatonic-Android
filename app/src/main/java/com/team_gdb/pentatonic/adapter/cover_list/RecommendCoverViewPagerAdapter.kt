@@ -14,7 +14,7 @@ import com.team_gdb.pentatonic.databinding.ItemRisingCoverViewpagerBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class RecommendCoverViewPagerAdapter(val itemClick: (String) -> Unit) :
+class RecommendCoverViewPagerAdapter(val itemClick: (Boolean, String) -> Unit) :
     RecyclerView.Adapter<RecommendCoverViewPagerAdapter.ViewHolder>() {
 
     private var coverEntityList: List<GetRecommendBandListQuery.GetRecommendBand> = emptyList()  // Cover 아이템 리스트 정보
@@ -67,7 +67,7 @@ class RecommendCoverViewPagerAdapter(val itemClick: (String) -> Unit) :
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity.bandId)
+                itemClick(entity.isSoloBand, entity.bandId)
             }
         }
     }

@@ -11,6 +11,7 @@ import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import com.team_gdb.pentatonic.adapter.cover_list.RecommendCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
@@ -37,9 +38,13 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         viewModel.getRecommendCoverList()
 
         // 추천 커버 뷰 페이저 어댑터 생성
-        recommendCoverViewPagerAdapter = RecommendCoverViewPagerAdapter {
-            val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ID, it)
+        recommendCoverViewPagerAdapter = RecommendCoverViewPagerAdapter { isSoloBand, id ->
+            val intent: Intent = if (isSoloBand) {
+                Intent(requireContext(), SoloCoverActivity::class.java)
+            } else{
+                Intent(requireContext(), BandCoverActivity::class.java)
+            }
+            intent.putExtra(COVER_ID, id)
             startActivity(intent)
         }
 
