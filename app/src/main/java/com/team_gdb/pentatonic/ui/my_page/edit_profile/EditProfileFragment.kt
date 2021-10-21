@@ -78,9 +78,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
             CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .setCropShape(CropImageView.CropShape.RECTANGLE)
-                .setActivityTitle("이미지 추가")
+                .setActivityTitle("프로필 이미지 추가")
+                .setFixAspectRatio(true)
                 .setCropMenuCropButtonTitle("완료")
-                .setRequestedSize(1280, 1280)
+                .setRequestedSize(500, 500, CropImageView.RequestSizeOptions.RESIZE_FIT)
                 .start(requireContext(), this)
         }
 
