@@ -76,8 +76,9 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         }
 
         viewModel.trendBandsQuery.observe(this) {
-            bandCoverListAdapter.setItem(it.filter { !it.isSoloBand })
-            soloCoverListAdapter.setItem(it.filter { it.isSoloBand })
+            val coverList = it.partition { it.isSoloBand }
+            bandCoverListAdapter.setItem(coverList.second)  // 밴드 커버
+            soloCoverListAdapter.setItem(coverList.first)  // 솔로 커버
         }
 
         viewModel.userProfileImage.observe(this) {
