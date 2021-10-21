@@ -50,11 +50,11 @@ class SelectInstListAdapter(
             binding.sessionNameTextView.text =
                 Session.valueOf(item.position.name).sessionName
 
-            // 선택된 아이템이 아니라면 기본 스타일로 표현
+            // 선택된 아이템이라면 하이라이팅 처리
             if (selectedInst.contains(item)) {
-                setItemBasic()
-            } else {  // 선택된 아이템이라면, 하이라이팅 처리
                 setItemHighlighting()
+            } else {  // 선택된 아이템이 아니라면 기본 처리
+                setItemBasic()
             }
             // 해당 세션 클릭시, ViewModel 에 선택 정보 저장하는 동작
             // - coverURL 은 고유하므로, { 세션명 to coverURL } 형태로 저장

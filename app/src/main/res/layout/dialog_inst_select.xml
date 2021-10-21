@@ -36,11 +36,13 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_centerHorizontal="true"
             android:id="@+id/sessionList"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_width="wrap_content"
             android:layout_height="400dp"
             android:layout_below="@+id/bannerLayout"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="36dp"
             android:overScrollMode="never" />
 

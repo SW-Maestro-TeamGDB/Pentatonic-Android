@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.ui.cover_view.solo_cover
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.select_session.SelectInstListAdapter
@@ -34,9 +35,8 @@ class InstSelectBottomSheetDialog :
             }
 
             binding.sessionList.apply {
-                this.layoutManager = LinearLayoutManager(context)
+                this.layoutManager = GridLayoutManager(context, 3)
                 this.adapter = sessionListAdapter
-                this.setHasFixedSize(true)
             }
 
             // 아직 한 명도 참여하지 않은 세션에 대해서는 리스트 생성 X

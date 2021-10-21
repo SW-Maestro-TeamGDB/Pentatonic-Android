@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <FrameLayout
+        android:layout_margin="8dp"
         android:id="@+id/itemRootLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -15,30 +16,31 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:gravity="center"
                 android:id="@+id/sessionLayout"
                 android:paddingVertical="16dp"
-                android:paddingHorizontal="16dp"
-                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="100dp"
+                android:layout_height="120dp">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/sessionImage"
-                    android:src="@drawable/profile_image_placeholder"
-                    android:scaleType="centerCrop"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"/>
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_acoustic_guitar"
+                    android:tint="@color/black"
+                    android:scaleType="fitXY"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
 
                 <TextView
+                    android:gravity="center"
                     android:id="@+id/sessionNameTextView"
-                    android:layout_marginTop="8dp"
-                    android:text="악기 이"
+                    android:layout_marginTop="12dp"
+                    android:text="악기"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textColor="@color/black"
                     android:textSize="12sp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
