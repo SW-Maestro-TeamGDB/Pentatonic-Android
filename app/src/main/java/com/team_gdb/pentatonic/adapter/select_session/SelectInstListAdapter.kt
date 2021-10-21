@@ -3,8 +3,10 @@ package com.team_gdb.pentatonic.adapter.select_session
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.team_gdb.pentatonic.GetSongInstrumentQuery
+import com.team_gdb.pentatonic.base.BaseApplication.Companion.applicationContext
 import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemSelectInstListBinding
 
@@ -49,6 +51,13 @@ class SelectInstListAdapter(
         fun bind(item: GetSongInstrumentQuery.Instrument) {
             binding.sessionNameTextView.text =
                 Session.valueOf(item.position.name).sessionName
+
+            binding.sessionImage.setImageDrawable(
+                ContextCompat.getDrawable(
+                    applicationContext(),
+                    Session.valueOf(item.position.name).icon
+                )
+            )
 
             // 선택된 아이템이라면 하이라이팅 처리
             if (selectedInst.contains(item)) {
