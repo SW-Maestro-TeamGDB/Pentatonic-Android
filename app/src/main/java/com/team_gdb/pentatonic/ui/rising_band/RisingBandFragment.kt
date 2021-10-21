@@ -2,10 +2,8 @@ package com.team_gdb.pentatonic.ui.rising_band
 
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
-import com.team_gdb.pentatonic.adapter.cover_list.TrendingCoverListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.data.model.SessionData
@@ -44,7 +42,7 @@ class RisingBandFragment : BaseFragment<FragmentRisingBandBinding, LoungeViewMod
                     SessionData(
                         sessionName = it?.position?.rawValue!!,
                         sessionMaxSize = it.maxMember,
-                        sessionParticipantList = listOf()
+                        currentParticipant = it.cover!!.size
                     )
                 }
                 CoverEntity(

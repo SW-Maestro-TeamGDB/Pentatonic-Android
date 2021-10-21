@@ -3,7 +3,6 @@ package com.team_gdb.pentatonic.ui.select_song
 import android.content.Intent
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestData
 import com.team_gdb.pentatonic.adapter.song_list.SongVerticalListAdapter
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.SongEntity

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.team_gdb.pentatonic.GetRecommendBandListQuery
 import com.team_gdb.pentatonic.data.model.CoverEntity
 import com.team_gdb.pentatonic.databinding.ItemRisingCoverViewpagerBinding
 
@@ -13,10 +14,10 @@ import com.team_gdb.pentatonic.databinding.ItemRisingCoverViewpagerBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class RisingCoverViewPagerAdapter(val itemClick: (CoverEntity) -> Unit) :
-    RecyclerView.Adapter<RisingCoverViewPagerAdapter.ViewHolder>() {
+class RecommendCoverViewPagerAdapter(val itemClick: (String) -> Unit) :
+    RecyclerView.Adapter<RecommendCoverViewPagerAdapter.ViewHolder>() {
 
-    private var coverEntityList: List<CoverEntity> = emptyList()  // Cover 아이템 리스트 정보
+    private var coverEntityList: List<GetRecommendBandListQuery.GetRecommendBand> = emptyList()  // Cover 아이템 리스트 정보
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -43,32 +44,35 @@ class RisingCoverViewPagerAdapter(val itemClick: (CoverEntity) -> Unit) :
         private val binding: ItemRisingCoverViewpagerBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: CoverEntity) {
+        fun bind(entity: GetRecommendBandListQuery.GetRecommendBand) {
             // 커버 대표 이미지
             Glide.with(binding.root)
-                .load(entity.imageURL)
+                .load(entity.backGroundURI)
                 .override(480, 272)
                 .into(binding.coverImage)
 
             // 커버명과 원곡명
-            binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong
+            binding.coverNameTextView.text = entity.name
+            binding.coverOriginalSongTextView.text = "${entity.song.name} - ${entity.song.artist}"
 
+            val participantCount = entity.session?.sumOf {
+                it?.cover?.size ?: 0
+            }
             // 커버를 구성중인 인원수
-            binding.coverSessionListTextView.text = "${entity.sessionDataList.size}"
+            binding.coverSessionListTextView.text = "$participantCount"
 
             // 좋아요수와 조회수
-            binding.coverLikeTextView.text = entity.like.toString()
-            binding.coverViewTextView.text = entity.view.toString()
+            binding.coverLikeTextView.text = entity.likeCount.toString()
+            binding.coverViewTextView.text = entity.viewCount.toString()
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity)
+                itemClick(entity.bandId)
             }
         }
     }
 
-    fun setItem(entities: List<CoverEntity>) {
+    fun setItem(entities: List<GetRecommendBandListQuery.GetRecommendBand>) {
         this.coverEntityList = entities
         notifyDataSetChanged()
     }

@@ -68,7 +68,7 @@ class TrendingCoverListAdapter(val itemClick: (String) -> Unit) :
             binding.coverNameTextView.text = entity.name
             binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
 
-            val participantCount = entity.session?.sumBy {
+            val participantCount = entity.session?.sumOf {
                 it?.cover?.size ?: 0
             }
             // 커버를 구성중인 인원수

@@ -36,7 +36,7 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
                                 SessionData(
                                     sessionName = it?.position?.rawValue!!,
                                     sessionMaxSize = it.maxMember,
-                                    sessionParticipantList = listOf()
+                                    currentParticipant = it.cover!!.size
                                 )
                             }
                             CoverEntity(

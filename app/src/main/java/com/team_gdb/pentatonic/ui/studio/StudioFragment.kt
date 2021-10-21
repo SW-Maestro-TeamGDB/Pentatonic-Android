@@ -8,14 +8,13 @@ import androidx.viewpager2.widget.ViewPager2
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
-import com.team_gdb.pentatonic.TestData
-import com.team_gdb.pentatonic.TestRisingCoverData
-import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
+import com.team_gdb.pentatonic.adapter.cover_list.RecommendCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
+import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -26,7 +25,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         get() = R.layout.fragment_studio
     override val viewModel: StudioViewModel by viewModel()
 
-    private lateinit var recommendCoverViewPagerAdapter: RisingCoverViewPagerAdapter  // 추천 커버 리스트
+    private lateinit var recommendCoverViewPagerAdapter: RecommendCoverViewPagerAdapter  // 추천 커버 리스트
     private lateinit var recommendSongListAdapter: SongHorizontalListAdapter  // 추천  리스트
 
 
@@ -34,10 +33,13 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
+        viewModel.getSongList()
+        viewModel.getRecommendCoverList()
+
         // 추천 커버 뷰 페이저 어댑터 생성
-        recommendCoverViewPagerAdapter = RisingCoverViewPagerAdapter {
+        recommendCoverViewPagerAdapter = RecommendCoverViewPagerAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(LoungeFragment.COVER_ENTITY, it)
+            intent.putExtra(COVER_ID, it)
             startActivity(intent)
         }
 
@@ -77,14 +79,16 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             binding.recommendCoverViewPager.currentItem = it
         }
 
+        viewModel.recommendCoverList.observe(this) {
+            recommendCoverViewPagerAdapter.setItem(it)
+        }
+
         viewModel.songList.observe(this) {
             recommendSongListAdapter.setItem(it)
         }
     }
 
     override fun initAfterBinding() {
-        viewModel.getSongList()
-
         // 솔로 커버 버튼 클릭했을 때
         binding.makeSoloCoverButton.setOnClickListener {
             val intent = Intent(activity, CreateCoverActivity::class.java).apply {
@@ -105,9 +109,6 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
             val intent = Intent(activity, CreateRecordActivity::class.java)
             startActivity(intent)
         }
-
-        recommendCoverViewPagerAdapter.setItem(TestRisingCoverData.TEST_BAND_COVER_LIST)
-
         autoScrollViewPager()
     }
 

@@ -7,8 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.TestRisingCoverData
-import com.team_gdb.pentatonic.adapter.cover_list.RisingCoverViewPagerAdapter
+import com.team_gdb.pentatonic.adapter.cover_list.RecommendCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
 import com.team_gdb.pentatonic.adapter.ranking.CoverRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
@@ -27,7 +26,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         get() = R.layout.fragment_artist
     override val viewModel: ArtistViewModel by sharedViewModel()
 
-    private lateinit var risingBandCoverViewPagerAdapter: RisingCoverViewPagerAdapter  // 라이징 밴드 커버 뷰페이저
+    private lateinit var recommendBandCoverViewPagerAdapter: RecommendCoverViewPagerAdapter  // 라이징 밴드 커버 뷰페이저
     private lateinit var coverRankingListAdapter: CoverRankingListAdapter  // 밴드 랭킹 리스트
     private lateinit var userRankingListAdapter: ArtistRankingListAdapter  // 아티스트 랭킹 리스트
 
@@ -36,7 +35,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         binding.lifecycleOwner = this
 
         // 라이징 커버 뷰 페이저 어댑터 생성
-        risingBandCoverViewPagerAdapter = RisingCoverViewPagerAdapter {
+        recommendBandCoverViewPagerAdapter = RecommendCoverViewPagerAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
             intent.putExtra(LoungeFragment.COVER_ENTITY, it)
             startActivity(intent)
@@ -44,7 +43,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
         binding.risingCoverViewPager.apply {
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            adapter = risingBandCoverViewPagerAdapter
+            adapter = recommendBandCoverViewPagerAdapter
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
@@ -100,7 +99,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
     }
 
     override fun initAfterBinding() {
-        risingBandCoverViewPagerAdapter.setItem(TestRisingCoverData.TEST_BAND_COVER_LIST)
+//        recommendBandCoverViewPagerAdapter.setItem(TestRisingCoverData.TEST_BAND_COVER_LIST)
 
         viewModel.getRankedCoverList()
         viewModel.getRankedUserList()
