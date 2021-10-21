@@ -75,6 +75,7 @@ class SelectInstListAdapter(
         private fun setItemHighlighting() {
             binding.itemCardLayout.setCardBackgroundColor(Color.LTGRAY)
             binding.sessionNameTextView.setTextColor(Color.WHITE)
+            binding.sessionImage.setColorFilter(Color.argb(255, 255, 255, 255))
         }
 
         /**
@@ -83,6 +84,7 @@ class SelectInstListAdapter(
         private fun setItemBasic() {
             binding.itemCardLayout.setCardBackgroundColor(Color.WHITE)
             binding.sessionNameTextView.setTextColor(Color.BLACK)
+            binding.sessionImage.setColorFilter(Color.argb(255, 0, 0, 0))
         }
     }
 
