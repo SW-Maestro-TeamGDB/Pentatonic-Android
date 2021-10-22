@@ -59,7 +59,7 @@ class PositionRankingListAdapter() :
                 .into(binding.positionImageView)
 
             binding.positionNameTextView.text = Session.valueOf(entity.position).sessionName
-            binding.positionRankingTextView.text = "124위"
+            binding.positionLikeTextView.text = entity.likeCount.toString()
             binding.positionLevel.rating = 3.0F
         }
     }

@@ -41,13 +41,15 @@
 
 
                 <TextView
-                    android:id="@+id/positionRankingTextView"
+                    android:drawablePadding="4dp"
+                    android:id="@+id/positionLikeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="128위"
-                    android:textSize="12sp" />
+                    android:text="0"
+                    android:textSize="12sp"
+                    app:drawableStartCompat="@drawable/ic_left_image_like" />
 
                 <com.willy.ratingbar.ScaleRatingBar
                     android:id="@+id/positionLevel"
