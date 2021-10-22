@@ -35,9 +35,9 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         binding.lifecycleOwner = this
 
         // 라이징 커버 뷰 페이저 어댑터 생성
-        recommendBandCoverViewPagerAdapter = RecommendCoverViewPagerAdapter {
+        recommendBandCoverViewPagerAdapter = RecommendCoverViewPagerAdapter { isSoloBand, id ->
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(LoungeFragment.COVER_ENTITY, it)
+            intent.putExtra(COVER_ID, id)
             startActivity(intent)
         }
 

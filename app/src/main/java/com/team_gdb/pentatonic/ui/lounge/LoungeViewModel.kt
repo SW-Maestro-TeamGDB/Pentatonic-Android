@@ -3,6 +3,7 @@ package com.team_gdb.pentatonic.ui.lounge
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.GetTrendBandsQuery
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.lounge.LoungeRepository
@@ -88,6 +89,7 @@ class LoungeViewModel(val repository: LoungeRepository) : BaseViewModel() {
                     if (!it.hasErrors()) {
                         Timber.d(it.data?.getUserInfo.toString())
                         _userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
+                        BaseApplication.prefs.username = it.data?.getUserInfo?.username  // SharedPreferences 에 사용자 닉네임 저장
                     } else {
                         it.errors?.forEach {
                             Timber.e(it.message)

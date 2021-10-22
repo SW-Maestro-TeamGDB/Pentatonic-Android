@@ -10,6 +10,7 @@ import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
 import com.team_gdb.pentatonic.adapter.cover_list.RecommendCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.song_list.SongHorizontalListAdapter
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
@@ -41,7 +42,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
         recommendCoverViewPagerAdapter = RecommendCoverViewPagerAdapter { isSoloBand, id ->
             val intent: Intent = if (isSoloBand) {
                 Intent(requireContext(), SoloCoverActivity::class.java)
-            } else{
+            } else {
                 Intent(requireContext(), BandCoverActivity::class.java)
             }
             intent.putExtra(COVER_ID, id)
@@ -94,6 +95,9 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
     }
 
     override fun initAfterBinding() {
+        // 사용자 닉네임 설정
+        binding.usernameTextView.text = BaseApplication.prefs.username
+
         // 솔로 커버 버튼 클릭했을 때
         binding.makeSoloCoverButton.setOnClickListener {
             val intent = Intent(activity, CreateCoverActivity::class.java).apply {
@@ -123,7 +127,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
                 whenResumed {
                     delay(3000)
                     viewModel.getCurrentPosition()?.let {
-                        viewModel.setCurrentPosition((it.plus(1)) % 3)
+                        viewModel.setCurrentPosition((it.plus(1)) % 5)
                     }
                 }
             }

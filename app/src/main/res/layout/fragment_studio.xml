@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/usernameTextView"
                     android:paddingHorizontal="12dp"
                     android:paddingVertical="4dp"
                     android:background="@drawable/background_gradient_text"
@@ -49,7 +50,7 @@
                     android:textSize="18sp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:text="H43RO"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
