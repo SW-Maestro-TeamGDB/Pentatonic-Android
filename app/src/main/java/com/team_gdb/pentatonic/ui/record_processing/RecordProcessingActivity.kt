@@ -114,7 +114,9 @@ class RecordProcessingActivity :
         viewModel.coverFileURL.observe(this) {
             // 만약 업로드가 성공했고, 지정곡 커버라면 MR 이랑 합침
             if (!(it.isNotBlank() and createdRecordEntity.recordSong.isFreeSong)) {
-                viewModel.getInstMergedCover(createdRecordEntity.recordSong.songUrl, it)
+//                viewModel.getInstMergedCover(createdRecordEntity.recordSong.songUrl, it)
+                viewModel.setInstMergedCover(it)
+
             } else {  // 자유곡 커버일 경우 MR 합본 필요 없음 -> 그냥 녹음본만 재생
                 viewModel.setInstMergedCover(it)
                 // 그리고 해당 URL 을 기반으로 서버에 자유곡 등록
@@ -140,7 +142,10 @@ class RecordProcessingActivity :
         }
 
         viewModel.reverbEffectLevel.observe(this) {
+            reverbEffect.reverbDelay = it
+            reverbEffect.decayTime = it
             reverbEffect.reverbLevel = (-8000 + (it * 100)).toShort()
+            Timber.e("${reverbEffect.reverbLevel} ${reverbEffect.decayTime} ${reverbEffect.reverbDelay}")
         }
 
 
@@ -270,7 +275,6 @@ class RecordProcessingActivity :
      */
     private fun setEnvironmentReverb() {
         player?.attachAuxEffect(reverbEffect.id)
-        reverbEffect.reverbLevel = -8000
         reverbEffect.enabled = true
         player?.setAuxEffectSendLevel(1.0f)
     }
