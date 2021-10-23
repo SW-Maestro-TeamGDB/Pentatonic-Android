@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.afollestad.materialdialogs.MaterialDialog
 import com.bumptech.glide.Glide
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.team_gdb.pentatonic.GetBandCoverInfoQuery
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.R
@@ -23,6 +25,7 @@ import com.team_gdb.pentatonic.ui.cover_view.band_cover.SessionSelectBottomSheet
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
+import com.team_gdb.pentatonic.util.PlayAnimation
 import es.dmoral.toasty.Toasty
 import timber.log.Timber
 
@@ -74,6 +77,18 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
 //            intent.putExtra(USER_ID, coverEntity.sessionDataList[0].sessionParticipantList[0])
             startActivity(intent)
         }
+
+        binding.coverLikeButton.setOnLikeListener(object : OnLikeListener {
+            override fun liked(likeButton: LikeButton?) {
+                viewModel.likeBand()
+                PlayAnimation.playSuccessAlert(this@SoloCoverActivity, "좋아요가 반영되었습니다!")
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                viewModel.likeBand()
+                PlayAnimation.playFailureAlert(this@SoloCoverActivity, "좋아요가 취소되었습니다")
+            }
+        })
 
     }
 
