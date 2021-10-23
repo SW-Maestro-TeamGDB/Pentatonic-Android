@@ -101,10 +101,10 @@
                             android:layout_height="match_parent">
 
                             <ImageView
+                                android:id="@+id/makeBandCoverImageVIew"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/band_cover_bg"
                                 android:tintMode="src_atop"
                                 app:tint="#80000000" />
 
@@ -149,10 +149,10 @@
                             android:layout_height="match_parent">
 
                             <ImageView
+                                android:id="@+id/makeSoloCoverImageView"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/solo_cover_bg"
                                 android:tintMode="src_atop"
                                 app:tint="#80000000" />
 
@@ -203,10 +203,10 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/createRecordImageView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/record_studio"
                             android:tintMode="src_over"
                             app:tint="#80000000" />
 

@@ -243,10 +243,10 @@
                         android:layout_height="match_parent">
 
                         <ImageView
+                            android:id="@+id/wholeCoverImageView"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/band_image"
                             android:tintMode="src_over"
                             app:tint="#80000000" />
 

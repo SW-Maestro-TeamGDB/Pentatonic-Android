@@ -39,6 +39,8 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        setImageResource()  // 정적 이미지 리소스 추가
+
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = TrendingCoverListAdapter {
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
@@ -157,6 +159,13 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
             .load(imageUrl)
             .placeholder(R.drawable.placeholder_cover_bg)
             .into(binding.weeklyChallengeSongImage)
+    }
+
+
+    private fun setImageResource() {
+        Glide.with(this)
+            .load(R.drawable.band_image)
+            .into(binding.wholeCoverImageView)
     }
 
     companion object {

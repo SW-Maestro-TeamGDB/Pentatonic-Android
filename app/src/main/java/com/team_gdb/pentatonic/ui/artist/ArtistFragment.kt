@@ -6,6 +6,7 @@ import androidx.lifecycle.whenResumed
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.RecommendCoverViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
@@ -33,6 +34,8 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
+
+        setImageResource()
 
         // 라이징 커버 뷰 페이저 어댑터 생성
         recommendBandCoverViewPagerAdapter = RecommendCoverViewPagerAdapter { isSoloBand, id ->
@@ -136,6 +139,12 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
                 }
             }
         }
+    }
+
+    private fun setImageResource() {
+        Glide.with(this)
+            .load(R.drawable.musician)
+            .into(binding.wholeArtistImageView)
     }
 
 }

@@ -5,6 +5,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentStudioBinding
@@ -37,6 +38,8 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
         viewModel.getSongList()
         viewModel.getRecommendCoverList()
+
+        setImageResource()  // 정적 이미지 리소스 추가
 
         // 추천 커버 뷰 페이저 어댑터 생성
         recommendCoverViewPagerAdapter = RecommendCoverViewPagerAdapter { isSoloBand, id ->
@@ -132,6 +135,20 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
                 }
             }
         }
+    }
+
+    private fun setImageResource() {
+        Glide.with(this)
+            .load(R.drawable.band_cover_bg)
+            .into(binding.makeBandCoverImageVIew)
+
+        Glide.with(this)
+            .load(R.drawable.solo_cover_bg)
+            .into(binding.makeSoloCoverImageView)
+
+        Glide.with(this)
+            .load(R.drawable.record_studio)
+            .into(binding.createRecordImageView)
     }
 
 
