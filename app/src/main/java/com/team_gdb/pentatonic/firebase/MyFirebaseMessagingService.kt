@@ -14,8 +14,12 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 
 import androidx.core.app.NotificationManagerCompat
-
-
+import com.apollographql.apollo.rx3.rxMutate
+import com.team_gdb.pentatonic.UpdateDeviceTokenMutation
+import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
+import com.team_gdb.pentatonic.network.applySchedulers
+import com.team_gdb.pentatonic.type.UpdateDeviceTokenInput
+import io.reactivex.rxjava3.kotlin.subscribeBy
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -30,6 +34,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // manage this apps subscriptions on the server side, send the
         // FCM registration token to your app server.
 //        sendRegistrationToServer(token)
+
     }
 
     /**
@@ -60,18 +65,16 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val title: String = remoteMessage.notification!!.title!!
         val body: String = remoteMessage.notification!!.body!!
 
-        Timber.e("타이틀 이렇고 : $title")
-        Timber.e("내용 이렇고 : $title")
 
         builder.setContentTitle(title)
             .setContentText(body)
-            .setSmallIcon(R.drawable.sym_def_app_icon)
+            .setSmallIcon(R.mipmap.sym_def_app_icon)
 
-        val notification: Notification = builder!!.build()
+        val notification: Notification = builder.build()
         notificationManager.notify(1, notification)
     }
 
-    companion object{
+    companion object {
         const val CHANNEL_ID = "pentatonic"
         const val CHANNEL_NAME = "pentatonic"
     }

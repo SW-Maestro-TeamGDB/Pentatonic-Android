@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.ui.login
 
 import android.content.Intent
 import android.widget.Toast
+import com.apollographql.apollo.rx3.rxMutate
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.messaging.FirebaseMessaging
 import com.team_gdb.pentatonic.R
@@ -13,8 +14,12 @@ import com.team_gdb.pentatonic.ui.register.RegisterActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import com.google.android.gms.tasks.OnSuccessListener
-
-
+import com.team_gdb.pentatonic.UpdateDeviceTokenMutation
+import com.team_gdb.pentatonic.network.NetworkHelper
+import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
+import com.team_gdb.pentatonic.network.applySchedulers
+import com.team_gdb.pentatonic.type.UpdateDeviceTokenInput
+import io.reactivex.rxjava3.kotlin.subscribeBy
 
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
@@ -28,7 +33,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
         setTheme(R.style.Theme_Pentatonic)
 
         FirebaseMessaging.getInstance().token.addOnSuccessListener {
-            Timber.e("토큰 딱 대 ${it}")
+            Timber.e("토큰 딱 대 $it")
+            viewModel.updateDeviceToken(it)
         }
 
         Timber.d("JWT Token ${BaseApplication.prefs.token}")

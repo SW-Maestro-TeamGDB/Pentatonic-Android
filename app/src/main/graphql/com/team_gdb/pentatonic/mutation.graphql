@@ -123,3 +123,8 @@ mutation FollowMutation($followInput: FollowInput!) {
 mutation UploadFreeSongMutation($uploadFreeSongInput: UploadFreeSongInput!) {
     uploadFreeSong(input: $uploadFreeSongInput)
 }
+
+# 사용자 Device Token 등록 뮤테이션
+mutation UpdateDeviceTokenMutation($UpdateDeviceTokenInput:UpdateDeviceTokenInput!) {
+    updateDeviceToken(input: $UpdateDeviceTokenInput)
+}
