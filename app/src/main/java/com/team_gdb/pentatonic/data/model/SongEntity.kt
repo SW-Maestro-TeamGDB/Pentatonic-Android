@@ -15,6 +15,7 @@ import java.io.Serializable
  * @property albumReleaseDate   // 앨범 발매일
  * @property songGenre          // 곡 장르
  * @property isFreeSong         // 자유곡 여부
+ * @property duration           // 기간
  */
 data class SongEntity(
     var songId: String,
@@ -28,4 +29,5 @@ data class SongEntity(
     val songGenre: String,
     val isWeeklyChallenge: Boolean,
     val isFreeSong: Boolean,
+    val duration: Double
 ) : Serializable

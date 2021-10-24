@@ -48,7 +48,8 @@ class WeeklyChallengeViewModel(private val repository: WeeklyChallengeRepository
                             isWeeklyChallenge = true,
                             songGenre = it.data?.getSong?.genre!!.rawValue,
                             songLevel = it.data?.getSong?.level!!,
-                            songUrl = it.data?.getSong?.songURI!!
+                            songUrl = it.data?.getSong?.songURI!!,
+                            duration = it.data?.getSong?.duration!!
                         )
                         _weeklyChallengeSongEntity.postValue(songEntity)
 

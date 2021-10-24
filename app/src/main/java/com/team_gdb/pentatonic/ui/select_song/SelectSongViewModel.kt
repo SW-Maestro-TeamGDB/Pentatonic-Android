@@ -44,7 +44,8 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
                                 albumName = it.album ?: "자유곡",
                                 albumReleaseDate = it.releaseDate ?: "자유곡",
                                 albumJacketImage = it.songImg ?: "",
-                                isFreeSong = false
+                                isFreeSong = false,
+                                duration = it.duration
                             )
                         })
                     }

@@ -39,7 +39,8 @@ class RegisterFreeSongBottomSheetDialog() :
                 albumReleaseDate = "",
                 songGenre = "",
                 isWeeklyChallenge = false,
-                isFreeSong = true
+                isFreeSong = true,
+                duration = 0.0
             )
             viewModel.selectedSong.postValue(songEntity)
         }
