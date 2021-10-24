@@ -21,25 +21,27 @@
         <ImageView
             android:id="@+id/logo"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="150dp"
             android:src="@drawable/pentatonic_white" />
 
         <EditText
-            android:hint="@string/login_id_hint_text"
-            android:textSize="14sp"
-            android:text="@={viewModel.idField}"
-            android:drawablePadding="8dp"
             android:id="@+id/idEditText"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/logo"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="100dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:paddingHorizontal="16dp"
-            android:layout_below="@+id/logo"
             android:background="@drawable/custom_radius_background_white"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:drawableStart="@drawable/ic_baseline_person_24"
+            android:drawablePadding="8dp"
+            android:hint="@string/login_id_hint_text"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/lb_grey"
+            android:text="@={viewModel.idField}"
+            android:textSize="14sp" />
 
         <EditText
             android:hint="@string/login_pw_hint_text"
@@ -52,7 +54,9 @@
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_baseline_lock_24"
             android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
             android:layout_below="@+id/idEditText"
+            android:textColorHint="@color/lb_grey"
             android:background="@drawable/custom_radius_background_white"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>

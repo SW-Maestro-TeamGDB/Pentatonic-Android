@@ -23,7 +23,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         get() = R.layout.fragment_my_page
     override val viewModel: MyPageViewModel by sharedViewModel()
 
-    private lateinit var likedCoverListAdapter: TrendingCoverListAdapter
     private lateinit var coverHistoryListAdapter: CoverHistoryListAdapter
     private lateinit var positionRankingAdapter: PositionRankingListAdapter
 
@@ -45,20 +44,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
                 this.orientation = LinearLayoutManager.HORIZONTAL
             }
             this.adapter = coverHistoryListAdapter
-            this.setHasFixedSize(true)
-        }
-
-        likedCoverListAdapter = TrendingCoverListAdapter {
-            val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ENTITY, it)
-            startActivity(intent)
-        }
-
-        binding.likedCoverList.apply {
-            this.layoutManager = LinearLayoutManager(context).apply {
-                this.orientation = LinearLayoutManager.HORIZONTAL
-            }
-            this.adapter = likedCoverListAdapter
             this.setHasFixedSize(true)
         }
 
