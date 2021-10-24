@@ -54,7 +54,7 @@ class LibraryListAdapter(
 
         fun bind(entity: LibraryEntity) {
             binding.coverNameTextView.text = entity.coverName
-            binding.coverOriginalSongTextView.text = entity.originalSong.name
+            binding.coverOriginalSongTextView.text = "${entity.originalSong.artist} - ${entity.originalSong.name}"
             binding.coverSessionAndDateTextView.text =
                 "${Session.valueOf(entity.coverSession).sessionName} 커버 | ${entity.coverDate.toDate().formatTo("yyyy-MM-dd HH:mm")}"
 

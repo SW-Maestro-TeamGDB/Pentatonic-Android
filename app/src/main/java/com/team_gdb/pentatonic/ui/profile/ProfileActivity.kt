@@ -34,9 +34,14 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
+        // 해당 사용자의 ID 를 기반으로 상세 정보 쿼리
+        viewModel.getUserInfo(userID)
+
         if (userID == BaseApplication.prefs.userId) {
             binding.followButton.visibility = View.GONE
         }
+
+        binding.titleBar.titleTextView.text = "프로필"
 
         coverHistoryListAdapter = CoverHistoryListAdapter {
             val intent = Intent(this, BandCoverActivity::class.java)
@@ -88,8 +93,9 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
     }
 
     override fun initAfterBinding() {
-        // 해당 사용자의 ID 를 기반으로 상세 정보 쿼리
-        viewModel.getUserInfo(userID)
+        binding.titleBar.backButton.setOnClickListener {
+            finish()
+        }
 
         binding.followButton.setOnClickListener {
             binding.followButton.toggle()

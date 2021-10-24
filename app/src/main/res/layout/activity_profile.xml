@@ -15,21 +15,9 @@
             android:orientation="vertical"
             tools:context=".ui.profile.ProfileActivity">
 
-            <RelativeLayout
-                android:layout_marginTop="56dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/backButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="24dp"
-                    android:elevation="1dp"
-                    android:src="@drawable/ic_back_button"
-                    app:tint="@color/black" />
-
-            </RelativeLayout>
+            <include
+                android:id="@+id/titleBar"
+                layout="@layout/page_title_bar"/>
 
             <LinearLayout
                 android:layout_marginTop="24dp"
@@ -157,6 +145,7 @@
 
             <com.chauthai.overscroll.RecyclerViewBouncy
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
                 android:id="@+id/coverHistoryList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,47 +157,6 @@
                 app:viewCountEstimateSize="5"
                 tools:listitem="@layout/item_horizontal_cover_list" />
 
-            <RelativeLayout
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="36dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/likedCoverTitleTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:gravity="center_vertical"
-                    android:text="좋아요 누른 커버"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <ImageView
-                    android:id="@+id/likedCoverDetailButton"
-                    android:layout_width="18dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:fontFamily="@font/nanum_light"
-                    android:gravity="end"
-                    android:src="@drawable/ic_more_button" />
-            </RelativeLayout>
-
-            <com.chauthai.overscroll.RecyclerViewBouncy
-                android:layout_marginBottom="56dp"
-                android:layout_marginTop="16dp"
-                app:friction="200"
-                app:gapLimit="220"
-                app:speedFactor="5"
-                app:tension="1000"
-                app:maxAdapterSizeToEstimate="5"
-                app:viewCountEstimateSize="5"
-                android:id="@+id/likedCoverList"
-                tools:listitem="@layout/item_horizontal_cover_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </com.xw.repo.widget.BounceScrollView>
