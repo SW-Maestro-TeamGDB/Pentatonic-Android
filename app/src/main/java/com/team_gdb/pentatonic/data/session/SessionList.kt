@@ -14,7 +14,7 @@ object SessionList {
         Session.VIOLIN,
         Session.CELLO,
         Session.GAYAGEUM,
-        Session.HAEGUEM,
+        Session.HAEGEUM,
         Session.LYRE
     )
 }

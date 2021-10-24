@@ -19,6 +19,6 @@ enum class Session(val sessionName: String, val icon: Int) {
     CELLO("첼로", R.drawable.ic_cello),
     GAYAGEUM("가야금", R.drawable.ic_gayaguem),
     GEOMUNGO("가야금", R.drawable.ic_gayaguem),
-    HAEGUEM("해금", R.drawable.ic_haeguem),
+    HAEGEUM("해금", R.drawable.ic_haegeum),
     LYRE("거문고", R.drawable.ic_gayaguem)
 }
