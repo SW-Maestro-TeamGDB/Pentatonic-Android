@@ -61,7 +61,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
                 backgroundImgURL = viewModel.bandInfo.value!!.backGroundURI,
                 coverIntroduction = viewModel.bandInfo.value!!.introduce,
                 likeCount = viewModel.bandInfo.value!!.likeCount,
-                viewCount = 34,
+                viewCount = viewModel.bandInfo.value!!.viewCount,
                 coverURL = it
             )
             val intent = Intent(this, CoverPlayActivity::class.java)

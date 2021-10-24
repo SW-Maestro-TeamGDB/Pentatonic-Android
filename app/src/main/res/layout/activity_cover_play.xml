@@ -114,13 +114,13 @@
                     android:layout_height="18dp"/>
 
                 <TextView
-                    android:id="@+id/coverLikeCountTextView"
+                    android:id="@+id/likeCountTextView"
                     android:fontFamily="@font/nanum_regular"
                     android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textColor="@color/white"
-                    android:text="186"
+                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -169,12 +169,13 @@
                     android:layout_height="18dp"/>
 
                 <TextView
+                    android:id="@+id/viewCountTextView"
                     android:fontFamily="@font/nanum_regular"
                     android:layout_marginStart="8dp"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textColor="@color/white"
-                    android:text="1.2K"
+                    android:text="0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

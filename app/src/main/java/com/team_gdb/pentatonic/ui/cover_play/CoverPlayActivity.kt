@@ -49,7 +49,8 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         }
         binding.playerView.player = ExoPlayerHelper.player
 
-        binding.coverLikeCountTextView.text = coverEntity.likeCount.toString()
+        binding.likeCountTextView.text = coverEntity.likeCount.toString()
+        binding.viewCountTextView.text = coverEntity.viewCount.toString()
     }
 
     override fun initDataBinding() {
