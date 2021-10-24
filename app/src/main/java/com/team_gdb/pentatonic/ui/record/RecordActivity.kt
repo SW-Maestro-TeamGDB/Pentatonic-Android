@@ -10,10 +10,8 @@ import androidx.annotation.RequiresApi
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.custom_view.ButtonState
-import com.team_gdb.pentatonic.data.model.CreatedCoverEntity
 import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.startPlaying
@@ -53,6 +51,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 "${(millisUntilFinished.toFloat() / 1000.0f).roundToInt()}초"
         }
 
+        @RequiresApi(Build.VERSION_CODES.Q)
         override fun onFinish() {
             binding.startCountDownTextView.visibility = View.GONE
             binding.totalTimeTextView.visibility = View.VISIBLE
@@ -69,6 +68,9 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
 
         binding.titleBar.titleTextView.text = "Recording"
+
+        binding.totalTimeTextView.text = "${(createdCoverEntity.recordSong.duration / 60).toInt()}:${(createdCoverEntity.recordSong.duration % 60).toInt()}"
+
 
         Timber.d(createdCoverEntity.toString())
     }
