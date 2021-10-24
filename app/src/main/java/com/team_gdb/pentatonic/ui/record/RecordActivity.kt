@@ -14,6 +14,7 @@ import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.ActivityRecordBinding
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.pausePlaying
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.startPlaying
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
@@ -55,6 +56,7 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         override fun onFinish() {
             binding.startCountDownTextView.visibility = View.GONE
             binding.totalTimeTextView.visibility = View.VISIBLE
+            binding.recordTimeTextView.visibility = View.VISIBLE
             // 지정곡이라면 MR 재생, 만약 자유곡이면 MR 재생 X
             if (!createdCoverEntity.recordSong.isFreeSong) {
                 startPlaying()
@@ -69,8 +71,12 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
         binding.titleBar.titleTextView.text = "Recording"
 
-        binding.totalTimeTextView.text = "${(createdCoverEntity.recordSong.duration / 60).toInt()}:${(createdCoverEntity.recordSong.duration % 60).toInt()}"
-
+        if (!createdCoverEntity.recordSong.isFreeSong) {
+            binding.totalTimeTextView.visibility = View.GONE
+        } else {
+            binding.totalTimeTextView.text =
+                "${(createdCoverEntity.recordSong.duration / 60).toInt()}:${(createdCoverEntity.recordSong.duration % 60).toInt()}"
+        }
 
         Timber.d(createdCoverEntity.toString())
     }
@@ -99,16 +105,26 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         binding.recordButton.setOnClickListener {
             when (viewModel.buttonState.value) {
                 ButtonState.BEFORE_RECORDING -> {
+                    binding.recordTimeTextView.visibility = View.GONE
+                    binding.totalTimeTextView.visibility = View.GONE
                     binding.startCountDownTextView.visibility = View.VISIBLE
                     countDownTimer.start()
                 }
                 ButtonState.ON_RECORDING -> {
                     viewModel.buttonState.postValue(ButtonState.STOP_RECORDING)
-                    binding.recordCompleteButton.visibility = View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
-                    stopPlaying()
-                    stopRecording()
+                    binding.recordCompleteButton.visibility =
+                        View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
+                    initPlayer(mrFilePath) {
+                        stopPlaying()
+                        stopRecording()
+                    }  // 다시 누를 시 녹음 & 재생 처음부터 다시 될 수 있도록 초기화
+
+                    binding.soundVisualizerView.stopVisualizing()
+                    binding.recordTimeTextView.stopCountUp()
                 }
                 ButtonState.STOP_RECORDING -> {
+                    binding.recordTimeTextView.visibility = View.GONE
+                    binding.totalTimeTextView.visibility = View.GONE
                     binding.startCountDownTextView.visibility = View.VISIBLE
                     countDownTimer.start()
                 }
@@ -171,6 +187,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
         viewModel.buttonState.postValue(ButtonState.BEFORE_RECORDING)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        stopPlaying()
+    }
 
     companion object {
         const val AMPLITUDE_DATA = "AMPLITUDE_DATA"

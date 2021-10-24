@@ -38,7 +38,7 @@
             android:text="@={viewModel.freeSongName}"
             android:hint="곡 제목을 입력해주세요."
             android:inputType="text"
-            android:paddingHorizontal="8dp"
+            android:paddingHorizontal="16dp"
             android:textSize="14sp" />
 
         <TextView
@@ -61,7 +61,7 @@
             android:text="@={viewModel.freeSongArtist}"
             android:hint="아티스트 명을 입력해주세요."
             android:inputType="text"
-            android:paddingHorizontal="8dp"
+            android:paddingHorizontal="16dp"
             android:textSize="14sp" />
 
         <androidx.appcompat.widget.AppCompatButton
