@@ -69,6 +69,10 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
 
     override fun initAfterBinding() {
         viewModel.getComment(coverEntity.coverID)
+
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 
     override fun onDestroy() {

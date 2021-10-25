@@ -35,6 +35,10 @@
 
         </LinearLayout>
 
+        <include
+            android:id="@+id/titleBar"
+            layout="@layout/page_title_bar"/>
+
         <LinearLayout
             android:layout_centerHorizontal="true"
             android:orientation="vertical"

@@ -88,7 +88,7 @@
         <entry key="app/src/main/res/layout/fragment_band_cover.xml" value="0.10100193923723336" />
         <entry key="app/src/main/res/layout/fragment_band_cover_session_setting.xml" value="0.1417763157894737" />
         <entry key="app/src/main/res/layout/fragment_band_ranking.xml" value="0.2299342105263158" />
-        <entry key="app/src/main/res/layout/fragment_basic_cover_info_form.xml" value="0.11907894736842105" />
+        <entry key="app/src/main/res/layout/fragment_basic_cover_info_form.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_basic_info_form.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_basic_record_info_form.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_control.xml" value="0.24048913043478262" />
