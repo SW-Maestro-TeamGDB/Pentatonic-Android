@@ -47,6 +47,7 @@
                     android:fontFamily="@font/nanum_light"
                     android:text="DAY6 - You make me"
                     android:textColor="@color/white"
+                    android:drawableTint="@color/white"
                     android:textSize="14sp"/>
 
                 <TextView

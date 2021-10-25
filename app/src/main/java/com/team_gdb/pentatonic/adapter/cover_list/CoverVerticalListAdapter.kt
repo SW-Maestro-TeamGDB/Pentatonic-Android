@@ -59,8 +59,15 @@ class CoverVerticalListAdapter(val itemClick: (String, Boolean) -> Unit) :
             val participantCount = entity.sessionDataList?.sumOf {
                 it.currentParticipant
             }
+
+
             // 커버를 구성중인 인원수
-            binding.coverSessionListTextView.text = "${participantCount}명 참여중"
+            binding.coverSessionListTextView.text =
+                if (participantCount == 1 && entity.sessionDataList?.size == 1) {
+                    "솔로 커버"
+                } else {
+                    "${participantCount}명 참여중"
+                }
 
             // 좋아요수와 조회수
             binding.coverLikeTextView.text = entity.like.toString()
@@ -68,7 +75,8 @@ class CoverVerticalListAdapter(val itemClick: (String, Boolean) -> Unit) :
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                val isSoloBand = entity.sessionDataList.size == 1 && entity.sessionDataList[0].sessionMaxSize == 1
+                val isSoloBand =
+                    entity.sessionDataList.size == 1 && entity.sessionDataList[0].sessionMaxSize == 1
                 itemClick(entity.id, isSoloBand)
             }
         }

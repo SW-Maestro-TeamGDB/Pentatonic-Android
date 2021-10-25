@@ -67,6 +67,21 @@
                         app:drawableStartCompat="@drawable/ic_left_participants"
                         app:drawableTint="@color/white" />
 
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/soloCoverTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:drawablePadding="4dp"
+                        android:fontFamily="@font/nanum_light"
+                        android:text="솔로커버"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:drawableStartCompat="@drawable/ic_left_person"
+                        app:drawableTint="@color/white" />
+
                 </LinearLayout>
 
                 <LinearLayout

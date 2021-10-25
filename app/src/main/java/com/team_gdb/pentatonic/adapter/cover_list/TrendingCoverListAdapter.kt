@@ -1,11 +1,14 @@
 package com.team_gdb.pentatonic.adapter.cover_list
 
+import android.graphics.Rect
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.GetTrendBandsQuery
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
 
 /**
@@ -71,8 +74,16 @@ class TrendingCoverListAdapter(val itemClick: (String) -> Unit) :
             val participantCount = entity.session?.sumOf {
                 it?.cover?.size ?: 0
             }
+
             // 커버를 구성중인 인원수
-            binding.coverSessionListTextView.text = "${participantCount}명 참여중"
+            binding.coverSessionListTextView.run {
+                if (entity.isSoloBand) {
+                    this.visibility = View.GONE
+                    binding.soloCoverTextView.visibility = View.VISIBLE
+                } else {
+                    this.text = "${participantCount}명 참여중"
+                }
+            }
 
             // 좋아요수와 조회수
             binding.coverLikeTextView.text = entity.likeCount.toString()
