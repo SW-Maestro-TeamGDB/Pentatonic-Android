@@ -12,6 +12,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.databinding.ActivityCoverPlayBinding
@@ -19,6 +21,7 @@ import com.team_gdb.pentatonic.data.model.CoverPlayEntity
 import com.team_gdb.pentatonic.media.ExoPlayerHelper
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
+import com.team_gdb.pentatonic.util.PlayAnimation
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -36,6 +39,8 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         binding.lifecycleOwner = this
 
         viewModel.setCoverEntity(coverEntity)
+
+        binding.coverLikeButton.isLiked = coverEntity.likeStatus == true
 
         Glide.with(binding.root)
             .load(coverEntity.backgroundImgURL)
@@ -73,6 +78,18 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
         binding.backButton.setOnClickListener {
             finish()
         }
+
+        binding.coverLikeButton.setOnLikeListener(object : OnLikeListener {
+            override fun liked(likeButton: LikeButton?) {
+                viewModel.likeBand()
+                PlayAnimation.playSuccessAlert(this@CoverPlayActivity, "좋아요가 반영되었습니다!")
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                viewModel.likeBand()
+                PlayAnimation.playFailureAlert(this@CoverPlayActivity, "좋아요가 취소되었습니다")
+            }
+        })
     }
 
     override fun onDestroy() {

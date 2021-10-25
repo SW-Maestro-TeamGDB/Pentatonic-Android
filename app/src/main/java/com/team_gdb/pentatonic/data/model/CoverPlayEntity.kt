@@ -9,5 +9,6 @@ data class CoverPlayEntity(
     val coverURL: String,
     val backgroundImgURL: String,
     val likeCount: Int,
+    val likeStatus: Boolean,
     val viewCount: Int,
 ): Serializable

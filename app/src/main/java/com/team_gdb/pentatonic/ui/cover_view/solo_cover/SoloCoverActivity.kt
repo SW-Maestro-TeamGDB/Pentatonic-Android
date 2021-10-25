@@ -62,6 +62,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
                 coverIntroduction = viewModel.bandInfo.value!!.introduce,
                 likeCount = viewModel.bandInfo.value!!.likeCount,
                 viewCount = viewModel.bandInfo.value!!.viewCount,
+                likeStatus = viewModel.bandInfo.value!!.likeStatus!!,
                 coverURL = it
             )
             val intent = Intent(this, CoverPlayActivity::class.java)
@@ -154,6 +155,7 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
                     coverIntroduction = bandInfo.introduce,
                     likeCount = bandInfo.likeCount,
                     viewCount = bandInfo.viewCount,
+                    likeStatus = bandInfo.likeStatus!!,
                     coverURL = bandInfo.session[0]?.cover?.get(0)!!.coverURI
                 )
                 val intent = Intent(this, CoverPlayActivity::class.java)

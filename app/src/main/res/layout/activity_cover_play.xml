@@ -35,10 +35,6 @@
 
         </LinearLayout>
 
-        <include
-            android:id="@+id/titleBar"
-            layout="@layout/page_title_bar"/>
-
         <LinearLayout
             android:layout_centerHorizontal="true"
             android:orientation="vertical"
@@ -110,12 +106,21 @@
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    app:tint="@color/white"
-                    android:gravity="center"
+                <com.like.LikeButton
+                    android:id="@+id/coverLikeButton"
                     android:layout_width="18dp"
-                    android:src="@drawable/ic_left_image_like"
-                    android:layout_height="18dp"/>
+                    android:layout_height="18dp"
+                    app:anim_scale_factor="2.5"
+                    app:circle_end_color="@color/white"
+                    app:circle_start_color="@color/white"
+                    app:dots_primary_color="@color/white"
+                    app:dots_secondary_color="@color/white"
+                    app:icon_size="30dp"
+                    app:icon_type="thumb"
+                    app:like_drawable="@drawable/lb_ic_thumb_up"
+                    app:liked="false"
+                    app:unlike_drawable="@drawable/lb_ic_thumb_up_outline" />
+
 
                 <TextView
                     android:id="@+id/likeCountTextView"

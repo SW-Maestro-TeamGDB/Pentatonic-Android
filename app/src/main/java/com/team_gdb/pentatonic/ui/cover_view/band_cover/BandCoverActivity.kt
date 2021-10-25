@@ -62,6 +62,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
                 coverIntroduction = viewModel.bandInfo.value!!.introduce,
                 likeCount = viewModel.bandInfo.value!!.likeCount,
                 viewCount = viewModel.bandInfo.value!!.viewCount,
+                likeStatus = viewModel.bandInfo.value!!.likeStatus!!,
                 coverURL = it
             )
             val intent = Intent(this, CoverPlayActivity::class.java)
@@ -175,7 +176,7 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
             },
             {
                 // 밴드 추방 및 나가기
-                if (bandInfo.creator.id == BaseApplication.prefs.userId){
+                if (bandInfo.creator.id == BaseApplication.prefs.userId) {
                     showCoverDeleteDialog(it)
                 }
             })

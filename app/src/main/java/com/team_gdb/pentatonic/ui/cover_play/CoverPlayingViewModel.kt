@@ -123,4 +123,23 @@ class CoverPlayingViewModel(val repository: CoverPlayRepository) : BaseViewModel
                 )
         addDisposable(disposable)
     }
+
+    /**
+     * 밴드 좋아요 토글 뮤테이션
+     */
+    fun likeBand() {
+        val disposable = repository.likeBand(coverEntity.value!!.coverID)
+            .applySchedulers()
+            .subscribeBy(
+                onError = {
+                    Timber.e(it)
+                },
+                onSuccess = {
+                    it.errors?.forEach {
+                        Timber.e(it.message)
+                    }
+                }
+            )
+        addDisposable(disposable)
+    }
 }

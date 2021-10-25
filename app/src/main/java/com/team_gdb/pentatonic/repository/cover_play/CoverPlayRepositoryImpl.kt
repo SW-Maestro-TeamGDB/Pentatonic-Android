@@ -3,10 +3,7 @@ package com.team_gdb.pentatonic.repository.cover_play
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx3.rxMutate
 import com.apollographql.apollo.rx3.rxQuery
-import com.team_gdb.pentatonic.CreateCommentMutation
-import com.team_gdb.pentatonic.DeleteCommentMutation
-import com.team_gdb.pentatonic.GetCoverCommentQuery
-import com.team_gdb.pentatonic.UpdateCommentMutation
+import com.team_gdb.pentatonic.*
 import com.team_gdb.pentatonic.network.NetworkHelper.apolloClient
 import com.team_gdb.pentatonic.type.*
 import io.reactivex.rxjava3.core.Observable
@@ -50,5 +47,11 @@ class CoverPlayRepositoryImpl : CoverPlayRepository {
                     DeleteCommentIdInput(commentId)
                 )
             )
+        )
+
+    // 밴드 좋아요 토글 뮤테이션
+    override fun likeBand(bandId: String): Single<Response<LikeMutation.Data>> =
+        apolloClient.rxMutate(
+            LikeMutation(LikeInput(band = LikeBandIdInput(bandId)))
         )
 }
