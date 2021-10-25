@@ -121,8 +121,8 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
      */
     private fun showDeleteDialog(coverId: String) {
         MaterialDialog(requireContext()).show {
-            title(R.string.band_delete_notice_title)
-            message(R.string.band_delete_notice_content)
+            title(R.string.cover_delete_notice_title)
+            message(R.string.cover_delete_notice_content)
             positiveButton(R.string.yes_text) {
                 viewModel.deleteCover(coverId)
             }

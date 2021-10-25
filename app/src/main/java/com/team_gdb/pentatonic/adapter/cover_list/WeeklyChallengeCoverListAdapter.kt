@@ -55,7 +55,7 @@ class WeeklyChallengeCoverListAdapter(val itemClick: (String) -> Unit) :
 
             // 커버명과 원곡명
             binding.coverNameTextView.text = entity.name
-            binding.coverOriginalSongTextView.text = "${entity.song.artist} - ${entity.song.name}"
+            binding.coverOriginalSongTextView.text = "${entity.song.name} - ${entity.song.artist}"
 
             val participantCount = entity.session?.sumBy {
                 it?.cover?.size ?: 0

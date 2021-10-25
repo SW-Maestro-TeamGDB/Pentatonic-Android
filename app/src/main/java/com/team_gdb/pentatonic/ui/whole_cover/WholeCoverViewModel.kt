@@ -47,7 +47,7 @@ class WholeCoverViewModel(val repository: WholeCoverRepository) : BaseViewModel(
                                 sessionDataList = sessionDataList!!,
                                 like = it.likeCount,
                                 view = it.viewCount,
-                                originalSong = "${it.song.artist} - ${it.song.name}"
+                                originalSong = "${it.song.name} - ${it.song.artist}"
                             )
                         })
                     }
