@@ -74,6 +74,7 @@ class CommentBottomSheetDialog() :
 
         viewModel.createCommentComplete.observe(this) {
             if (it.getContentIfNotHandled() == true) {
+                viewModel.commentContent.value = ""  // 댓글 작성 완료시 EditText 데이터 초기화
                 playSuccessAlert(activity as Activity, "댓글 작성이 완료되었습니다!")
                 viewModel.getComment(coverEntity.coverID)
             } else {

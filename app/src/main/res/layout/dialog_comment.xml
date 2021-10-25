@@ -88,8 +88,8 @@
                     android:background="@drawable/custom_radius_background_white_transparent"
                     android:fontFamily="@font/nanum_regular"
                     android:hint="댓글을 작성해보세요."
-                    android:text="@={viewModel.commentContent}"
                     android:paddingHorizontal="16dp"
+                    android:text="@={viewModel.commentContent}"
                     android:textColor="@color/white"
                     android:textColorHint="#94FFFFFF"
                     android:textSize="16sp" />
