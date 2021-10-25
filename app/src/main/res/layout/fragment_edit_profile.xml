@@ -14,21 +14,9 @@
             android:orientation="vertical"
             tools:context=".ui.profile.ProfileActivity">
 
-            <RelativeLayout
-                android:layout_marginTop="@dimen/page_title_margin_top"
-                android:layout_marginHorizontal="24dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/nanum_bold"
-                    android:text="수정하기"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/page_title_text_size" />
-
-            </RelativeLayout>
+            <include
+                android:id="@+id/titleBar"
+                layout="@layout/page_title_bar"/>
 
             <LinearLayout
                 android:layout_marginHorizontal="24dp"
@@ -38,14 +26,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/userProfileImage"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_centerVertical="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile_image_placeholder"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+                <FrameLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/userProfileImage"
+                        android:tintMode="src_over"
+                        app:tint="#80000000"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/profile_image_placeholder"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:src="@drawable/ic_baseline_image_search_24"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        app:tint="@color/white" />
+
+                </FrameLayout>
 
                 <TextView
                     android:layout_width="wrap_content"

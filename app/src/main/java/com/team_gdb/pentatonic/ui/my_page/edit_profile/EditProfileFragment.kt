@@ -49,6 +49,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
+
+        binding.titleBar.titleTextView.text = "프로필 수정하기"
     }
 
     override fun initDataBinding() {
