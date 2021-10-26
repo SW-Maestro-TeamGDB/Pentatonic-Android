@@ -16,7 +16,6 @@ import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity
 import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.song_detail.SongDetailActivity
 import kotlinx.coroutines.delay
@@ -139,7 +138,7 @@ class StudioFragment : BaseFragment<FragmentStudioBinding, StudioViewModel>() {
 
     private fun setImageResource() {
         Glide.with(this)
-            .load(R.drawable.band_cover_bg)
+            .load(R.drawable.band_cover)
             .into(binding.makeBandCoverImageVIew)
 
         Glide.with(this)
