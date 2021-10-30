@@ -114,15 +114,18 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                     viewModel.buttonState.postValue(ButtonState.STOP_RECORDING)
                     binding.recordCompleteButton.visibility =
                         View.VISIBLE  // 녹음 완료 페이지로 이동하는 버튼 VISIBLE
+
+                    binding.soundVisualizerView.stopVisualizing()
+                    binding.recordTimeTextView.stopCountUp()
+
+                    stopPlaying()
+                    stopRecording()
+                }
+                ButtonState.STOP_RECORDING -> {
                     initPlayer(mrFilePath) {
                         stopPlaying()
                         stopRecording()
                     }  // 다시 누를 시 녹음 & 재생 처음부터 다시 될 수 있도록 초기화
-
-                    binding.soundVisualizerView.stopVisualizing()
-                    binding.recordTimeTextView.stopCountUp()
-                }
-                ButtonState.STOP_RECORDING -> {
                     binding.recordTimeTextView.visibility = View.GONE
                     binding.totalTimeTextView.visibility = View.GONE
                     binding.startCountDownTextView.visibility = View.VISIBLE
