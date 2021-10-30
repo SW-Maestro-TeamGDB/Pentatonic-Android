@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.band_ranking
 
 import android.content.Intent
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.ranking.CoverRankingListAdapter
@@ -46,5 +47,8 @@ class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewM
     }
 
     override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+            findNavController().popBackStack(R.id.navigation_band_ranking, true)
+        }
     }
 }

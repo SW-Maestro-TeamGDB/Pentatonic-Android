@@ -6,6 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.artist.ArtistListAdapter
@@ -71,10 +72,8 @@ class WholeArtistFragment : BaseFragment<FragmentWholeArtistBinding, WholeArtist
 
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
-
+            findNavController().popBackStack(R.id.navigation_whole_artist, true)
         }
-
-        binding.titleBar.titleTextView.text = "전체 커버"
 
         binding.textClearButton.setOnClickListener {
             binding.searchView.text.clear()

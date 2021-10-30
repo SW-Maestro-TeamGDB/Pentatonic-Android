@@ -72,6 +72,10 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
     }
 
     override fun initAfterBinding() {
+        binding.backButton.setOnClickListener {
+            finish()
+        }
+
         binding.userProfileLayout.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             intent.putExtra(USER_ID, viewModel.bandInfo.value!!.creator.id)

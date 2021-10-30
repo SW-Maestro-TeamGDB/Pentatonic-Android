@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.artist_ranking
 
 import android.content.Intent
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
@@ -23,7 +24,7 @@ class ArtistRankingFragment : BaseFragment<FragmentArtistRankingBinding, ArtistV
         binding.lifecycleOwner = this
 
         // 아티스트 랭킹 리스트 어댑터
-        userRankingListAdapter = ArtistRankingListAdapter(isDetailView = true){
+        userRankingListAdapter = ArtistRankingListAdapter(isDetailView = true) {
             val intent = Intent(requireContext(), ProfileActivity::class.java)
             intent.putExtra(USER_ID, it)
             startActivity(intent)
@@ -44,5 +45,8 @@ class ArtistRankingFragment : BaseFragment<FragmentArtistRankingBinding, ArtistV
 
     override fun initAfterBinding() {
         binding.titleBar.titleTextView.text = "아티스트 랭킹"
+        binding.titleBar.backButton.setOnClickListener {
+            findNavController().popBackStack(R.id.navigation_artist_ranking, true)
+        }
     }
 }

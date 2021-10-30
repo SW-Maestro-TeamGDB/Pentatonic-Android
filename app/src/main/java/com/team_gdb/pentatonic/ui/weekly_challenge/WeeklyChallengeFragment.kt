@@ -59,11 +59,11 @@ class WeeklyChallengeFragment :
 
     override fun initAfterBinding() {
         binding.backButton.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_weekly_challenge_to_navigation_lounge)
+            findNavController().popBackStack(R.id.navigation_weekly_challenge, true)
         }
 
         binding.createCoverButton.setOnClickListener {
-            val intent =Intent(requireContext(), CreateCoverActivity::class.java)
+            val intent = Intent(requireContext(), CreateCoverActivity::class.java)
             intent.putExtra(COVER_MODE, BAND_COVER)
             intent.putExtra(SONG_ENTITY, viewModel.weeklyChallengeSongEntity.value)
             startActivity(intent)

@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.rising_solo
 
 import android.content.Intent
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
@@ -61,5 +62,8 @@ class RisingSoloFragment : BaseFragment<FragmentRisingSoloBinding, LoungeViewMod
     }
 
     override fun initAfterBinding() {
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack(R.id.navigation_rising_solo, true)
+        }
     }
 }

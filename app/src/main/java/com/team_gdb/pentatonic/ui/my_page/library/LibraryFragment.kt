@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.my_page.library
 
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener
@@ -43,7 +44,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                 showEditDialog(it.id)
             },  // 라이브러리 삭제
             {
-                showDeleteDialog( it)
+                showDeleteDialog(it)
             }
         )
         binding.libraryList.apply {
@@ -100,7 +101,7 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
 
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
-
+            findNavController().popBackStack(R.id.navigation_library, true)
         }
         itemSwipeListener = RecyclerTouchListener(activity, binding.libraryList).apply {
             setSwipeable(

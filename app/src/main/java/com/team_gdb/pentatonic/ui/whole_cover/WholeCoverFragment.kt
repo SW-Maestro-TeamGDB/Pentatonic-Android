@@ -6,6 +6,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
@@ -74,7 +75,7 @@ class WholeCoverFragment : BaseFragment<FragmentWholeCoverBinding, WholeCoverVie
 
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
-
+            findNavController().popBackStack(R.id.navigation_whole_cover, true)
         }
 
         binding.titleBar.titleTextView.text = "전체 커버"
