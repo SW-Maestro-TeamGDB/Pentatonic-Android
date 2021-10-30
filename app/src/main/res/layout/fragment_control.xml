@@ -57,7 +57,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel.syncLevel.toString() + 'm' + 's'}"
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatSeekBar
@@ -137,7 +136,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/nanum_extrabold"
-                android:text="@{viewModel.volumeLevel.toString()}"
+                android:text="@{viewModel.volumeLevel.toString() + 'd' + 'B'}"
                 android:textSize="16sp" />
 
         </RelativeLayout>

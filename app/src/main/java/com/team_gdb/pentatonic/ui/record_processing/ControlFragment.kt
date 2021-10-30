@@ -33,21 +33,28 @@ class ControlFragment : BaseFragment<FragmentControlBinding, RecordProcessingVie
     }
 
     override fun initAfterBinding() {
-//        addDisposable(binding.syncProgressBar.setDebounce {
-//            Timber.e("$it 받았습니다")
-//            viewModel.syncLevel.postValue(it)
-//        })
         binding.syncProgressBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                Timber.d("${seekBar?.progress}")
+                seekBar?.progress = progress
+                binding.syncProgressTextView.text = "${progress}ms"
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                viewModel.syncLevel.value = seekBar?.progress
+            }
+        })
+
+        binding.volumeProgressBar.setOnSeekBarChangeListener(object :
+            SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 seekBar?.progress = progress
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                Timber.d("Stop Tracking! ${seekBar?.progress}")
-                viewModel.syncLevel.value = seekBar?.progress
+                viewModel.volumeLevel.value = seekBar?.progress
             }
         })
     }
