@@ -45,7 +45,7 @@ class LibraryListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(coverEntityList[position])
+        holder.bind(coverEntityList[position], position)
     }
 
     override fun getItemCount(): Int {
@@ -56,7 +56,7 @@ class LibraryListAdapter(
         private val binding: ItemLibraryListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(entity: LibraryEntity) {
+        fun bind(entity: LibraryEntity, position: Int) {
             binding.coverNameTextView.text = entity.coverName
             binding.coverOriginalSongTextView.text = "${entity.originalSong.artist} - ${entity.originalSong.name}"
             binding.coverSessionAndDateTextView.text =
@@ -68,21 +68,24 @@ class LibraryListAdapter(
                 .override(480, 272)
                 .into(binding.coverImage)
 
-            if (nowPlaying != adapterPosition) {
+            if (nowPlaying != position) {
                 binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
             } else {
                 binding.playButton.updateIconWithState(ButtonState.ON_PLAYING)
             }
 
             binding.playButton.setOnClickListener {
-                if (nowPlaying == adapterPosition) {
+                if (nowPlaying == position) {
                     itemPauseClick(entity)
                     binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
                     nowPlaying = -1
                 } else {
+                    val prevPlayed = nowPlaying
                     itemPlayClick(entity)
                     binding.playButton.updateIconWithState(ButtonState.ON_PLAYING)
-                    nowPlaying = adapterPosition
+                    nowPlaying = position
+                    notifyItemChanged(prevPlayed)
+                    notifyItemChanged(nowPlaying)
                 }
             }
 
