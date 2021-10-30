@@ -68,21 +68,19 @@
             app:tint="@color/white" />
         <ImageButton
             android:id="@+id/exo_play"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@color/transparent"
-            android:scaleType="center"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_play"
             app:tint="@color/white" />
 
         <ImageButton
             android:id="@+id/exo_pause"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="70dp"
             android:layout_height="70dp"
             android:background="@color/transparent"
-            android:scaleType="center"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_pause"
             app:tint="@color/white" />
 
