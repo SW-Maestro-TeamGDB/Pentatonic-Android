@@ -16,7 +16,9 @@ interface RecordProcessingRepository {
         name: String,
         coverURI: String,
         songId: String,
-        position: String
+        position: String,
+        reverb: Double,
+        volume: Double,
     ): Single<Response<UploadCoverMutation.Data>>
 
 }

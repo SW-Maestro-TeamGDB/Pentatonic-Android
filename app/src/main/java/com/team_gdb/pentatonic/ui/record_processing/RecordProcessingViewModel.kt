@@ -165,7 +165,8 @@ class RecordProcessingViewModel(val repository: RecordProcessingRepository) : Ba
 
     fun uploadCoverToLibrary(name: String, coverURI: String, songId: String, position: String) {
         val disposable =
-            repository.uploadCoverToLibrary(name, coverURI, songId, position)
+            repository.uploadCoverToLibrary(name, coverURI, songId, position,
+                (reverbEffectLevel.value!! * 0.001), 0.0)
                 .applySchedulers()
                 .subscribeBy(
                     onError = {

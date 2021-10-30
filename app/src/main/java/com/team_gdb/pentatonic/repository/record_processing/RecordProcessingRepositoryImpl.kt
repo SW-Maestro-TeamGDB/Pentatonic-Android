@@ -37,7 +37,9 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
         name: String,
         coverURI: String,
         songId: String,
-        position: String
+        position: String,
+        reverb: Double,
+        volume: Double,
     ): Single<Response<UploadCoverMutation.Data>> = apolloClient.rxMutate(
         UploadCoverMutation(
             UploadCoverInput(
@@ -45,7 +47,7 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
                     name, coverURI, songId, position = SESSION_TYPE.valueOf(position)
                 ),
                 filter = UploadCoverFilterInput(
-
+                    reverb= reverb
                 )
             )
         )
