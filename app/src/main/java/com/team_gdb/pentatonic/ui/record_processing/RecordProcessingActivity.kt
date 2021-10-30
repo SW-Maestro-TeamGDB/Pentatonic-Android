@@ -98,7 +98,7 @@ class RecordProcessingActivity :
 
         // 사용자가 싱크 조절 값을 변경했을 때, 해당 수치에 따른 오디오 가공 실행
         viewModel.syncLevel.observe(this) {
-            pausePlaying()
+            stopPlaying()
             setProgressVisible(true)
             doAudioProcessing(syncLevel = it.toLong())
         }
