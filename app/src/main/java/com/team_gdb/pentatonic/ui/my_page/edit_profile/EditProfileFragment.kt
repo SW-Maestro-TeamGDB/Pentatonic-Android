@@ -76,6 +76,10 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
     }
 
     override fun initAfterBinding() {
+        binding.titleBar.backButton.setOnClickListener {
+            findNavController().popBackStack(R.id.navigation_edit_profile, true)
+        }
+
         binding.userProfileImage.setOnClickListener {
             CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)

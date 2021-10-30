@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.my_page.cover_history
 
 import android.content.Intent
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.cover_list.CoverVerticalListAdapter
@@ -67,7 +68,7 @@ class CoverHistoryFragment : BaseFragment<FragmentCoverHistoryBinding, MyPageVie
 
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
-
+            findNavController().popBackStack(R.id.navigation_cover_history, true)
         }
     }
 }
