@@ -38,7 +38,10 @@ class LibraryFragment : BaseFragment<FragmentLibraryBinding, MyPageViewModel>() 
                     pausePlaying()
                 }
                 startPlaying()
-            },  // 라이브러리 편집
+            }, // 라이브러리 재생 중지
+            {
+                pausePlaying()
+            }, // 라이브러리 편집
             {
                 viewModel.coverNameField.postValue(it.coverName)
                 showEditDialog(it.id)

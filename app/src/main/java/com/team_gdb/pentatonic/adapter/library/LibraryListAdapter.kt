@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
+import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.LibraryEntity
 import com.team_gdb.pentatonic.data.session.Session
 import com.team_gdb.pentatonic.databinding.ItemLibraryListBinding
@@ -15,17 +16,20 @@ import com.team_gdb.pentatonic.util.toDate
  * 라이브러리에 저장된 커버 목록을 보여주기 위한 리사이클러뷰 어댑터
  *
  * @property itemPlayClick    해당 커버 재생하는 동작
+ * @property itemPauseClick   해당 커버 재생 중지하는 동작
  * @property itemEditClick    해당 커버 정보 수정하는 동작
  * @property itemDeleteClick  해당 커버 삭제하는 동작
  */
 class LibraryListAdapter(
     val itemPlayClick: (LibraryEntity) -> Unit,
+    val itemPauseClick: (LibraryEntity) -> Unit,
     val itemEditClick: (LibraryEntity) -> Unit,
     val itemDeleteClick: (String) -> Unit
 ) :
     RecyclerView.Adapter<LibraryListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<LibraryEntity> = emptyList()  // 커버 아이템 리스트 정보
+    private var nowPlaying: Int = -1  // 현재 재생중인 라이브러리 인덱
 
     /**
      * 레이아웃 바인딩 통한 ViewHolder 생성 후 반환
@@ -64,8 +68,22 @@ class LibraryListAdapter(
                 .override(480, 272)
                 .into(binding.coverImage)
 
+            if (nowPlaying != adapterPosition) {
+                binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
+            } else {
+                binding.playButton.updateIconWithState(ButtonState.ON_PLAYING)
+            }
+
             binding.playButton.setOnClickListener {
-                itemPlayClick(entity)
+                if (nowPlaying == adapterPosition) {
+                    itemPauseClick(entity)
+                    binding.playButton.updateIconWithState(ButtonState.BEFORE_PLAYING)
+                    nowPlaying = -1
+                } else {
+                    itemPlayClick(entity)
+                    binding.playButton.updateIconWithState(ButtonState.ON_PLAYING)
+                    nowPlaying = adapterPosition
+                }
             }
 
             binding.editButton.setOnClickListener {

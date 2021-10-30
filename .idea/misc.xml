@@ -47,6 +47,7 @@
         <entry key="app/src/main/res/drawable/ic_left_participants.xml" value="0.21368078175895766" />
         <entry key="app/src/main/res/drawable/ic_left_person.xml" value="0.14638157894736842" />
         <entry key="app/src/main/res/drawable/ic_like.xml" value="0.13717105263157894" />
+        <entry key="app/src/main/res/drawable/ic_pause.xml" value="0.12171052631578948" />
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.21578947368421053" />
         <entry key="app/src/main/res/drawable/ic_purple_oval.xml" value="0.17401315789473684" />
         <entry key="app/src/main/res/drawable/ic_stars_black_24dp.xml" value="0.1417763157894737" />
@@ -124,7 +125,7 @@
         <entry key="app/src/main/res/layout/item_horizontal_cover_list.xml" value="0.13519736842105262" />
         <entry key="app/src/main/res/layout/item_horizontal_song_list.xml" value="0.12697368421052632" />
         <entry key="app/src/main/res/layout/item_level_spinner.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/item_library_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_library_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_library_select_list.xml" value="0.21019736842105263" />
         <entry key="app/src/main/res/layout/item_position_list.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/layout/item_position_ranking_list.xml" value="0.25" />
