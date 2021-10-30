@@ -68,7 +68,7 @@ class CreateCoverViewModel(val repository: CreateCoverRepository) : BaseViewMode
      */
     fun checkBasicInfoValidation() {
         when {
-            this.coverName.value.isNullOrBlank() || this.coverSong.value == null -> {
+            this.coverName.value.isNullOrBlank() || this.coverIntroduction.value.isNullOrBlank() || this.coverSong.value == null -> {
                 coverBasicInfoValidationEvent.value = Event(false)  // Validation False
             }
             else -> {

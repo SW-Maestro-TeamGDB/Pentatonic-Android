@@ -77,6 +77,9 @@ class BasicCoverInfoFormFragment : BaseFragment<FragmentBasicCoverInfoFormBindin
                         ContextCompat.getColor(requireContext(), R.color.red)
                     )
                 }
+                if (viewModel.coverIntroduction.value.isNullOrBlank()) {
+                    binding.coverIntroductionEditText.error = "필수 항목입니다"
+                }
                 PlayAnimation.playErrorAnimationOnEditText(binding.formLayout)
             }
         }
