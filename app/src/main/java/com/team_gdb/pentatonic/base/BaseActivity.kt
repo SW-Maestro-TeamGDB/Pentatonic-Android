@@ -15,9 +15,17 @@ import androidx.databinding.ViewDataBinding
 import com.team_gdb.pentatonic.util.SystemUtil
 import com.team_gdb.pentatonic.util.ViewUtil
 import com.team_gdb.pentatonic.util.makeStatusBarTransparent
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 
 abstract class BaseActivity<T : ViewDataBinding, R : BaseViewModel> : AppCompatActivity() {
+    private val compositeDisposable = CompositeDisposable()
+
+    fun addDisposable(disposable: Disposable) {
+        compositeDisposable.add(disposable)
+    }
+
     var transparentPoint = 0
 
     lateinit var binding: T

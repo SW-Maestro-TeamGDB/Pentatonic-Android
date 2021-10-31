@@ -8,6 +8,7 @@ import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ActivitySelectSongBinding
 import com.team_gdb.pentatonic.ui.create_cover.basic_info.SelectSongResultContract.Companion.SELECT_SONG
+import com.team_gdb.pentatonic.util.setQueryDebounce
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,7 +49,6 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
             }
         }
 
-
         viewModel.songList.observe(this) {
             songListAdapter.setItem(it)
         }
@@ -63,5 +63,17 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
             val bottomSheetDialog = RegisterFreeSongBottomSheetDialog()
             bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
         }
+        binding.textClearButton.setOnClickListener {
+            binding.searchView.text.clear()
+        }
+
+        addDisposable(
+            binding.searchView.setQueryDebounce(
+                {
+                    viewModel.getSongList(it)
+                },
+                binding.textClearButton
+            )
+        )
     }
 }
