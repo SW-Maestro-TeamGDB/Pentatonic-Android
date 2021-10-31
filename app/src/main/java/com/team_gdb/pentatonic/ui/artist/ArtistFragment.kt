@@ -14,6 +14,7 @@ import com.team_gdb.pentatonic.adapter.ranking.CoverRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentArtistBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
@@ -61,11 +62,16 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
 
 
         // 밴드 랭킹 리스트 어댑터
-        coverRankingListAdapter = CoverRankingListAdapter(isDetailView = false) {
-            val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ID, it)
-            startActivity(intent)
-        }
+        coverRankingListAdapter =
+            CoverRankingListAdapter(isDetailView = false) { coverId, isSoloBand ->
+                val intent = if (isSoloBand) {
+                    Intent(requireContext(), SoloCoverActivity::class.java)
+                } else {
+                    Intent(requireContext(), BandCoverActivity::class.java)
+                }
+                intent.putExtra(COVER_ID, coverId)
+                startActivity(intent)
+            }
 
         binding.bandRankingList.apply {
             this.layoutManager = LinearLayoutManager(context)

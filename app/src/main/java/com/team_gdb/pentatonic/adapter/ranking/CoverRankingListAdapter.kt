@@ -14,7 +14,7 @@ import com.team_gdb.pentatonic.databinding.ItemBandRankingListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverRankingListAdapter(val isDetailView: Boolean, val itemClick: (String) -> Unit) :
+class CoverRankingListAdapter(val isDetailView: Boolean, val itemClick: (String, Boolean) -> Unit) :
     RecyclerView.Adapter<CoverRankingListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<GetRankedBandListQuery.GetRankedBand> =
@@ -66,7 +66,7 @@ class CoverRankingListAdapter(val isDetailView: Boolean, val itemClick: (String)
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity.bandId)
+                itemClick(entity.bandId, entity.isSoloBand)
             }
         }
     }
