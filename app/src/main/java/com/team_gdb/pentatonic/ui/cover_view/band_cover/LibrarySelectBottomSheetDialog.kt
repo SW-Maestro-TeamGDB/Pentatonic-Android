@@ -1,5 +1,6 @@
 package com.team_gdb.pentatonic.ui.cover_view.band_cover
 
+import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -7,9 +8,14 @@ import com.team_gdb.pentatonic.R
 import com.team_gdb.pentatonic.adapter.library.LibrarySelectListAdapter
 import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseBottomSheetDialogFragment
+import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.DialogLibrarySelectBinding
+import com.team_gdb.pentatonic.type.GENRE_TYPE
 import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity.Companion.SESSION_TYPE
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
+import com.team_gdb.pentatonic.ui.studio.StudioFragment
+import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class LibrarySelectBottomSheetDialog() :
@@ -46,8 +52,9 @@ class LibrarySelectBottomSheetDialog() :
         // 유효한 라이브러리 필터링하여 리스트로 보여줌
         viewModel.libraryList.observe(this) {
             val data = it.filter { selectedSession == it.position.rawValue }
-            if (data.isNullOrEmpty()){
+            if (data.isNullOrEmpty()) {
                 binding.libraryList.visibility = View.GONE
+                binding.recordButtonLayout.visibility = View.VISIBLE
             } else {
                 binding.noDataImageView.visibility = View.GONE
                 binding.buttonLayout.visibility = View.VISIBLE
@@ -70,6 +77,29 @@ class LibrarySelectBottomSheetDialog() :
         binding.joinBandButton.setOnClickListener {
             viewModel.joinBand(selectedSession)
             dismiss()
+        }
+
+        binding.recordButton.setOnClickListener {
+            val intent = Intent(requireContext(), CreateRecordActivity::class.java)
+            val songInfo = viewModel.bandInfo.value!!.song
+            val songEntity = SongEntity(
+                songId = songInfo.songId,
+                songUrl = songInfo.songURI,
+                songName = songInfo.name,
+                songLevel = songInfo.level ?: 2,
+                artistName = songInfo.artist,
+                albumJacketImage = songInfo.songImg ?: "",
+                albumName = songInfo.album ?: "",
+                albumReleaseDate = songInfo.releaseDate ?: "",
+                songGenre = (songInfo.genre ?: GENRE_TYPE.POP).rawValue,
+                isWeeklyChallenge = songInfo.weeklyChallenge,
+                isFreeSong = viewModel.bandInfo.value!!.isFreeBand,
+                duration = songInfo.duration
+            )
+            intent.putExtra(SONG_ENTITY, songEntity)
+            startActivity(intent)
+            dismiss()
+            activity?.finish()
         }
 
         // 사용자의 라이브러리 정보 쿼리

@@ -64,8 +64,8 @@
             android:layout_height="400dp"
             android:layout_below="@+id/bannerLayout"
             android:layout_marginTop="16dp"
-            app:friction="200"
-            app:gapLimit="220"
+            app:friction="150"
+            app:gapLimit="100"
             app:speedFactor="5"
             app:tension="1000" />
 
@@ -93,6 +93,34 @@
                 android:enabled="false"
                 android:fontFamily="@font/nanum_extrabold"
                 android:text="참여하기"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/recordButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noDataImageView">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="#F4F4F4" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/recordButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="12dp"
+                android:background="@drawable/gradient_selector_button"
+                android:fontFamily="@font/nanum_extrabold"
+                android:text="녹음하러 가기"
                 android:textColor="@color/white" />
 
         </RelativeLayout>
