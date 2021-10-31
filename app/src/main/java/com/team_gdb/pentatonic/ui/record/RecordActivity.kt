@@ -18,6 +18,7 @@ import com.team_gdb.pentatonic.media.ExoPlayerHelper.pausePlaying
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.startPlaying
 import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.record_processing.RecordProcessingActivity
 import timber.log.Timber
 import kotlin.math.roundToInt
@@ -39,6 +40,11 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
 
     private val createdCoverEntity: CreatedRecordEntity by lazy {
         intent.getSerializableExtra(CREATED_COVER_ENTITY) as CreatedRecordEntity
+    }
+
+    // 자유곡의 경우 본인의 자유곡인지, 타인의 자유곡 밴드 참여 형태인지 구분 필요
+    private val isNotMyFreeSong: Boolean by lazy {
+        intent.getBooleanExtra(CreateRecordActivity.IS_MY_FREE_SONG, true)
     }
 
     private val mrFilePath: String by lazy {  // MR 스트리밍 URL
@@ -141,9 +147,12 @@ class RecordActivity : BaseActivity<ActivityRecordBinding, RecordViewModel>() {
                 byteArray += it.toByte()
             }
             val intent = Intent(this, RecordProcessingActivity::class.java)
-            val bundle = Bundle()
-            bundle.putByteArray(AMPLITUDE_DATA, byteArray)
-            bundle.putSerializable(CREATED_COVER_ENTITY, createdCoverEntity)
+            val bundle = Bundle().apply {
+                putByteArray(AMPLITUDE_DATA, byteArray)
+                putSerializable(CREATED_COVER_ENTITY, createdCoverEntity)
+                putBoolean(CreateRecordActivity.IS_MY_FREE_SONG, isNotMyFreeSong)
+            }
+
             intent.putExtras(bundle)
             finish()
             startActivity(intent)

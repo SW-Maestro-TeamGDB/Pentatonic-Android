@@ -32,6 +32,11 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
         intent.getSerializableExtra(SONG_ENTITY) as SongEntity?
     }
 
+    // 자유곡의 경우 본인의 자유곡인지, 타인의 자유곡 밴드 참여 형태인지 구분 필요
+    private val isNotMyFreeSong: Boolean by lazy {
+        intent.getBooleanExtra(IS_MY_FREE_SONG, true)
+    }
+
     override fun initStartView() {
         binding.viewModel = this.viewModel
     }
@@ -53,6 +58,7 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
             if (it.getContentIfNotHandled() == true) {
                 val intent = Intent(this, RecordActivity::class.java).apply {
                     putExtra(CREATED_COVER_ENTITY, viewModel.createdCoverEntity)
+                    putExtra(IS_MY_FREE_SONG, isNotMyFreeSong)
                 }
                 finish()
                 startActivity(intent)
@@ -77,5 +83,6 @@ class CreateRecordActivity : BaseActivity<ActivityCreateRecordBinding, CreateRec
 
     companion object {
         const val CREATED_COVER_ENTITY = "CREATED_COVER_ENTITY"
+        const val IS_MY_FREE_SONG = "IS_MY_FREE_SONG"
     }
 }

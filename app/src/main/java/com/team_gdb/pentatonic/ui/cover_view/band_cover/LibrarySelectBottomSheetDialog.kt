@@ -14,9 +14,11 @@ import com.team_gdb.pentatonic.type.GENRE_TYPE
 import com.team_gdb.pentatonic.ui.cover_view.CoverViewViewModel
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity.Companion.SESSION_TYPE
 import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity.Companion.IS_MY_FREE_SONG
 import com.team_gdb.pentatonic.ui.studio.StudioFragment
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class LibrarySelectBottomSheetDialog() :
     BaseBottomSheetDialogFragment<DialogLibrarySelectBinding, CoverViewViewModel>() {
@@ -80,7 +82,6 @@ class LibrarySelectBottomSheetDialog() :
         }
 
         binding.recordButton.setOnClickListener {
-            val intent = Intent(requireContext(), CreateRecordActivity::class.java)
             val songInfo = viewModel.bandInfo.value!!.song
             val songEntity = SongEntity(
                 songId = songInfo.songId,
@@ -96,7 +97,10 @@ class LibrarySelectBottomSheetDialog() :
                 isFreeSong = viewModel.bandInfo.value!!.isFreeBand,
                 duration = songInfo.duration
             )
-            intent.putExtra(SONG_ENTITY, songEntity)
+            val intent = Intent(requireContext(), CreateRecordActivity::class.java).apply {
+                putExtra(SONG_ENTITY, songEntity)
+                putExtra(IS_MY_FREE_SONG, false)
+            }
             startActivity(intent)
             dismiss()
             activity?.finish()

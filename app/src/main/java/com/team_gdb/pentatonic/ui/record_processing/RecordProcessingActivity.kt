@@ -14,6 +14,7 @@ import com.team_gdb.pentatonic.databinding.ActivityRecordProcessingBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverActivity.Companion.CREATED_COVER_ENTITY
 import com.team_gdb.pentatonic.custom_view.ButtonState
 import com.team_gdb.pentatonic.data.model.CreatedRecordEntity
+import com.team_gdb.pentatonic.ui.create_record.CreateRecordActivity
 import com.team_gdb.pentatonic.ui.home.HomeActivity
 import com.team_gdb.pentatonic.ui.record.RecordActivity.Companion.AMPLITUDE_DATA
 import com.team_gdb.pentatonic.util.Event
@@ -53,9 +54,13 @@ class RecordProcessingActivity :
     private val recordingFilePath: String by lazy { "${externalCacheDir?.absolutePath}/recording.mp3" }
     private val processedAudioFilePath: String by lazy { "${externalCacheDir?.absolutePath}/result.mp3" }
 
-
     private val amplitudeData: ByteArray by lazy {  // 녹음본 진폭 정보 (ByteArray)
         intent.extras?.getByteArray(AMPLITUDE_DATA)!!
+    }
+
+    // 자유곡의 경우 본인의 자유곡인지, 타인의 자유곡 밴드 참여 형태인지 구분 필요
+    private val isNotMyFreeSong: Boolean by lazy {
+        intent.getBooleanExtra(CreateRecordActivity.IS_MY_FREE_SONG, true)
     }
 
     private lateinit var createdRecordEntity: CreatedRecordEntity  // 사용자가 이전 페이지에서 입력한 커버 정보
@@ -113,10 +118,9 @@ class RecordProcessingActivity :
         // 커버 파일 업로드가 완료되면, 커버를 라이브러리에 업로드하는 뮤테이션 실행
         viewModel.coverFileURL.observe(this) {
             // 만약 업로드가 성공했고, 지정곡 커버라면 MR 이랑 합침
-            if (!(it.isNotBlank() and createdRecordEntity.recordSong.isFreeSong)) {
-//                viewModel.getInstMergedCover(createdRecordEntity.recordSong.songUrl, it)
-                viewModel.setInstMergedCover(it)
-
+            if (!(it.isNotBlank() and createdRecordEntity.recordSong.isFreeSong) || isNotMyFreeSong) {
+                viewModel.getInstMergedCover(createdRecordEntity.recordSong.songUrl, it)
+//                viewModel.setInstMergedCover(it)
             } else {  // 자유곡 커버일 경우 MR 합본 필요 없음 -> 그냥 녹음본만 재생
                 viewModel.setInstMergedCover(it)
                 // 그리고 해당 URL 을 기반으로 서버에 자유곡 등록
