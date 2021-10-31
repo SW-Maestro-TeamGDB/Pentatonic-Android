@@ -66,23 +66,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/selectGenreButton"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/genreSpinner"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:background="@drawable/custom_sharpen_stroke_gray"
-                android:fontFamily="@font/nanum_regular"
-                android:text="장르" />
+                android:gravity="center_vertical" />
 
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_marginStart="12dp"
-                android:layout_toRightOf="@+id/selectGenreButton"
-                android:fontFamily="@font/nanum_regular"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:background="@drawable/custom_sharpen_stroke_gray"
-                android:text="난이도" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/levelSpinner"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/genreSpinner"
+                android:background="@drawable/custom_radius_background_main_sharpen"
+                android:gravity="center_vertical" />
 
             <TextView
                 android:id="@+id/selectFreeCoverButton"

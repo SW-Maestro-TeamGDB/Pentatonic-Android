@@ -2,6 +2,7 @@ package com.team_gdb.pentatonic.ui.select_song
 
 import androidx.lifecycle.MutableLiveData
 import com.team_gdb.pentatonic.base.BaseViewModel
+import com.team_gdb.pentatonic.data.genre.Genre
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.select_song.SelectSongRepository
@@ -14,6 +15,10 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
     val selectedSong: MutableLiveData<SongEntity> = MutableLiveData()
     val songList: MutableLiveData<List<SongEntity>> = MutableLiveData()
 
+    val content: MutableLiveData<String> = MutableLiveData()
+    val genre: MutableLiveData<Genre> = MutableLiveData()
+    val level: MutableLiveData<Int> = MutableLiveData()
+
     val freeSongName: MutableLiveData<String> = MutableLiveData()
     val freeSongArtist: MutableLiveData<String> = MutableLiveData()
 
@@ -22,8 +27,8 @@ class SelectSongViewModel(val repository: SelectSongRepository) : BaseViewModel(
         !songName.isNullOrBlank() && !artist.isNullOrBlank()
     }
 
-    fun getSongList(content: String) {
-        val disposable = repository.getSongQuery(content)
+    fun getSongList() {
+        val disposable = repository.getSongQuery(content.value ?: "", genre.value, level.value)
             .applySchedulers()
             .subscribeBy(
                 onError = {
