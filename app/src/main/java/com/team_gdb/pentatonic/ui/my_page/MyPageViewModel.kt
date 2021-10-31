@@ -20,6 +20,7 @@ import timber.log.Timber
 class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val userName: MutableLiveData<String> = MutableLiveData()
     val userFollowerCount: MutableLiveData<String> = MutableLiveData()
+    val userFollowingCount: MutableLiveData<String> = MutableLiveData()
     val userIntroduce: MutableLiveData<String> = MutableLiveData()
     val userProfileImage: MutableLiveData<String> = MutableLiveData()
 
@@ -61,6 +62,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                         Timber.d(it.data?.getUserInfo.toString())
                         userName.postValue(it.data?.getUserInfo?.username.toString())
                         userFollowerCount.postValue(it.data?.getUserInfo?.followerCount.toString())
+                        userFollowingCount.postValue(it.data?.getUserInfo?.followingCount.toString())
                         userIntroduce.postValue(it.data?.getUserInfo?.introduce.toString())
                         userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
 

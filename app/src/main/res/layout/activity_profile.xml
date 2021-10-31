@@ -53,16 +53,32 @@
 
                     <TextView
                         android:fontFamily="@font/nanum_regular"
-                        android:text="팔로워 | "
+                        android:text="팔로워 "
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                     <TextView
                         android:id="@+id/userFollowerCountTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/nanum_regular"
-                        android:textColor="@color/black" />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+                    <TextView
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/nanum_regular"
+                        android:text="팔로잉 "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/userFollowingCountTextView"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nanum_regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
 
                 </LinearLayout>
 

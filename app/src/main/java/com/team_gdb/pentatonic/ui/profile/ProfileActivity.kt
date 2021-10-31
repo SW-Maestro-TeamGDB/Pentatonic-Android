@@ -83,6 +83,7 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
             binding.usernameTextView.text = it.username
             binding.userIntroductionTextView.text = it.introduce
             binding.userFollowerCountTextView.text = it.followerCount.toString()
+            binding.userFollowingCountTextView.text = it.followingCount.toString()
 
             binding.followButton.isChecked = it.followingStatus == false
         }
