@@ -29,7 +29,7 @@ class BandRankingFragment : BaseFragment<FragmentBandRankingBinding, ArtistViewM
 
         // 밴드 랭킹 리스트 어댑터
         coverRankingListAdapter =
-            CoverRankingListAdapter(isDetailView = false) { coverId, isSoloBand ->
+            CoverRankingListAdapter(isDetailView = true) { coverId, isSoloBand ->
                 val intent = if (isSoloBand) {
                     Intent(requireContext(), SoloCoverActivity::class.java)
                 } else {
