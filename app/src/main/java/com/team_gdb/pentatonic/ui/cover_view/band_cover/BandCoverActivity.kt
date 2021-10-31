@@ -174,10 +174,10 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
                 }
                 bottomSheetDialog.show(supportFragmentManager, bottomSheetDialog.tag)
             },
-            {
+            { coverId, coverBy ->
                 // 밴드 추방 및 나가기
-                if (bandInfo.creator.id == BaseApplication.prefs.userId) {
-                    showCoverDeleteDialog(it)
+                if ((bandInfo.creator.id == BaseApplication.prefs.userId) || (coverBy == BaseApplication.prefs.userId)) {
+                    showCoverDeleteDialog(coverId)
                 }
             })
 

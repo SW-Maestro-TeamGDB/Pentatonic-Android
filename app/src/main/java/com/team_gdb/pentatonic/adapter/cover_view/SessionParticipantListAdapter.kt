@@ -19,7 +19,7 @@ import com.team_gdb.pentatonic.databinding.ItemSessionParticipantListBinding
 class SessionParticipantListAdapter(
     val creator: String,
     val itemClick: (String) -> Unit,
-    val itemLongClick: (String) -> Unit
+    val itemLongClick: (String, String) -> Unit
 ) :
     RecyclerView.Adapter<SessionParticipantListAdapter.ViewHolder>() {
 
@@ -83,7 +83,7 @@ class SessionParticipantListAdapter(
             }
 
             binding.root.setOnLongClickListener {
-                itemLongClick(item.coverId)
+                itemLongClick(item.coverId, item.coverBy.id)
                 true
             }
         }
