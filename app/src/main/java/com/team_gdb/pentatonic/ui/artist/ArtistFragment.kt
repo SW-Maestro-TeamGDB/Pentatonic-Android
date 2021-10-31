@@ -1,6 +1,9 @@
 package com.team_gdb.pentatonic.ui.artist
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import androidx.navigation.fragment.findNavController
@@ -8,14 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
-import com.team_gdb.pentatonic.adapter.cover_list.RecommendCoverViewPagerAdapter
+import com.team_gdb.pentatonic.adapter.cover_list.AdBannerViewPagerAdapter
 import com.team_gdb.pentatonic.adapter.ranking.ArtistRankingListAdapter
 import com.team_gdb.pentatonic.adapter.ranking.CoverRankingListAdapter
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentArtistBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
 import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
-import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity
 import com.team_gdb.pentatonic.ui.profile.ProfileActivity.Companion.USER_ID
@@ -28,7 +30,7 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         get() = R.layout.fragment_artist
     override val viewModel: ArtistViewModel by sharedViewModel()
 
-    private lateinit var recommendBandCoverViewPagerAdapter: RecommendCoverViewPagerAdapter  // 라이징 밴드 커버 뷰페이저
+    private lateinit var adBannerViewPagerAdapter: AdBannerViewPagerAdapter  // 라이징 밴드 커버 뷰페이저
     private lateinit var coverRankingListAdapter: CoverRankingListAdapter  // 밴드 랭킹 리스트
     private lateinit var userRankingListAdapter: ArtistRankingListAdapter  // 아티스트 랭킹 리스트
 
@@ -36,18 +38,21 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
 
+        val AD_IMAGE_LIST = listOf(
+            ResourcesCompat.getDrawable(resources, R.drawable.focusrite_ad, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.jfla_ad, null),
+            ResourcesCompat.getDrawable(resources, R.drawable.sony_ad, null)
+        )
+
         setImageResource()
 
-        // 라이징 커버 뷰 페이저 어댑터 생성
-        recommendBandCoverViewPagerAdapter = RecommendCoverViewPagerAdapter { isSoloBand, id ->
-            val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ID, id)
-            startActivity(intent)
-        }
+        // 광고 배너 뷰 페이저 어댑터 생성
+        adBannerViewPagerAdapter = AdBannerViewPagerAdapter()
+        adBannerViewPagerAdapter.setItem(AD_IMAGE_LIST)
 
         binding.risingCoverViewPager.apply {
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
-            adapter = recommendBandCoverViewPagerAdapter
+            adapter = adBannerViewPagerAdapter
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
@@ -152,5 +157,4 @@ class ArtistFragment : BaseFragment<FragmentArtistBinding, ArtistViewModel>() {
             .load(R.drawable.musician)
             .into(binding.wholeArtistImageView)
     }
-
 }
