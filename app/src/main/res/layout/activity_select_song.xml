@@ -35,7 +35,7 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:hint="가수, 앨범, 제목 검색"
+                    android:hint="곡 제목을 입력해주세요"
                     android:background="@android:color/transparent"
                     android:drawableStart="@drawable/ic_baseline_search_24"
                     android:drawablePadding="8dp"

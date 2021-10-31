@@ -43,33 +43,16 @@
                     android:layout_height="50dp"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/searchView"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nanum_regular"
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/titleTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:text="위클리 챌린지"
                         android:textColor="@color/white"
-                        android:textColorHint="@color/white"
-                        android:hint="커버 검색"
-                        android:background="@drawable/custom_radius_background_gray_transparent"
-                        android:drawableStart="@drawable/ic_baseline_search_24"
-                        android:drawablePadding="8dp"
-                        android:gravity="center_vertical"
-                        android:paddingHorizontal="16dp"
-                        android:paddingEnd="8dp"
-                        android:textSize="14sp" />
-
-                    <ImageButton
-                        android:id="@+id/textClearButton"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="12dp"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:src="@drawable/ic_baseline_cancel_24"
-                        android:visibility="gone" />
+                        android:textSize="@dimen/page_title_text_size" />
 
                 </LinearLayout>
 
