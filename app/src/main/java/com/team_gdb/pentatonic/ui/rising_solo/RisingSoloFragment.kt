@@ -23,6 +23,8 @@ class RisingSoloFragment : BaseFragment<FragmentRisingSoloBinding, LoungeViewMod
     private lateinit var soloCoverListAdapter: CoverVerticalListAdapter  // 솔로 커버 리스트
 
     override fun initStartView() {
+        binding.titleBar.titleTextView.text = "떠오르는 솔로 커버"
+
         // 솔로 커버 리사이클러뷰 어댑터 생성
         soloCoverListAdapter = CoverVerticalListAdapter { coverId, _ ->
             val intent = Intent(requireContext(), SoloCoverActivity::class.java)
@@ -62,7 +64,7 @@ class RisingSoloFragment : BaseFragment<FragmentRisingSoloBinding, LoungeViewMod
     }
 
     override fun initAfterBinding() {
-        binding.backButton.setOnClickListener {
+        binding.titleBar.backButton.setOnClickListener {
             findNavController().popBackStack(R.id.navigation_rising_solo, true)
         }
     }

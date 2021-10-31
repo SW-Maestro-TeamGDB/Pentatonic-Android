@@ -22,6 +22,8 @@ class RisingBandFragment : BaseFragment<FragmentRisingBandBinding, LoungeViewMod
     private lateinit var bandCoverListAdapter: CoverVerticalListAdapter  // 밴드 커버 리스트
 
     override fun initStartView() {
+        binding.titleBar.titleTextView.text = "떠오르는 밴드 커버"
+
         // 밴드 커버 리사이클러뷰 어댑터 생성
         bandCoverListAdapter = CoverVerticalListAdapter { coverId, _ ->
             val intent = Intent(requireContext(), BandCoverActivity::class.java)
@@ -61,7 +63,7 @@ class RisingBandFragment : BaseFragment<FragmentRisingBandBinding, LoungeViewMod
     }
 
     override fun initAfterBinding() {
-        binding.backButton.setOnClickListener {
+        binding.titleBar.backButton.setOnClickListener {
             findNavController().popBackStack(R.id.navigation_rising_band, true)
         }
     }
