@@ -98,12 +98,10 @@
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:id="@+id/songList"
-            app:friction="200"
-            app:gapLimit="220"
-            app:speedFactor="5"
             app:tension="1000"
-            app:maxAdapterSizeToEstimate="5"
-            app:viewCountEstimateSize="5"
+            app:friction="150"
+            app:gapLimit="100"
+            app:speedFactor="5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 

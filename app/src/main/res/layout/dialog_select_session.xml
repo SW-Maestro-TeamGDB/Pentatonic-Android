@@ -19,6 +19,10 @@
 
         <com.chauthai.overscroll.RecyclerViewBouncy
             android:id="@+id/sessionList"
+            app:tension="1000"
+            app:friction="150"
+            app:gapLimit="100"
+            app:speedFactor="5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

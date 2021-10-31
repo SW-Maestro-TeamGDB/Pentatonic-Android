@@ -64,8 +64,6 @@
                     android:tintMode="src_atop"
                     app:tint="#80000000" />
 
-
-
                 <TextView
                     android:layout_centerHorizontal="true"
                     android:id="@+id/weeklyChallengeSongArtist"
@@ -168,7 +166,8 @@
                 android:layout_marginHorizontal="16dp"
                 tools:listitem="@layout/item_vertical_cover_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
