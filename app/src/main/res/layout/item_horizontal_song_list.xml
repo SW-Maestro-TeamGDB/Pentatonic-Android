@@ -5,7 +5,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:id="@+id/songItemCard"
-        android:layout_width="wrap_content"
+        android:layout_width="182dp"
         android:layout_height="wrap_content"
         android:paddingEnd="12dp">
 
@@ -20,7 +20,10 @@
             <TextView
                 android:layout_marginTop="8dp"
                 android:id="@+id/songNameTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingEnd="12dp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_regular"
                 android:text="SONG_NAME"
@@ -30,7 +33,10 @@
             <TextView
                 android:layout_marginTop="4dp"
                 android:id="@+id/songArtistTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:paddingEnd="12dp"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum_regular"
                 android:text="ARTIST_NAME"
