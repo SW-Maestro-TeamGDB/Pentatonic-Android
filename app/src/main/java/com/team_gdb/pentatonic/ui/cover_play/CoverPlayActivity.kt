@@ -25,6 +25,7 @@ import com.team_gdb.pentatonic.util.PlayAnimation
 import jp.wasabeef.blurry.Blurry
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+import java.lang.Integer.parseInt
 
 class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingViewModel>() {
     override val layoutResourceId: Int = R.layout.activity_cover_play
@@ -83,11 +84,13 @@ class CoverPlayActivity : BaseActivity<ActivityCoverPlayBinding, CoverPlayingVie
             override fun liked(likeButton: LikeButton?) {
                 viewModel.likeBand()
                 PlayAnimation.playSuccessAlert(this@CoverPlayActivity, "좋아요가 반영되었습니다!")
+                binding.likeCountTextView.text = (parseInt(binding.likeCountTextView.text.toString()) + 1).toString()
             }
 
             override fun unLiked(likeButton: LikeButton?) {
                 viewModel.likeBand()
                 PlayAnimation.playFailureAlert(this@CoverPlayActivity, "좋아요가 취소되었습니다")
+                binding.likeCountTextView.text = (parseInt(binding.likeCountTextView.text.toString()) - 1).toString()
             }
         })
     }
