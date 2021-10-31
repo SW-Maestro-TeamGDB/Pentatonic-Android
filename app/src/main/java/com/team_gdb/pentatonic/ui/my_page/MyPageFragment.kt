@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.base.BaseApplication
 import com.team_gdb.pentatonic.base.BaseFragment
 import com.team_gdb.pentatonic.databinding.FragmentMyPageBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.login.LoginActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
@@ -33,9 +34,13 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         // SharedPreferences 에 저장된 사용자의 ID 를 기반으로 상세 정보 쿼리
         BaseApplication.prefs.userId?.let { viewModel.getUserInfo(it) }
 
-        coverHistoryListAdapter = CoverHistoryListAdapter {
-            val intent = Intent(requireContext(), BandCoverActivity::class.java)
-            intent.putExtra(COVER_ID, it)
+        coverHistoryListAdapter = CoverHistoryListAdapter { coverId, isSoloCover ->
+            val intent = if (isSoloCover) {
+                Intent(requireContext(), SoloCoverActivity::class.java)
+            } else {
+                Intent(requireContext(), BandCoverActivity::class.java)
+            }
+            intent.putExtra(COVER_ID, coverId)
             startActivity(intent)
         }
 

@@ -20,7 +20,7 @@ import com.team_gdb.pentatonic.databinding.ItemHorizontalCoverListBinding
  *
  * @property itemClick  해당 커버 정보 페이지로 이동하는 동작
  */
-class CoverHistoryListAdapter(val itemClick: (String) -> Unit) :
+class CoverHistoryListAdapter(val itemClick: (String, Boolean) -> Unit) :
     RecyclerView.Adapter<CoverHistoryListAdapter.ViewHolder>() {
 
     private var coverEntityList: List<GetUserInfoQuery.Band> =
@@ -94,7 +94,7 @@ class CoverHistoryListAdapter(val itemClick: (String) -> Unit) :
 
             // 해당 커버를 클릭하면, 커버 페이지로 이동
             binding.root.setOnClickListener {
-                itemClick(entity.bandId)
+                itemClick(entity.bandId, entity.isSoloBand)
             }
         }
     }

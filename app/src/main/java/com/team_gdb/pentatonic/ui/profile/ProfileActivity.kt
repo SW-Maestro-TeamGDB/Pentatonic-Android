@@ -13,6 +13,7 @@ import com.team_gdb.pentatonic.base.BaseApplication
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.databinding.ActivityProfileBinding
 import com.team_gdb.pentatonic.ui.cover_view.band_cover.BandCoverActivity
+import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
@@ -43,9 +44,13 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
 
         binding.titleBar.titleTextView.text = "프로필"
 
-        coverHistoryListAdapter = CoverHistoryListAdapter {
-            val intent = Intent(this, BandCoverActivity::class.java)
-            intent.putExtra(LoungeFragment.COVER_ID, it)
+        coverHistoryListAdapter = CoverHistoryListAdapter { coverId, isSoloCover ->
+            val intent = if (isSoloCover) {
+                Intent(this, SoloCoverActivity::class.java)
+            } else {
+                Intent(this, BandCoverActivity::class.java)
+            }
+            intent.putExtra(LoungeFragment.COVER_ID, coverId)
             startActivity(intent)
         }
 
