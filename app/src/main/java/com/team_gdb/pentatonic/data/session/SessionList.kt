@@ -10,11 +10,16 @@ object SessionList {
         Session.ELECTRIC_GUITAR,
         Session.BASS,
         Session.DRUM,
+        Session.PIANO,
         Session.KEYBOARD,
         Session.VIOLIN,
         Session.CELLO,
+        Session.FLUTE,
+        Session.TRUMPET,
+        Session.CLARINET,
         Session.GAYAGEUM,
+        Session.GEOMUNGO,
         Session.HAEGEUM,
-        Session.LYRE
+        Session.FREE
     )
 }
