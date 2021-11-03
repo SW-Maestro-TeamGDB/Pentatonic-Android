@@ -47,7 +47,8 @@ class RecordProcessingRepositoryImpl : RecordProcessingRepository {
                     name, coverURI, songId, position = SESSION_TYPE.valueOf(position)
                 ),
                 filter = UploadCoverFilterInput(
-                    reverb= reverb
+                    reverb= reverb,
+                    syncDelay = 0,
                 )
             )
         )

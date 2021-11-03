@@ -5197,7 +5197,7 @@
                 "ofType": null
               }
             },
-            "defaultValue": null
+            "defaultValue": "{syncDelay: 0, reverb: 0}"
           }
         ],
         "interfaces": null,
