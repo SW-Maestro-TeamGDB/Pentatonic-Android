@@ -85,6 +85,11 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
             binding.userFollowerCountTextView.text = it.followerCount.toString()
             binding.userFollowingCountTextView.text = it.followingCount.toString()
 
+            if (it.prime) {
+                binding.primeBadgeView.visibility = View.VISIBLE
+                binding.primeUserTextView.visibility = View.VISIBLE
+            }
+
             binding.followButton.isChecked = it.followingStatus == false
         }
         viewModel.coverHistoryList.observe(this) {

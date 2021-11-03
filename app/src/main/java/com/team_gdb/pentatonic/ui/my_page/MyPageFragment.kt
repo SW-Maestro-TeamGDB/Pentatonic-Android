@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.my_page
 
 import android.content.Intent
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -73,6 +74,13 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
                 .into(binding.userProfileImage)
         }
 
+        viewModel.isPrimeUser.observe(this) {
+            if (it) {
+                binding.primeBadgeView.visibility = View.VISIBLE
+                binding.primeUserTextView.visibility = View.VISIBLE
+            }
+
+        }
         viewModel.coverHistoryList.observe(this) {
             coverHistoryListAdapter.setItem(it)
         }

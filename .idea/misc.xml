@@ -53,6 +53,7 @@
         <entry key="app/src/main/res/drawable/ic_stars_black_24dp.xml" value="0.1417763157894737" />
         <entry key="app/src/main/res/drawable/ic_weekly_challenge_create_band.xml" value="0.1417763157894737" />
         <entry key="app/src/main/res/drawable/ic_weekly_challenge_record.xml" value="0.1417763157894737" />
+        <entry key="app/src/main/res/drawable/profile_border.xml" value="0.15756578947368421" />
         <entry key="app/src/main/res/drawable/rating_empty.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rating_fill.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_dialog.xml" value="0.1417763157894737" />
