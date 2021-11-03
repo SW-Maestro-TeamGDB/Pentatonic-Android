@@ -62,7 +62,7 @@
                     android:progressTint="@color/main_regular"
                     app:srb_numStars="5"
                     app:srb_minimumStars="1"
-                    app:srb_rating="2"
+                    app:srb_rating="0"
                     app:srb_starWidth="10dp"
                     app:srb_starHeight="10dp"
                     app:srb_starPadding="2dp"

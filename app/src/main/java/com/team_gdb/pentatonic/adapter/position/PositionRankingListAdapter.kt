@@ -60,7 +60,16 @@ class PositionRankingListAdapter() :
 
             binding.positionNameTextView.text = Session.valueOf(entity.position).sessionName
             binding.positionLikeTextView.text = entity.likeCount.toString()
-            binding.positionLevel.rating = 3.0F
+
+            // 1, 5, 10, 50, 100 단위로 레이팅 증가
+            binding.positionLevel.rating = when (entity.likeCount) {
+                0 -> 0.0F
+                in 1..4 -> 1.0F
+                in 5..9 -> 2.0F
+                in 10..49 -> 3.0F
+                in 50..99 -> 4.0F
+                else -> 5.0F
+            }
         }
     }
 
