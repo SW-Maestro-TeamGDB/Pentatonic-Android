@@ -1,11 +1,6 @@
 package com.team_gdb.pentatonic.ui.song_detail
 
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.ViewGroup
 import androidx.core.graphics.drawable.toBitmap
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -17,6 +12,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.team_gdb.pentatonic.base.BaseActivity
 import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.ActivitySongDetailBinding
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.initPlayer
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.startPlaying
+import com.team_gdb.pentatonic.media.ExoPlayerHelper.stopPlaying
 import com.team_gdb.pentatonic.ui.studio.StudioFragment.Companion.SONG_ENTITY
 import jp.wasabeef.blurry.Blurry
 import timber.log.Timber
@@ -40,6 +38,9 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
             .listener(glideLoadingListener)
             .into(binding.albumJacketImage)
 
+        initPlayer(songEntity.songUrl) {
+            stopPlaying()
+        }
     }
 
     override fun initDataBinding() {
@@ -52,6 +53,12 @@ class SongDetailActivity : BaseActivity<ActivitySongDetailBinding, SongDetailVie
         binding.backButton.setOnClickListener {
             finish()
         }
+        startPlaying()
+    }
+
+    override fun onDestroy() {
+        stopPlaying()
+        super.onDestroy()
     }
 
     /**
