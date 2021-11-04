@@ -19,15 +19,62 @@
                 android:id="@+id/titleBar"
                 layout="@layout/page_title_bar"/>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_marginTop="24dp"
                 android:layout_marginHorizontal="24dp"
-                android:orientation="vertical"
                 android:id="@+id/userProfileCardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <LinearLayout
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/facebookButton"
+                        android:layout_width="40dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_facebook" />
+
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/instagramButton"
+                        android:layout_width="40dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_instagram" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_marginHorizontal="4dp"
+                        android:id="@+id/twitterButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_twitter" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/kakaoButton"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_kakao" />
+
+                </LinearLayout>
+
                 <FrameLayout
+                    android:id="@+id/profileImageLayout"
                     android:layout_width="80dp"
                     android:layout_height="80dp">
 
@@ -50,6 +97,8 @@
                 </FrameLayout>
 
                 <LinearLayout
+                    android:layout_below="@+id/profileImageLayout"
+                    android:id="@+id/nameLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -78,6 +127,8 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_below="@+id/nameLayout"
+                    android:id="@+id/followLayout"
                     android:layout_marginTop="16dp"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
@@ -96,7 +147,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-
                     <TextView
                         android:layout_marginStart="16dp"
                         android:fontFamily="@font/nanum_regular"
@@ -111,10 +161,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-
                 </LinearLayout>
 
                 <TextView
+                    android:layout_below="@+id/followLayout"
                     android:textColor="@color/black"
                     android:id="@+id/userIntroductionTextView"
                     android:layout_marginTop="12dp"
@@ -124,6 +174,7 @@
                     android:layout_height="wrap_content"/>
 
                 <androidx.appcompat.widget.AppCompatToggleButton
+                    android:layout_below="@+id/userIntroductionTextView"
                     android:id="@+id/followButton"
                     android:layout_marginTop="24dp"
                     android:layout_width="match_parent"
@@ -137,7 +188,7 @@
                     android:orientation="horizontal"
                     android:background="@drawable/toggle_selector_button"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 android:layout_marginHorizontal="24dp"
