@@ -26,6 +26,7 @@ import com.team_gdb.pentatonic.ui.login.LoginActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import com.team_gdb.pentatonic.ui.my_page.MyPageViewModel
+import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import es.dmoral.toasty.Toasty
@@ -71,6 +72,8 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
                 // 수정 페이지 종료
                 Toasty.success(requireContext(), "프로필이 변경됐습니다!", Toast.LENGTH_SHORT, true).show()
                 findNavController().popBackStack(R.id.navigation_edit_profile, true)
+            } else {
+                playFailureAlert(activity as Activity, "잘못된 URL 이 포함되어 있습니다!")
             }
         }
     }

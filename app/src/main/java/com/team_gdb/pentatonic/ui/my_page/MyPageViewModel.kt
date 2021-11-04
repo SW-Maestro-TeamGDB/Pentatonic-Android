@@ -7,6 +7,7 @@ import com.team_gdb.pentatonic.base.BaseViewModel
 import com.team_gdb.pentatonic.network.applySchedulers
 import com.team_gdb.pentatonic.repository.my_page.MyPageRepository
 import com.team_gdb.pentatonic.util.Event
+import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import timber.log.Timber
 
@@ -69,11 +70,9 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
             .applySchedulers()
             .subscribeBy(
                 onError = {
-                    Timber.i(it)
                 },
                 onNext = {
                     if (!it.hasErrors()) {
-                        Timber.d(it.data?.getUserInfo.toString())
                         userName.postValue(it.data?.getUserInfo?.username.toString())
                         userFollowerCount.postValue(it.data?.getUserInfo?.followerCount.toString())
                         userFollowingCount.postValue(it.data?.getUserInfo?.followingCount.toString())
@@ -102,7 +101,6 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
 
                         // 해당 사용자의 포지션 랭킹 정보
                         positionRankingList.postValue(it.data?.getUserInfo?.position)
-
                     } else {
                         it.errors?.forEach {
                             Timber.e(it.message)
@@ -205,6 +203,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
             .subscribeBy(
                 onError = {
                     Timber.e(it)
+                    completeUpdateProfile.postValue(Event(false))
                 },
                 onSuccess = {
                     Timber.d(it.data?.changeProfile?.id)
@@ -214,6 +213,7 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                         it.errors?.forEach {
                             Timber.e(it.message)
                         }
+                        completeUpdateProfile.postValue(Event(false))
                     }
                 }
             )
