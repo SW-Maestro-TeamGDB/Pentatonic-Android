@@ -118,8 +118,7 @@
                     android:textColor="#434343"
                     android:fontFamily="@font/nanum_extrabold"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:visibility="gone"

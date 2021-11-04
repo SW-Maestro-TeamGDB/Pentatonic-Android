@@ -10,6 +10,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.afollestad.materialdialogs.MaterialDialog
@@ -53,6 +55,15 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
         binding.lifecycleOwner = this
 
         binding.titleBar.titleTextView.text = "프로필 수정하기"
+        binding.expandSocialLinkLayoutButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            null,
+            null,
+            ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.ic_baseline_keyboard_arrow_down_24
+            ),
+            null
+        )
     }
 
     override fun initDataBinding() {
@@ -87,7 +98,25 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
         binding.expandSocialLinkLayoutButton.setOnClickListener {
             if (binding.socialLinkLayout.visibility == View.GONE) {
                 binding.socialLinkLayout.visibility = View.VISIBLE
+                binding.expandSocialLinkLayoutButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null,
+                    null,
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_baseline_keyboard_arrow_up_24
+                    ),
+                    null
+                )
             } else {
+                binding.expandSocialLinkLayoutButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null,
+                    null,
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_baseline_keyboard_arrow_down_24
+                    ),
+                    null
+                )
                 binding.socialLinkLayout.visibility = View.GONE
             }
         }
