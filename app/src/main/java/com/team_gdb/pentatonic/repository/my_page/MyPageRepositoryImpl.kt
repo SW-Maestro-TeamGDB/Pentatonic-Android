@@ -42,20 +42,38 @@ class MyPageRepositoryImpl : MyPageRepository {
         previousUsername: String,
         username: String,
         profileURI: String,
-        introduce: String
+        introduce: String,
+        facebookUrl: String?,
+        instagramUrl: String?,
+        twitterUrl: String?,
+        kakaoUrl: String?
     ): Single<Response<ChangeProfileMutation.Data>> {
-        Timber.e(previousUsername)
-        Timber.e(username)
         val input = if (previousUsername == username) {
             ChangeUserProfileInput(
                 profileURI = Input.optional(profileURI),
-                introduce = Input.optional(introduce)
+                introduce = Input.optional(introduce),
+                social = Input.fromNullable(
+                    SocialInput(
+                        facebook = Input.fromNullable(facebookUrl),
+                        instagram = Input.fromNullable(instagramUrl),
+                        twitter = Input.fromNullable(twitterUrl),
+                        kakao = Input.fromNullable(kakaoUrl)
+                    )
+                )
             )
         } else {
             ChangeUserProfileInput(
                 username = Input.optional(username),
                 profileURI = Input.optional(profileURI),
-                introduce = Input.optional(introduce)
+                introduce = Input.optional(introduce),
+                social = Input.fromNullable(
+                    SocialInput(
+                        facebook = Input.fromNullable(facebookUrl),
+                        instagram = Input.fromNullable(instagramUrl),
+                        twitter = Input.fromNullable(twitterUrl),
+                        kakao = Input.fromNullable(kakaoUrl)
+                    )
+                )
             )
         }
         return apolloClient.rxMutate(

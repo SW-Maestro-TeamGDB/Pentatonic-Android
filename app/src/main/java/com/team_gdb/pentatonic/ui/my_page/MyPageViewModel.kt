@@ -25,6 +25,11 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
     val userIntroduce: MutableLiveData<String> = MutableLiveData()
     val userProfileImage: MutableLiveData<String> = MutableLiveData()
 
+    val facebookUrl: MutableLiveData<String> = MutableLiveData()
+    val instagramUrl: MutableLiveData<String> = MutableLiveData()
+    val twitterUrl: MutableLiveData<String> = MutableLiveData()
+    val kakaoUrl: MutableLiveData<String> = MutableLiveData()
+
     val userSocialInfo: MutableLiveData<GetUserInfoQuery.Social> = MutableLiveData()
     val hasFacebook: MutableLiveData<Boolean> = MutableLiveData()
     val hasInstagram: MutableLiveData<Boolean> = MutableLiveData()
@@ -76,6 +81,12 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                         userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
 
                         userSocialInfo.postValue(it.data?.getUserInfo?.social)
+
+                        facebookUrl.postValue(it.data?.getUserInfo?.social?.facebook)
+                        instagramUrl.postValue(it.data?.getUserInfo?.social?.instagram)
+                        twitterUrl.postValue(it.data?.getUserInfo?.social?.twitter)
+                        kakaoUrl.postValue(it.data?.getUserInfo?.social?.kakao)
+
                         hasFacebook.postValue(!it.data?.getUserInfo?.social?.facebook.isNullOrBlank())
                         hasInstagram.postValue(!it.data?.getUserInfo?.social?.instagram.isNullOrBlank())
                         hasTwitter.postValue(!it.data?.getUserInfo?.social?.twitter.isNullOrBlank())
@@ -169,7 +180,27 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
             previousUsername = previousUsername,
             username = userName.value!!,
             profileURI = userProfileImage.value ?: "",
-            introduce = userIntroduce.value!!
+            introduce = userIntroduce.value!!,
+            facebookUrl = if (facebookUrl.value.isNullOrBlank()) {
+                null
+            } else {
+                facebookUrl.value
+            },
+            instagramUrl = if (instagramUrl.value.isNullOrBlank()) {
+                null
+            } else {
+                instagramUrl.value
+            },
+            twitterUrl = if (twitterUrl.value.isNullOrBlank()) {
+                null
+            } else {
+                twitterUrl.value
+            },
+            kakaoUrl = if (kakaoUrl.value.isNullOrBlank()) {
+                null
+            } else {
+                kakaoUrl.value
+            },
         ).applySchedulers()
             .subscribeBy(
                 onError = {

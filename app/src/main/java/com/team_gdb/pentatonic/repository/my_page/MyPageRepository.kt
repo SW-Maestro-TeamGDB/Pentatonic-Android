@@ -13,7 +13,11 @@ interface MyPageRepository {
         previousUsername: String,
         username: String,
         profileURI: String,
-        introduce: String
+        introduce: String,
+        facebookUrl: String?,
+        instagramUrl: String?,
+        twitterUrl: String?,
+        kakaoUrl: String?
     ): Single<Response<ChangeProfileMutation.Data>>
 
     fun uploadImageFile(filePath: String): Single<Response<UploadImageFileMutation.Data>>
