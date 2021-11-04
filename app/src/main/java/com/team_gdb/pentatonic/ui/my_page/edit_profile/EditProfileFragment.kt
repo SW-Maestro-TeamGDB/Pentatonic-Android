@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -81,6 +82,14 @@ class EditProfileFragment : BaseFragment<FragmentEditProfileBinding, MyPageViewM
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
             findNavController().popBackStack(R.id.navigation_edit_profile, true)
+        }
+
+        binding.expandSocialLinkLayoutButton.setOnClickListener {
+            if (binding.socialLinkLayout.visibility == View.GONE) {
+                binding.socialLinkLayout.visibility = View.VISIBLE
+            } else {
+                binding.socialLinkLayout.visibility = View.GONE
+            }
         }
 
         binding.userProfileImage.setOnClickListener {

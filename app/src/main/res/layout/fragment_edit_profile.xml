@@ -109,113 +109,135 @@
                     android:text="@={viewModel.userIntroduce}"/>
 
                 <TextView
+                    android:id="@+id/expandSocialLinkLayoutButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="24dp"
-                    android:text="페이스북"
+                    android:text="소셜 링크 추가하기"
                     android:textColor="#434343"
                     android:fontFamily="@font/nanum_extrabold"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_down_24" />
 
-                <EditText
-                    android:id="@+id/facebookLinkEditText"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/nanum_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:maxLines="1"
-                    android:inputType="textUri"
-                    android:hint="페이스북 링크를 입력해주세요."
-                    android:background="@drawable/custom_radius_background_white"
-                    android:backgroundTint="@color/gray"
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/socialLinkLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="@={viewModel.facebookUrl}"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:text="인스타그램"
-                    android:textColor="#434343"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/instagramLinkEditText"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/nanum_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:maxLines="1"
-                    android:inputType="textUri"
-                    android:hint="인스타그램 링크를 입력해주세요."
-                    android:background="@drawable/custom_radius_background_white"
-                    android:backgroundTint="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="@={viewModel.instagramUrl}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:text="페이스북"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:text="트위터"
-                    android:textColor="#434343"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/facebookLinkEditText"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/nanum_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:maxLines="1"
+                        android:inputType="textUri"
+                        android:hint="https://www.facebook.com/profile.php?id=1234"
+                        android:background="@drawable/custom_radius_background_white"
+                        android:backgroundTint="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@={viewModel.facebookUrl}"/>
 
-                <EditText
-                    android:id="@+id/twitterLinkEditText"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/nanum_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:hint="트위터 링크를 입력해주세요."
-                    android:maxLines="1"
-                    android:inputType="textUri"
-                    android:background="@drawable/custom_radius_background_white"
-                    android:backgroundTint="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="@={viewModel.twitterUrl}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:text="인스타그램"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="24dp"
-                    android:text="카카오톡 오픈 프로필"
-                    android:textColor="#434343"
-                    android:fontFamily="@font/nanum_extrabold"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/instagramLinkEditText"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/nanum_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:maxLines="1"
+                        android:inputType="textUri"
+                        android:hint="https://www.instagram.com/example"
+                        android:background="@drawable/custom_radius_background_white"
+                        android:backgroundTint="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@={viewModel.instagramUrl}"/>
 
-                <EditText
-                    android:id="@+id/kakaoLinkEditText"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/nanum_regular"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:maxLines="1"
-                    android:inputType="textUri"
-                    android:hint="카카오톡 오픈 프로필 링크를 입력해주세요."
-                    android:background="@drawable/custom_radius_background_white"
-                    android:backgroundTint="@color/gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="@={viewModel.kakaoUrl}"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:text="트위터"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
+                    <EditText
+                        android:id="@+id/twitterLinkEditText"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/nanum_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:hint="https://twitter.com/example"
+                        android:maxLines="1"
+                        android:inputType="textUri"
+                        android:background="@drawable/custom_radius_background_white"
+                        android:backgroundTint="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@={viewModel.twitterUrl}"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="24dp"
+                        android:text="카카오톡 오픈 프로필"
+                        android:textColor="#434343"
+                        android:fontFamily="@font/nanum_extrabold"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/kakaoLinkEditText"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/nanum_regular"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:maxLines="1"
+                        android:inputType="textUri"
+                        android:hint="https://open.kakao.com/o/example"
+                        android:background="@drawable/custom_radius_background_white"
+                        android:backgroundTint="@color/gray"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="@={viewModel.kakaoUrl}"/>
+
+
+                </LinearLayout>
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/editCompleteButton"
                     android:layout_width="match_parent"
