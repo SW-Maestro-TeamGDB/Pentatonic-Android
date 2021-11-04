@@ -18,11 +18,18 @@ import timber.log.Timber
  * @property repository : GetUserInfo() 쿼리 수행
  */
 class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
+
     val userName: MutableLiveData<String> = MutableLiveData()
     val userFollowerCount: MutableLiveData<String> = MutableLiveData()
     val userFollowingCount: MutableLiveData<String> = MutableLiveData()
     val userIntroduce: MutableLiveData<String> = MutableLiveData()
     val userProfileImage: MutableLiveData<String> = MutableLiveData()
+
+    val userSocialInfo: MutableLiveData<GetUserInfoQuery.Social> = MutableLiveData()
+    val hasFacebook: MutableLiveData<Boolean> = MutableLiveData()
+    val hasInstagram: MutableLiveData<Boolean> = MutableLiveData()
+    val hasTwitter: MutableLiveData<Boolean> = MutableLiveData()
+    val hasKakao: MutableLiveData<Boolean> = MutableLiveData()
 
     val isPrimeUser: MutableLiveData<Boolean> = MutableLiveData()
 
@@ -67,6 +74,12 @@ class MyPageViewModel(val repository: MyPageRepository) : BaseViewModel() {
                         userFollowingCount.postValue(it.data?.getUserInfo?.followingCount.toString())
                         userIntroduce.postValue(it.data?.getUserInfo?.introduce.toString())
                         userProfileImage.postValue(it.data?.getUserInfo?.profileURI)
+
+                        userSocialInfo.postValue(it.data?.getUserInfo?.social)
+                        hasFacebook.postValue(!it.data?.getUserInfo?.social?.facebook.isNullOrBlank())
+                        hasInstagram.postValue(!it.data?.getUserInfo?.social?.instagram.isNullOrBlank())
+                        hasTwitter.postValue(!it.data?.getUserInfo?.social?.twitter.isNullOrBlank())
+                        hasKakao.postValue(!it.data?.getUserInfo?.social?.kakao.isNullOrBlank())
 
                         isPrimeUser.postValue(it.data?.getUserInfo?.prime)
 

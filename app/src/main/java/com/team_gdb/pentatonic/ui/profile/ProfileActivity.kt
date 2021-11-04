@@ -1,8 +1,8 @@
 package com.team_gdb.pentatonic.ui.profile
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.team_gdb.pentatonic.R
@@ -17,7 +17,6 @@ import com.team_gdb.pentatonic.ui.cover_view.solo_cover.SoloCoverActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment
 import com.team_gdb.pentatonic.util.PlayAnimation.playFailureAlert
 import com.team_gdb.pentatonic.util.PlayAnimation.playSuccessAlert
-import timber.log.Timber
 
 class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>() {
     override val layoutResourceId: Int
@@ -88,6 +87,40 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
             if (it.prime) {
                 binding.primeBadgeView.visibility = View.VISIBLE
                 binding.primeUserTextView.visibility = View.VISIBLE
+            }
+            when {
+                !it.social?.facebook.isNullOrBlank() -> {
+                    val url = it.social?.facebook
+                    binding.facebookButton.visibility = View.VISIBLE
+                    binding.facebookButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
+                !it.social?.instagram.isNullOrBlank() -> {
+                    val url = it.social?.instagram
+                    binding.instagramButton.visibility = View.VISIBLE
+                    binding.instagramButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
+                !it.social?.twitter.isNullOrBlank() -> {
+                    val url = it.social?.twitter
+                    binding.twitterButton.visibility = View.VISIBLE
+                    binding.twitterButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
+                !it.social?.kakao.isNullOrBlank() -> {
+                    val url = it.social?.kakao
+                    binding.kakaoButton.visibility = View.VISIBLE
+                    binding.kakaoButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
             }
 
             binding.followButton.isChecked = it.followingStatus == false

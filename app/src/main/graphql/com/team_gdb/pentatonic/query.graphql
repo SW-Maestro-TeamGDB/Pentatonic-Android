@@ -14,6 +14,12 @@ query GetUserInfoQuery($getUserInfoUserId: Id!) {
         prime
         introduce
         type
+        social {
+            facebook
+            twitter
+            instagram
+            kakao
+        }
         band {
             bandId
             song {

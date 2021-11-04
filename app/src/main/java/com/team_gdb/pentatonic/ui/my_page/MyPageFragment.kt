@@ -1,6 +1,7 @@
 package com.team_gdb.pentatonic.ui.my_page
 
 import android.content.Intent
+import android.net.Uri
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -74,13 +75,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
                 .into(binding.userProfileImage)
         }
 
-        viewModel.isPrimeUser.observe(this) {
-            if (it) {
-                binding.primeBadgeView.visibility = View.VISIBLE
-                binding.primeUserTextView.visibility = View.VISIBLE
-            }
-
-        }
         viewModel.coverHistoryList.observe(this) {
             coverHistoryListAdapter.setItem(it)
         }
@@ -88,6 +82,43 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         viewModel.positionRankingList.observe(this) {
             it?.let {
                 positionRankingAdapter.setItem(it)
+            }
+        }
+
+        viewModel.userSocialInfo.observe(this) {
+            when {
+                !it.facebook.isNullOrBlank() -> {
+                    val url = it.facebook
+                    binding.facebookButton.visibility = View.VISIBLE
+                    binding.facebookButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
+                !it.instagram.isNullOrBlank() -> {
+                    val url = it.instagram
+                    binding.instagramButton.visibility = View.VISIBLE
+                    binding.instagramButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
+                !it.twitter.isNullOrBlank() -> {
+                    val url = it.twitter
+                    binding.twitterButton.visibility = View.VISIBLE
+                    binding.twitterButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
+                !it.kakao.isNullOrBlank() -> {
+                    val url = it.kakao
+                    binding.kakaoButton.visibility = View.VISIBLE
+                    binding.kakaoButton.setOnClickListener {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        startActivity(intent)
+                    }
+                }
             }
         }
     }

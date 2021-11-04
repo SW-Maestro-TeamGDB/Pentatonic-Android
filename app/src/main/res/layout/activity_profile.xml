@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:layout_marginTop="8dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:orientation="horizontal"
@@ -41,7 +42,6 @@
                         android:layout_height="40dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_facebook" />
-
 
                     <ImageView
                         android:visibility="gone"
