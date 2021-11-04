@@ -37,9 +37,9 @@
                     android:id="@+id/subTitleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/nanum_light"
-                    android:text="추가한 항목을 길게 누르면 삭제할 수 있습니다"
+                    android:text="@string/band_cover_session_setting_hint"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 

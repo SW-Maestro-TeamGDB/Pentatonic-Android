@@ -46,8 +46,6 @@
     <string name="artist_ranking_title_text">아티스트 랭킹</string>
     <string name="band_ranking_page_title_text">좋아요를 가장 많이 받은\n<b>밴드 커버</b>를 둘러보세요.</string>
     <string name="artist_ranking_page_title_text">펜타토닉에서 가장 인기있는\n<b>아티스트</b>들을 둘러보세요.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="whole_cover_title_text">펜타토닉의 <b>모든 커버</b>를\n탐색해보세요.</string>
 
     <string name="band_delete_notice_title">밴드를 삭제하시겠습니까?</string>
@@ -62,4 +60,5 @@
 
     <string name="yes_text">네</string>
     <string name="no_text">아니요</string>
+    <string name="band_cover_session_setting_hint"><b>자신이 참여할</b> 세션을 <b>가장 먼저</b> 추가합니다.\n추가한 항목을 길게 누르면 삭제할 수 있습니다.</string>
 </resources>

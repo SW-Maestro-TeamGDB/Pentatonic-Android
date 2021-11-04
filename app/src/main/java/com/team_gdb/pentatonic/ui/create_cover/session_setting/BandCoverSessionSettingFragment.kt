@@ -39,6 +39,11 @@ class BandCoverSessionSettingFragment :
         viewModel.coverSessionConfigList.observe(this) {
             it?.let {
                 sessionSettingListAdapter.setItem(it)
+                if (it.isEmpty()) {
+                    binding.addSessionButton.text = "+ 자신의 세션 선택하기"
+                } else {
+                    binding.addSessionButton.text = "+ 세션 생성하기"
+                }
             }
         }
     }
