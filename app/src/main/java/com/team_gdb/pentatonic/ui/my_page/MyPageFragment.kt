@@ -20,6 +20,7 @@ import com.team_gdb.pentatonic.ui.login.LoginActivity
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ENTITY
 import com.team_gdb.pentatonic.ui.lounge.LoungeFragment.Companion.COVER_ID
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
     override val layoutResourceId: Int
@@ -86,38 +87,36 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         }
 
         viewModel.userSocialInfo.observe(this) {
-            when {
-                !it.facebook.isNullOrBlank() -> {
-                    val url = it.facebook
-                    binding.facebookButton.visibility = View.VISIBLE
-                    binding.facebookButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            if (!it.facebook.isNullOrBlank()) {
+                val url = it.facebook
+                binding.facebookButton.visibility = View.VISIBLE
+                binding.facebookButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
-                !it.instagram.isNullOrBlank() -> {
-                    val url = it.instagram
-                    binding.instagramButton.visibility = View.VISIBLE
-                    binding.instagramButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            }
+            if (!it.instagram.isNullOrBlank()) {
+                val url = it.instagram
+                binding.instagramButton.visibility = View.VISIBLE
+                binding.instagramButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
-                !it.twitter.isNullOrBlank() -> {
-                    val url = it.twitter
-                    binding.twitterButton.visibility = View.VISIBLE
-                    binding.twitterButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            }
+            if (!it.twitter.isNullOrBlank()) {
+                val url = it.twitter
+                binding.twitterButton.visibility = View.VISIBLE
+                binding.twitterButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
-                !it.kakao.isNullOrBlank() -> {
-                    val url = it.kakao
-                    binding.kakaoButton.visibility = View.VISIBLE
-                    binding.kakaoButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            }
+            if (!it.kakao.isNullOrBlank()) {
+                val url = it.kakao
+                binding.kakaoButton.visibility = View.VISIBLE
+                binding.kakaoButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
             }
         }

@@ -88,38 +88,36 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding, ProfileViewModel>()
                 binding.primeBadgeView.visibility = View.VISIBLE
                 binding.primeUserTextView.visibility = View.VISIBLE
             }
-            when {
-                !it.social?.facebook.isNullOrBlank() -> {
-                    val url = it.social?.facebook
-                    binding.facebookButton.visibility = View.VISIBLE
-                    binding.facebookButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            if (!it.social?.facebook.isNullOrBlank()) {
+                val url = it.social?.facebook
+                binding.facebookButton.visibility = View.VISIBLE
+                binding.facebookButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
-                !it.social?.instagram.isNullOrBlank() -> {
-                    val url = it.social?.instagram
-                    binding.instagramButton.visibility = View.VISIBLE
-                    binding.instagramButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            }
+            if (!it.social?.instagram.isNullOrBlank()) {
+                val url = it.social?.instagram
+                binding.instagramButton.visibility = View.VISIBLE
+                binding.instagramButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
-                !it.social?.twitter.isNullOrBlank() -> {
-                    val url = it.social?.twitter
-                    binding.twitterButton.visibility = View.VISIBLE
-                    binding.twitterButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            }
+            if (!it.social?.twitter.isNullOrBlank()) {
+                val url = it.social?.twitter
+                binding.twitterButton.visibility = View.VISIBLE
+                binding.twitterButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
-                !it.social?.kakao.isNullOrBlank() -> {
-                    val url = it.social?.kakao
-                    binding.kakaoButton.visibility = View.VISIBLE
-                    binding.kakaoButton.setOnClickListener {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        startActivity(intent)
-                    }
+            }
+            if (!it.social?.kakao.isNullOrBlank()) {
+                val url = it.social?.kakao
+                binding.kakaoButton.visibility = View.VISIBLE
+                binding.kakaoButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    startActivity(intent)
                 }
             }
 
