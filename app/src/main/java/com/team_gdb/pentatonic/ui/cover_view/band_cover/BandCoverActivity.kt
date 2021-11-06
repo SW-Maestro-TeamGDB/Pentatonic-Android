@@ -68,6 +68,8 @@ class BandCoverActivity : BaseActivity<ActivityBandCoverBinding, CoverViewViewMo
             val intent = Intent(this, CoverPlayActivity::class.java)
             intent.putExtra(COVER_PLAY_ENTITY, coverEntity)
             startActivity(intent)
+
+            viewModel.clearSession()  // 세션 선택 정보 초기화
         }
 
         // 밴드 참여 성공 여부를 담는 이벤트 옵저빙

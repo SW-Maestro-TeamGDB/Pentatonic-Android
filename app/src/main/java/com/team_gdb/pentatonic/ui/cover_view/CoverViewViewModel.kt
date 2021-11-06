@@ -113,6 +113,12 @@ class CoverViewViewModel(val repository: CoverViewRepository) : BaseViewModel() 
         selectedSessionLiveData.postValue(selectedSession)
     }
 
+    fun clearSession() {
+        selectedSession.clear()
+        selectedSessionLiveData.postValue(selectedSession)
+    }
+
+
     /**
      * 사용자가 가지고 있는 라이브러리 커버 쿼리
      * */

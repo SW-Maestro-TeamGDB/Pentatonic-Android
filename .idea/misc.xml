@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_thumb_up_24.xml" value="0.23778501628664495" />
         <entry key="app/src/main/res/drawable/ic_drum.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_electric_guitar.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_heart.xml" value="0.1076388888888889" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.12434210526315789" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.12434210526315789" />
         <entry key="app/src/main/res/drawable/ic_left_image_add.xml" value="0.13717105263157894" />
@@ -124,6 +125,7 @@
         <entry key="app/src/main/res/layout/fragment_whole_cover.xml" value="0.2" />
         <entry key="app/src/main/res/layout/ic_left_image_add.xml" value="0.12697368421052632" />
         <entry key="app/src/main/res/layout/item_ad_banner_viewpager.xml" value="0.1450657894736842" />
+        <entry key="app/src/main/res/layout/item_artist_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_artist_ranking_list.xml" value="0.2299342105263158" />
         <entry key="app/src/main/res/layout/item_band_ranking_list.xml" value="0.21" />
         <entry key="app/src/main/res/layout/item_comment_list.xml" value="0.22" />

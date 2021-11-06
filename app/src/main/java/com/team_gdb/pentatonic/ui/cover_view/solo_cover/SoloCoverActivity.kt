@@ -68,6 +68,8 @@ class SoloCoverActivity : BaseActivity<ActivitySoloCoverBinding, CoverViewViewMo
             val intent = Intent(this, CoverPlayActivity::class.java)
             intent.putExtra(CoverPlayActivity.COVER_PLAY_ENTITY, coverEntity)
             startActivity(intent)
+
+            viewModel.clearSession()  // 세션 선택 정보 초기화
         }
     }
 
