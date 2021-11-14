@@ -20,6 +20,7 @@ import com.team_gdb.pentatonic.data.model.SongEntity
 import com.team_gdb.pentatonic.databinding.FragmentBasicCoverInfoFormBinding
 import com.team_gdb.pentatonic.ui.create_cover.CreateCoverViewModel
 import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity
+import com.team_gdb.pentatonic.ui.select_song.SelectSongActivity.Companion.IS_COVER_CREATE
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import timber.log.Timber
@@ -88,6 +89,7 @@ class BasicCoverInfoFormFragment : BaseFragment<FragmentBasicCoverInfoFormBindin
     override fun initAfterBinding() {
         binding.selectSongButton.setOnClickListener {
             val intent = Intent(activity, SelectSongActivity::class.java)
+            intent.putExtra(IS_COVER_CREATE, true)
             selectSongActivityLauncher.launch(intent)
         }
 

@@ -75,15 +75,6 @@
             android:text="@string/login_button_text"
             android:textColor="@color/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/loginButton"
-            android:textColor="@color/white"
-            android:layout_marginTop="16dp"
-            android:text="@string/login_pw_forget_text"/>
-
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerButton"

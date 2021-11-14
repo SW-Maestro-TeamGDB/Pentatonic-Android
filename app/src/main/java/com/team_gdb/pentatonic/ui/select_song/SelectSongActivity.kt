@@ -27,6 +27,10 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
 
     private lateinit var songListAdapter: SongVerticalListAdapter
 
+    private val isCoverCreateMode: Boolean by lazy {
+        intent.getBooleanExtra(IS_COVER_CREATE, false)
+    }
+
     override fun initStartView() {
         binding.viewModel = this.viewModel
         binding.lifecycleOwner = this
@@ -75,6 +79,10 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
     override fun initAfterBinding() {
         binding.titleBar.backButton.setOnClickListener {
             finish()
+        }
+
+        if (isCoverCreateMode) {
+            binding.selectFreeCoverButton.visibility = View.GONE
         }
 
         binding.selectFreeCoverButton.setOnClickListener {
@@ -144,5 +152,9 @@ class SelectSongActivity : BaseActivity<ActivitySelectSongBinding, SelectSongVie
         }
 
         override fun onNothingSelected(parent: AdapterView<*>?) {}
+    }
+
+    companion object {
+        const val IS_COVER_CREATE = "is_cover_create"
     }
 }

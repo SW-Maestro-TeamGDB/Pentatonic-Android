@@ -1,3 +1,4 @@
+
 # 아이디와 닉네임이 유효한지 검사 요청하는 쿼리
 query CheckIDAndUsernameQuery($isValidUsernameUsername: Username!, $isValidIdId: Id!) {
     isValidId(id: $isValidIdId)
