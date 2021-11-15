@@ -35,6 +35,25 @@
                 app:progressMode="true"
                 app:selectedDotColor="@color/white" />
 
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="24dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="4dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/nanum_light"
+                    android:text="본 광고는 가상으로 제작되었습니다"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
         </FrameLayout>
 
         <com.xw.repo.widget.BounceScrollView

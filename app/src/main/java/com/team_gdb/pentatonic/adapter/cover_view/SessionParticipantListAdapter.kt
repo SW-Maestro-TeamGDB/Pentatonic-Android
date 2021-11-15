@@ -65,7 +65,6 @@ class SessionParticipantListAdapter(
             // 해당 사용자의 프로필 사진
             Glide.with(binding.root)
                 .load(item.coverBy.profileURI)
-                .placeholder(R.drawable.profile_image_placeholder)
                 .override(80, 80)
                 .into(binding.userProfileImage)
 

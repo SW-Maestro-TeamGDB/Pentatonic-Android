@@ -71,7 +71,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding, MyPageViewModel>() {
         viewModel.userProfileImage.observe(this) {
             Glide.with(this)
                 .load(it)
-                .placeholder(R.drawable.profile_image_placeholder)
                 .override(100, 100)
                 .into(binding.userProfileImage)
         }

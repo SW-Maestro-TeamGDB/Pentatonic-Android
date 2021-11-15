@@ -86,7 +86,6 @@ class LoungeFragment : BaseFragment<FragmentLoungeBinding, LoungeViewModel>() {
         viewModel.userProfileImage.observe(this) {
             Glide.with(this)
                 .load(it)
-                .placeholder(R.drawable.profile_image_placeholder)
                 .override(50, 50)
                 .into(binding.userProfileImage)
             binding.userProfileImage.setOnClickListener {

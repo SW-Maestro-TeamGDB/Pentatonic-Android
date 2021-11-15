@@ -59,7 +59,6 @@ class CommentListAdapter(
             Glide.with(binding.root)
                 .load(entity.user.profileURI)
                 .centerCrop()
-                .placeholder(R.drawable.profile_image_placeholder)
                 .into(binding.userProfileImageView)
 
             binding.commentTextView.setOnLongClickListener {
